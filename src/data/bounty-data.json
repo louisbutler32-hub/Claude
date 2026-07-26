@@ -1,0 +1,87 @@
+{
+  "entries": [
+    {
+      "id": "bege",
+      "name": "Capone Bege",
+      "oldBounty": 138000000,
+      "newBounty": 300000000,
+      "delta": 162000000,
+      "note": "Post-timeskip reshuffle",
+      "section": "warmup"
+    },
+    {
+      "id": "sanji",
+      "name": "Sanji",
+      "oldBounty": 177000000,
+      "newBounty": 330000000,
+      "delta": 153000000,
+      "note": "Two years off-screen, world recalculated him",
+      "section": "warmup"
+    },
+    {
+      "id": "zoro",
+      "name": "Roronoa Zoro",
+      "oldBounty": 120000000,
+      "newBounty": 320000000,
+      "delta": 200000000,
+      "note": "Post-Enies Lobby to post-Dressrosa",
+      "section": "warmup"
+    },
+    {
+      "id": "law",
+      "name": "Trafalgar Law",
+      "oldBounty": 200000000,
+      "newBounty": 440000000,
+      "delta": 240000000,
+      "note": "Doubled across the timeskip",
+      "section": "midtier"
+    },
+    {
+      "id": "robin",
+      "name": "Nico Robin",
+      "oldBounty": 79000000,
+      "newBounty": 80000000,
+      "delta": 1000000,
+      "note": "Smallest jump ever recorded — bounty was never about the fight",
+      "section": "midtier"
+    },
+    {
+      "id": "bigmom",
+      "name": "Charlotte Linlin (Big Mom)",
+      "oldBounty": 50000000,
+      "newBounty": 500000000,
+      "delta": 450000000,
+      "multiplier": 10,
+      "note": "10x — largest multiplier jump at the time",
+      "section": "recordholders"
+    },
+    {
+      "id": "blackbeard",
+      "name": "Marshall D. Teach (Blackbeard)",
+      "oldBounty": 0,
+      "newBounty": 2247000000,
+      "delta": 2247000000,
+      "note": "Betrayed Ace, killed Whitebeard — detonated overnight",
+      "section": "recordholders"
+    },
+    {
+      "id": "kid",
+      "name": "Eustass Kid",
+      "oldBounty": 470000000,
+      "newBounty": 3000000000,
+      "delta": 2530000000,
+      "note": "Post-Wano — briefly the largest raw increase ever",
+      "section": "recordbreak1"
+    },
+    {
+      "id": "buggy",
+      "name": "Buggy the Clown",
+      "oldBounty": 2000000,
+      "newBounty": 3189000000,
+      "delta": 3187000000,
+      "multiplier": 1594,
+      "note": "Post-Egghead — named an Emperor. The single largest raw bounty increase in the series",
+      "section": "answer"
+    }
+  ]
+}
