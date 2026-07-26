@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Sequence } from "remotion";
+import { AbsoluteFill, Sequence, interpolate, useCurrentFrame } from "remotion";
 import { ColdOpen } from "./sections/ColdOpen";
 import { RulesSection } from "./sections/RulesSection";
 import { WarmupSection } from "./sections/WarmupSection";
@@ -8,6 +8,7 @@ import { RecordHoldersSection } from "./sections/RecordHoldersSection";
 import { RecordBreakSection } from "./sections/RecordBreakSection";
 import { AnswerSection } from "./sections/AnswerSection";
 import { CloseSection } from "./sections/CloseSection";
+import { SectionFade } from "./components/SectionFade";
 import { theme } from "./theme";
 
 // Frame map at 30fps, matching the script's timestamps exactly.
@@ -24,36 +25,82 @@ export const TIMELINE = {
 
 export const TOTAL_DURATION_IN_FRAMES = 23400; // 13:00 @ 30fps
 
+const ProgressBar: React.FC = () => {
+  const frame = useCurrentFrame();
+  const pct = interpolate(frame, [0, TOTAL_DURATION_IN_FRAMES], [0, 100], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        bottom: 0,
+        height: 4,
+        background: "rgba(255,255,255,0.08)",
+      }}
+    >
+      <div
+        style={{
+          width: `${pct}%`,
+          height: "100%",
+          background: theme.gold,
+        }}
+      />
+    </div>
+  );
+};
+
 export const BountyVideo: React.FC = () => {
   return (
     <AbsoluteFill style={{ background: theme.bg }}>
       <Sequence from={TIMELINE.coldOpen.from} durationInFrames={TIMELINE.coldOpen.duration}>
-        <ColdOpen />
+        <SectionFade durationInFrames={TIMELINE.coldOpen.duration}>
+          <ColdOpen />
+        </SectionFade>
       </Sequence>
       <Sequence from={TIMELINE.rules.from} durationInFrames={TIMELINE.rules.duration}>
-        <RulesSection />
+        <SectionFade durationInFrames={TIMELINE.rules.duration}>
+          <RulesSection />
+        </SectionFade>
       </Sequence>
       <Sequence from={TIMELINE.warmup.from} durationInFrames={TIMELINE.warmup.duration}>
-        <WarmupSection />
+        <SectionFade durationInFrames={TIMELINE.warmup.duration}>
+          <WarmupSection />
+        </SectionFade>
       </Sequence>
       <Sequence from={TIMELINE.midTier.from} durationInFrames={TIMELINE.midTier.duration}>
-        <MidTierSection />
+        <SectionFade durationInFrames={TIMELINE.midTier.duration}>
+          <MidTierSection />
+        </SectionFade>
       </Sequence>
       <Sequence
         from={TIMELINE.recordHolders.from}
         durationInFrames={TIMELINE.recordHolders.duration}
       >
-        <RecordHoldersSection />
+        <SectionFade durationInFrames={TIMELINE.recordHolders.duration}>
+          <RecordHoldersSection />
+        </SectionFade>
       </Sequence>
       <Sequence from={TIMELINE.recordBreak.from} durationInFrames={TIMELINE.recordBreak.duration}>
-        <RecordBreakSection />
+        <SectionFade durationInFrames={TIMELINE.recordBreak.duration}>
+          <RecordBreakSection />
+        </SectionFade>
       </Sequence>
       <Sequence from={TIMELINE.answer.from} durationInFrames={TIMELINE.answer.duration}>
-        <AnswerSection />
+        <SectionFade durationInFrames={TIMELINE.answer.duration}>
+          <AnswerSection />
+        </SectionFade>
       </Sequence>
       <Sequence from={TIMELINE.close.from} durationInFrames={TIMELINE.close.duration}>
-        <CloseSection />
+        <SectionFade durationInFrames={TIMELINE.close.duration}>
+          <CloseSection />
+        </SectionFade>
       </Sequence>
+      <ProgressBar />
     </AbsoluteFill>
   );
 };

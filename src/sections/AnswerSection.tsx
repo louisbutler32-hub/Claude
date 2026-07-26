@@ -4,6 +4,7 @@ import { theme } from "../theme";
 import { Caption } from "../components/Caption";
 import { SectionLabel } from "../components/SectionLabel";
 import { AxisBreakGag } from "../components/AxisBreakGag";
+import { RecordFlash } from "../components/RecordFlash";
 import data from "../data/bounty-data.json";
 
 const buggy = data.entries.find((e) => e.id === "buggy")!;
@@ -59,6 +60,7 @@ export const AnswerSection: React.FC = () => {
           durationInFrames={450}
         />
       </Sequence>
+      <RecordFlash label="Record Broken" startFrame={1470} />
     </AbsoluteFill>
   );
 };

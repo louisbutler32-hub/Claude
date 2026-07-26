@@ -1,15 +1,12 @@
 import React from "react";
 import { AbsoluteFill, Sequence, interpolate, useCurrentFrame } from "remotion";
-import { theme, formatBerries } from "../theme";
+import { theme } from "../theme";
 import { Caption } from "../components/Caption";
 import { TitleCard } from "../components/TitleCard";
+import { BerryCounter } from "../components/BerryCounter";
 
 const BerrySymbolTicker: React.FC = () => {
   const frame = useCurrentFrame();
-  const value = interpolate(frame, [0, 60], [0, 3189000000], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
   const frozen = frame > 60;
   const opacity = interpolate(frame, [0, 15], [0, 1], {
     extrapolateLeft: "clamp",
@@ -25,16 +22,13 @@ const BerrySymbolTicker: React.FC = () => {
         opacity,
       }}
     >
-      <div
-        style={{
-          fontFamily: theme.fontDisplay,
-          fontWeight: 700,
-          fontSize: 120,
-          color: frozen ? theme.red : theme.goldBright,
-        }}
-      >
-        {formatBerries(value)}
-      </div>
+      <BerryCounter
+        from={0}
+        to={3189000000}
+        durationInFrames={60}
+        fontSize={120}
+        color={frozen ? theme.red : theme.goldBright}
+      />
     </AbsoluteFill>
   );
 };

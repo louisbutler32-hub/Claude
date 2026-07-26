@@ -4,6 +4,7 @@ import { theme } from "../theme";
 import { Caption } from "../components/Caption";
 import { SectionLabel } from "../components/SectionLabel";
 import { BarRow } from "../components/BarRow";
+import { RecordFlash } from "../components/RecordFlash";
 import data from "../data/bounty-data.json";
 
 const byId = (id: string) => data.entries.find((e) => e.id === id)!;
@@ -54,6 +55,7 @@ export const RecordBreakSection: React.FC = () => {
           durationInFrames={500}
         />
       </Sequence>
+      <RecordFlash label="New Record" startFrame={700} />
     </AbsoluteFill>
   );
 };
