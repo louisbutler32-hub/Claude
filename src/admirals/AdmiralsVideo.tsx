@@ -14,14 +14,34 @@ import {
   HakiAura,
   KenBurnsBg,
   NarratorScene,
+  SpeechBubble,
 } from "../whatif/components";
+import {
+  ChapterCard,
+  ClipSlot,
+  Crosshairs,
+  CutoutFull,
+  ImpactWord,
+  NewspaperSpin,
+  StatGauge,
+  SynergyTriangle,
+  TextPin,
+} from "./parts";
 
-// "What if the 3 Admirals became pirates?" — 0:00–0:35 per blueprint.
+// "What if the 3 Admirals became pirates?" — full 0:00–3:20 per blueprint.
 // Style toolkit: fast cuts, saturation boost on hype shots, colored
 // flash frames per admiral (red/cyan/yellow), cutouts always slide in
 // over a background, never sit on plain black.
+//
+// FOOTAGE: every place a licensed anime clip belongs is a ClipSlot. Drop a
+// file into public/assets/clips/<id>.mp4 and register it in CLIPS below;
+// until then the slot shows a labeled marker. Nothing here bakes in footage
+// the editor hasn't supplied.
 
-export const ADMIRALS_DURATION_IN_FRAMES = 35 * 30;
+export const ADMIRALS_DURATION_IN_FRAMES = 200 * 30; // 3:20
+
+// Editor fills these in as clips are cut: id -> "clips/<file>.mp4".
+export const CLIPS: Record<string, string> = {};
 
 const FONT = "'Arial Black', 'Helvetica Neue', Arial, sans-serif";
 const HYPE_FILTER = "saturate(1.2) contrast(1.1)";
@@ -143,29 +163,36 @@ const MontageBeat: React.FC<{
   const frame = useCurrentFrame();
   const flash = interpolate(frame, [0, 5], [0.85, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const shake = frame < 10 ? Math.sin(frame * 2.8) * 6 : 0;
+  const clip = CLIPS[`montage-${a.id}`];
   return (
     <AbsoluteFill style={{ filter: HYPE_FILTER, transform: `translateX(${shake}px)` }}>
-      <KenBurnsBg src={a.bg} durationInFrames={45} darken={0.25} />
-      <AbsoluteFill style={{ background: `linear-gradient(180deg, transparent 40%, ${a.glow})`, opacity: 0.5 }} />
-      <AbsoluteFill style={{ padding: "70px 460px 120px" }}>
-        <div style={{ width: "100%", height: "100%", filter: `drop-shadow(0 0 30px ${a.glow})` }}>
-          <AssetSlot slot={{ id: a.id, label: a.name, src: `assets/${a.id}.png` }} slideFrom={a.slide} />
-        </div>
-      </AbsoluteFill>
-      <div
-        style={{
-          position: "absolute",
-          bottom: 30,
-          width: "100%",
-          textAlign: "center",
-          fontFamily: "'Courier New', monospace",
-          fontSize: 24,
-          color: "rgba(255,255,255,0.75)",
-          textShadow: "0 2px 0 #000",
-        }}
-      >
-        [clip: {clipNote} — ../one piece videos/05-admirals]
-      </div>
+      {clip ? (
+        <ClipSlot id={`montage-${a.id}`} label={clipNote} src={clip} tint={`${a.color}22`} />
+      ) : (
+        <>
+          <KenBurnsBg src={a.bg} durationInFrames={45} darken={0.25} />
+          <AbsoluteFill style={{ background: `linear-gradient(180deg, transparent 40%, ${a.glow})`, opacity: 0.5 }} />
+          <AbsoluteFill style={{ padding: "70px 460px 120px" }}>
+            <div style={{ width: "100%", height: "100%", filter: `drop-shadow(0 0 30px ${a.glow})` }}>
+              <AssetSlot slot={{ id: a.id, label: a.name, src: `assets/${a.id}.png` }} slideFrom={a.slide} />
+            </div>
+          </AbsoluteFill>
+          <div
+            style={{
+              position: "absolute",
+              bottom: 30,
+              width: "100%",
+              textAlign: "center",
+              fontFamily: "'Courier New', monospace",
+              fontSize: 24,
+              color: "rgba(255,255,255,0.75)",
+              textShadow: "0 2px 0 #000",
+            }}
+          >
+            [clip: {clipNote} — public/assets/clips/montage-{a.id}.mp4]
+          </div>
+        </>
+      )}
       <AbsoluteFill style={{ background: a.color, opacity: flash }} />
     </AbsoluteFill>
   );
@@ -342,6 +369,108 @@ const AkainuZoom: React.FC = () => {
   );
 };
 
+// ── 0:38–0:48 B&W atrocity flashback beat ──────────────────────────────
+const FlashbackBeat: React.FC<{ clipId: string; note: string }> = ({ clipId, note }) => {
+  const frame = useCurrentFrame();
+  const shake = frame < 8 ? Math.sin(frame * 2.6) * 4 : 0;
+  return (
+    <AbsoluteFill style={{ filter: "grayscale(1) contrast(1.3)", transform: `translateX(${shake}px)` }}>
+      <ClipSlot id={clipId} label={note} src={CLIPS[clipId]} />
+      <Grain />
+      <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 50%, transparent 40%, rgba(0,0,0,0.8) 100%)" }} />
+    </AbsoluteFill>
+  );
+};
+
+// Profile scene: pin + cutout (or footage) + optional speech bubble + gauge.
+const ProfileScene: React.FC<{
+  admiral: (typeof ADMIRALS)[number];
+  pin: string;
+  bubble?: string;
+  gaugeLabel?: string;
+  gauge?: number;
+  clipId?: string;
+  clipNote?: string;
+  impacts?: boolean;
+}> = ({ admiral: a, pin, bubble, gaugeLabel, gauge, clipId, clipNote, impacts }) => {
+  const frame = useCurrentFrame();
+  const shake = impacts && frame % 20 < 4 ? Math.sin(frame * 3) * 8 : 0;
+  const flash = impacts ? Math.max(0, 0.6 - (frame % 20) * 0.15) : 0;
+  const clip = clipId ? CLIPS[clipId] : undefined;
+  return (
+    <AbsoluteFill style={{ filter: HYPE_FILTER, transform: `translateX(${shake}px)` }}>
+      {clipId ? (
+        <ClipSlot id={clipId} label={clipNote ?? a.name} src={clip} tint={`${a.color}22`} />
+      ) : (
+        <>
+          <KenBurnsBg src={a.bg} durationInFrames={300} darken={0.28} />
+          <CutoutFull id={a.id} slideFrom={a.slide} glow={a.glow} />
+        </>
+      )}
+      <TextPin text={pin} />
+      {bubble && <SpeechBubble text={bubble} />}
+      {gauge !== undefined && gaugeLabel && <StatGauge label={gaugeLabel} value={gauge} color={a.color} startFrame={10} />}
+      {impacts && <AbsoluteFill style={{ background: a.color, opacity: flash }} />}
+    </AbsoluteFill>
+  );
+};
+
+// Desk-slam → jolly roger reveal (0:48–1:05)
+const DeskSlam: React.FC = () => {
+  const frame = useCurrentFrame();
+  const glitch = frame > 150 && frame < 175;
+  const reveal = interpolate(frame, [175, 200], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const shake = frame % 24 < 5 && frame < 150 ? Math.sin(frame * 3.4) * 9 : 0;
+  if (frame >= 175 || glitch) {
+    return (
+      <AbsoluteFill style={{ background: "#08060c", alignItems: "center", justifyContent: "center" }}>
+        {glitch && (
+          <AbsoluteFill style={{ opacity: 0.4, backgroundImage: "repeating-linear-gradient(0deg, transparent 0 5px, rgba(0,255,230,0.5) 6px, rgba(255,0,90,0.5) 7px)", backgroundPosition: `0 ${(frame * 31) % 40}px` }} />
+        )}
+        <div style={{ transform: `scale(${0.6 + reveal * 0.4})`, opacity: reveal, textAlign: "center" }}>
+          <div style={{ fontSize: 260 }}>🏴‍☠️</div>
+          <div style={{ display: "flex", gap: 30, justifyContent: "center", fontSize: 90 }}>
+            <span>🌋</span><span>❄️</span><span>⚡</span>
+          </div>
+          <div style={{ fontFamily: "'Arial Black',sans-serif", fontWeight: 900, fontSize: 54, color: "#fff", marginTop: 20, letterSpacing: 3 }}>A NEW FLAG RISES</div>
+        </div>
+      </AbsoluteFill>
+    );
+  }
+  return (
+    <AbsoluteFill style={{ filter: HYPE_FILTER, transform: `translateX(${shake}px)` }}>
+      <ClipSlot id="desk-slam" label="Three Admirals slam the marine desk in half" src={CLIPS["desk-slam"]} />
+      <AbsoluteFill style={{ background: "rgba(0,0,0,0.3)" }} />
+    </AbsoluteFill>
+  );
+};
+
+// News Coo newspaper barrage (3:10–3:20)
+const NewsBarrage: React.FC = () => {
+  const frame = useCurrentFrame();
+  const gull = interpolate(frame, [0, 60], [-300, 2200]);
+  return (
+    <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 40%, #1a2a44, #070b14)" }}>
+      <div style={{ position: "absolute", top: 120, left: gull, fontSize: 90 }}>🕊️</div>
+      <NewspaperSpin headline="ADMIRALS DEFECT!" startFrame={20} />
+      <NewspaperSpin headline="NEW PIRATE CREW FORMED!" startFrame={110} />
+      <NewspaperSpin headline="WORLD GOVERNMENT IN PANIC!" startFrame={200} />
+    </AbsoluteFill>
+  );
+};
+
+const ToBeContinued: React.FC = () => {
+  const frame = useCurrentFrame();
+  const op = interpolate(frame, [0, 20], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  return (
+    <AbsoluteFill style={{ background: "#000", alignItems: "center", justifyContent: "center", opacity: op }}>
+      <Embers />
+      <div style={{ fontFamily: "'Arial Black',sans-serif", fontWeight: 900, fontSize: 96, color: "#ffd75e", textShadow: "0 0 40px rgba(255,120,30,0.6)" }}>TO BE CONTINUED</div>
+      <div style={{ fontFamily: "'Courier New',monospace", fontSize: 30, color: "#9aa0ae", marginTop: 20 }}>Part 2 →</div>
+    </AbsoluteFill>
+  );
+};
+
 export const AdmiralsVideo: React.FC = () => {
   return (
     <AbsoluteFill style={{ background: "#000" }}>
@@ -369,6 +498,57 @@ export const AdmiralsVideo: React.FC = () => {
         </AbsoluteFill>
       </Sequence>
       <Sequence from={975} durationInFrames={75}><AkainuZoom /></Sequence>
+
+      {/* ── 0:35–1:05 CHAPTER 1: THE ULTIMATE BETRAYAL ── */}
+      <Sequence from={1050} durationInFrames={90}><ChapterCard chapter="CHAPTER 1" title="THE ULTIMATE BETRAYAL" /></Sequence>
+      <Sequence from={1140} durationInFrames={90}><FlashbackBeat clipId="atrocity-celestial" note="Celestial Dragon walking on a slave" /></Sequence>
+      <Sequence from={1230} durationInFrames={120}><FlashbackBeat clipId="atrocity-ohara" note="Ohara incinerated by the Buster Call" /></Sequence>
+      <Sequence from={1350} durationInFrames={90}><FlashbackBeat clipId="atrocity-admirals-grim" note="Akainu, Kuzan, Kizaru grim under dark shadows" /></Sequence>
+      <Sequence from={1440} durationInFrames={510}><DeskSlam /></Sequence>
+
+      {/* ── 1:05–1:40 CAPTAIN: AKAINU (OFFENSE) ── */}
+      <Sequence from={1950} durationInFrames={210}>
+        <ProfileScene admiral={ADMIRALS[0]} pin="CAPTAIN: SAKAZUKI" clipId="akainu-hat" clipNote="Akainu putting on the captain's hat" />
+      </Sequence>
+      <Sequence from={2160} durationInFrames={390}>
+        <ProfileScene admiral={ADMIRALS[0]} pin="CAPTAIN: SAKAZUKI" bubble="NO SURRENDER. COMPLETE DESTRUCTION." />
+      </Sequence>
+      <Sequence from={2550} durationInFrames={450}>
+        <ProfileScene admiral={ADMIRALS[0]} pin="MEIGO — HELLHOUND" clipId="akainu-meigo" clipNote="Akainu's Meigo on Whitebeard" gaugeLabel="OFFENSE" gauge={100} impacts />
+      </Sequence>
+
+      {/* ── 1:40–2:15 STRATEGIST: AOKIJI (CONTROL) ── */}
+      <Sequence from={3000} durationInFrames={240}>
+        <ProfileScene admiral={ADMIRALS[1]} pin="STRATEGIST: KUZAN" clipId="kuzan-snap" clipNote="Kuzan snapping his fingers" />
+      </Sequence>
+      <Sequence from={3240} durationInFrames={360}>
+        <ProfileScene admiral={ADMIRALS[1]} pin="ICE AGE" clipId="kuzan-iceage" clipNote="Kuzan freezing the Marineford tsunami (Ice Age)" />
+      </Sequence>
+      <Sequence from={3600} durationInFrames={450}>
+        <ProfileScene admiral={ADMIRALS[1]} pin="FIELD CONTROL" clipId="kuzan-statues" clipNote="Enemies frozen into statues" gaugeLabel="FIELD CONTROL" gauge={100} />
+      </Sequence>
+
+      {/* ── 2:15–2:45 VANGUARD: KIZARU (MOBILITY) ── */}
+      <Sequence from={4050} durationInFrames={210}>
+        <ProfileScene admiral={ADMIRALS[2]} pin="VANGUARD: BORSALINO" clipId="kizaru-shades" clipNote="Kizaru adjusting his sunglasses" />
+      </Sequence>
+      <Sequence from={4260} durationInFrames={390}>
+        <ProfileScene admiral={ADMIRALS[2]} pin="LIGHT SPEED" bubble="Have you ever been kicked at the speed of light?" clipId="kizaru-teleport" clipNote="Kizaru teleporting behind the Supernovas" />
+      </Sequence>
+      <Sequence from={4650} durationInFrames={450}>
+        <ProfileScene admiral={ADMIRALS[2]} pin="YASAKANI NO MAGATAMA" clipId="kizaru-magatama" clipNote="Light beads raining on the fleet" gaugeLabel="SPEED & MOBILITY" gauge={100} impacts />
+      </Sequence>
+
+      {/* ── 2:45–3:20 SYNERGY & NEW WORLD REACTION ── */}
+      <Sequence from={4950} durationInFrames={450}><SynergyTriangle clips={CLIPS} /></Sequence>
+      <Sequence from={5400} durationInFrames={300}>
+        <AbsoluteFill style={{ filter: HYPE_FILTER }}>
+          <ClipSlot id="terrified-captain" label="Enemy captain, terrified" src={CLIPS["terrified-captain"]} />
+          <Crosshairs />
+        </AbsoluteFill>
+      </Sequence>
+      <Sequence from={5700} durationInFrames={270}><NewsBarrage /></Sequence>
+      <Sequence from={5970} durationInFrames={30}><ToBeContinued /></Sequence>
     </AbsoluteFill>
   );
 };
