@@ -27,6 +27,7 @@ import {
   SynergyTriangle,
   TextPin,
 } from "./parts";
+import { ABILITY_EFFECTS } from "./effects";
 
 // "What if the 3 Admirals became pirates?" — full 0:00–3:20 per blueprint.
 // Style toolkit: fast cuts, saturation boost on hype shots, colored
@@ -164,34 +165,13 @@ const MontageBeat: React.FC<{
   const flash = interpolate(frame, [0, 5], [0.85, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const shake = frame < 10 ? Math.sin(frame * 2.8) * 6 : 0;
   const clip = CLIPS[`montage-${a.id}`];
+  const Effect = ABILITY_EFFECTS[a.id];
   return (
     <AbsoluteFill style={{ filter: HYPE_FILTER, transform: `translateX(${shake}px)` }}>
       {clip ? (
         <ClipSlot id={`montage-${a.id}`} label={clipNote} src={clip} tint={`${a.color}22`} />
       ) : (
-        <>
-          <KenBurnsBg src={a.bg} durationInFrames={45} darken={0.25} />
-          <AbsoluteFill style={{ background: `linear-gradient(180deg, transparent 40%, ${a.glow})`, opacity: 0.5 }} />
-          <AbsoluteFill style={{ padding: "70px 460px 120px" }}>
-            <div style={{ width: "100%", height: "100%", filter: `drop-shadow(0 0 30px ${a.glow})` }}>
-              <AssetSlot slot={{ id: a.id, label: a.name, src: `assets/${a.id}.png` }} slideFrom={a.slide} />
-            </div>
-          </AbsoluteFill>
-          <div
-            style={{
-              position: "absolute",
-              bottom: 30,
-              width: "100%",
-              textAlign: "center",
-              fontFamily: "'Courier New', monospace",
-              fontSize: 24,
-              color: "rgba(255,255,255,0.75)",
-              textShadow: "0 2px 0 #000",
-            }}
-          >
-            [clip: {clipNote} — public/assets/clips/montage-{a.id}.mp4]
-          </div>
-        </>
+        <Effect />
       )}
       <AbsoluteFill style={{ background: a.color, opacity: flash }} />
     </AbsoluteFill>
@@ -392,15 +372,19 @@ const ProfileScene: React.FC<{
   clipId?: string;
   clipNote?: string;
   impacts?: boolean;
-}> = ({ admiral: a, pin, bubble, gaugeLabel, gauge, clipId, clipNote, impacts }) => {
+  ability?: boolean; // show the animated ability effect when no footage
+}> = ({ admiral: a, pin, bubble, gaugeLabel, gauge, clipId, clipNote, impacts, ability }) => {
   const frame = useCurrentFrame();
   const shake = impacts && frame % 20 < 4 ? Math.sin(frame * 3) * 8 : 0;
   const flash = impacts ? Math.max(0, 0.6 - (frame % 20) * 0.15) : 0;
   const clip = clipId ? CLIPS[clipId] : undefined;
+  const Effect = ABILITY_EFFECTS[a.id];
   return (
     <AbsoluteFill style={{ filter: HYPE_FILTER, transform: `translateX(${shake}px)` }}>
-      {clipId ? (
-        <ClipSlot id={clipId} label={clipNote ?? a.name} src={clip} tint={`${a.color}22`} />
+      {clip ? (
+        <ClipSlot id={clipId!} label={clipNote ?? a.name} src={clip} tint={`${a.color}22`} />
+      ) : ability ? (
+        <Effect />
       ) : (
         <>
           <KenBurnsBg src={a.bg} durationInFrames={300} darken={0.28} />
@@ -514,7 +498,7 @@ export const AdmiralsVideo: React.FC = () => {
         <ProfileScene admiral={ADMIRALS[0]} pin="CAPTAIN: SAKAZUKI" bubble="NO SURRENDER. COMPLETE DESTRUCTION." />
       </Sequence>
       <Sequence from={2550} durationInFrames={450}>
-        <ProfileScene admiral={ADMIRALS[0]} pin="MEIGO — HELLHOUND" clipId="akainu-meigo" clipNote="Akainu's Meigo on Whitebeard" gaugeLabel="OFFENSE" gauge={100} impacts />
+        <ProfileScene admiral={ADMIRALS[0]} pin="MEIGO — HELLHOUND" clipId="akainu-meigo" clipNote="Akainu's Meigo on Whitebeard" gaugeLabel="OFFENSE" gauge={100} impacts ability />
       </Sequence>
 
       {/* ── 1:40–2:15 STRATEGIST: AOKIJI (CONTROL) ── */}
@@ -522,7 +506,7 @@ export const AdmiralsVideo: React.FC = () => {
         <ProfileScene admiral={ADMIRALS[1]} pin="STRATEGIST: KUZAN" clipId="kuzan-snap" clipNote="Kuzan snapping his fingers" />
       </Sequence>
       <Sequence from={3240} durationInFrames={360}>
-        <ProfileScene admiral={ADMIRALS[1]} pin="ICE AGE" clipId="kuzan-iceage" clipNote="Kuzan freezing the Marineford tsunami (Ice Age)" />
+        <ProfileScene admiral={ADMIRALS[1]} pin="ICE AGE" clipId="kuzan-iceage" clipNote="Kuzan freezing the Marineford tsunami (Ice Age)" ability />
       </Sequence>
       <Sequence from={3600} durationInFrames={450}>
         <ProfileScene admiral={ADMIRALS[1]} pin="FIELD CONTROL" clipId="kuzan-statues" clipNote="Enemies frozen into statues" gaugeLabel="FIELD CONTROL" gauge={100} />
@@ -536,7 +520,7 @@ export const AdmiralsVideo: React.FC = () => {
         <ProfileScene admiral={ADMIRALS[2]} pin="LIGHT SPEED" bubble="Have you ever been kicked at the speed of light?" clipId="kizaru-teleport" clipNote="Kizaru teleporting behind the Supernovas" />
       </Sequence>
       <Sequence from={4650} durationInFrames={450}>
-        <ProfileScene admiral={ADMIRALS[2]} pin="YASAKANI NO MAGATAMA" clipId="kizaru-magatama" clipNote="Light beads raining on the fleet" gaugeLabel="SPEED & MOBILITY" gauge={100} impacts />
+        <ProfileScene admiral={ADMIRALS[2]} pin="YASAKANI NO MAGATAMA" clipId="kizaru-magatama" clipNote="Light beads raining on the fleet" gaugeLabel="SPEED & MOBILITY" gauge={100} impacts ability />
       </Sequence>
 
       {/* ── 2:45–3:20 SYNERGY & NEW WORLD REACTION ── */}
