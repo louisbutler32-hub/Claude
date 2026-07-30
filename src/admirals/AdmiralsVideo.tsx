@@ -42,7 +42,25 @@ import { ABILITY_EFFECTS } from "./effects";
 export const ADMIRALS_DURATION_IN_FRAMES = 200 * 30; // 3:20
 
 // Editor fills these in as clips are cut: id -> "clips/<file>.mp4".
-export const CLIPS: Record<string, string> = {};
+// Reuses the three ability files across each admiral's scenes. Files live
+// in public/assets/clips/ (git-ignored) and are supplied by the editor;
+// slots with no matching file fall back to the animated effect or marker.
+export const CLIPS: Record<string, string> = {
+  "montage-akainu": "clips/akainu.mp4",
+  "akainu-hat": "clips/akainu.mp4",
+  "akainu-meigo": "clips/akainu.mp4",
+  "synergy-akainu": "clips/akainu.mp4",
+  "montage-kuzan": "clips/kuzan.mp4",
+  "kuzan-snap": "clips/kuzan.mp4",
+  "kuzan-iceage": "clips/kuzan.mp4",
+  "kuzan-statues": "clips/kuzan.mp4",
+  "synergy-kuzan": "clips/kuzan.mp4",
+  "montage-kizaru": "clips/kizaru.mp4",
+  "kizaru-shades": "clips/kizaru.mp4",
+  "kizaru-teleport": "clips/kizaru.mp4",
+  "kizaru-magatama": "clips/kizaru.mp4",
+  "synergy-kizaru": "clips/kizaru.mp4",
+};
 
 const FONT = "'Arial Black', 'Helvetica Neue', Arial, sans-serif";
 const HYPE_FILTER = "saturate(1.2) contrast(1.1)";
