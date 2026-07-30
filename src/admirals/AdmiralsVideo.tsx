@@ -42,7 +42,12 @@ import { ABILITY_EFFECTS } from "./effects";
 export const ADMIRALS_DURATION_IN_FRAMES = 200 * 30; // 3:20
 
 // Editor fills these in as clips are cut: id -> "clips/<file>.mp4".
-export const CLIPS: Record<string, string> = {};
+export const CLIPS: Record<string, string> = {export const CLIPS = {
+  "montage-akainu": "clips/montage-akainu.mp4",
+  "akainu-meigo": "clips/akainu-meigo.mp4",
+  "kuzan-iceage": "clips/kuzan-iceage.mp4",
+  // ...one line per clip
+};};
 
 const FONT = "'Arial Black', 'Helvetica Neue', Arial, sans-serif";
 const HYPE_FILTER = "saturate(1.2) contrast(1.1)";
