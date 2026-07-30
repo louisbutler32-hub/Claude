@@ -164,7 +164,7 @@ const MontageBeat: React.FC<{
           textShadow: "0 2px 0 #000",
         }}
       >
-        [clip: {clipNote} — one piece VIDEOS/05-admirals]
+        [clip: {clipNote} — ../one piece videos/05-admirals]
       </div>
       <AbsoluteFill style={{ background: a.color, opacity: flash }} />
     </AbsoluteFill>

@@ -2,7 +2,3 @@ node_modules
 out
 .remotion
 *.log
-one piece VIDEOS/**
-!one piece VIDEOS/*/
-!one piece VIDEOS/README.md
-!one piece VIDEOS/**/.gitkeep
