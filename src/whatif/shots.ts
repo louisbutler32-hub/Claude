@@ -22,6 +22,7 @@ export type Shot = {
   text?: string;
   texts?: string[]; // cycled big overlay words
   embers?: boolean;
+  bg?: string; // full-bleed background image (public/ path) with slow Ken Burns zoom
   slots?: Slot[];
   layout?: "row" | "ring" | "column";
   bubbles?: string[];
@@ -42,7 +43,7 @@ export const shots: Shot[] = [
   { t: [9, 10], kind: "impact", text: "WONDER" },
   {
     t: [10, 11], kind: "scene", fx: ["whitebg"], qmarks: true,
-    slots: [s("luffy-young-confused", "Young Luffy", "confused, sweating expression")],
+    slots: [{ ...s("luffy-young-confused", "Young Luffy", "confused, sweating expression"), src: "assets/luffy-kid.png" }],
     sfx: "anime surprise boing/whistle",
   },
   {
@@ -50,8 +51,8 @@ export const shots: Shot[] = [
     slots: [
       s("zoro-two-swords", "Zoro", "two swords, center"),
       s("ace-head", "Ace headshot"), s("rayleigh-head", "Rayleigh headshot"),
-      s("crocodile-head", "Crocodile headshot"), s("akainu-head", "Akainu headshot"),
-      s("kizaru-head", "Kizaru headshot"), s("kaido-head", "Kaido headshot"),
+      s("crocodile-head", "Crocodile headshot"), { ...s("akainu-head", "Akainu"), src: "assets/akainu.png" },
+      { ...s("kizaru-head", "Kizaru"), src: "assets/kizaru.png" }, s("kaido-head", "Kaido headshot"),
     ],
   },
   {
@@ -59,8 +60,8 @@ export const shots: Shot[] = [
     slots: [
       s("usopp-goofy", "Usopp", "goofy pose, center"),
       s("ace-head", "Ace headshot"), s("rayleigh-head", "Rayleigh headshot"),
-      s("crocodile-head", "Crocodile headshot"), s("akainu-head", "Akainu headshot"),
-      s("kizaru-head", "Kizaru headshot"), s("kaido-head", "Kaido headshot"),
+      s("crocodile-head", "Crocodile headshot"), { ...s("akainu-head", "Akainu"), src: "assets/akainu.png" },
+      { ...s("kizaru-head", "Kizaru"), src: "assets/kizaru.png" }, s("kaido-head", "Kaido headshot"),
     ],
   },
   {
@@ -70,6 +71,7 @@ export const shots: Shot[] = [
   },
   {
     t: [14, 15], kind: "scene", fx: ["greyscale"],
+    bg: "assets/backgrounds/sabaody-1.jpg",
     slots: [s("kuma-sabaody", "Kuma separating the Straw Hats", "Sabaody")],
   },
   {
@@ -83,6 +85,7 @@ export const shots: Shot[] = [
   },
   {
     t: [17, 19], kind: "scene",
+    bg: "assets/backgrounds/sunny-2.jpg",
     slots: [s("crew-sunny", "Post-timeskip full crew photo", "Thousand Sunny — Jinbe, Robin, Brook, Zoro, Luffy, Usopp, Franky, Chopper, Nami")],
   },
   { t: [19, 20], kind: "impact", text: "WELL", embers: true },
@@ -91,11 +94,13 @@ export const shots: Shot[] = [
   // ── 00:21–01:14 | PART 1: LUFFY'S REBIRTH ────────────────────────────
   {
     t: [21, 23], kind: "scene",
-    slots: [s("luffy-young-smiling", "Young Luffy smiling, arms crossed", "Windmill Village background")],
+    bg: "assets/backgrounds/beach.jpg",
+    slots: [{ ...s("luffy-young-smiling", "Young Luffy smiling, arms crossed"), src: "assets/luffy-kid.png" }],
     sfx: "happy anime chime / comedic laugh",
   },
   {
     t: [23, 28], kind: "scene", qmarks: true,
+    bg: "assets/backgrounds/beach.jpg",
     slots: [s("luffy-hat-gag", "Luffy hat gag", "straw hat disappears → black long-sleeve shirt, flabbergasted sweat drops → whistles, hat pops back on")],
     sfx: "whistling, comedic slide whistle",
   },
@@ -110,7 +115,8 @@ export const shots: Shot[] = [
   },
   {
     t: [35, 38], kind: "scene",
-    slots: [s("luffy-young-whistle", "Young Luffy whistling")],
+    bg: "assets/backgrounds/beach.jpg",
+    slots: [{ ...s("luffy-young-whistle", "Young Luffy whistling"), src: "assets/luffy-kid.png" }],
     bubbles: ["I can't wait to meet Zoro and Sanji!"],
   },
   {
@@ -150,8 +156,8 @@ export const shots: Shot[] = [
       s("sabo-revarmy", "Sabo with Revolutionary Army", "Karasu / Morley / Lindbergh"),
     ],
   },
-  { t: [65, 68], kind: "scene", slots: [s("luffy-17-sky", "17-year-old Luffy smiling", "straw hat, blue sky")] },
-  { t: [68, 70], kind: "scene", texts: ["We are!"], slots: [s("luffy-boat", "Luffy celebrating on his small boat")] },
+  { t: [65, 68], kind: "scene", bg: "assets/backgrounds/beach.jpg", slots: [{ ...s("luffy-17-sky", "17-year-old Luffy smiling"), src: "assets/luffy.png" }] },
+  { t: [68, 70], kind: "scene", texts: ["We are!"], bg: "assets/backgrounds/sunny-1.jpg", slots: [{ ...s("luffy-boat", "Luffy celebrating"), src: "assets/luffy.png" }] },
   { t: [70, 72], kind: "scene", slots: [s("koby-panic", "Luffy meeting young Koby", "screaming in panic")] },
   {
     t: [72, 74], kind: "scene", fx: ["pan"], pin: "SHELLSTOWN",
@@ -209,8 +215,8 @@ export const shots: Shot[] = [
     t: [127, 129], kind: "scene", bubbles: ["WAIT, IT'S NOT THIS ARC YET"],
     slots: [s("wano-zoro-2", "Wano Zoro holding swords")],
   },
-  { t: [129, 132], kind: "scene", qmarks: true, slots: [s("zoro-marine-base", "Zoro shifted onto Marine Base background")] },
-  { t: [133, 135], kind: "scene", slots: [s("luffy-laughing-boat", "Luffy laughing on a boat")] },
+  { t: [129, 132], kind: "scene", qmarks: true, bg: "assets/backgrounds/marine-base.jpg", slots: [s("zoro-marine-base", "Zoro (confused)")] },
+  { t: [133, 135], kind: "scene", bg: "assets/backgrounds/ship-deck.jpg", slots: [{ ...s("luffy-laughing-boat", "Luffy laughing"), src: "assets/luffy.png" }] },
   { t: [135, 137], kind: "scene", slots: [s("morgan", "Axe-Hand Morgan standing tall")] },
   {
     t: [137, 139], kind: "scene", fx: ["flash", "shake"],
@@ -228,6 +234,7 @@ export const shots: Shot[] = [
   { t: [151, 153], kind: "type", text: "ON THEIR WAY TO ORANGE TOWN" },
   {
     t: [153, 156], kind: "scene", layout: "row",
+    bg: "assets/backgrounds/ship-deck.jpg",
     slots: [
       s("luffy-deck", "Luffy lying on boat deck", "Zoro sitting behind"),
       s("zoro-reminisce", "Thought bubble", "young Zoro reminiscing"),
@@ -267,7 +274,7 @@ export const shots: Shot[] = [
   { t: [206, 208], kind: "scene", texts: ["GRAND LINE"], slots: [s("map-grandline", "Cartography panel", "Grand Line being drawn")] },
   { t: [208, 211], kind: "scene", texts: ["NAVIGATION"], slots: [s("nami-book", "Young Nami smiling, reading a book")] },
   { t: [212, 215], kind: "type", text: "ONCE IT FINALLY CAME TIME FOR NAMI TO LEAVE" },
-  { t: [215, 217], kind: "scene", slots: [s("crew-image", "Full Straw Hat crew, post-timeskip")] },
+  { t: [215, 217], kind: "scene", bg: "assets/backgrounds/sunny-1.jpg", slots: [s("crew-image", "Full Straw Hat crew, post-timeskip")] },
   { t: [217, 218], kind: "scene", slots: [s("nami-uncertain", "Nami looking uncertain")] },
   { t: [218, 220], kind: "scene", bubbles: ["WE'LL BE FINE!"], slots: [s("nojiko-smile", "Nojiko smiling")] },
   { t: [220, 222], kind: "scene", slots: [s("nami-rowboat", "Nami rowing a wooden rowboat", "sunny clouds")] },
@@ -285,7 +292,7 @@ export const shots: Shot[] = [
   { t: [255, 258], kind: "scene", fx: ["greyscale"], slots: [s("bellmere-shot", "Silhouette memory — Bell-mère shot by Arlong")] },
   { t: [259, 262], kind: "scene", fx: ["speedlines"], slots: [s("boats-side", "Luffy & Zoro's boats sailing side-by-side")] },
   { t: [262, 264], kind: "scene", slots: [s("syrup-village", "Syrup Village landscape")] },
-  { t: [264, 266], kind: "scene", slots: [s("trio-merry", "Luffy, Nami & Zoro on the coast", "Going Merry in the distance")] },
+  { t: [264, 266], kind: "scene", bg: "assets/backgrounds/beach.jpg", slots: [s("trio-merry", "Luffy, Nami & Zoro on the coast", "Going Merry in the distance")] },
 
   // ── 04:27–04:45 | PART 4: USOPP TEASER & CONCLUSION ──────────────────
   { t: [267, 267.5], kind: "impact", text: "WHEN USOPP" },

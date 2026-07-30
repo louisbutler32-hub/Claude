@@ -12,11 +12,11 @@ import {
   HakiAura,
   Hearts,
   ImpactCard,
+  KenBurnsBg,
   LocationPin,
   NarratorScene,
   PunchFist,
   punchContentOffset,
-  QuestionMarks,
   RedX,
   SpeedLines,
   SpeechBubble,
@@ -99,6 +99,7 @@ const SceneShot: React.FC<{ shot: Shot; durationInFrames: number }> = ({
           justifyContent: "center",
         }}
       >
+        {shot.bg && <KenBurnsBg src={shot.bg} durationInFrames={durationInFrames} />}
         {shot.layout === "ring" && ringCenter ? (
           <>
             <div style={{ width: 460, height: 500 }}>

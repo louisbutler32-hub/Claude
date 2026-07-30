@@ -80,12 +80,40 @@ export const AssetSlot: React.FC<{
   slot: Slot;
   dark?: boolean;
   mini?: boolean;
-}> = ({ slot, dark = true, mini = false }) => {
+  slideFrom?: "left" | "right" | "bottom" | "none";
+}> = ({ slot, dark = true, mini = false, slideFrom = "bottom" }) => {
+  const frame = useCurrentFrame();
   if (slot.src) {
+    // real cutout: slide in with a short overshoot, never a hard pop
+    const t = interpolate(frame, [0, 14], [1, 0], {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    });
+    const ease = t * t * (3 - 2 * t); // smoothstep out
+    const dist = mini ? 90 : 260;
+    const offset =
+      slideFrom === "none"
+        ? "none"
+        : slideFrom === "left"
+          ? `translateX(${-dist * ease}px)`
+          : slideFrom === "right"
+            ? `translateX(${dist * ease}px)`
+            : `translateY(${dist * ease}px)`;
+    const opacity = interpolate(frame, [0, 10], [0, 1], {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    });
     return (
       <Img
         src={staticFile(slot.src)}
-        style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 8 }}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "contain",
+          transform: offset === "none" ? undefined : offset,
+          opacity,
+          filter: "drop-shadow(0 12px 24px rgba(0,0,0,0.45))",
+        }}
       />
     );
   }
@@ -140,6 +168,34 @@ export const AssetSlot: React.FC<{
         </div>
       )}
     </div>
+  );
+};
+
+// ── Full-bleed background image with slow Ken Burns zoom ───────────────
+export const KenBurnsBg: React.FC<{
+  src: string;
+  durationInFrames: number;
+  darken?: number;
+}> = ({ src, durationInFrames, darken = 0.18 }) => {
+  const frame = useCurrentFrame();
+  const scale = interpolate(frame, [0, durationInFrames], [1.02, 1.1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+
+  return (
+    <AbsoluteFill style={{ overflow: "hidden" }}>
+      <Img
+        src={staticFile(src)}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          transform: `scale(${scale})`,
+        }}
+      />
+      <AbsoluteFill style={{ background: `rgba(0,0,0,${darken})` }} />
+    </AbsoluteFill>
   );
 };
 
@@ -568,7 +624,7 @@ export const NarratorScene: React.FC<{ icons?: string[] }> = ({ icons = [] }) =>
           key={i}
           style={{
             position: "absolute",
-            top: 320,
+            top: 320 + Math.floor(i / 2) * 270,
             left: i % 2 === 0 ? 130 : undefined,
             right: i % 2 === 1 ? 130 : undefined,
             width: 240,
