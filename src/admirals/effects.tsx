@@ -7,6 +7,14 @@ import {
   staticFile,
   useCurrentFrame,
 } from "remotion";
+import { KenBurnsBg } from "../whatif/components";
+
+// Per-admiral background image (location still) sitting behind the effect.
+const BG: Record<string, string> = {
+  akainu: "assets/backgrounds/marine-base.jpg",
+  kuzan: "assets/backgrounds/beach.jpg",
+  kizaru: "assets/backgrounds/sabaody-2.jpg",
+};
 
 // Animated ability effects built entirely from original shapes + the user's
 // own cutouts. No footage. Each effect is a full-screen scene that animates
@@ -50,7 +58,10 @@ export const MagmaBurst: React.FC = () => {
   const embers = particles(46, "magma");
 
   return (
-    <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 60%, #4a0d06 0%, #140402 70%)", overflow: "hidden" }}>
+    <AbsoluteFill style={{ background: "#140402", overflow: "hidden" }}>
+      <KenBurnsBg src={BG.akainu} durationInFrames={60} darken={0.45} />
+      {/* red atmosphere wash over the location */}
+      <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 60%, rgba(120,20,8,0.5) 0%, rgba(20,4,2,0.75) 75%)" }} />
       {/* heat haze radial pushing outward */}
       <AbsoluteFill style={{ background: `radial-gradient(circle at 50% 55%, rgba(255,90,20,${0.35 * burst}) 0%, transparent ${20 + burst * 45}%)` }} />
       {/* magma cracks */}
@@ -97,7 +108,10 @@ export const IceSpread: React.FC = () => {
   const crystals = particles(26, "ice");
 
   return (
-    <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 50%, #113047 0%, #05131f 72%)", overflow: "hidden" }}>
+    <AbsoluteFill style={{ background: "#05131f", overflow: "hidden" }}>
+      <KenBurnsBg src={BG.kuzan} durationInFrames={60} darken={0.4} />
+      {/* cyan atmosphere wash over the location */}
+      <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 50%, rgba(30,90,130,0.4) 0%, rgba(5,19,31,0.72) 74%)" }} />
       {/* expanding frozen disc from center */}
       <div style={{ position: "absolute", left: "50%", top: "55%", width: 2400, height: 2400, borderRadius: "50%", background: "radial-gradient(circle, rgba(150,225,255,0.25) 0%, rgba(90,180,230,0.12) 45%, transparent 70%)", transform: `translate(-50%,-50%) scale(${spread})` }} />
       <CutoutLayer id="kuzan" transform={`scale(${0.95 + snap * 0.05})`} glow="rgba(90,216,255,0.9)" />
@@ -139,7 +153,10 @@ export const LightDash: React.FC = () => {
   const magatama = particles(30, "light");
 
   return (
-    <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 50%, #3a3410 0%, #0c0b04 72%)", overflow: "hidden" }}>
+    <AbsoluteFill style={{ background: "#0c0b04", overflow: "hidden" }}>
+      <KenBurnsBg src={BG.kizaru} durationInFrames={60} darken={0.5} />
+      {/* warm atmosphere wash over the location */}
+      <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 50%, rgba(90,80,20,0.4) 0%, rgba(12,11,4,0.75) 74%)" }} />
       {/* radiating light rays behind */}
       <AbsoluteFill style={{ alignItems: "center", justifyContent: "center" }}>
         <div style={{ transform: `rotate(${frame * 0.6}deg)` }}>
