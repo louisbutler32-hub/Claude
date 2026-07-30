@@ -27,7 +27,18 @@ import {
   SynergyTriangle,
   TextPin,
 } from "./parts";
-import { ABILITY_EFFECTS } from "./effects";
+import { ABILITY_EFFECTS, MagmaBurst, IceSpread, LightDash } from "./effects";
+import {
+  TargetHeader,
+  TargetMap,
+  TripleAssault,
+  EnemyShatter,
+  QuakeCracks,
+  BlackbeardVortex,
+  VictorySilhouette,
+  FinaleCard,
+  Enemy,
+} from "./part2";
 
 // "What if the 3 Admirals became pirates?" — full 0:00–3:20 per blueprint.
 // Style toolkit: fast cuts, saturation boost on hype shots, colored
@@ -39,7 +50,7 @@ import { ABILITY_EFFECTS } from "./effects";
 // until then the slot shows a labeled marker. Nothing here bakes in footage
 // the editor hasn't supplied.
 
-export const ADMIRALS_DURATION_IN_FRAMES = 200 * 30; // 3:20
+export const ADMIRALS_DURATION_IN_FRAMES = 420 * 30; // 7:00
 
 // Editor fills these in as clips are cut: id -> "clips/<file>.mp4".
 // Reuses the three ability files across each admiral's scenes. Files live
@@ -551,6 +562,82 @@ export const AdmiralsVideo: React.FC = () => {
       </Sequence>
       <Sequence from={5700} durationInFrames={270}><NewsBarrage /></Sequence>
       <Sequence from={5970} durationInFrames={30}><ToBeContinued /></Sequence>
+
+      {/* ══ 3:20–4:00 TARGET 1: BIG MOM ══ */}
+      <Sequence from={6000} durationInFrames={240}>
+        <TargetHeader pin="TARGET 1: BIG MOM PIRATES" region="TOTTO LAND" enemyId="bigmom" enemyLabel="Big Mom (laughing on her throne)" />
+      </Sequence>
+      <Sequence from={6240} durationInFrames={240}>
+        <AbsoluteFill style={{ filter: HYPE_FILTER }}>
+          <IceSpread />
+          <TextPin text="WHOLE CAKE — FROZEN" />
+        </AbsoluteFill>
+      </Sequence>
+      <Sequence from={6480} durationInFrames={360}>
+        <AbsoluteFill style={{ filter: HYPE_FILTER }}>
+          <LightDash />
+          <SpeechBubble text="HE'S TOO FAST!" />
+        </AbsoluteFill>
+      </Sequence>
+      <Sequence from={6840} durationInFrames={360}>
+        <TripleAssault enemyId="bigmom" enemyLabel="Big Mom" caption="3-ON-1 ASSAULT" />
+      </Sequence>
+
+      {/* ══ 4:00–4:45 TARGET 2: KAIDO ══ */}
+      <Sequence from={7200} durationInFrames={240}>
+        <TargetHeader pin="TARGET 2: KAIDO" region="WANO / ONIGASHIMA" enemyId="kaido" enemyLabel="Kaido roaring in dragon form" />
+      </Sequence>
+      <Sequence from={7440} durationInFrames={360}>
+        <AbsoluteFill style={{ filter: HYPE_FILTER }}>
+          <IceSpread />
+          <Enemy id="kaido" label="Kaido charging" slideFrom="left" pad="120px 200px 120px" />
+          <TextPin text="ICE WALLS" />
+        </AbsoluteFill>
+      </Sequence>
+      <Sequence from={7800} durationInFrames={300}>
+        <AbsoluteFill style={{ filter: HYPE_FILTER }}>
+          <MagmaBurst />
+          <TextPin text="ARMAMENT HAKI CLASH" />
+        </AbsoluteFill>
+      </Sequence>
+      <Sequence from={8100} durationInFrames={300}>
+        <AbsoluteFill style={{ filter: HYPE_FILTER }}>
+          <EnemyShatter enemyId="kaido" enemyLabel="Kaido to his knees" startFrame={0} />
+          <NewspaperSpin headline="2 YONKO DEFEATED!" startFrame={120} />
+        </AbsoluteFill>
+      </Sequence>
+
+      {/* ══ 4:45–5:40 SECTION 3: SHANKS ══ */}
+      <Sequence from={8400} durationInFrames={150}><ChapterCard chapter="SECTION 3" title="THE FINAL EMPERORS" /></Sequence>
+      <Sequence from={8550} durationInFrames={300}>
+        <TargetHeader pin="SHANKS — RED HAIR" region="" enemyId="shanks" enemyLabel="Shanks, Haki crackling" bg="assets/backgrounds/marine-base.jpg" />
+      </Sequence>
+      <Sequence from={8850} durationInFrames={450}>
+        <ProfileScene admiral={ADMIRALS[2]} pin="RED HAIR COMMANDERS" clipId="shanks-commanders" clipNote="Kizaru vs Beckman, Kuzan vs Lucky Roux" />
+      </Sequence>
+      <Sequence from={9300} durationInFrames={540}>
+        <AbsoluteFill style={{ filter: HYPE_FILTER }}>
+          <MagmaBurst />
+          <TextPin text="GRYPHON vs HELLHOUND" />
+        </AbsoluteFill>
+      </Sequence>
+      <Sequence from={9840} durationInFrames={360}>
+        <TripleAssault enemyId="shanks" enemyLabel="Shanks pushed back" caption="3-ON-1 PRESSURE" />
+      </Sequence>
+
+      {/* ══ 5:40–6:40 BLACKBEARD ══ */}
+      <Sequence from={10200} durationInFrames={360}><BlackbeardVortex /></Sequence>
+      <Sequence from={10560} durationInFrames={300}>
+        <ProfileScene admiral={ADMIRALS[0]} pin="BLIND-SPOT PUNCH" clipId="bb-blackhole" clipNote="Black Hole drags Kuzan; Akainu punches from the blind spot" />
+      </Sequence>
+      <Sequence from={10860} durationInFrames={300}><QuakeCracks bg="assets/backgrounds/sabaody-1.jpg" /></Sequence>
+      <Sequence from={11160} durationInFrames={360}>
+        <TripleAssault enemyId="blackbeard" enemyLabel="Blackbeard struck by all three" caption="ADMIRALS ADAPT" />
+      </Sequence>
+
+      {/* ══ 6:40–7:00 CONCLUSION ══ */}
+      <Sequence from={11520} durationInFrames={480}><VictorySilhouette /></Sequence>
+      <Sequence from={12000} durationInFrames={600}><FinaleCard /></Sequence>
     </AbsoluteFill>
   );
 };
