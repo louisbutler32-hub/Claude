@@ -1,0 +1,160 @@
+# 3D-perspective documentary titles
+
+Cinematic historical-documentary name cards — a small category label over a
+large white name, sitting on a flat plane inside the 3D space of the shot,
+revealed with a very fast left-to-right type-on.
+
+```
+src/titles/
+  perspective.ts        homography / corner-pin math + easings
+  PerspectiveTitle.tsx  the effect — one component, one config object
+  presets.ts            NAKAJIMA KATE / JAPANESE CARRIER, and variants
+  TitleScene.tsx        plate → text → foreground subject wiring
+  compositions.tsx      the registered compositions
+```
+
+## Preview and render
+
+```bash
+npm start                  # Remotion Studio — scrub the reveal frame by frame
+npm run title              # 1920x1080 demo scene  → out/kate-title.mp4
+npm run title:vertical     # 1080x1920 (shorts)    → out/kate-title-vertical.mp4
+npm run title:alpha        # transparent WebM      → out/kate-title-alpha.webm
+npm run title:prores       # transparent ProRes    → out/kate-title-alpha.mov
+```
+
+The two alpha exports are the ones to drop straight onto a timeline in
+Premiere / Resolve / CapCut over your own footage. ProRes 4444 is the safer
+choice for Premiere and Resolve; WebM is much smaller and works in CapCut
+and browser-based editors.
+
+Compositions: `Title-Kate`, `Title-Kate-Vertical`, `Title-Kate-Pinned`,
+`Title-Kate-SplitCards`, and the three `…-Overlay…` transparent versions.
+
+## Changing the card
+
+Everything is one config object — `src/titles/presets.ts`:
+
+```ts
+export const NAKAJIMA_KATE = makeTitle(DOC_LOOK, {
+  eyebrow: "JAPANESE CARRIER",   // small label
+  title: "NAKAJIMA KATE",        // large name
+  x: 215, y: 585, anchor: "left",
+  titleSize: 138,
+  rotateY: -15,                  // the swing into depth
+  revealDuration: 0.35,          // seconds, first char to last
+});
+```
+
+Every field is documented inline in `PerspectiveTitle.tsx`. The ones you'll
+actually reach for:
+
+| What | Field | Notes |
+| --- | --- | --- |
+| Text | `title`, `eyebrow` | `eyebrow` is optional |
+| Font | `fontFamily`, `titleWeight`, `titleTracking` | any font the render machine has |
+| Size | `titleSize`, `eyebrowSize` | px at composition resolution |
+| Position | `x`, `y`, `anchor` | the plane rotates *around* this point |
+| Perspective angle | `rotateX`, `rotateY`, `rotateZ`, `perspective` | see below |
+| Animation speed | `speed`, `revealDuration`, `charFade` | `speed: 2` = twice as fast |
+| Slide distance | `slideDistance`, `charSlide` | px; block slide and per-char catch-up |
+| Shadow | `shadowStrength`, `shadowOffset`, `shadowBlur`, `softness` | 0 disables |
+| Opacity | `opacity` | master, 0–1 |
+| Label placement | `eyebrowPlacement: "above" \| "beside"`, `eyebrowGap` | |
+| Exit | `exitStart`, `exitDuration` | seconds; `null` = never leaves |
+
+Timings are in **seconds**, so they survive an fps change.
+
+## The perspective
+
+Two ways to put the plane in space. Both keep it as live text, so it stays
+crisp at any render resolution — no pre-rendered image is warped.
+
+**Angle mode (default).** A real CSS perspective camera. `rotateY: -15`
+swings the right edge away from the lens, so the far end genuinely recedes
+and shrinks while the near end grows. `perspective` is the camera distance
+in px: 2300 is a longish lens (subtle), 900 is wide (aggressive). Keep
+`rotateZ` under a couple of degrees — more reads as a tilted 2D layer.
+
+**Corner-pin mode.** Trace four points off a real surface in the plate —
+top-left, top-right, bottom-right, bottom-left — and the text is warped into
+exactly that quad by a projective transform (the After Effects Corner Pin
+equivalent, solved in `perspective.ts`):
+
+```ts
+makeTitle(NAKAJIMA_KATE, {
+  cornerPin: [[250, 520], [1600, 610], [1560, 830], [230, 700]],
+  planeWidth: 1350,
+  planeHeight: 260,
+})
+```
+
+This is the one to use when the text must lock to a specific floor, wall or
+deck rather than just look angled. `debug: true` draws the plane box and the
+anchor point while you line it up.
+
+## The reveal
+
+`0.00s` invisible → `0.05s` a hard wipe edge starts moving left to right →
+characters resolve just behind it, each fading and sliding a few px into
+place, with a touch of motion blur → `0.40s` fully on. The whole block also
+slides in *along the plane*, so the slide inherits the same foreshortening
+as the text.
+
+After it lands, `idleDrift` / `idleScale` keep a very slow push running for
+`idleDuration` seconds — a couple of px and about 1%. It's below conscious
+notice, and it's the difference between "in the shot" and "pasted on".
+
+Faster or slower without touching anything else: `speed: 1.4`, `speed: 0.7`.
+
+## Using your own footage
+
+Put files in `public/` and pass paths relative to it:
+
+```tsx
+<TitleScene
+  backgroundSrc="assets/kate-shot.mp4"
+  occluderSrc="assets/kate-shot-fg.png"   // alpha cutout, drawn in front
+  config={NAKAJIMA_KATE}
+/>
+```
+
+Layer order is background plate → text → foreground subject, so anything in
+the occluder layer passes **in front of** the text.
+
+No cutout handy? Give a polygon in composition pixels instead and a second
+copy of the plate is drawn on top, clipped to it — the subject occludes the
+text with no roto app involved:
+
+```tsx
+<TitleScene
+  backgroundSrc="assets/kate-shot.mp4"
+  occluderPolygon={[[980, 300], [1240, 300], [1300, 1080], [920, 1080]]}
+  config={NAKAJIMA_KATE}
+/>
+```
+
+That works as-is for a locked-off shot. For a moving subject, either supply
+a per-frame alpha cutout (an image sequence or a video with alpha) as
+`occluderSrc`, or key the polygon off `useCurrentFrame()`.
+
+With no `backgroundSrc` you get a built-in placeholder hall — a checkerboard
+floor receding under a stone wall, plus a stand-in figure — so the
+compositions render out of the box and you can judge the perspective against
+real receding geometry.
+
+## Fonts
+
+The default stack is Helvetica Neue → Liberation Sans → Arial, i.e. whatever
+clean grotesque the machine has. To pin an exact face, set `fontFamily` to
+one you have installed, or load a web font in Remotion:
+
+```bash
+npm i @remotion/google-fonts
+```
+
+```ts
+import { loadFont } from "@remotion/google-fonts/Inter";
+const { fontFamily } = loadFont();
+makeTitle(NAKAJIMA_KATE, { fontFamily });
+```

@@ -1,9 +1,11 @@
-# One Piece video projects (Remotion)
-
-Two compositions live in this repo:
+# Remotion video projects
 
 - **`WhatIfVideo`** — "What If The Straw Hats Were Reborn" essay edit (4:45)
 - **`BountyVideo`** — "The Most Broken Bounty Jump" data-viz video (13:00)
+- **`Title-Kate…`** — reusable 3D-perspective documentary title cards
+  (`src/titles/`, [docs](src/titles/README.md)). White documentary type on a
+  plane that sits inside the shot's 3D space, fast type-on reveal,
+  foreground-subject occlusion, transparent overlay exports.
 
 ## WhatIfVideo — how it works
 
