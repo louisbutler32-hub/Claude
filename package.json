@@ -9,7 +9,9 @@
     "title": "remotion render Title-Kate out/kate-title.mp4",
     "title:vertical": "remotion render Title-Kate-Vertical out/kate-title-vertical.mp4",
     "title:alpha": "remotion render Title-Kate-Overlay out/kate-title-alpha.webm --codec=vp8 --image-format=png --pixel-format=yuva420p",
-    "title:prores": "remotion render Title-Kate-Overlay out/kate-title-alpha.mov --codec=prores --prores-profile=4444 --image-format=png --pixel-format=yuva444p10le"
+    "title:alpha:vertical": "remotion render Title-Kate-Overlay-Vertical out/kate-title-vertical-alpha.webm --codec=vp8 --image-format=png --pixel-format=yuva420p",
+    "title:prores": "remotion render Title-Kate-Overlay out/kate-title-alpha.mov --codec=prores --prores-profile=4444 --image-format=png --pixel-format=yuva444p10le",
+    "title:prores:vertical": "remotion render Title-Kate-Overlay-Vertical out/kate-title-vertical-alpha.mov --codec=prores --prores-profile=4444 --image-format=png --pixel-format=yuva444p10le"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",

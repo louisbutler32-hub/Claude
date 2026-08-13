@@ -16,17 +16,31 @@ src/titles/
 ## Preview and render
 
 ```bash
-npm start                  # Remotion Studio — scrub the reveal frame by frame
-npm run title              # 1920x1080 demo scene  → out/kate-title.mp4
-npm run title:vertical     # 1080x1920 (shorts)    → out/kate-title-vertical.mp4
-npm run title:alpha        # transparent WebM      → out/kate-title-alpha.webm
-npm run title:prores       # transparent ProRes    → out/kate-title-alpha.mov
+npm start                       # Remotion Studio — scrub the reveal frame by frame
+
+# transparent overlays — drop these straight onto your own timeline
+npm run title:alpha             # 16:9 WebM    → out/kate-title-alpha.webm
+npm run title:alpha:vertical    # 9:16 WebM    → out/kate-title-vertical-alpha.webm
+npm run title:prores            # 16:9 ProRes  → out/kate-title-alpha.mov
+npm run title:prores:vertical   # 9:16 ProRes  → out/kate-title-vertical-alpha.mov
+
+# demo scene with the built-in placeholder background (for previewing only)
+npm run title                   # 1920x1080 → out/kate-title.mp4
+npm run title:vertical          # 1080x1920 → out/kate-title-vertical.mp4
 ```
 
-The two alpha exports are the ones to drop straight onto a timeline in
-Premiere / Resolve / CapCut over your own footage. ProRes 4444 is the safer
-choice for Premiere and Resolve; WebM is much smaller and works in CapCut
-and browser-based editors.
+The alpha exports carry a real alpha channel — everything except the type is
+fully transparent — so the card sits over whatever footage is underneath it.
+ProRes 4444 (`.mov`) is the safer choice for Premiere, Resolve and Final Cut;
+WebM is ~100× smaller and works in CapCut and browser-based editors. Both are
+5 seconds, with the card fading out at 4.3s (`exitStart: null` keeps it up
+forever instead — see `compositions.tsx`).
+
+**Occlusion with an overlay file.** An overlay sits above everything, so the
+foreground subject won't pass in front of the text on its own. Two options:
+duplicate your footage on a layer *above* the overlay in your editor and mask
+out the subject; or bring the shot into this project as `backgroundSrc` and
+let `TitleScene` do the layering (see "Using your own footage" below).
 
 Compositions: `Title-Kate`, `Title-Kate-Vertical`, `Title-Kate-Pinned`,
 `Title-Kate-SplitCards`, and the three `…-Overlay…` transparent versions.
