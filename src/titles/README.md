@@ -37,6 +37,26 @@ npm run title                   # 1920x1080 → out/kate-title.mp4
 npm run title:vertical          # 1080x1920 → out/kate-title-vertical.mp4
 ```
 
+## Getting it over your footage without a black box
+
+Which file to use depends on whether your editor reads an alpha channel.
+
+| Editor | File | Notes |
+| --- | --- | --- |
+| Premiere, Resolve, Final Cut, After Effects | `.mov` (ProRes 4444) | alpha is automatic — just drop it on a track above |
+| CapCut desktop, browser editors, OBS | `.webm` | tiny files; if it comes in black, use the blend route below |
+| CapCut mobile, Instagram/TikTok editors, iMovie | `.mp4` + Screen blend | mobile editors generally ignore alpha, and iOS Photos won't even import `.webm` |
+
+**The blend route** (`npm run name:black` etc.) renders white type on pure
+black instead of transparency. Put the clip on the layer above your footage
+and set its blend mode to **Screen** (or Add / Lighten). Black is the
+identity colour for Screen, so it drops out completely and only the type
+remains. It works in every editor ever made, including mobile.
+
+Its one cost: the soft drop shadow is dark, so Screen removes it along with
+the background — the type reads slightly flatter against a bright plate. If
+that matters, use the alpha files.
+
 **Separate files are the default.** The name and the label are independent
 layers with their own position, angle and timing, each rendering to its own
 transparent file. Their default positions are the reference layout — label
