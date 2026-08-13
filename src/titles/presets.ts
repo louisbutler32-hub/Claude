@@ -59,21 +59,23 @@ export const NAKAJIMA_KATE_VERTICAL: TitleConfig = makeTitle(NAKAJIMA_KATE, {
 });
 
 // ── The two lines as independent cards ─────────────────────────────────
-// Same effect, but each line is its own layer with its own position,
-// angle and timing — use these when you want the label somewhere else in
-// the frame, or want it to land on a different beat.
+// Each line is its own layer with its own position, angle and timing, and
+// exports to its own file. Their default positions are the reference
+// layout — label sitting just above the name — so stacking both in an
+// editor reproduces the combined card, while either one can be moved,
+// retimed or dropped on its own.
 
 export const CARD_MAIN: TitleConfig = makeTitle(NAKAJIMA_KATE, {
   eyebrow: undefined,
   x: 215,
-  y: 620,
+  y: 616,
 });
 
 export const CARD_LABEL: TitleConfig = makeTitle(DOC_LOOK, {
   title: "JAPANESE CARRIER",
   eyebrow: undefined,
   x: 222,
-  y: 505,
+  y: 507,
   titleSize: 44,
   titleTracking: 8,
   titleWeight: 600,
@@ -83,6 +85,24 @@ export const CARD_LABEL: TitleConfig = makeTitle(DOC_LOOK, {
   rotateZ: -1,
   revealDuration: 0.28,
   slideDistance: 24,
+});
+
+export const CARD_MAIN_VERTICAL: TitleConfig = makeTitle(
+  NAKAJIMA_KATE_VERTICAL,
+  {
+    eyebrow: undefined,
+    x: 78,
+    y: 782,
+  }
+);
+
+export const CARD_LABEL_VERTICAL: TitleConfig = makeTitle(CARD_LABEL, {
+  x: 83,
+  y: 703,
+  titleSize: 34,
+  titleTracking: 6,
+  perspective: 1800,
+  rotateY: -14,
 });
 
 // ── Corner-pin example ─────────────────────────────────────────────────

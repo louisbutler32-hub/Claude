@@ -18,7 +18,15 @@ src/titles/
 ```bash
 npm start                       # Remotion Studio — scrub the reveal frame by frame
 
-# transparent overlays — drop these straight onto your own timeline
+# one line per file — two separate transparent overlays
+npm run name:alpha              # NAKAJIMA KATE,    16:9 → out/name-alpha.webm
+npm run name:alpha:vertical     # NAKAJIMA KATE,    9:16 → out/name-vertical-alpha.webm
+npm run label:alpha             # JAPANESE CARRIER, 16:9 → out/label-alpha.webm
+npm run label:alpha:vertical    # JAPANESE CARRIER, 9:16 → out/label-vertical-alpha.webm
+npm run name:prores             # ProRes 4444 versions
+npm run label:prores
+
+# both lines baked into one file, if you'd rather place them together
 npm run title:alpha             # 16:9 WebM    → out/kate-title-alpha.webm
 npm run title:alpha:vertical    # 9:16 WebM    → out/kate-title-vertical-alpha.webm
 npm run title:prores            # 16:9 ProRes  → out/kate-title-alpha.mov
@@ -28,6 +36,13 @@ npm run title:prores:vertical   # 9:16 ProRes  → out/kate-title-vertical-alpha
 npm run title                   # 1920x1080 → out/kate-title.mp4
 npm run title:vertical          # 1080x1920 → out/kate-title-vertical.mp4
 ```
+
+**Separate files are the default.** The name and the label are independent
+layers with their own position, angle and timing, each rendering to its own
+transparent file. Their default positions are the reference layout — label
+just above the name — so dropping both onto a timeline unchanged reproduces
+the combined card, while either can be moved, retimed, or used alone. Edit
+`CARD_MAIN` / `CARD_LABEL` in `presets.ts` to move them apart.
 
 The alpha exports carry a real alpha channel — everything except the type is
 fully transparent — so the card sits over whatever footage is underneath it.
@@ -42,8 +57,11 @@ duplicate your footage on a layer *above* the overlay in your editor and mask
 out the subject; or bring the shot into this project as `backgroundSrc` and
 let `TitleScene` do the layering (see "Using your own footage" below).
 
-Compositions: `Title-Kate`, `Title-Kate-Vertical`, `Title-Kate-Pinned`,
-`Title-Kate-SplitCards`, and the three `…-Overlay…` transparent versions.
+Compositions: `Title-Name-Overlay`, `Title-Label-Overlay` and their
+`-Vertical` twins (the separate cards); `Title-Kate-Overlay`,
+`-Overlay-Vertical`, `-Overlay-SplitCards` (combined, transparent); and the
+demo scenes `Title-Kate`, `Title-Kate-Vertical`, `Title-Kate-Pinned`,
+`Title-Kate-SplitCards`, `Title-Kate-SplitCards-Vertical`.
 
 ## Changing the card
 
