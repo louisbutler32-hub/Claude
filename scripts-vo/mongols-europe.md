@@ -1,12 +1,25 @@
 # Why The Mongols Never Conquered Europe
 
-**Format** vertical short · **Runtime** 60s · ~165 words · No setup lines,
-no connective tissue. Every line is a shock, an escalation, or a question.
+**Format** vertical short · **Runtime** ~35s · ~100 words · Casual delivery,
+first person, contractions. Read it fast and slightly annoyed that nobody
+told you this.
 
-**Hook lands at 0:02.** Alternates, all under 3 seconds:
-- `Europe never beat the Mongols. So why isn't Europe Mongol?` ← used
-- `Two European armies died in forty-eight hours.`
-- `The Mongols reached Vienna. Then they went home.`
+---
+
+## Hooks
+
+Pick one. All land inside 3 seconds.
+
+1. **Europe never beat the Mongols. Not one battle.** ← my pick, it's the whole video in six words
+2. Europe lost two entire armies in forty-eight hours.
+3. The Mongols got fifty kilometres from Vienna — and then went home.
+4. Europe didn't survive the Mongols. Europe got lucky.
+5. One man died six thousand kilometres away, and that's the only reason Europe exists.
+6. In 1241 Europe had nothing left. No armies. No chance.
+7. The Polish army lasted an afternoon. The Hungarian army lasted two days.
+8. Europe was saved by a funeral.
+9. Nobody stopped the Mongols. They stopped themselves.
+10. This is the single luckiest thing that ever happened to Europe.
 
 ---
 
@@ -14,45 +27,32 @@ no connective tissue. Every line is a shock, an escalation, or a question.
 
 | Time | Voiceover | On screen | Map |
 | --- | --- | --- | --- |
-| 0:00 | Europe never beat the Mongols. | `EUROPE NEVER WON` | Red floods west, stops dead |
-| 0:02 | So why isn't Europe Mongol? | | Hold on the line |
-| 0:04 | April 1241. Legnica. | `LEGNICA · 9 APRIL` | Camera slams to Poland. Arrow strikes |
-| 0:07 | The Polish army — gone in an afternoon. | | Poland's colour dies |
-| 0:10 | The duke's head goes past the walls on a spear. | | Hold |
-| 0:14 | Two days later. Four hundred miles south. Mohi. | `MOHI · 11 APRIL` | Whip south. Arrow strikes |
-| 0:18 | The Hungarian army — gone. | | Hungary's colour dies |
-| 0:21 | Two kingdoms. Forty-eight hours. | `2 KINGDOMS · 48 HOURS` | Both dead colours, side by side |
-| 0:24 | The king runs for the sea. They chase him the whole way. | | Chase line to the Adriatic |
-| 0:28 | Winter. The Danube freezes. They ride across it. | `WINTER 1241` | River freezes, arrows cross |
-| 0:32 | Fifty kilometres from Vienna. | `50 KM FROM VIENNA` | Arrow tip stops short of Vienna |
-| 0:35 | There is nothing left in Europe that can fight them. | | Everything west pale and empty |
-| 0:39 | Then they turn around and go home. | | Every arrow reverses |
-| 0:42 | Why? | | Black beat |
-| 0:44 | Six thousand kilometres away, the Great Khan is dead. | `11 DECEMBER 1241` | Rip east to Karakorum |
-| 0:48 | Every prince has to ride home and elect the next one. | | Lines converge on Karakorum |
-| 0:52 | Including the man standing on the Danube. | | One line pulls back from Hungary |
-| 0:55 | Europe was saved by a funeral. | `SAVED BY A FUNERAL` | Hold |
-| 0:58 | Or was it? | | Snap west |
-| 1:00 | The tree rings say 1242 was freezing and wet. The Hungarian plain turned to swamp. | `1242 · THE PLAIN FLOODS` | Plain goes drowned |
-| 1:05 | A hundred thousand horses. No grass. | | Hold |
-| 1:08 | A funeral, or mud. | `A FUNERAL — OR MUD?` | Split: Karakorum vs the plain |
-| 1:10 | Either way — it wasn't an army. | | Wide. Red still sitting in Hungary |
+| 0:00 | Europe never beat the Mongols. Not one battle. | `NOT ONE BATTLE` | Red floods west, stops dead |
+| 0:03 | April 1241 — they erase the Polish army in an afternoon. | `LEGNICA · 9 APRIL` | Slam to Poland, arrow strikes, colour dies |
+| 0:07 | Two days later, four hundred miles south, they erase Hungary's. | `MOHI · 11 APRIL` | Whip south, arrow strikes, colour dies |
+| 0:11 | Two kingdoms. Forty-eight hours. | `2 KINGDOMS · 48 HOURS` | Both dead colours side by side |
+| 0:14 | By winter they're riding across the frozen Danube. Fifty K from Vienna. | `50 KM FROM VIENNA` | River freezes, arrows cross, tip stops short |
+| 0:19 | And there's nothing — nothing — left to stop them. | | Everything west pale and empty |
+| 0:22 | Then they just… leave. | | Every arrow reverses |
+| 0:25 | Because six thousand kilometres away the Great Khan died, and every prince had to ride home and vote for the next one. | `11 DECEMBER 1241` | Rip east to Karakorum, lines converge |
+| 0:32 | Including the guy standing on the Danube. | | One line pulls back out of Hungary |
+| 0:35 | Europe didn't survive the Mongols. It got lucky. | `IT GOT LUCKY` | Wide. Red still sitting in Hungary |
+
+**Optional 10s tag** — costs you 45s total, buys an argument in the comments:
+
+> Well. That, or the mud. That spring the Hungarian plain flooded and a
+> hundred thousand horses had nothing to eat. Pick one.
 
 ---
 
-## What was cut and why
+## Voice notes
 
-- **The Kyiv beat.** Best single detail in the research, slowest beat on
-  screen. It was setup, and setup is where people leave.
-- **Every "to understand how insane this is" line.** If the fact is insane,
-  say the fact.
-- **The cold-open rewind.** It cost 13 seconds to plant a question that a
-  contradiction plants in two.
-- **Every subordinate clause.** Nothing the ear has to hold.
-
-Pace check: no line runs past 12 words, and no two consecutive lines sit at
-the same intensity. The single-word "Why?" at 0:42 is the only pause in the
-video — it works because everything around it is at a sprint.
+- Contractions everywhere. "There's", "they're", not "there is".
+- "They just… leave" needs the pause. It's the beat the whole video turns on.
+- "The guy standing on the Danube" — not "the commander". Casual beats
+  correct here; everyone knows who you mean.
+- Don't perform the numbers. Say "forty-eight hours" flat and let it land.
+- Read the last line like you're closing an argument, not narrating.
 
 ---
 
@@ -60,15 +60,13 @@ video — it works because everything around it is at a sprint.
 
 - **Legnica 9 April, Mohi 11 April 1241**, ~400 miles apart. Solid, and the
   spine of the video.
-- **Duke Henry II's head** paraded on a spear at Legnica — contemporary
-  accounts, safe to state.
-- **Wiener Neustadt**, ~50 km from Vienna: raiding parties, not a siege.
-  "Fifty kilometres from Vienna" is fair; "at the gates of Vienna" is not.
-- **"Europe never beat the Mongols"** is true of every army in the field —
-  Kalka, Chmielnik, Legnica, Mohi. Some fortified places held (Esztergom's
-  citadel, Székesfehérvár, Trogir). The hook is a hook; if anyone argues it
-  in the comments, that is engagement, and you are right on the field armies.
-- **Ogedei died 11 December 1241**; Batu withdrew spring 1242. The
-  succession explanation is traditional and contested.
-- **The weather** is Büntgen & Di Cosmo, *Scientific Reports*, 2016 — a
-  rival theory. "The tree rings say" keeps it honest.
+- **Wiener Neustadt** is the ~50 km mark, and it was raiding parties, not a
+  siege. "Fifty K from Vienna" is fair; "at the gates of Vienna" isn't.
+- **"Never beat them"** holds for every field army — Kalka, Chmielnik,
+  Legnica, Mohi. Some fortified places held out (Esztergom's citadel,
+  Székesfehérvár, Trogir). If someone argues it in the comments, that's
+  engagement, and you're right about the armies.
+- **Ogedei died 11 December 1241**; Batu pulled back in spring 1242. The
+  succession explanation is the traditional one and it is contested.
+- **The mud** is Büntgen & Di Cosmo, *Scientific Reports*, 2016 — a rival
+  theory, not a correction. Only use it in the tag, phrased as a "pick one".
