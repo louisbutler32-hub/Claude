@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Sequence } from "remotion";
 import { MapCanvas } from "./MapCanvas";
-import { CityMarker, EraChip, MapArrow, MapLabel, Territory } from "./layers";
+import { CityMarker, EraChip, FlagPin, MapArrow, MapLabel, Territory, UnitIcon } from "./layers";
 import { CameraKey } from "./projection";
 import { BRIGHT_ATLAS } from "./theme";
 import { PerspectiveTitle } from "../titles/PerspectiveTitle";
@@ -69,15 +69,25 @@ export const WW2Europe: React.FC = () => (
       <Territory countries={POLAND} color="oxblood" in={8.6} draw={0.9} />
       <Territory countries={FRANCE} color="oxblood" in={14.4} draw={0.9} />
 
+      {/* ── flags, pinned to capitals ── */}
+      <FlagPin at={[12.0, 53.9]} flag="germany" in={1.2} until={4.4} size={50} />
+      <FlagPin at={[22.6, 53.4]} flag="poland" in={1.5} until={4.4} size={50} />
+      <FlagPin at={[2.35, 48.86]} flag="france" in={1.8} until={4.4} size={50} />
+      <FlagPin at={[-0.13, 51.5]} flag="britain" in={2.1} until={4.4} size={50} offset={[-34, -26]} />
+      <FlagPin at={[12.5, 41.9]} flag="italy" in={2.4} until={4.4} size={46} />
+      <FlagPin at={[30.5, 56.4]} flag="soviet" in={2.7} until={4.4} size={50} />
+
       {/* ── the wide establishing beat ── */}
       <MapLabel at={[10.4, 51]} text="GERMANY" size={54} in={1.0} until={4.4} />
       <MapLabel at={[19.6, 52.4]} text="POLAND" size={44} in={1.6} until={4.4} bow={26} />
       <MapLabel at={[2.4, 46.8]} text="FRANCE" size={44} in={2.0} until={4.4} />
-      <MapLabel at={[37, 55]} text="SOVIET UNION" size={44} in={2.4} until={4.4} bow={-30} />
+      <MapLabel at={[28.5, 58.4]} text="SOVIET UNION" size={42} in={2.4} until={4.4} bow={-24} />
 
       {/* ── September 1939 ── */}
       <MapLabel at={[17.3, 50.0]} text="POLAND" size={52} in={4.6} until={9.4} bow={22} />
       <CityMarker at={[21.01, 52.23]} name="Warsaw" in={5.0} until={9.4} size={15} />
+      <FlagPin at={[17.4, 53.3]} flag="poland" in={4.9} until={8.7} size={64} />
+      <FlagPin at={[17.4, 53.3]} flag="germany" in={8.9} until={9.6} size={64} label="OCCUPIED" />
       <MapArrow from={[14.6, 52.3]} to={[20.2, 52.3]} bow={0.1} in={5.2} dur={1.0} until={9.4} />
       <MapArrow from={[19.9, 54.9]} to={[21.0, 52.9]} bow={-0.26} in={5.9} dur={0.9} until={9.4} />
       <MapArrow from={[19.4, 49.0]} to={[20.6, 51.6]} bow={0.22} in={6.6} dur={0.9} until={9.4} />
@@ -94,6 +104,8 @@ export const WW2Europe: React.FC = () => (
       {/* ── May 1940 ── */}
       <MapLabel at={[1.9, 46.9]} text="FRANCE" size={62} in={10.6} until={15.0} bow={22} />
       <CityMarker at={[2.35, 48.86]} name="Paris" in={11.2} until={15.4} size={15} side="right" />
+      <FlagPin at={[-1.8, 48.4]} flag="france" in={11.0} until={14.5} size={66} />
+      <FlagPin at={[-1.8, 48.4]} flag="germany" in={14.7} until={15.4} size={66} label="OCCUPIED" />
       <CityMarker at={[2.38, 51.03]} name="Dunkirk" in={12.8} until={15.4} size={13} side="left" />
       <MapArrow from={[6.8, 50.3]} to={[2.9, 49.2]} bow={0.14} in={11.6} dur={1.0} until={15.4} />
       <MapArrow from={[5.2, 51.6]} to={[2.6, 51.0]} bow={-0.2} in={12.3} dur={0.9} until={15.4} />
@@ -104,6 +116,11 @@ export const WW2Europe: React.FC = () => (
       <MapArrow from={[21.5, 55.6]} to={[30.0, 59.6]} bow={-0.16} in={17.5} dur={1.3} width={19} />
       <MapArrow from={[23.6, 53.6]} to={[37.0, 55.7]} bow={0.12} in={18.0} dur={1.4} width={19} />
       <MapArrow from={[24.2, 50.4]} to={[30.3, 50.5]} bow={0.16} in={18.5} dur={1.2} width={19} />
+      <FlagPin at={[41, 56.5]} flag="soviet" in={16.9} size={58} />
+      <FlagPin at={[15.5, 51.0]} flag="germany" in={17.2} size={54} />
+      <UnitIcon at={[21.4, 56.3]} kind="armour" color="oxblood" label="NORTH" in={17.6} />
+      <UnitIcon at={[22.6, 53.2]} kind="armour" color="oxblood" label="CENTRE" in={18.1} />
+      <UnitIcon at={[23.4, 49.6]} kind="armour" color="oxblood" label="SOUTH" in={18.6} />
       <CityMarker at={[30.31, 59.94]} name="Leningrad" in={18.9} size={14} side="above" />
       <CityMarker at={[37.62, 55.75]} name="Moscow" in={19.3} size={16} side="right" />
       <CityMarker at={[30.52, 50.45]} name="Kiev" in={19.6} size={14} side="below" />

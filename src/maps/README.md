@@ -87,6 +87,44 @@ time. **LinkLine** is the thin travelling line for alliances and sea routes.
 sets it. **EraChip** is the date in the corner; pass it as `hud`, not as a
 child, because it is HTML rather than SVG.
 
+## Flags, portraits and unit icons
+
+The furniture that turns a coloured map into a documentary map. All of it is
+pinned in lon/lat, so it rides the camera with the territory it marks.
+
+```tsx
+<FlagPin at={[12.0, 53.9]} flag="germany" in={1.2} until={4.4} size={50} />
+<FlagPin at={[17.4, 53.3]} flag="germany" in={8.9} label="OCCUPIED" />
+<UnitIcon at={[22.6, 53.2]} kind="armour" color="oxblood" label="CENTRE" in={18.1} />
+<Portrait at={[13.4, 52.5]} src="assets/portraits/leader.jpg" caption="CHURCHILL" in={4} />
+```
+
+**Flags are drawn in code** (`flags.tsx`), not shipped as image files:
+nothing to license, nothing to download, sharp at any resolution. Included:
+`germany`, `poland`, `france`, `britain`, `italy`, `soviet`, `usa`, `japan`.
+Adding one is a few rectangles — copy the pattern in that file.
+
+For anything not drawn — a historical flag, a coat of arms, a portrait, a
+photograph of an aircraft — put the file in `public/assets/` and pass `src`
+instead of `flag`:
+
+```tsx
+<FlagPin at={[13.4, 52.5]} src="assets/flags/reich.png" size={64} />
+```
+
+The render blocks until the file has decoded, so a frame is never captured
+with a half-loaded image. Those files are yours to source and clear —
+nothing bundled here carries a licence obligation.
+
+`shape` takes `"badge"` (default), `"shield"` for a heraldic outline, or
+`"circle"` for portraits. `Portrait` is the same component with the circle
+shape and a caption. `UnitIcon` draws a NATO-style infantry or armour box in
+any palette colour, for labelling thrusts.
+
+A note on the German flag: the drawn one is the black-white-red imperial
+tricolour, co-official 1933–35 and the usual stand-in on maps of this kind.
+If your edit calls for a different one, supply it as a file via `src`.
+
 ## Colour
 
 `theme.palette` names the nation colours. Give every power one and keep it

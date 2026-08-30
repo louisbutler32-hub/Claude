@@ -1,5 +1,6 @@
-import React from "react";
-import { useVideoConfig } from "remotion";
+import React, { useEffect, useState } from "react";
+import { continueRender, delayRender, staticFile, useVideoConfig } from "remotion";
+import { FLAGS, FLAG_BOX, FlagKey } from "./flags";
 import { countryPath, useMap } from "./MapCanvas";
 import {
   LonLat,
@@ -410,5 +411,241 @@ export const EraChip: React.FC<{
         </div>
       ) : null}
     </div>
+  );
+};
+
+// ── Pinned art: flags, portraits, unit icons ───────────────────────────
+// The furniture that turns a coloured map into a documentary map. Each one
+// is pinned in lon/lat, so it rides the camera with the territory it marks.
+
+/** Blocks the frame until an image file has decoded, so a render never
+ *  captures a half-loaded portrait. */
+const usePreloaded = (src?: string) => {
+  const [handle] = useState(() => (src ? delayRender(`image ${src}`) : null));
+  useEffect(() => {
+    if (!src || handle === null) return;
+    const image = new Image();
+    const done = () => continueRender(handle);
+    image.onload = done;
+    image.onerror = done;
+    image.src = src;
+  }, [src, handle]);
+};
+
+const shapePath = (shape: PinShape, w: number, h: number): string => {
+  if (shape === "shield") {
+    return `M0 0 H${w} V${h * 0.52} C${w} ${h * 0.82} ${w * 0.64} ${h} ${
+      w / 2
+    } ${h} C${w * 0.36} ${h} 0 ${h * 0.82} 0 ${h * 0.52} Z`;
+  }
+  return `M0 0 H${w} V${h} H0 Z`;
+};
+
+export type PinShape = "badge" | "shield" | "circle";
+
+export const FlagPin: React.FC<{
+  at: LonLat;
+  /** One of the drawn flags in flags.tsx … */
+  flag?: FlagKey;
+  /** … or your own file in public/, e.g. "assets/flags/reich.png". */
+  src?: string;
+  in?: number;
+  until?: number;
+  /** Flag width in px at 1080 wide. */
+  size?: number;
+  shape?: PinShape;
+  /** Name set under the flag. */
+  label?: string;
+  /** Nudge off the anchor point, in px at 1080 wide. */
+  offset?: [number, number];
+}> = ({
+  at,
+  flag,
+  src,
+  in: from = 0,
+  until,
+  size = 62,
+  shape = "badge",
+  label,
+  offset = [0, 0],
+}) => {
+  const { project, theme, t } = useMap();
+  const { width: canvasWidth } = useVideoConfig();
+  const file = src ? (/^https?:\/\//.test(src) ? src : staticFile(src)) : undefined;
+  usePreloaded(file);
+
+  const alive = visibility(t, from, until, 0.35);
+  if (alive <= 0.01) return null;
+
+  const scale = canvasWidth / 1080;
+  const w = size * scale;
+  const h = shape === "circle" ? w : shape === "shield" ? w * 1.16 : w * (2 / 3);
+  const [px, py] = project(at);
+  const x = px + offset[0] * scale - w / 2;
+  const y = py + offset[1] * scale - h / 2;
+
+  // Lands with a small overshoot — enough to feel placed, not bouncy.
+  const p = easeOutCubic(ramp(t, from, from + 0.45));
+  const pop = 0.72 + 0.28 * p + Math.sin(Math.PI * p) * 0.05;
+
+  const id = `pin-${Math.round(px)}-${Math.round(py)}-${flag ?? "img"}`;
+  const Flag = flag ? FLAGS[flag] : null;
+  const path = shapePath(shape, w, h);
+
+  return (
+    <g opacity={alive} transform={`translate(${px} ${py}) scale(${pop}) translate(${-px} ${-py})`}>
+      <g transform={`translate(${x} ${y})`}>
+        <defs>
+          <clipPath id={id}>
+            {shape === "circle" ? (
+              <circle cx={w / 2} cy={h / 2} r={w / 2} />
+            ) : (
+              <path d={path} />
+            )}
+          </clipPath>
+        </defs>
+
+        {/* drop shadow, matched to the arrows */}
+        {shape === "circle" ? (
+          <circle cx={w / 2 + 2 * scale} cy={h / 2 + 4 * scale} r={w / 2} fill="rgba(0,0,0,0.45)" />
+        ) : (
+          <path d={path} fill="rgba(0,0,0,0.45)" transform={`translate(${2 * scale} ${4 * scale})`} />
+        )}
+
+        <g clipPath={`url(#${id})`}>
+          {file ? (
+            <image href={file} x={0} y={0} width={w} height={h} preserveAspectRatio="xMidYMid slice" />
+          ) : Flag ? (
+            <g transform={`scale(${w / FLAG_BOX.width} ${h / FLAG_BOX.height})`}>
+              <Flag />
+            </g>
+          ) : (
+            <rect width={w} height={h} fill={theme.neutral} />
+          )}
+        </g>
+
+        {shape === "circle" ? (
+          <circle
+            cx={w / 2}
+            cy={h / 2}
+            r={w / 2}
+            fill="none"
+            stroke={theme.label}
+            strokeWidth={2.2 * scale}
+          />
+        ) : (
+          <path d={path} fill="none" stroke={theme.label} strokeWidth={2.2 * scale} />
+        )}
+      </g>
+
+      {label ? (
+        <text
+          x={px + offset[0] * scale}
+          y={y + h + 20 * scale}
+          textAnchor="middle"
+          fontFamily={theme.fontLabel}
+          fontSize={19 * scale}
+          fontWeight={600}
+          letterSpacing={1.6 * scale}
+          fill={theme.label}
+          stroke={theme.labelShadow}
+          strokeWidth={4 * scale}
+          paintOrder="stroke"
+          strokeLinejoin="round"
+        >
+          {label}
+        </text>
+      ) : null}
+    </g>
+  );
+};
+
+/** A framed portrait — the leader, the general, the ship. Supply your own
+ *  image in public/assets/portraits/; nothing is bundled. */
+export const Portrait: React.FC<{
+  at: LonLat;
+  src: string;
+  caption?: string;
+  in?: number;
+  until?: number;
+  size?: number;
+  shape?: PinShape;
+  offset?: [number, number];
+}> = ({ at, src, caption, in: from = 0, until, size = 130, shape = "circle", offset }) => (
+  <FlagPin
+    at={at}
+    src={src}
+    in={from}
+    until={until}
+    size={size}
+    shape={shape}
+    label={caption}
+    offset={offset}
+  />
+);
+
+/** NATO-style unit marker: a box with a strength label. */
+export const UnitIcon: React.FC<{
+  at: LonLat;
+  kind?: "infantry" | "armour";
+  tone?: Tone;
+  color?: string;
+  label?: string;
+  in?: number;
+  until?: number;
+  size?: number;
+}> = ({ at, kind = "infantry", tone = "accent", color, label, in: from = 0, until, size = 46 }) => {
+  const { project, theme, t } = useMap();
+  const { width: canvasWidth } = useVideoConfig();
+  const alive = visibility(t, from, until, 0.35);
+  if (alive <= 0.01) return null;
+
+  const scale = canvasWidth / 1080;
+  const w = size * scale;
+  const h = w * 0.66;
+  const [cx, cy] = project(at);
+  const x = cx - w / 2;
+  const y = cy - h / 2;
+  const paint = color ? theme.palette[color] ?? color : toneColor(theme, tone);
+  const pop = easeOutCubic(ramp(t, from, from + 0.4));
+
+  return (
+    <g opacity={alive} transform={`translate(${cx} ${cy}) scale(${0.8 + 0.2 * pop}) translate(${-cx} ${-cy})`}>
+      <rect x={x + 2 * scale} y={y + 3 * scale} width={w} height={h} fill="rgba(0,0,0,0.4)" />
+      <rect x={x} y={y} width={w} height={h} fill={paint} stroke={theme.label} strokeWidth={2 * scale} />
+      {kind === "infantry" ? (
+        <g stroke={theme.label} strokeWidth={2 * scale}>
+          <path d={`M${x} ${y} L${x + w} ${y + h}`} />
+          <path d={`M${x + w} ${y} L${x} ${y + h}`} />
+        </g>
+      ) : (
+        <ellipse
+          cx={cx}
+          cy={cy}
+          rx={w * 0.34}
+          ry={h * 0.32}
+          fill="none"
+          stroke={theme.label}
+          strokeWidth={2 * scale}
+        />
+      )}
+      {label ? (
+        <text
+          x={cx}
+          y={y - 8 * scale}
+          textAnchor="middle"
+          fontFamily={theme.fontChip}
+          fontSize={17 * scale}
+          fontWeight={700}
+          letterSpacing={1.4 * scale}
+          fill={theme.label}
+          stroke={theme.labelShadow}
+          strokeWidth={3.6 * scale}
+          paintOrder="stroke"
+        >
+          {label}
+        </text>
+      ) : null}
+    </g>
   );
 };
