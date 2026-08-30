@@ -2,6 +2,10 @@
 
 - **`WhatIfVideo`** — "What If The Straw Hats Were Reborn" essay edit (4:45)
 - **`BountyVideo`** — "The Most Broken Bounty Jump" data-viz video (13:00)
+- **`Map-WW2-Europe`** — animated historical map system (`src/maps/`,
+  [docs](src/maps/README.md)). Real Natural Earth vector coastlines, a
+  keyframed camera, territories that change hands, engraved place names,
+  city markers and drawn-on offensive arrows.
 - **`Title-Kate…`** — reusable 3D-perspective documentary title cards
   (`src/titles/`, [docs](src/titles/README.md)). White documentary type on a
   plane that sits inside the shot's 3D space, fast type-on reveal,
