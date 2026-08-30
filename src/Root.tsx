@@ -20,10 +20,21 @@ import {
   NameOverlayVertical,
   TITLE_DURATION_IN_FRAMES,
 } from "./titles/compositions";
+import { WW2Europe, WW2_DURATION_IN_FRAMES } from "./maps/ww2";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* ── animated historical maps ── */}
+      <Composition
+        id="Map-WW2-Europe"
+        component={WW2Europe}
+        durationInFrames={WW2_DURATION_IN_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
       {/* ── 3D-perspective documentary titles ── */}
       <Composition
         id="Title-Kate"
