@@ -59,15 +59,15 @@ export const WW2Europe: React.FC = () => (
     >
       {/* ── the board, every power in its own colour ── */}
       <Territory countries={REICH} color="oxblood" in={0.4} />
-      <Territory countries={POLAND} color="ochre" in={0.8} until={8.6} />
-      <Territory countries={FRANCE} color="indigo" in={1.1} until={14.4} />
+      <Territory countries={POLAND} color="ochre" in={0.8} until={9.6} />
+      <Territory countries={FRANCE} color="indigo" in={1.1} until={15.4} />
       <Territory countries={BRITAIN} color="plum" in={1.4} />
       <Territory countries={ITALY} color="teal" in={1.7} />
       <Territory countries={USSR} color="moss" in={2.0} />
 
       {/* ── conquest: the colour changes hands ── */}
-      <Territory countries={POLAND} color="oxblood" in={8.6} draw={1.3} />
-      <Territory countries={FRANCE} color="oxblood" in={14.4} draw={1.3} />
+      <Territory countries={POLAND} color="oxblood" in={8.6} draw={0.9} />
+      <Territory countries={FRANCE} color="oxblood" in={14.4} draw={0.9} />
 
       {/* ── the wide establishing beat ── */}
       <MapLabel at={[10.4, 51]} text="GERMANY" size={54} in={1.0} until={4.4} />
@@ -76,10 +76,10 @@ export const WW2Europe: React.FC = () => (
       <MapLabel at={[37, 55]} text="SOVIET UNION" size={44} in={2.4} until={4.4} bow={-30} />
 
       {/* ── September 1939 ── */}
-      <MapLabel at={[18.0, 50.3]} text="POLAND" size={58} in={4.6} until={9.0} bow={26} />
+      <MapLabel at={[17.3, 50.0]} text="POLAND" size={52} in={4.6} until={9.4} bow={22} />
       <CityMarker at={[21.01, 52.23]} name="Warsaw" in={5.0} until={9.4} size={15} />
       <MapArrow from={[14.6, 52.3]} to={[20.2, 52.3]} bow={0.1} in={5.2} dur={1.0} until={9.4} />
-      <MapArrow from={[21.2, 54.6]} to={[21.1, 52.9]} bow={-0.28} in={5.9} dur={0.9} until={9.4} />
+      <MapArrow from={[19.9, 54.9]} to={[21.0, 52.9]} bow={-0.26} in={5.9} dur={0.9} until={9.4} />
       <MapArrow from={[19.4, 49.0]} to={[20.6, 51.6]} bow={0.22} in={6.6} dur={0.9} until={9.4} />
       <MapArrow
         from={[26.8, 52.4]}
@@ -88,7 +88,7 @@ export const WW2Europe: React.FC = () => (
         in={7.7}
         dur={0.9}
         until={9.4}
-        color="moss"
+        color="mossLight"
       />
 
       {/* ── May 1940 ── */}
@@ -100,7 +100,7 @@ export const WW2Europe: React.FC = () => (
       <MapArrow from={[7.6, 48.6]} to={[4.2, 47.4]} bow={0.18} in={13.0} dur={1.0} until={15.4} />
 
       {/* ── June 1941 ── */}
-      <MapLabel at={[36, 56.5]} text="SOVIET UNION" size={52} in={16.8} bow={-26} />
+      <MapLabel at={[44, 59.5]} text="SOVIET UNION" size={50} in={16.8} bow={-20} />
       <MapArrow from={[21.5, 55.6]} to={[30.0, 59.6]} bow={-0.16} in={17.5} dur={1.3} width={19} />
       <MapArrow from={[23.6, 53.6]} to={[37.0, 55.7]} bow={0.12} in={18.0} dur={1.4} width={19} />
       <MapArrow from={[24.2, 50.4]} to={[30.3, 50.5]} bow={0.16} in={18.5} dur={1.2} width={19} />

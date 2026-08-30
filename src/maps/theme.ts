@@ -74,6 +74,7 @@ export const BRIGHT_ATLAS: MapTheme = {
     ochre: "#d9a441",
     indigo: "#3f6fa8",
     moss: "#5b8f52",
+    mossLight: "#9ac97b",
     plum: "#7b5a9e",
     teal: "#2f8386",
     rust: "#c86a2c",
