@@ -315,8 +315,20 @@ export const LinkLine: React.FC<{
   dur?: number;
   until?: number;
   tone?: Tone;
+  /** Any colour, or a key from theme.palette. */
+  color?: string;
   width?: number;
-}> = ({ from: a, to: b, bow = -0.22, in: start = 0, dur = 1.4, until, tone = "accent", width = 4 }) => {
+}> = ({
+  from: a,
+  to: b,
+  bow = -0.22,
+  in: start = 0,
+  dur = 1.4,
+  until,
+  tone = "accent",
+  color,
+  width = 4,
+}) => {
   const { project, theme, t } = useMap();
   const { width: canvasWidth } = useVideoConfig();
   const alive = visibility(t, start, until, 0.4);
@@ -328,14 +340,14 @@ export const LinkLine: React.FC<{
   const pb = project(b);
   const c = bowControl(pa, pb, bow);
   const head = quadAt(pa, c, pb, p);
-  const color = toneColor(theme, tone);
+  const paint = color ? theme.palette[color] ?? color : toneColor(theme, tone);
 
   return (
     <g opacity={alive}>
       <path
         d={`M ${pa[0]} ${pa[1]} Q ${c[0]} ${c[1]} ${pb[0]} ${pb[1]}`}
         fill="none"
-        stroke={color}
+        stroke={paint}
         strokeWidth={width * scale}
         strokeLinecap="round"
         pathLength={1000}

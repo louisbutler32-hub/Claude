@@ -21,11 +21,20 @@ import {
   TITLE_DURATION_IN_FRAMES,
 } from "./titles/compositions";
 import { WW2Europe, WW2_DURATION_IN_FRAMES } from "./maps/ww2";
+import { MongolsEurope, MONGOLS_DURATION_IN_FRAMES } from "./maps/mongols";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
       {/* ── animated historical maps ── */}
+      <Composition
+        id="Map-Mongols-Europe"
+        component={MongolsEurope}
+        durationInFrames={MONGOLS_DURATION_IN_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="Map-WW2-Europe"
         component={WW2Europe}

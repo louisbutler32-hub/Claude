@@ -7,6 +7,7 @@
     "build": "remotion render BountyVideo out/bounty-video.mp4",
     "still": "remotion still BountyVideo out/still.png",
     "map": "remotion render Map-WW2-Europe out/map-ww2-europe.mp4",
+    "map:mongols": "remotion render Map-Mongols-Europe out/mongols-europe.mp4",
     "map:data": "node scripts/build-map-data.mjs",
     "title": "remotion render Title-Kate out/kate-title.mp4",
     "title:vertical": "remotion render Title-Kate-Vertical out/kate-title-vertical.mp4",
