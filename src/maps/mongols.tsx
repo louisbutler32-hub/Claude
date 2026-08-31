@@ -1,10 +1,9 @@
 import React from "react";
-import { AbsoluteFill, Sequence } from "remotion";
+import { AbsoluteFill } from "remotion";
 import { MapCanvas } from "./MapCanvas";
-import { CityMarker, EraChip, LinkLine, MapArrow, MapLabel, Territory } from "./layers";
+import { BattleMarker, CityMarker, FlagPin, LinkLine, MapArrow, MapLabel, Territory } from "./layers";
 import { CameraKey } from "./projection";
 import { BRIGHT_ATLAS } from "./theme";
-import { PerspectiveTitle, makeTitle } from "./titles-bridge";
 
 // ── Why The Mongols Never Conquered Europe ─────────────────────────────
 //
@@ -51,34 +50,30 @@ export const MongolsEurope: React.FC = () => (
     <MapCanvas
       camera={CAMERA}
       theme={BRIGHT_ATLAS}
-      hud={
-        <EraChip
-          steps={[
-            { at: 4.0, text: "1241", sub: "Legnica · 9 April" },
-            { at: 7.4, text: "1241", sub: "Mohi · 11 April" },
-            { at: 11.2, text: "48 HOURS", sub: "Two kingdoms gone" },
-            { at: 14.2, text: "WINTER", sub: "The Danube freezes" },
-            { at: 22.4, text: "SPRING 1242", sub: "They turn around" },
-            { at: 25.6, text: "1241", sub: "11 December · Karakorum" },
-            { at: 32.8, text: "1242", sub: "They never came back" },
-          ]}
-        />
-      }
     >
       {/* ── "Europe never beat the Mongols" ── */}
       <Territory countries={HORDE} color="oxblood" in={0.2} draw={1.4} />
       <Territory countries={POLAND} color="indigo" in={1.2} until={5.6} />
       <Territory countries={HUNGARY} color="ochre" in={1.5} until={9.8} />
 
+      {/* ── who is on the board ── */}
+      <FlagPin at={[48, 50]} flag="mongol" in={0.9} until={4.0} size={78} />
+
       {/* ── Legnica: the Polish army, gone in an afternoon ── */}
       <MapArrow from={[24.0, 51.8]} to={[17.4, 51.3]} bow={0.1} in={4.3} dur={0.8} until={11.6} width={18} />
-      <CityMarker at={[16.16, 51.21]} name="Legnica" in={4.6} until={11.6} size={14} side="below" />
+      <CityMarker at={[16.16, 51.21]} name="Legnica" in={4.4} until={13.8} size={13} side="left" />
+      <FlagPin at={[19.6, 53.4]} flag="piast" in={1.6} until={6.0} size={74} />
+      <BattleMarker at={[16.16, 51.21]} date="9 APRIL 1241" in={5.0} until={13.8} size={54} />
       <Territory countries={POLAND} color="#8e2a22" in={5.4} draw={0.8} />
+      <FlagPin at={[19.6, 53.4]} flag="mongol" in={6.1} until={13.8} size={74} />
 
       {/* ── Mohi: two days later, four hundred miles south ── */}
       <MapArrow from={[22.6, 49.4]} to={[20.9, 48.1]} bow={-0.16} in={8.7} dur={0.8} until={13.6} width={18} />
-      <CityMarker at={[20.98, 48.05]} name="Mohi" in={9.0} until={13.6} size={14} side="right" />
+      <CityMarker at={[20.98, 48.05]} name="Mohi" in={8.8} until={13.8} size={13} side="right" />
+      <FlagPin at={[18.6, 46.6]} flag="arpad" in={1.9} until={10.2} size={74} />
+      <BattleMarker at={[20.98, 48.05]} date="11 APRIL 1241" in={9.2} until={13.8} size={54} />
       <Territory countries={HUNGARY} color="#8e2a22" in={9.6} draw={0.8} />
+      <FlagPin at={[18.6, 46.6]} flag="mongol" in={10.3} until={13.8} size={74} />
 
       {/* ── two kingdoms, forty-eight hours ── */}
       <MapLabel at={[19.2, 52.6]} text="POLAND" size={44} in={11.4} until={13.8} bow={18} />
@@ -87,7 +82,9 @@ export const MongolsEurope: React.FC = () => (
       {/* ── across the frozen Danube, fifty km from Vienna ── */}
       <MapArrow from={[19.6, 47.9]} to={[16.2, 48.0]} bow={0.12} in={14.4} dur={0.9} until={22.2} width={16} />
       <MapArrow from={[18.4, 48.9]} to={[16.4, 48.6]} bow={-0.14} in={15.2} dur={0.8} until={22.2} width={14} />
-      <CityMarker at={[16.37, 48.21]} name="Vienna" in={17.6} until={23.0} size={16} side="left" />
+      <CityMarker at={[16.37, 48.21]} name="Vienna" in={16.4} until={23.0} size={15} side="left" />
+      <FlagPin at={[12.9, 46.7]} flag="babenberg" in={16.8} until={23.0} size={66} />
+      <FlagPin at={[19.4, 48.9]} flag="mongol" in={15.0} until={22.6} size={70} />
       <MapArrow from={[16.9, 48.3]} to={[16.25, 47.82]} bow={0.1} in={18.0} dur={0.7} until={22.2} width={13} />
 
       {/* ── then they just… leave ── */}
@@ -99,49 +96,12 @@ export const MongolsEurope: React.FC = () => (
       <LinkLine from={[20.0, 49.0]} to={KARAKORUM} bow={-0.18} in={26.8} dur={2.0} color="ochre" width={5} />
       <LinkLine from={[48.0, 41.0]} to={KARAKORUM} bow={0.2} in={27.4} dur={1.7} color="ochre" width={4} />
       <LinkLine from={[75.0, 30.0]} to={KARAKORUM} bow={-0.22} in={27.9} dur={1.6} color="ochre" width={4} />
-      <MapLabel at={[102.8, 44.4]} text="THE KHAN IS DEAD" size={40} in={29.2} until={33.4} />
+      <FlagPin at={[102.8, 50.6]} flag="mongol" in={26.6} until={29.4} size={96} />
+      <FlagPin at={[102.8, 50.6]} flag="mongolBlack" in={29.5} size={96} />
 
       {/* ── it got lucky ── */}
       <MapLabel at={[24, 44]} text="EUROPE" size={54} in={33.2} bow={14} />
     </MapCanvas>
 
-    {/* hook card */}
-    <Sequence from={6} durationInFrames={84}>
-      <PerspectiveTitle
-        config={makeTitle({
-          eyebrow: "1241",
-          title: "NOT ONE BATTLE",
-          x: 74,
-          y: 1580,
-          titleSize: 96,
-          eyebrowSize: 32,
-          eyebrowTracking: 8,
-          perspective: 1800,
-          rotateX: 4,
-          rotateY: -14,
-          rotateZ: -1,
-          exitStart: 2.4,
-        })}
-      />
-    </Sequence>
-
-    {/* payoff card */}
-    <Sequence from={1000}>
-      <PerspectiveTitle
-        config={makeTitle({
-          eyebrow: "EUROPE DIDN'T SURVIVE",
-          title: "IT GOT LUCKY",
-          x: 74,
-          y: 1580,
-          titleSize: 104,
-          eyebrowSize: 32,
-          eyebrowTracking: 8,
-          perspective: 1800,
-          rotateX: 4,
-          rotateY: -14,
-          rotateZ: -1,
-        })}
-      />
-    </Sequence>
   </AbsoluteFill>
 );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { continueRender, delayRender, staticFile, useVideoConfig } from "remotion";
-import { FLAGS, FLAG_BOX, FlagKey } from "./flags";
+import { ARMS, ArmsKey, EMBLEMS, FlagKey } from "./flags";
 import { countryPath, useMap } from "./MapCanvas";
 import {
   LonLat,
@@ -457,8 +457,8 @@ export type PinShape = "badge" | "shield" | "circle";
 
 export const FlagPin: React.FC<{
   at: LonLat;
-  /** One of the drawn flags in flags.tsx … */
-  flag?: FlagKey;
+  /** One of the drawn flags or coats of arms in flags.tsx … */
+  flag?: FlagKey | ArmsKey;
   /** … or your own file in public/, e.g. "assets/flags/reich.png". */
   src?: string;
   in?: number;
@@ -477,10 +477,13 @@ export const FlagPin: React.FC<{
   in: from = 0,
   until,
   size = 62,
-  shape = "badge",
+  shape: shapeProp,
   label,
   offset = [0, 0],
 }) => {
+  // Coats of arms want the shield; flags want the badge.
+  const shape: PinShape =
+    shapeProp ?? (flag && flag in ARMS ? "shield" : "badge");
   const { project, theme, t } = useMap();
   const { width: canvasWidth } = useVideoConfig();
   const file = src ? (/^https?:\/\//.test(src) ? src : staticFile(src)) : undefined;
@@ -501,7 +504,7 @@ export const FlagPin: React.FC<{
   const pop = 0.72 + 0.28 * p + Math.sin(Math.PI * p) * 0.05;
 
   const id = `pin-${Math.round(px)}-${Math.round(py)}-${flag ?? "img"}`;
-  const Flag = flag ? FLAGS[flag] : null;
+  const emblem = flag ? EMBLEMS[flag] : null;
   const path = shapePath(shape, w, h);
 
   return (
@@ -527,9 +530,9 @@ export const FlagPin: React.FC<{
         <g clipPath={`url(#${id})`}>
           {file ? (
             <image href={file} x={0} y={0} width={w} height={h} preserveAspectRatio="xMidYMid slice" />
-          ) : Flag ? (
-            <g transform={`scale(${w / FLAG_BOX.width} ${h / FLAG_BOX.height})`}>
-              <Flag />
+          ) : emblem ? (
+            <g transform={`scale(${w / emblem.width} ${h / emblem.height})`}>
+              <emblem.Draw />
             </g>
           ) : (
             <rect width={w} height={h} fill={theme.neutral} />
@@ -656,6 +659,82 @@ export const UnitIcon: React.FC<{
           paintOrder="stroke"
         >
           {label}
+        </text>
+      ) : null}
+    </g>
+  );
+};
+
+
+// ── Battle ─────────────────────────────────────────────────────────────
+// Crossed swords, with an optional date under them. The marker every map
+// documentary drops on the spot where an army stopped existing.
+
+export const BattleMarker: React.FC<{
+  at: LonLat;
+  label?: string;
+  date?: string;
+  in?: number;
+  until?: number;
+  size?: number;
+}> = ({ at, label, date, in: from = 0, until, size = 44 }) => {
+  const { project, theme, t } = useMap();
+  const { width: canvasWidth } = useVideoConfig();
+  const alive = visibility(t, from, until, 0.3);
+  if (alive <= 0.01) return null;
+
+  const scale = canvasWidth / 1080;
+  const s = size * scale;
+  const [x, y] = project(at);
+  const p = easeOutCubic(ramp(t, from, from + 0.35));
+  const pop = 0.6 + 0.4 * p;
+  // Swords land crossed: they swing in from opposite sides and meet.
+  const swing = (1 - p) * 18;
+
+  const sword = (angle: number) => (
+    <g transform={`rotate(${angle} 0 0)`}>
+      <rect x={-s * 0.045} y={-s * 0.62} width={s * 0.09} height={s * 1.0} fill="#e9edf2" />
+      <path d={`M${-s * 0.045} ${-s * 0.62} L0 ${-s * 0.78} L${s * 0.045} ${-s * 0.62} Z`} fill="#e9edf2" />
+      <rect x={-s * 0.24} y={s * 0.3} width={s * 0.48} height={s * 0.1} rx={s * 0.05} fill="#c9a227" />
+      <rect x={-s * 0.05} y={s * 0.4} width={s * 0.1} height={s * 0.22} fill="#c9a227" />
+      <circle cx={0} cy={s * 0.66} r={s * 0.08} fill="#c9a227" />
+    </g>
+  );
+
+  return (
+    <g opacity={alive}>
+      <g transform={`translate(${x} ${y}) scale(${pop})`}>
+        <g opacity={0.5} transform={`translate(${3 * scale} ${4 * scale})`}>
+          <g transform={`rotate(${45 + swing} 0 0)`}>
+            <rect x={-s * 0.05} y={-s * 0.78} width={s * 0.1} height={s * 1.44} fill="rgba(0,0,0,0.6)" />
+          </g>
+          <g transform={`rotate(${-45 - swing} 0 0)`}>
+            <rect x={-s * 0.05} y={-s * 0.78} width={s * 0.1} height={s * 1.44} fill="rgba(0,0,0,0.6)" />
+          </g>
+        </g>
+        <g stroke="rgba(0,0,0,0.55)" strokeWidth={1.4 * scale}>
+          {sword(45 + swing)}
+          {sword(-45 - swing)}
+        </g>
+      </g>
+      {label || date ? (
+        <text
+          x={x}
+          y={y + s * 1.15}
+          textAnchor="middle"
+          fontFamily={theme.fontLabel}
+          fontSize={s * 0.46}
+          fontWeight={600}
+          letterSpacing={s * 0.03}
+          fill={theme.label}
+          stroke={theme.labelShadow}
+          strokeWidth={s * 0.14}
+          paintOrder="stroke"
+          strokeLinejoin="round"
+        >
+          {label}
+          {label && date ? "  ·  " : ""}
+          {date}
         </text>
       ) : null}
     </g>
