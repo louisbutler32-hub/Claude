@@ -25,18 +25,47 @@ Pick one. All land inside 3 seconds.
 
 ## Script
 
-| Time | Voiceover | On screen | Map |
-| --- | --- | --- | --- |
-| 0:00 | Europe never beat the Mongols. Not one battle. | `NOT ONE BATTLE` | Red floods west, stops dead |
-| 0:03 | April 1241 — they erase the Polish army in an afternoon. | `LEGNICA · 9 APRIL` | Slam to Poland, arrow strikes, colour dies |
-| 0:07 | Two days later, four hundred miles south, they erase Hungary's. | `MOHI · 11 APRIL` | Whip south, arrow strikes, colour dies |
-| 0:11 | Two kingdoms. Forty-eight hours. | `2 KINGDOMS · 48 HOURS` | Both dead colours side by side |
-| 0:14 | By winter they're riding across the frozen Danube. Fifty K from Vienna. | `50 KM FROM VIENNA` | River freezes, arrows cross, tip stops short |
-| 0:19 | And there's nothing — nothing — left to stop them. | | Everything west pale and empty |
-| 0:22 | Then they just… leave. | | Every arrow reverses |
-| 0:25 | Because six thousand kilometres away the Great Khan died, and every prince had to ride home and vote for the next one. | `11 DECEMBER 1241` | Rip east to Karakorum, lines converge |
-| 0:32 | Including the guy standing on the Danube. | | One line pulls back out of Hungary |
-| 0:35 | Europe didn't survive the Mongols. It got lucky. | `IT GOT LUCKY` | Wide. Red still sitting in Hungary |
+Read straight down. Timecodes are where each line starts against the
+rendered video (`out/mongols-europe.mp4`), so you can drop the audio on and
+it lines up.
+
+```
+0:00   Europe never beat the Mongols. Not one battle.
+
+0:03   April 1241 — they erase the Polish army in an afternoon.
+
+0:07   Two days later, four hundred miles south, they erase Hungary's.
+
+0:11   Two kingdoms. Forty-eight hours.
+
+0:14   By winter they're riding across the frozen Danube.
+       Fifty K from Vienna.
+
+0:19   And there's nothing — nothing — left to stop them.
+
+0:22   Then they just… leave.
+
+0:25   Because six thousand kilometres away, the Great Khan died —
+
+0:28   and every prince had to ride home and vote for the next one.
+       Including the guy standing on the Danube.
+
+0:33   Europe didn't survive the Mongols. It got lucky.
+```
+
+What the map is doing under each line:
+
+| Time | Map |
+| --- | --- |
+| 0:00 | Horde floods across Eurasia. Sülde on the steppe, Piast eagle on Poland, Árpád bars on Hungary |
+| 0:04 | Arrow into Legnica, crossed swords, Poland turns; the eagle is replaced by the sülde |
+| 0:09 | Same at Mohi. Árpád bars replaced by the sülde |
+| 0:11 | Pull back, both kingdoms held in frame |
+| 0:14 | Danube crossing, arrows west, Babenberg shield beside Vienna |
+| 0:22 | Every arrow reverses |
+| 0:25 | Camera rips east to Karakorum, gold lines converging |
+| 0:29 | The blue sülde is replaced by the black one |
+| 0:33 | Out wide. Red still sitting in Hungary |
 
 **Optional 10s tag** — costs you 45s total, buys an argument in the comments:
 
