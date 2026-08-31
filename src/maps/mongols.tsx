@@ -58,7 +58,9 @@ export const MongolsEurope: React.FC = () => (
             { at: 7.4, text: "1241", sub: "Mohi · 11 April" },
             { at: 11.2, text: "48 HOURS", sub: "Two kingdoms gone" },
             { at: 14.2, text: "WINTER", sub: "The Danube freezes" },
+            { at: 22.4, text: "SPRING 1242", sub: "They turn around" },
             { at: 25.6, text: "1241", sub: "11 December · Karakorum" },
+            { at: 32.8, text: "1242", sub: "They never came back" },
           ]}
         />
       }
@@ -93,7 +95,7 @@ export const MongolsEurope: React.FC = () => (
       <MapArrow from={[19.0, 51.2]} to={[31.0, 52.5]} bow={0.1} in={22.8} dur={1.3} until={27.0} width={15} />
 
       {/* ── six thousand kilometres away ── */}
-      <CityMarker at={KARAKORUM} name="Karakorum" in={26.4} size={17} side="below" />
+      <CityMarker at={KARAKORUM} name="Karakorum" in={26.4} until={32.6} size={17} side="below" />
       <LinkLine from={[20.0, 49.0]} to={KARAKORUM} bow={-0.18} in={26.8} dur={2.0} color="ochre" width={5} />
       <LinkLine from={[48.0, 41.0]} to={KARAKORUM} bow={0.2} in={27.4} dur={1.7} color="ochre" width={4} />
       <LinkLine from={[75.0, 30.0]} to={KARAKORUM} bow={-0.22} in={27.9} dur={1.6} color="ochre" width={4} />
