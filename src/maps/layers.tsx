@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { continueRender, delayRender, staticFile, useVideoConfig } from "remotion";
 import { ARMS, ArmsKey, EMBLEMS, FlagKey } from "./flags";
-import { countryPath, useMap } from "./MapCanvas";
+import { useCountryPath, useMap } from "./MapCanvas";
 import {
   LonLat,
   arrowPath,
@@ -70,9 +70,8 @@ export const Territory: React.FC<{
   opacity = 1,
   fillOpacity,
 }) => {
-  const { theme, t, worldTransform } = useMap();
-  const d = countryPath(countries);
-  if (!d) return null;
+  const { theme, t } = useMap();
+  const d = useCountryPath(countries);
 
   const alive = visibility(t, from, until, 0.5);
   if (alive <= 0.01) return null;
@@ -82,8 +81,10 @@ export const Territory: React.FC<{
 
   const solid = color ? theme.palette[color] ?? color : null;
 
+  if (!d) return null;
+
   return (
-    <g transform={worldTransform} opacity={alive * opacity}>
+    <g opacity={alive * opacity}>
       <path
         d={d}
         fill={solid ?? toneFill(theme, tone)}

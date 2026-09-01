@@ -19,8 +19,23 @@ export const toWorld = ([lon, lat]: LonLat): [number, number] => {
 };
 
 /** `scale` is how many screen px the full world width would occupy, so it
- *  reads like a zoom level: 3000 is continental, 12000 is a country. */
-export type Camera = { lon: number; lat: number; scale: number };
+ *  reads like a zoom level: 3000 is continental, 12000 is a country.
+ *
+ *  `tilt` lays the map down away from the viewer, in degrees: 0 is straight
+ *  down, 35-55 is the raked table-map look. `bearing` turns it, in degrees
+ *  clockwise. Both default to 0, so a camera written before they existed
+ *  behaves exactly as it did. */
+export type Camera = {
+  lon: number;
+  lat: number;
+  scale: number;
+  tilt?: number;
+  bearing?: number;
+};
+
+/** How far the eye sits from the map, in screen heights. Lower is a wider
+ *  lens and a more aggressive rake. */
+const EYE = 2.2;
 
 export type CameraKey = Camera & {
   /** Seconds into the composition at which the camera is exactly here. */
@@ -45,24 +60,65 @@ export const cameraAt = (keys: CameraKey[], t: number): Camera => {
   const b = keys[i + 1];
   const p = easeInOutCubic((t - a.at) / Math.max(b.at - a.at, 1e-6));
 
+  const lerp = (from: number, to: number) => from + (to - from) * p;
   return {
-    lon: a.lon + (b.lon - a.lon) * p,
-    lat: a.lat + (b.lat - a.lat) * p,
+    lon: lerp(a.lon, b.lon),
+    lat: lerp(a.lat, b.lat),
     scale: Math.exp(Math.log(a.scale) + (Math.log(b.scale) - Math.log(a.scale)) * p),
+    tilt: lerp(a.tilt ?? 0, b.tilt ?? 0),
+    bearing: lerp(a.bearing ?? 0, b.bearing ?? 0),
   };
 };
 
-/** Screen-space projector for a given camera and canvas size. */
+/** Screen-space projector: world → turned → raked → perspective → screen.
+ *
+ *  Everything on the map goes through this one function — coastlines,
+ *  arrows, labels, shields — so geometry that lies down in perspective and
+ *  type that stays upright always agree about where a place is. */
+export const makeWorldProject = (
+  camera: Camera,
+  width: number,
+  height: number
+): ((wx: number, wy: number) => [number, number]) => {
+  const k = camera.scale / WORLD;
+  const [cx, cy] = toWorld([camera.lon, camera.lat]);
+  const tilt = ((camera.tilt ?? 0) * Math.PI) / 180;
+  const bearing = ((camera.bearing ?? 0) * Math.PI) / 180;
+  const cosB = Math.cos(bearing);
+  const sinB = Math.sin(bearing);
+  const cosT = Math.cos(tilt);
+  const sinT = Math.sin(tilt);
+  const eye = height * EYE;
+
+  return (wx: number, wy: number) => {
+    const x = (wx - cx) * k;
+    const y = (wy - cy) * k;
+
+    // turn
+    const xb = x * cosB - y * sinB;
+    const yb = x * sinB + y * cosB;
+
+    // rake: ground north of centre falls away from the eye
+    const z = yb * sinT;
+    // Clamp so geometry near the horizon stretches instead of inverting.
+    const denom = Math.max(eye - z, eye * 0.18);
+    const s = eye / denom;
+
+    return [width / 2 + xb * s, height / 2 + yb * cosT * s];
+  };
+};
+
+/** The same projector, addressed in longitude/latitude. Layers use this;
+ *  the base map uses the world-space one on its cached geometry. */
 export const makeProject = (
   camera: Camera,
   width: number,
   height: number
 ): ((p: LonLat) => [number, number]) => {
-  const k = camera.scale / WORLD;
-  const [cx, cy] = toWorld([camera.lon, camera.lat]);
+  const world = makeWorldProject(camera, width, height);
   return (p: LonLat) => {
     const [wx, wy] = toWorld(p);
-    return [(wx - cx) * k + width / 2, (wy - cy) * k + height / 2];
+    return world(wx, wy);
   };
 };
 

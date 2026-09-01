@@ -1,7 +1,15 @@
 import React, { createContext, useContext, useMemo } from "react";
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
 import europe from "./data/europe.json";
-import { Camera, CameraKey, LonLat, WORLD, cameraAt, makeProject, toWorld } from "./projection";
+import {
+  Camera,
+  CameraKey,
+  LonLat,
+  cameraAt,
+  makeProject,
+  makeWorldProject,
+  toWorld,
+} from "./projection";
 import { INK_AMBER, MapTheme } from "./theme";
 
 // ── The map ────────────────────────────────────────────────────────────
@@ -10,6 +18,11 @@ import { INK_AMBER, MapTheme } from "./theme";
 // pre-clipped to the region by scripts/build-map-data.mjs. They are real
 // vectors, not a screenshot of somebody's basemap, so they stay sharp at any
 // resolution and every colour in the frame is yours to set.
+//
+// The camera can turn and rake, not just pan and zoom, so every point on
+// screen has to run through the projector every frame — a cached transform
+// can't do perspective. Coordinates are projected to world space once, up
+// front; per frame we only walk those numbers and build path strings.
 
 type Feature = {
   properties: { name: string };
@@ -21,47 +34,56 @@ type Feature = {
 
 const FEATURES = europe.features as unknown as Feature[];
 
-// Project each country once, into world units. Cached for the whole render.
-const worldPath = (feature: Feature): string => {
+/** Every country as flat [x0,y0,x1,y1,…] rings in world units. Built once. */
+const RINGS: Record<string, Float64Array[]> = {};
+for (const feature of FEATURES) {
   const polygons =
     feature.geometry.type === "Polygon"
       ? [feature.geometry.coordinates as number[][][]]
       : (feature.geometry.coordinates as number[][][][]);
 
-  const parts: string[] = [];
+  const rings: Float64Array[] = [];
   for (const polygon of polygons) {
     for (const ring of polygon) {
-      let d = "";
+      const flat = new Float64Array(ring.length * 2);
       for (let i = 0; i < ring.length; i++) {
         const [x, y] = toWorld(ring[i] as LonLat);
-        d += `${i === 0 ? "M" : "L"}${x.toFixed(2)} ${y.toFixed(2)}`;
+        flat[i * 2] = x;
+        flat[i * 2 + 1] = y;
       }
-      if (d) parts.push(d + "Z");
+      rings.push(flat);
     }
   }
-  return parts.join("");
+  RINGS[feature.properties.name] = rings;
+}
+
+const ALL_NAMES = Object.keys(RINGS);
+
+const buildPath = (
+  rings: Float64Array[],
+  project: (x: number, y: number) => [number, number]
+): string => {
+  let d = "";
+  for (const ring of rings) {
+    for (let i = 0; i < ring.length; i += 2) {
+      const [sx, sy] = project(ring[i], ring[i + 1]);
+      d += `${i === 0 ? "M" : "L"}${sx.toFixed(1)} ${sy.toFixed(1)}`;
+    }
+    d += "Z";
+  }
+  return d;
 };
-
-const PATHS: Record<string, string> = {};
-for (const feature of FEATURES) PATHS[feature.properties.name] = worldPath(feature);
-const ALL_LAND = Object.values(PATHS).join("");
-
-export const countryPath = (names: string[]): string =>
-  names.map((n) => PATHS[n] ?? "").join("");
 
 // ── Context ────────────────────────────────────────────────────────────
 
 type MapContextValue = {
   project: (p: LonLat) => [number, number];
   camera: Camera;
-  /** screen px per world unit — use it to keep marker sizes stable */
-  k: number;
   theme: MapTheme;
   /** seconds into the composition */
   t: number;
-  /** SVG transform that maps world units to the screen — layers that draw
-   *  geography (rather than type) wrap themselves in it */
-  worldTransform: string;
+  /** this frame's screen-space path for each country */
+  paths: Record<string, string>;
 };
 
 const MapContext = createContext<MapContextValue | null>(null);
@@ -72,18 +94,23 @@ export const useMap = (): MapContextValue => {
   return value;
 };
 
+/** Screen-space path for a set of countries, this frame. */
+export const useCountryPath = (names: string[]): string => {
+  const { paths } = useMap();
+  return names.map((n) => paths[n] ?? "").join("");
+};
+
 // ── Canvas ─────────────────────────────────────────────────────────────
 
 export const MapCanvas: React.FC<{
   camera: CameraKey[] | Camera;
   theme?: MapTheme;
-  /** Adds film grain and a vignette. On by default — it is most of what
-   *  stops a vector map looking like a chart. */
+  /** Film grain and a vignette. On by default — it is most of what stops a
+   *  vector map looking like a chart. */
   grade?: boolean;
   /** SVG map layers — territories, labels, markers, arrows. */
   children?: React.ReactNode;
-  /** HTML layers drawn over the map but still inside the map context, for
-   *  things that are type rather than geography (the era chip, a legend). */
+  /** HTML layers over the map but still inside the map context. */
   hud?: React.ReactNode;
 }> = ({ camera, theme = INK_AMBER, grade = true, children, hud }) => {
   const frame = useCurrentFrame();
@@ -91,22 +118,25 @@ export const MapCanvas: React.FC<{
   const t = frame / fps;
 
   const live = Array.isArray(camera) ? cameraAt(camera, t) : camera;
-  const k = live.scale / WORLD;
-  const [cx, cy] = toWorld([live.lon, live.lat]);
-  const project = useMemo(
-    () => makeProject(live, width, height),
-    [live.lon, live.lat, live.scale, width, height]
-  );
 
-  const transform = `translate(${width / 2 - cx * k} ${height / 2 - cy * k}) scale(${k})`;
-  const value: MapContextValue = {
-    project,
-    camera: live,
-    k,
-    theme,
-    t,
-    worldTransform: transform,
-  };
+  const { paths, allLand, project } = useMemo(() => {
+    const world = makeWorldProject(live, width, height);
+    const built: Record<string, string> = {};
+    let land = "";
+    for (const name of ALL_NAMES) {
+      const d = buildPath(RINGS[name], world);
+      built[name] = d;
+      land += d;
+    }
+    return {
+      paths: built,
+      allLand: land,
+      project: makeProject(live, width, height),
+    };
+  }, [live.lon, live.lat, live.scale, live.tilt, live.bearing, width, height]);
+
+  const value: MapContextValue = { project, camera: live, theme, t, paths };
+  const raked = (live.tilt ?? 0) > 4;
 
   return (
     <MapContext.Provider value={value}>
@@ -126,33 +156,39 @@ export const MapCanvas: React.FC<{
               <stop offset="0%" stopColor={theme.landHigh} />
               <stop offset="100%" stopColor={theme.land} />
             </linearGradient>
+            <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor={theme.seaDeep} stopOpacity="0.55" />
+              <stop offset="55%" stopColor={theme.seaDeep} stopOpacity="0.2" />
+              <stop offset="100%" stopColor={theme.seaDeep} stopOpacity="0" />
+            </linearGradient>
           </defs>
 
           <rect width={width} height={height} fill="url(#seaLight)" />
 
-          <g transform={transform}>
-            {/* a dark rim inside every coastline, so land reads as raised out
-                of the water without an expensive blur filter */}
-            <path
-              d={ALL_LAND}
-              fill="none"
-              stroke={theme.coastGlow}
-              strokeWidth={7}
-              vectorEffect="non-scaling-stroke"
-              strokeLinejoin="round"
-              opacity={0.85}
-            />
-            <path d={ALL_LAND} fill="url(#landShade)" />
-            {/* borders and coastline, hairline at any zoom */}
-            <path
-              d={ALL_LAND}
-              fill="none"
-              stroke={theme.border}
-              strokeWidth={1.1}
-              vectorEffect="non-scaling-stroke"
-              strokeLinejoin="round"
-            />
-          </g>
+          {/* a dark rim inside every coastline, so land reads as raised */}
+          <path
+            d={allLand}
+            fill="none"
+            stroke={theme.coastGlow}
+            strokeWidth={7}
+            vectorEffect="non-scaling-stroke"
+            strokeLinejoin="round"
+            opacity={0.85}
+          />
+          <path d={allLand} fill="url(#landShade)" />
+          <path
+            d={allLand}
+            fill="none"
+            stroke={theme.border}
+            strokeWidth={1.1}
+            vectorEffect="non-scaling-stroke"
+            strokeLinejoin="round"
+          />
+
+          {/* distance haze along the horizon, only when the map is raked */}
+          {raked ? (
+            <rect width={width} height={height * 0.34} fill="url(#haze)" />
+          ) : null}
 
           {children}
         </svg>
@@ -184,8 +220,6 @@ const Grade: React.FC<{ theme: MapTheme }> = ({ theme }) => (
     />
     <AbsoluteFill
       style={{
-        // A tiled turbulence texture. A repeating gradient would moire badly
-        // against the pixel grid at this size; a real noise tile does not.
         backgroundImage: `url("${GRAIN}")`,
         backgroundSize: "180px 180px",
         mixBlendMode: "overlay",

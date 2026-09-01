@@ -30,34 +30,38 @@ const MECCA: LonLat = [39.83, 21.42];
 // Gold lands on Cairo in handfuls, scattered so it reads as a pile rather
 // than a row. Each one is a beat of the line "he pays whatever he's told".
 const COINS: { at: LonLat; in: number; size: number }[] = [
-  { at: [30.6, 30.5], in: 20.6, size: 46 },
-  { at: [31.9, 30.6], in: 21.4, size: 40 },
-  { at: [30.9, 29.6], in: 22.3, size: 44 },
-  { at: [32.1, 29.7], in: 23.2, size: 38 },
-  { at: [30.2, 29.9], in: 24.4, size: 42 },
-  { at: [31.5, 31.0], in: 25.6, size: 36 },
-  { at: [32.5, 30.3], in: 26.8, size: 44 },
+  { at: [30.6, 30.95], in: 20.6, size: 46 },
+  { at: [31.9, 31.05], in: 21.4, size: 40 },
+  { at: [30.9, 30.05], in: 22.3, size: 44 },
+  { at: [32.1, 30.15], in: 23.2, size: 38 },
+  { at: [30.2, 30.35], in: 24.4, size: 42 },
+  { at: [31.5, 31.45], in: 25.6, size: 36 },
+  { at: [32.5, 30.75], in: 26.8, size: 44 },
   { at: [29.9, 30.7], in: 28.0, size: 38 },
-  { at: [31.2, 28.9], in: 29.2, size: 46 },
-  { at: [32.8, 29.2], in: 30.4, size: 36 },
+  { at: [31.2, 29.35], in: 29.2, size: 46 },
+  { at: [32.8, 29.65], in: 30.4, size: 36 },
   { at: [29.6, 29.3], in: 31.6, size: 42 },
-  { at: [33.2, 30.8], in: 32.6, size: 34 },
+  { at: [33.2, 31.25], in: 32.6, size: 34 },
 ];
 
 // scale is the world width in px: the frame shows 360*1080/scale degrees of
 // longitude. 3000 is a hemisphere, 14000 is one country.
+//
+// tilt lays the map down (0 = straight down, 40+ = raked table map) and
+// bearing turns it. Both move between beats, so the map is never still and
+// never flat — the ground turns under the story.
 const CAMERA: CameraKey[] = [
-  { at: 0, lon: -6, lat: 15, scale: 8000 },      // West Africa
-  { at: 4.4, lon: -7.6, lat: 13.0, scale: 13000 }, // Niani
-  { at: 9.4, lon: 14, lat: 20, scale: 7000 },    // Mali and Mecca in one frame
-  { at: 13.0, lon: 8, lat: 19, scale: 7200 },
-  { at: 17.5, lon: 10, lat: 22, scale: 7000 },   // the crossing
-  { at: 21.0, lon: 28, lat: 28, scale: 9500 },
-  { at: 24.5, lon: 31.2, lat: 30.0, scale: 13000 }, // Cairo
-  { at: 34.0, lon: 31.4, lat: 30.0, scale: 13600 },
-  { at: 38.5, lon: 20, lat: 25, scale: 6600 },   // the road home
-  { at: 43.0, lon: 8, lat: 26, scale: 4200 },    // the known world
-  { at: 50, lon: 7, lat: 26, scale: 4000 },
+  { at: 0, lon: -6, lat: 15, scale: 13000, tilt: 38, bearing: -9 },      // West Africa
+  { at: 4.4, lon: -7.6, lat: 13.0, scale: 21000, tilt: 44, bearing: -3 }, // Niani
+  { at: 9.4, lon: 14, lat: 20, scale: 11000, tilt: 30, bearing: 3 },     // Mali and Mecca together
+  { at: 13.0, lon: 8, lat: 19, scale: 11500, tilt: 34, bearing: 7 },
+  { at: 17.5, lon: 10, lat: 22, scale: 11500, tilt: 41, bearing: 13 },   // the crossing
+  { at: 21.0, lon: 28, lat: 28, scale: 15000, tilt: 38, bearing: 9 },
+  { at: 24.5, lon: 31.2, lat: 30.0, scale: 20000, tilt: 45, bearing: 3 }, // Cairo
+  { at: 34.0, lon: 31.4, lat: 30.0, scale: 21000, tilt: 47, bearing: -3 },
+  { at: 38.5, lon: 20, lat: 25, scale: 10500, tilt: 34, bearing: -8 },   // the road home
+  { at: 43.0, lon: 8, lat: 26, scale: 5600, tilt: 18, bearing: -4 },    // the known world
+  { at: 50, lon: 7, lat: 26, scale: 5200, tilt: 14, bearing: 0 },
 ];
 
 export const MansaMusa: React.FC = () => (

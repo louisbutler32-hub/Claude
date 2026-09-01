@@ -59,7 +59,20 @@ stay glued to the ground while the camera moves.
 ```
 
 **Camera.** A list of keyframes; the camera eases between them, with zoom
-interpolated logarithmically so a push doesn't lurch.
+interpolated logarithmically so a push doesn't lurch. It also **tilts and
+turns** — `tilt` lays the map down away from the viewer (0 is straight down,
+40+ is the raked table-map look) and `bearing` rotates it. Both interpolate
+between keys, so the ground moves under the story instead of sliding flat.
+
+Raking pushes everything away from the eye, so a `scale` tuned top-down
+needs to come up by roughly half again at `tilt: 40`. A distance haze fades
+in along the horizon automatically whenever the map is raked.
+
+Everything on the map — coastlines, arrows, labels, shields — runs through
+one projector, so geometry that lies down in perspective and type that stays
+upright always agree about where a place is. That is also why the base map
+is rebuilt every frame rather than cached behind a transform: a cached
+transform cannot do perspective.
 
 ```ts
 const CAMERA: CameraKey[] = [
