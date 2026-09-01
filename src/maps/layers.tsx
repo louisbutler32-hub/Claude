@@ -204,11 +204,11 @@ export const CityMarker: React.FC<{
   side?: "below" | "right" | "left" | "above";
 }> = ({ at, name, in: from = 0, until, size = 13, tone = "plain", side = "below" }) => {
   const { project, theme, t } = useMap();
-  const alive = visibility(t, from, until, 0.35);
+  const alive = visibility(t, from, until, 0.2);
   if (alive <= 0.01) return null;
 
   const [x, y] = project(at);
-  const pop = easeOutCubic(ramp(t, from, from + 0.4));
+  const pop = easeOutCubic(ramp(t, from, from + 0.22));
   const color = tone === "plain" ? theme.label : toneColor(theme, tone);
 
   const dx = side === "right" ? size * 1.9 : side === "left" ? -size * 1.9 : 0;
@@ -490,7 +490,7 @@ export const FlagPin: React.FC<{
   const file = src ? (/^https?:\/\//.test(src) ? src : staticFile(src)) : undefined;
   usePreloaded(file);
 
-  const alive = visibility(t, from, until, 0.35);
+  const alive = visibility(t, from, until, 0.18);
   if (alive <= 0.01) return null;
 
   const scale = canvasWidth / 1080;
@@ -508,8 +508,9 @@ export const FlagPin: React.FC<{
   const y = py + offset[1] * scale - h / 2;
 
   // Lands with a small overshoot — enough to feel placed, not bouncy.
-  const p = easeOutCubic(ramp(t, from, from + 0.45));
-  const pop = 0.72 + 0.28 * p + Math.sin(Math.PI * p) * 0.05;
+  // Lands in a fifth of a second with a real overshoot — a pop, not a fade.
+  const p = easeOutCubic(ramp(t, from, from + 0.2));
+  const pop = 0.55 + 0.45 * p + Math.sin(Math.PI * p) * 0.16;
 
   const id = `pin-${Math.round(px)}-${Math.round(py)}-${flag ?? "img"}`;
   const emblem = flag ? EMBLEMS[flag] : null;
@@ -620,7 +621,7 @@ export const UnitIcon: React.FC<{
 }> = ({ at, kind = "infantry", tone = "accent", color, label, in: from = 0, until, size = 46 }) => {
   const { project, theme, t } = useMap();
   const { width: canvasWidth } = useVideoConfig();
-  const alive = visibility(t, from, until, 0.35);
+  const alive = visibility(t, from, until, 0.18);
   if (alive <= 0.01) return null;
 
   const scale = canvasWidth / 1080;
@@ -688,14 +689,14 @@ export const BattleMarker: React.FC<{
 }> = ({ at, label, date, in: from = 0, until, size = 44 }) => {
   const { project, theme, t } = useMap();
   const { width: canvasWidth } = useVideoConfig();
-  const alive = visibility(t, from, until, 0.3);
+  const alive = visibility(t, from, until, 0.16);
   if (alive <= 0.01) return null;
 
   const scale = canvasWidth / 1080;
   const s = size * scale;
   const [x, y] = project(at);
-  const p = easeOutCubic(ramp(t, from, from + 0.35));
-  const pop = 0.6 + 0.4 * p;
+  const p = easeOutCubic(ramp(t, from, from + 0.18));
+  const pop = 0.5 + 0.5 * p + Math.sin(Math.PI * p) * 0.12;
   // Swords land crossed: they swing in from opposite sides and meet.
   const swing = (1 - p) * 18;
 

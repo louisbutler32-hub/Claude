@@ -7,15 +7,19 @@ import { BRIGHT_ATLAS } from "./theme";
 
 // ── The Richest Man in History ─────────────────────────────────────────
 //
-// Built to scripts-vo/mansa-musa.md. 50 seconds, one beat per line, timings
+// Built to scripts-vo/mansa-musa.md. 33 seconds, one beat per line, timings
 // in seconds and identical to the ones in the script.
+//
+// Cut like a short, not like a documentary: every camera move is a `snap`
+// or a `cut`, never a drift, and props pop in on the word rather than
+// fading. The only slow move in the video is the push over the gold, which
+// is the one beat that should feel like it is getting away from you.
 //
 // The closing image is the Catalan Atlas of 1375 — a Spanish mapmaker who
 // had never left Europe drawing Mansa Musa enthroned with a gold nugget.
-// It is 14th century and public domain, and it means the video ends on a
-// real medieval map.
+// 14th century, public domain, so the video ends on a real medieval map.
 
-export const MANSA_DURATION_IN_FRAMES = 1500; // 50s @ 30fps
+export const MANSA_DURATION_IN_FRAMES = 990; // 33s @ 30fps
 
 const MALI = [
   "Mali", "Senegal", "Gambia", "Guinea", "Guinea-Bissau",
@@ -28,62 +32,74 @@ const CAIRO: LonLat = [31.24, 30.04];
 const MECCA: LonLat = [39.83, 21.42];
 
 // Gold lands on Cairo in handfuls, scattered so it reads as a pile rather
-// than a row. Each one is a beat of the line "he pays whatever he's told".
+// than a row. Roughly three a second — faster than the ear can count, which
+// is the point.
 const COINS: { at: LonLat; in: number; size: number }[] = [
-  { at: [30.6, 30.95], in: 20.6, size: 46 },
-  { at: [31.9, 31.05], in: 21.4, size: 40 },
-  { at: [30.9, 30.05], in: 22.3, size: 44 },
-  { at: [32.1, 30.15], in: 23.2, size: 38 },
-  { at: [30.2, 30.35], in: 24.4, size: 42 },
-  { at: [31.5, 31.45], in: 25.6, size: 36 },
-  { at: [32.5, 30.75], in: 26.8, size: 44 },
-  { at: [29.9, 30.7], in: 28.0, size: 38 },
-  { at: [31.2, 29.35], in: 29.2, size: 46 },
-  { at: [32.8, 29.65], in: 30.4, size: 36 },
-  { at: [29.6, 29.3], in: 31.6, size: 42 },
-  { at: [33.2, 31.25], in: 32.6, size: 34 },
+  { at: [30.6, 30.9], in: 15.6, size: 46 },
+  { at: [31.9, 31.0], in: 16.0, size: 40 },
+  { at: [30.9, 30.1], in: 16.5, size: 44 },
+  { at: [32.1, 30.2], in: 17.0, size: 38 },
+  { at: [30.2, 30.4], in: 17.6, size: 42 },
+  { at: [31.5, 31.4], in: 18.2, size: 36 },
+  { at: [32.5, 30.7], in: 18.8, size: 44 },
+  { at: [29.9, 30.7], in: 19.4, size: 38 },
+  { at: [31.2, 29.4], in: 20.0, size: 46 },
+  { at: [32.8, 29.7], in: 20.6, size: 36 },
+  { at: [29.6, 29.4], in: 21.2, size: 42 },
+  { at: [33.2, 31.2], in: 21.8, size: 34 },
+  { at: [30.4, 28.9], in: 22.4, size: 40 },
+  { at: [32.2, 28.7], in: 23.0, size: 38 },
 ];
 
 // scale is the world width in px: the frame shows 360*1080/scale degrees of
-// longitude. 3000 is a hemisphere, 14000 is one country.
+// longitude. Raking pushes everything away, so these run ~1.6x what a
+// top-down camera would need.
 //
-// tilt lays the map down (0 = straight down, 40+ = raked table map) and
-// bearing turns it. Both move between beats, so the map is never still and
-// never flat — the ground turns under the story.
+// ease: `cut` jumps, `snap` arrives fast and settles, `smooth` drifts.
 const CAMERA: CameraKey[] = [
-  { at: 0, lon: -6, lat: 15, scale: 13000, tilt: 38, bearing: -9 },      // West Africa
-  { at: 4.4, lon: -7.6, lat: 13.0, scale: 21000, tilt: 44, bearing: -3 }, // Niani
-  { at: 9.4, lon: 14, lat: 20, scale: 11000, tilt: 30, bearing: 3 },     // Mali and Mecca together
-  { at: 13.0, lon: 8, lat: 19, scale: 11500, tilt: 34, bearing: 7 },
-  { at: 17.5, lon: 10, lat: 22, scale: 11500, tilt: 41, bearing: 13 },   // the crossing
-  { at: 21.0, lon: 28, lat: 28, scale: 15000, tilt: 38, bearing: 9 },
-  { at: 24.5, lon: 31.2, lat: 30.0, scale: 20000, tilt: 45, bearing: 3 }, // Cairo
-  { at: 34.0, lon: 31.4, lat: 30.0, scale: 21000, tilt: 47, bearing: -3 },
-  { at: 38.5, lon: 20, lat: 25, scale: 10500, tilt: 34, bearing: -8 },   // the road home
-  { at: 43.0, lon: 8, lat: 26, scale: 5600, tilt: 18, bearing: -4 },    // the known world
-  { at: 50, lon: 7, lat: 26, scale: 5200, tilt: 14, bearing: 0 },
+  { at: 0, lon: -6, lat: 15, scale: 13000, tilt: 40, bearing: -10 },
+  { at: 3.6, lon: -6.4, lat: 14.4, scale: 14000, tilt: 41, bearing: -6, ease: "smooth" },
+
+  // "This is Mansa Musa" — hard cut in
+  { at: 4.0, lon: -7.8, lat: 12.6, scale: 22000, tilt: 46, bearing: 2, ease: "cut" },
+  { at: 7.6, lon: -7.4, lat: 12.8, scale: 23000, tilt: 46, bearing: 6, ease: "smooth" },
+
+  // "he walks to Mecca" — snap wide enough to hold both ends
+  { at: 8.6, lon: 15, lat: 20, scale: 10500, tilt: 30, bearing: 2, ease: "snap" },
+
+  // the caravan
+  { at: 11.4, lon: 6, lat: 19, scale: 12500, tilt: 38, bearing: 10, ease: "snap" },
+
+  // "In Cairo" — hard cut onto the city
+  { at: 15.0, lon: 31.2, lat: 30.2, scale: 20000, tilt: 45, bearing: 4, ease: "cut" },
+  // the only slow move in the video: the push over the gold
+  { at: 26.4, lon: 31.6, lat: 30.0, scale: 24000, tilt: 48, bearing: -6, ease: "smooth" },
+
+  // "fifty years later" — cut out to the known world
+  { at: 27.0, lon: 6, lat: 26, scale: 5600, tilt: 17, bearing: -3, ease: "cut" },
+  { at: 33, lon: 5, lat: 26, scale: 5200, tilt: 14, bearing: 2, ease: "smooth" },
 ];
 
 export const MansaMusa: React.FC = () => (
   <AbsoluteFill style={{ backgroundColor: BRIGHT_ATLAS.seaDeep }}>
     <MapCanvas camera={CAMERA} theme={BRIGHT_ATLAS}>
-      {/* ── he rules Mali, and nobody can count how rich he is ── */}
-      <Territory countries={MALI} color="ochre" in={0.2} draw={1.6} />
-      <MapLabel at={[-6.5, 15.6]} text="MALI" size={56} in={1.4} until={9.2} bow={12} />
-      <CityMarker at={NIANI} name="Niani" in={4.6} until={13.4} size={15} side="below" />
+      {/* 0:00 — he rules Mali, and nobody can count how rich he is */}
+      <Territory countries={MALI} color="ochre" in={0.2} draw={1.0} />
+      <MapLabel at={[-6.5, 15.6]} text="MALI" size={56} in={1.0} until={8.4} bow={12} />
 
-      {/* ── in 1324 he decides to walk to Mecca ── */}
-      <CityMarker at={MECCA} name="Mecca" in={9.8} size={16} side="right" />
+      {/* 0:04 — cut to Niani */}
+      <CityMarker at={NIANI} name="Niani" in={4.1} until={11.8} size={15} side="below" />
 
-      {/* ── sixty thousand people, and camels carrying gold ── */}
-      <MapArrow from={NIANI} to={TIMBUKTU} bow={-0.14} in={12.4} dur={1.1} until={40.0} width={17} />
-      <CityMarker at={TIMBUKTU} name="Timbuktu" in={13.6} until={40.0} size={14} side="above" />
+      {/* 0:08 — Mecca, the far end of the walk */}
+      <CityMarker at={MECCA} name="Mecca" in={8.8} until={26.6} size={16} side="right" />
 
-      {/* ── they cross the Sahara ── */}
-      <MapArrow from={TIMBUKTU} to={CAIRO} bow={-0.1} in={17.2} dur={3.4} until={40.0} width={19} />
-      <CityMarker at={CAIRO} name="Cairo" in={19.8} size={17} side="below" />
+      {/* 0:11 — sixty thousand people, and camels carrying gold */}
+      <MapArrow from={NIANI} to={TIMBUKTU} bow={-0.14} in={11.5} dur={0.7} until={26.6} width={17} />
+      <CityMarker at={TIMBUKTU} name="Timbuktu" in={12.2} until={26.6} size={14} side="above" />
+      <MapArrow from={TIMBUKTU} to={CAIRO} bow={-0.1} in={12.9} dur={1.9} until={26.6} width={19} />
 
-      {/* ── he starts giving the gold away ── */}
+      {/* 0:15 — cut to Cairo, and the gold starts landing */}
+      <CityMarker at={CAIRO} name="Cairo" in={15.1} until={26.6} size={17} side="below" />
       {COINS.map((coin, i) => (
         <FlagPin
           key={i}
@@ -91,20 +107,16 @@ export const MansaMusa: React.FC = () => (
           flag="gold"
           shape="circle"
           in={coin.in}
-          until={41.0}
+          until={26.6}
           size={coin.size}
         />
       ))}
 
-      {/* ── on to Mecca, and then the road home ── */}
-      <MapArrow from={CAIRO} to={MECCA} bow={-0.16} in={34.4} dur={1.2} until={41.0} width={15} />
-      <MapArrow from={CAIRO} to={[10, 22]} bow={0.12} in={37.8} dur={1.4} until={41.6} width={13} />
-
-      {/* ── fifty years later, a mapmaker in Spain ── */}
+      {/* 0:27 — fifty years later, a mapmaker in Spain */}
       <Portrait
         at={[-19, 31]}
         src="assets/props/catalan-atlas-mansa-musa.jpg"
-        in={43.2}
+        in={27.3}
         size={300}
         shape="panel"
       />

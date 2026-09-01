@@ -40,6 +40,12 @@ const EYE = 2.2;
 export type CameraKey = Camera & {
   /** Seconds into the composition at which the camera is exactly here. */
   at: number;
+  /** How the camera arrives here.
+   *  - `smooth` (default): eases in and out. Documentary drift.
+   *  - `snap`: most of the move happens immediately, then settles. Use this
+   *    for nearly everything in a short — it reads as energy.
+   *  - `cut`: no move at all. Holds the previous frame, then jumps. */
+  ease?: "smooth" | "snap" | "cut";
 };
 
 const easeInOutCubic = (p: number) =>
@@ -58,7 +64,13 @@ export const cameraAt = (keys: CameraKey[], t: number): Camera => {
   while (i < keys.length - 2 && t > keys[i + 1].at) i++;
   const a = keys[i];
   const b = keys[i + 1];
-  const p = easeInOutCubic((t - a.at) / Math.max(b.at - a.at, 1e-6));
+  const raw = (t - a.at) / Math.max(b.at - a.at, 1e-6);
+  const p =
+    b.ease === "cut"
+      ? 0 // hold, then jump when the next key becomes current
+      : b.ease === "snap"
+      ? 1 - Math.pow(1 - Math.min(1, Math.max(0, raw)), 5)
+      : easeInOutCubic(raw);
 
   const lerp = (from: number, to: number) => from + (to - from) * p;
   return {
