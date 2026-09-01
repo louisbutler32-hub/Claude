@@ -19,7 +19,7 @@ const SOURCE = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json";
 // edges along that box (the Sutherland–Hodgman artifact) which fill as bands
 // of land across the sea. Simplification, not clipping, is what keeps the
 // file small.
-const REGION = { west: -30, east: 124, south: 12, north: 84 };
+const REGION = { west: -30, east: 124, south: 0, north: 84 };
 
 // Douglas–Peucker tolerance in degrees. At our tightest framing one screen
 // pixel is about 0.013°, so 0.006° is invisible and roughly halves the file.
