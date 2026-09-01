@@ -141,6 +141,7 @@ export const FLAGS: Record<FlagKey, Emblem> = {
 // wide on a phone.
 
 export type ArmsKey =
+  | "gold"
   | "mongol"
   | "mongolBlack"
   | "piast"
@@ -193,6 +194,23 @@ const Sulde: React.FC<{ field: string; ink: string }> = ({ field, ink }) => (
 );
 
 export const ARMS: Record<ArmsKey, Emblem> = {
+  // A coin. Pinned in a circle it reads as gold on the map; stack a dozen
+  // and it reads as more gold than anywhere can absorb.
+  gold: arms(() => (
+    <>
+      <rect width={AW} height={AH} fill="#d9a441" />
+      <circle cx={AW / 2} cy={AH / 2} r={AW * 0.42} fill="#f0c866" />
+      <circle
+        cx={AW / 2}
+        cy={AH / 2}
+        r={AW * 0.3}
+        fill="none"
+        stroke="#a8762a"
+        strokeWidth={3}
+      />
+    </>
+  )),
+
   // Köke Mongol — the blue banner, with the sülde standard that actually
   // travelled with the army.
   mongol: arms(() => <Sulde field="#2f5f9e" ink="#f0c44a" />),

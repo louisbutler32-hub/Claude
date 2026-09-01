@@ -145,3 +145,15 @@ Natural Earth has no historical frontiers. At these zooms it reads fine for
 blocs and arrows, and it is what most channels in this format actually use.
 For period-accurate frontiers, add your own polygons to the data build and
 pass their names to `Territory`; nothing else has to change.
+
+## Sourced images
+
+`public/assets/props/catalan-atlas-mansa-musa.jpg` is a detail from the
+**Catalan Atlas, 1375** (Bibliothèque nationale de France) — 14th century,
+public domain, safe to monetise. It closes the Mansa Musa short: a Spanish
+mapmaker who had never left Europe drawing a West African king holding a
+gold nugget, pinned onto the modern map of the same place.
+
+Anything else you add here is yours to source and clear. Age alone is not a
+licence — a photograph of an old object can carry its own copyright even
+when the object does not.

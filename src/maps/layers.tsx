@@ -453,7 +453,7 @@ const shapePath = (shape: PinShape, w: number, h: number): string => {
   return `M0 0 H${w} V${h} H0 Z`;
 };
 
-export type PinShape = "badge" | "shield" | "circle";
+export type PinShape = "badge" | "shield" | "circle" | "panel";
 
 export const FlagPin: React.FC<{
   at: LonLat;
@@ -494,7 +494,14 @@ export const FlagPin: React.FC<{
 
   const scale = canvasWidth / 1080;
   const w = size * scale;
-  const h = shape === "circle" ? w : shape === "shield" ? w * 1.16 : w * (2 / 3);
+  const h =
+    shape === "circle"
+      ? w
+      : shape === "shield"
+      ? w * 1.16
+      : shape === "panel"
+      ? w * 1.22 // upright, for a manuscript panel or a portrait
+      : w * (2 / 3);
   const [px, py] = project(at);
   const x = px + offset[0] * scale - w / 2;
   const y = py + offset[1] * scale - h / 2;
