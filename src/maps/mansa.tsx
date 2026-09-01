@@ -10,10 +10,11 @@ import { BRIGHT_ATLAS } from "./theme";
 // Built to scripts-vo/mansa-musa.md. 33 seconds, one beat per line, timings
 // in seconds and identical to the ones in the script.
 //
-// Cut like a short, not like a documentary: every camera move is a `snap`
-// or a `cut`, never a drift, and props pop in on the word rather than
-// fading. The only slow move in the video is the push over the gold, which
-// is the one beat that should feel like it is getting away from you.
+// Cut like a short, not like a documentary: the camera holds, then zooms
+// the whole way in about two thirds of a second, and props pop in on the
+// word rather than fading. No jump cuts — the travel is always visible.
+// The only slow move is the push over the gold, the one beat that should
+// feel like it is getting away from you.
 //
 // The closing image is the Catalan Atlas of 1375 — a Spanish mapmaker who
 // had never left Europe drawing Mansa Musa enthroned with a gold nugget.
@@ -55,28 +56,35 @@ const COINS: { at: LonLat; in: number; size: number }[] = [
 // longitude. Raking pushes everything away, so these run ~1.6x what a
 // top-down camera would need.
 //
-// ease: `cut` jumps, `snap` arrives fast and settles, `smooth` drifts.
+// No jump cuts. The energy comes from FAST ZOOMS: the camera holds, then
+// travels the whole distance in about two thirds of a second and settles.
+// That is a `snap` key placed a short interval after the one before it —
+// the shorter the gap, the harder the zoom. Long gaps between keys are the
+// slow drifts underneath, so the fast moves have something to be fast
+// against.
 const CAMERA: CameraKey[] = [
   { at: 0, lon: -6, lat: 15, scale: 13000, tilt: 40, bearing: -10 },
-  { at: 3.6, lon: -6.4, lat: 14.4, scale: 14000, tilt: 41, bearing: -6, ease: "smooth" },
+  { at: 3.4, lon: -6.3, lat: 14.6, scale: 13800, tilt: 41, bearing: -7, ease: "smooth" },
 
-  // "This is Mansa Musa" — hard cut in
-  { at: 4.0, lon: -7.8, lat: 12.6, scale: 22000, tilt: 46, bearing: 2, ease: "cut" },
-  { at: 7.6, lon: -7.4, lat: 12.8, scale: 23000, tilt: 46, bearing: 6, ease: "smooth" },
+  // "This is Mansa Musa" — hard zoom down onto Niani
+  { at: 4.1, lon: -7.8, lat: 12.6, scale: 22000, tilt: 46, bearing: 0, ease: "snap" },
+  { at: 7.4, lon: -7.5, lat: 12.7, scale: 23000, tilt: 46, bearing: 4, ease: "smooth" },
 
-  // "he walks to Mecca" — snap wide enough to hold both ends
-  { at: 8.6, lon: 15, lat: 20, scale: 10500, tilt: 30, bearing: 2, ease: "snap" },
+  // "he walks to Mecca" — rip back out so both ends fit
+  { at: 8.2, lon: 15, lat: 20, scale: 10500, tilt: 30, bearing: 1, ease: "snap" },
+  { at: 11.0, lon: 13, lat: 19.6, scale: 10800, tilt: 33, bearing: 5, ease: "smooth" },
 
-  // the caravan
-  { at: 11.4, lon: 6, lat: 19, scale: 12500, tilt: 38, bearing: 10, ease: "snap" },
+  // the caravan leaves — quick reframe east along the route
+  { at: 11.7, lon: 8, lat: 20, scale: 11500, tilt: 37, bearing: 9, ease: "snap" },
+  { at: 14.6, lon: 14, lat: 22.5, scale: 12500, tilt: 40, bearing: 13, ease: "smooth" },
 
-  // "In Cairo" — hard cut onto the city
-  { at: 15.0, lon: 31.2, lat: 30.2, scale: 20000, tilt: 45, bearing: 4, ease: "cut" },
-  // the only slow move in the video: the push over the gold
-  { at: 26.4, lon: 31.6, lat: 30.0, scale: 24000, tilt: 48, bearing: -6, ease: "smooth" },
+  // "In Cairo" — hard zoom onto the city
+  { at: 15.3, lon: 31.2, lat: 30.2, scale: 20000, tilt: 45, bearing: 4, ease: "snap" },
+  // the one slow move in the video: the push over the gold
+  { at: 26.2, lon: 31.6, lat: 30.0, scale: 24000, tilt: 48, bearing: -6, ease: "smooth" },
 
-  // "fifty years later" — cut out to the known world
-  { at: 27.0, lon: 6, lat: 26, scale: 5600, tilt: 17, bearing: -3, ease: "cut" },
+  // "fifty years later" — pull all the way out to the known world
+  { at: 27.2, lon: 6, lat: 26, scale: 5600, tilt: 17, bearing: -3, ease: "snap" },
   { at: 33, lon: 5, lat: 26, scale: 5200, tilt: 14, bearing: 2, ease: "smooth" },
 ];
 

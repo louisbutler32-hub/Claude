@@ -33,26 +33,27 @@ flat — the facts do the work.
 ```
 
 **Delivery:** flat and unhurried, but don't leave air between lines — the
-cuts are fast underneath you. The only pause that matters is before "Holding
+camera is moving fast underneath you. The only pause that matters is before "Holding
 a lump of gold."
 
 ---
 
 ## Map
 
-Every camera move is a **snap** or a **cut**, never a drift. One move per
-line, and each prop pops in on the word.
+No jump cuts. The camera holds, then **zooms the whole distance in about
+two thirds of a second** and settles — one move per line, with each prop
+popping in on the word.
 
 | Time | Camera | On the map |
 | --- | --- | --- |
 | 0:00 | Mali, raked hard | Gold floods West Africa |
-| 0:04 | **cut** to Niani | City marker pops |
-| 0:08 | **snap** wide | Mecca drops in on the far side — the distance is the joke |
-| 0:11 | snap, turning | Caravan arrow leaves Niani |
-| 0:15 | **cut** to Cairo | Arrow lands; first coins pop |
+| 0:04 | **fast zoom down** onto Niani | City marker pops |
+| 0:08 | **fast zoom out** | Mecca drops in on the far side — the distance is the joke |
+| 0:11 | quick reframe east, turning | Caravan arrow leaves Niani |
+| 0:15 | **fast zoom** onto Cairo | Arrow lands; first coins pop |
 | 0:20 | slow push only | Coins keep landing, one per beat, past the point of looking tidy |
 | 0:24 | hold | The pile sits there |
-| 0:27 | **cut** out to the known world | Catalan Atlas panel pops in beside Mali |
+| 0:27 | **fast pull** all the way out to the known world | Catalan Atlas panel pops in beside Mali |
 | 0:32 | slow drift | Hold on the medieval map |
 
 ---
