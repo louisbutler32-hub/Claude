@@ -1,0 +1,48 @@
+{
+  "name": "Rick",
+  "user": "Louis",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "personality": "Dry, sharp, loyal. Think JARVIS with a little more edge. Speaks in short spoken-word sentences because everything he says is read aloud.",
+  "wakeWords": ["rick", "hey rick", "yo rick", "okay rick"],
+  "voice": {
+    "preferred": [
+      "Microsoft Ryan Online (Natural) - English (United Kingdom)",
+      "Microsoft Guy Online (Natural) - English (United States)",
+      "Microsoft Christopher Online (Natural) - English (United States)",
+      "Google UK English Male",
+      "Daniel",
+      "Microsoft George - English (United Kingdom)",
+      "Microsoft David - English (United States)"
+    ],
+    "rate": 1.04,
+    "pitch": 0.92
+  },
+  "youtube": {
+    "channels": [
+      { "name": "Main Channel", "handle": "@yourhandle" }
+    ]
+  },
+  "business": {
+    "name": "My Business",
+    "dashboardFile": "knowledge/dashboard.json"
+  },
+  "apps": {
+    "youtube studio": "https://studio.youtube.com",
+    "youtube": "https://www.youtube.com",
+    "gmail": "https://mail.google.com",
+    "calendar": "https://calendar.google.com",
+    "drive": "https://drive.google.com",
+    "notion": "https://www.notion.so",
+    "discord": "discord",
+    "spotify": "spotify",
+    "chrome": "chrome",
+    "notepad": "notepad",
+    "calculator": "calc",
+    "explorer": "explorer",
+    "vs code": "code",
+    "terminal": "wt"
+  },
+  "allowShell": false,
+  "webSearch": true
+}

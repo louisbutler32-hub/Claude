@@ -1,0 +1,23 @@
+{
+  "name": "rick",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Rick - a JARVIS-style voice assistant HUD for your business and YouTube channels",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "server": "cross-env RICK_NO_BROWSER=1 node server/index.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.124.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

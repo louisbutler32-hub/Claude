@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RICK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="hud.css" />
+</head>
+<body>
+<div class="bg"></div>
+<div class="grid"></div>
+<div class="scanlines"></div>
+<div class="vignette"></div>
+
+<div id="hud" class="hud">
+  <!-- ================= TOP BAR ================= -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark"></span>
+      <span class="brand-name">RICK</span>
+      <span class="brand-sub">PERSONAL INTELLIGENCE SYSTEM</span>
+    </div>
+    <div class="status-wrap">
+      <div class="status-line"></div>
+      <div id="status" class="status" data-state="idle">STANDBY</div>
+      <div class="status-line"></div>
+    </div>
+    <div class="top-right">
+      <div class="chip" id="chip-brain">BRAIN <b>—</b></div>
+      <div class="chip" id="chip-yt">YT <b>—</b></div>
+      <div class="chip" id="chip-net">LINK <b>—</b></div>
+    </div>
+  </header>
+
+  <!-- ================= LEFT ================= -->
+  <aside class="col left">
+    <section class="panel clock-panel">
+      <div class="clock-time"><span id="time">00:00</span><small id="seconds">00</small></div>
+      <div class="clock-ring">
+        <svg viewBox="0 0 200 200">
+          <circle class="ring-bg" cx="100" cy="100" r="86" />
+          <circle id="ring-day" class="ring-fg" cx="100" cy="100" r="86" />
+          <circle class="ring-ticks" cx="100" cy="100" r="76" />
+          <circle class="ring-inner" cx="100" cy="100" r="66" />
+        </svg>
+        <div class="clock-date">
+          <div id="month" class="month">JAN</div>
+          <div id="day" class="day">01</div>
+          <div id="weekday" class="weekday">MONDAY</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h3><i></i>SYSTEM</h3>
+      <div class="gauges">
+        <div class="gauge">
+          <svg viewBox="0 0 100 100"><circle class="g-bg" cx="50" cy="50" r="42"/><circle id="g-cpu" class="g-fg" cx="50" cy="50" r="42"/></svg>
+          <div class="g-val"><b id="cpu">0</b><small>%</small><span>CPU</span></div>
+        </div>
+        <div class="gauge">
+          <svg viewBox="0 0 100 100"><circle class="g-bg" cx="50" cy="50" r="42"/><circle id="g-mem" class="g-fg" cx="50" cy="50" r="42"/></svg>
+          <div class="g-val"><b id="mem">0</b><small>%</small><span>MEMORY</span></div>
+        </div>
+      </div>
+      <div class="kv"><span>HOST</span><b id="host">—</b></div>
+      <div class="kv"><span>UPTIME</span><b id="uptime">—</b></div>
+      <div class="kv"><span>RAM</span><b id="ram">—</b></div>
+      <div class="bars" id="cpu-bars"></div>
+    </section>
+
+    <section class="panel grow">
+      <h3><i></i>ACTIVITY</h3>
+      <ul id="activity" class="activity"></ul>
+    </section>
+  </aside>
+
+  <!-- ================= CENTER ================= -->
+  <main class="center">
+    <div class="reactor-wrap">
+      <canvas id="reactor"></canvas>
+      <div class="reactor-labels">
+        <span class="lbl lbl-tl">CORE <b id="lbl-core">STABLE</b></span>
+        <span class="lbl lbl-tr">MODEL <b id="lbl-model">—</b></span>
+        <span class="lbl lbl-bl">AUDIO <b id="lbl-audio">IDLE</b></span>
+        <span class="lbl lbl-br">LATENCY <b id="lbl-lat">—</b></span>
+      </div>
+      <div id="note" class="note" hidden></div>
+    </div>
+
+    <div class="console">
+      <div id="transcript" class="transcript">
+        <div class="line rick"><span class="who">RICK</span><span class="txt">Initializing…</span></div>
+      </div>
+      <canvas id="wave" class="wave"></canvas>
+      <form id="form" class="inputbar" autocomplete="off">
+        <button type="button" id="mic" class="mic" title="Hold SPACE or click to talk">
+          <svg viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg>
+        </button>
+        <input id="input" type="text" placeholder="Say “Rick …”, hold SPACE, or type here" spellcheck="false" />
+        <button type="submit" class="send">SEND</button>
+      </form>
+      <div class="hints">
+        <span><kbd>SPACE</kbd> hold to talk</span>
+        <span><kbd>ESC</kbd> stop</span>
+        <span><kbd>CTRL</kbd>+<kbd>L</kbd> clear</span>
+        <span id="hint-wake">wake word: “Rick”</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= RIGHT ================= -->
+  <aside class="col right">
+    <section class="panel">
+      <h3><i></i>YOUTUBE</h3>
+      <div id="channels" class="channels">
+        <div class="muted">Loading…</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h3><i></i><span id="biz-title">BUSINESS</span></h3>
+      <div id="metrics" class="metrics"></div>
+      <div id="tasks" class="tasks"></div>
+    </section>
+
+    <section class="panel grow">
+      <h3><i></i>QUICK COMMANDS</h3>
+      <div class="cmds">
+        <button data-cmd="Give me a full briefing on the channels and the business.">BRIEFING</button>
+        <button data-cmd="How are the YouTube channels doing today?">CHANNELS</button>
+        <button data-cmd="What are my current priorities and open tasks?">PRIORITIES</button>
+        <button data-cmd="Open YouTube Studio.">STUDIO</button>
+        <button data-cmd="What's the time and how is the system doing?">SYSTEM</button>
+        <button data-cmd="Search the web for what's trending on YouTube in my niche this week.">TRENDS</button>
+      </div>
+    </section>
+  </aside>
+
+  <!-- corner brackets -->
+  <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+</div>
+
+<!-- ================= BOOT ================= -->
+<div id="boot" class="boot">
+  <div class="boot-rings"><i></i><i></i><i></i></div>
+  <div id="boot-name" class="boot-name">RICK</div>
+  <pre id="boot-log" class="boot-log"></pre>
+  <button id="boot-btn" class="boot-btn" hidden>INITIALIZE</button>
+</div>
+
+<script src="reactor.js"></script>
+<script src="hud.js"></script>
+</body>
+</html>

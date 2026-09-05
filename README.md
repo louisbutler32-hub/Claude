@@ -1,3 +1,10 @@
+# Rick — JARVIS-style desktop assistant
+
+A voice-driven, full-screen HUD assistant for your business and YouTube channels.
+Lives in [`rick/`](rick/README.md) — see that README for setup (`rick/start.bat`).
+
+---
+
 # One Piece video projects (Remotion)
 
 Two compositions live in this repo:

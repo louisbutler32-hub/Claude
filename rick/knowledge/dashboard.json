@@ -1,0 +1,14 @@
+{
+  "title": "BUSINESS",
+  "metrics": [
+    { "label": "MRR", "value": "$0", "hint": "monthly recurring revenue" },
+    { "label": "PIPELINE", "value": "0 deals" },
+    { "label": "VIDEOS IN PROD", "value": "3" },
+    { "label": "NEXT UPLOAD", "value": "TBD" }
+  ],
+  "tasks": [
+    "Finish Admirals video audio pass",
+    "Record VO for bounty video",
+    "Reply to sponsor email"
+  ]
+}
