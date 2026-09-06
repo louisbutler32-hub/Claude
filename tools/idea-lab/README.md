@@ -48,7 +48,9 @@ dragon, football, house, money* — niche identity terms. Force it to predict a
 niche it has never seen and the signal disappears completely.
 
 Corpus: 677 usable videos across 19 niches, real public stats, collected
-2026-09-06.
+2026-09-06. The full write-up, with the chart, is in
+[`docs/evidence.html`](docs/evidence.html) and published at
+<https://claude.ai/code/artifact/779f129f-c613-4d71-b122-3852ca634433>.
 
 **What this means for you.** Stop A/B-ing ALL CAPS, emoji, numbers and
 superlatives — in this data they have no measurable effect on how a video does

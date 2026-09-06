@@ -1,0 +1,215 @@
+<title>Does Title Wording Predict Views?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
+<style>
+  :root{
+    --paper:#F1F0EC;
+    --raise:#FBFAF7;
+    --ink:#17211E;
+    --muted:#5E6B66;
+    --faint:#8A938E;
+    --line:#DBD9D1;
+    --rule:#C7C4BA;
+    --signal:#0E6B5F;
+    --null:#A8452B;
+    --chance:#97958B;
+    --band:#E4E2DA;
+    --serif:"IBM Plex Serif",Georgia,"Times New Roman",serif;
+    --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#101513; --raise:#171E1B; --ink:#E7EAE6; --muted:#9BA6A1; --faint:#78827D;
+      --line:#263029; --rule:#33403A; --signal:#46BFAC; --null:#E0825F; --chance:#6E756E; --band:#1B2320;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#101513; --raise:#171E1B; --ink:#E7EAE6; --muted:#9BA6A1; --faint:#78827D;
+    --line:#263029; --rule:#33403A; --signal:#46BFAC; --null:#E0825F; --chance:#6E756E; --band:#1B2320;
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:64px 24px 96px;display:flex;flex-direction:column;gap:0}
+  p{margin:0 0 1.05em;max-width:66ch}
+  a{color:var(--signal)}
+
+  .eyebrow{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:0 0 14px}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5.2vw,2.85rem);line-height:1.1;letter-spacing:-.02em;text-wrap:balance;margin:0 0 18px}
+  h2{font-family:var(--serif);font-weight:600;font-size:1.42rem;line-height:1.25;letter-spacing:-.012em;text-wrap:balance;margin:0 0 14px}
+  h3{font-family:var(--sans);font-weight:600;font-size:1rem;margin:0 0 8px}
+  section{padding-top:52px;margin-top:52px;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:none;margin-top:0}
+
+  .lede{font-size:1.16rem;line-height:1.55;color:var(--muted);max-width:60ch;margin-bottom:26px}
+  .verdict{font-family:var(--serif);font-size:1.3rem;line-height:1.4;font-weight:500;border-left:3px solid var(--null);padding:2px 0 2px 20px;margin:0 0 8px;max-width:58ch}
+  .stamp{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:30px;padding-top:18px;border-top:1px solid var(--line)}
+
+  figure{margin:0}
+  .chartcard{background:var(--raise);border:1px solid var(--line);border-radius:4px;padding:22px 20px 16px;overflow-x:auto}
+  svg{display:block;width:100%;height:auto;min-width:520px}
+  figcaption{font-size:13.5px;color:var(--muted);margin-top:14px;max-width:64ch}
+
+  .key{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12.5px;color:var(--muted);margin-top:14px;font-family:var(--mono)}
+  .key i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:7px;vertical-align:-1px}
+
+  table{border-collapse:collapse;width:100%;font-size:14.5px;margin:4px 0 6px}
+  caption{text-align:left;font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);padding-bottom:9px}
+  th{text-align:left;font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--rule);padding:0 10px 7px 0}
+  td{border-bottom:1px solid var(--line);padding:9px 10px 9px 0;vertical-align:top}
+  td.n,th.n{text-align:right;padding-right:0;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+  tr.flag td{color:var(--null)}
+  tr.hold td{color:var(--signal)}
+
+  .words{font-family:var(--mono);font-size:14px;color:var(--null);letter-spacing:.01em}
+  .quote{font-family:var(--serif);font-size:1.06rem;line-height:1.5;border-left:3px solid var(--signal);padding:2px 0 2px 20px;margin:0 0 14px;color:var(--ink);max-width:60ch}
+  .cite{font-size:12.5px;color:var(--faint);font-family:var(--mono)}
+
+  ul{margin:0 0 1.05em;padding-left:1.1em;max-width:66ch}
+  li{margin-bottom:.5em}
+  li::marker{color:var(--faint)}
+
+  code{font-family:var(--mono);font-size:.88em;background:var(--raise);border:1px solid var(--line);border-radius:3px;padding:1px 5px}
+  pre{font-family:var(--mono);font-size:13px;line-height:1.55;background:var(--raise);border:1px solid var(--line);border-radius:4px;padding:15px 16px;overflow-x:auto;margin:0 0 1em}
+  pre code{background:none;border:none;padding:0;font-size:inherit}
+
+  .do{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-bottom:1.1em}
+  .do>div{background:var(--raise);padding:15px 17px}
+  .do b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:5px}
+  .do .stop b{color:var(--null)}
+  .do .go b{color:var(--signal)}
+  .do p{margin:0;font-size:15px;max-width:none}
+
+  @media (max-width:560px){ .wrap{padding:44px 18px 72px} }
+  @media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important} }
+</style>
+
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Measurement note · 6 September 2026</p>
+  <h1>Does title wording predict views?</h1>
+  <p class="lede">Before building a tool that scores YouTube titles, I tested whether title wording predicts anything at all. It doesn't. Here is the test, why one result looked like a finding, and what survived.</p>
+  <p class="verdict">Across 677 real videos in 19 niches, no measurable relationship between a title's surface form and how the video performed relative to its channel.</p>
+  <div class="stamp">
+    <span>677 videos</span><span>19 niches</span><span>4 specifications</span><span>500 permutations</span>
+  </div>
+</header>
+
+<section>
+  <p class="eyebrow">The test</p>
+  <h2>Four ways of asking, one honest answer</h2>
+  <p>Each bar is a model trying to pick which videos beat their own channel's baseline, using only the title. The scale is AUC: <strong>0.500 is a coin flip</strong>. Bars run left or right of that line.</p>
+  <p>The shaded band is the noise floor, measured rather than assumed — labels were shuffled and every model refitted 500 times to see how well it scores on data with no signal in it at all. <strong>A bar inside the band is indistinguishable from chance.</strong></p>
+
+  <figure>
+    <div class="chartcard">
+      <svg viewBox="0 0 700 306" role="img" aria-label="Four models scored by AUC against a 0.500 chance line. Hand-built title features 0.519, plus vocabulary on random folds 0.590, plus vocabulary leave-one-niche-out 0.499, and trained within a single niche 0.467. All fall inside the measured noise band except the 0.590 result, which leaks niche membership.">
+        <rect x="82.9" y="18" width="426.1" height="254" fill="var(--band)"></rect>
+
+        <line x1="136" y1="18" x2="136" y2="272" stroke="var(--line)" stroke-width="1"></line>
+        <line x1="456" y1="18" x2="456" y2="272" stroke="var(--line)" stroke-width="1"></line>
+        <line x1="616" y1="18" x2="616" y2="272" stroke="var(--line)" stroke-width="1"></line>
+        <line x1="296" y1="10" x2="296" y2="276" stroke="var(--chance)" stroke-width="1.5" stroke-dasharray="4 3"></line>
+        <text x="296" y="302" text-anchor="middle" font-family="var(--mono)" font-size="11" font-weight="600" fill="var(--chance)">0.500 — coin flip</text>
+
+        <text x="30" y="24" font-family="var(--sans)" font-size="13.5" font-weight="600" fill="var(--ink)">Hand-built title features</text>
+        <text x="30" y="38" font-family="var(--mono)" font-size="11" fill="var(--faint)">caps · emoji · numbers · superlatives</text>
+        <rect x="296" y="44" width="60.8" height="22" fill="var(--chance)" opacity="0.55"></rect>
+        <text x="363" y="59" font-family="var(--mono)" font-size="13" font-weight="600" fill="var(--muted)">0.519</text>
+
+        <text x="30" y="96" font-family="var(--sans)" font-size="13.5" font-weight="600" fill="var(--null)">+ full vocabulary, random folds</text>
+        <text x="30" y="110" font-family="var(--mono)" font-size="11" fill="var(--null)">looks like a result — see below</text>
+        <rect x="296" y="116" width="288" height="22" fill="var(--null)"></rect>
+        <text x="590" y="131" font-family="var(--mono)" font-size="13" font-weight="600" fill="var(--null)">0.590</text>
+
+        <text x="30" y="168" font-family="var(--sans)" font-size="13.5" font-weight="600" fill="var(--ink)">+ full vocabulary, leave-one-niche-out</text>
+        <text x="30" y="182" font-family="var(--mono)" font-size="11" fill="var(--faint)">must predict a niche it has never seen</text>
+        <rect x="292.8" y="188" width="3.2" height="22" fill="var(--chance)" opacity="0.55"></rect>
+        <text x="288" y="203" text-anchor="end" font-family="var(--mono)" font-size="13" font-weight="600" fill="var(--muted)">0.499</text>
+
+        <text x="30" y="240" font-family="var(--sans)" font-size="13.5" font-weight="600" fill="var(--ink)">Trained inside a single niche</text>
+        <rect x="190.4" y="248" width="105.6" height="22" fill="var(--chance)" opacity="0.55"></rect>
+        <text x="186" y="263" text-anchor="end" font-family="var(--mono)" font-size="13" font-weight="600" fill="var(--muted)">0.467</text>
+
+        <line x1="30" y1="280" x2="680" y2="280" stroke="var(--rule)" stroke-width="1"></line>
+        <text x="136" y="296" text-anchor="middle" font-family="var(--mono)" font-size="11" fill="var(--faint)">0.45</text>
+        <text x="456" y="296" text-anchor="middle" font-family="var(--mono)" font-size="11" fill="var(--faint)">0.55</text>
+        <text x="616" y="296" text-anchor="middle" font-family="var(--mono)" font-size="11" fill="var(--faint)">0.60</text>
+      </svg>
+      <div class="key">
+        <span><i style="background:var(--chance);opacity:.55"></i>inside the noise floor</span>
+        <span><i style="background:var(--null)"></i>outside it, but leaking</span>
+        <span><i style="background:var(--band)"></i>noise floor: 95% of shuffled-label runs</span>
+      </div>
+    </div>
+    <figcaption>Bars measure deviation from chance, because for AUC the meaningful zero is 0.500, not 0. Noise floor is ±1.96 standard deviations of the permutation null (SD 0.034).</figcaption>
+  </figure>
+</section>
+
+<section>
+  <p class="eyebrow">The trap</p>
+  <h2>Why the red bar is not a finding</h2>
+  <p>The 0.590 result is the one a person would ship. It clears the noise floor and a permutation test puts it at <code>p = 0.004</code>. Stop there and you have a confident-looking "title score".</p>
+  <p>It is an artefact of how the data was split. Random folds put videos from the same niche in both training and test sets, so the model can learn <em>which niche a video belongs to</em> and ride that niche's baseline — nothing to do with title craft.</p>
+  <p>The tell is in the weights. These are the words the model leaned on hardest:</p>
+  <p class="words">film · power · dragon · football · house · money · transformation</p>
+  <p>Those are subject-matter labels, not persuasion devices. <em>Dragon</em> identifies Dragon Ball videos; <em>football</em> identifies football videos. Split the data so the model has to predict a niche it has never seen, and the score falls to <strong>0.499</strong> — chance, to three decimal places.</p>
+  <p>Training and testing entirely inside one niche is worse still: a mean of 0.467 across twelve niches, with 4 of 12 above chance where a fair coin gives 6.</p>
+</section>
+
+<section>
+  <p class="eyebrow">What survived</p>
+  <h2>Three things worth trusting</h2>
+  <table>
+    <caption>Measured, with the honest out-of-sample figure</caption>
+    <tr class="hold"><td><strong>Baseline view model</strong><br><span style="color:var(--muted);font-size:13.5px">log(views) ~ log(subscribers) + log(age) + niche</span></td><td class="n">R² 0.515</td></tr>
+    <tr><td>Title formats aggregated over real videos</td><td class="n">18,822</td></tr>
+    <tr><td>Unexplained spread between videos</td><td class="n">3.86×</td></tr>
+  </table>
+  <p>The baseline model is the genuinely predictive part, and it is cross-validated, not fitted-and-quoted. It answers the question that actually matters when someone sets a goal: <em>what view count is normal for a channel this size, in this niche?</em> Everything about goal feasibility rests on it.</p>
+
+  <h3>The CTR figure is derived, not guessed</h3>
+  <p class="quote">"Half of all channels and videos on YouTube have an impressions CTR that can range between 2% and 10%."</p>
+  <p class="cite">support.google.com/youtube/answer/7628154 — YouTube's own documentation</p>
+  <p>"Half of all" is an interquartile range, and an interquartile range pins a log-normal distribution exactly: median <strong>4.47%</strong>. The derivation round-trips to 2.00% and 10.00%, so it reproduces the published figures rather than approximating them. Every third-party "good CTR" number I found instead cited another blog post.</p>
+
+  <h3>Nobody can read a competitor's CTR</h3>
+  <p>YouTube exposes impressions and click-through rate only to a video's own owner, inside Studio. There is no public or partner API for it. Any tool showing you a rival's CTR is inferring or inventing it — so every CTR number here is labelled <code>MODELLED</code>, and your own real figure from Studio can replace the prior.</p>
+</section>
+
+<section>
+  <p class="eyebrow">Consequences</p>
+  <h2>What to change on Monday</h2>
+  <div class="do">
+    <div class="stop"><b>Stop spending time here</b><p>A/B-ing ALL CAPS, emoji, numbers, superlatives and bracket tags. Across 677 videos in 19 niches these carry no measurable effect on how a video performs relative to its channel. Individually, not one of them cleared the noise floor.</p></div>
+    <div class="go"><b>Spend it here instead</b><p>Topic choice and impression volume. When a goal is out of reach it is almost never the title — it is that the goal needs several times the impressions a typical video in the niche receives, which is a distribution problem.</p></div>
+  </div>
+  <p>This is a narrow claim, and worth stating precisely: it says surface <em>form</em> does not predict performance relative to channel size. It does not say titles are irrelevant — a title still has to represent the video honestly and make its subject legible. It says the packaging tricks are not the lever.</p>
+</section>
+
+<section>
+  <p class="eyebrow">Rigour</p>
+  <h2>Two sources I threw away</h2>
+  <table>
+    <tr class="flag"><td><strong>vidIQ's <code>outlierScore</code></strong><br><span style="color:var(--muted);font-size:13.5px">Not reproducible from the fields returned, and erratic across comparable videos</span></td><td class="n">983.98<br>5687.77<br>10328.32</td></tr>
+    <tr class="flag"><td><strong>"Viral words" by outlier multiplier</strong><br><span style="color:var(--muted);font-size:13.5px">Top-ranked words were <em>xm</em>, <em>realtor</em>, <em>zurich</em> — small-sample mean inflation, no baseline correction</span></td><td class="n">11,722×</td></tr>
+  </table>
+  <p>The first three figures belong to videos performing comparably: 4.04M views on 462K subscribers scored 983.98, while 3.81M on 334K scored 5687.77. A label that behaves like that cannot be a target variable, so the corpus computes its own transparent one instead.</p>
+  <p>The kept format data gets the same scepticism. <code>avg_outlier</code> is an arithmetic mean of a heavy-tailed quantity, so <em>"How [thing] Is Made"</em> reports 130.3× off 169 uses. Shrunk toward the corpus median with weight <code>uses / (uses + 150)</code>, that becomes 46.2×, while a 1,419-use format barely moves.</p>
+</section>
+
+<section>
+  <p class="eyebrow">Reproduce it</p>
+  <h2>Run the test yourself</h2>
+  <pre><code>node scripts/build-model.mjs   # refits and re-runs leave-one-niche-out
+node scripts/power-test.mjs    # 500-permutation null distribution
+node scripts/within-niche.mjs  # within-niche predictive test
+npm test                       # 39 tests</code></pre>
+  <p>The corpus ships with the tool: 729 real videos with provenance, collection date, and the exclusion rules applied — under 14 days old, under 100 views, or auto-generated channels, the first two following YouTube's own warning that such figures are unstable.</p>
+  <p>A test in the suite asserts the null result still holds. If it ever starts passing, that is a signal to check for leakage before claiming predictive power — which is exactly the trap the red bar sets.</p>
+</section>
+
+</div>
