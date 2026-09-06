@@ -1,0 +1,30 @@
+{
+  "_provenance": {
+    "collected_at": "2026-09-06",
+    "primary_source": "https://support.google.com/youtube/answer/7628154 (YouTube Help — official)",
+    "why_this_source": "Third-party 'good CTR' blog posts disagree wildly and cite each other. YouTube's own Help page is the only first-party statement about the actual population distribution, and it is stated as an interquartile range, which is enough to pin a full distribution."
+  },
+  "official_quotes": [
+    "Half of all channels and videos on YouTube have an impressions CTR that can range between 2% and 10%.",
+    "New videos or channels (like those less than a week old), or videos with fewer than 100 views can see an even wider range.",
+    "If a video gets a lot of impressions (such as if it appears on the Home Page), it's natural for the CTR to be lower.",
+    "It's best to compare CTRs between videos over the long-term and keep in mind how their traffic sources will affect their CTRs."
+  ],
+  "population_ctr": {
+    "interpretation": "'Half of all channels and videos' between 2% and 10% == the middle 50% == the interquartile range. So p25 = 0.02 and p75 = 0.10.",
+    "p25": 0.02,
+    "p75": 0.10,
+    "distribution": "lognormal",
+    "note": "mu and sigma are DERIVED from p25/p75 in model.mjs, not hardcoded here, so the derivation is auditable. mu = (ln p25 + ln p75)/2; sigma = (ln p75 - ln p25) / (2 * 0.674489). This yields a median CTR of ~4.5%."
+  },
+  "traffic_source_ctr": {
+    "_source": "Secondary//aggregator reporting, NOT first-party. Used only for the advisory note in the report, never in the maths.",
+    "search": [0.06, 0.14],
+    "browse_and_home": [0.02, 0.06]
+  },
+  "hard_limits": {
+    "_note": "Facts the tool must never contradict.",
+    "third_party_ctr_is_not_observable": "YouTube exposes impressions and CTR only to a video's own owner, in YouTube Studio. There is NO public or partner API that returns CTR for someone else's video. Any tool claiming to report a competitor's real CTR is inferring or inventing it.",
+    "own_ctr_is_observable": "The user CAN read their own true CTR in YouTube Studio (Reach tab) and feed it in via --actual-ctr to replace the modelled prior."
+  }
+}

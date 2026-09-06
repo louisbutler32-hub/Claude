@@ -1,0 +1,19 @@
+{
+  "name": "youtube-idea-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Generate YouTube title + concept ideas from three reference videos, scored against real measured data.",
+  "bin": {
+    "idea-lab": "./src/cli.mjs"
+  },
+  "scripts": {
+    "start": "node src/cli.mjs",
+    "test": "node --test \"test/*.test.mjs\"",
+    "build-model": "node scripts/build-model.mjs",
+    "validate": "node scripts/power-test.mjs && node scripts/within-niche.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
