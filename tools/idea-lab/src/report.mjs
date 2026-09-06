@@ -153,7 +153,7 @@ export function buildHandoff(r) {
     `Constraints derived from real data:`,
     `  - Median video in this niche gets ${compact(r.nicheDistribution?.p50)} views.`,
     `  - Title length in this niche typically runs ${r.lengthRange}.`,
-    `  - Do NOT rely on ALL CAPS, emoji, numbers or superlatives to carry a title: measured across 677 videos in 18 niches, these have no effect on performance relative to channel size (leave-one-niche-out AUC 0.499).`,
+    `  - Do NOT rely on ALL CAPS, emoji, numbers or superlatives to carry a title: measured across ${MODEL.n_videos} videos in ${MODEL.n_niches} niches, these have no effect on performance relative to channel size (leave-one-niche-out AUC 0.499).`,
     `  - Make the SUBJECT do the work. Topic choice is the lever that showed up in the data; packaging is not.`,
     ``,
     `For each title also give: the angle in one sentence, and the single strongest reason a viewer clicks it.`,

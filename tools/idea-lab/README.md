@@ -47,7 +47,7 @@ membership, not title craft. Its top-weighted "predictive" words are *film,
 dragon, football, house, money* — niche identity terms. Force it to predict a
 niche it has never seen and the signal disappears completely.
 
-Corpus: 677 usable videos across 18 niches, real public stats, collected
+Corpus: 677 usable videos across 19 niches, real public stats, collected
 2026-09-06.
 
 **What this means for you.** Stop A/B-ing ALL CAPS, emoji, numbers and

@@ -738,7 +738,7 @@
  },
  "title_form_validation": {
   "verdict": "NULL RESULT — title surface form does not predict view overperformance.",
-  "detail": "Tested three ways on 677 real videos across 18 niches. The tool therefore does NOT claim to predict CTR or views from a title, and must not be changed to do so without new evidence that survives the leave-one-niche-out test.",
+  "detail": "Tested three ways on 677 real videos across 19 niches. The tool therefore does NOT claim to predict CTR or views from a title, and must not be changed to do so without new evidence that survives the leave-one-niche-out test.",
   "random_fold_auc_hand_features": 0.5191,
   "random_fold_auc_plus_words": 0.5899,
   "leave_one_niche_out_auc": 0.4988,

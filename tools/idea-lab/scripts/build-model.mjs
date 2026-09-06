@@ -124,7 +124,7 @@ fs.writeFileSync(path.join(DATA, 'model.json'), JSON.stringify({
 
   title_form_validation: {
     verdict: 'NULL RESULT — title surface form does not predict view overperformance.',
-    detail: 'Tested three ways on 677 real videos across 18 niches. The tool therefore does NOT claim to predict CTR or views from a title, and must not be changed to do so without new evidence that survives the leave-one-niche-out test.',
+    detail: `Tested three ways on ${keep.length} real videos across ${niches.length} niches. The tool therefore does NOT claim to predict CTR or views from a title, and must not be changed to do so without new evidence that survives the leave-one-niche-out test.`,
     random_fold_auc_hand_features: +aucFeat.toFixed(4),
     random_fold_auc_plus_words: +aucWord.toFixed(4),
     leave_one_niche_out_auc: +aucLONO.toFixed(4),
