@@ -7,8 +7,8 @@ import { ink, line, STROKE } from "./kit";
 
 export type Face = "calm" | "shock" | "dead" | "sweat" | "cold" | "happy";
 
-const suit = "#ffffff";
-const trim = "#c9c6bd";
+const SUIT = "#ffffff";
+const TRIM = "#c9c6bd";
 const glass = "#a9d8f5";
 
 const Eyes: React.FC<{ face: Face }> = ({ face }) => {
@@ -43,7 +43,7 @@ const Eyes: React.FC<{ face: Face }> = ({ face }) => {
 
 const Mouth: React.FC<{ face: Face }> = ({ face }) => {
   if (face === "shock" || face === "sweat")
-    return <ellipse cx={0} cy={-238} rx={13} ry={16} {...line(3.5)} fill="#8d6b6b" />;
+    return <ellipse cx={0} cy={-243} rx={13} ry={14} {...line(3.5)} fill="#8d6b6b" />;
   if (face === "dead") return <path d="M -12 -238 q 12 -10 24 0" {...line(4)} />;
   if (face === "happy") return <path d="M -14 -244 q 14 14 28 0" {...line(4)} />;
   return <path d="M -11 -242 q 11 9 22 0" {...line(4)} />;
@@ -57,7 +57,20 @@ export const Astronaut: React.FC<{
   helmet?: boolean;
   arms?: "down" | "out" | "up" | "wave";
   squash?: number;
-}> = ({ x, y, scale = 1, face = "calm", helmet = true, arms = "down", squash = 1 }) => {
+  /** the suit picks up the light of the place it is standing in */
+  suit?: string;
+  trim?: string;
+}> = ({
+  x,
+  y,
+  scale = 1,
+  face = "calm",
+  helmet = true,
+  arms = "down",
+  squash = 1,
+  suit = SUIT,
+  trim = TRIM,
+}) => {
   const armPath =
     arms === "out"
       ? "M -52 -196 q -46 22 -58 62 M 52 -196 q 46 22 58 62"
@@ -91,11 +104,12 @@ export const Astronaut: React.FC<{
       />
       <path d="M -52 -150 q 52 12 104 0" {...line(STROKE - 1, trim)} />
       <rect x={-16} y={-198} width={32} height={9} rx={4} {...line(3)} fill={trim} />
-      {/* arms + gloves */}
-      <path d={armPath} {...line(STROKE + 4, suit)} />
-      <path d={armPath} {...line(STROKE - 1)} />
+      {/* arms: a thick black stroke under a slightly thinner suit stroke, so
+          the sleeve reads as an outlined limb rather than a wire */}
+      <path d={armPath} {...line(34, ink)} />
+      <path d={armPath} {...line(26, suit)} />
       {hands.map(([hx, hy], i) => (
-        <circle key={i} cx={hx} cy={hy} r={17} {...line(STROKE - 1)} fill={trim} />
+        <circle key={i} cx={hx} cy={hy} r={22} {...line(STROKE - 1)} fill={trim} />
       ))}
       {/* neck ring */}
       <rect x={-32} y={-232} width={64} height={20} rx={10} {...line(STROKE - 1)} fill={trim} />

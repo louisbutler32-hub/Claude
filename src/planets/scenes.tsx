@@ -486,7 +486,7 @@ const VenusHeat: Scene = () => {
   return (
     <SceneFade>
       <VenusSurface dim />
-      <Astronaut x={600} y={965} scale={1.45} face="shock" arms="out" />
+      <Astronaut x={600} y={965} scale={1.45} face="shock" arms="out" suit="#f2e0ae" trim="#c9a95e" />
       <Thermometer x={1180} y={800} fill={1} hot />
       <Temp x={1520} y={560} c="465&#176;C" f="869&#176;F" hot />
       <g opacity={opacity}>
@@ -507,7 +507,7 @@ const VenusPress: Scene = () => {
   return (
     <SceneFade>
       <VenusSurface dim />
-      <Astronaut x={700} y={965} scale={1.4} face="shock" arms="out" squash={interpolate(frame, [20, 120], [1, 0.94], { extrapolateRight: "clamp" })} />
+      <Astronaut x={700} y={965} scale={1.4} face="shock" arms="out" squash={interpolate(frame, [20, 120], [1, 0.94], { extrapolateRight: "clamp" })} suit="#f2e0ae" trim="#c9a95e" />
       {[-1, 0, 1].map((i) => (
         <Arrow
           key={i}
@@ -552,7 +552,7 @@ const VenusSuit: Scene = () => {
   return (
     <SceneFade>
       <VenusSurface dim />
-      <Astronaut x={620} y={965} scale={1.45} face="shock" arms="down" squash={crush} />
+      <Astronaut x={620} y={965} scale={1.45} face="shock" arms="down" squash={crush} suit="#f2e0ae" trim="#c9a95e" />
       <g opacity={interpolate(frame, [60, 80], [0, 1], { extrapolateRight: "clamp" })}>
         <path d="M 590 700 l 40 -60 l -18 62 l 46 -30" {...line(6, ink)} />
         <path d="M 660 780 l 44 -34 l -20 54" {...line(6, ink)} />
@@ -568,7 +568,7 @@ const VenusVerdict: Scene = () => {
   return (
     <SceneFade frames={2}>
       <VenusSurface dim />
-      <Astronaut x={620} y={965} scale={1.45} face="dead" helmet={false} arms="down" squash={0.86} />
+      <Astronaut x={620} y={965} scale={1.45} face="dead" helmet={false} arms="down" squash={0.86} suit="#f2e0ae" trim="#c9a95e" />
       <Stamp x={1330} y={520} label="NO SUIT" value="UNDER 1 SECOND" delay={8} />
       <rect x={0} y={0} width={W} height={H} fill={red} opacity={flash} />
     </SceneFade>
@@ -582,7 +582,7 @@ const MarsFriendly: Scene = () => {
   return (
     <SceneFade>
       <MarsSurface />
-      <Astronaut x={700} y={960} scale={1.45} face="happy" arms="wave" />
+      <Astronaut x={700} y={960} scale={1.45} face="happy" arms="wave" suit="#f7ece2" trim="#c9b8a8" />
       <g opacity={opacity}>
         <SpeechBubble x={1010} y={470} text="not bad" tail={[-50, 86]} />
         <Note x={1560} y={880} size={40} color="#8a4530" outline>
@@ -715,7 +715,7 @@ const MarsVacuum: Scene = () => {
   return (
     <SceneFade>
       <MarsSurface />
-      <Astronaut x={560} y={960} scale={1.4} face="dead" helmet={false} arms="out" />
+      <Astronaut x={560} y={960} scale={1.4} face="dead" helmet={false} arms="out" suit="#f7ece2" trim="#c9b8a8" />
       <g opacity={opacity}>
         <Note x={560} y={410} size={40} color="#8a4530" outline>
           15 s &#8594; unconscious
@@ -732,7 +732,7 @@ const MarsRad: Scene = () => {
   return (
     <SceneFade>
       <MarsSurface />
-      <Astronaut x={700} y={960} scale={1.4} face="calm" arms="down" />
+      <Astronaut x={700} y={960} scale={1.4} face="calm" arms="down" suit="#f7ece2" trim="#c9b8a8" />
       {[...Array(7)].map((_, i) => (
         <path
           key={i}
@@ -789,7 +789,7 @@ const DustStorm: Scene = () => {
           />
         );
       })}
-      <Astronaut x={700} y={960} scale={1.4} face="calm" arms="down" />
+      <Astronaut x={700} y={960} scale={1.4} face="calm" arms="down" suit="#f7ece2" trim="#c9b8a8" />
       <g>
         <path d="M 1300 900 l 0 -300" {...line(6)} />
         <path
