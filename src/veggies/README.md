@@ -77,6 +77,12 @@ src/veggies/
   ArtSheet.tsx      review composition: all twelve, colour beside silhouette
 ```
 
+## Upload copy
+
+Title, description, chapter list and tags live in
+[`upload.md`](upload.md), paste-ready. The chapter times come from the
+composition's own beat sheet, so they land on each round exactly.
+
 ## Thumbnails
 
 Two, both built from the same components the video uses, so a frame grab
