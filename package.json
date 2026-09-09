@@ -30,7 +30,9 @@
     "title:prores:vertical": "remotion render Title-Kate-Overlay-Vertical out/kate-title-vertical-alpha.mov --codec=prores --prores-profile=4444 --image-format=png --pixel-format=yuva444p10le",
     "veggies": "remotion render VeggieVideo out/chomp-chomp-veggies.mp4",
     "veggies:still": "remotion still Veggie-ArtSheet out/veggie-artsheet.png",
-    "veggies:audio": "python3 scripts/build-veggie-audio.py"
+    "veggies:audio": "python3 scripts/build-veggie-audio.py",
+    "planets": "remotion render PlanetsVideo out/planets.mp4",
+    "planets:still": "remotion still PlanetsVideo out/planets-still.png"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",

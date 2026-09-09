@@ -1,5 +1,9 @@
 # Remotion video projects
 
+- **`PlanetsVideo`** — "How Long Would You Last on Every Planet?" (3:00) —
+  a doodle-style science essay in the white-paper/black-marker look, built to
+  match a reference channel shot for shot ([docs](src/planets/README.md),
+  [script](scripts-vo/planets-survival.md))
 - **`VeggieVideo`** — "Chomp Chomp VEGGIES", a 10:27 guess-the-silhouette
   video for small kids (`src/veggies/`, [docs](src/veggies/README.md)).
   Twelve rounds: a black shape rises out of the bushes, "What is that?",

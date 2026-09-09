@@ -26,6 +26,7 @@ import {
   VEGGIE_DURATION_IN_FRAMES,
 } from "./veggies/VeggieVideo";
 import { ArtSheet } from "./veggies/ArtSheet";
+import { PlanetsVideo, PLANETS_DURATION_SECONDS } from "./planets/PlanetsVideo";
 import { MongolsEurope, MONGOLS_DURATION_IN_FRAMES } from "./maps/mongols";
 import { MansaMusa, MANSA_DURATION_IN_FRAMES } from "./maps/mansa";
 import { Shelterbelt, SHELTERBELT_DURATION_IN_FRAMES } from "./maps/shelterbelt";
@@ -33,6 +34,16 @@ import { Shelterbelt, SHELTERBELT_DURATION_IN_FRAMES } from "./maps/shelterbelt"
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* ── doodle science essay ── */}
+      <Composition
+        id="PlanetsVideo"
+        component={PlanetsVideo}
+        durationInFrames={PLANETS_DURATION_SECONDS * 30}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
       {/* ── kids "guess the vegetable" video ── */}
       <Composition
         id="VeggieVideo"
