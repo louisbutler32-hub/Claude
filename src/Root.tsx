@@ -27,6 +27,7 @@ import {
 } from "./veggies/VeggieVideo";
 import { ArtSheet } from "./veggies/ArtSheet";
 import { AnimalArtSheet } from "./animals/ArtSheet";
+import { Banner, BannerGuides } from "./guess/Banner";
 import {
   NumberVideo,
   NUMBER_DURATION_IN_FRAMES,
@@ -79,6 +80,22 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1920}
         height={1080}
+      />
+      <Composition
+        id="Channel-Banner"
+        component={Banner}
+        durationInFrames={1}
+        fps={30}
+        width={2560}
+        height={1440}
+      />
+      <Composition
+        id="Channel-Banner-Guides"
+        component={BannerGuides}
+        durationInFrames={1}
+        fps={30}
+        width={2560}
+        height={1440}
       />
       <Composition
         id="NumberVideo"
