@@ -47,8 +47,10 @@ def main():
 
     takes = []
     for i, line in enumerate(lines):
+        # "say" overrides the words handed to the synthesiser without
+        # changing the script: respell anything it mispronounces there.
         samples, sr = kokoro.create(
-            line["text"], voice=spec["voice"], speed=spec["speed"],
+            line.get("say", line["text"]), voice=spec["voice"], speed=spec["speed"],
             lang=spec.get("lang", "en-us" if spec["voice"].startswith("a") else "en-gb"),
         )
         assert sr == SR

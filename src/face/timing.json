@@ -10,386 +10,386 @@
   "id": "d1",
   "scene": "face-zoom",
   "text": "Right now, on your face, there are mites. They are arachnids, related to spiders and ticks, and if you are an adult, the odds that you have them are very close to certain.",
-  "start": 0.968,
-  "end": 10.529
+  "start": 0.992,
+  "end": 10.553
  },
  {
   "id": "d1b",
   "scene": "discovered",
   "text": "Nobody knew they existed until 1842, when a German anatomist squeezed out the contents of a facial pore, put it under a lens, and found something in there moving.",
-  "start": 10.679,
-  "end": 21.997
+  "start": 10.72,
+  "end": 21.163
  },
  {
   "id": "d1c",
   "scene": "oiliest",
   "text": "There is a reason everything in this video lives on your face rather than your arm. After the scalp, it is the oiliest skin you have, and oil is the whole economy up there.",
-  "start": 22.147,
-  "end": 32.785
+  "start": 21.33,
+  "end": 31.855
  },
  {
   "id": "d2",
   "scene": "two-species",
   "text": "There are two kinds that live on people. Demodex folliculorum sits in your hair follicles. Demodex brevis lives deeper, down in the oil glands beside them.",
-  "start": 32.935,
-  "end": 43.068
+  "start": 32.022,
+  "end": 41.967
  },
  {
   "id": "d3",
   "scene": "mite-size",
   "text": "They are between a fifth and a third of a millimetre long. A human hair is about a tenth of a millimetre across, so a mite is roughly three hair-widths, end to end. You are never going to see one.",
-  "start": 43.218,
-  "end": 54.178
+  "start": 42.134,
+  "end": 53.094
  },
  {
   "id": "d4",
   "scene": "mite-body",
   "text": "The shape is strange. Eight stubby legs bunched at the front, then a long soft tail with nothing on it at all.",
-  "start": 54.328,
-  "end": 60.845
+  "start": 53.261,
+  "end": 59.779
  },
  {
   "id": "d4b",
   "scene": "mouthparts",
   "text": "The body is stripped down to almost nothing. Needle-shaped mouthparts at one end for piercing cells, and legs powered by muscles made of a single cell each. There is not much animal left in there.",
-  "start": 60.995,
-  "end": 72.744
+  "start": 59.945,
+  "end": 71.695
  },
  {
   "id": "d5",
   "scene": "follicle",
   "text": "They spend the day head down, buried in a follicle with the tail pointing out, eating the oil your skin makes.",
-  "start": 72.894,
-  "end": 79.06
+  "start": 71.861,
+  "end": 78.027
  },
  {
   "id": "d6",
   "scene": "hot-spots",
   "text": "They are thickest where the skin is oiliest. The sides of the nose, the forehead, the chin, the eyebrows, and the roots of your eyelashes.",
-  "start": 79.21,
-  "end": 86.996
+  "start": 78.194,
+  "end": 85.981
  },
  {
   "id": "d6b",
   "scene": "packed-in",
   "text": "A single follicle can hold several of them at once, wedged in around the hair, facing the same way.",
-  "start": 87.146,
-  "end": 92.982
+  "start": 86.147,
+  "end": 91.983
  },
  {
   "id": "d6c",
   "scene": "eyelashes",
   "text": "The eyelashes are the reliable place. If you sampled the roots of your own lashes tonight, you would almost certainly find them.",
-  "start": 93.132,
-  "end": 100.215
+  "start": 92.15,
+  "end": 99.234
  },
  {
   "id": "d7",
   "scene": "night-crawl",
   "text": "Then at night, they come out. They cannot stand light, so they wait until you are asleep, climb out of the follicle, and crawl across your face at roughly a centimetre an hour, looking for a mate.",
-  "start": 100.365,
-  "end": 110.789
+  "start": 99.401,
+  "end": 109.824
  },
  {
   "id": "d8",
   "scene": "eggs",
   "text": "Before morning they climb back down into a pore and lay eggs. The whole life takes about two weeks.",
-  "start": 110.938,
-  "end": 116.784
+  "start": 109.991,
+  "end": 115.837
  },
  {
   "id": "d8b",
   "scene": "mating",
   "text": "The mating is worth describing. The male's genitals point upward, out of his back, so he has to work his way underneath the female while both of them hold on to the side of a hair.",
-  "start": 116.934,
-  "end": 127.142
+  "start": 116.003,
+  "end": 126.212
  },
  {
   "id": "d9",
   "scene": "anus-myth",
   "text": "The famous fact about them is wrong. For years it was repeated that they have no anus, and fill up with waste until they die and burst. When their genome was finally sequenced in 2022, it turned out they have one.",
-  "start": 127.292,
-  "end": 140.991
+  "start": 126.379,
+  "end": 140.078
  },
  {
   "id": "d10",
   "scene": "losing-genes",
   "text": "What the study did find is stranger. They are shedding genes. They have fewer than almost any related animal, they have lost the ability to wake themselves up, and they run on the melatonin your own skin releases at dusk.",
-  "start": 141.171,
-  "end": 154.179
+  "start": 140.278,
+  "end": 153.287
  },
  {
   "id": "d10b",
   "scene": "rosacea",
   "text": "They are not entirely harmless. People with rosacea carry them at much higher densities than people without it, and it is still being argued about whether the mites are causing the condition or just thriving in it.",
-  "start": 154.329,
-  "end": 166.716
+  "start": 153.454,
+  "end": 165.84
  },
  {
   "id": "d11",
   "scene": "becoming-us",
   "text": "The researchers think they are on their way to stopping being parasites altogether, and becoming something closer to an organ you cannot see.",
-  "start": 166.866,
-  "end": 174.947
+  "start": 166.007,
+  "end": 174.088
  },
  {
   "id": "d12",
   "scene": "inherited",
   "text": "You did not catch them. You were given them, in your first days, off the skin of whoever held you.",
-  "start": 175.127,
-  "end": 180.269
+  "start": 174.288,
+  "end": 179.43
  },
  {
   "id": "d12b",
   "scene": "how-many",
   "text": "Nobody can give you an exact count, but the working estimate for an adult face is somewhere in the hundreds.",
-  "start": 180.628,
-  "end": 186.795
+  "start": 179.83,
+  "end": 185.998
  },
  {
   "id": "b0",
   "scene": "bact-open",
   "text": "Bacteria.",
-  "start": 186.945,
-  "end": 188.059
+  "start": 186.165,
+  "end": 187.278
  },
  {
   "id": "b0b",
   "scene": "skin-organ",
   "text": "Skin is your largest organ, about two square metres of it, and you are throwing it away continuously. Somewhere around thirty to forty thousand dead cells leave your body every hour.",
-  "start": 188.268,
-  "end": 199.323
+  "start": 187.512,
+  "end": 198.566
  },
  {
   "id": "b1",
   "scene": "per-cm",
   "text": "On one square centimetre of your forehead there are around a million bacteria. Across all of your skin, roughly a hundred billion.",
-  "start": 199.472,
-  "end": 206.858
+  "start": 198.733,
+  "end": 206.118
  },
  {
   "id": "b1b",
   "scene": "hostile",
   "text": "Which is stranger than it sounds, because skin is a bad place to live. It is dry, it is salty, it is acidic, it is cool, and there is almost nothing to eat unless you happen to like grease.",
-  "start": 207.008,
-  "end": 218.313
+  "start": 206.285,
+  "end": 217.591
  },
  {
   "id": "b2",
   "scene": "acnes",
   "text": "Most of the face is one species. Cutibacterium acnes, named after the condition it sometimes causes, and carried by essentially everyone, mostly doing nothing.",
-  "start": 218.463,
-  "end": 228.832
+  "start": 217.757,
+  "end": 228.127
  },
  {
   "id": "b2b",
   "scene": "species",
   "text": "Across the whole of your skin there are something like a thousand species, and the mix is different on your forearm, your scalp and your back.",
-  "start": 228.982,
-  "end": 236.449
+  "start": 228.294,
+  "end": 235.76
  },
  {
   "id": "b3",
   "scene": "eats-oil",
   "text": "It eats the same oil the mites do. It splits the fat in your sebum and releases free fatty acids as waste.",
-  "start": 236.598,
-  "end": 243.311
+  "start": 235.927,
+  "end": 242.69
  },
  {
   "id": "b4",
   "scene": "acid-mantle",
   "text": "That waste is the point. It holds the surface of your skin at about pH five, slightly acidic, and most of the bacteria that would actually hurt you cannot establish themselves in that.",
-  "start": 243.461,
-  "end": 254.951
+  "start": 242.857,
+  "end": 254.347
  },
  {
   "id": "b5",
   "scene": "staph-war",
   "text": "Staphylococcus epidermidis is the other one you are covered in, and it goes further. It manufactures compounds that specifically kill Staphylococcus aureus, which is the one you do not want.",
-  "start": 255.101,
-  "end": 267.064
+  "start": 254.514,
+  "end": 266.477
  },
  {
   "id": "b5b",
   "scene": "fingerprint",
   "text": "Your particular combination is close to unique, and it is stable. Sampled a year apart, most people are still carrying recognisably the same population.",
-  "start": 267.214,
-  "end": 276.99
+  "start": 266.644,
+  "end": 276.42
  },
  {
   "id": "b6",
   "scene": "held-line",
   "text": "So your face is not clean and it was never supposed to be. It is a territory that is already occupied, and that is exactly what is protecting it.",
-  "start": 277.14,
-  "end": 286.136
+  "start": 276.587,
+  "end": 285.583
  },
  {
   "id": "b6b",
   "scene": "you-shed",
   "text": "And you are shedding it constantly. Every surface you touch, every chair you sit in, you leave a smear of it behind.",
-  "start": 286.495,
-  "end": 293.234
+  "start": 285.984,
+  "end": 292.722
  },
  {
   "id": "b6c",
   "scene": "dust-myth",
   "text": "Though the old line that house dust is mostly your dead skin is not true. Most of what settles on your shelves walked in from outside on your shoes.",
-  "start": 293.384,
-  "end": 302.005
+  "start": 292.889,
+  "end": 301.511
  },
  {
   "id": "f0",
   "scene": "fung-open",
   "text": "Fungus.",
-  "start": 302.155,
-  "end": 303.05
+  "start": 301.677,
+  "end": 302.572
  },
  {
   "id": "f1",
   "scene": "malassezia",
   "text": "More than eight in every ten fungal cells on your skin belong to a single genus, called Malassezia.",
-  "start": 303.26,
-  "end": 309.582
+  "start": 302.806,
+  "end": 309.128
  },
  {
   "id": "f1b",
   "scene": "f-everyone",
   "text": "There are around eighteen named species of it, and virtually every adult on Earth is carrying some. Newborns pick it up within weeks.",
-  "start": 309.732,
-  "end": 317.62
+  "start": 309.295,
+  "end": 317.183
  },
  {
   "id": "f2",
   "scene": "cant-make",
   "text": "It has a defect that decides where it lives. It cannot manufacture its own fatty acids, so it has to take them from somewhere, which is why you find it on the face, the scalp and the chest, and almost nowhere dry.",
-  "start": 317.77,
-  "end": 330.347
+  "start": 317.35,
+  "end": 329.927
  },
  {
   "id": "f3",
   "scene": "dandruff",
   "text": "When it grows faster than usual, the by-products irritate the skin underneath. That is dandruff, and that is why anti-dandruff shampoo is not a soap. It is an antifungal.",
-  "start": 330.497,
-  "end": 340.901
+  "start": 330.094,
+  "end": 340.498
  },
  {
   "id": "f3b",
   "scene": "seb-derm",
   "text": "It is also behind the flaking that shows up in the creases beside your nose, which almost everyone treats as dry skin. It is usually the opposite. It is too much oil, and something eating it.",
-  "start": 341.05,
-  "end": 352.48
+  "start": 340.665,
+  "end": 352.095
  },
  {
   "id": "f4",
   "scene": "fung-quiet",
   "text": "The rest of the time it simply sits there, in the oil, doing very little.",
-  "start": 352.63,
-  "end": 356.466
+  "start": 352.261,
+  "end": 356.097
  },
  {
   "id": "v0",
   "scene": "virus-open",
   "text": "Viruses.",
-  "start": 356.825,
-  "end": 357.958
+  "start": 356.497,
+  "end": 357.631
  },
  {
   "id": "v1",
   "scene": "phage-intro",
   "text": "There are viruses on your face too, and almost none of them have any interest in you. They are bacteriophages, and they hunt the bacteria.",
-  "start": 358.168,
-  "end": 365.93
+  "start": 357.864,
+  "end": 365.626
  },
  {
   "id": "v1b",
   "scene": "hpv",
   "text": "There are a few that do live on you directly. Most people carry several types of human papillomavirus on normal skin, permanently, without ever developing anything.",
-  "start": 366.079,
-  "end": 376.465
+  "start": 365.793,
+  "end": 376.179
  },
  {
   "id": "v2",
   "scene": "phage-body",
   "text": "A phage does not look like it evolved. It looks built. A geometric head full of DNA, a shaft underneath, and a set of legs it uses to land.",
-  "start": 376.615,
-  "end": 385.585
+  "start": 376.346,
+  "end": 385.316
  },
  {
   "id": "v3",
   "scene": "phage-attack",
   "text": "It settles onto a bacterium, punches through the wall, and injects its genome. The cell then spends its last twenty minutes building copies of its own killer, until it splits open and releases them.",
-  "start": 385.735,
-  "end": 397.859
+  "start": 385.482,
+  "end": 397.606
  },
  {
   "id": "v3b",
   "scene": "phage-count",
   "text": "Phages are thought to be the most numerous biological entity on Earth, and a fair number of them are on you.",
-  "start": 398.009,
-  "end": 404.487
+  "start": 397.773,
+  "end": 404.251
  },
  {
   "id": "v4",
   "scene": "phage-balance",
   "text": "This is happening on your skin constantly, and it is part of what decides which bacteria are winning up there.",
-  "start": 404.636,
-  "end": 410.868
+  "start": 404.418,
+  "end": 410.65
  },
  {
   "id": "w0",
   "scene": "wash-open",
   "text": "Washing.",
-  "start": 411.227,
-  "end": 412.177
+  "start": 411.05,
+  "end": 412.0
  },
  {
   "id": "w1",
   "scene": "wash-fail",
   "text": "You cannot get rid of any of this. Washing lifts off dead cells and some surface oil, but the residents are not on the surface. They are down inside the follicle, and within hours the numbers are back where they were.",
-  "start": 412.387,
-  "end": 424.972
+  "start": 412.233,
+  "end": 424.819
  },
  {
   "id": "w1b",
   "scene": "hours",
   "text": "That has been measured. Strip the skin of its residents and the population is measurably back within hours, rebuilt from the follicles you never reached.",
-  "start": 425.122,
-  "end": 433.921
+  "start": 424.986,
+  "end": 433.785
  },
  {
   "id": "w2",
   "scene": "wash-harm",
   "text": "And if you scrub hard enough to genuinely reduce them, you strip the oil and break the acid layer, and the things that actually make people ill get their opening.",
-  "start": 434.071,
-  "end": 443.316
+  "start": 433.952,
+  "end": 443.196
  },
  {
   "id": "w2b",
   "scene": "antibac",
   "text": "This is roughly why antibacterial hand soap was pulled. In 2016 American regulators ruled that the manufacturers had never actually shown it beat plain soap and water, and banned nineteen of its ingredients.",
-  "start": 443.495,
-  "end": 457.881
+  "start": 443.396,
+  "end": 457.782
  },
  {
   "id": "w3",
   "scene": "wash-verdict",
   "text": "The clean face is the occupied one.",
-  "start": 458.031,
-  "end": 460.663
+  "start": 457.949,
+  "end": 460.582
  },
  {
   "id": "z0",
   "scene": "board",
   "text": "So, right now, on the face you are reading this with.",
-  "start": 461.023,
-  "end": 464.061
+  "start": 460.982,
+  "end": 464.02
  },
  {
   "id": "z1",
   "scene": "board",
   "text": "Something like a hundred billion bacteria. Millions of fungal cells. An unknown and probably larger number of viruses. And a few hundred mites, waiting for you to turn the light off.",
-  "start": 464.24,
-  "end": 475.594
+  "start": 464.22,
+  "end": 475.574
  },
  {
   "id": "z2",
