@@ -8,8 +8,13 @@ def _t(d):
 
 
 def _env(n, a=.005, r=.25, curve=2.0):
+    """Attack/release envelope. Ramps are clamped to n so short sounds
+    (release longer than the sound itself) still produce a valid envelope."""
+    if n <= 0:
+        return np.ones(0, np.float32)
     e = np.ones(n)
-    ai = max(1, int(a * SR)); ri = max(1, int(r * SR))
+    ai = min(max(1, int(a * SR)), n)
+    ri = min(max(1, int(r * SR)), n)
     e[:ai] = np.linspace(0, 1, ai)
     e[-ri:] *= np.linspace(1, 0, ri) ** curve
     return e
