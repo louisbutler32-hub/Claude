@@ -32,7 +32,9 @@
     "veggies:still": "remotion still Veggie-ArtSheet out/veggie-artsheet.png",
     "veggies:audio": "python3 scripts/build-veggie-audio.py",
     "planets": "remotion render PlanetsVideo out/planets.mp4",
-    "planets:still": "remotion still PlanetsVideo out/planets-still.png"
+    "planets:still": "remotion still PlanetsVideo out/planets-still.png",
+    "planets:thumbs": "remotion still Planets-ThumbA out/package/thumbnail-a.png && remotion still Planets-ThumbB out/package/thumbnail-b.png",
+    "planets:package": "python3 scripts/make-package.py"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",

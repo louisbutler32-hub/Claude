@@ -27,6 +27,7 @@ import {
 } from "./veggies/VeggieVideo";
 import { ArtSheet } from "./veggies/ArtSheet";
 import { PlanetsVideo, PLANETS_DURATION_SECONDS } from "./planets/PlanetsVideo";
+import { ThumbnailA, ThumbnailB } from "./planets/Thumbnail";
 import { MongolsEurope, MONGOLS_DURATION_IN_FRAMES } from "./maps/mongols";
 import { MansaMusa, MANSA_DURATION_IN_FRAMES } from "./maps/mansa";
 import { Shelterbelt, SHELTERBELT_DURATION_IN_FRAMES } from "./maps/shelterbelt";
@@ -43,6 +44,9 @@ export const RemotionRoot: React.FC = () => {
         width={1920}
         height={1080}
       />
+
+      <Composition id="Planets-ThumbA" component={ThumbnailA} durationInFrames={1} fps={30} width={1280} height={720} />
+      <Composition id="Planets-ThumbB" component={ThumbnailB} durationInFrames={1} fps={30} width={1280} height={720} />
 
       {/* ── kids "guess the vegetable" video ── */}
       <Composition
