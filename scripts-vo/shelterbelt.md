@@ -8,39 +8,44 @@ declarative, one fact per line. The facts are absurd enough on their own.
 ## Script
 
 ```
-0:00   America once tried to stop the weather.
-       With trees.
+0:00   There was once a wall that ran from Canada
+       to the bottom of America.
 
-0:05   1934. The Great Plains are blowing away.
+0:05   It was built to stop the weather.
 
-0:09   The drought kills the grass,
+0:09   1934. The Great Plains are blowing away.
+
+0:13   The drought kills the grass,
        and nothing is holding the soil down any more.
 
-0:15   Dust storms reach New York.
+0:18   Dust storms reach New York.
 
-0:19   So Roosevelt orders a wall.
+0:22   So Roosevelt orders a wall.
+       Not concrete. Trees.
 
-0:23   Not concrete. Trees.
-
-0:26   A belt a hundred miles wide,
+0:28   A belt a hundred miles wide,
        from Canada to Texas.
 
-0:32   Two hundred and twenty million of them.
+0:34   Two hundred and twenty million of them.
 
-0:37   Planted by hand, in rows, across six states.
+0:38   Planted by hand, in rows, across six states.
 
-0:42   Critics called it the most expensive way
+0:43   Critics called it the most expensive way
        to waste a forest.
 
-0:47   The wind slowed. The soil stayed.
+0:48   The wind slowed. The soil stayed.
 
-0:50   Most of it is still standing.
+0:51   Most of it is still standing.
 
-0:53   China started copying it in 1978.
+0:55   China started copying it in 1978.
        They are still planting.
 ```
 
----
+**Why it opens this way:** the wall is the hook, so the wall is the first
+thing on screen — it draws itself down the map before anything is
+explained. "To stop the weather" lands second, as the absurdity. Then the
+video rewinds to 1934 and spends thirty seconds earning what you already
+saw.
 
 ## Map
 

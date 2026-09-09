@@ -138,30 +138,31 @@ const drone = (buf, at, dur, gain = 0.1, freq = 55) => {
 // ── The film ───────────────────────────────────────────────────────────
 // Seconds, matching src/maps/shelterbelt.tsx.
 
-const LENGTH = 56;
+const LENGTH = 58;
 const CUES = (buf) => {
-  drone(buf, 0, 56, 0.085);
+  drone(buf, 0, 58, 0.085);
 
-  impact(buf, 0.05, 0.75); // the hook lands
-  whoosh(buf, 5.1, 0.75, 0.55); // dive onto the plains
-  wind(buf, 6.0, 9.0, 0.3); // the plains blowing away
-  whoosh(buf, 14.9, 0.7, 0.5); // rip east
-  impact(buf, 15.3, 0.4, 74, 1.0); // dust hits the coast
-  whoosh(buf, 18.8, 0.8, 0.55); // back to the plains
-  impact(buf, 19.5, 0.6, 50, 1.8); // the title lands on the ground
-  impact(buf, 26.7, 0.3, 96, 0.7); // scale bar snaps out
-  whoosh(buf, 32.0, 0.7, 0.5); // down onto the belt
+  impact(buf, 0.05, 0.75); // the wall appears
+  impact(buf, 5.5, 0.4, 68, 1.2); // "to stop the weather"
+  whoosh(buf, 8.7, 0.75, 0.55); // dive onto the plains
+  wind(buf, 9.6, 8.6, 0.3); // the plains blowing away
+  whoosh(buf, 18.2, 0.7, 0.5); // rip east
+  impact(buf, 18.6, 0.4, 74, 1.0); // dust hits the coast
+  whoosh(buf, 22.1, 0.8, 0.55); // back to the plains
+  impact(buf, 22.8, 0.6, 50, 1.8); // the title lands on the ground
+  impact(buf, 29.7, 0.3, 96, 0.7); // scale bar snaps out
+  whoosh(buf, 34.2, 0.7, 0.5); // down onto the belt
 
-  // 150 trees go in between 32.4 and 45.4 — thinned to every third, or it
+  // 150 trees go in between 34.6 and 47.4 — thinned to every third, or it
   // turns into a rattle.
   for (let i = 0; i < 150; i += 3) {
-    tick(buf, 32.4 + (13.0 * i) / 149, 0.13);
+    tick(buf, 34.6 + (12.8 * i) / 149, 0.13);
   }
 
-  whoosh(buf, 46.4, 0.9, 0.6); // pull out to the whole belt
-  impact(buf, 47.0, 0.55, 46, 2.2); // it worked
-  whoosh(buf, 52.9, 0.8, 0.55); // swing to China
-  drone(buf, 53.0, 3.0, 0.07, 62);
+  whoosh(buf, 48.2, 0.9, 0.6); // pull out to the whole belt
+  impact(buf, 48.8, 0.55, 46, 2.2); // it worked
+  whoosh(buf, 54.8, 0.8, 0.55); // swing to China
+  drone(buf, 55.0, 3.0, 0.07, 62);
 };
 
 // ── Render ─────────────────────────────────────────────────────────────
