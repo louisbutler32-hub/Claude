@@ -5,6 +5,8 @@ import { DARK_SCENES, renderScene } from "./scenes";
 import timing from "./timing.json";
 
 // "How Long Would You Last on Every Planet?" — part one, exactly 3:00.
+// Narration only, no music: the reference channel runs its voice dry, and
+// the gaps between its lines are true silence.
 // The narration track is the master clock: src/planets/timing.json holds the
 // start/end of every line, and each line owns the screen until the next one
 // begins. Regenerate both with `python3 scripts/make-vo.py`.
@@ -24,7 +26,6 @@ export const PlanetsVideo: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#ffffff" }}>
-      <Audio src={staticFile("assets/vo/planets-bed.mp3")} volume={0.13} />
       <Audio src={staticFile("assets/vo/planets-survival.mp3")} />
       {LINES.map((l, i) => {
         const from = Math.round(l.start * fps);
