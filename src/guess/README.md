@@ -35,6 +35,25 @@ shadow (`art.tsx`'s `Body` wrapper). That is what guarantees the silhouette
 is the exact outline of the thing it hides, and it means adding a
 thirteenth item is one drawing, not two.
 
+## Compilation
+
+```bash
+npm run animals && npm run numbers          # render what you're missing
+python3 scripts/make-compilation.py \
+    --fruit path/to/your-fruit-video.mp4
+```
+
+Joins the episodes into `out/compilation.mp4` with a chapter mark per
+episode. Everything is normalised to one codec, size and frame rate first —
+the episodes render at 1080p but the original fruit video is 720p, and
+concatenating mismatched streams gives you a file that plays wrong on some
+players. Durations are read back from each normalised part rather than
+assumed, so the chapter offsets stay right if an episode's length changes.
+`--fruit` is optional and missing episodes are skipped with a note, so the
+script is usable before everything exists.
+
+All four comes to **41:45** and about **110 MB**.
+
 ## Audio
 
 ```bash
