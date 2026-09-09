@@ -35,6 +35,17 @@ shadow (`art.tsx`'s `Body` wrapper). That is what guarantees the silhouette
 is the exact outline of the thing it hides, and it means adding a
 thirteenth item is one drawing, not two.
 
+## Shorts
+
+`Counting-Short` is 1080x1920, 30 seconds: one straight run from one to ten,
+a carrot dropping in on each count. The long-form beat sheet doesn't fit a
+Short and isn't forced in — there's no board, no rounds, no habitat, just
+hook, count, payoff.
+
+```bash
+npm run short:audio && npm run short
+```
+
 ## Compilation
 
 ```bash

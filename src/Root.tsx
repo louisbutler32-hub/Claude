@@ -29,6 +29,10 @@ import { ArtSheet } from "./veggies/ArtSheet";
 import { AnimalArtSheet } from "./animals/ArtSheet";
 import { Banner, BannerGuides } from "./guess/Banner";
 import {
+  CountingShort,
+  SHORT_FRAMES,
+} from "./numbers/CountingShort";
+import {
   NumberVideo,
   NUMBER_DURATION_IN_FRAMES,
 } from "./numbers/NumberVideo";
@@ -80,6 +84,14 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1920}
         height={1080}
+      />
+      <Composition
+        id="Counting-Short"
+        component={CountingShort}
+        durationInFrames={SHORT_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
       />
       <Composition
         id="Channel-Banner"

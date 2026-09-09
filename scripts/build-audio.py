@@ -22,9 +22,6 @@ SR = 44100
 FPS = 30
 INTRO_LEN = 120
 ROUND_LEN = 1560
-N_ROUNDS = 12
-TOTAL_FRAMES = INTRO_LEN + N_ROUNDS * ROUND_LEN
-TOTAL_SEC = TOTAL_FRAMES / FPS
 
 # Two readers: a child who plays the guessing game, and a narrator who
 # explains what is on screen and asks the viewer the questions.
@@ -152,7 +149,16 @@ NUMBER_ROUNDS = [
      "Let's count to twelve!", "carrots"),
 ]
 
+# The counting Short: 30 seconds, one straight run from one to ten.
+# Mirrors src/numbers/CountingShort.tsx.
+SHORT_HOOK = 60
+SHORT_STEP = 60
+SHORT_N = 10
+SHORT_FRAMES = SHORT_HOOK + SHORT_N * SHORT_STEP + 240
+
 SUBJECTS = {
+    "short": dict(rounds=[], kind="short", word="number",
+                  frames=SHORT_FRAMES),
     "veggies": dict(rounds=VEGGIE_ROUNDS, kind="grow", word="vegetable"),
     "animals": dict(rounds=ANIMAL_ROUNDS, kind="live", word="animal"),
     "numbers": dict(rounds=NUMBER_ROUNDS, kind="count", word="number"),
@@ -162,6 +168,8 @@ if SUBJECT not in SUBJECTS:
 CONF = SUBJECTS[SUBJECT]
 ROUNDS = CONF["rounds"]
 N_ROUNDS = len(ROUNDS)
+TOTAL_FRAMES = CONF.get("frames") or INTRO_LEN + N_ROUNDS * ROUND_LEN
+TOTAL_SEC = TOTAL_FRAMES / FPS
 
 # the word Emma uses in her questions
 ARTICLE = {
@@ -228,9 +236,9 @@ PEEKS_COUNT = [
     "Look! Can you see what's peeking out?",
     "One more is hiding. Can you find it?",
 ]
-PEEKS = {"grow": PEEKS_GROW, "live": PEEKS_LIVE, "count": PEEKS_COUNT}[
-    CONF["kind"]
-]
+PEEKS = {"grow": PEEKS_GROW, "live": PEEKS_LIVE, "count": PEEKS_COUNT}.get(
+    CONF["kind"], PEEKS_GROW  # the Short has no peek beat
+)
 
 # ── counting layout, mirrored from src/numbers/numbers.ts ─────────────
 COUNT_START = 812
@@ -247,8 +255,22 @@ def round_base(n):
     return INTRO_LEN + n * ROUND_LEN
 
 
+def short_schedule():
+    """The Short: a hook, ten numbers, a payoff."""
+    lines = [(4, "Can you count to ten?", "emma", "s-hook")]
+    for k in range(SHORT_N):
+        lines.append((SHORT_HOOK + k * SHORT_STEP,
+                      f"{NUMBERS[k].capitalize()}!", "ana", f"count-{k + 1}"))
+    end = SHORT_HOOK + SHORT_N * SHORT_STEP
+    lines.append((end + 8, "Ten carrots! You did it!", "emma", "s-payoff"))
+    lines.append((end + 132, "Count them again with me!", "emma", "s-outro"))
+    return lines
+
+
 def vo_schedule():
     """[(frame, text, voice, tag)] for every spoken line."""
+    if CONF["kind"] == "short":
+        return short_schedule()
     opener = {
         "grow": "Chomp chomp! Veggies!",
         "live": "Chomp chomp! Animals!",
@@ -575,10 +597,18 @@ def main():
         sfx_pop(), sfx_rise(), sfx_chomp(), sfx_sparkle(),
         sfx_tada(), sfx_whoosh(), sfx_blip(), sfx_hop())
 
-    place(sfx, TADA, 30, 0.5)          # title card
-    place(sfx, SPARK, 46, 0.4)
+    if CONF["kind"] == "short":
+        for k in range(SHORT_N):
+            place(sfx, POP, SHORT_HOOK + k * SHORT_STEP - 4, 0.7)
+        end = SHORT_HOOK + SHORT_N * SHORT_STEP
+        place(sfx, SPARK, end, 0.8)
+        place(sfx, TADA, end + 4, 0.7)
+        place(sfx, SPARK, end + 120, 0.6)
+    else:
+        place(sfx, TADA, 30, 0.5)      # title card
+        place(sfx, SPARK, 46, 0.4)
 
-    for n in range(N_ROUNDS):
+    for n in range(0 if CONF["kind"] != "short" else 0, N_ROUNDS):
         b = round_base(n)
         for k in range(6):             # the peek-a-boo hops
             place(sfx, HOP, b + B_HOP_IN + k * 27, 0.5)

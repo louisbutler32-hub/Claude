@@ -43,7 +43,9 @@
     "numbers": "remotion render NumberVideo out/numbers.mp4",
     "numbers:audio": "python3 scripts/build-audio.py numbers",
     "banner": "remotion still Channel-Banner out/channel-banner-2560x1440.png",
-    "banner:guides": "remotion still Channel-Banner-Guides out/channel-banner-guides.png"
+    "banner:guides": "remotion still Channel-Banner-Guides out/channel-banner-guides.png",
+    "short": "remotion render Counting-Short out/counting-short.mp4",
+    "short:audio": "python3 scripts/build-audio.py short"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",
