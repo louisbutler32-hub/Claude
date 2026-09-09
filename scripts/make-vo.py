@@ -43,7 +43,8 @@ def main():
     takes = []
     for i, line in enumerate(lines):
         samples, sr = kokoro.create(
-            line["text"], voice=spec["voice"], speed=spec["speed"], lang="en-gb"
+            line["text"], voice=spec["voice"], speed=spec["speed"],
+            lang=spec.get("lang", "en-us" if spec["voice"].startswith("a") else "en-gb"),
         )
         assert sr == SR
         audio = trim(np.asarray(samples, dtype=np.float32))

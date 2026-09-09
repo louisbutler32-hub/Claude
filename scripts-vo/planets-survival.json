@@ -1,7 +1,8 @@
 {
   "title": "How Long Would You Last on Every Planet?",
-  "voice": "bm_daniel",
-  "speed": 0.86,
+  "voice": "am_adam",
+  "speed": 0.88,
+  "lang": "en-us",
   "note": "Part 1 of the video: the first three minutes (Mercury, Venus, Mars). gap = seconds of silence after the line.",
   "lines": [
     { "id": "m0",  "scene": "lineup",        "gap": 0.35, "text": "Mercury." },

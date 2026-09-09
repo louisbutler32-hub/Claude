@@ -4,195 +4,195 @@
   "scene": "lineup",
   "text": "Mercury.",
   "start": 0.0,
-  "end": 1.056
+  "end": 0.882
  },
  {
   "id": "m1",
   "scene": "sun-close",
   "text": "Mercury is the closest planet to the Sun, and it gets seven times the sunlight Earth does.",
-  "start": 1.319,
-  "end": 6.996
+  "start": 1.187,
+  "end": 6.741
  },
  {
   "id": "m2",
   "scene": "exosphere",
   "text": "But it has almost no atmosphere. Just a thin exosphere. Nothing to hold the heat in, and nothing to breathe.",
-  "start": 7.183,
-  "end": 13.758
+  "start": 6.958,
+  "end": 13.55
  },
  {
   "id": "m3",
   "scene": "day-night",
   "text": "That is why the temperature swings are so violent. In sunlight the surface hits 430 degrees Celsius. At night it falls to minus 180.",
-  "start": 13.946,
-  "end": 24.181
+  "start": 13.768,
+  "end": 23.849
  },
  {
   "id": "m4",
   "scene": "suit-limit",
   "text": "NASA's latest suits are rated to 121 degrees. So in Mercury's daylight, you would cook inside your own suit.",
-  "start": 24.368,
-  "end": 32.326
+  "start": 24.067,
+  "end": 31.724
  },
  {
   "id": "m5",
   "scene": "night-freeze",
   "text": "Night is not much kinder. Those same suits give up at around minus 157.",
-  "start": 32.513,
-  "end": 38.468
+  "start": 31.942,
+  "end": 37.691
  },
  {
   "id": "m6",
   "scene": "slow-spin",
   "text": "And you cannot wait it out. One day and night on Mercury lasts 176 Earth days.",
-  "start": 38.656,
-  "end": 44.74
+  "start": 37.909,
+  "end": 43.546
  },
  {
   "id": "m7",
   "scene": "terminator",
   "text": "Your one real chance is the terminator zone. The thin band of twilight between day and night, where the temperature is actually survivable.",
-  "start": 44.927,
-  "end": 53.24
+  "start": 43.764,
+  "end": 52.244
  },
  {
   "id": "m8",
   "scene": "merc-verdict",
   "text": "Land there in a working suit, and you last exactly as long as your oxygen does. A few hours.",
-  "start": 53.427,
-  "end": 59.281
+  "start": 52.462,
+  "end": 58.45
  },
  {
   "id": "m9",
   "scene": "merc-vacuum",
   "text": "Take the suit off, and Mercury is a vacuum. You would black out in about fifteen seconds, and be dead in under two minutes.",
-  "start": 59.506,
-  "end": 66.236
+  "start": 58.711,
+  "end": 65.426
  },
  {
   "id": "v0",
   "scene": "lineup",
   "text": "Venus.",
-  "start": 66.686,
-  "end": 67.68
+  "start": 65.948,
+  "end": 66.733
  },
  {
   "id": "v1",
   "scene": "venus-twin",
   "text": "Venus is the closest planet to Earth, and almost exactly Earth's size and gravity.",
-  "start": 67.942,
-  "end": 73.373
+  "start": 67.038,
+  "end": 72.401
  },
  {
   "id": "v2",
   "scene": "venus-hostile",
   "text": "It is also the most hostile surface in the solar system.",
-  "start": 73.56,
-  "end": 77.28
+  "start": 72.619,
+  "end": 75.835
  },
  {
   "id": "v3",
   "scene": "acid-clouds",
   "text": "On the way down you fall through clouds of sulfuric acid, so thick that only ten percent of the sunlight reaches the ground.",
-  "start": 77.468,
-  "end": 85.088
+  "start": 76.053,
+  "end": 83.544
  },
  {
   "id": "v4",
   "scene": "venus-heat",
   "text": "So it is dark down there. And it is 465 degrees. Hot enough to melt lead, everywhere on the planet, day and night.",
-  "start": 85.276,
-  "end": 93.096
+  "start": 83.762,
+  "end": 91.801
  },
  {
   "id": "v5",
   "scene": "venus-press",
   "text": "Then there is the pressure. 92 bar, which is what you would feel 900 metres under Earth's ocean.",
-  "start": 93.284,
-  "end": 99.787
+  "start": 92.019,
+  "end": 98.266
  },
  {
   "id": "v6",
   "scene": "venera",
   "text": "The toughest machine we ever put down there, the Soviet Venera 13, lasted 127 minutes.",
-  "start": 99.975,
-  "end": 106.744
+  "start": 98.484,
+  "end": 105.322
  },
  {
   "id": "v7",
   "scene": "venus-suit",
   "text": "You, in the best suit anyone has ever built, would get a few seconds before it failed.",
-  "start": 106.931,
-  "end": 112.037
+  "start": 105.54,
+  "end": 110.316
  },
  {
   "id": "v8",
   "scene": "venus-verdict",
   "text": "Without one, you would be crushed, cooked and dissolved, in less than a second.",
-  "start": 112.262,
-  "end": 116.496
+  "start": 110.577,
+  "end": 114.587
  },
  {
   "id": "r0",
   "scene": "lineup",
   "text": "Mars.",
-  "start": 116.946,
-  "end": 117.911
+  "start": 115.109,
+  "end": 115.866
  },
  {
   "id": "r1",
   "scene": "mars-friendly",
   "text": "Mars is the friendliest planet in the solar system, and that is not saying much.",
-  "start": 118.173,
-  "end": 123.083
+  "start": 116.17,
+  "end": 121.157
  },
  {
   "id": "r2",
   "scene": "mars-temp",
   "text": "On a summer afternoon at the equator it can reach a pleasant 20 degrees. That same night, it drops to minus 73.",
-  "start": 123.27,
-  "end": 130.875
+  "start": 121.374,
+  "end": 128.996
  },
  {
   "id": "r3",
   "scene": "mars-air",
   "text": "The air is 95 percent carbon dioxide, with barely a trace of oxygen, and the pressure is under one percent of Earth's.",
-  "start": 131.063,
-  "end": 139.102
+  "start": 129.214,
+  "end": 137.368
  },
  {
   "id": "r4",
   "scene": "armstrong",
   "text": "That matters more than the cold. Below six percent of Earth's pressure, the water in your body boils at your own body temperature. Mars sits well under that line.",
-  "start": 139.289,
-  "end": 149.014
+  "start": 137.585,
+  "end": 147.625
  },
  {
   "id": "r5",
   "scene": "mars-vacuum",
   "text": "So with no suit, Mars kills you the same way Mercury does. Unconscious in fifteen seconds, dead in under two minutes.",
-  "start": 149.201,
-  "end": 156.405
+  "start": 147.842,
+  "end": 155.367
  },
  {
   "id": "r6",
   "scene": "mars-rad",
   "text": "Put the suit on, and your problem becomes radiation. Fifty times the dose you would get on Earth, and it never stops.",
-  "start": 156.63,
-  "end": 163.555
+  "start": 155.628,
+  "end": 162.818
  },
  {
   "id": "r7",
   "scene": "dust-storm",
   "text": "The dust storms look worse than they are. The wind hits 100 kilometres an hour, but the air is so thin it feels like a breeze.",
-  "start": 163.743,
-  "end": 171.709
+  "start": 163.035,
+  "end": 171.256
  },
  {
   "id": "r8",
   "scene": "mars-verdict",
   "text": "Give yourself a sealed, shielded habitat, and Mars finally stops being a countdown. You would last as long as your supplies do.",
-  "start": 171.896,
+  "start": 171.473,
   "end": 179.55
  }
 ]

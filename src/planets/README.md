@@ -14,7 +14,7 @@ npm start              # Remotion Studio, scrub the timeline
 | file | what it holds |
 |---|---|
 | `scripts-vo/planets-survival.json` | the script — one entry per narration line, with the scene it drives and the pause after it |
-| `scripts/make-vo.py` | synthesises the narration (local Kokoro TTS, `bm_daniel`), lays the takes out and scales the pauses so the track lands on 180.000 s |
+| `scripts/make-vo.py` | synthesises the narration (local Kokoro TTS, `am_adam`), lays the takes out and scales the pauses so the track lands on 180.000 s |
 | `scripts/make-music.py` | generates the ambient bed from scratch (four-chord pad, drone, sparse bell) |
 | `src/planets/timing.json` | generated: `{ start, end }` for every line — the master clock |
 | `src/planets/kit.tsx` | the drawing kit: wobbly terrain, doodle sun and planets, notes, arrows, thermometer, the survival stamp |
@@ -35,16 +35,17 @@ pip install numpy onnxruntime soundfile kokoro-onnx
 mkdir -p .tts && cd .tts
 HF=https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/main
 curl -L -o kokoro-v1.0.onnx $HF/onnx/model.onnx
-for v in bm_daniel am_michael bm_george; do curl -L -o $v.bin $HF/voices/$v.bin; done
+for v in am_adam am_michael bm_george; do curl -L -o $v.bin $HF/voices/$v.bin; done
 python3 -c "import numpy as np,glob,os; np.savez('voices-v1.0.bin', \
   **{os.path.basename(f)[:-4]: np.fromfile(f,dtype=np.float32).reshape(510,1,256) \
      for f in glob.glob('*.bin')})"
 mv voices-v1.0.bin.npz voices-v1.0.bin
 ```
 
-`bm_daniel` was picked by measuring the reference narrator's median pitch
-(128 Hz) and choosing the closest voice (126 Hz); `speed` in the script JSON
-is set so the read lands at the reference's ~170 words per minute.
+`am_adam` is the voice you asked for (the "Adam" read from Kokoro); `speed`
+in the script JSON is tuned so the whole read still lands inside three
+minutes with natural pauses — Adam is slower than the voice tried first, so
+the rate went from 0.86 to 0.88.
 
 ## The look
 
