@@ -1,9 +1,11 @@
 import React from "react";
 import {
   AbsoluteFill,
+  Audio,
   interpolate,
   Sequence,
   spring,
+  staticFile,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
@@ -362,6 +364,13 @@ export const VeggieVideo: React.FC = () => {
   loadVeggieFonts();
   return (
     <AbsoluteFill style={{ backgroundColor: "#dceaee" }}>
+      {/*
+        The soundtrack is a drop-in slot: anything at
+        public/audio/veggies-mix.mp3 that runs 10:28 gets used as-is.
+        `npm run veggies:audio` builds one (voice + sfx + music bed);
+        replace the file to use your own recording instead.
+      */}
+      <Audio src={staticFile("audio/veggies-mix.mp3")} />
       <SceneFilters />
       <Sequence durationInFrames={INTRO_LEN}>
         <TitleCard />

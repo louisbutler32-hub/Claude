@@ -79,16 +79,34 @@ src/veggies/
 
 ## Audio
 
-The render is **silent** — every visual beat is in place, but no music,
-voiceover or sound effects are baked in. To finish it:
+`public/audio/veggies-mix.mp3` is a **drop-in slot**: whatever 10:28 track
+sits there is what the video plays. Replace it with your own recording and
+re-render — nothing else needs to change.
 
-- `ROUNDS[n].vo` carries a one-line voiceover cue per round
-  ("What is that? … A carrot! Crunchy orange carrot.").
-- The beats to hit with sound effects are the ones in the table above: the
-  rise, the pop at frame 518, the chomp at 1104, the board rise at 1212,
-  the slot landing at 1382 and the confetti at 1386.
-- Add the tracks in an editor, or drop an `<Audio src={staticFile(...)} />`
-  into `VeggieVideo.tsx` once you have them.
+To build one:
+
+```bash
+pip install numpy edge-tts     # ffmpeg also needs to be on PATH
+npm run veggies:audio          # writes public/audio/veggies-mix.mp3
+```
+
+`scripts/build-veggie-audio.py` lays three layers onto the same frame grid
+the animation uses, so nothing has to be nudged by hand in an editor:
+
+| layer | what it is |
+|---|---|
+| voice | 38 lines read by the edge-tts `en-US-AnaNeural` child voice at −5% rate — the question at frame 382, the name at 546, the description at 668 of each round |
+| sfx | synthesised in the script, so there is nothing to license: a slide-whistle rise, the reveal bloop, hop bounces, the crocodile's two crunches, the board whoosh, twelve slot blips, a twinkle on the slot landing, a bell arpeggio on the celebration |
+| music | a soft four-chord marimba bed, ducked ~6 dB under anything spoken |
+
+The generated audio is **gitignored on purpose**. `edge-tts` reads from the
+endpoint behind Edge's read-aloud feature, which is not licensed for
+commercial use — fine for auditioning the timing, not for a monetised
+upload. The same voices are sold properly through Azure Speech (the whole
+script is ~700 characters, inside their free tier), or record the lines
+yourself and drop the file in the same slot.
+
+Edit `ROUNDS` and `QUESTIONS` at the top of the script to change the words.
 
 ## Fonts
 
