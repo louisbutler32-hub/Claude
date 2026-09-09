@@ -10,189 +10,413 @@
   "id": "m1",
   "scene": "sun-close",
   "text": "Mercury is the closest planet to the Sun, and it gets seven times the sunlight Earth does.",
-  "start": 1.278,
-  "end": 6.95
+  "start": 1.496,
+  "end": 7.168
  },
  {
   "id": "m2",
   "scene": "exosphere",
   "text": "But it has almost no atmosphere. Just a thin exosphere. Nothing to hold the heat in, and nothing to breathe.",
-  "start": 7.174,
-  "end": 13.937
+  "start": 7.548,
+  "end": 14.311
  },
  {
   "id": "m3",
   "scene": "day-night",
   "text": "That is why the temperature swings are so violent. In sunlight the surface hits 430 degrees Celsius. At night it falls to minus 180.",
-  "start": 14.161,
-  "end": 24.165
+  "start": 14.691,
+  "end": 24.696
  },
  {
   "id": "m4",
   "scene": "suit-limit",
   "text": "NASA's latest suits are rated to 121 degrees. So in Mercury's daylight, you would cook inside your own suit.",
-  "start": 24.39,
-  "end": 31.869
+  "start": 25.076,
+  "end": 32.555
  },
  {
   "id": "m5",
   "scene": "night-freeze",
   "text": "Night is not much kinder. Those same suits give up at around minus 157.",
-  "start": 32.094,
-  "end": 37.872
+  "start": 32.935,
+  "end": 38.714
  },
  {
   "id": "m6",
   "scene": "slow-spin",
   "text": "And you cannot wait it out. One day and night on Mercury lasts 176 Earth days.",
-  "start": 38.097,
-  "end": 43.881
+  "start": 39.094,
+  "end": 44.878
  },
  {
   "id": "m7",
   "scene": "terminator",
   "text": "Your one real chance is the terminator zone. The thin band of twilight between day and night, where the temperature is actually survivable.",
-  "start": 44.105,
-  "end": 52.475
+  "start": 45.259,
+  "end": 53.628
  },
  {
   "id": "m8",
   "scene": "merc-verdict",
   "text": "Land there in a working suit, and you last exactly as long as your oxygen does. A few hours.",
-  "start": 52.699,
-  "end": 58.666
+  "start": 54.008,
+  "end": 59.975
  },
  {
   "id": "m9",
   "scene": "merc-vacuum",
   "text": "Take the suit off, and Mercury is a vacuum. You would black out in about fifteen seconds, and be dead in under two minutes.",
-  "start": 58.935,
-  "end": 65.806
+  "start": 60.432,
+  "end": 67.302
  },
  {
   "id": "v0",
   "scene": "lineup",
   "text": "Venus.",
-  "start": 66.344,
-  "end": 67.251
+  "start": 68.215,
+  "end": 69.122
  },
  {
   "id": "v1",
   "scene": "venus-twin",
   "text": "Venus is the closest planet to Earth, and almost exactly Earth's size and gravity.",
-  "start": 67.565,
-  "end": 73.045
+  "start": 69.654,
+  "end": 75.134
  },
  {
   "id": "v2",
   "scene": "venus-hostile",
   "text": "It is also the most hostile surface in the solar system.",
-  "start": 73.269,
-  "end": 76.855
+  "start": 75.514,
+  "end": 79.1
  },
  {
   "id": "v3",
   "scene": "acid-clouds",
   "text": "On the way down you fall through clouds of sulfuric acid, so thick that only ten percent of the sunlight reaches the ground.",
-  "start": 77.079,
-  "end": 84.519
+  "start": 79.48,
+  "end": 86.92
  },
  {
   "id": "v4",
   "scene": "venus-heat",
   "text": "So it is dark down there. And it is 465 degrees. Hot enough to melt lead, everywhere on the planet, day and night.",
-  "start": 84.744,
-  "end": 92.572
+  "start": 87.3,
+  "end": 95.129
  },
  {
   "id": "v5",
   "scene": "venus-press",
   "text": "Then there is the pressure. 92 bar, which is what you would feel 900 metres under Earth's ocean.",
-  "start": 92.797,
-  "end": 99.299
+  "start": 95.509,
+  "end": 102.012
  },
  {
   "id": "v6",
   "scene": "venera",
   "text": "The toughest machine we ever put down there, the Soviet Venera 13, lasted 127 minutes.",
-  "start": 99.523,
-  "end": 106.088
+  "start": 102.392,
+  "end": 108.957
  },
  {
   "id": "v7",
   "scene": "venus-suit",
   "text": "You, in the best suit anyone has ever built, would get a few seconds before it failed.",
-  "start": 106.312,
-  "end": 111.316
+  "start": 109.337,
+  "end": 114.34
  },
  {
   "id": "v8",
   "scene": "venus-verdict",
   "text": "Without one, you would be crushed, cooked and dissolved, in less than a second.",
-  "start": 111.585,
-  "end": 115.59
+  "start": 114.796,
+  "end": 118.802
  },
  {
   "id": "r0",
   "scene": "lineup",
   "text": "Mars.",
-  "start": 116.128,
-  "end": 117.026
+  "start": 119.714,
+  "end": 120.611
  },
  {
   "id": "r1",
   "scene": "mars-friendly",
   "text": "Mars is the friendliest planet in the solar system, and that is not saying much.",
-  "start": 117.34,
-  "end": 122.467
+  "start": 121.144,
+  "end": 126.271
  },
  {
   "id": "r2",
   "scene": "mars-temp",
   "text": "On a summer afternoon at the equator it can reach a pleasant 20 degrees. That same night, it drops to minus 73.",
-  "start": 122.691,
-  "end": 130.178
+  "start": 126.651,
+  "end": 134.138
  },
  {
   "id": "r3",
   "scene": "mars-air",
   "text": "The air is 95 percent carbon dioxide, with barely a trace of oxygen, and the pressure is under one percent of Earth's.",
-  "start": 130.402,
-  "end": 138.562
+  "start": 134.518,
+  "end": 142.678
  },
  {
   "id": "r4",
   "scene": "armstrong",
   "text": "That matters more than the cold. Below six percent of Earth's pressure, the water in your body boils at your own body temperature. Mars sits well under that line.",
-  "start": 138.787,
-  "end": 148.711
+  "start": 143.058,
+  "end": 152.983
  },
  {
   "id": "r5",
   "scene": "mars-vacuum",
   "text": "So with no suit, Mars kills you the same way Mercury does. Unconscious in fifteen seconds, dead in under two minutes.",
-  "start": 148.935,
-  "end": 156.26
+  "start": 153.363,
+  "end": 160.687
  },
  {
   "id": "r6",
   "scene": "mars-rad",
   "text": "Put the suit on, and your problem becomes radiation. Fifty times the dose you would get on Earth, and it never stops.",
-  "start": 156.529,
-  "end": 163.61
+  "start": 161.143,
+  "end": 168.225
  },
  {
   "id": "r7",
   "scene": "dust-storm",
   "text": "The dust storms look worse than they are. The wind hits 100 kilometres an hour, but the air is so thin it feels like a breeze.",
-  "start": 163.835,
-  "end": 171.522
+  "start": 168.605,
+  "end": 176.292
  },
  {
   "id": "r8",
   "scene": "mars-verdict",
   "text": "Give yourself a sealed, shielded habitat, and Mars finally stops being a countdown. You would last as long as your supplies do.",
-  "start": 171.746,
-  "end": 179.55
+  "start": 176.673,
+  "end": 184.476
+ },
+ {
+  "id": "j0",
+  "scene": "lineup",
+  "text": "Jupiter.",
+  "start": 184.476,
+  "end": 185.383
+ },
+ {
+  "id": "j1",
+  "scene": "jup-scale",
+  "text": "Jupiter is not a planet you land on. There is no surface anywhere. It is more than a thousand times the volume of Earth, and nearly all of it is gas that just gets thicker the deeper you go.",
+  "start": 185.916,
+  "end": 197.272
+ },
+ {
+  "id": "j2",
+  "scene": "jup-radiation",
+  "text": "The trouble starts long before you arrive. Jupiter is wrapped in the strongest radiation belts in the solar system. Out at the orbit of Europa, still 670,000 kilometres from the clouds, you would take a lethal dose in about a day.",
+  "start": 197.652,
+  "end": 213.084
+ },
+ {
+  "id": "j3",
+  "scene": "jup-fall",
+  "text": "So assume a suit that stops it. Gravity here is two and a half times Earth's, which means you do not descend. You fall, and you keep speeding up.",
+  "start": 213.464,
+  "end": 222.116
+ },
+ {
+  "id": "j4",
+  "scene": "jup-clouds",
+  "text": "The first thing you meet is a deck of ammonia ice clouds at about minus 145 degrees, in winds running over 400 kilometres an hour.",
+  "start": 222.496,
+  "end": 232.369
+ },
+ {
+  "id": "j5",
+  "scene": "jup-galileo",
+  "text": "In 1995 NASA dropped a probe into exactly this. Galileo lasted 58 minutes and got 156 kilometres down before the heat and the pressure destroyed it. That is the record, and you would not beat it.",
+  "start": 232.749,
+  "end": 246.465
+ },
+ {
+  "id": "j6",
+  "scene": "jup-fluid",
+  "text": "Keep falling and the hydrogen around you stops behaving like a gas. It becomes a supercritical fluid, not quite gas and not quite liquid, and now you are swimming rather than falling.",
+  "start": 246.922,
+  "end": 258.041
+ },
+ {
+  "id": "j7",
+  "scene": "jup-metallic",
+  "text": "Deeper still it turns into liquid metallic hydrogen, dense enough to conduct electricity. That layer is what generates Jupiter's magnetic field.",
+  "start": 258.421,
+  "end": 268.12
+ },
+ {
+  "id": "j8",
+  "scene": "jup-core",
+  "text": "At the centre it is around 24,000 degrees, four times hotter than the surface of the Sun, under about 40 million times Earth's air pressure.",
+  "start": 268.5,
+  "end": 277.962
+ },
+ {
+  "id": "s0",
+  "scene": "lineup",
+  "text": "Saturn.",
+  "start": 278.874,
+  "end": 279.734
+ },
+ {
+  "id": "s1",
+  "scene": "sat-density",
+  "text": "Saturn is the second largest planet and by far the least dense. It is so light that if you could find an ocean big enough, Saturn would float on it.",
+  "start": 280.266,
+  "end": 288.93
+ },
+ {
+  "id": "s2",
+  "scene": "sat-moons",
+  "text": "Getting there is the crowded part. Saturn has 146 confirmed moons, and a ring system built from ice, rock, and the shattered remains of older ones.",
+  "start": 289.31,
+  "end": 299.258
+ },
+ {
+  "id": "s3",
+  "scene": "sat-rings",
+  "text": "The rings look solid from a distance. Up close they are mostly lumps of water ice, anything from a grain of sand to a piece the size of a house, all orbiting at their own speed.",
+  "start": 299.638,
+  "end": 310.568
+ },
+ {
+  "id": "s4",
+  "scene": "sat-winds",
+  "text": "Once you are through, the air is the fastest you have met yet. Winds at the equator run about 1,800 kilometres an hour, five times the strongest hurricane on Earth.",
+  "start": 310.948,
+  "end": 322.12
+ },
+ {
+  "id": "s5",
+  "scene": "sat-hexagon",
+  "text": "At the north pole there is a storm shaped like a hexagon, wide enough to fit two Earths inside it. Nobody is entirely sure why it has six sides.",
+  "start": 322.5,
+  "end": 331.626
+ },
+ {
+  "id": "s6",
+  "scene": "sat-cold",
+  "text": "The cloud tops sit near minus 180 degrees. As you fall, pressure and temperature climb together, and somewhere down there the hydrogen turns liquid.",
+  "start": 332.007,
+  "end": 341.598
+ },
+ {
+  "id": "s7",
+  "scene": "sat-cassini",
+  "text": "Cassini flew in on purpose in 2017 and kept transmitting for about a minute before it came apart. That is the only measurement anyone has ever taken from inside Saturn.",
+  "start": 341.978,
+  "end": 353.46
+ },
+ {
+  "id": "s8",
+  "scene": "sat-core",
+  "text": "The core is roughly 11,700 degrees, about twice as hot as the surface of the Sun.",
+  "start": 353.916,
+  "end": 360.741
+ },
+ {
+  "id": "u0",
+  "scene": "lineup",
+  "text": "Uranus.",
+  "start": 361.654,
+  "end": 362.688
+ },
+ {
+  "id": "u1",
+  "scene": "ura-tilt",
+  "text": "Uranus lies on its side. The axis is tipped by 98 degrees, so rather than spinning like a top, it rolls, and each pole gets 42 years of unbroken sunlight followed by 42 years of dark.",
+  "start": 363.22,
+  "end": 376.658
+ },
+ {
+  "id": "u2",
+  "scene": "ura-ice",
+  "text": "Ice giant does not mean a ball of ice. It means most of the planet is water, methane and ammonia, hot and dense and squeezed into a fluid nothing on Earth resembles.",
+  "start": 377.038,
+  "end": 387.564
+ },
+ {
+  "id": "u3",
+  "scene": "ura-cold",
+  "text": "The methane is what makes it blue, and it is also the coldest place in the solar system. The record is minus 224 degrees, colder than Neptune, which sits a billion and a half kilometres further out.",
+  "start": 387.944,
+  "end": 400.885
+ },
+ {
+  "id": "u4",
+  "scene": "ura-diamond",
+  "text": "Fall in and the winds hit 900 kilometres an hour, and the pressure begins squeezing that methane into carbon. It rains diamonds down there.",
+  "start": 401.265,
+  "end": 410.592
+ },
+ {
+  "id": "u5",
+  "scene": "ura-verdict",
+  "text": "You would never see them. Nothing has ever been flown into Uranus, and you would not stay conscious long enough to be the first.",
+  "start": 411.048,
+  "end": 418.282
+ },
+ {
+  "id": "n0",
+  "scene": "lineup",
+  "text": "Neptune.",
+  "start": 419.194,
+  "end": 420.273
+ },
+ {
+  "id": "n1",
+  "scene": "nep-far",
+  "text": "Neptune is the last one, thirty times further from the Sun than we are. Noon here is about as bright as a heavy dusk on Earth.",
+  "start": 420.805,
+  "end": 428.522
+ },
+ {
+  "id": "n2",
+  "scene": "nep-winds",
+  "text": "It is also the windiest place we know of. Storms on Neptune have been clocked at 2,100 kilometres an hour, which is supersonic, and nobody can fully explain where that energy comes from this far out.",
+  "start": 428.902,
+  "end": 442.057
+ },
+ {
+  "id": "n3",
+  "scene": "nep-core",
+  "text": "Underneath it is the same story as Uranus. Crushing pressure, diamond rain, and a core somewhere near 5,000 degrees beneath a mantle of hot fluid ice.",
+  "start": 442.437,
+  "end": 452.371
+ },
+ {
+  "id": "n4",
+  "scene": "nep-verdict",
+  "text": "There is no ground to reach, nothing to stand on, and no suit that survives the way down.",
+  "start": 452.752,
+  "end": 458.259
+ },
+ {
+  "id": "z0",
+  "scene": "board",
+  "text": "So here is the whole list, worst to best.",
+  "start": 459.171,
+  "end": 461.704
+ },
+ {
+  "id": "z1",
+  "scene": "board",
+  "text": "Venus, under a second. Uranus and Neptune, seconds. Saturn, about a minute. Jupiter, 58 minutes if you fall as well as Galileo did. Mercury, ninety seconds. Mars, two minutes.",
+  "start": 462.161,
+  "end": 473.703
+ },
+ {
+  "id": "z2",
+  "scene": "signoff",
+  "text": "And Earth, where you get about eighty years, which is the only sensible answer on the board.",
+  "start": 474.159,
+  "end": 479.55
  }
 ]

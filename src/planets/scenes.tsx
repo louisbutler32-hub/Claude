@@ -1,6 +1,7 @@
 import React from "react";
 import { interpolate, useCurrentFrame } from "remotion";
 import { Astronaut, Habitat, Lander, Probe } from "./character";
+import { OUTER_DARK, OUTER_SCENES } from "./outer";
 import {
   Arrow,
   Band,
@@ -852,15 +853,26 @@ const SCENES: Record<string, Scene> = {
   "mars-rad": MarsRad,
   "dust-storm": DustStorm,
   "mars-verdict": MarsVerdict,
+  ...OUTER_SCENES,
 };
 
 /** Scenes drawn on a dark background need the boxed chapter title. */
-export const DARK_SCENES = new Set(["night-freeze", "merc-vacuum"]);
+export const DARK_SCENES = new Set(["night-freeze", "merc-vacuum", ...OUTER_DARK]);
+
+/** Line ids are prefixed by planet: m0, v3, j5 ... */
+export const PLANET_OF: Record<string, string> = {
+  m: "mercury",
+  v: "venus",
+  r: "mars",
+  j: "jupiter",
+  s: "saturn",
+  u: "uranus",
+  n: "neptune",
+};
 
 export const renderScene = (scene: string, id: string) => {
   if (scene === "lineup") {
-    const focus = id[0] === "m" ? "mercury" : id[0] === "v" ? "venus" : "mars";
-    return <Lineup focus={focus} />;
+    return <Lineup focus={PLANET_OF[id[0]]} />;
   }
   const C = SCENES[scene];
   return C ? <C /> : null;

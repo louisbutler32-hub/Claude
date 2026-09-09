@@ -3,7 +3,8 @@
   "voice": "am_liam",
   "speed": 0.83,
   "lang": "en-us",
-  "note": "Part 1 of the video: the first three minutes (Mercury, Venus, Mars). gap = seconds of silence after the line.",
+  "duration": 480,
+  "note": "All eight planets, exactly eight minutes. gap = seconds of silence after the line.",
   "lines": [
     { "id": "m0",  "scene": "lineup",        "gap": 0.35, "text": "Mercury." },
     { "id": "m1",  "scene": "sun-close",     "gap": 0.25, "text": "Mercury is the closest planet to the Sun, and it gets seven times the sunlight Earth does." },
@@ -34,6 +35,43 @@
     { "id": "r5",  "scene": "mars-vacuum",   "gap": 0.3, "text": "So with no suit, Mars kills you the same way Mercury does. Unconscious in fifteen seconds, dead in under two minutes." },
     { "id": "r6",  "scene": "mars-rad",      "gap": 0.25, "text": "Put the suit on, and your problem becomes radiation. Fifty times the dose you would get on Earth, and it never stops." },
     { "id": "r7",  "scene": "dust-storm",    "gap": 0.25, "text": "The dust storms look worse than they are. The wind hits 100 kilometres an hour, but the air is so thin it feels like a breeze." },
-    { "id": "r8",  "scene": "mars-verdict",  "gap": 0.0, "text": "Give yourself a sealed, shielded habitat, and Mars finally stops being a countdown. You would last as long as your supplies do." }
+    { "id": "r8",  "scene": "mars-verdict",  "gap": 0.0, "text": "Give yourself a sealed, shielded habitat, and Mars finally stops being a countdown. You would last as long as your supplies do." },
+
+    { "id": "j0",  "scene": "lineup",        "gap": 0.35, "text": "Jupiter." },
+    { "id": "j1",  "scene": "jup-scale",     "gap": 0.25, "text": "Jupiter is not a planet you land on. There is no surface anywhere. It is more than a thousand times the volume of Earth, and nearly all of it is gas that just gets thicker the deeper you go." },
+    { "id": "j2",  "scene": "jup-radiation", "gap": 0.25, "text": "The trouble starts long before you arrive. Jupiter is wrapped in the strongest radiation belts in the solar system. Out at the orbit of Europa, still 670,000 kilometres from the clouds, you would take a lethal dose in about a day." },
+    { "id": "j3",  "scene": "jup-fall",      "gap": 0.25, "text": "So assume a suit that stops it. Gravity here is two and a half times Earth's, which means you do not descend. You fall, and you keep speeding up." },
+    { "id": "j4",  "scene": "jup-clouds",    "gap": 0.25, "text": "The first thing you meet is a deck of ammonia ice clouds at about minus 145 degrees, in winds running over 400 kilometres an hour." },
+    { "id": "j5",  "scene": "jup-galileo",   "gap": 0.3, "text": "In 1995 NASA dropped a probe into exactly this. Galileo lasted 58 minutes and got 156 kilometres down before the heat and the pressure destroyed it. That is the record, and you would not beat it." },
+    { "id": "j6",  "scene": "jup-fluid",     "gap": 0.25, "text": "Keep falling and the hydrogen around you stops behaving like a gas. It becomes a supercritical fluid, not quite gas and not quite liquid, and now you are swimming rather than falling." },
+    { "id": "j7",  "scene": "jup-metallic",  "gap": 0.25, "text": "Deeper still it turns into liquid metallic hydrogen, dense enough to conduct electricity. That layer is what generates Jupiter's magnetic field." },
+    { "id": "j8",  "scene": "jup-core",      "gap": 0.6, "text": "At the centre it is around 24,000 degrees, four times hotter than the surface of the Sun, under about 40 million times Earth's air pressure." },
+
+    { "id": "s0",  "scene": "lineup",        "gap": 0.35, "text": "Saturn." },
+    { "id": "s1",  "scene": "sat-density",   "gap": 0.25, "text": "Saturn is the second largest planet and by far the least dense. It is so light that if you could find an ocean big enough, Saturn would float on it." },
+    { "id": "s2",  "scene": "sat-moons",     "gap": 0.25, "text": "Getting there is the crowded part. Saturn has 146 confirmed moons, and a ring system built from ice, rock, and the shattered remains of older ones." },
+    { "id": "s3",  "scene": "sat-rings",     "gap": 0.25, "text": "The rings look solid from a distance. Up close they are mostly lumps of water ice, anything from a grain of sand to a piece the size of a house, all orbiting at their own speed." },
+    { "id": "s4",  "scene": "sat-winds",     "gap": 0.25, "text": "Once you are through, the air is the fastest you have met yet. Winds at the equator run about 1,800 kilometres an hour, five times the strongest hurricane on Earth." },
+    { "id": "s5",  "scene": "sat-hexagon",   "gap": 0.25, "text": "At the north pole there is a storm shaped like a hexagon, wide enough to fit two Earths inside it. Nobody is entirely sure why it has six sides." },
+    { "id": "s6",  "scene": "sat-cold",      "gap": 0.25, "text": "The cloud tops sit near minus 180 degrees. As you fall, pressure and temperature climb together, and somewhere down there the hydrogen turns liquid." },
+    { "id": "s7",  "scene": "sat-cassini",   "gap": 0.3, "text": "Cassini flew in on purpose in 2017 and kept transmitting for about a minute before it came apart. That is the only measurement anyone has ever taken from inside Saturn." },
+    { "id": "s8",  "scene": "sat-core",      "gap": 0.6, "text": "The core is roughly 11,700 degrees, about twice as hot as the surface of the Sun." },
+
+    { "id": "u0",  "scene": "lineup",        "gap": 0.35, "text": "Uranus." },
+    { "id": "u1",  "scene": "ura-tilt",      "gap": 0.25, "text": "Uranus lies on its side. The axis is tipped by 98 degrees, so rather than spinning like a top, it rolls, and each pole gets 42 years of unbroken sunlight followed by 42 years of dark." },
+    { "id": "u2",  "scene": "ura-ice",       "gap": 0.25, "text": "Ice giant does not mean a ball of ice. It means most of the planet is water, methane and ammonia, hot and dense and squeezed into a fluid nothing on Earth resembles." },
+    { "id": "u3",  "scene": "ura-cold",      "gap": 0.25, "text": "The methane is what makes it blue, and it is also the coldest place in the solar system. The record is minus 224 degrees, colder than Neptune, which sits a billion and a half kilometres further out." },
+    { "id": "u4",  "scene": "ura-diamond",   "gap": 0.3, "text": "Fall in and the winds hit 900 kilometres an hour, and the pressure begins squeezing that methane into carbon. It rains diamonds down there." },
+    { "id": "u5",  "scene": "ura-verdict",   "gap": 0.6, "text": "You would never see them. Nothing has ever been flown into Uranus, and you would not stay conscious long enough to be the first." },
+
+    { "id": "n0",  "scene": "lineup",        "gap": 0.35, "text": "Neptune." },
+    { "id": "n1",  "scene": "nep-far",       "gap": 0.25, "text": "Neptune is the last one, thirty times further from the Sun than we are. Noon here is about as bright as a heavy dusk on Earth." },
+    { "id": "n2",  "scene": "nep-winds",     "gap": 0.25, "text": "It is also the windiest place we know of. Storms on Neptune have been clocked at 2,100 kilometres an hour, which is supersonic, and nobody can fully explain where that energy comes from this far out." },
+    { "id": "n3",  "scene": "nep-core",      "gap": 0.25, "text": "Underneath it is the same story as Uranus. Crushing pressure, diamond rain, and a core somewhere near 5,000 degrees beneath a mantle of hot fluid ice." },
+    { "id": "n4",  "scene": "nep-verdict",   "gap": 0.6, "text": "There is no ground to reach, nothing to stand on, and no suit that survives the way down." },
+
+    { "id": "z0",  "scene": "board",         "gap": 0.3, "text": "So here is the whole list, worst to best." },
+    { "id": "z1",  "scene": "board",         "gap": 0.3, "text": "Venus, under a second. Uranus and Neptune, seconds. Saturn, about a minute. Jupiter, 58 minutes if you fall as well as Galileo did. Mercury, ninety seconds. Mars, two minutes." },
+    { "id": "z2",  "scene": "signoff",       "gap": 0.0, "text": "And Earth, where you get about eighty years, which is the only sensible answer on the board." }
   ]
 }

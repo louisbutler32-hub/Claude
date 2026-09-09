@@ -119,7 +119,15 @@ export const useDoodleFont = () => {
 };
 
 /** Decode the planet photos before frame 0 so none of them pops in late. */
-export const PLANET_IMAGES = ["mercury", "venus", "mars", "earth"];
+export const PLANET_IMAGES = [
+  "mercury",
+  "venus",
+  "earth",
+  "mars",
+  "jupiter",
+  "uranus",
+  "neptune",
+];
 
 let imagesReady: Promise<unknown> | null = null;
 
@@ -441,7 +449,8 @@ export const Stamp: React.FC<{ x: number; y: number; label: string; value: strin
   delay = 0,
 }) => {
   const { scale, opacity } = usePop(delay, 10);
-  const w = Math.max(560, value.length * 34 + 140);
+  // wide enough for whichever of the two lines is longer
+  const w = Math.max(560, value.length * 34 + 140, label.length * 23 + 110);
   const h = 190;
   return (
     <g transform={`translate(${x} ${y}) rotate(-3) scale(${0.85 + scale * 0.15})`} opacity={opacity}>

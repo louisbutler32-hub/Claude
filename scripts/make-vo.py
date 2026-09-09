@@ -22,7 +22,7 @@ from kokoro_onnx import Kokoro
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TTS = os.path.join(ROOT, ".tts")
 SR = 24000
-TARGET = 180.0  # the video is exactly three minutes
+TARGET = 480.0  # the video runs exactly eight minutes
 TAIL = 0.45     # silence left after the final word
 
 
@@ -38,6 +38,7 @@ def trim(x, thresh=0.008, pad=0.04):
 def main():
     spec = json.load(open(os.path.join(ROOT, "scripts-vo", "planets-survival.json")))
     lines = spec["lines"]
+    target = spec.get("duration", TARGET)
     kokoro = Kokoro(os.path.join(TTS, "kokoro-v1.0.onnx"), os.path.join(TTS, "voices-v1.0.bin"))
 
     takes = []
@@ -53,13 +54,13 @@ def main():
 
     speech = sum(len(a) for a in takes) / SR
     gaps = sum(l.get("gap", 0.25) for l in lines)
-    room = TARGET - TAIL - speech
+    room = target - TAIL - speech
     scale = room / gaps if gaps else 0
-    print("\nspeech %.2fs + gaps %.2fs -> scale gaps by %.2f to hit %.1fs" % (speech, gaps, scale, TARGET))
+    print("\nspeech %.2fs + gaps %.2fs -> scale gaps by %.2f to hit %.1fs" % (speech, gaps, scale, target))
     if not 0.4 <= scale <= 2.5:
         print("!! gap scale is out of range - edit the script text and re-run", file=sys.stderr)
 
-    track = np.zeros(int(TARGET * SR) + SR, dtype=np.float32)
+    track = np.zeros(int(target * SR) + SR, dtype=np.float32)
     timing, cursor = [], 0.0
     for line, audio in zip(lines, takes):
         start = int(cursor * SR)
@@ -70,7 +71,7 @@ def main():
         cursor = end + line.get("gap", 0.25) * scale
     print("last word ends at %.2fs" % timing[-1]["end"])
 
-    track = track[:int(TARGET * SR)]
+    track = track[:int(target * SR)]
     peak = float(np.max(np.abs(track))) or 1.0
     track *= 0.89 / peak
 
