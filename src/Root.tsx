@@ -28,6 +28,10 @@ import {
 import { ArtSheet } from "./veggies/ArtSheet";
 import { PlanetsVideo, PLANETS_DURATION_SECONDS } from "./planets/PlanetsVideo";
 import { ThumbnailA, ThumbnailB } from "./planets/Thumbnail";
+import {
+  ThumbnailA as VeggieThumbnailA,
+  ThumbnailB as VeggieThumbnailB,
+} from "./veggies/Thumbnail";
 import { MongolsEurope, MONGOLS_DURATION_IN_FRAMES } from "./maps/mongols";
 import { MansaMusa, MANSA_DURATION_IN_FRAMES } from "./maps/mansa";
 import { Shelterbelt, SHELTERBELT_DURATION_IN_FRAMES } from "./maps/shelterbelt";
@@ -53,6 +57,22 @@ export const RemotionRoot: React.FC = () => {
         id="VeggieVideo"
         component={VeggieVideo}
         durationInFrames={VEGGIE_DURATION_IN_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Veggie-Thumbnail"
+        component={VeggieThumbnailA}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Veggie-Thumbnail-Board"
+        component={VeggieThumbnailB}
+        durationInFrames={1}
         fps={30}
         width={1920}
         height={1080}

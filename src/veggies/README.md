@@ -77,6 +77,24 @@ src/veggies/
   ArtSheet.tsx      review composition: all twelve, colour beside silhouette
 ```
 
+## Thumbnails
+
+Two, both built from the same components the video uses, so a frame grab
+and the thumbnail can never drift apart:
+
+- **`Veggie-Thumbnail`** — three silhouettes and three question marks: the
+  format's hook, and the highest-contrast thing this art can put on a
+  16:9 tile.
+- **`Veggie-Thumbnail-Board`** — the finished board, "can you name all 12?"
+  — the payoff, and it shows the variety in one look.
+
+```bash
+npm run veggies:thumb    # writes both PNGs to out/
+```
+
+Both render 1920×1080; exported as JPEG they land around 250 KB, well
+inside YouTube's 2 MB limit.
+
 ## Audio
 
 `public/audio/veggies-mix.mp3` is a **drop-in slot**: whatever 10:28 track

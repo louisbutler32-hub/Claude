@@ -34,7 +34,8 @@
     "planets": "remotion render PlanetsVideo out/planets.mp4",
     "planets:still": "remotion still PlanetsVideo out/planets-still.png",
     "planets:thumbs": "remotion still Planets-ThumbA out/package/thumbnail-a.png && remotion still Planets-ThumbB out/package/thumbnail-b.png",
-    "planets:package": "python3 scripts/make-package.py"
+    "planets:package": "python3 scripts/make-package.py",
+    "veggies:thumb": "remotion still Veggie-Thumbnail out/thumbnail-guess-the-veggie.png && remotion still Veggie-Thumbnail-Board out/thumbnail-name-all-12.png"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",
