@@ -26,8 +26,12 @@ N_ROUNDS = 12
 TOTAL_FRAMES = INTRO_LEN + N_ROUNDS * ROUND_LEN
 TOTAL_SEC = TOTAL_FRAMES / FPS
 
-VOICE = "en-US-AnaNeural"
-RATE = "-5%"
+# Two readers: a child who plays the guessing game, and a narrator who
+# explains what is on screen and asks the viewer the questions.
+VOICES = {
+    "ana":  ("en-US-AnaNeural",  "-5%"),   # the kid
+    "emma": ("en-US-EmmaNeural", "-12%"),  # the narrator
+}
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WORK = os.path.join(ROOT, ".audio-build")
@@ -43,34 +47,76 @@ B_QUESTION = 382
 B_FLASH = 518
 B_NAME = 546
 B_DESC = 668
+B_PEEK = 150          # narrator: something is hiding
+B_WHERE = 806         # narrator: let's see where it grows
+B_FACT = 890          # narrator: how it actually grows
+B_CROC = 1046         # narrator: here comes the crocodile
 B_CHOMP = 1104
+B_ASK = 1225          # narrator: where does it go on the board?
+B_COUNT = 1418        # narrator: praise + running count
 B_BOARD_RISE = 1212
 B_BOARD_POP = 1256
 B_LAND = 1382
 B_CELEBRATE = 1386
 
 # ── the script ────────────────────────────────────────────────────────
+# (id, what Ana calls it, how Ana describes it, how Emma says it grows)
 ROUNDS = [
-    ("carrot",   "It's a carrot! Carrot.",         "A crunchy orange carrot."),
-    ("corn",     "It's corn! Corn.",               "Sweet yellow corn."),
-    ("tomato",   "It's a tomato! Tomato.",         "A round red tomato."),
-    ("pumpkin",  "It's a pumpkin! Pumpkin.",       "A big orange pumpkin."),
-    ("pepper",   "It's a bell pepper! Pepper.",    "A shiny red pepper."),
-    ("cucumber", "It's a cucumber! Cucumber.",     "A long green cucumber."),
-    ("potato",   "It's a potato! Potato.",         "A lumpy brown potato."),
-    ("onion",    "It's an onion! Onion.",          "A purple papery onion."),
-    ("eggplant", "It's an eggplant! Eggplant.",    "A shiny purple eggplant."),
-    ("peas",     "It's peas! Peas.",               "Little green peas in a pod."),
-    ("broccoli", "It's broccoli! Broccoli.",       "Big bushy green broccoli."),
-    ("mushroom", "It's a mushroom! Mushroom.",     "A cute little mushroom."),
+    ("carrot",   "It's a carrot! Carrot.",      "A crunchy orange carrot.",
+     "Carrots grow under the ground. Only their tops peek out!"),
+    ("corn",     "It's corn! Corn.",            "Sweet yellow corn.",
+     "Corn grows on tall stalks, way up high."),
+    ("tomato",   "It's a tomato! Tomato.",      "A round red tomato.",
+     "Tomatoes grow on a vine, and turn from green to red."),
+    ("pumpkin",  "It's a pumpkin! Pumpkin.",    "A big orange pumpkin.",
+     "Pumpkins grow on the ground, on a long curly vine."),
+    ("pepper",   "It's a bell pepper! Pepper.", "A shiny red pepper.",
+     "Peppers grow on a little bush, hanging down like bells."),
+    ("cucumber", "It's a cucumber! Cucumber.",  "A long green cucumber.",
+     "Cucumbers climb up a trellis, on curly green vines."),
+    ("potato",   "It's a potato! Potato.",      "A lumpy brown potato.",
+     "Potatoes grow under the ground, hiding in the soil."),
+    ("onion",    "It's an onion! Onion.",       "A purple papery onion.",
+     "Onions grow under the ground, with green shoots on top."),
+    ("eggplant", "It's an eggplant! Eggplant.", "A shiny purple eggplant.",
+     "Eggplants hang down from a bush, like purple teardrops."),
+    ("peas",     "It's peas! Peas.",            "Little green peas in a pod.",
+     "Peas grow inside a pod, all lined up in a row."),
+    ("broccoli", "It's broccoli! Broccoli.",    "Big bushy green broccoli.",
+     "Broccoli grows on a thick stalk, like a little green tree!"),
+    ("mushroom", "It's a mushroom! Mushroom.",  "A cute little mushroom.",
+     "Mushrooms grow in the shade, near old logs and trees."),
 ]
-# a little variety on the question so twelve rounds don't read identically
+# the word Emma uses for each vegetable in her questions
+SPOKEN = ["carrot", "corn", "tomato", "pumpkin", "pepper", "cucumber",
+          "potato", "onion", "eggplant", "peas", "broccoli", "mushroom"]
+ARTICLE = ["the carrot", "the corn", "the tomato", "the pumpkin",
+           "the pepper", "the cucumber", "the potato", "the onion",
+           "the eggplant", "the peas", "the broccoli", "the mushroom"]
+
+# a little variety so twelve rounds don't read identically
 QUESTIONS = [
     "What is that?", "Ooh, what is that?", "What is that?",
     "Hmm, what is that?", "What is that?", "Ooh, what could that be?",
     "What is that?", "Hmm, what is that?", "What is that?",
     "Ooh, what is that?", "What is that?", "What is that?",
 ]
+PEEKS = [
+    "Let's go and find some vegetables! Ooh, something is hiding in the bushes.",
+    "Look! Something else is hiding.",
+    "Ooh! Who is hiding in the bushes now?",
+    "Here comes another one. Can you see it?",
+    "Look! Something is peeking out.",
+    "Ooh! Something is hiding again.",
+    "Who's that behind the bushes?",
+    "Look, something is hopping along!",
+    "Here comes another vegetable. What could it be?",
+    "Ooh! Something is hiding in the bushes.",
+    "Look! Can you see what's peeking out?",
+    "One more is hiding. Can you find it?",
+]
+NUMBERS = ["one", "two", "three", "four", "five", "six",
+           "seven", "eight", "nine", "ten", "eleven", "twelve"]
 
 
 def round_base(n):
@@ -78,14 +124,36 @@ def round_base(n):
 
 
 def vo_schedule():
-    """[(frame, text, tag)] for every spoken line."""
-    lines = [(18, "Chomp chomp! Veggies!", "intro")]
-    for n, (vid, name_line, desc_line) in enumerate(ROUNDS):
+    """[(frame, text, voice, tag)] for every spoken line."""
+    lines = [(18, "Chomp chomp! Veggies!", "ana", "intro")]
+    for n, (vid, name_line, desc_line, grows_line) in enumerate(ROUNDS):
         b = round_base(n)
-        lines.append((b + B_QUESTION, QUESTIONS[n], f"{n:02d}-{vid}-q"))
-        lines.append((b + B_NAME, name_line, f"{n:02d}-{vid}-name"))
-        lines.append((b + B_DESC, desc_line, f"{n:02d}-{vid}-desc"))
-    lines.append((round_base(N_ROUNDS - 1) + 1452, "We found them all! Yay!", "outro"))
+        veg, the_veg = SPOKEN[n], ARTICLE[n]
+
+        # narrator sets the beat up, the kid plays the guessing game
+        lines.append((b + B_PEEK, PEEKS[n], "emma", f"{n:02d}-{vid}-peek"))
+        lines.append((b + B_QUESTION, QUESTIONS[n], "ana", f"{n:02d}-{vid}-q"))
+        lines.append((b + B_NAME, name_line, "ana", f"{n:02d}-{vid}-name"))
+        lines.append((b + B_DESC, desc_line, "ana", f"{n:02d}-{vid}-desc"))
+
+        # narrator explains the "where it grows" scene
+        lines.append((b + B_WHERE, f"Now, where does {the_veg} grow?",
+                      "emma", f"{n:02d}-{vid}-where"))
+        lines.append((b + B_FACT, grows_line, "emma", f"{n:02d}-{vid}-fact"))
+        lines.append((b + B_CROC, "Uh oh! Here comes the crocodile.",
+                      "emma", f"{n:02d}-{vid}-croc"))
+
+        # narrator turns the board into a question
+        lines.append((b + B_ASK,
+                      f"Here's our board. Can you find where {the_veg} goes?",
+                      "emma", f"{n:02d}-{vid}-ask"))
+
+        if n < N_ROUNDS - 1:
+            praise = f"You found it! That's {NUMBERS[n]}."
+        else:
+            praise = "That's all twelve! You found every vegetable. Hooray!"
+        lines.append((b + B_COUNT, praise, "emma", f"{n:02d}-{vid}-count"))
+
     return lines
 
 
@@ -93,16 +161,17 @@ def vo_schedule():
 def generate_voice(lines):
     os.makedirs(WORK, exist_ok=True)
     jobs = []
-    for frame, text, tag in lines:
+    for frame, text, voice, tag in lines:
         mp3 = os.path.join(WORK, f"vo-{tag}.mp3")
         if not os.path.exists(mp3) or os.path.getsize(mp3) == 0:
-            jobs.append((text, mp3))
+            jobs.append((text, voice, mp3))
     print(f"  {len(jobs)} lines to synthesise ({len(lines) - len(jobs)} cached)")
     running = []
-    for text, mp3 in jobs:
+    for text, voice, mp3 in jobs:
+        name, rate = VOICES[voice]
         running.append(subprocess.Popen(
             # --rate must be one argv token: a bare "-5%" reads as a flag
-            ["edge-tts", "--voice", VOICE, f"--rate={RATE}",
+            ["edge-tts", "--voice", name, f"--rate={rate}",
              "--text", text, "--write-media", mp3],
             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL))
         if len(running) >= 6:
@@ -111,7 +180,7 @@ def generate_voice(lines):
             running = []
     for p in running:
         p.wait()
-    missing = [m for _, m in jobs if not os.path.exists(m) or os.path.getsize(m) == 0]
+    missing = [m for _, _, m in jobs if not os.path.exists(m) or os.path.getsize(m) == 0]
     if missing:
         sys.exit(f"tts failed for {len(missing)} lines, e.g. {missing[0]}")
 
@@ -307,7 +376,8 @@ def main():
         sys.exit("ffmpeg not found — set FFMPEG=/path/to/ffmpeg")
 
     lines = vo_schedule()
-    print(f"voice: {len(lines)} lines with {VOICE}")
+    n_ana = sum(1 for l in lines if l[2] == "ana")
+    print(f"voice: {len(lines)} lines — {n_ana} Ana, {len(lines)-n_ana} Emma")
     generate_voice(lines)
 
     total = int(TOTAL_SEC * SR)
@@ -315,9 +385,22 @@ def main():
     sfx = np.zeros(total, np.float32)
 
     print("placing voice…")
-    for frame, text, tag in lines:
+    clips = []
+    for frame, text, vkey, tag in lines:
         clip = load_mp3(os.path.join(WORK, f"vo-{tag}.mp3"))
-        place(voice, norm(clip, 0.82), frame)
+        # the narrator sits a touch under the kid so the reveal stays the peak
+        gain = 0.82 if vkey == "ana" else 0.74
+        place(voice, norm(clip, gain), frame)
+        clips.append((frame, len(clip) / SR * FPS, vkey, tag))
+
+    # two readers on one timeline — flag anything that runs into the next line
+    clashes = 0
+    for (f0, d0, v0, t0), (f1, _, v1, t1) in zip(clips, clips[1:]):
+        gap = f1 - (f0 + d0)
+        if gap < 0:
+            clashes += 1
+            print(f"  ! {t0} ({v0}) overruns {t1} ({v1}) by {-gap:.0f}f")
+    print(f"  {clashes} overlap(s)" if clashes else "  no overlaps")
 
     print("synthesising sfx…")
     POP, RISE, CHOMP, SPARK, TADA, WHOOSH, BLIP, HOP = (

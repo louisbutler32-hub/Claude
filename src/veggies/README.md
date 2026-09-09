@@ -95,7 +95,7 @@ the animation uses, so nothing has to be nudged by hand in an editor:
 
 | layer | what it is |
 |---|---|
-| voice | 38 lines read by the edge-tts `en-US-AnaNeural` child voice at −5% rate — the question at frame 382, the name at 546, the description at 668 of each round |
+| voice | 109 lines across two readers — see the table below |
 | sfx | synthesised in the script, so there is nothing to license: a slide-whistle rise, the reveal bloop, hop bounces, the crocodile's two crunches, the board whoosh, twelve slot blips, a twinkle on the slot landing, a bell arpeggio on the celebration |
 | music | a soft four-chord marimba bed, ducked ~6 dB under anything spoken |
 
@@ -106,7 +106,31 @@ upload. The same voices are sold properly through Azure Speech (the whole
 script is ~700 characters, inside their free tier), or record the lines
 yourself and drop the file in the same slot.
 
-Edit `ROUNDS` and `QUESTIONS` at the top of the script to change the words.
+### The two readers
+
+**Ana** (`en-US-AnaNeural`, −5%) is the child playing along, and **Emma**
+(`en-US-EmmaNeural`, −12%) is the narrator who explains the screen and puts
+the questions to the viewer. They alternate across each round:
+
+| frame | who | what |
+|---|---|---|
+| 150 | Emma | "Something is hiding in the bushes" — sets the guess up |
+| 382 | Ana | "What is that?" |
+| 546 | Ana | "It's a carrot! Carrot." |
+| 668 | Ana | "A crunchy orange carrot." |
+| 806 | Emma | "Now, where does the carrot grow?" |
+| 890 | Emma | how it actually grows — the teaching line |
+| 1046 | Emma | "Uh oh! Here comes the crocodile." |
+| 1225 | Emma | "Can you find where the carrot goes?" — the board as a puzzle |
+| 1418 | Emma | praise plus the running count: one, two, three… twelve |
+
+Emma sits ~1 dB under Ana so the reveal stays the loudest moment of the
+round. The script checks every line against the next and reports any that
+overrun, since two readers on one timeline is where collisions happen —
+it must print `no overlaps` before the mix is worth using.
+
+Edit `ROUNDS`, `QUESTIONS` and `PEEKS` at the top of the script to change
+the words; the fourth field of each `ROUNDS` entry is Emma's growing fact.
 
 ## Fonts
 
