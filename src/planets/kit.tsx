@@ -40,7 +40,7 @@ export const line = (width = STROKE, color = ink) => ({
 // Never call Math.random() in a component: every frame must draw the
 // same wobble or the artwork boils. Everything below is seeded.
 
-const rng = (seed: number) => () => {
+export const rng = (seed: number) => () => {
   seed = (seed + 0x6d2b79f5) | 0;
   let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
   t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;

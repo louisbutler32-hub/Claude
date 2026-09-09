@@ -4,6 +4,7 @@
   "speed": 0.83,
   "lang": "en-us",
   "duration": 480,
+  "out": "src/planets",
   "note": "All eight planets, exactly eight minutes. gap = seconds of silence after the line.",
   "lines": [
     { "id": "m0",  "scene": "lineup",        "gap": 0.35, "text": "Mercury." },

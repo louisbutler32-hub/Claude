@@ -32,6 +32,7 @@ import {
   ThumbnailA as VeggieThumbnailA,
   ThumbnailB as VeggieThumbnailB,
 } from "./veggies/Thumbnail";
+import { FaceVideo, FACE_DURATION_SECONDS } from "./face/FaceVideo";
 import { MongolsEurope, MONGOLS_DURATION_IN_FRAMES } from "./maps/mongols";
 import { MansaMusa, MANSA_DURATION_IN_FRAMES } from "./maps/mansa";
 import { Shelterbelt, SHELTERBELT_DURATION_IN_FRAMES } from "./maps/shelterbelt";
@@ -39,7 +40,16 @@ import { Shelterbelt, SHELTERBELT_DURATION_IN_FRAMES } from "./maps/shelterbelt"
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-      {/* ── doodle science essay ── */}
+      {/* ── doodle science essays ── */}
+      <Composition
+        id="FaceVideo"
+        component={FaceVideo}
+        durationInFrames={FACE_DURATION_SECONDS * 30}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
       <Composition
         id="PlanetsVideo"
         component={PlanetsVideo}

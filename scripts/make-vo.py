@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-"""Build the narration track for the planets video.
+"""Build the narration track for a video.
 
-Reads scripts-vo/planets-survival.json, synthesises every line with the local
+    python3 scripts/make-vo.py <script-name>     # default: planets-survival
+
+Reads scripts-vo/<name>.json, synthesises every line with the local
 Kokoro TTS model, trims the silence around each take, lays the takes out on a
 timeline with the per-line gaps, and writes:
 
-  public/assets/vo/planets-survival.mp3   the finished narration track
-  src/planets/timing.json                 { start, end } per line, in seconds
+  public/assets/vo/<name>.mp3   the finished narration track
+  <out>/timing.json             { start, end } per line, in seconds
+                                (<out> comes from "out" in the script JSON)
 
 The gaps are scaled by a single factor so the track lands exactly on TARGET.
 """
@@ -36,7 +39,8 @@ def trim(x, thresh=0.008, pad=0.04):
 
 
 def main():
-    spec = json.load(open(os.path.join(ROOT, "scripts-vo", "planets-survival.json")))
+    name = sys.argv[1] if len(sys.argv) > 1 else "planets-survival"
+    spec = json.load(open(os.path.join(ROOT, "scripts-vo", "%s.json" % name)))
     lines = spec["lines"]
     target = spec.get("duration", TARGET)
     kokoro = Kokoro(os.path.join(TTS, "kokoro-v1.0.onnx"), os.path.join(TTS, "voices-v1.0.bin"))
@@ -75,17 +79,18 @@ def main():
     peak = float(np.max(np.abs(track))) or 1.0
     track *= 0.89 / peak
 
+    out_dir = os.path.join(ROOT, *spec.get("out", "src/planets").split("/"))
     os.makedirs(os.path.join(ROOT, "public", "assets", "vo"), exist_ok=True)
-    os.makedirs(os.path.join(ROOT, "src", "planets"), exist_ok=True)
-    wav = os.path.join(TTS, "planets-survival.wav")
-    mp3 = os.path.join(ROOT, "public", "assets", "vo", "planets-survival.mp3")
+    os.makedirs(out_dir, exist_ok=True)
+    wav = os.path.join(TTS, "%s.wav" % name)
+    mp3 = os.path.join(ROOT, "public", "assets", "vo", "%s.mp3" % name)
     sf.write(wav, track, SR)
     # loudness-matched to the reference channel (its 3:00 sits at -18.3 LUFS;
     # the narration lands there once the music bed is mixed under it)
     subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", wav,
                     "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-b:a", "192k", mp3], check=True)
-    json.dump(timing, open(os.path.join(ROOT, "src", "planets", "timing.json"), "w"), indent=1)
-    print("wrote %s and src/planets/timing.json" % os.path.relpath(mp3, ROOT))
+    json.dump(timing, open(os.path.join(out_dir, "timing.json"), "w"), indent=1)
+    print("wrote %s and %s/timing.json" % (os.path.relpath(mp3, ROOT), spec.get("out", "src/planets")))
 
 
 if __name__ == "__main__":
