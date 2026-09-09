@@ -32,7 +32,9 @@ const PunchLine: React.FC<{
   colors: [string, string][];
   size: number;
   top: number;
-}> = ({ text, colors, size, top }) => (
+  /** damp the per-letter tilt — helps small text hold its shape */
+  steady?: boolean;
+}> = ({ text, colors, size, top, steady = false }) => (
   <div
     style={{
       position: "absolute",
@@ -50,7 +52,7 @@ const PunchLine: React.FC<{
         return <span key={i} style={{ width: size * 0.26 }} />;
       }
       const [fill, shade] = colors[i % colors.length];
-      const tilt = (i % 2 === 0 ? -1 : 1) * (2 + (i % 3));
+      const tilt = (i % 2 === 0 ? -1 : 1) * (steady ? 1.2 : 2 + (i % 3));
       return (
         <span
           key={i}
@@ -60,7 +62,7 @@ const PunchLine: React.FC<{
             fontSize: size,
             lineHeight: 0.92,
             color: fill,
-            WebkitTextStroke: `${size * 0.075}px ${shade}`,
+            WebkitTextStroke: `${size * (steady ? 0.115 : 0.075)}px ${shade}`,
             paintOrder: "stroke fill",
             textShadow: `0 ${size * 0.055}px 0 ${shade}, 0 ${size * 0.1}px ${
               size * 0.09
@@ -107,6 +109,9 @@ const QMark: React.FC<{ x: number; y: number; size: number; rot?: number }> = ({
   </div>
 );
 
+/** White on a heavy dark keyline: the most legible pairing on pale sky. */
+const KICKER_COLORS: [string, string][] = [["#ffffff", "#2f5d2a"]];
+
 const TITLE_COLORS: [string, string][] = [
   ["#ef8a3c", "#c96a22"],
   ["#ea5b52", "#c23f38"],
@@ -152,8 +157,8 @@ export const ThumbnailA: React.FC = () => {
       <QMark x={1246} y={556} size={226} rot={10} />
       <QMark x={1770} y={560} size={170} rot={-6} />
 
-      <PunchLine text="GUESS THE" colors={TITLE_COLORS} size={168} top={44} />
-      <PunchLine text="VEGGIE!" colors={TITLE_COLORS} size={210} top={196} />
+      <PunchLine text="GUESS THE" colors={KICKER_COLORS} size={150} top={40} steady />
+      <PunchLine text="VEGGIE!" colors={TITLE_COLORS} size={224} top={176} />
 
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
         <g transform={`translate(240 ${H - 96}) scale(1.02)`}>
