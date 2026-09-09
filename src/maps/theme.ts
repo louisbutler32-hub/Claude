@@ -89,6 +89,46 @@ export const BRIGHT_ATLAS: MapTheme = {
     '"Helvetica Neue", Helvetica, "Liberation Sans", Arial, sans-serif',
 };
 
+/** Natural-colour terrain, for the satellite-style films: green land, dry
+ *  plains, ocean blue. Saturation is reserved for what the story is doing
+ *  to the ground. */
+export const TERRAIN: MapTheme = {
+  name: "Terrain",
+
+  sea: "#2f5f7d",
+  seaDeep: "#1d4055",
+  land: "#6e7d4f",
+  landHigh: "#84945e",
+  border: "#4b5237",
+  coastGlow: "#16303e",
+
+  accent: "#a8894e",
+  accentBright: "#d8b877",
+  accentFill: "rgba(168,137,78,0.8)",
+  counter: "#3f7f3f",
+  counterFill: "rgba(63,127,63,0.7)",
+  neutral: "#6b7358",
+  neutralFill: "rgba(107,115,88,0.4)",
+
+  arrow: "#ffd84a",
+  arrowEdge: "rgba(30,22,6,0.75)",
+  fillOpacity: 0.8,
+
+  palette: {
+    dust: "#b2914f",
+    belt: "#2f6b32",
+    green: "#3f7f3f",
+    ochre: "#d9a441",
+    slate: "#6b7a86",
+  },
+
+  label: "#fdf8ec",
+  labelDim: "#ded4bd",
+  labelShadow: "rgba(20,16,8,0.9)",
+  fontLabel: '"Playfair Display", Georgia, "Liberation Serif", "DejaVu Serif", serif',
+  fontChip: '"Helvetica Neue", Helvetica, "Liberation Sans", Arial, sans-serif',
+};
+
 /** Alternate identity: near-monochrome slate, one amber accent. */
 export const INK_AMBER: MapTheme = {
   name: "Ink & Amber",

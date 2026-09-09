@@ -28,6 +28,7 @@ import {
 import { ArtSheet } from "./veggies/ArtSheet";
 import { MongolsEurope, MONGOLS_DURATION_IN_FRAMES } from "./maps/mongols";
 import { MansaMusa, MANSA_DURATION_IN_FRAMES } from "./maps/mansa";
+import { Shelterbelt, SHELTERBELT_DURATION_IN_FRAMES } from "./maps/shelterbelt";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -51,6 +52,14 @@ export const RemotionRoot: React.FC = () => {
       />
 
       {/* ── animated historical maps ── */}
+      <Composition
+        id="Map-Shelterbelt"
+        component={Shelterbelt}
+        durationInFrames={SHELTERBELT_DURATION_IN_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       <Composition
         id="Map-Mansa-Musa"
         component={MansaMusa}

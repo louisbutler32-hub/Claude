@@ -49,7 +49,10 @@ const toneFill = (theme: MapTheme, tone: Tone) =>
 
 export const Territory: React.FC<{
   /** Natural Earth country names, e.g. ["Germany", "Austria"] */
-  countries: string[];
+  countries?: string[];
+  /** A hand-drawn ring in lon/lat, for a region that is not a country —
+   *  a dust bowl, a shelterbelt, a front line. */
+  polygon?: LonLat[];
   tone?: Tone;
   /** Any colour, or a key from theme.palette — overrides `tone`. */
   color?: string;
@@ -62,6 +65,7 @@ export const Territory: React.FC<{
   fillOpacity?: number;
 }> = ({
   countries,
+  polygon,
   tone = "accent",
   color,
   in: from = 0,
@@ -70,8 +74,18 @@ export const Territory: React.FC<{
   opacity = 1,
   fillOpacity,
 }) => {
-  const { theme, t } = useMap();
-  const d = useCountryPath(countries);
+  const { theme, t, project } = useMap();
+  const fromCountries = useCountryPath(countries ?? []);
+  const d = polygon
+    ? "M" +
+      polygon
+        .map((p) => {
+          const [x, y] = project(p);
+          return `${x.toFixed(1)} ${y.toFixed(1)}`;
+        })
+        .join("L") +
+      "Z"
+    : fromCountries;
 
   const alive = visibility(t, from, until, 0.5);
   if (alive <= 0.01) return null;

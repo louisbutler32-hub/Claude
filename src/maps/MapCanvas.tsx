@@ -59,6 +59,55 @@ for (const feature of FEATURES) {
 
 const ALL_NAMES = Object.keys(RINGS);
 
+/** World-space bounds per country, for culling. */
+const BOUNDS: Record<string, [number, number, number, number]> = {};
+for (const name of ALL_NAMES) {
+  let west = Infinity;
+  let east = -Infinity;
+  let north = Infinity;
+  let south = -Infinity;
+  for (const ring of RINGS[name]) {
+    for (let i = 0; i < ring.length; i += 2) {
+      if (ring[i] < west) west = ring[i];
+      if (ring[i] > east) east = ring[i];
+      if (ring[i + 1] < north) north = ring[i + 1];
+      if (ring[i + 1] > south) south = ring[i + 1];
+    }
+  }
+  BOUNDS[name] = [west, north, east, south];
+}
+
+/** Is any of this country plausibly on screen? Projects the four corners of
+ *  its bounds with a generous margin — the map data now spans most of the
+ *  planet, and projecting all of it every frame is most of a render. */
+const onScreen = (
+  name: string,
+  project: (x: number, y: number) => [number, number],
+  width: number,
+  height: number
+): boolean => {
+  const [w, n, e, s] = BOUNDS[name];
+  const mx = width * 1.5;
+  const my = height * 1.5;
+  let left = Infinity;
+  let right = -Infinity;
+  let top = Infinity;
+  let bottom = -Infinity;
+  for (const [x, y] of [
+    project(w, n),
+    project(e, n),
+    project(e, s),
+    project(w, s),
+    project((w + e) / 2, (n + s) / 2),
+  ]) {
+    if (x < left) left = x;
+    if (x > right) right = x;
+    if (y < top) top = y;
+    if (y > bottom) bottom = y;
+  }
+  return right > -mx && left < width + mx && bottom > -my && top < height + my;
+};
+
 const buildPath = (
   rings: Float64Array[],
   project: (x: number, y: number) => [number, number]
@@ -124,6 +173,10 @@ export const MapCanvas: React.FC<{
     const built: Record<string, string> = {};
     let land = "";
     for (const name of ALL_NAMES) {
+      if (!onScreen(name, world, width, height)) {
+        built[name] = "";
+        continue;
+      }
       const d = buildPath(RINGS[name], world);
       built[name] = d;
       land += d;
