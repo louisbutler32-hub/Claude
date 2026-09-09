@@ -21,12 +21,35 @@ import {
   TITLE_DURATION_IN_FRAMES,
 } from "./titles/compositions";
 import { WW2Europe, WW2_DURATION_IN_FRAMES } from "./maps/ww2";
+import {
+  VeggieVideo,
+  VEGGIE_DURATION_IN_FRAMES,
+} from "./veggies/VeggieVideo";
+import { ArtSheet } from "./veggies/ArtSheet";
 import { MongolsEurope, MONGOLS_DURATION_IN_FRAMES } from "./maps/mongols";
 import { MansaMusa, MANSA_DURATION_IN_FRAMES } from "./maps/mansa";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* ── kids "guess the vegetable" video ── */}
+      <Composition
+        id="VeggieVideo"
+        component={VeggieVideo}
+        durationInFrames={VEGGIE_DURATION_IN_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Veggie-ArtSheet"
+        component={ArtSheet}
+        durationInFrames={30}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
       {/* ── animated historical maps ── */}
       <Composition
         id="Map-Mansa-Musa"

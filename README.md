@@ -1,5 +1,10 @@
 # Remotion video projects
 
+- **`VeggieVideo`** — "Chomp Chomp VEGGIES", a 10:27 guess-the-silhouette
+  video for small kids (`src/veggies/`, [docs](src/veggies/README.md)).
+  Twelve rounds: a black shape rises out of the bushes, "What is that?",
+  it turns into a kawaii vegetable, we visit the plant it grew on, the
+  crocodile eats it, and it fills one more slot on the collection board.
 - **`WhatIfVideo`** — "What If The Straw Hats Were Reborn" essay edit (4:45)
 - **`BountyVideo`** — "The Most Broken Bounty Jump" data-viz video (13:00)
 - **`Map-WW2-Europe`** — animated historical map system (`src/maps/`,
