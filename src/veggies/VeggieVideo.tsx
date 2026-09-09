@@ -62,18 +62,21 @@ const HERO_Y = 610;
 /* one round                                                           */
 /* ------------------------------------------------------------------ */
 
-const VeggieRound: React.FC<{ round: Round; solved: VeggieId[] }> = ({
-  round,
-  solved,
-}) => {
+const VeggieRound: React.FC<{
+  round: Round;
+  solved: VeggieId[];
+  /** the last round holds the finished board instead of dropping it */
+  finale?: boolean;
+}> = ({ round, solved, finale = false }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const id = round.id;
   const hero = HERO_SCALE[id];
 
   const onHabitat = frame >= BEAT.habitat && frame < BEAT.habitatOut;
+  const boardExit = finale ? ROUND_LEN + 400 : BEAT.boardExit;
   const boardUp = frame >= BEAT.boardRise - 4;
-  const celebrating = frame >= BEAT.celebrate && frame < BEAT.boardExit + 20;
+  const celebrating = frame >= BEAT.celebrate && frame < boardExit + 20;
 
   /* --- silhouette rise ------------------------------------------- */
   const riseS = spring({
@@ -282,7 +285,7 @@ const VeggieRound: React.FC<{ round: Round; solved: VeggieId[] }> = ({
             riseAt={BEAT.boardRise}
             popAt={BEAT.boardPop}
             landAt={BEAT.land}
-            exitAt={BEAT.boardExit}
+            exitAt={boardExit}
           />
           <FlyToSlot
             id={id}
@@ -304,6 +307,27 @@ const VeggieRound: React.FC<{ round: Round; solved: VeggieId[] }> = ({
         <>
           <Sparkles start={BEAT.celebrate} cx={960} cy={520} spread={840} count={18} size={1.6} />
           <Confetti start={BEAT.celebrate} />
+          {finale ? (
+            <>
+              <Sparkles
+                start={BEAT.celebrate + 70}
+                cx={960}
+                cy={480}
+                spread={900}
+                count={22}
+                size={1.8}
+              />
+              <Confetti start={BEAT.celebrate + 78} count={90} />
+              <Sparkles
+                start={BEAT.celebrate + 150}
+                cx={960}
+                cy={520}
+                spread={880}
+                count={20}
+                size={1.7}
+              />
+            </>
+          ) : null}
           <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
             {[
               { C: Cat, x: 140, y: 946 },
@@ -351,6 +375,7 @@ export const VeggieVideo: React.FC = () => {
           <VeggieRound
             round={round}
             solved={ROUNDS.slice(0, i).map((r) => r.id)}
+            finale={i === ROUNDS.length - 1}
           />
         </Sequence>
       ))}
