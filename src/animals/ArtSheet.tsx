@@ -3,27 +3,31 @@ import { AbsoluteFill } from "remotion";
 import { loadVeggieFonts } from "../guess/fonts";
 import { fonts } from "../guess/palette";
 import { SceneFilters } from "../guess/scene";
-import { veggieSubject } from "./subject";
-import { Item } from "../guess/Board";
-import { VeggieDefs, VEGGIE_NAME, type VeggieId } from "./veggies";
+import { AnimalDefs, ANIMAL_ART, ANIMAL_NAME } from "./animals";
 
-/** Contact sheet of all twelve vegetables, colour beside silhouette. */
-export const ArtSheet: React.FC = () => {
+/** Contact sheet of all twelve animals, colour beside silhouette. */
+export const AnimalArtSheet: React.FC = () => {
   loadVeggieFonts();
+  const ids = Object.keys(ANIMAL_ART);
   return (
     <AbsoluteFill style={{ backgroundColor: "#eef4ea" }}>
       <SceneFilters />
       <svg width={1920} height={1080} style={{ position: "absolute", inset: 0 }}>
-        <VeggieDefs />
-        {(veggieSubject.boardOrder as VeggieId[]).map((id, i) => {
+        <AnimalDefs />
+        {ids.map((id, i) => {
+          const Art = ANIMAL_ART[id];
           const col = i % 6;
           const row = Math.floor(i / 6);
           const cx = 170 + col * 300;
           const cy = 230 + row * 500;
           return (
             <g key={id}>
-              <Item subject={veggieSubject} id={id} x={cx} y={cy} size={1.0} />
-              <Item subject={veggieSubject} id={id} x={cx + 130} y={cy + 190} size={0.5} sil />
+              <g transform={`translate(${cx} ${cy}) scale(0.95)`}>
+                <Art />
+              </g>
+              <g transform={`translate(${cx + 130} ${cy + 190}) scale(0.48)`}>
+                <Art sil />
+              </g>
               <text
                 x={cx}
                 y={cy + 190}
@@ -32,7 +36,7 @@ export const ArtSheet: React.FC = () => {
                 fontSize={34}
                 fill="#3a332c"
               >
-                {VEGGIE_NAME[id]}
+                {ANIMAL_NAME[id]}
               </text>
             </g>
           );

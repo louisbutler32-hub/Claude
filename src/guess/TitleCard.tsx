@@ -1,53 +1,13 @@
 import React from "react";
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { Item } from "./Board";
+import { Crocodile } from "./critters";
 import { fonts } from "./palette";
 import { H, W } from "./scene";
-import { Crocodile } from "./critters";
-import { Veggie, VeggieDefs, type VeggieId } from "./veggies";
+import type { GuessSubject } from "./types";
 
-/**
- * The opening card: "Chomp Chomp VEGGIES", each letter painted as a
- * different vegetable, ringed by the cast.
- */
-
-type Letter = { ch: string; fill: string; shade: string };
-
-const LETTERS: Letter[] = [
-  { ch: "V", fill: "#ef8a3c", shade: "#c96a22" }, // carrot
-  { ch: "E", fill: "#ea5b52", shade: "#c23f38" }, // tomato
-  { ch: "G", fill: "#4a9450", shade: "#357038" }, // broccoli
-  { ch: "G", fill: "#f3c93f", shade: "#cfa423" }, // corn
-  { ch: "I", fill: "#ea5a4d", shade: "#c23f38" }, // pepper
-  { ch: "E", fill: "#8b58b3", shade: "#6b3d92" }, // eggplant
-  { ch: "S", fill: "#5da648", shade: "#427f33" }, // cucumber
-];
-
-/** Kawaii produce ringing the card. */
-const RING: { id: VeggieId; x: number; y: number; s: number; r: number }[] = [
-  // left edge
-  { id: "broccoli", x: 92, y: 118, s: 0.95, r: -8 },
-  { id: "carrot", x: 78, y: 430, s: 0.9, r: -14 },
-  { id: "peas", x: 118, y: 700, s: 0.8, r: 8 },
-  { id: "onion", x: 96, y: 930, s: 0.82, r: -6 },
-  // top edge
-  { id: "tomato", x: 360, y: 62, s: 0.82, r: 6 },
-  { id: "cucumber", x: 640, y: 76, s: 0.7, r: -18 },
-  { id: "corn", x: 950, y: 60, s: 0.8, r: 9 },
-  { id: "eggplant", x: 1250, y: 66, s: 0.78, r: -7 },
-  { id: "mushroom", x: 1520, y: 84, s: 0.76, r: 5 },
-  // right edge
-  { id: "pumpkin", x: 1810, y: 210, s: 0.95, r: 7 },
-  { id: "pepper", x: 1830, y: 520, s: 0.88, r: -9 },
-  { id: "potato", x: 1806, y: 780, s: 0.84, r: 12 },
-  // bottom edge
-  { id: "carrot", x: 300, y: 980, s: 0.78, r: 16 },
-  { id: "tomato", x: 560, y: 1020, s: 0.72, r: -10 },
-  { id: "broccoli", x: 820, y: 1010, s: 0.74, r: 6 },
-  { id: "corn", x: 1075, y: 1000, s: 0.7, r: -12 },
-  { id: "peas", x: 1330, y: 1020, s: 0.66, r: 9 },
-];
-
-export const TitleCard: React.FC = () => {
+/** "Chomp Chomp <SUBJECT>", each letter painted a different colour. */
+export const TitleCard: React.FC<{ subject: GuessSubject }> = ({ subject }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -61,11 +21,14 @@ export const TitleCard: React.FC = () => {
     fps,
     config: { damping: 12, mass: 0.6 },
   });
+  const letters = subject.titleWord.split("");
+  // long words need smaller type to stay on one line
+  const size = Math.min(300, Math.round(2100 / Math.max(letters.length, 5)));
 
   return (
     <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
-        <VeggieDefs />
+        <subject.Defs />
         <defs>
           <linearGradient id="titleSky" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#dfeff2" />
@@ -74,16 +37,16 @@ export const TitleCard: React.FC = () => {
         </defs>
         <rect width={W} height={H} fill="url(#titleSky)" />
 
-        {/* ring of produce */}
-        {RING.map((v, i) => {
+        {subject.ringItems.map((v, i) => {
           const pop = spring({
             frame: frame - 4 - i * 1.6,
             fps,
             config: { damping: 11, mass: 0.45, stiffness: 160 },
           });
           return (
-            <Veggie
+            <Item
               key={i}
+              subject={subject}
               id={v.id}
               x={v.x}
               y={v.y}
@@ -94,7 +57,6 @@ export const TitleCard: React.FC = () => {
           );
         })}
 
-        {/* the crocodile, bottom right */}
         <g
           transform={`translate(1560 960) scale(${1.05 * chomp})`}
           opacity={chomp}
@@ -102,8 +64,10 @@ export const TitleCard: React.FC = () => {
           <Crocodile chomp={0.15} step={frame / 5} />
         </g>
 
-        {/* banner */}
-        <g transform={`translate(960 470) scale(${0.86 + banner * 0.14})`} opacity={banner}>
+        <g
+          transform={`translate(960 470) scale(${0.86 + banner * 0.14})`}
+          opacity={banner}
+        >
           <rect
             x={-760}
             y={-330}
@@ -126,7 +90,6 @@ export const TitleCard: React.FC = () => {
         </g>
       </svg>
 
-      {/* "Chomp Chomp" */}
       <div
         style={{
           position: "absolute",
@@ -145,7 +108,6 @@ export const TitleCard: React.FC = () => {
         Chomp Chomp
       </div>
 
-      {/* "VEGGIES" */}
       <div
         style={{
           position: "absolute",
@@ -156,25 +118,29 @@ export const TitleCard: React.FC = () => {
           alignItems: "flex-start",
         }}
       >
-        {LETTERS.map((l, i) => {
+        {letters.map((ch, i) => {
           const pop = spring({
             frame: frame - 10 - i * 3,
             fps,
             config: { damping: 10, mass: 0.5, stiffness: 170 },
           });
+          const [fill, shade] =
+            subject.titleLetters[i % subject.titleLetters.length];
           const tilt = (i % 2 === 0 ? -1 : 1) * (3 + (i % 3));
           return (
             <span
               key={i}
               style={{
                 fontFamily: fonts.script,
-                fontSize: 300,
+                fontSize: size,
                 lineHeight: 0.95,
                 fontWeight: 800,
-                color: l.fill,
-                WebkitTextStroke: `10px ${l.shade}`,
+                color: fill,
+                WebkitTextStroke: `${size * 0.033}px ${shade}`,
                 paintOrder: "stroke fill",
-                textShadow: `0 14px 0 ${l.shade}, 0 22px 26px rgba(90,50,40,0.3)`,
+                textShadow: `0 ${size * 0.047}px 0 ${shade}, 0 ${
+                  size * 0.073
+                }px ${size * 0.087}px rgba(90,50,40,0.3)`,
                 transform: `translateY(${(1 - pop) * 90}px) scale(${
                   0.5 + pop * 0.5
                 }) rotate(${tilt}deg)`,
@@ -183,7 +149,7 @@ export const TitleCard: React.FC = () => {
                 margin: "0 -6px",
               }}
             >
-              {l.ch}
+              {ch}
             </span>
           );
         })}

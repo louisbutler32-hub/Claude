@@ -26,6 +26,15 @@ import {
   VEGGIE_DURATION_IN_FRAMES,
 } from "./veggies/VeggieVideo";
 import { ArtSheet } from "./veggies/ArtSheet";
+import { AnimalArtSheet } from "./animals/ArtSheet";
+import {
+  NumberVideo,
+  NUMBER_DURATION_IN_FRAMES,
+} from "./numbers/NumberVideo";
+import {
+  AnimalVideo,
+  ANIMAL_DURATION_IN_FRAMES,
+} from "./animals/AnimalVideo";
 import { PlanetsVideo, PLANETS_DURATION_SECONDS } from "./planets/PlanetsVideo";
 import { ThumbnailA, ThumbnailB } from "./planets/Thumbnail";
 import {
@@ -67,6 +76,30 @@ export const RemotionRoot: React.FC = () => {
         id="VeggieVideo"
         component={VeggieVideo}
         durationInFrames={VEGGIE_DURATION_IN_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="NumberVideo"
+        component={NumberVideo}
+        durationInFrames={NUMBER_DURATION_IN_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="AnimalVideo"
+        component={AnimalVideo}
+        durationInFrames={ANIMAL_DURATION_IN_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Animal-ArtSheet"
+        component={AnimalArtSheet}
+        durationInFrames={30}
         fps={30}
         width={1920}
         height={1080}

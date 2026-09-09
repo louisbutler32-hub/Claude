@@ -30,14 +30,18 @@
     "title:prores:vertical": "remotion render Title-Kate-Overlay-Vertical out/kate-title-vertical-alpha.mov --codec=prores --prores-profile=4444 --image-format=png --pixel-format=yuva444p10le",
     "veggies": "remotion render VeggieVideo out/chomp-chomp-veggies.mp4",
     "veggies:still": "remotion still Veggie-ArtSheet out/veggie-artsheet.png",
-    "veggies:audio": "python3 scripts/build-veggie-audio.py",
+    "veggies:audio": "python3 scripts/build-audio.py veggies",
     "planets": "remotion render PlanetsVideo out/planets.mp4",
     "planets:still": "remotion still PlanetsVideo out/planets-still.png",
     "planets:thumbs": "remotion still Planets-ThumbA out/package/thumbnail-a.png && remotion still Planets-ThumbB out/package/thumbnail-b.png",
     "planets:package": "python3 scripts/make-package.py",
     "veggies:thumb": "remotion still Veggie-Thumbnail out/thumbnail-guess-the-veggie.png && remotion still Veggie-Thumbnail-Board out/thumbnail-name-all-12.png",
     "face": "remotion render FaceVideo out/face.mp4",
-    "face:vo": "python3 scripts/make-vo.py face-life"
+    "face:vo": "python3 scripts/make-vo.py face-life",
+    "animals": "remotion render AnimalVideo out/animals.mp4",
+    "animals:audio": "python3 scripts/build-audio.py animals",
+    "numbers": "remotion render NumberVideo out/numbers.mp4",
+    "numbers:audio": "python3 scripts/build-audio.py numbers"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",

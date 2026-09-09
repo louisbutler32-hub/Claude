@@ -2,31 +2,22 @@ import React from "react";
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { board as boardColors } from "./palette";
 import { H, W } from "./scene";
-import { Veggie, VeggieDefs, type VeggieId } from "./veggies";
+import type { GuessSubject } from "./types";
 
 /**
- * The collection board. Twelve silhouettes on a pink-framed sage panel;
- * one more of them turns into full colour at the end of every round, so
- * the board doubles as the progress bar for the whole video.
+ * The collection board. Twelve silhouettes on a pink-framed sage panel; one
+ * more turns to full colour every round, so the board doubles as the
+ * progress bar for the whole episode.
  */
-
-/** Reading order on the board — 4 across, 3 down. */
-export const BOARD_ORDER: VeggieId[] = [
-  "carrot", "potato", "eggplant", "tomato",
-  "peas", "pumpkin", "pepper", "broccoli",
-  "onion", "mushroom", "corn", "cucumber",
-];
 
 const PANEL = { x: 307, y: 20, w: 1290, h: 860, r: 90 };
 const BORDER = 34;
 const COLS = 4;
 const ROWS = 3;
 
-export const slotIndex = (id: VeggieId) => BOARD_ORDER.indexOf(id);
-
 /** Screen position of a board slot, in frame coordinates. */
-export const slotPos = (id: VeggieId) => {
-  const i = slotIndex(id);
+export const slotPos = (subject: GuessSubject, id: string) => {
+  const i = subject.boardOrder.indexOf(id);
   const col = i % COLS;
   const row = Math.floor(i / COLS);
   const innerX = PANEL.x + BORDER + 24;
@@ -39,36 +30,40 @@ export const slotPos = (id: VeggieId) => {
   };
 };
 
-/** Per-vegetable scale so the odd shapes all read at the same weight. */
-const SLOT_SCALE: Record<VeggieId, number> = {
-  carrot: 1.0,
-  potato: 0.97,
-  eggplant: 0.92,
-  tomato: 1.05,
-  peas: 0.9,
-  pumpkin: 1.02,
-  pepper: 1.0,
-  broccoli: 1.0,
-  onion: 0.97,
-  mushroom: 0.95,
-  corn: 0.92,
-  cucumber: 0.9,
+/** Draw one of a subject's items anywhere on screen. */
+export const Item: React.FC<{
+  subject: GuessSubject;
+  id: string;
+  x?: number;
+  y?: number;
+  size?: number;
+  rotate?: number;
+  sil?: boolean;
+  opacity?: number;
+}> = ({ subject, id, x = 0, y = 0, size = 1, rotate = 0, sil, opacity = 1 }) => {
+  const Art = subject.art[id];
+  if (!Art) return null;
+  return (
+    <g
+      transform={`translate(${x} ${y}) rotate(${rotate}) scale(${size})`}
+      opacity={opacity}
+    >
+      <Art sil={sil} />
+    </g>
+  );
 };
 
 export const Board: React.FC<{
-  /** vegetables already coloured in when this board comes up */
-  solved: VeggieId[];
+  subject: GuessSubject;
+  /** already coloured in when this board comes up */
+  solved: string[];
   /** the one that fills in during this board beat */
-  filling?: VeggieId;
-  /** frame (relative to the sequence) the board starts rising */
+  filling?: string;
   riseAt: number;
-  /** frame the silhouettes start popping in */
   popAt: number;
-  /** frame the new vegetable lands in its slot */
   landAt: number;
-  /** frame the board drops back down */
   exitAt: number;
-}> = ({ solved, filling, riseAt, popAt, landAt, exitAt }) => {
+}> = ({ subject, solved, filling, riseAt, popAt, landAt, exitAt }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -87,9 +82,8 @@ export const Board: React.FC<{
 
   return (
     <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
-      <VeggieDefs />
+      <subject.Defs />
       <g transform={`translate(0 ${y}) rotate(${tilt} 960 900)`}>
-        {/* post into the ground */}
         <rect
           x={930}
           y={PANEL.y + PANEL.h - 20}
@@ -117,8 +111,8 @@ export const Board: React.FC<{
           />
         </g>
 
-        {BOARD_ORDER.map((id, i) => {
-          const p = slotPos(id);
+        {subject.boardOrder.map((id, i) => {
+          const p = slotPos(subject, id);
           const pop = spring({
             frame: frame - popAt - i * 2.2,
             fps,
@@ -126,10 +120,8 @@ export const Board: React.FC<{
           });
           if (pop <= 0.001) return null;
 
-          const isSolved = solved.includes(id);
           const isFilling = filling === id;
-          // the filling one stays a silhouette until it is landed on
-          const showColour = isSolved || (isFilling && frame >= landAt);
+          const showColour = solved.includes(id) || (isFilling && frame >= landAt);
           const landPop = isFilling
             ? spring({
                 frame: frame - landAt,
@@ -142,9 +134,10 @@ export const Board: React.FC<{
           return (
             <g key={id} transform={`translate(${p.x} ${p.y})`}>
               <g transform={`scale(${(0.5 + pop * 0.5) * bump})`}>
-                <Veggie
+                <Item
+                  subject={subject}
                   id={id}
-                  size={SLOT_SCALE[id]}
+                  size={subject.slotScale[id]}
                   sil={!showColour}
                   opacity={pop}
                 />
@@ -157,35 +150,39 @@ export const Board: React.FC<{
   );
 };
 
-/**
- * The just-revealed vegetable flying across the frame and dropping into
- * its slot on the board.
- */
+/** The just-revealed item flying across and dropping into its slot. */
 export const FlyToSlot: React.FC<{
-  id: VeggieId;
+  subject: GuessSubject;
+  id: string;
   start: number;
   landAt: number;
   fromX?: number;
   fromY?: number;
-}> = ({ id, start, landAt, fromX = 120, fromY = 620 }) => {
+}> = ({ subject, id, start, landAt, fromX = 130, fromY = 640 }) => {
   const frame = useCurrentFrame();
   if (frame < start || frame > landAt) return null;
   const t = interpolate(frame, [start, landAt], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const target = slotPos(id);
+  const target = slotPos(subject, id);
   const ease = t * t * (3 - 2 * t);
   const x = interpolate(ease, [0, 1], [fromX, target.x]);
   const arc = Math.sin(t * Math.PI) * 190;
   const y = interpolate(ease, [0, 1], [fromY, target.y]) - arc;
-  const size = interpolate(ease, [0, 1], [0.62, SLOT_SCALE[id]]);
-  const spin = interpolate(t, [0, 1], [-22, 0]);
+  const size = interpolate(ease, [0, 1], [0.62, subject.slotScale[id]]);
 
   return (
     <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
-      <VeggieDefs />
-      <Veggie id={id} x={x} y={y} size={size} rotate={spin} />
+      <subject.Defs />
+      <Item
+        subject={subject}
+        id={id}
+        x={x}
+        y={y}
+        size={size}
+        rotate={interpolate(t, [0, 1], [-22, 0])}
+      />
     </svg>
   );
 };

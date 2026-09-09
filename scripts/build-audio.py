@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Builds the full soundtrack for the "Chomp Chomp VEGGIES" video.
+Builds the full soundtrack for one episode of the guess format.
 
 Three layers, all placed on the same frame grid the animation uses
 (30 fps, 120-frame intro, 1560-frame rounds — see src/veggies/rounds.ts):
@@ -9,13 +9,13 @@ Three layers, all placed on the same frame grid the animation uses
   sfx     synthesised here, so there is nothing to license
   music   a soft marimba bed, ducked under the voice
 
-Output: public/audio/veggies-mix.mp3
+Output: public/audio/<subject>-mix.mp3
 
-Usage:  python3 scripts/build-veggie-audio.py
+Usage:  python3 scripts/build-audio.py [veggies|animals]
 Needs:  pip install numpy edge-tts   (plus ffmpeg on PATH)
 """
 
-import os, subprocess, shutil, sys, math, wave, struct, tempfile
+import os, subprocess, shutil, sys, math, wave, struct
 import numpy as np
 
 SR = 44100
@@ -31,12 +31,17 @@ TOTAL_SEC = TOTAL_FRAMES / FPS
 VOICES = {
     "ana":  ("en-US-AnaNeural",  "-5%"),   # the kid
     "emma": ("en-US-EmmaNeural", "-12%"),  # the narrator
+    # counting twelve things inside one beat needs a brisker read than
+    # Ana's normal pace, or the numbers slur into each other
+    "ana_fast": ("en-US-AnaNeural", "+22%"),
 }
 
+SUBJECT = (sys.argv[1] if len(sys.argv) > 1 else "veggies").lower()
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-WORK = os.path.join(ROOT, ".audio-build")
+WORK = os.path.join(ROOT, ".audio-build", SUBJECT)
 OUT_DIR = os.path.join(ROOT, "public", "audio")
-OUT = os.path.join(OUT_DIR, "veggies-mix.mp3")
+OUT = os.path.join(OUT_DIR, f"{SUBJECT}-mix.mp3")
 
 FFMPEG = os.environ.get("FFMPEG", "ffmpeg")
 
@@ -51,8 +56,11 @@ B_PEEK = 150          # narrator: something is hiding
 B_WHERE = 806         # narrator: let's see where it grows
 B_FACT = 890          # narrator: how it actually grows
 B_CROC = 1046         # narrator: here comes the crocodile
+B_SOUND_Q = 1042      # narrator: listen, what does it say?
+B_SOUND = 1146        # the animal itself
 B_CHOMP = 1104
 B_ASK = 1225          # narrator: where does it go on the board?
+                      # (animals run later — the doubled noises are long)
 B_COUNT = 1418        # narrator: praise + running count
 B_BOARD_RISE = 1212
 B_BOARD_POP = 1256
@@ -60,8 +68,8 @@ B_LAND = 1382
 B_CELEBRATE = 1386
 
 # ── the script ────────────────────────────────────────────────────────
-# (id, what Ana calls it, how Ana describes it, how Emma says it grows)
-ROUNDS = [
+# Each entry: (id, Ana names it, Ana describes it, Emma says where/how)
+VEGGIE_ROUNDS = [
     ("carrot",   "It's a carrot! Carrot.",      "A crunchy orange carrot.",
      "Carrots grow under the ground. Only their tops peek out!"),
     ("corn",     "It's corn! Corn.",            "Sweet yellow corn.",
@@ -87,12 +95,89 @@ ROUNDS = [
     ("mushroom", "It's a mushroom! Mushroom.",  "A cute little mushroom.",
      "Mushrooms grow in the shade, near old logs and trees."),
 ]
-# the word Emma uses for each vegetable in her questions
-SPOKEN = ["carrot", "corn", "tomato", "pumpkin", "pepper", "cucumber",
-          "potato", "onion", "eggplant", "peas", "broccoli", "mushroom"]
-ARTICLE = ["the carrot", "the corn", "the tomato", "the pumpkin",
-           "the pepper", "the cucumber", "the potato", "the onion",
-           "the eggplant", "the peas", "the broccoli", "the mushroom"]
+
+# Animals carry a fifth field: the noise Ana makes on the sound beat.
+ANIMAL_ROUNDS = [
+    ("cow",      "It's a cow! Cow.",           "A big black and white cow.",
+     "Cows live on a farm, out in the green fields.", "Moo! Moooo!"),
+    ("lion",     "It's a lion! Lion.",         "A fluffy golden lion.",
+     "Lions live where it's hot and dry, and nap on warm rocks.", "Roar!"),
+    ("duck",     "It's a duck! Duck.",         "A yellow duck.",
+     "Ducks live on a pond, and paddle about all day.", "Quack! Quack!"),
+    ("frog",     "It's a frog! Frog.",         "A little green frog.",
+     "Frogs live by the pond, and hop on the lily pads.", "Ribbit! Ribbit!"),
+    ("pig",      "It's a pig! Pig.",           "A round pink pig.",
+     "Pigs live on the farm, and love a good muddy puddle.", "Oink! Oink!"),
+    ("penguin",  "It's a penguin! Penguin.",   "A little black and white penguin.",
+     "Penguins live where it's icy and cold, and swim in the sea.", "Squawk!"),
+    ("owl",      "It's an owl! Owl.",          "A brown owl with big round eyes.",
+     "Owls live in a hole in a tree, and stay awake at night.", "Hoo! Hoo!"),
+    ("elephant", "It's an elephant! Elephant.", "A big grey elephant.",
+     "Elephants live where it's hot, and rest under the shady trees.", "Tooooot!"),
+    ("sheep",    "It's a sheep! Sheep.",       "A fluffy white sheep.",
+     "Sheep live on the farm, in a field behind the fence.", "Baa! Baa!"),
+    ("fish",     "It's a fish! Fish.",         "An orange fish.",
+     "Fish live in the water, and swim about all day.", "Blub, blub!"),
+    ("cat",      "It's a cat! Cat.",           "A soft little cat.",
+     "Cats live in a house, with us!", "Meow! Meow!"),
+    ("dog",      "It's a dog! Dog.",           "A happy brown dog.",
+     "Dogs live with us too, in a house or a cosy kennel.", "Woof! Woof!"),
+]
+
+# Numbers: (id, Ana names it, Ana describes it, Emma leads the count, plural)
+NUMBER_ROUNDS = [
+    ("1",  "It's number one! One.",       "The number one.",
+     "Let's count to one!",    "carrot"),
+    ("2",  "It's number two! Two.",       "The number two.",
+     "Let's count to two!",    "tomatoes"),
+    ("3",  "It's number three! Three.",   "The number three.",
+     "Let's count to three!",  "ducks"),
+    ("4",  "It's number four! Four.",     "The number four.",
+     "Let's count to four!",   "broccolis"),
+    ("5",  "It's number five! Five.",     "The number five.",
+     "Let's count to five!",   "fish"),
+    ("6",  "It's number six! Six.",       "The number six.",
+     "Let's count to six!",    "pumpkins"),
+    ("7",  "It's number seven! Seven.",   "The number seven.",
+     "Let's count to seven!",  "frogs"),
+    ("8",  "It's number eight! Eight.",   "The number eight.",
+     "Let's count to eight!",  "corn cobs"),
+    ("9",  "It's number nine! Nine.",     "The number nine.",
+     "Let's count to nine!",   "mushrooms"),
+    ("10", "It's number ten! Ten.",       "The number ten.",
+     "Let's count to ten!",    "pea pods"),
+    ("11", "It's number eleven! Eleven.", "The number eleven.",
+     "Let's count to eleven!", "tomatoes"),
+    ("12", "It's number twelve! Twelve.", "The number twelve.",
+     "Let's count to twelve!", "carrots"),
+]
+
+SUBJECTS = {
+    "veggies": dict(rounds=VEGGIE_ROUNDS, kind="grow", word="vegetable"),
+    "animals": dict(rounds=ANIMAL_ROUNDS, kind="live", word="animal"),
+    "numbers": dict(rounds=NUMBER_ROUNDS, kind="count", word="number"),
+}
+if SUBJECT not in SUBJECTS:
+    sys.exit(f"unknown subject {SUBJECT!r}; try {', '.join(SUBJECTS)}")
+CONF = SUBJECTS[SUBJECT]
+ROUNDS = CONF["rounds"]
+N_ROUNDS = len(ROUNDS)
+
+# the word Emma uses in her questions
+ARTICLE = {
+    "carrot": "the carrot", "corn": "the corn", "tomato": "the tomato",
+    "pumpkin": "the pumpkin", "pepper": "the pepper", "cucumber": "the cucumber",
+    "potato": "the potato", "onion": "the onion", "eggplant": "the eggplant",
+    "peas": "the peas", "broccoli": "the broccoli", "mushroom": "the mushroom",
+    "cow": "the cow", "lion": "the lion", "duck": "the duck", "frog": "the frog",
+    "pig": "the pig", "penguin": "the penguin", "owl": "the owl",
+    "elephant": "the elephant", "sheep": "the sheep", "fish": "the fish",
+    "cat": "the cat", "dog": "the dog",
+    "1": "number one", "2": "number two", "3": "number three",
+    "4": "number four", "5": "number five", "6": "number six",
+    "7": "number seven", "8": "number eight", "9": "number nine",
+    "10": "number ten", "11": "number eleven", "12": "number twelve",
+}
 
 # a little variety so twelve rounds don't read identically
 QUESTIONS = [
@@ -101,7 +186,7 @@ QUESTIONS = [
     "What is that?", "Hmm, what is that?", "What is that?",
     "Ooh, what is that?", "What is that?", "What is that?",
 ]
-PEEKS = [
+PEEKS_GROW = [
     "Let's go and find some vegetables! Ooh, something is hiding in the bushes.",
     "Look! Something else is hiding.",
     "Ooh! Who is hiding in the bushes now?",
@@ -115,6 +200,45 @@ PEEKS = [
     "Look! Can you see what's peeking out?",
     "One more is hiding. Can you find it?",
 ]
+PEEKS_LIVE = [
+    "Let's go and find some animals! Ooh, something is hiding in the bushes.",
+    "Look! Something else is hiding.",
+    "Ooh! Who is hiding in the bushes now?",
+    "Here comes another one. Can you see it?",
+    "Look! Something is peeking out.",
+    "Ooh! Something is hiding again.",
+    "Who's that behind the bushes?",
+    "Look, something is moving!",
+    "Here comes another animal. What could it be?",
+    "Ooh! Something is hiding in the bushes.",
+    "Look! Can you see what's peeking out?",
+    "One more is hiding. Can you find it?",
+]
+PEEKS_COUNT = [
+    "Let's find some numbers! Ooh, something is hiding in the bushes.",
+    "Look! Another number is hiding.",
+    "Ooh! What number is hiding now?",
+    "Here comes another one. Can you see it?",
+    "Look! A number is peeking out.",
+    "Ooh! Something is hiding again.",
+    "What's that behind the bushes?",
+    "Look, a number is hopping along!",
+    "Here comes another number. What could it be?",
+    "Ooh! Something is hiding in the bushes.",
+    "Look! Can you see what's peeking out?",
+    "One more is hiding. Can you find it?",
+]
+PEEKS = {"grow": PEEKS_GROW, "live": PEEKS_LIVE, "count": PEEKS_COUNT}[
+    CONF["kind"]
+]
+
+# ── counting layout, mirrored from src/numbers/numbers.ts ─────────────
+COUNT_START = 812
+
+
+def count_stagger(n):
+    return max(32, min(64, round(360 / n)))
+
 NUMBERS = ["one", "two", "three", "four", "five", "six",
            "seven", "eight", "nine", "ten", "eleven", "twelve"]
 
@@ -125,10 +249,17 @@ def round_base(n):
 
 def vo_schedule():
     """[(frame, text, voice, tag)] for every spoken line."""
-    lines = [(18, "Chomp chomp! Veggies!", "ana", "intro")]
-    for n, (vid, name_line, desc_line, grows_line) in enumerate(ROUNDS):
+    opener = {
+        "grow": "Chomp chomp! Veggies!",
+        "live": "Chomp chomp! Animals!",
+        "count": "Chomp chomp! Numbers!",
+    }[CONF["kind"]]
+    lines = [(18, opener, "ana", "intro")]
+
+    for n, row in enumerate(ROUNDS):
+        vid, name_line, desc_line, mid_line = row[:4]
         b = round_base(n)
-        veg, the_veg = SPOKEN[n], ARTICLE[n]
+        the = ARTICLE[vid]
 
         # narrator sets the beat up, the kid plays the guessing game
         lines.append((b + B_PEEK, PEEKS[n], "emma", f"{n:02d}-{vid}-peek"))
@@ -136,22 +267,59 @@ def vo_schedule():
         lines.append((b + B_NAME, name_line, "ana", f"{n:02d}-{vid}-name"))
         lines.append((b + B_DESC, desc_line, "ana", f"{n:02d}-{vid}-desc"))
 
-        # narrator explains the "where it grows" scene
-        lines.append((b + B_WHERE, f"Now, where does {the_veg} grow?",
+        ask_at = B_ASK
+
+        if CONF["kind"] == "count":
+            # the narrator leads, then the kid counts each thing onto the
+            # exact frame it lands on screen
+            value = int(vid)
+            stag = count_stagger(value)
+            lines.append((b + 744, "Let's count them!", "emma",
+                          f"{n:02d}-{vid}-lead"))
+            for k in range(value):
+                lines.append((b + COUNT_START + k * stag,
+                              f"{NUMBERS[k].capitalize()}!", "ana_fast",
+                              f"count-{k + 1}"))
+            total_at = COUNT_START + (value - 1) * stag + 46
+            lines.append((b + total_at,
+                          f"{NUMBERS[value - 1].capitalize()} {row[4]}! "
+                          f"There are {NUMBERS[value - 1]}.",
+                          "emma", f"{n:02d}-{vid}-total"))
+            ask_at = max(1258, total_at + 120)
+            lines.append((b + ask_at,
+                          f"Can you find {the} on the board?",
+                          "emma", f"{n:02d}-{vid}-ask"))
+            praise = (f"You found it! That's {NUMBERS[n]}."
+                      if n < N_ROUNDS - 1 else
+                      "That's all twelve! You found every number. Hooray!")
+            lines.append((b + B_COUNT, praise, "emma", f"{n:02d}-{vid}-count"))
+            continue
+
+        # the middle of the round: where it grows, or where it lives
+        verb = "grow" if CONF["kind"] == "grow" else "live"
+        lines.append((b + B_WHERE, f"Now, where does {the} {verb}?",
                       "emma", f"{n:02d}-{vid}-where"))
-        lines.append((b + B_FACT, grows_line, "emma", f"{n:02d}-{vid}-fact"))
-        lines.append((b + B_CROC, "Uh oh! Here comes the crocodile.",
-                      "emma", f"{n:02d}-{vid}-croc"))
+        lines.append((b + B_FACT, mid_line, "emma", f"{n:02d}-{vid}-fact"))
+
+        if CONF["kind"] == "grow":
+            lines.append((b + B_CROC, "Uh oh! Here comes the crocodile.",
+                          "emma", f"{n:02d}-{vid}-croc"))
+        else:
+            lines.append((b + B_SOUND_Q, f"Listen! What does {the} say?",
+                          "emma", f"{n:02d}-{vid}-soundq"))
+            lines.append((b + B_SOUND, row[4], "ana", f"{n:02d}-{vid}-sound"))
 
         # narrator turns the board into a question
-        lines.append((b + B_ASK,
-                      f"Here's our board. Can you find where {the_veg} goes?",
+        ask_at = B_ASK if CONF["kind"] == "grow" else 1252
+        lines.append((b + ask_at,
+                      f"Here's our board. Can you find where {the} goes?",
                       "emma", f"{n:02d}-{vid}-ask"))
 
         if n < N_ROUNDS - 1:
             praise = f"You found it! That's {NUMBERS[n]}."
         else:
-            praise = "That's all twelve! You found every vegetable. Hooray!"
+            praise = (f"That's all twelve! You found every {CONF['word']}. "
+                      "Hooray!")
         lines.append((b + B_COUNT, praise, "emma", f"{n:02d}-{vid}-count"))
 
     return lines
@@ -389,7 +557,7 @@ def main():
     for frame, text, vkey, tag in lines:
         clip = load_mp3(os.path.join(WORK, f"vo-{tag}.mp3"))
         # the narrator sits a touch under the kid so the reveal stays the peak
-        gain = 0.82 if vkey == "ana" else 0.74
+        gain = 0.82 if vkey.startswith("ana") else 0.74
         place(voice, norm(clip, gain), frame)
         clips.append((frame, len(clip) / SR * FPS, vkey, tag))
 

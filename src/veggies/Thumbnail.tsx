@@ -1,9 +1,9 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
-import { Board, BOARD_ORDER } from "./board";
-import { Crocodile } from "./critters";
-import { loadVeggieFonts } from "./fonts";
-import { fonts } from "./palette";
+import { Board, Item } from "../guess/Board";
+import { Crocodile } from "../guess/critters";
+import { loadVeggieFonts } from "../guess/fonts";
+import { fonts } from "../guess/palette";
 import {
   Bush,
   Clouds,
@@ -15,8 +15,9 @@ import {
   Sky,
   Sun,
   W,
-} from "./scene";
-import { Veggie, VeggieDefs, type VeggieId } from "./veggies";
+} from "../guess/scene";
+import { VeggieDefs, type VeggieId } from "./veggies";
+import { veggieSubject } from "./subject";
 
 /**
  * Thumbnails. Both are built from the same art the video uses, so a frame
@@ -149,7 +150,15 @@ export const ThumbnailA: React.FC = () => {
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
         <VeggieDefs />
         {HERO.map((h) => (
-          <Veggie key={h.id} id={h.id} x={h.x} y={700} size={h.scale} sil />
+          <Item
+            key={h.id}
+            subject={veggieSubject}
+            id={h.id}
+            x={h.x}
+            y={700}
+            size={h.scale}
+            sil
+          />
         ))}
       </svg>
 
@@ -186,7 +195,8 @@ export const ThumbnailB: React.FC = () => {
       <Grass tulips />
       <div style={{ position: "absolute", inset: 0, transform: "translateY(-16px) scale(0.85)" }}>
         <Board
-          solved={BOARD_ORDER}
+          subject={veggieSubject}
+          solved={veggieSubject.boardOrder}
           riseAt={-100}
           popAt={-100}
           landAt={-100}

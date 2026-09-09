@@ -1,7 +1,7 @@
 import React from "react";
 import { random } from "remotion";
-import { GROUND_Y, H, W } from "./scene";
-import { ground } from "./palette";
+import { GROUND_Y, H, W } from "../guess/scene";
+import { ground } from "../guess/palette";
 import type { VeggieId } from "./veggies";
 
 /**
