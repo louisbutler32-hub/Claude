@@ -27,7 +27,8 @@ Count to ten with us! One carrot at a time. 🥕
 A quick counting practice for toddlers and preschoolers — nice and slow,
 with time to say each number out loud.
 
-Full 10-minute counting video on the channel 👉 Chomp Chomp Numbers
+📚 All our learning videos:
+https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
 
 #shorts #counting #toddlerlearning #preschool #learntocount #numbers
 ```

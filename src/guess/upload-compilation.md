@@ -43,7 +43,11 @@ long pause after every shadow so there's time to shout out the answer.
 20:49 🐄 Guess the Animal
 31:17 🔢 Guess the Number
 
-🥕 Subscribe for more Chomp Chomp learning videos!
+📚 ALL OUR LEARNING VIDEOS
+https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
+
+🥕 Subscribe to Pebblo Pebble:
+https://www.youtube.com/@PebbloPebble
 
 #toddlerlearning #preschool #learningforkids #compilation #guessinggame
 ```

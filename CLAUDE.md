@@ -1,5 +1,22 @@
 # Working notes
 
+## The channel
+
+Everything here is for **Pebblo Pebble** — https://www.youtube.com/@PebbloPebble
+
+Every learning video's description links the learning playlist:
+https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
+
+Both go near the end of the description, above the hashtags, in this block:
+
+```
+📚 ALL OUR LEARNING VIDEOS
+https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
+
+🥕 Subscribe to Pebblo Pebble:
+https://www.youtube.com/@PebbloPebble
+```
+
 ## Delivering a video
 
 **Every video ships with its packaging.** When a render is sent, send the

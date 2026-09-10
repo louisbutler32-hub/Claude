@@ -48,8 +48,11 @@ pause after every shadow so there's time to shout out the answer.
 8:44 1️⃣1️⃣ Eleven
 9:36 1️⃣2️⃣ Twelve
 
-🔢 Subscribe for more Chomp Chomp learning videos — numbers, animals,
-vegetables and more!
+📚 ALL OUR LEARNING VIDEOS
+https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
+
+🔢 Subscribe to Pebblo Pebble:
+https://www.youtube.com/@PebbloPebble
 
 #numbers #counting #toddlerlearning #preschool #learntocount
 ```
