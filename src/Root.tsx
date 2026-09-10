@@ -28,9 +28,12 @@ import {
 import { ArtSheet } from "./veggies/ArtSheet";
 import { AnimalArtSheet } from "./animals/ArtSheet";
 import { Banner, BannerGuides } from "./guess/Banner";
+import { AnimalThumbA, AnimalThumbB } from "./animals/Thumbnail";
+import { NumberThumbA, NumberThumbB } from "./numbers/Thumbnail";
 import {
   CountingShort,
   SHORT_FRAMES,
+  ShortThumbnail,
 } from "./numbers/CountingShort";
 import {
   NumberVideo,
@@ -81,6 +84,46 @@ export const RemotionRoot: React.FC = () => {
         id="VeggieVideo"
         component={VeggieVideo}
         durationInFrames={VEGGIE_DURATION_IN_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Short-Thumbnail"
+        component={ShortThumbnail}
+        durationInFrames={1}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="Animal-Thumbnail"
+        component={AnimalThumbA}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Animal-Thumbnail-Board"
+        component={AnimalThumbB}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Number-Thumbnail"
+        component={NumberThumbA}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Number-Thumbnail-Board"
+        component={NumberThumbB}
+        durationInFrames={1}
         fps={30}
         width={1920}
         height={1080}

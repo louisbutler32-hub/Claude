@@ -256,3 +256,72 @@ export const CountingShort: React.FC = () => {
     </AbsoluteFill>
   );
 };
+
+/** Cover for the Short — 9:16, so it needs its own composition. */
+export const ShortThumbnail: React.FC = () => {
+  loadVeggieFonts();
+  const Carrot = VEGGIE_ART.carrot;
+  return (
+    <AbsoluteFill style={{ backgroundColor: sky.bottom, overflow: "hidden" }}>
+      <SceneFilters />
+      <Sky />
+      <div
+        style={{
+          position: "absolute",
+          top: 210,
+          left: 0,
+          width: "100%",
+          textAlign: "center",
+          fontFamily: fonts.script,
+          fontWeight: 800,
+          fontSize: 138,
+          lineHeight: 1.02,
+          color: "#ffffff",
+          WebkitTextStroke: "16px #2f5d2a",
+          paintOrder: "stroke fill",
+          textShadow: "0 12px 0 #2f5d2a",
+        }}
+      >
+        COUNT<br />TO
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          top: 470,
+          left: 0,
+          width: "100%",
+          textAlign: "center",
+          fontFamily: fonts.script,
+          fontWeight: 800,
+          fontSize: 340,
+          lineHeight: 1,
+          color: "#4fa8a0",
+          WebkitTextStroke: "26px #357e78",
+          paintOrder: "stroke fill",
+          textShadow: "0 20px 0 #357e78",
+        }}
+      >
+        10
+      </div>
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        <VeggieDefs />
+        {Array.from({ length: 10 }, (_, i) => {
+          const p = slot(i);
+          return (
+            <g
+              key={i}
+              transform={`translate(${p.x} ${p.y + 96}) rotate(${
+                (i % 2 ? 1 : -1) * 6
+              }) scale(0.8)`}
+            >
+              <Carrot />
+            </g>
+          );
+        })}
+        <g transform={`translate(742 ${H - 178}) scale(1.5)`}>
+          <Crocodile chomp={0.12} step={1.2} />
+        </g>
+      </svg>
+    </AbsoluteFill>
+  );
+};
