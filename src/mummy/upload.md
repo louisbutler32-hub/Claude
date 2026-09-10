@@ -34,5 +34,8 @@ mummies, how to become a mummy, mummification, otzi the iceman, tollund man, bog
 
 ## Thumbnail
 
-A: the wrapped figure with "7 WAYS TO BECOME A MUMMY" (npm run mummy:thumb -> out/thumbnail-7-ways-mummy.png)
-B: the same body preserved seven ways, side by side, under "SEVEN WAYS TO NOT ROT" (out/thumbnail-seven-ways-not-rot.png)
+A: the wrapped figure, face showing, with "7 WAYS TO BECOME A MUMMY"
+   out/thumbnail-7-ways-mummy.jpg
+B: the same body preserved seven ways, side by side, under "SEVEN WAYS TO NOT ROT"
+   out/thumbnail-seven-ways-not-rot.jpg
+Both 1920x1080, built with: npm run mummy:thumb

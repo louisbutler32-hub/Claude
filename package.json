@@ -53,7 +53,7 @@
     "mummy:vo": "python3 scripts/make-vo.py mummy",
     "mummy:sfx": "python3 scripts/make-sfx.py mummy",
     "mummy:still": "remotion still MummyVideo out/mummy-still.png",
-    "mummy:thumb": "remotion still Mummy-Thumbnail out/thumbnail-7-ways-mummy.png && remotion still Mummy-Thumbnail-Board out/thumbnail-seven-ways-not-rot.png"
+    "mummy:thumb": "remotion still Mummy-Thumbnail out/thumbnail-7-ways-mummy.jpg --image-format=jpeg --quality=92 && remotion still Mummy-Thumbnail-Board out/thumbnail-seven-ways-not-rot.jpg --image-format=jpeg --quality=92"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",
