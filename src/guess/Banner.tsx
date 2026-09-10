@@ -42,15 +42,21 @@ const CAST: { kind: "veg" | "animal"; id: string; x: number; y: number; s: numbe
   { kind: "animal", id: "frog", x: 2010, y: 1030, s: 1.2, r: 6 },
 ];
 
-const Word: React.FC<{ text: string; size: number }> = ({ text, size }) => {
-  const colors: [string, string][] = [
+const Word: React.FC<{ text: string; size: number; white?: boolean }> = ({
+  text,
+  size,
+  white = false,
+}) => {
+  const colors: [string, string][] = white
+    ? [["#ffffff", "#3d5c34"]]
+    : [
     ["#ef8a3c", "#c96a22"],
     ["#ea5b52", "#c23f38"],
     ["#4a9450", "#357038"],
     ["#f3c93f", "#cfa423"],
     ["#5aa0c8", "#3d7a9e"],
     ["#8b58b3", "#6b3d92"],
-  ];
+      ];
   return (
     <span style={{ display: "inline-flex" }}>
       {text.split("").map((ch, i) => {
@@ -66,7 +72,7 @@ const Word: React.FC<{ text: string; size: number }> = ({ text, size }) => {
               fontSize: size,
               lineHeight: 0.96,
               color: fill,
-              WebkitTextStroke: `${size * 0.072}px ${shade}`,
+              WebkitTextStroke: `${size * (white ? 0.09 : 0.072)}px ${shade}`,
               paintOrder: "stroke fill",
               textShadow: `0 ${size * 0.05}px 0 ${shade}, 0 ${size * 0.09}px ${
                 size * 0.08
@@ -84,7 +90,10 @@ const Word: React.FC<{ text: string; size: number }> = ({ text, size }) => {
   );
 };
 
-export const Banner: React.FC<{ guides?: boolean }> = ({ guides = false }) => {
+export const Banner: React.FC<{ guides?: boolean; white?: boolean }> = ({
+  guides = false,
+  white = false,
+}) => {
   loadVeggieFonts();
   return (
     <AbsoluteFill style={{ width: W, height: H, overflow: "hidden" }}>
@@ -175,21 +184,21 @@ export const Banner: React.FC<{ guides?: boolean }> = ({ guides = false }) => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          gap: 30,
+          gap: 26,
         }}
       >
-        <div style={{ display: "flex", gap: 22 }}>
+        <div style={{ display: "flex", gap: 18 }}>
           {CHIPS.map(([label, colour]) => (
             <span
               key={label}
               style={{
                 fontFamily: fonts.display,
-                fontSize: 56,
+                fontSize: 46,
                 color: "#ffffff",
                 background: colour,
-                border: "6px solid rgba(255,255,255,.9)",
+                border: "5px solid rgba(255,255,255,.9)",
                 borderRadius: 999,
-                padding: "10px 40px 16px",
+                padding: "9px 34px 14px",
                 boxShadow: "0 8px 0 rgba(60,45,35,.2)",
                 whiteSpace: "nowrap",
               }}
@@ -199,7 +208,7 @@ export const Banner: React.FC<{ guides?: boolean }> = ({ guides = false }) => {
           ))}
         </div>
         <div style={{ display: "flex", alignItems: "flex-start" }}>
-          <Word text="Kids fun with Pebblo" size={146} />
+          <Word text="Kids fun with Pebblo" size={112} white={white} />
         </div>
       </div>
 
@@ -221,3 +230,4 @@ export const Banner: React.FC<{ guides?: boolean }> = ({ guides = false }) => {
 };
 
 export const BannerGuides: React.FC = () => <Banner guides />;
+export const BannerWhite: React.FC = () => <Banner white />;

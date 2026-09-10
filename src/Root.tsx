@@ -27,7 +27,7 @@ import {
 } from "./veggies/VeggieVideo";
 import { ArtSheet } from "./veggies/ArtSheet";
 import { AnimalArtSheet } from "./animals/ArtSheet";
-import { Banner, BannerGuides } from "./guess/Banner";
+import { Banner, BannerGuides, BannerWhite } from "./guess/Banner";
 import { AnimalThumbA, AnimalThumbB } from "./animals/Thumbnail";
 import { NumberThumbA, NumberThumbB } from "./numbers/Thumbnail";
 import {
@@ -167,6 +167,14 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="Channel-Banner"
         component={Banner}
+        durationInFrames={1}
+        fps={30}
+        width={2560}
+        height={1440}
+      />
+      <Composition
+        id="Channel-Banner-White"
+        component={BannerWhite}
         durationInFrames={1}
         fps={30}
         width={2560}
