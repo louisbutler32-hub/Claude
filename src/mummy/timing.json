@@ -1,0 +1,380 @@
+[
+ {
+  "id": "i0",
+  "scene": "fresh",
+  "text": "You have about seventy-two hours before you start to smell.",
+  "start": 0.0,
+  "end": 3.398
+ },
+ {
+  "id": "i1",
+  "scene": "autolysis",
+  "text": "It starts from the inside. Within minutes your own digestive enzymes begin working on the cells that used to contain them, and after a day or so the bacteria in your gut realise nothing is stopping them any more.",
+  "start": 4.229,
+  "end": 16.94
+ },
+ {
+  "id": "i2",
+  "scene": "decay-clock",
+  "text": "Left alone in ordinary ground, you are down to a skeleton inside about ten years, and the skeleton goes too, eventually.",
+  "start": 17.534,
+  "end": 25.021
+ },
+ {
+  "id": "i3",
+  "scene": "seven-ways",
+  "text": "But it does not have to go that way. Here are seven ways to still be recognisable in four thousand years, roughly in order of how much of the work you have to do yourself.",
+  "start": 25.615,
+  "end": 35.654
+ },
+ {
+  "id": "a0",
+  "scene": "ice-open",
+  "text": "One. Ice.",
+  "start": 37.078,
+  "end": 38.293
+ },
+ {
+  "id": "a1",
+  "scene": "otzi",
+  "text": "In 1991, two hikers in the Alps found a body face down in the melting ice. They assumed it was a climber who had come off the ridge.",
+  "start": 39.124,
+  "end": 47.478
+ },
+ {
+  "id": "a1b",
+  "scene": "otzi-age",
+  "text": "He had died five thousand three hundred years ago.",
+  "start": 48.071,
+  "end": 50.937
+ },
+ {
+  "id": "a2",
+  "scene": "freeze-dry",
+  "text": "The cold on its own would not have done it. Up there the air is thin and bone dry, so the wind pulled the water straight out of him while he was frozen. He was freeze-dried, in exactly the way instant coffee is.",
+  "start": 51.649,
+  "end": 63.858
+ },
+ {
+  "id": "a3",
+  "scene": "otzi-detail",
+  "text": "It works alarmingly well. He still has his skin, his stomach contents, his clothes, and sixty-one tattoos, almost all of them sitting directly over worn-out joints.",
+  "start": 64.451,
+  "end": 74.556
+ },
+ {
+  "id": "a3b",
+  "scene": "arrow",
+  "text": "He also still has the arrowhead that somebody put in his shoulder from behind, which is how a glacier mummy became a murder investigation with a five-thousand-year-old suspect.",
+  "start": 75.15,
+  "end": 85.894
+ },
+ {
+  "id": "a4",
+  "scene": "ice-verdict",
+  "text": "The problem with this method is that you do not get to choose it. You have to die somewhere very high and very cold, and then stay buried until the glacier gives you back.",
+  "start": 86.488,
+  "end": 96.326
+ },
+ {
+  "id": "b0",
+  "scene": "bog-open",
+  "text": "Two. Bog.",
+  "start": 97.75,
+  "end": 98.952
+ },
+ {
+  "id": "b1",
+  "scene": "tollund",
+  "text": "When Tollund Man came out of a Danish peat bog in 1950, the diggers called the police, because he looked like he had died that week.",
+  "start": 99.783,
+  "end": 107.854
+ },
+ {
+  "id": "b1b",
+  "scene": "tollund-age",
+  "text": "He had been in there for two thousand four hundred years, with the rope still around his neck.",
+  "start": 108.448,
+  "end": 113.199
+ },
+ {
+  "id": "b2",
+  "scene": "bog-chem",
+  "text": "A peat bog is cold, it has no oxygen in it, and it is about as acidic as vinegar. None of the things that normally rot you can operate under those conditions.",
+  "start": 113.912,
+  "end": 124.316
+ },
+ {
+  "id": "b3",
+  "scene": "sphagnan",
+  "text": "The moss does the rest. Sphagnum releases a compound called sphagnan, which locks up the nitrogen bacteria need to grow, and tans your skin at the same time. You come out the colour of a saddle.",
+  "start": 124.91,
+  "end": 137.029
+ },
+ {
+  "id": "b4",
+  "scene": "no-bones",
+  "text": "There is a catch, and it is a big one. The same acid that saves your skin quietly dissolves your skeleton.",
+  "start": 137.622,
+  "end": 144.138
+ },
+ {
+  "id": "b5",
+  "scene": "bog-verdict",
+  "text": "So you get to keep your face for two and a half thousand years. You are also, structurally, a bag.",
+  "start": 144.851,
+  "end": 150.436
+ },
+ {
+  "id": "c0",
+  "scene": "desert-open",
+  "text": "Three. Desert.",
+  "start": 151.861,
+  "end": 153.233
+ },
+ {
+  "id": "c1",
+  "scene": "dry-out",
+  "text": "This is the simplest method on the list and by far the oldest. Hot dry sand pulls the water out of a body faster than the bacteria inside it can multiply, and bacteria cannot work without water.",
+  "start": 154.064,
+  "end": 166.696
+ },
+ {
+  "id": "c2",
+  "scene": "chinchorro",
+  "text": "The Chinchorro, on the coast of what is now northern Chile, worked this out about seven thousand years ago. They were mummifying their dead two thousand years before Egypt got started.",
+  "start": 167.289,
+  "end": 178.056
+ },
+ {
+  "id": "c2b",
+  "scene": "arsenic",
+  "text": "The reason is grim. The water they drank came out of the mountains loaded with arsenic, and a great many of their babies did not survive it. The first Chinchorro mummies are infants.",
+  "start": 178.65,
+  "end": 189.67
+ },
+ {
+  "id": "c3",
+  "scene": "rebuild",
+  "text": "And they were not subtle. They took the body completely apart, peeled the skin off, dried every piece, rebuilt the skeleton around wooden poles, packed it out with plant fibre and ash, put the skin back on, and painted the finished object.",
+  "start": 190.264,
+  "end": 203.429
+ },
+ {
+  "id": "c4",
+  "scene": "desert-verdict",
+  "text": "The result is less a preserved person than a portrait with a person inside it. Seven thousand years on, they are still standing up.",
+  "start": 204.023,
+  "end": 211.637
+ },
+ {
+  "id": "d0",
+  "scene": "salt-open",
+  "text": "Four. Salt.",
+  "start": 213.062,
+  "end": 214.366
+ },
+ {
+  "id": "d1",
+  "scene": "saltmen",
+  "text": "In 1993, miners in northwestern Iran cut into a wall of rock salt and a human head fell out of it. White beard, gold earring, one eye still in place.",
+  "start": 215.197,
+  "end": 225.341
+ },
+ {
+  "id": "d2",
+  "scene": "salt-how",
+  "text": "Salt does what the desert does, but faster. It drags the water out of every cell it touches, including the cells of everything that was planning to eat you.",
+  "start": 225.935,
+  "end": 235.114
+ },
+ {
+  "id": "d3",
+  "scene": "salt-detail",
+  "text": "The mine has produced at least six of them. One still had his leg inside his leather boot. Another had his last meal intact in his stomach, which is how we know he had eaten a lot of bread.",
+  "start": 235.708,
+  "end": 246.98
+ },
+ {
+  "id": "d3b",
+  "scene": "mine-closed",
+  "text": "They are still turning up, which is why that part of the mine is now an archaeological site rather than a mine.",
+  "start": 247.574,
+  "end": 254.055
+ },
+ {
+  "id": "d4",
+  "scene": "salt-verdict",
+  "text": "The entry requirement is inconvenient. You have to be standing inside a salt mine at the exact moment it collapses on top of you.",
+  "start": 254.768,
+  "end": 262.822
+ },
+ {
+  "id": "e0",
+  "scene": "natron-open",
+  "text": "Five. Natron.",
+  "start": 264.247,
+  "end": 265.809
+ },
+ {
+  "id": "e1",
+  "scene": "egypt-intro",
+  "text": "This is the one everybody pictures, and it is the first on the list that is an actual procedure. Seventy days from start to finish, carried out by people who did it for a living.",
+  "start": 266.64,
+  "end": 277.665
+ },
+ {
+  "id": "e1b",
+  "scene": "why-egypt",
+  "text": "They were not doing it to be remembered. The belief was that the parts of a person that survive death need the body to come back to, so if the body went, so did you.",
+  "start": 278.258,
+  "end": 287.695
+ },
+ {
+  "id": "e2",
+  "scene": "brain",
+  "text": "The brain comes out first, through the nose, with a hooked rod. They did not think it did anything. They threw it away.",
+  "start": 288.289,
+  "end": 294.522
+ },
+ {
+  "id": "e3",
+  "scene": "organs",
+  "text": "Then a cut in the left side, and the lungs, liver, stomach and intestines come out into four jars. The heart stays exactly where it is. You are going to need that later, to be weighed.",
+  "start": 295.115,
+  "end": 305.836
+ },
+ {
+  "id": "e4",
+  "scene": "natron-pack",
+  "text": "Then forty days packed inside and out with natron, a salt that dries out of the lake beds west of the Nile. It takes the water and the fat out together.",
+  "start": 306.429,
+  "end": 315.828
+ },
+ {
+  "id": "e5",
+  "scene": "wrapping",
+  "text": "Then the wrapping. Up to twenty layers of linen, amulets tucked between them, and warm resin poured over everything to seal it shut.",
+  "start": 316.421,
+  "end": 324.0
+ },
+ {
+  "id": "e6",
+  "scene": "natron-verdict",
+  "text": "Four thousand years later they are intact enough to put through a scanner and argue about. It is comfortably the most reliable method here.",
+  "start": 324.594,
+  "end": 332.696
+ },
+ {
+  "id": "f0",
+  "scene": "monk-open",
+  "text": "Six. Do it yourself.",
+  "start": 334.121,
+  "end": 335.783
+ },
+ {
+  "id": "f1",
+  "scene": "sokushin",
+  "text": "In northern Japan, a small number of Buddhist monks attempted something called sokushinbutsu. It takes roughly nine years, and you are alive for most of it.",
+  "start": 336.614,
+  "end": 345.868
+ },
+ {
+  "id": "f2",
+  "scene": "tree-diet",
+  "text": "For the first thousand days you eat only what grows on a tree. Nuts, seeds, bark, pine needles. The point is to strip every gram of fat off yourself, because fat is the part that rots.",
+  "start": 346.462,
+  "end": 357.877
+ },
+ {
+  "id": "f3",
+  "scene": "lacquer",
+  "text": "For the next thousand days you eat less again, and start drinking tea made from the sap of the lacquer tree. It is poisonous. It makes you vomit up whatever water you have left, and it leaves your body toxic to anything that might later try to eat it.",
+  "start": 358.47,
+  "end": 372.459
+ },
+ {
+  "id": "f4",
+  "scene": "sealed-in",
+  "text": "Then you are lowered into a stone chamber in the lotus position, with a breathing tube and a bell. You ring the bell once a day to indicate that you are still going.",
+  "start": 373.053,
+  "end": 382.286
+ },
+ {
+  "id": "f5",
+  "scene": "bell-stops",
+  "text": "When the bell stops, they remove the tube and seal the tomb. A thousand days after that, they open it again to find out whether it worked.",
+  "start": 382.88,
+  "end": 390.736
+ },
+ {
+  "id": "f6",
+  "scene": "monk-verdict",
+  "text": "Several hundred are thought to have tried. Fewer than thirty worked. Those ones are still sitting in their temples, in robes, being looked after. Everybody else simply rotted, which was the whole thing they were trying to avoid.",
+  "start": 391.448,
+  "end": 403.655
+ },
+ {
+  "id": "g0",
+  "scene": "plast-open",
+  "text": "Seven. Plastic.",
+  "start": 405.079,
+  "end": 406.598
+ },
+ {
+  "id": "g1",
+  "scene": "vonhagens",
+  "text": "The newest method on the list was invented in 1977. It is called plastination, and the idea is to take every drop of water out of you and leave polymer in its place.",
+  "start": 407.429,
+  "end": 418.72
+ },
+ {
+  "id": "g2",
+  "scene": "acetone",
+  "text": "You go into cold acetone, which swaps itself for the water in your cells. Then into a vacuum chamber full of liquid plastic, where the pressure is dropped until the acetone boils out of you and the plastic gets pulled in behind it.",
+  "start": 419.314,
+  "end": 433.119
+ },
+ {
+  "id": "g2b",
+  "scene": "how-long",
+  "text": "A whole body takes about fifteen hundred hours of work, which is most of a year.",
+  "start": 433.712,
+  "end": 438.752
+ },
+ {
+  "id": "g3",
+  "scene": "posed",
+  "text": "And because it has not set yet, you can be arranged. This is why the bodies in the touring exhibitions are playing chess and riding horses.",
+  "start": 439.346,
+  "end": 447.701
+ },
+ {
+  "id": "g4",
+  "scene": "plast-verdict",
+  "text": "It is the only one on this list you can actually volunteer for. Tens of thousands of people have already filled in the form.",
+  "start": 448.294,
+  "end": 455.651
+ },
+ {
+  "id": "z0",
+  "scene": "board",
+  "text": "So. Ranked by how long each one has actually been shown to work.",
+  "start": 457.076,
+  "end": 460.776
+ },
+ {
+  "id": "z1",
+  "scene": "board",
+  "text": "Desert, seven thousand years. Ice, five thousand three hundred. Natron, four thousand. Salt and bog, both around two and a half thousand, though the bog keeps the skeleton. The monks, about nine hundred.",
+  "start": 461.489,
+  "end": 473.239
+ },
+ {
+  "id": "z2",
+  "scene": "signoff",
+  "text": "And plastic, which has only existed since the seventies, so honestly, nobody knows yet.",
+  "start": 473.952,
+  "end": 479.55
+ }
+]

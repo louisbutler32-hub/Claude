@@ -94,8 +94,21 @@ export const blob = (cx: number, cy: number, r: number, seed: number, wob = 0.03
     const rr = r * (1 + (rand() - 0.5) * 2 * wob);
     pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr]);
   }
-  pts.push(pts[0], pts[1], pts[2]);
-  return smooth(pts) + " Z";
+  // A closed Catmull-Rom loop, with the neighbours read modulo n. Running
+  // `smooth` over a duplicated head instead leaves the curve two points past
+  // the start, and the closing Z then cuts a visible flap across the shape.
+  const at = (i: number) => pts[((i % n) + n) % n];
+  let d = `M ${pts[0][0]} ${pts[0][1]}`;
+  for (let i = 0; i < n; i++) {
+    const p0 = at(i - 1);
+    const p1 = at(i);
+    const p2 = at(i + 1);
+    const p3 = at(i + 2);
+    d += ` C ${p1[0] + (p2[0] - p0[0]) / 6} ${p1[1] + (p2[1] - p0[1]) / 6}, ${
+      p2[0] - (p3[0] - p1[0]) / 6
+    } ${p2[1] - (p3[1] - p1[1]) / 6}, ${p2[0]} ${p2[1]}`;
+  }
+  return d + " Z";
 };
 
 // ── fonts ───────────────────────────────────────────────────────────

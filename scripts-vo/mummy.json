@@ -1,0 +1,73 @@
+{
+  "title": "7 Ways to Become a Mummy",
+  "voice": "am_liam",
+  "speed": 0.83,
+  "lang": "en-us",
+  "duration": 480,
+  "out": "src/mummy",
+  "note": "Numbered list, seven methods, exactly eight minutes. gap = silence after the line. sfx = [effect, seconds from the start of the line, optional gain].",
+  "lines": [
+    { "id": "i0",  "scene": "fresh",         "gap": 0.35, "text": "You have about seventy-two hours before you start to smell.", "sfx": [["thud", 0.05], ["boom", 3.1]] },
+    { "id": "i1",  "scene": "autolysis",     "gap": 0.25, "text": "It starts from the inside. Within minutes your own digestive enzymes begin working on the cells that used to contain them, and after a day or so the bacteria in your gut realise nothing is stopping them any more.", "sfx": [["squelch", 4.6], ["bubble", 9.2, 0.7]] },
+    { "id": "i2",  "scene": "decay-clock",   "gap": 0.25, "text": "Left alone in ordinary ground, you are down to a skeleton inside about ten years, and the skeleton goes too, eventually.", "sfx": [["tick", 0.3], ["deflate", 6.4]] },
+    { "id": "i3",  "scene": "seven-ways",    "gap": 0.60, "text": "But it does not have to go that way. Here are seven ways to still be recognisable in four thousand years, roughly in order of how much of the work you have to do yourself.", "sfx": [["ding", 3.6], ["airhorn", 8.4, 0.55]] },
+
+    { "id": "a0",  "scene": "ice-open",      "gap": 0.35, "text": "One. Ice.", "sfx": [["shimmer", 0.05]] },
+    { "id": "a1",  "scene": "otzi",          "gap": 0.25, "text": "In 1991, two hikers in the Alps found a body face down in the melting ice. They assumed it was a climber who had come off the ridge.", "say": "In nineteen ninety one, two hikers in the Alps found a body face down in the melting ice. They assumed it was a climber who had come off the ridge.", "sfx": [["wind", 0.4, 0.6], ["shimmer", 4.0, 0.6]] },
+    { "id": "a1b", "scene": "otzi-age",      "gap": 0.30, "text": "He had died five thousand three hundred years ago.", "sfx": [["scratch", 0.9], ["boom", 2.0]] },
+    { "id": "a2",  "scene": "freeze-dry",    "gap": 0.25, "text": "The cold on its own would not have done it. Up there the air is thin and bone dry, so the wind pulled the water straight out of him while he was frozen. He was freeze-dried, in exactly the way instant coffee is.", "sfx": [["wind", 1.2, 0.7], ["shrivel", 8.6]] },
+    { "id": "a3",  "scene": "otzi-detail",   "gap": 0.25, "text": "It works alarmingly well. He still has his skin, his stomach contents, his clothes, and sixty-one tattoos, almost all of them sitting directly over worn-out joints.", "sfx": [["pop", 3.0], ["pop", 3.7], ["pop", 4.4], ["blip", 7.8]] },
+    { "id": "a3b", "scene": "arrow",         "gap": 0.25, "text": "He also still has the arrowhead that somebody put in his shoulder from behind, which is how a glacier mummy became a murder investigation with a five-thousand-year-old suspect.", "sfx": [["twang", 1.6], ["boom", 2.4], ["siren", 8.0, 0.5]] },
+    { "id": "a4",  "scene": "ice-verdict",   "gap": 0.60, "text": "The problem with this method is that you do not get to choose it. You have to die somewhere very high and very cold, and then stay buried until the glacier gives you back.", "sfx": [["sadtrom", 4.6, 0.6]] },
+
+    { "id": "b0",  "scene": "bog-open",      "gap": 0.35, "text": "Two. Bog.", "sfx": [["squelch", 0.05]] },
+    { "id": "b1",  "scene": "tollund",       "gap": 0.25, "text": "When Tollund Man came out of a Danish peat bog in 1950, the diggers called the police, because he looked like he had died that week.", "say": "When Tollund Man came out of a Danish peat bog in nineteen fifty, the diggers called the police, because he looked like he had died that week.", "sfx": [["squelch", 1.4], ["siren", 5.2, 0.6]] },
+    { "id": "b1b", "scene": "tollund-age",   "gap": 0.30, "text": "He had been in there for two thousand four hundred years, with the rope still around his neck.", "sfx": [["scratch", 1.2], ["boom", 2.2]] },
+    { "id": "b2",  "scene": "bog-chem",      "gap": 0.25, "text": "A peat bog is cold, it has no oxygen in it, and it is about as acidic as vinegar. None of the things that normally rot you can operate under those conditions.", "sfx": [["bubble", 4.2], ["fizz", 8.0, 0.7]] },
+    { "id": "b3",  "scene": "sphagnan",      "gap": 0.25, "text": "The moss does the rest. Sphagnum releases a compound called sphagnan, which locks up the nitrogen bacteria need to grow, and tans your skin at the same time. You come out the colour of a saddle.", "sfx": [["pop", 6.8], ["ding", 10.4, 0.6]] },
+    { "id": "b4",  "scene": "no-bones",      "gap": 0.30, "text": "There is a catch, and it is a big one. The same acid that saves your skin quietly dissolves your skeleton.", "sfx": [["fizz", 3.6], ["error", 5.6]] },
+    { "id": "b5",  "scene": "bog-verdict",   "gap": 0.60, "text": "So you get to keep your face for two and a half thousand years. You are also, structurally, a bag.", "sfx": [["deflate", 3.2], ["sadtrom", 4.6]] },
+
+    { "id": "c0",  "scene": "desert-open",   "gap": 0.35, "text": "Three. Desert.", "sfx": [["wind", 0.05, 0.7]] },
+    { "id": "c1",  "scene": "dry-out",       "gap": 0.25, "text": "This is the simplest method on the list and by far the oldest. Hot dry sand pulls the water out of a body faster than the bacteria inside it can multiply, and bacteria cannot work without water.", "sfx": [["wind", 0.5, 0.5], ["shrivel", 8.4]] },
+    { "id": "c2",  "scene": "chinchorro",    "gap": 0.25, "text": "The Chinchorro, on the coast of what is now northern Chile, worked this out about seven thousand years ago. They were mummifying their dead two thousand years before Egypt got started.", "sfx": [["scratch", 6.6], ["boom", 7.6]] },
+    { "id": "c2b", "scene": "arsenic",       "gap": 0.25, "text": "The reason is grim. The water they drank came out of the mountains loaded with arsenic, and a great many of their babies did not survive it. The first Chinchorro mummies are infants.", "sfx": [] },
+    { "id": "c3",  "scene": "rebuild",       "gap": 0.25, "text": "And they were not subtle. They took the body completely apart, peeled the skin off, dried every piece, rebuilt the skeleton around wooden poles, packed it out with plant fibre and ash, put the skin back on, and painted the finished object.", "sfx": [["rip", 2.6], ["clunk", 5.6], ["hammer", 8.0], ["hammer", 8.5], ["paint", 12.4]] },
+    { "id": "c4",  "scene": "desert-verdict","gap": 0.60, "text": "The result is less a preserved person than a portrait with a person inside it. Seven thousand years on, they are still standing up.", "sfx": [["tada", 5.6]] },
+
+    { "id": "d0",  "scene": "salt-open",     "gap": 0.35, "text": "Four. Salt.", "sfx": [["sprinkle", 0.05]] },
+    { "id": "d1",  "scene": "saltmen",       "gap": 0.25, "text": "In 1993, miners in northwestern Iran cut into a wall of rock salt and a human head fell out of it. White beard, gold earring, one eye still in place.", "say": "In nineteen ninety three, miners in northwestern Iran cut into a wall of rock salt and a human head fell out of it. White beard, gold earring, one eye still in place.", "sfx": [["pick", 2.6], ["clunk", 5.0], ["boing", 5.6], ["scratch", 7.0]] },
+    { "id": "d2",  "scene": "salt-how",      "gap": 0.25, "text": "Salt does what the desert does, but faster. It drags the water out of every cell it touches, including the cells of everything that was planning to eat you.", "sfx": [["sprinkle", 2.2], ["shrivel", 6.6]] },
+    { "id": "d3",  "scene": "salt-detail",   "gap": 0.25, "text": "The mine has produced at least six of them. One still had his leg inside his leather boot. Another had his last meal intact in his stomach, which is how we know he had eaten a lot of bread.", "sfx": [["pop", 3.4], ["chomp", 8.4]] },
+    { "id": "d3b", "scene": "mine-closed",   "gap": 0.30, "text": "They are still turning up, which is why that part of the mine is now an archaeological site rather than a mine.", "sfx": [["error", 5.2, 0.7]] },
+    { "id": "d4",  "scene": "salt-verdict",  "gap": 0.60, "text": "The entry requirement is inconvenient. You have to be standing inside a salt mine at the exact moment it collapses on top of you.", "sfx": [["rumble", 3.4], ["thud", 5.6], ["sadtrom", 6.2, 0.5]] },
+
+    { "id": "e0",  "scene": "natron-open",   "gap": 0.35, "text": "Five. Natron.", "sfx": [["gong", 0.05]] },
+    { "id": "e1",  "scene": "egypt-intro",   "gap": 0.25, "text": "This is the one everybody pictures, and it is the first on the list that is an actual procedure. Seventy days from start to finish, carried out by people who did it for a living.", "sfx": [["scribble", 5.6, 0.7]] },
+    { "id": "e1b", "scene": "why-egypt",     "gap": 0.25, "text": "They were not doing it to be remembered. The belief was that the parts of a person that survive death need the body to come back to, so if the body went, so did you.", "sfx": [["ding", 8.0, 0.6]] },
+    { "id": "e2",  "scene": "brain",         "gap": 0.25, "text": "The brain comes out first, through the nose, with a hooked rod. They did not think it did anything. They threw it away.", "sfx": [["slurp", 2.4], ["scratch", 5.8], ["bonk", 7.0]] },
+    { "id": "e3",  "scene": "organs",        "gap": 0.25, "text": "Then a cut in the left side, and the lungs, liver, stomach and intestines come out into four jars. The heart stays exactly where it is. You are going to need that later, to be weighed.", "sfx": [["rip", 1.4], ["clink", 4.4], ["clink", 4.9], ["clink", 5.4], ["clink", 5.9], ["boom", 9.6, 0.6]] },
+    { "id": "e4",  "scene": "natron-pack",   "gap": 0.25, "text": "Then forty days packed inside and out with natron, a salt that dries out of the lake beds west of the Nile. It takes the water and the fat out together.", "sfx": [["sprinkle", 1.8], ["sprinkle", 3.0, 0.7]] },
+    { "id": "e5",  "scene": "wrapping",      "gap": 0.25, "text": "Then the wrapping. Up to twenty layers of linen, amulets tucked between them, and warm resin poured over everything to seal it shut.", "sfx": [["wrap", 1.0], ["wrap", 2.0], ["wrap", 3.0], ["pour", 6.2]] },
+    { "id": "e6",  "scene": "natron-verdict","gap": 0.60, "text": "Four thousand years later they are intact enough to put through a scanner and argue about. It is comfortably the most reliable method here.", "sfx": [["scan", 3.0], ["tada", 6.8, 0.7]] },
+
+    { "id": "f0",  "scene": "monk-open",     "gap": 0.35, "text": "Six. Do it yourself.", "sfx": [["bell", 0.05]] },
+    { "id": "f1",  "scene": "sokushin",      "gap": 0.25, "text": "In northern Japan, a small number of Buddhist monks attempted something called sokushinbutsu. It takes roughly nine years, and you are alive for most of it.", "sfx": [["bell", 1.2, 0.6], ["boom", 8.0]] },
+    { "id": "f2",  "scene": "tree-diet",     "gap": 0.25, "text": "For the first thousand days you eat only what grows on a tree. Nuts, seeds, bark, pine needles. The point is to strip every gram of fat off yourself, because fat is the part that rots.", "sfx": [["crunch", 3.6], ["shrivel", 9.0]] },
+    { "id": "f3",  "scene": "lacquer",       "gap": 0.25, "text": "For the next thousand days you eat less again, and start drinking tea made from the sap of the lacquer tree. It is poisonous. It makes you vomit up whatever water you have left, and it leaves your body toxic to anything that might later try to eat it.", "sfx": [["pour", 3.4], ["error", 6.2], ["deflate", 8.4]] },
+    { "id": "f4",  "scene": "sealed-in",     "gap": 0.25, "text": "Then you are lowered into a stone chamber in the lotus position, with a breathing tube and a bell. You ring the bell once a day to indicate that you are still going.", "sfx": [["creak", 2.4], ["bell", 7.6]] },
+    { "id": "f5",  "scene": "bell-stops",    "gap": 0.30, "text": "When the bell stops, they remove the tube and seal the tomb. A thousand days after that, they open it again to find out whether it worked.", "sfx": [["bell", 0.3, 0.7], ["stone", 4.0], ["boom", 8.4, 0.7]] },
+    { "id": "f6",  "scene": "monk-verdict",  "gap": 0.60, "text": "Several hundred are thought to have tried. Fewer than thirty worked. Those ones are still sitting in their temples, in robes, being looked after. Everybody else simply rotted, which was the whole thing they were trying to avoid.", "sfx": [["ding", 2.4], ["sadtrom", 8.6]] },
+
+    { "id": "g0",  "scene": "plast-open",    "gap": 0.35, "text": "Seven. Plastic.", "sfx": [["blip", 0.05]] },
+    { "id": "g1",  "scene": "vonhagens",     "gap": 0.25, "text": "The newest method on the list was invented in 1977. It is called plastination, and the idea is to take every drop of water out of you and leave polymer in its place.", "say": "The newest method on the list was invented in nineteen seventy seven. It is called plastination, and the idea is to take every drop of water out of you and leave polymer in its place.", "sfx": [["bubble", 6.4, 0.7]] },
+    { "id": "g2",  "scene": "acetone",       "gap": 0.25, "text": "You go into cold acetone, which swaps itself for the water in your cells. Then into a vacuum chamber full of liquid plastic, where the pressure is dropped until the acetone boils out of you and the plastic gets pulled in behind it.", "sfx": [["bubble", 2.8], ["vacuum", 8.6]] },
+    { "id": "g2b", "scene": "how-long",      "gap": 0.25, "text": "A whole body takes about fifteen hundred hours of work, which is most of a year.", "sfx": [["tick", 2.6, 0.7]] },
+    { "id": "g3",  "scene": "posed",         "gap": 0.25, "text": "And because it has not set yet, you can be arranged. This is why the bodies in the touring exhibitions are playing chess and riding horses.", "sfx": [["boing", 3.8], ["airhorn", 6.6, 0.5]] },
+    { "id": "g4",  "scene": "plast-verdict", "gap": 0.60, "text": "It is the only one on this list you can actually volunteer for. Tens of thousands of people have already filled in the form.", "sfx": [["scribble", 4.4], ["ding", 6.6, 0.6]] },
+
+    { "id": "z0",  "scene": "board",         "gap": 0.30, "text": "So. Ranked by how long each one has actually been shown to work.", "sfx": [["ding", 0.2]] },
+    { "id": "z1",  "scene": "board",         "gap": 0.30, "text": "Desert, seven thousand years. Ice, five thousand three hundred. Natron, four thousand. Salt and bog, both around two and a half thousand, though the bog keeps the skeleton. The monks, about nine hundred.", "sfx": [["pop", 0.5], ["pop", 2.4], ["pop", 4.2], ["pop", 6.0], ["pop", 9.4], ["error", 8.0, 0.5]] },
+    { "id": "z2",  "scene": "signoff",       "gap": 0.00, "text": "And plastic, which has only existed since the seventies, so honestly, nobody knows yet.", "sfx": [["blip", 2.4], ["sadtrom", 4.2], ["boom", 6.0, 0.7]] }
+  ]
+}

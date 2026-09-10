@@ -48,7 +48,12 @@
     "short:audio": "python3 scripts/build-audio.py short",
     "animals:thumb": "remotion still Animal-Thumbnail out/thumbnail-guess-the-animal.png && remotion still Animal-Thumbnail-Board out/thumbnail-animals-all-12.png",
     "numbers:thumb": "remotion still Number-Thumbnail out/thumbnail-guess-the-number.png && remotion still Number-Thumbnail-Board out/thumbnail-numbers-all-12.png",
-    "short:thumb": "remotion still Short-Thumbnail out/thumbnail-counting-short.png"
+    "short:thumb": "remotion still Short-Thumbnail out/thumbnail-counting-short.png",
+    "mummy": "remotion render MummyVideo out/mummy.mp4",
+    "mummy:vo": "python3 scripts/make-vo.py mummy",
+    "mummy:sfx": "python3 scripts/make-sfx.py mummy",
+    "mummy:still": "remotion still MummyVideo out/mummy-still.png",
+    "mummy:thumb": "remotion still Mummy-Thumbnail out/thumbnail-7-ways-mummy.png && remotion still Mummy-Thumbnail-Board out/thumbnail-seven-ways-not-rot.png"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",
