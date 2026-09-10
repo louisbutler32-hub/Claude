@@ -25,15 +25,17 @@ def main():
     out_dir = os.path.join(ROOT, *spec.get("out", "src/%s" % name).split("/"))
     timing = json.load(open(os.path.join(out_dir, "timing.json")))
 
-    # first line of each chapter, in order
+    # First line of each chapter, in order. A chapter key is either a whole
+    # line id ("d7") for a mid-section break, or the section letter ("d") for
+    # the line that opens it.
     chapters, seen = [], set()
     for line in timing:
-        key = line["id"][0]
-        title = meta["chapters"].get(key)
-        if title is None or key in seen:
-            continue
-        seen.add(key)
-        chapters.append((line["start"], title))
+        for key in (line["id"], line["id"][0]):
+            title = meta["chapters"].get(key)
+            if title is not None and key not in seen:
+                seen.add(key)
+                chapters.append((line["start"], title))
+                break
     # YouTube: first chapter at 0:00, each at least 10s long
     chapters[0] = (0.0, chapters[0][1])
     for i in range(1, len(chapters)):
