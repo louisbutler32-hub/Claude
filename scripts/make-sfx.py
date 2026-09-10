@@ -60,6 +60,10 @@ def main():
         print("!! unknown effects: %s" % ", ".join(sorted(set(missing))), file=sys.stderr)
 
     track = track[:total]
+    # any effect still ringing at the end would otherwise be cut off square,
+    # which reads as a click on the last frame
+    fade = int(0.25 * SR)
+    track[-fade:] *= np.linspace(1.0, 0.0, fade, dtype=np.float32)
     peak = float(np.max(np.abs(track)))
     if peak > 0.95:
         track *= 0.95 / peak

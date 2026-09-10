@@ -40,8 +40,11 @@ export const MummyVideo: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#ffffff" }}>
-      <Audio src={staticFile("assets/vo/mummy.mp3")} />
-      <Audio src={staticFile("assets/vo/mummy-sfx.mp3")} volume={0.85} />
+      {/* Levels measured on the summed tracks, not guessed: at 1.0 / 0.85 the
+          two peak together at 1.23 wherever a sting lands on a stressed word.
+          0.83 / 0.58 keeps the same gap between them and peaks at 0.96. */}
+      <Audio src={staticFile("assets/vo/mummy.mp3")} volume={0.83} />
+      <Audio src={staticFile("assets/vo/mummy-sfx.mp3")} volume={0.58} />
       {LINES.map((l, i) => {
         const from = Math.round(l.start * fps);
         const next = LINES[i + 1];
