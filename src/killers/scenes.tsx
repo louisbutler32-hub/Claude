@@ -205,21 +205,35 @@ const NotDetectives: Scene = () => {
 
 const RipperOpen: Scene = () => <CaseOpen year="1888" place="Whitechapel, east London" n={1} />;
 
-const RipperTenWeeks: Scene = () => (
-  <SceneFade>
-    <Paper />
-    <Head>Five women, about ten weeks, one square mile.</Head>
-    <rect x={640} y={360} width={620} height={480} {...line(5, INK)} fill="#ffffff" />
-    <Crowd n={80} x={690} y={430} cols={10} gap={54} scale={0.2} fill={FAINT} />
-    <g opacity={0.95}>
-      <Crowd n={5} x={690} y={790} cols={5} gap={54} scale={0.24} fill={ACCENT} />
-    </g>
-    <Note x={950} y={900} size={34} color={GREY}>
-      one dot per thousand residents
-    </Note>
-    <Caption>eighty thousand people lived inside that mile</Caption>
-  </SceneFade>
-);
+const RipperTenWeeks: Scene = () => {
+  const cards: [string, string][] = [
+    ["5", "women"],
+    ["10", "weeks"],
+    ["1", "square mile"],
+    ["80,000", "people living in it"],
+  ];
+  return (
+    <SceneFade>
+      <Paper />
+      <Head>Autumn 1888, in one district of east London.</Head>
+      {cards.map(([big, sub], i) => {
+        const { opacity } = usePop(6 + i * 9, 12);
+        return (
+          <g key={sub} opacity={opacity}>
+            <rect x={190 + i * 390} y={420} width={340} height={320} rx={10} {...line(4, FAINT)} fill="#ffffff" />
+            <Note x={360 + i * 390} y={580} size={i === 3 ? 76 : 108} color={i === 0 ? ACCENT : INK}>
+              {big}
+            </Note>
+            <Note x={360 + i * 390} y={660} size={34} color={GREY}>
+              {sub}
+            </Note>
+          </g>
+        );
+      })}
+      <Caption>the five are the ones now counted as his</Caption>
+    </SceneFade>
+  );
+};
 
 const NoForensics: Scene = () => {
   const items = [
@@ -231,7 +245,7 @@ const NoForensics: Scene = () => {
     <SceneFade>
       <Paper />
       <Head>There was nothing to investigate with.</Head>
-      <Fingerprint x={330} y={640} scale={2.1} color={FAINT} />
+      <Fingerprint x={430} y={640} scale={1.5} color={FAINT} />
       {items.map((it, i) => {
         const { opacity } = usePop(10 + i * 10, 12);
         return (
@@ -533,27 +547,34 @@ const SutcliffeVerdict: Scene = () => (
 
 const ChikOpen: Scene = () => <CaseOpen year="1990" place="Rostov, southern Russia" n={5} />;
 
-const ChikCount: Scene = () => (
-  <SceneFade>
-    <Paper />
-    <Head>Fifty-two, over twelve years.</Head>
-    {/* a railway line, with the cases clustered along it */}
-    <path d={`M 160 700 L ${W - 160} 700`} {...line(10, INK)} />
-    {[...Array(26)].map((_, i) => (
-      <path key={i} d={`M ${190 + i * 61} 668 l 0 64`} {...line(5, FAINT)} />
-    ))}
-    {[...Array(52)].map((_, i) => (
-      <circle
-        key={i}
-        cx={190 + (i % 26) * 61}
-        cy={i < 26 ? 620 : 780}
-        r={11}
-        fill={SLATE}
-      />
-    ))}
-    <Caption>most of them close to railway lines</Caption>
-  </SceneFade>
-);
+const ChikCount: Scene = () => {
+  const frame = useCurrentFrame();
+  return (
+    <SceneFade>
+      <Paper />
+      <Head>Fifty-two, over twelve years.</Head>
+      {/* a tally along a railway line: one mark per case */}
+      {[...Array(52)].map((_, i) => (
+        <path
+          key={i}
+          d={`M ${250 + i * 27} 620 l 0 ${-46 - (i % 3) * 8}`}
+          {...line(5, SLATE)}
+          opacity={Math.min(1, Math.max(0, (frame - i * 1.1) / 8))}
+        />
+      ))}
+      <g>
+        <path d="M 180 660 L 1740 660" {...line(7, INK)} />
+        <path d="M 180 700 L 1740 700" {...line(7, INK)} />
+        {[...Array(40)].map((_, i) => (
+          <path key={i} d={`M ${196 + i * 39} 648 l 0 64`} {...line(4, FAINT)} />
+        ))}
+      </g>
+      <Caption y={840} size={44}>
+        most of them close to railway lines
+      </Caption>
+    </SceneFade>
+  );
+};
 
 const Chik1984: Scene = () => (
   <SceneFade>
@@ -613,19 +634,23 @@ const Stakeout: Scene = () => (
   <SceneFade>
     <Paper />
     <Head>1990: the quiet halts were watched.</Head>
-    <path d={`M 160 660 L ${W - 160} 660`} {...line(10, INK)} />
+    {/* the platform they are standing on, not a line they hang from */}
+    <path d={`M 140 880 L ${W - 140} 880`} {...line(8, INK)} />
+    <path d={`M 140 916 L ${W - 140} 916`} {...line(4, FAINT)} />
     {[
-      { x: 380, busy: true },
+      { x: 400, busy: true },
       { x: 760, busy: false },
-      { x: 1140, busy: false },
+      { x: 1160, busy: false },
       { x: 1520, busy: true },
-    ].map((s, i) => (
+    ].map((st, i) => (
       <g key={i}>
-        <path d={`M ${s.x} 628 l 0 64`} {...line(6, INK)} />
-        <Note x={s.x} y={590} size={34} color={s.busy ? INK : ACCENT}>
-          {s.busy ? "uniformed" : "watched"}
+        <Silhouette x={st.x} y={880} scale={1.35} fill={st.busy ? INK : ACCENT} />
+        <Note x={st.x} y={480} size={38} color={st.busy ? INK : ACCENT}>
+          {st.busy ? "uniformed" : "watched"}
         </Note>
-        <Silhouette x={s.x} y={840} scale={0.85} fill={s.busy ? INK : ACCENT} />
+        <Note x={st.x} y={532} size={30} color={GREY}>
+          {st.busy ? "busy station" : "quiet halt"}
+        </Note>
       </g>
     ))}
     <Caption>officers were put at the busy stations deliberately, to push him to the others</Caption>
@@ -637,7 +662,7 @@ const ChikVerdict: Scene = () => (
     <Paper />
     <Notebook x={560} y={560} scale={1} name="Chikatilo" />
     <g>
-      <Plaque x={1330} y={480} value="an operation built to catch him" w={780} />
+      <Plaque x={1270} y={480} value="an operation built to catch him" />
     </g>
     <Caption y={880} size={44} color={ACCENT}>
       the only one of the ten of whom that is true
@@ -1105,7 +1130,7 @@ const Cousins: Scene = () => (
   <SceneFade>
     <Paper />
     <Head>The matches were third and fourth cousins.</Head>
-    <FamilyTree x={W / 2} y={620} scale={0.95} />
+    <FamilyTree x={W / 2} y={600} scale={1.15} />
     <Caption>trees built forward until the branches crossed at one man</Caption>
   </SceneFade>
 );
@@ -1150,7 +1175,7 @@ const Board: Scene = () => (
       what actually stopped them
     </Note>
     {ROWS.map(([year, what], i) => {
-      const { opacity } = usePop(4 + i * 5, 12);
+      const { opacity } = usePop(2 + i * 3, 12);
       const y = 270 + i * 76;
       return (
         <g key={year + what} opacity={opacity}>

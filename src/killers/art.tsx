@@ -232,8 +232,11 @@ export const Plate: React.FC<{ x: number; y: number; scale?: number; text: strin
     <text x={0} y={22} fontFamily={FONT} fontSize={76} fill={INK} textAnchor="middle" letterSpacing="6">
       {text}
     </text>
+    {/* the cross marks the plate as wrong without hiding what it says */}
     {wrong ? (
-      <path d="M -240 -60 L 240 60 M 240 -60 L -240 60" {...line(8, ACCENT)} />
+      <g opacity={0.5}>
+        <path d="M -240 -60 L 240 60 M 240 -60 L -240 60" {...line(6, ACCENT)} />
+      </g>
     ) : null}
   </g>
 );
@@ -379,15 +382,11 @@ export const Fingerprint: React.FC<{ x: number; y: number; scale?: number; color
   color = FAINT,
 }) => (
   <g transform={`translate(${x} ${y}) scale(${scale})`}>
-    {[...Array(6)].map((_, i) => (
-      <path
-        key={i}
-        d={`M ${-30 - i * 16} ${60 + i * 10} q ${-14} ${-90 - i * 22} ${30 + i * 16} ${-100 - i * 20}
-            q ${44 + i * 16} ${10} ${30 + i * 16} ${100 + i * 20}`}
-        {...line(5, color)}
-        fill="none"
-      />
+    <ellipse cx={0} cy={0} rx={104} ry={132} {...line(6, color)} fill="none" />
+    {[0, 1, 2, 3].map((i) => (
+      <ellipse key={i} cx={0} cy={-6 - i * 4} rx={82 - i * 20} ry={104 - i * 24} {...line(5, color)} fill="none" />
     ))}
+    <path d="M -18 132 q 18 -40 36 0" {...line(5, color)} fill="none" />
   </g>
 );
 
