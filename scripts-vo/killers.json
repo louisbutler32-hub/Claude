@@ -1,0 +1,458 @@
+{
+ "voice": "am_liam",
+ "speed": 0.84,
+ "duration": 540,
+ "out": "src/killers",
+ "lines": [
+  {
+   "id": "i0",
+   "scene": "open",
+   "gap": 0.5,
+   "text": "Ten men. Between them, more than four hundred people."
+  },
+  {
+   "id": "i1",
+   "scene": "question",
+   "gap": 0.4,
+   "text": "This is not about why. Nobody has ever settled that. It is about the question that does have answers."
+  },
+  {
+   "id": "i2",
+   "scene": "what-stopped",
+   "gap": 0.4,
+   "text": "What actually stopped each one."
+  },
+  {
+   "id": "i3",
+   "scene": "not-detectives",
+   "gap": 0.55,
+   "text": "Because with one exception, none of them was caught by a detective working out who he was. In order of the year each one ran out."
+  },
+  {
+   "id": "a0",
+   "scene": "ripper-open",
+   "gap": 0.45,
+   "text": "Eighteen eighty-eight. Whitechapel.",
+   "say": "Eighteen eighty-eight. Whyte-chapel."
+  },
+  {
+   "id": "a1",
+   "scene": "ripper-ten-weeks",
+   "gap": 0.3,
+   "text": "Five women killed in about ten weeks, in a square mile of east London holding eighty thousand people."
+  },
+  {
+   "id": "a2",
+   "scene": "no-forensics",
+   "gap": 0.3,
+   "text": "There was nothing to investigate with. British police did not use fingerprints until nineteen oh one, and could not tell human blood from animal until the same year."
+  },
+  {
+   "id": "a4",
+   "scene": "ripper-stops",
+   "gap": 0.3,
+   "text": "Then it stopped. He may have died, been jailed for something else, or simply moved away."
+  },
+  {
+   "id": "a5",
+   "scene": "ripper-verdict",
+   "gap": 0.55,
+   "text": "What caught him was nothing at all. That is the baseline everything after this improves on."
+  },
+  {
+   "id": "b0",
+   "scene": "bundy-open",
+   "gap": 0.45,
+   "text": "Nineteen seventy-eight. Ted Bundy."
+  },
+  {
+   "id": "b1",
+   "scene": "bundy-states",
+   "gap": 0.3,
+   "text": "Four states, four years. He admitted to thirty. The real number is unknown, and he enjoyed that."
+  },
+  {
+   "id": "b2",
+   "scene": "bundy-stop",
+   "gap": 0.3,
+   "text": "August nineteen seventy-five. A Utah highway patrol sergeant, parked outside his own house at two in the morning, watches a Volkswagen drive past with its lights off."
+  },
+  {
+   "id": "b3",
+   "scene": "bundy-kit",
+   "gap": 0.3,
+   "text": "The passenger seat had been removed. On the floor were handcuffs, an ice pick, a crowbar, and a stocking with two holes cut in it."
+  },
+  {
+   "id": "b4",
+   "scene": "bundy-lineup",
+   "gap": 0.3,
+   "text": "That is burglary, not murder. But it put him in a lineup, where a woman who had escaped his car a year earlier picked him out."
+  },
+  {
+   "id": "b5",
+   "scene": "bundy-escape",
+   "gap": 0.3,
+   "text": "He escaped custody in Colorado twice, reached Florida, and killed again. Three years on, an officer ran the plates on an orange Volkswagen. Stolen."
+  },
+  {
+   "id": "b6",
+   "scene": "bundy-verdict",
+   "gap": 0.55,
+   "text": "What caught Ted Bundy, both times, was a car."
+  },
+  {
+   "id": "c0",
+   "scene": "gacy-open",
+   "gap": 0.45,
+   "text": "Also nineteen seventy-eight. John Wayne Gacy."
+  },
+  {
+   "id": "c1",
+   "scene": "gacy-count",
+   "gap": 0.3,
+   "text": "Thirty-three young men and boys near Chicago. Twenty-six of them were under the floor of his own house."
+  },
+  {
+   "id": "c2",
+   "scene": "gacy-piest",
+   "gap": 0.3,
+   "text": "In December, fifteen-year-old Robert Piest told his mother he was seeing a contractor about a summer job, and left the chemist's shop where he worked."
+  },
+  {
+   "id": "c3",
+   "scene": "gacy-receipt",
+   "gap": 0.3,
+   "text": "The contractor was Gacy. Searching his house, police took away a photograph receipt belonging to a girl who worked behind that same counter."
+  },
+  {
+   "id": "c4",
+   "scene": "gacy-proof",
+   "gap": 0.3,
+   "text": "She had handed it to Piest to hold. Finding it in Gacy's house put the boy inside it."
+  },
+  {
+   "id": "c5",
+   "scene": "gacy-verdict",
+   "gap": 0.55,
+   "text": "A second warrant took officers into the crawl space. What caught him was a slip of paper from a chemist's counter."
+  },
+  {
+   "id": "d0",
+   "scene": "sutcliffe-open",
+   "gap": 0.45,
+   "text": "Nineteen eighty-one. Peter Sutcliffe."
+  },
+  {
+   "id": "d1",
+   "scene": "sutcliffe-scale",
+   "gap": 0.3,
+   "text": "Thirteen women murdered in West Yorkshire, and seven more who survived. It became the largest manhunt Britain had ever run."
+  },
+  {
+   "id": "d2",
+   "scene": "sutcliffe-nine",
+   "gap": 0.3,
+   "text": "That manhunt interviewed him nine times, and released him nine times."
+  },
+  {
+   "id": "d3",
+   "scene": "hoax-tape",
+   "gap": 0.3,
+   "text": "In nineteen seventy-nine the inquiry received a tape from a man claiming to be the killer, in a Sunderland accent. Senior officers believed it."
+  },
+  {
+   "id": "d4",
+   "scene": "wrong-voice",
+   "gap": 0.3,
+   "text": "Sutcliffe was from Bradford. The accent ruled him out. The tape was a hoax."
+  },
+  {
+   "id": "d5",
+   "scene": "plates",
+   "gap": 0.3,
+   "text": "On the second of January nineteen eighty-one, two Sheffield officers checked a parked car. The number plates did not belong to it."
+  },
+  {
+   "id": "d6",
+   "scene": "sutcliffe-verdict",
+   "gap": 0.55,
+   "text": "What caught him was a routine licence check, by a force that was not looking for him."
+  },
+  {
+   "id": "e0",
+   "scene": "chik-open",
+   "gap": 0.45,
+   "text": "Nineteen ninety. Andrei Chikatilo.",
+   "say": "Nineteen ninety. Andrei Chikateelo."
+  },
+  {
+   "id": "e1",
+   "scene": "chik-count",
+   "gap": 0.3,
+   "text": "Fifty-two murders around Rostov, in southern Russia, over twelve years, most of them close to railway lines.",
+   "say": "Fifty-two murders around Ross-tov, in southern Russia, over twelve years, most of them close to railway lines."
+  },
+  {
+   "id": "e2",
+   "scene": "chik-1984",
+   "gap": 0.3,
+   "text": "In nineteen eighty-four he was arrested for behaving suspiciously at a station. He was, at that point, a genuine suspect."
+  },
+  {
+   "id": "e3",
+   "scene": "blood-test",
+   "gap": 0.3,
+   "text": "A blood test released him. His blood was group A. The samples from the scenes read as group AB. On the science of the day, that cleared him."
+  },
+  {
+   "id": "e4",
+   "scene": "secretor",
+   "gap": 0.3,
+   "text": "He is now thought to be one of a small number of people whose other fluids do not report the same group as their blood. It bought him six more years."
+  },
+  {
+   "id": "e5",
+   "scene": "stakeout",
+   "gap": 0.3,
+   "text": "In nineteen ninety police watched the quiet railway halts, putting uniformed officers at the busy stations to push him towards them."
+  },
+  {
+   "id": "e6",
+   "scene": "chik-verdict",
+   "gap": 0.55,
+   "text": "He walked out of the trees past an officer who wrote his name in a notebook. He is the only man here stopped by an operation built to stop him."
+  },
+  {
+   "id": "f0",
+   "scene": "dahmer-open",
+   "gap": 0.45,
+   "text": "Nineteen ninety-one. Jeffrey Dahmer."
+  },
+  {
+   "id": "f1",
+   "scene": "dahmer-count",
+   "gap": 0.3,
+   "text": "Seventeen men and boys, mostly in Milwaukee, over thirteen years."
+  },
+  {
+   "id": "f2",
+   "scene": "escape",
+   "gap": 0.3,
+   "text": "In July nineteen ninety-one, a man called Tracy Edwards walked out of the apartment with a handcuff still on one wrist, and flagged down a patrol car."
+  },
+  {
+   "id": "f3",
+   "scene": "drawer",
+   "gap": 0.3,
+   "text": "The officers went back with him, meaning to fetch the key. In a drawer they found photographs that ended the conversation."
+  },
+  {
+   "id": "f4",
+   "scene": "earlier",
+   "gap": 0.3,
+   "text": "Two months earlier, police were called to the same building. A fourteen-year-old boy had got out into the street. Dahmer told them it was a domestic argument, and they walked the boy back inside."
+  },
+  {
+   "id": "f5",
+   "scene": "konerak",
+   "gap": 0.3,
+   "text": "His name was Konerak Sinthasomphone. He was killed that night. The officers were later dismissed.",
+   "say": "His name was Konnerack Sinthasomphone. He was killed that night. The officers were later dismissed."
+  },
+  {
+   "id": "f6",
+   "scene": "dahmer-verdict",
+   "gap": 0.55,
+   "text": "What caught Dahmer was a victim who got out of the door, and was believed the second time."
+  },
+  {
+   "id": "g0",
+   "scene": "shipman-open",
+   "gap": 0.45,
+   "text": "Nineteen ninety-eight. Harold Shipman."
+  },
+  {
+   "id": "g1",
+   "scene": "shipman-gp",
+   "gap": 0.3,
+   "text": "A family doctor near Manchester, convicted of fifteen murders. A public inquiry later put the real figure at around two hundred and fifteen."
+  },
+  {
+   "id": "g2",
+   "scene": "pattern",
+   "gap": 0.3,
+   "text": "Almost all elderly. Almost all at home. Almost all certified as natural causes by the man who had just killed them."
+  },
+  {
+   "id": "g3",
+   "scene": "grundy",
+   "gap": 0.3,
+   "text": "In June nineteen ninety-eight Kathleen Grundy, an eighty-one-year-old former mayoress, died hours after he visited. A will appeared leaving her estate to him, typed on a machine he owned."
+  },
+  {
+   "id": "g4",
+   "scene": "solicitor",
+   "gap": 0.3,
+   "text": "Her daughter was a solicitor. She went to the police."
+  },
+  {
+   "id": "g5",
+   "scene": "audit-trail",
+   "gap": 0.3,
+   "text": "Then the records. He had gone back into his patients' computer files and added symptoms, so the deaths would look expected."
+  },
+  {
+   "id": "g6",
+   "scene": "shipman-verdict",
+   "gap": 0.55,
+   "text": "But the software stamped every edit with the real time it was made. All of it had been written after the patients were dead. What caught him was greed, and an audit trail he did not know existed."
+  },
+  {
+   "id": "h0",
+   "scene": "ridgway-open",
+   "gap": 0.45,
+   "text": "Two thousand and one. Gary Ridgway."
+  },
+  {
+   "id": "h1",
+   "scene": "ridgway-count",
+   "gap": 0.3,
+   "text": "The Green River case, in Washington state. He pleaded guilty to forty-eight murders, then a forty-ninth."
+  },
+  {
+   "id": "h2",
+   "scene": "swab",
+   "gap": 0.3,
+   "text": "In nineteen eighty-seven police suspected him enough to take a saliva sample on a square of gauze. Nothing could be done with it, so it went into a box, and stayed there for fourteen years."
+  },
+  {
+   "id": "h4",
+   "scene": "match",
+   "gap": 0.3,
+   "text": "In two thousand and one the laboratory ran the new technique against the old gauze, and matched it to three of the earliest victims."
+  },
+  {
+   "id": "h5",
+   "scene": "ridgway-verdict",
+   "gap": 0.55,
+   "text": "He was arrested leaving the factory where he had painted lorries for thirty years. What caught him was a piece of gauze, and the patience to keep it."
+  },
+  {
+   "id": "j0",
+   "scene": "btk-open",
+   "gap": 0.45,
+   "text": "Two thousand and five. Dennis Rader."
+  },
+  {
+   "id": "j1",
+   "scene": "btk-count",
+   "gap": 0.3,
+   "text": "Ten people around Wichita, Kansas. He named himself in letters to the press. Then, after nineteen ninety-one, he stopped for thirteen years.",
+   "say": "Ten people around Witchitaw, Kansas. He named himself in letters to the press. Then, after nineteen ninety-one, he stopped for thirteen years."
+  },
+  {
+   "id": "j2",
+   "scene": "resumes",
+   "gap": 0.3,
+   "text": "In two thousand and four, with nobody pursuing him, he started writing again."
+  },
+  {
+   "id": "j3",
+   "scene": "question-asked",
+   "gap": 0.3,
+   "text": "One letter asked a technical question. If he sent a floppy disk, could it be traced? Police answered through a newspaper notice. They said no. That was untrue."
+  },
+  {
+   "id": "j4",
+   "scene": "metadata",
+   "gap": 0.3,
+   "text": "He sent the disk. On it was a deleted file, carrying what every word processor saves without being asked. Last modified by Dennis. Organisation, Christ Lutheran Church."
+  },
+  {
+   "id": "j5",
+   "scene": "church",
+   "gap": 0.3,
+   "text": "The church website listed the president of its council. Dennis Rader."
+  },
+  {
+   "id": "j6",
+   "scene": "btk-verdict",
+   "gap": 0.55,
+   "text": "Thirty-one years of investigation, and about ten days from disk to handcuffs. What caught him was asking the police a question, and believing the answer."
+  },
+  {
+   "id": "k0",
+   "scene": "gsk-open",
+   "gap": 0.45,
+   "text": "Two thousand and eighteen. Joseph DeAngelo.",
+   "say": "Two thousand and eighteen. Joseph Dee Angelo."
+  },
+  {
+   "id": "k1",
+   "scene": "gsk-count",
+   "gap": 0.3,
+   "text": "Thirteen murders and more than fifty rapes across California, ending in nineteen eighty-six. For part of that time he was a serving police officer."
+  },
+  {
+   "id": "k2",
+   "scene": "no-match",
+   "gap": 0.3,
+   "text": "His DNA sat on file for decades and matched nothing, because the criminal database only holds people who have been arrested, and he never had been."
+  },
+  {
+   "id": "k3",
+   "scene": "gedmatch",
+   "gap": 0.3,
+   "text": "So investigators uploaded the crime scene profile to a public genealogy website, as though it were an ordinary customer looking for relatives."
+  },
+  {
+   "id": "k4",
+   "scene": "cousins",
+   "gap": 0.3,
+   "text": "The matches were third and fourth cousins. Genealogists built family trees forward from nineteenth-century ancestors until the branches crossed at one man of the right age, in the right places."
+  },
+  {
+   "id": "k5",
+   "scene": "bin",
+   "gap": 0.3,
+   "text": "They confirmed it from a tissue in his kerbside bin, and arrested him in his own driveway at seventy-two."
+  },
+  {
+   "id": "k6",
+   "scene": "gsk-verdict",
+   "gap": 0.55,
+   "text": "What caught him was his relatives' curiosity about their own ancestry."
+  },
+  {
+   "id": "z0",
+   "scene": "board",
+   "gap": 0.4,
+   "text": "So. What actually stopped them."
+  },
+  {
+   "id": "z1",
+   "scene": "board",
+   "gap": 0.4,
+   "text": "Nothing. A stolen car. A photograph receipt. A number plate. A notebook. A man who got out of a door. A forged will. A square of gauze. A floppy disk. A cousin."
+  },
+  {
+   "id": "z2",
+   "scene": "pattern-close",
+   "gap": 0.4,
+   "text": "One of the ten was stopped by an operation designed to stop him. The rest were ended by something small and unrelated, and usually by a mistake of their own."
+  },
+  {
+   "id": "z3",
+   "scene": "going-back",
+   "gap": 0.4,
+   "text": "And the newest method on that list is now running backwards. Since two thousand and eighteen, genetic genealogy has named suspects in hundreds of cases that had been cold for decades."
+  },
+  {
+   "id": "z4",
+   "scene": "signoff",
+   "gap": 0.3,
+   "text": "So the thing that catches the next one has probably already been invented. And the thing that catches the last of the old ones is a stranger, somewhere, spitting into a tube."
+  }
+ ]
+}
