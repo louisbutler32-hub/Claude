@@ -61,8 +61,12 @@ toddler learning compilation, learning videos for toddlers, guess the shadow, pr
 ## Upload settings
 
 Category **Education**, audience **Yes, made for kids**, language English.
-Thumbnail: reuse `thumbnail-guess-the-veggie.jpg`, or make a four-way split
-showing one shadow from each episode.
+Thumbnail: `thumbnail-compilation.jpg` (`npm run compilation:thumb`).
+
+It deliberately breaks from the episode thumbnails. Those lead on a shadow,
+because the guess is the hook. A compilation is chosen for length and
+variety instead, so this one leads on **41 MINUTES** and shows the cast in
+full colour — one from each episode, fruit included.
 
 The chapter marks are already embedded in the file, so YouTube picks them up
 without the description list — but keep the list anyway, since it is what

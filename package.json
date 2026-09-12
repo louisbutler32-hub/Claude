@@ -57,7 +57,8 @@
     "banner:white": "remotion still Channel-Banner-White out/channel-banner-white.png",
     "killers": "remotion render KillersVideo out/killers.mp4",
     "killers:vo": "python3 scripts/make-vo.py killers",
-    "killers:thumb": "remotion still Killers-Thumbnail out/thumbnail-what-caught-them.jpg --image-format=jpeg --quality=92 && remotion still Killers-Thumbnail-Figures out/thumbnail-ten-silhouettes.jpg --image-format=jpeg --quality=92"
+    "killers:thumb": "remotion still Killers-Thumbnail out/thumbnail-what-caught-them.jpg --image-format=jpeg --quality=92 && remotion still Killers-Thumbnail-Figures out/thumbnail-ten-silhouettes.jpg --image-format=jpeg --quality=92",
+    "compilation:thumb": "remotion still Compilation-Thumbnail out/thumbnail-compilation.png"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",

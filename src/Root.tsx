@@ -28,6 +28,7 @@ import {
 import { ArtSheet } from "./veggies/ArtSheet";
 import { AnimalArtSheet } from "./animals/ArtSheet";
 import { Banner, BannerGuides, BannerWhite } from "./guess/Banner";
+import { CompilationThumb } from "./guess/CompilationThumb";
 import { AnimalThumbA, AnimalThumbB } from "./animals/Thumbnail";
 import { NumberThumbA, NumberThumbB } from "./numbers/Thumbnail";
 import {
@@ -191,6 +192,14 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1080}
         height={1920}
+      />
+      <Composition
+        id="Compilation-Thumbnail"
+        component={CompilationThumb}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
       />
       <Composition
         id="Channel-Banner"
