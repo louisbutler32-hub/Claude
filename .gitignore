@@ -18,3 +18,6 @@ clipper/projects/*/source/
 clipper/projects/*/vo/*.mp3
 clipper/projects/*/music/
 clipper/projects/_selftest/
+
+__pycache__/
+*.pyc
