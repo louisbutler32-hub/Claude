@@ -513,12 +513,16 @@ export const SpeechBubble: React.FC<{
 };
 
 /** The channel's chapter label: centred caps at the very top of frame. */
-export const Title: React.FC<{ text: string; boxed?: boolean }> = ({ text, boxed }) => (
+export const Title: React.FC<{ text: string; boxed?: boolean; color?: string }> = ({
+  text,
+  boxed,
+  color = ink,
+}) => (
   <g>
     {boxed ? (
       <rect x={W / 2 - text.length * 30 - 30} y={16} width={text.length * 60 + 60} height={108} fill="#fff" rx={4} />
     ) : null}
-    <Note x={W / 2} y={104} size={96} color={ink}>
+    <Note x={W / 2} y={104} size={96} color={color}>
       {text}
     </Note>
   </g>

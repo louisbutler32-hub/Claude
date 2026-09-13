@@ -80,19 +80,20 @@ const Beat: React.FC<{
 );
 
 /** The number card each chapter opens on. */
-const Chapter: React.FC<{ n: number; word: string; bg?: string; children?: React.ReactNode }> = ({
-  n,
-  word,
-  bg = PAPER,
-  children,
-}) => {
+const Chapter: React.FC<{
+  n: number;
+  word: string;
+  bg?: string;
+  dark?: boolean;
+  children?: React.ReactNode;
+}> = ({ n, word, bg = PAPER, dark, children }) => {
   const frame = useCurrentFrame();
   return (
     <SceneFade>
       <Paper fill={bg} />
       <Camera push={0.06}>{children}</Camera>
       <Reveal from="none">
-        <Note x={W / 2} y={560} size={300} color={INK}>
+        <Note x={W / 2} y={560} size={300} color={dark ? "#f0ebe0" : INK}>
           {n}
         </Note>
       </Reveal>
@@ -150,14 +151,14 @@ const NyosCold: Scene = () => {
       <Paper fill={NIGHT} />
       <Camera push={0.09} seconds={4}>
         <Strata y={880} layers={[{ h: 240, fill: "#2a3442" }]} />
-        <CraterLake x={W / 2} y={760} scale={0.78} charge={1} rising />
+        <CraterLake x={W / 2} y={860} scale={1.15} charge={1} rising />
       </Camera>
       <Reveal delay={4} from="down" distance={22}>
         <Note x={W / 2} y={200} size={62} color="#e8e2d6">
           August 1986. Cameroon.
         </Note>
       </Reveal>
-      <g opacity={Math.min(1, frame / 30) * 0.4}>
+      <g opacity={Math.min(1, frame / 30) * 0.22}>
         <rect x={0} y={0} width={W} height={H} fill={GAS} />
       </g>
     </SceneFade>
@@ -299,7 +300,7 @@ const NyosRelease: Scene = () => (
   <Beat head="It came out of solution all at once." push={0.07}>
     <CraterLake x={W / 2} y={860} scale={0.9} charge={0.3} rising />
     <Reveal delay={12} from="none">
-      <Readout x={W / 2} y={330} value="100,000–300,000" label="tonnes of carbon dioxide" color={RED} size={78} />
+      <Readout x={W / 2} y={400} value="100,000–300,000" label="tonnes of carbon dioxide" color={RED} size={78} />
     </Reveal>
   </Beat>
 );
@@ -642,8 +643,8 @@ const SinkVoid: Scene = () => (
         { h: 360, fill: "#cfc6b0", label: "limestone" },
       ]}
     />
-    <Void x={780} y={880} scale={0.9} />
-    <Void x={1380} y={930} scale={0.6} />
+    <Void x={780} y={780} scale={0.72} />
+    <Void x={1380} y={810} scale={0.48} />
     <House x={780} y={600} scale={0.7} />
   </Beat>
 );
@@ -652,7 +653,7 @@ const SinkSeffner: Scene = () => (
   <Beat head="Seffner, Florida, 2013." caption="a man called Jeffrey Bush went to bed">
     <Strata y={640} layers={[{ h: 140, fill: "#b9a888" }, { h: 320, fill: "#cfc6b0" }]} />
     <House x={W / 2} y={640} scale={1.05} />
-    <Void x={W / 2} y={920} scale={0.85} />
+    <Void x={W / 2} y={800} scale={0.68} />
   </Beat>
 );
 
@@ -662,7 +663,7 @@ const SinkOpen: Scene = () => {
   return (
     <Beat head="At about half past eleven, the floor opened." push={0.06}>
       <Strata y={640} layers={[{ h: 140, fill: "#b9a888" }, { h: 320, fill: "#cfc6b0" }]} />
-      <Void x={W / 2} y={900} scale={0.95} open={t} />
+      <Void x={W / 2} y={810} scale={0.76} open={t} />
       <House x={W / 2} y={640 + t * 90} scale={1.05} tilt={t * 9} />
     </Beat>
   );
@@ -671,7 +672,7 @@ const SinkOpen: Scene = () => {
 const SinkBrother: Scene = () => (
   <Beat head="His brother ran in and found the room gone." caption="he had to be pulled out as the edges kept collapsing">
     <Strata y={660} layers={[{ h: 140, fill: "#b9a888" }, { h: 300, fill: "#cfc6b0" }]} />
-    <Void x={W / 2} y={900} scale={1} open={1} />
+    <Void x={W / 2} y={810} scale={0.78} open={1} />
     <Figure x={640} y={660} scale={0.85} />
   </Beat>
 );
@@ -679,7 +680,7 @@ const SinkBrother: Scene = () => (
 const SinkNever: Scene = () => (
   <Beat head="The hole was too unstable to enter." caption="Jeffrey Bush was never recovered">
     <Strata y={660} layers={[{ h: 140, fill: "#b9a888" }, { h: 300, fill: "#cfc6b0" }]} />
-    <Void x={W / 2} y={900} scale={1.05} open={1} />
+    <Void x={W / 2} y={810} scale={0.8} open={1} />
   </Beat>
 );
 
@@ -732,7 +733,7 @@ const Seiche1755: Scene = () => (
         {[1, 2, 3, 4].map((i) => (
           <circle key={i} cx={0} cy={0} r={26 + i * 80} {...line(4, RED)} fill="none" opacity={0.55 - i * 0.1} />
         ))}
-        <Note x={0} y={430} size={44} color={INK}>
+        <Note x={0} y={-330} size={44} color={INK}>
           Lisbon
         </Note>
       </g>
@@ -812,7 +813,7 @@ const SeicheVerdict: Scene = () => (
 // ── 5 · the sun ─────────────────────────────────────────────────────
 
 const Five: Scene = () => (
-  <Chapter n={5} word="THE SUN" bg="#12161f">
+  <Chapter n={5} word="THE SUN" bg="#12161f" dark>
     <Sun x={W / 2} y={1020} r={200} />
   </Chapter>
 );
@@ -1005,7 +1006,7 @@ const Six: Scene = () => (
 
 const TobaWhat: Scene = () => (
   <Beat head="74,000 years ago, Toba erupted in Sumatra." caption="one of the largest eruptions of the last two million years">
-    <Volcano x={W / 2} y={980} scale={1.15} flow={0.5} fill="#8a8478" />
+    <Volcano x={W / 2} y={940} scale={1.05} flow={0.5} fill="#8a8478" />
   </Beat>
 );
 
@@ -1088,17 +1089,17 @@ const TobaSites: Scene = () => (
 
 const TobaStill: Scene = () => (
   <Beat head="Toba was still an enormous eruption." caption="it just does not appear to have nearly killed us" headColor={INK}>
-    <Volcano x={W / 2} y={980} scale={1} flow={0.35} />
+    <Volcano x={W / 2} y={930} scale={0.9} />
   </Beat>
 );
 
 const TobaYellow: Scene = () => (
   <Beat head="And the one everyone worries about now" caption="would be the least sudden death on this list">
-    <Volcano x={W / 2} y={960} scale={1.05} />
+    <Volcano x={W / 2} y={930} scale={0.95} />
     <Reveal delay={12} from="up">
       <g>
-        <path d="M 620 900 l 0 -60 M 820 880 l 0 -70 M 1100 880 l 0 -70 M 1300 900 l 0 -60" {...line(7, RED)} />
-        <Note x={960} y={780} size={42} color={RED}>
+        <path d="M 560 980 l 0 -70 M 740 960 l 0 -80 M 1180 960 l 0 -80 M 1360 980 l 0 -70" {...line(7, RED)} />
+        <Note x={960} y={380} size={44} color={RED}>
           ground lifting, earthquakes swarming
         </Note>
       </g>
@@ -1113,8 +1114,8 @@ const TobaVerdict: Scene = () => (
 // ── 7 · the one from outside ────────────────────────────────────────
 
 const Seven: Scene = () => (
-  <Chapter n={7} word="FROM OUTSIDE" bg="#0d1119">
-    <Burst x={W / 2} y={620} t={0.4} scale={1.4} />
+  <Chapter n={7} word="FROM OUTSIDE" bg="#0d1119" dark>
+    <Burst x={W / 2} y={1010} t={0.4} scale={0.9} />
   </Chapter>
 );
 
@@ -1201,9 +1202,11 @@ const Boat: Scene = () => (
       </Note>
     </Reveal>
     <Reveal delay={10} from="none">
-      <Counter x={620} y={560} to={19} size={150} color="#f0b23c" delay={10} commas={false} />
-      <Note x={620} y={640} size={40} color="#b9b2a4">
-        hundred million light years away
+      <Note x={620} y={580} size={150} color="#f0b23c">
+        1.9 billion
+      </Note>
+      <Note x={620} y={660} size={40} color="#b9b2a4">
+        light years away
       </Note>
     </Reveal>
   </SceneFade>

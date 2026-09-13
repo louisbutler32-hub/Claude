@@ -50,19 +50,25 @@ export const EarthVideo: React.FC = () => {
         const to = Math.round((next ? next.start : EARTH_DURATION_SECONDS) * fps);
         const warn = WARN[l.id[0]];
         const dark = DARK_SCENES.has(l.scene);
+        // The corner asks the question all the way through a chapter and only
+        // answers it on that chapter's verdict. Printing the answer on the
+        // number card gave away the payoff before the section had started.
+        const revealed = l.scene.endsWith("-verdict");
         return (
           <Sequence key={l.id} from={from} durationInFrames={to - from} name={`${l.id} ${l.scene}`}>
             <AbsoluteFill>
               <svg viewBox={`0 0 ${W} ${H}`} width="100%" height="100%">
                 {renderScene(l.scene)}
-                {chapter(l.id) ? <Title text={chapter(l.id)} boxed={dark} /> : null}
+                {chapter(l.id) ? (
+                  <Title text={chapter(l.id)} color={dark ? "#e8e2d6" : undefined} />
+                ) : null}
                 {warn ? (
                   <Progress
                     n={warn.n}
                     total={7}
                     label="warning given"
-                    value={warn.label}
-                    color={dark ? "#e8e2d6" : "#16181c"}
+                    value={revealed ? warn.label : "?"}
+                    color={revealed ? "#d1402f" : dark ? "#e8e2d6" : "#16181c"}
                     faint={dark ? "#4a505c" : "#cdc7ba"}
                   />
                 ) : null}
