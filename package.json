@@ -61,7 +61,8 @@
     "compilation:thumb": "remotion still Compilation-Thumbnail out/thumbnail-compilation.png",
     "earth": "remotion render EarthVideo out/earth.mp4",
     "earth:vo": "python3 scripts/make-vo.py earth",
-    "earth:sfx": "python3 scripts/make-sfx.py earth"
+    "earth:sfx": "python3 scripts/make-sfx.py earth",
+    "earth:thumb": "remotion still Earth-Thumbnail out/thumbnail-how-much-warning.jpg --image-format=jpeg --quality=92 && remotion still Earth-Thumbnail-Lake out/thumbnail-the-lake.jpg --image-format=jpeg --quality=92"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",

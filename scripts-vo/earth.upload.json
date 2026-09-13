@@ -1,0 +1,28 @@
+{
+  "titles": [
+    "7 Ways the Earth Kills You Without Warning",
+    "How Much Warning Would You Actually Get?",
+    "Nobody Had Time to Run"
+  ],
+  "chapters": {
+    "i": "The lake that killed 1,746 people",
+    "a": "1 · Limnic eruption — no warning",
+    "b": "2 · Pyroclastic flow — seconds",
+    "c": "3 · Sinkhole — no warning",
+    "d": "4 · Seiche — about 30 minutes",
+    "e": "5 · Solar storm — about 17 hours",
+    "f": "6 · Supervolcano — months",
+    "g": "7 · Gamma-ray burst — none at all",
+    "z": "Ranked by how long you would have"
+  },
+  "description": "Seven things the planet does that give you almost no notice, ranked by the only number that matters when one happens: how much warning you get.\n\nA lake in Cameroon that exhaled in 1986 and killed 1,746 people in a night. A cloud that destroyed a city in under a minute, and the one man who survived it because he was locked in a cell. A bedroom floor in Florida that opened at half past eleven. Lakes in Scotland that started swinging because of an earthquake two thousand kilometres away. A solar storm that set telegraph paper on fire in 1859, and what the same storm would do to a grid that now exists.\n\nAnd two that are not what you have been told. The supervolcano everybody is frightened of would give the most warning of anything on the list. And the one that gives you none at all comes from outside the solar system entirely.\n\nNo footage, no stock, no music. Every frame is drawn in code.",
+  "footer": "🎬 More from Wonky Animations:\nhttps://www.youtube.com/@thewonkyanimations\n\nSources: Lake Nyos — the 1986 limnic eruption, 1,746 deaths, and the degassing programme at Nyos and Monoun. Mont Pelée, 8 May 1902, and Ludger Sylbaris. Herculaneum brain vitrification — Petrone et al., and the 2025 follow-up in Scientific Reports. Seffner, Florida, 2013. Seismic seiches — the 1755 Lisbon earthquake in the Scottish lochs, and Bondevik et al. on the Norwegian fjords after Tōhoku 2011. The Carrington Event, and the US National Research Council's 2008 severe-space-weather assessment. Toba — the bottleneck hypothesis and the genomic evidence against it. GRB 221009A, and the reported ionospheric disturbance.",
+  "tags": [
+    "natural disasters", "lake nyos", "limnic eruption", "pyroclastic flow",
+    "mount pelee", "herculaneum", "sinkhole", "seiche", "carrington event",
+    "solar storm", "supervolcano", "toba", "gamma ray burst", "grb 221009a",
+    "geology", "science", "explained", "how long would you have",
+    "disaster", "earth science", "documentary", "educational"
+  ],
+  "thumbnail": "A: the warning-time table on a dark ground, under \"HOW MUCH WARNING WOULD YOU GET?\"\n   out/thumbnail-how-much-warning.jpg\nB: the charged crater lake, under \"THE LAKE THAT KILLED 1,746 PEOPLE\"\n   out/thumbnail-the-lake.jpg\nBoth 1920x1080, built with: npm run earth:thumb\n\nUPLOAD: not made for kids."
+}
