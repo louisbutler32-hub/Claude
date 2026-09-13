@@ -29,16 +29,10 @@
    "text": "Seven ways the ground you are standing on can kill you."
   },
   {
-   "id": "i4",
-   "scene": "warning-idea",
-   "gap": 0.3,
-   "text": "Ranked by the only thing that actually matters when it happens."
-  },
-  {
    "id": "i5",
    "scene": "warning-clock",
    "gap": 0.4,
-   "text": "How much warning you get."
+   "text": "Ranked by how much warning you get."
   },
   {
    "id": "a0",
@@ -56,7 +50,7 @@
    "id": "a2",
    "scene": "nyos-charge",
    "gap": 0.25,
-   "text": "Magma underneath leaks carbon dioxide into the water, and the weight of the lake above keeps it dissolved."
+   "text": "Magma underneath leaks carbon dioxide into the water, and the weight of the lake keeps it dissolved."
   },
   {
    "id": "a3",
@@ -92,7 +86,7 @@
    "id": "a8",
    "scene": "nyos-valleys",
    "gap": 0.25,
-   "text": "It poured into the valleys, filled the villages like water filling a bath, and displaced every breathable thing in them."
+   "text": "It poured into the valleys and filled the villages like water filling a bath."
   },
   {
    "id": "a9",
@@ -111,12 +105,6 @@
    "scene": "kivu",
    "gap": 0.25,
    "text": "Kivu is the big one. It is a thousand times the volume, and about two million people live around its shore."
-  },
-  {
-   "id": "a11b",
-   "scene": "nyos-pipes",
-   "gap": 0.25,
-   "text": "Nyos and Monoun now have pipes running to the bottom, venting them slowly and permanently, so the charge can never build again."
   },
   {
    "id": "a12",
@@ -140,7 +128,7 @@
    "id": "b2",
    "scene": "pyro-speed",
    "gap": 0.25,
-   "text": "This is a ground-hugging avalanche of gas, ash and rock that can move at several hundred kilometres an hour."
+   "text": "This is a ground-hugging avalanche of gas, ash and rock, moving at several hundred kilometres an hour."
   },
   {
    "id": "b3",
@@ -158,7 +146,7 @@
    "id": "b4b",
    "scene": "pelee",
    "gap": 0.25,
-   "text": "The clearest example is Martinique, nineteen oh two. Mont Pelee opened sideways and the cloud came down the slope at about a hundred and sixty kilometres an hour."
+   "text": "The clearest case is Martinique, nineteen oh two. Mont Pelee opened sideways and the cloud came down the slope at a hundred and sixty kilometres an hour."
   },
   {
    "id": "b5",
@@ -200,7 +188,7 @@
    "id": "b8",
    "scene": "pyro-vitrify",
    "gap": 0.25,
-   "text": "Not burnt. Vitrified. Heated past five hundred degrees and cooled again fast enough to set like obsidian."
+   "text": "Not burnt. Vitrified \u2014 heated past five hundred degrees, then cooled fast enough to set like glass."
   },
   {
    "id": "b9",
@@ -308,13 +296,7 @@
    "id": "d6",
    "scene": "seiche-amp",
    "gap": 0.25,
-   "text": "A metre and a half, trough to peak, for hours. Eight thousand kilometres from the epicentre. Moored boats were torn loose."
-  },
-  {
-   "id": "d7",
-   "scene": "seiche-swaves",
-   "gap": 0.25,
-   "text": "And the waves that did it were not the ones that shake buildings. They were body waves, passing underneath."
+   "text": "A metre and a half, trough to peak, for hours. Eight thousand kilometres from the epicentre."
   },
   {
    "id": "d8",
@@ -338,7 +320,7 @@
    "id": "e2",
    "scene": "carr-aurora",
    "gap": 0.25,
-   "text": "Auroras were seen over Cuba and Hawaii. People in the north-eastern United States could read a newspaper outside at one in the morning."
+   "text": "Auroras reached Cuba and Hawaii. In the north-eastern United States you could read a newspaper outdoors at one in the morning."
   },
   {
    "id": "e3",
@@ -374,7 +356,7 @@
    "id": "e8",
    "scene": "carr-transformers",
    "gap": 0.25,
-   "text": "A storm that size today would push direct current into a grid built for alternating current, saturating the largest transformers until they cook themselves from inside."
+   "text": "A storm that size today would push direct current into a grid built for alternating current, until the largest transformers cook themselves from inside."
   },
   {
    "id": "e9",
@@ -386,7 +368,7 @@
    "id": "e10",
    "scene": "carr-nrc",
    "gap": 0.25,
-   "text": "The most cited assessment, from a National Research Council report, put recovery at four to ten years, and the cost in trillions."
+   "text": "The most cited assessment put recovery at four to ten years, and the cost in trillions."
   },
   {
    "id": "e11",
@@ -416,7 +398,7 @@
    "id": "f3",
    "scene": "toba-story",
    "gap": 0.25,
-   "text": "And then the story you have heard. That it nearly finished us. That the human population fell to a few thousand and everyone alive now descends from those survivors."
+   "text": "And then the story you have heard: that it nearly finished us, and everyone alive now descends from a few thousand survivors."
   },
   {
    "id": "f4",
@@ -428,7 +410,7 @@
    "id": "f5",
    "scene": "toba-genomes",
    "gap": 0.25,
-   "text": "Whole-genome sequencing can see population crashes. It does not see one at seventy-four thousand years. The bottlenecks it does find sit at other dates entirely."
+   "text": "Whole-genome sequencing can see population crashes. It does not see one at seventy-four thousand years."
   },
   {
    "id": "f6",
@@ -464,7 +446,7 @@
    "id": "g1",
    "scene": "grb-what",
    "gap": 0.25,
-   "text": "A gamma-ray burst is the most energetic event in the universe. A certain kind of star collapses and fires two narrow beams from its poles."
+   "text": "A gamma-ray burst is the most energetic event in the universe. A star collapses and fires two narrow beams from its poles."
   },
   {
    "id": "g2",
@@ -482,7 +464,7 @@
    "id": "g4",
    "scene": "grb-ozone",
    "gap": 0.25,
-   "text": "If one were pointed at us from a few thousand light years away, the gamma rays would not reach the ground. They would take the ozone layer apart instead."
+   "text": "If one were pointed at us from a few thousand light years away, the gamma rays would not reach the ground. They would take the ozone layer apart."
   },
   {
    "id": "g5",
@@ -495,12 +477,6 @@
    "scene": "boat",
    "gap": 0.25,
    "text": "In October twenty twenty-two we were hit by the brightest one ever recorded. It came from a galaxy one point nine billion light years away."
-  },
-  {
-   "id": "g6",
-   "scene": "grb-ordovician",
-   "gap": 0.25,
-   "text": "One suggestion is that this is what happened at the end of the Ordovician, four hundred and forty million years ago. It is a hypothesis, not a finding."
   },
   {
    "id": "g5c",
