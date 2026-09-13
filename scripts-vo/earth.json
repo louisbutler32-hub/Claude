@@ -1,0 +1,554 @@
+{
+ "voice": "am_liam",
+ "speed": 0.88,
+ "duration": 480,
+ "out": "src/earth",
+ "lines": [
+  {
+   "id": "i0",
+   "scene": "nyos-cold",
+   "gap": 0.3,
+   "text": "In August nineteen eighty-six, a lake in Cameroon exhaled."
+  },
+  {
+   "id": "i1",
+   "scene": "nyos-cold-2",
+   "gap": 0.3,
+   "text": "By morning, one thousand seven hundred and forty-six people were dead."
+  },
+  {
+   "id": "i2",
+   "scene": "nyos-cold-3",
+   "gap": 0.45,
+   "text": "Almost none of them woke up."
+  },
+  {
+   "id": "i3",
+   "scene": "title",
+   "gap": 0.3,
+   "text": "Seven ways the ground you are standing on can kill you."
+  },
+  {
+   "id": "i4",
+   "scene": "warning-idea",
+   "gap": 0.3,
+   "text": "Ranked by the only thing that actually matters when it happens."
+  },
+  {
+   "id": "i5",
+   "scene": "warning-clock",
+   "gap": 0.4,
+   "text": "How much warning you get."
+  },
+  {
+   "id": "a0",
+   "scene": "one",
+   "gap": 0.35,
+   "text": "One. The lake."
+  },
+  {
+   "id": "a1",
+   "scene": "nyos-map",
+   "gap": 0.25,
+   "text": "Lake Nyos sits in a volcanic crater in north-west Cameroon."
+  },
+  {
+   "id": "a2",
+   "scene": "nyos-charge",
+   "gap": 0.25,
+   "text": "Magma underneath leaks carbon dioxide into the water, and the weight of the lake above keeps it dissolved."
+  },
+  {
+   "id": "a3",
+   "scene": "nyos-fizz",
+   "gap": 0.25,
+   "text": "The lake is a bottle of fizzy water, and it has been filling for centuries."
+  },
+  {
+   "id": "a4",
+   "scene": "nyos-trigger",
+   "gap": 0.25,
+   "text": "On the twenty-first of August, something shook it. Probably a landslide."
+  },
+  {
+   "id": "a5",
+   "scene": "nyos-release",
+   "gap": 0.25,
+   "text": "Between one hundred and three hundred thousand tonnes of carbon dioxide came out of solution at once."
+  },
+  {
+   "id": "a6",
+   "scene": "nyos-column",
+   "gap": 0.25,
+   "text": "The column left the surface at about a hundred kilometres an hour."
+  },
+  {
+   "id": "a7",
+   "scene": "nyos-heavy",
+   "gap": 0.25,
+   "text": "Then it did the thing that killed everyone. Carbon dioxide is heavier than air, so it did not rise. It flowed downhill."
+  },
+  {
+   "id": "a8",
+   "scene": "nyos-valleys",
+   "gap": 0.25,
+   "text": "It poured into the valleys, filled the villages like water filling a bath, and displaced every breathable thing in them."
+  },
+  {
+   "id": "a9",
+   "scene": "nyos-toll",
+   "gap": 0.25,
+   "text": "Seventeen hundred and forty-six people. Three and a half thousand cattle. Out to twenty-five kilometres."
+  },
+  {
+   "id": "a10",
+   "scene": "nyos-three",
+   "gap": 0.25,
+   "text": "Three lakes on Earth are known to be able to do this. Nyos, Monoun, and Kivu."
+  },
+  {
+   "id": "a11",
+   "scene": "kivu",
+   "gap": 0.25,
+   "text": "Kivu is the big one. It is a thousand times the volume, and about two million people live around its shore."
+  },
+  {
+   "id": "a11b",
+   "scene": "nyos-pipes",
+   "gap": 0.25,
+   "text": "Nyos and Monoun now have pipes running to the bottom, venting them slowly and permanently, so the charge can never build again."
+  },
+  {
+   "id": "a12",
+   "scene": "nyos-verdict",
+   "gap": 0.45,
+   "text": "Warning given: none. The first sign was the smell, and by then you were already breathing it."
+  },
+  {
+   "id": "b0",
+   "scene": "two",
+   "gap": 0.35,
+   "text": "Two. The flow."
+  },
+  {
+   "id": "b1",
+   "scene": "pyro-what",
+   "gap": 0.25,
+   "text": "A pyroclastic flow is not lava. Lava you can walk away from."
+  },
+  {
+   "id": "b2",
+   "scene": "pyro-speed",
+   "gap": 0.25,
+   "text": "This is a ground-hugging avalanche of gas, ash and rock that can move at several hundred kilometres an hour."
+  },
+  {
+   "id": "b3",
+   "scene": "pyro-race",
+   "gap": 0.25,
+   "text": "Faster than a car. Considerably faster than you."
+  },
+  {
+   "id": "b4",
+   "scene": "pyro-hercu",
+   "gap": 0.25,
+   "text": "In seventy-nine, Herculaneum was hit by one from Vesuvius."
+  },
+  {
+   "id": "b4b",
+   "scene": "pelee",
+   "gap": 0.25,
+   "text": "The clearest example is Martinique, nineteen oh two. Mont Pelee opened sideways and the cloud came down the slope at about a hundred and sixty kilometres an hour."
+  },
+  {
+   "id": "b5",
+   "scene": "pyro-temp",
+   "gap": 0.25,
+   "text": "The flows themselves reached about four hundred and sixty-five degrees."
+  },
+  {
+   "id": "b4c",
+   "scene": "pelee-toll",
+   "gap": 0.25,
+   "text": "Saint-Pierre was the largest city on the island. It was destroyed in under a minute, with about thirty thousand people in it."
+  },
+  {
+   "id": "b4d",
+   "scene": "pelee-cell",
+   "gap": 0.25,
+   "text": "There were three known survivors. One was in a half-underground solitary cell with one narrow slit in the door, put there the day before for fighting."
+  },
+  {
+   "id": "b4e",
+   "scene": "pelee-dug",
+   "gap": 0.25,
+   "text": "The walls built to keep him in were the only thing in the city thick enough to keep the volcano out. He was dug out three days later."
+  },
+  {
+   "id": "b6",
+   "scene": "pyro-cloud",
+   "gap": 0.25,
+   "text": "But something arrived ahead of them. A cloud of ash, hotter still, above five hundred and ten."
+  },
+  {
+   "id": "b7",
+   "scene": "pyro-glass",
+   "gap": 0.25,
+   "text": "In a building near the shore, a man was lying on a wooden bed. The heat arrived and left so quickly that part of his brain turned to glass."
+  },
+  {
+   "id": "b8",
+   "scene": "pyro-vitrify",
+   "gap": 0.25,
+   "text": "Not burnt. Vitrified. Heated past five hundred degrees and cooled again fast enough to set like obsidian."
+  },
+  {
+   "id": "b9",
+   "scene": "pyro-only",
+   "gap": 0.25,
+   "text": "It is the only confirmed case of human brain tissue turning to glass that anyone has found."
+  },
+  {
+   "id": "b10",
+   "scene": "pyro-verdict",
+   "gap": 0.45,
+   "text": "Warning given: seconds. You see it coming down the mountain, and that is all the information you get."
+  },
+  {
+   "id": "c0",
+   "scene": "three",
+   "gap": 0.35,
+   "text": "Three. The floor."
+  },
+  {
+   "id": "c1",
+   "scene": "sink-florida",
+   "gap": 0.25,
+   "text": "Most of Florida is built on limestone, and limestone dissolves in slightly acidic rainwater."
+  },
+  {
+   "id": "c2",
+   "scene": "sink-void",
+   "gap": 0.25,
+   "text": "So underneath the lawns there are voids, and the only thing holding the roof of a void up is the sand sitting on it."
+  },
+  {
+   "id": "c3",
+   "scene": "sink-seffner",
+   "gap": 0.25,
+   "text": "In two thousand and thirteen, in a house in Seffner, a man called Jeffrey Bush went to bed."
+  },
+  {
+   "id": "c4",
+   "scene": "sink-open",
+   "gap": 0.25,
+   "text": "At about half past eleven at night, the floor of his bedroom opened."
+  },
+  {
+   "id": "c5",
+   "scene": "sink-brother",
+   "gap": 0.25,
+   "text": "His brother heard it, ran in, and found the room gone. He jumped in after him and had to be pulled out as the edges kept collapsing."
+  },
+  {
+   "id": "c6",
+   "scene": "sink-never",
+   "gap": 0.25,
+   "text": "The hole was too unstable to enter. Jeffrey Bush was never recovered."
+  },
+  {
+   "id": "c7",
+   "scene": "sink-reopen",
+   "gap": 0.25,
+   "text": "The house was demolished. The sinkhole has reopened twice since, in the same spot."
+  },
+  {
+   "id": "c8",
+   "scene": "sink-verdict",
+   "gap": 0.45,
+   "text": "Warning given: none. The ground above a void looks exactly like the ground that is not."
+  },
+  {
+   "id": "d0",
+   "scene": "four",
+   "gap": 0.35,
+   "text": "Four. The slosh."
+  },
+  {
+   "id": "d1",
+   "scene": "seiche-what",
+   "gap": 0.25,
+   "text": "A seiche is what happens when a body of water is pushed at exactly its own rhythm, and starts sloshing like a bath."
+  },
+  {
+   "id": "d2",
+   "scene": "seiche-1755",
+   "gap": 0.25,
+   "text": "In seventeen fifty-five, an earthquake destroyed Lisbon."
+  },
+  {
+   "id": "d3",
+   "scene": "seiche-lochs",
+   "gap": 0.25,
+   "text": "Two thousand kilometres away, the water in Loch Lomond and Loch Ness stood up and started swinging, in lakes nobody had felt shake."
+  },
+  {
+   "id": "d4",
+   "scene": "seiche-tohoku",
+   "gap": 0.25,
+   "text": "In two thousand and eleven, the same thing happened in reverse."
+  },
+  {
+   "id": "d5",
+   "scene": "seiche-norway",
+   "gap": 0.25,
+   "text": "The earthquake off Japan sent waves through the inside of the planet, and about thirty minutes later the fjords of Norway began to move."
+  },
+  {
+   "id": "d6",
+   "scene": "seiche-amp",
+   "gap": 0.25,
+   "text": "A metre and a half, trough to peak, for hours. Eight thousand kilometres from the epicentre. Moored boats were torn loose."
+  },
+  {
+   "id": "d7",
+   "scene": "seiche-swaves",
+   "gap": 0.25,
+   "text": "And the waves that did it were not the ones that shake buildings. They were body waves, passing underneath."
+  },
+  {
+   "id": "d8",
+   "scene": "seiche-verdict",
+   "gap": 0.45,
+   "text": "Warning given: about half an hour, if anyone thinks to tell you that a quake on the far side of the world is relevant to your harbour."
+  },
+  {
+   "id": "e0",
+   "scene": "five",
+   "gap": 0.35,
+   "text": "Five. The sun."
+  },
+  {
+   "id": "e1",
+   "scene": "carr-1859",
+   "gap": 0.25,
+   "text": "On the first of September eighteen fifty-nine, the sun threw a cloud of magnetised plasma directly at us."
+  },
+  {
+   "id": "e2",
+   "scene": "carr-aurora",
+   "gap": 0.25,
+   "text": "Auroras were seen over Cuba and Hawaii. People in the north-eastern United States could read a newspaper outside at one in the morning."
+  },
+  {
+   "id": "e3",
+   "scene": "carr-telegraph",
+   "gap": 0.25,
+   "text": "The telegraph network, the only electrical infrastructure on Earth at the time, started behaving strangely."
+  },
+  {
+   "id": "e4",
+   "scene": "carr-batteries",
+   "gap": 0.25,
+   "text": "Operators disconnected their batteries and kept sending messages anyway, running the line on the current the storm was inducing in it."
+  },
+  {
+   "id": "e5",
+   "scene": "carr-fire",
+   "gap": 0.25,
+   "text": "In some offices the paper caught fire."
+  },
+  {
+   "id": "e6",
+   "scene": "carr-then",
+   "gap": 0.25,
+   "text": "In eighteen fifty-nine, that was the entire damage report. Scorched paper and a few burnt relay stations."
+  },
+  {
+   "id": "e7",
+   "scene": "carr-now",
+   "gap": 0.25,
+   "text": "The problem is what we have built since."
+  },
+  {
+   "id": "e8",
+   "scene": "carr-transformers",
+   "gap": 0.25,
+   "text": "A storm that size today would push direct current into a grid built for alternating current, saturating the largest transformers until they cook themselves from inside."
+  },
+  {
+   "id": "e9",
+   "scene": "carr-lead",
+   "gap": 0.25,
+   "text": "Those transformers are custom-built, and there is no warehouse of spares."
+  },
+  {
+   "id": "e10",
+   "scene": "carr-nrc",
+   "gap": 0.25,
+   "text": "The most cited assessment, from a National Research Council report, put recovery at four to ten years, and the cost in trillions."
+  },
+  {
+   "id": "e11",
+   "scene": "carr-verdict",
+   "gap": 0.45,
+   "text": "Warning given: about seventeen hours. This is the one where we would see it leave the sun, and watch it arrive, and it would not help very much."
+  },
+  {
+   "id": "f0",
+   "scene": "six",
+   "gap": 0.35,
+   "text": "Six. The one you have been told about."
+  },
+  {
+   "id": "f1",
+   "scene": "toba-what",
+   "gap": 0.25,
+   "text": "Seventy-four thousand years ago, Toba, in Sumatra, produced one of the largest eruptions of the last two million years."
+  },
+  {
+   "id": "f2",
+   "scene": "toba-scale",
+   "gap": 0.25,
+   "text": "Around two and a half thousand cubic kilometres of material. Ash across South Asia, in some places metres deep."
+  },
+  {
+   "id": "f3",
+   "scene": "toba-story",
+   "gap": 0.25,
+   "text": "And then the story you have heard. That it nearly finished us. That the human population fell to a few thousand and everyone alive now descends from those survivors."
+  },
+  {
+   "id": "f4",
+   "scene": "toba-doubt",
+   "gap": 0.25,
+   "text": "That part has quietly fallen apart."
+  },
+  {
+   "id": "f5",
+   "scene": "toba-genomes",
+   "gap": 0.25,
+   "text": "Whole-genome sequencing can see population crashes. It does not see one at seventy-four thousand years. The bottlenecks it does find sit at other dates entirely."
+  },
+  {
+   "id": "f6",
+   "scene": "toba-sites",
+   "gap": 0.25,
+   "text": "And archaeological sites in Africa and India show people carrying on either side of the ash layer, apparently unbothered."
+  },
+  {
+   "id": "f7",
+   "scene": "toba-still",
+   "gap": 0.25,
+   "text": "Toba was still an enormous eruption. It just does not appear to have nearly killed us."
+  },
+  {
+   "id": "f8",
+   "scene": "toba-yellow",
+   "gap": 0.25,
+   "text": "And the supervolcano everyone worries about now would be the least sudden death on this list."
+  },
+  {
+   "id": "f9",
+   "scene": "toba-verdict",
+   "gap": 0.45,
+   "text": "Warning given: months. Possibly years. The ground would lift, the earthquakes would swarm, and nobody would be in any doubt."
+  },
+  {
+   "id": "g0",
+   "scene": "seven",
+   "gap": 0.35,
+   "text": "Seven. The one from outside."
+  },
+  {
+   "id": "g1",
+   "scene": "grb-what",
+   "gap": 0.25,
+   "text": "A gamma-ray burst is the most energetic event in the universe. A certain kind of star collapses and fires two narrow beams from its poles."
+  },
+  {
+   "id": "g2",
+   "scene": "grb-energy",
+   "gap": 0.25,
+   "text": "In a few seconds it releases more energy than our sun will produce in its entire life."
+  },
+  {
+   "id": "g3",
+   "scene": "grb-narrow",
+   "gap": 0.25,
+   "text": "The beams are narrow, which is the only reassuring sentence in this chapter."
+  },
+  {
+   "id": "g4",
+   "scene": "grb-ozone",
+   "gap": 0.25,
+   "text": "If one were pointed at us from a few thousand light years away, the gamma rays would not reach the ground. They would take the ozone layer apart instead."
+  },
+  {
+   "id": "g5",
+   "scene": "grb-after",
+   "gap": 0.25,
+   "text": "Then ordinary sunlight does the rest, over the following years, to everything at the bottom of the food chain."
+  },
+  {
+   "id": "g5b",
+   "scene": "boat",
+   "gap": 0.25,
+   "text": "In October twenty twenty-two we were hit by the brightest one ever recorded. It came from a galaxy one point nine billion light years away."
+  },
+  {
+   "id": "g6",
+   "scene": "grb-ordovician",
+   "gap": 0.25,
+   "text": "One suggestion is that this is what happened at the end of the Ordovician, four hundred and forty million years ago. It is a hypothesis, not a finding."
+  },
+  {
+   "id": "g5c",
+   "scene": "boat-iono",
+   "gap": 0.25,
+   "text": "From that distance, across that much of the universe, it was still strong enough to measurably disturb the ionosphere of this planet."
+  },
+  {
+   "id": "g5d",
+   "scene": "boat-odds",
+   "gap": 0.25,
+   "text": "Estimates put a burst that bright at about one every ten thousand years. It was not aimed at us properly. It was pointed somewhere near us."
+  },
+  {
+   "id": "g7",
+   "scene": "grb-verdict",
+   "gap": 0.45,
+   "text": "Warning given: none, and not for want of looking. The burst travels at the speed of light. The warning would arrive with it."
+  },
+  {
+   "id": "z0",
+   "scene": "board",
+   "gap": 0.3,
+   "text": "So. Ranked by how long you would have."
+  },
+  {
+   "id": "z1",
+   "scene": "board",
+   "gap": 0.3,
+   "text": "Supervolcano, months. Solar storm, seventeen hours. Seiche, half an hour. Pyroclastic flow, seconds. Limnic eruption, sinkhole, gamma-ray burst: nothing at all."
+  },
+  {
+   "id": "z2",
+   "scene": "close-1",
+   "gap": 0.3,
+   "text": "Four of the seven give you no useful notice whatsoever."
+  },
+  {
+   "id": "z3",
+   "scene": "close-2",
+   "gap": 0.3,
+   "text": "And the one that gives you the most is the one everybody is frightened of."
+  },
+  {
+   "id": "z4",
+   "scene": "signoff",
+   "gap": 0.3,
+   "text": "The ground is not solid, the air is not reliably breathable, and the sky is not empty. Sleep well."
+  }
+ ]
+}
