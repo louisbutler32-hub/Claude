@@ -62,7 +62,10 @@
     "earth": "remotion render EarthVideo out/earth.mp4",
     "earth:vo": "python3 scripts/make-vo.py earth",
     "earth:sfx": "python3 scripts/make-sfx.py earth",
-    "earth:thumb": "remotion still Earth-Thumbnail out/thumbnail-how-much-warning.jpg --image-format=jpeg --quality=92 && remotion still Earth-Thumbnail-Lake out/thumbnail-the-lake.jpg --image-format=jpeg --quality=92"
+    "earth:thumb": "remotion still Earth-Thumbnail out/thumbnail-how-much-warning.jpg --image-format=jpeg --quality=92 && remotion still Earth-Thumbnail-Lake out/thumbnail-the-lake.jpg --image-format=jpeg --quality=92",
+    "vehicles": "remotion render VehicleVideo out/vehicles.mp4",
+    "vehicles:audio": "python3 scripts/build-audio.py vehicles",
+    "vehicles:thumb": "remotion still Vehicle-Thumbnail out/thumbnail-guess-the-vehicle.png && remotion still Vehicle-Thumbnail-Board out/thumbnail-vehicles-all-12.png"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",

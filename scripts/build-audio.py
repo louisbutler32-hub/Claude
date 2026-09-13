@@ -156,9 +156,38 @@ SHORT_STEP = 60
 SHORT_N = 10
 SHORT_FRAMES = SHORT_HOOK + SHORT_N * SHORT_STEP + 240
 
+# Vehicles: (id, Ana names it, Ana describes it, Emma says where it goes, sound)
+VEHICLE_ROUNDS = [
+    ("car",        "It's a car! Car.",             "A little red car.",
+     "Cars drive on the road, zooming all around.", "Vroom vroom!"),
+    ("airplane",   "It's an airplane! Airplane.",  "A big white airplane.",
+     "Airplanes fly way up high in the sky.", "Whooosh!"),
+    ("bus",        "It's a bus! Bus.",             "A big yellow bus.",
+     "Buses drive on the road, and pick up lots of friends.", "Beep beep!"),
+    ("fireEngine", "It's a fire engine! Fire engine.", "A big red fire engine.",
+     "Fire engines race down the road to help put out fires.", "Nee-naw nee-naw!"),
+    ("boat",       "It's a boat! Boat.",           "A little white boat.",
+     "Boats float on the water, and sail all around.", "Toot toot!"),
+    ("policeCar",  "It's a police car! Police car.", "A police car with flashing lights.",
+     "Police cars drive on the road, keeping everyone safe.", "Woo-woo woo-woo!"),
+    ("train",      "It's a train! Train.",         "A big blue train.",
+     "Trains ride on the tracks, all the way to the station.", "Choo choo!"),
+    ("tractor",    "It's a tractor! Tractor.",     "A green tractor.",
+     "Tractors work on the farm, driving up and down the field.", "Chug chug chug!"),
+    ("helicopter", "It's a helicopter! Helicopter.", "A green helicopter.",
+     "Helicopters fly up in the sky, with their blades spinning round.", "Whirr whirr!"),
+    ("digger",     "It's a digger! Digger.",       "A yellow digger.",
+     "Diggers work on the road, scooping up the dirt.", "Scoop, scoop!"),
+    ("bicycle",    "It's a bicycle! Bicycle.",     "An orange bicycle.",
+     "Bicycles ride on the road, with two wheels going round.", "Ring ring!"),
+    ("motorcycle", "It's a motorcycle! Motorcycle.", "A blue motorcycle.",
+     "Motorcycles zoom on the road, faster than a bicycle.", "Vroom vroom!"),
+]
+
 SUBJECTS = {
     "short": dict(rounds=[], kind="short", word="number",
                   frames=SHORT_FRAMES),
+    "vehicles": dict(rounds=VEHICLE_ROUNDS, kind="go", word="vehicle"),
     "veggies": dict(rounds=VEGGIE_ROUNDS, kind="grow", word="vegetable"),
     "animals": dict(rounds=ANIMAL_ROUNDS, kind="live", word="animal"),
     "numbers": dict(rounds=NUMBER_ROUNDS, kind="count", word="number"),
@@ -185,6 +214,12 @@ ARTICLE = {
     "4": "number four", "5": "number five", "6": "number six",
     "7": "number seven", "8": "number eight", "9": "number nine",
     "10": "number ten", "11": "number eleven", "12": "number twelve",
+    "car": "the car", "airplane": "the airplane", "bus": "the bus",
+    "fireEngine": "the fire engine", "boat": "the boat",
+    "policeCar": "the police car", "train": "the train",
+    "tractor": "the tractor", "helicopter": "the helicopter",
+    "digger": "the digger", "bicycle": "the bicycle",
+    "motorcycle": "the motorcycle",
 }
 
 # a little variety so twelve rounds don't read identically
@@ -236,9 +271,23 @@ PEEKS_COUNT = [
     "Look! Can you see what's peeking out?",
     "One more is hiding. Can you find it?",
 ]
-PEEKS = {"grow": PEEKS_GROW, "live": PEEKS_LIVE, "count": PEEKS_COUNT}.get(
-    CONF["kind"], PEEKS_GROW  # the Short has no peek beat
-)
+PEEKS_GO = [
+    "Let's go and find some vehicles! Ooh, something is hiding in the bushes.",
+    "Look! Something else is hiding.",
+    "Ooh! Who is hiding in the bushes now?",
+    "Here comes another one. Can you see it?",
+    "Look! Something is peeking out.",
+    "Ooh! Something is hiding again.",
+    "What's that behind the bushes?",
+    "Look, something is coming!",
+    "Here comes another vehicle. What could it be?",
+    "Ooh! Something is hiding in the bushes.",
+    "Look! Can you see what's peeking out?",
+    "One more is hiding. Can you find it?",
+]
+PEEKS = {
+    "grow": PEEKS_GROW, "live": PEEKS_LIVE, "count": PEEKS_COUNT, "go": PEEKS_GO,
+}.get(CONF["kind"], PEEKS_GROW)  # the Short has no peek beat
 
 # ── counting layout, mirrored from src/numbers/numbers.ts ─────────────
 COUNT_START = 812
@@ -275,6 +324,7 @@ def vo_schedule():
         "grow": "Chomp chomp! Veggies!",
         "live": "Chomp chomp! Animals!",
         "count": "Chomp chomp! Numbers!",
+        "go": "Chomp chomp! Vehicles!",
     }[CONF["kind"]]
     lines = [(18, opener, "ana", "intro")]
 
@@ -318,7 +368,7 @@ def vo_schedule():
             continue
 
         # the middle of the round: where it grows, or where it lives
-        verb = "grow" if CONF["kind"] == "grow" else "live"
+        verb = {"grow": "grow", "live": "live", "go": "go"}[CONF["kind"]]
         lines.append((b + B_WHERE, f"Now, where does {the} {verb}?",
                       "emma", f"{n:02d}-{vid}-where"))
         lines.append((b + B_FACT, mid_line, "emma", f"{n:02d}-{vid}-fact"))
@@ -326,9 +376,11 @@ def vo_schedule():
         if CONF["kind"] == "grow":
             lines.append((b + B_CROC, "Uh oh! Here comes the crocodile.",
                           "emma", f"{n:02d}-{vid}-croc"))
-        else:
-            lines.append((b + B_SOUND_Q, f"Listen! What does {the} say?",
-                          "emma", f"{n:02d}-{vid}-soundq"))
+        elif CONF["kind"] in ("live", "go"):
+            verb2 = "sound" if CONF["kind"] == "live" else "go"
+            q = (f"Listen! What does {the} say?" if CONF["kind"] == "live"
+                 else f"Listen! What does {the} sound like?")
+            lines.append((b + B_SOUND_Q, q, "emma", f"{n:02d}-{vid}-soundq"))
             lines.append((b + B_SOUND, row[4], "ana", f"{n:02d}-{vid}-sound"))
 
         # narrator turns the board into a question

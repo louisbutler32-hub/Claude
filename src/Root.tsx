@@ -27,6 +27,11 @@ import {
 } from "./veggies/VeggieVideo";
 import { ArtSheet } from "./veggies/ArtSheet";
 import { AnimalArtSheet } from "./animals/ArtSheet";
+import { VehicleArtSheet } from "./vehicles/ArtSheet";
+import {
+  VehicleVideo,
+  VEHICLE_DURATION_IN_FRAMES,
+} from "./vehicles/VehicleVideo";
 import { Banner, BannerGuides, BannerWhite } from "./guess/Banner";
 import {
   CompilationThumb,
@@ -36,6 +41,7 @@ import {
 } from "./guess/CompilationThumb";
 import { AnimalThumbA, AnimalThumbB } from "./animals/Thumbnail";
 import { NumberThumbA, NumberThumbB } from "./numbers/Thumbnail";
+import { VehicleThumbA, VehicleThumbB } from "./vehicles/Thumbnail";
 import {
   CountingShort,
   SHORT_FRAMES,
@@ -219,6 +225,22 @@ export const RemotionRoot: React.FC = () => {
         height={1080}
       />
       <Composition
+        id="Vehicle-Thumbnail"
+        component={VehicleThumbA}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Vehicle-Thumbnail-Board"
+        component={VehicleThumbB}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
         id="Counting-Short"
         component={CountingShort}
         durationInFrames={SHORT_FRAMES}
@@ -230,6 +252,22 @@ export const RemotionRoot: React.FC = () => {
         id="Compilation-Thumbnail"
         component={CompilationThumb}
         durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="VehicleVideo"
+        component={VehicleVideo}
+        durationInFrames={VEHICLE_DURATION_IN_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Vehicle-ArtSheet"
+        component={VehicleArtSheet}
+        durationInFrames={30}
         fps={30}
         width={1920}
         height={1080}
