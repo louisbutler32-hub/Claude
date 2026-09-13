@@ -1,35 +1,187 @@
 # Concept slate
 
-Sourced against the format in [`FORMAT.md`](FORMAT.md). The reference channel
-clips **NileRed** exclusively and has only four videos — three of its four
-source videos are still unclipped, and the rest of the catalogue is wide open.
+The format in [`FORMAT.md`](FORMAT.md) is not about chemistry. Strip the
+reference back and the engine is:
 
-What makes a long-form video clippable here, in order of weight:
+> **Someone does something extreme to an ordinary thing, and the number at the
+> end is not the number they expected.**
 
-1. **A built-in twist** — something goes wrong, or the result beats the
-   expectation. No twist, no short.
-2. **An everyday object** — Red Bull, jewellery, glue, styrofoam. The viewer
-   has to already know what the thing is.
-3. **A number to be wrong about** — a stated expectation the result misses.
-4. **A visible transformation** — the before and after must read on a 6-inch
-   screen at 0.9s a shot.
-5. **A reaction on camera** — the last 3s of the format is the creator's own
-   audio, so there has to be one.
+Any long-form video with that shape clips. What follows is organised by the
+*engine* rather than by creator, because the engine is the reusable part — once
+one lands, you run the same structure on the next source.
+
+All view counts below were checked, not estimated.
 
 ---
 
-## Ready to cut
+## What makes a source clippable
 
-### 1. Turning old jewelry into pure gold bars — NileRed, 39M views
+In order of weight:
+
+1. **A built-in twist** — something goes wrong, or the result beats the
+   expectation. No twist, no short. This is the one that disqualifies most
+   videos.
+2. **An everyday object** — Red Bull, jewellery, a steak, a rusted knife. The
+   viewer has to already know what the thing is, or the hook has to explain it,
+   and you do not have the seconds.
+3. **A number to be wrong about** — a stated expectation the result misses.
+4. **A visible transformation** — before and after must read on a 6-inch screen
+   at 0.9s a shot.
+5. **A reaction on camera** — the final beat is the creator's own audio. Where
+   there isn't one, the reveal shot has to carry it instead.
+
+---
+
+## Engine 1 — Concentration
+
+*Take N of something, reduce it to one.* The reference itself. The tension is
+arithmetic: the viewer is doing the maths along with you and wants to know
+whether it comes out even. It never does — that's the twist, built in.
+
+| Source | Creator | Views | ID |
+|---|---|---|---|
+| Turning old jewelry into pure gold bars | NileRed | 39M | `37Kn-kIsVu8` |
+| Making liquid nitrogen from scratch (an absurd amount) | NileRed | 11M | `GmwaJnj6pfY` |
+
+**Fully worked below.** The gold one is the strongest single candidate on this
+page.
+
+---
+
+## Engine 2 — Transmutation
+
+*Turn something worthless or inedible into something desirable.* The hook
+writes itself because the gap between input and output does the work before the
+video starts. Weakness: no arithmetic, so the twist has to come from a failure
+in the process.
+
+| Source | Creator | Views | ID |
+|---|---|---|---|
+| Turning plastic gloves into hot sauce | NileRed | 25M | `1B3Xi5L6siI` |
+| Making transparent wood | NileRed | 24M | `uUU3jW7Y9Ak` |
+| Turning plastic gloves into grape soda | NileRed | 20M | `zFZ5jQ0yuNA` |
+| Turning styrofoam into cinnamon candy | NileRed | 17M | `zMaTrgUKC1w` |
+| Turning children's glue into drinkable alcohol | NileRed | 13M | `QzP3vx8XadU` |
+| Making bulletproof wood | NileRed | 12M | `CglNRNrMFGM` |
+| Turning air into alcohol | NileRed | 8.8M | `ID-K64Jk6JM` |
+
+*Transparent wood* has the cleanest visual of the lot — opaque to see-through
+is legible at a glance, which is exactly what a 0.9s shot needs. It also has an
+**earlier failed attempt** (`x1H-323d838`, 8.4M) which is your conflict beat,
+already filmed.
+
+*Bulletproof wood* is the only one with a literal payoff shot — he shoots it.
+
+---
+
+## Engine 3 — Time
+
+*Leave something for an absurd duration, then eat it or use it.* The strongest
+engine for reaction payoff, because it always ends with someone tasting it. The
+twist is whether the wait was worth it.
+
+| Source | Creator | Views | ID |
+|---|---|---|---|
+| I Dry Aged EVERY Meat, ATE them and this happened! | Guga Foods | 12.8M | `S5rLJw25pJA` |
+| I Cooked 100 Years of Burgers | Guga Foods | 11.1M | `ksiskwlNNVs` |
+| I Tested the 10 Most EXTREME Steak Recipes | Max the Meat Guy | 8.2M | `21QoVAZXobI` |
+| I Cooked 100 Years of Steaks | Guga Foods | 7.5M | `CtZ0MXc_g4U` |
+| I DRY AGED Steaks in NUTELLA and this happened! | Guga Foods | 6.3M | `tZa6xxhtWXw` |
+| I soaked steaks in MAD Honey for months and ATE them! | Guga Foods | 3.9M | `p3XOF5EK7Kk` |
+| I soaked Steaks in SEA WATER for months and ate it! | Guga Foods | 2.9M | `R5HuHvGuahQ` |
+| We tried Aging Steak in Dr Pepper for 6 Months… But This Happened | Guga Foods | 1.4M | `Rc56qSN1cAo` |
+
+Guga is the single best source channel on this list after NileRed. "I Cooked
+100 Years of Burgers" carries an **outlier score of 6.2** — it did six times
+his channel average, which is the signal you want.
+
+**Mad Honey** is the pick of these: the honey is genuinely hallucinogenic, so
+the video has real stakes and a reaction that isn't performed. Everything the
+format wants.
+
+Note the Dr Pepper title — *"But This Happened"* — the creator has already told
+you there's a twist. Titles that admit a twist are free reconnaissance when
+you're scanning for sources.
+
+---
+
+## Engine 4 — Resurrection
+
+*Something ruined is brought back.* Structurally the best fit on this page and
+the one nobody is clipping properly, because of a quirk: **these videos have no
+narration.** They're pure process ASMR.
+
+That's an advantage. There is no original voice to compete with, so the VO is
+entirely yours and the pacing is entirely under your control. The arc is
+already in the footage: found in the dirt → looks hopeless → something seizes
+or snaps → the reveal.
+
+| Source | Creator | Views | ID |
+|---|---|---|---|
+| Making a Crazy Part on the Lathe | my mechanics insights | 19.7M | `VH5gkQGTNfw` |
+| Rusted Butcher's Knife - Impossible Restoration | Masters Of Craft | 14.2M | `1QmPCVW6jOs` |
+| The Most Destroyed & Rusty Angle Grinder — Impossible Repair | Random Hands | 10.9M | `sm6Zco2F1UY` |
+| Restoration of a 105-Year-Old Rusty Pocket Knife | ReXtorer | 5.4M | `jUcOvuLIoZ4` |
+| 150 Years Underground! Rusty Antique Pliers Restoration | Antique Restorations | 2.2M | `ryJcdUspBqw` |
+
+Two cautions specific to this engine:
+
+- **There is no reaction audio for the button.** The reveal shot has to carry
+  it. Hold the final shot longer than the format normally allows — this is the
+  one place to break the 1.5s rule.
+- **The category is full of aggregators**, and some of the claims are invented
+  (one result in this search was a "$2 million Rolex" restoration that is
+  nothing of the sort). Verify the channel actually made the footage before
+  clipping it. `my mechanics`, `Masters Of Craft` and `ReXtorer` are genuine.
+
+---
+
+## Engine 5 — The Cheat
+
+*Build a machine that makes a hard thing impossible to fail.* Highest ceiling
+on this page by raw numbers. The twist is always the same and always works: the
+first version doesn't work.
+
+| Source | Creator | Views | ID |
+|---|---|---|---|
+| World's First Automatic Strike Bowling Ball | Mark Rober | 66.5M | `wM5NHC97JBw` |
+| I made a ball seeking hoop | Stuff Made Here | 13M | `xHWXZyfhQas` |
+| Building the Impossible Lightsaber | HeroTech | 2.5M | `0QArAMtBGx8` |
+
+Stuff Made Here is the better *source* despite fewer views — his videos are
+built around failure, so the conflict beat is always on camera. Rober's are
+more polished and give you less to work with.
+
+---
+
+## Engine 6 — The Limit
+
+*Push something until it breaks and find out what was inside.* The weakest fit,
+listed because it looks like it should work and mostly doesn't: hydraulic-press
+content is almost all compilation with no arc. One exception worth having:
+
+| Source | Creator | Views | ID |
+|---|---|---|---|
+| Crushing My Own Hand In a Hydraulic Press | The Action Lab | 4.0M | `VuXF17OZ_l4` |
+
+That one works because the subject is perception, not destruction — there's a
+question and an answer.
+
+---
+
+# Fully worked: the first video
+
+## Turning old jewelry into pure gold bars — NileRed, 39M views
 
 `37Kn-kIsVu8` · 31:23 · [watch](https://www.youtube.com/watch?v=37Kn-kIsVu8)
 
-The strongest candidate in the catalogue. Gold needs no explaining, there are
-two separate expectation-breaks, and the ending has a genuine sting.
+Gold needs no explaining, there are two separate expectation-breaks, and the
+ending has a genuine sting. Beat map built from the source transcript, not
+guessed.
 
 **Title:** `He Turned a Box of Old Jewelry into a Solid Gold Bar 😳 (@NileRed/YT)`
 
-**Beat map — 192 words, 58.2s, 198 WPM, hook at 247 WPM**
+**192 words · 58.2s · 198 WPM · hook at 247 WPM**
 
 | Time | Beat | Line |
 |---|---|---|
@@ -49,144 +201,47 @@ two separate expectation-breaks, and the ending has a genuine sting.
 | 50.8–54.7 | **PAYOFF** | Final bar, eighty one point three grams. About three and a half thousand dollars. |
 | 55.1–58.2 | **BUTTON** | Then he had to mail every single gram of it back. |
 
-Every figure above is from the source transcript: the 18/14 karat stamps, the
+Every figure is from the source transcript: the 18/14 karat stamps, the
 six-karat melt target, the torch holes in the crucible, 77.9g expected against
-75g recovered, 81.31g final bar, ~$3,400 USD, and the gold going back to the
+75g recovered, the 81.31g bar, ~$3,400 USD, and the gold going back to the
 patron who sent it.
 
-**Where to pull footage from** (source timecodes):
+**Footage to pull** (source timecodes):
 
 | Beat | Source | What's there |
 |---|---|---|
-| Setup | 1:20–1:50 | the chains, watch face and scrap laid out |
+| Setup | 1:20–1:50 | chains, watch face and scrap laid out |
 | Stakes | 1:40–2:10 | close on the karat stamps |
 | Obstacle | 2:20–3:20 | nitric acid test, colour change |
 | Mechanism | 8:20–9:40 | crucible, molten metal, pouring |
 | **TURN** | 10:40–11:00 | the holes burned in the can |
 | Recovery | 15:00–16:00 | aqua regia, gold dissolving |
 | | 17:20–18:00 | brown powder crashing out |
-| Expectation/conflict | 20:00–20:20 | the 75g weigh-in |
+| Expectation / conflict | 20:00–20:20 | the 75g weigh-in |
 | Solution | 22:00–22:40 | the scrap yield, 81.6g |
 | Payoff | 24:20–24:40 | the finished bar |
 | Button | 29:40–30:00 | sending it back |
 
-**Keywords to colour:** `gold` → `#FFD700`, `acid` → `#00D4FF`
-**Annotation cues:** arrow on the karat stamp (~17s), circle on the burned
-crucible holes (~30s), circle on the scale reading (~41s)
-**Source audio window:** the final beat, wherever his own line about returning
-it sits.
+**Keywords:** `gold` → `#FFD700`, `acid` → `#00D4FF`
+**Annotations:** arrow on the karat stamp (~17s), circle on the burned crucible
+holes (~30s), circle on the scale reading (~41s)
 
-One caveat worth knowing: the turn lands at 51% rather than the reference's
-58%. That's because this script has two breaks — the mechanical failure at 51%
-and the numerical shortfall at 71%. It holds, but if it tests soft, cut four
-words from the build and push the crucible failure later.
+One caveat: the turn lands at 51% rather than the reference's 58%, because this
+script has two breaks — the mechanical failure at 51% and the numerical
+shortfall at 71%. It holds, but if it tests soft, cut four words from the build
+and push the crucible failure later.
 
 ---
-
-### 2. Making bulletproof wood — NileRed, 12M views
-
-`CglNRNrMFGM` · 59:38
-
-The only candidate with a **literal payoff shot** — he shoots it. The format's
-last beat is handed to you.
-
-**Title:** `He Made Wood That Stops Bullets 😳 (@NileRed/YT)`
-**Hook:** "What would happen if you made a block of wood bulletproof?"
-**Shape:** ordinary wood → chemically stripped → compressed → the test.
-Confirm the failure beat from the transcript before scripting.
-
----
-
-### 3. Turning air into alcohol — NileRed, 8.8M views, one month old
-
-`ID-K64Jk6JM` · 1:30:12
-
-The most impossible-sounding premise on the list, and recent enough that the
-long-form audience is still active — clips ride that. Longest source, so
-expect the most work finding the twist.
-
-**Title:** `He Turned Thin Air into Drinkable Alcohol 😳 (@NileRed/YT)`
-**Hook:** "This guy made alcohol out of nothing but air."
-
----
-
-### 4. Turning plastic gloves into hot sauce — NileRed, 25M views
-
-`1B3Xi5L6siI` · 1:08:11
-
-Strongest title-level absurdity of the lot: the gap between input and output
-does the work before the video starts. Sibling video *Turning plastic gloves
-into grape soda* (20M, `zFZ5jQ0yuNA`) is the same trick and can follow it.
-
-**Title:** `He Turned Plastic Gloves into Hot Sauce 😳 (@NileRed/YT)`
-
----
-
-### 5. Making transparent wood — NileRed, 24M views
-
-`uUU3jW7Y9Ak` · 43:55
-
-The cleanest *visual* transformation available — opaque to see-through is
-legible at a glance, which is what the 0.9s shot length needs. There is also an
-earlier failed attempt (`x1H-323d838`, 8.4M) which is the conflict beat,
-already filmed.
-
-**Title:** `He Made Wood You Can See Through 😳 (@NileRed/YT)`
-
----
-
-### 6. Turning styrofoam into cinnamon candy — NileRed, 17M views
-
-`zMaTrgUKC1w` · 52:57
-
-Same inedible-to-edible engine as the cotton-candy clip the channel already
-ran at 527K, which suggests the engine works but that one picked a weak source.
-Styrofoam is more visceral than cotton balls.
-
-**Title:** `He Turned Styrofoam into Cinnamon Candy 😳 (@NileRed/YT)`
-
----
-
-### 7. Making the stinkiest chemical known to man — NileRed, 18M views
-
-`LmAG8-V_WQY` · 43:36
-
-Reaction-driven rather than transformation-driven — the payoff is on people's
-faces, which is exactly what the button beat wants. Risk: smell doesn't render,
-so this one lives or dies on the reaction footage.
-
-**Title:** `He Made the Worst Smell on Earth 😱 (@NileRed/YT)`
-
----
-
-### 8. Turning children's glue into drinkable alcohol — NileRed, 13M views
-
-`QzP3vx8XadU` · 1:01:39
-
-School glue is the most universally familiar object on the whole list.
-
-**Title:** `He Turned School Glue into Drinkable Alcohol 😳 (@NileRed/YT)`
-
----
-
-## Beyond NileRed
-
-The format is creator-agnostic — it needs a long-form process video with a
-twist. Once the first few land, the same pipeline runs on **The Action Lab**,
-**Stuff Made Here**, **Steve Mould**, **Applied Science**, **Integza** and
-**Plasma Channel**. Same structure, same captions, different source.
-
-Keep the niche tight: *someone does something extreme to an ordinary object,
-and the number at the end is not the number they expected.* That's the through
-line — not chemistry specifically.
 
 ## On attribution
 
 Every title on the reference channel credits the source creator, and that is
-load-bearing. It is the difference between a clipping channel and a reupload —
+load-bearing — it's the difference between a clipping channel and a reupload,
 for the platform, for the original creator, and for whether the channel
 survives. `validate.py` fails any config whose title has no `@creator` in it.
 
 Worth doing before the first upload: check each source creator's stated policy
 on clips. NileRed has tolerated the reference channel at 15M views, which is a
-signal but not permission.
+signal but not permission. The restoration channels in Engine 4 are the
+riskiest on this page — several are themselves reposting other people's work,
+so verify provenance before you build on them.

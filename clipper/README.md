@@ -18,7 +18,8 @@ editor.
 5. **`transcribe.py`** turns the VO into word timings.
 6. **`render.py`** cuts, composites, captions, mixes and masters.
 7. **`validate.py`** checks the cut against the format before it goes out.
-8. **You post it.**
+8. **`upload.py`** builds the packaging — title, description, tags, thumbnail.
+9. **You post it.**
 
 ## Setup
 
@@ -46,6 +47,9 @@ python3 render.py projects/gold-bars/config.json --preview 0 12
 
 # check the cut without rendering
 python3 validate.py projects/gold-bars/config.json
+
+# packaging — run after the render so the thumbnail matches the real framing
+python3 upload.py projects/gold-bars/config.json
 ```
 
 Output lands in `out/<slug>.mp4` — 1080×1920, 60fps, mastered to −17.3 LUFS.
@@ -64,6 +68,10 @@ See [`projects/_template/config.json`](projects/_template/config.json).
 | `keywords` | word → colour. One coloured word every 10–15s, no more |
 | `annotations` | `arrow`, `circle`, `double-circle` at `x`/`y` in 0..1 of the frame |
 | `source_audio_windows` | Where the original audio is heard. The reference uses this once — the creator's own reaction as the final beat |
+| `title_alternates` | Two alternates, required by the delivery convention |
+| `summary`, `credit`, `tags`, `hashtags` | Feed the description and tag list |
+| `thumbnail` | `{"frame": 24.5, "text": "81 GRAMS|OF PURE GOLD"}` — `|` splits lines |
+| `beats` | The beat map, carried into `upload.md` for reference |
 
 ## What the validator checks
 
@@ -87,6 +95,7 @@ clipper/
   render.py          cut -> composite -> caption -> mix -> master
   transcribe.py      VO -> word timings
   validate.py        the format checklist, as code
+  upload.py          title, description, tags and 9:16 thumbnail
   lib/
     spec.py          every measured constant
     video.py         cutting and the blur-fill composite
@@ -97,6 +106,22 @@ clipper/
   projects/<slug>/   one video: config, source, vo, music
   out/               renders
 ```
+
+## Packaging
+
+A render never goes out on its own — `upload.md` and the thumbnail go with it
+in the same message, per the delivery convention in `CLAUDE.md`. `upload.py`
+builds all of it:
+
+- title plus two alternates
+- description, with the Pebblo Pebble playlist and subscribe block above the
+  hashtags, and the source creator credited above that
+- tags, trimmed to YouTube's 500-character cap (it reports what it dropped)
+- `out/thumbnail-<slug>.jpg` at 1080x1920, hook text in the caption face
+
+No chapter list: these are sub-60s Shorts and YouTube needs every chapter to be
+at least 10s. The beat map is written into `upload.md` as an edit reference
+instead.
 
 ## Notes
 
