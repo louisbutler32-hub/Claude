@@ -26,19 +26,41 @@
    "id": "i3",
    "scene": "title",
    "gap": 0.3,
-   "text": "Seven ways the ground you are standing on can kill you."
+   "text": "Seven ways the ground you are standing on can kill you.",
+   "sfx": [
+    [
+     "boom",
+     0.2
+    ]
+   ]
   },
   {
    "id": "i5",
    "scene": "warning-clock",
    "gap": 0.4,
-   "text": "Ranked by how much warning you get."
+   "text": "Ranked by how much warning you get.",
+   "sfx": [
+    [
+     "tick",
+     0.1
+    ],
+    [
+     "ding",
+     1.3
+    ]
+   ]
   },
   {
    "id": "a0",
    "scene": "one",
    "gap": 0.35,
-   "text": "One. The lake."
+   "text": "One. The lake.",
+   "sfx": [
+    [
+     "whoosh",
+     0.0
+    ]
+   ]
   },
   {
    "id": "a1",
@@ -56,31 +78,66 @@
    "id": "a3",
    "scene": "nyos-fizz",
    "gap": 0.25,
-   "text": "The lake is a bottle of fizzy water, and it has been filling for centuries."
+   "text": "The lake is a bottle of fizzy water, and it has been filling for centuries.",
+   "sfx": [
+    [
+     "fizz",
+     1.2
+    ],
+    [
+     "pack:bruh",
+     3.6,
+     0.8
+    ]
+   ]
   },
   {
    "id": "a4",
    "scene": "nyos-trigger",
    "gap": 0.25,
-   "text": "On the twenty-first of August, something shook it. Probably a landslide."
+   "text": "On the twenty-first of August, something shook it. Probably a landslide.",
+   "sfx": [
+    [
+     "rumble",
+     1.6
+    ]
+   ]
   },
   {
    "id": "a5",
    "scene": "nyos-release",
    "gap": 0.25,
-   "text": "Between one hundred and three hundred thousand tonnes of carbon dioxide came out of solution at once."
+   "text": "Between one hundred and three hundred thousand tonnes of carbon dioxide came out of solution at once.",
+   "sfx": [
+    [
+     "boom",
+     0.3
+    ]
+   ]
   },
   {
    "id": "a6",
    "scene": "nyos-column",
    "gap": 0.25,
-   "text": "The column left the surface at about a hundred kilometres an hour."
+   "text": "The column left the surface at about a hundred kilometres an hour.",
+   "sfx": [
+    [
+     "slideup",
+     0.6
+    ]
+   ]
   },
   {
    "id": "a7",
    "scene": "nyos-heavy",
    "gap": 0.25,
-   "text": "Then it did the thing that killed everyone. Carbon dioxide is heavier than air, so it did not rise. It flowed downhill."
+   "text": "Then it did the thing that killed everyone. Carbon dioxide is heavier than air, so it did not rise. It flowed downhill.",
+   "sfx": [
+    [
+     "slidedown",
+     2.4
+    ]
+   ]
   },
   {
    "id": "a8",
@@ -98,13 +155,34 @@
    "id": "a10",
    "scene": "nyos-three",
    "gap": 0.25,
-   "text": "Three lakes on Earth are known to be able to do this. Nyos, Monoun, and Kivu."
+   "text": "Three lakes on Earth are known to be able to do this. Nyos, Monoun, and Kivu.",
+   "sfx": [
+    [
+     "blip",
+     0.4
+    ],
+    [
+     "blip",
+     0.9
+    ],
+    [
+     "blip",
+     1.4
+    ]
+   ]
   },
   {
    "id": "a11",
    "scene": "kivu",
    "gap": 0.25,
-   "text": "Kivu is the big one. It is a thousand times the volume, and about two million people live around its shore."
+   "text": "Kivu is the big one. It is a thousand times the volume, and about two million people live around its shore.",
+   "sfx": [
+    [
+     "pack:oh_no",
+     4.6,
+     0.7
+    ]
+   ]
   },
   {
    "id": "a12",
@@ -116,13 +194,25 @@
    "id": "b0",
    "scene": "two",
    "gap": 0.35,
-   "text": "Two. The flow."
+   "text": "Two. The flow.",
+   "sfx": [
+    [
+     "whoosh",
+     0.0
+    ]
+   ]
   },
   {
    "id": "b1",
    "scene": "pyro-what",
    "gap": 0.25,
-   "text": "A pyroclastic flow is not lava. Lava you can walk away from."
+   "text": "A pyroclastic flow is not lava. Lava you can walk away from.",
+   "sfx": [
+    [
+     "pop",
+     1.9
+    ]
+   ]
   },
   {
    "id": "b2",
@@ -134,25 +224,24 @@
    "id": "b3",
    "scene": "pyro-race",
    "gap": 0.25,
-   "text": "Faster than a car. Considerably faster than you."
-  },
-  {
-   "id": "b4",
-   "scene": "pyro-hercu",
-   "gap": 0.25,
-   "text": "In seventy-nine, Herculaneum was hit by one from Vesuvius."
+   "text": "Faster than a car. Considerably faster than you.",
+   "sfx": [
+    [
+     "pack:let's_go",
+     0.1,
+     0.7
+    ],
+    [
+     "whoosh",
+     1.4
+    ]
+   ]
   },
   {
    "id": "b4b",
    "scene": "pelee",
    "gap": 0.25,
    "text": "The clearest case is Martinique, nineteen oh two. Mont Pelee opened sideways and the cloud came down the slope at a hundred and sixty kilometres an hour."
-  },
-  {
-   "id": "b5",
-   "scene": "pyro-temp",
-   "gap": 0.25,
-   "text": "The flows themselves reached about four hundred and sixty-five degrees."
   },
   {
    "id": "b4c",
@@ -164,13 +253,39 @@
    "id": "b4d",
    "scene": "pelee-cell",
    "gap": 0.25,
-   "text": "There were three known survivors. One was in a half-underground solitary cell with one narrow slit in the door, put there the day before for fighting."
+   "text": "There were three known survivors. One was in a half-underground solitary cell with one narrow slit in the door, put there the day before for fighting.",
+   "sfx": [
+    [
+     "pack:huh_that_was_close",
+     6.2,
+     0.75
+    ]
+   ]
   },
   {
    "id": "b4e",
    "scene": "pelee-dug",
    "gap": 0.25,
-   "text": "The walls built to keep him in were the only thing in the city thick enough to keep the volcano out. He was dug out three days later."
+   "text": "The walls built to keep him in were the only thing in the city thick enough to keep the volcano out. He was dug out three days later.",
+   "sfx": [
+    [
+     "pack:easy",
+     5.6,
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b4",
+   "scene": "pyro-hercu",
+   "gap": 0.25,
+   "text": "There is one case that shows exactly how hot these get. Herculaneum, seventy-nine, hit by a flow from Vesuvius."
+  },
+  {
+   "id": "b5",
+   "scene": "pyro-temp",
+   "gap": 0.25,
+   "text": "The flows themselves reached about four hundred and sixty-five degrees."
   },
   {
    "id": "b6",
@@ -188,13 +303,25 @@
    "id": "b8",
    "scene": "pyro-vitrify",
    "gap": 0.25,
-   "text": "Not burnt. Vitrified \u2014 heated past five hundred degrees, then cooled fast enough to set like glass."
+   "text": "Not burnt. Vitrified \u2014 heated past five hundred degrees, then cooled fast enough to set like glass.",
+   "sfx": [
+    [
+     "clink",
+     3.4
+    ]
+   ]
   },
   {
    "id": "b9",
    "scene": "pyro-only",
    "gap": 0.25,
-   "text": "It is the only confirmed case of human brain tissue turning to glass that anyone has found."
+   "text": "It is the only confirmed case of human brain tissue turning to glass that anyone has found.",
+   "sfx": [
+    [
+     "ding",
+     3.8
+    ]
+   ]
   },
   {
    "id": "b10",
@@ -206,19 +333,37 @@
    "id": "c0",
    "scene": "three",
    "gap": 0.35,
-   "text": "Three. The floor."
+   "text": "Three. The floor.",
+   "sfx": [
+    [
+     "whoosh",
+     0.0
+    ]
+   ]
   },
   {
    "id": "c1",
    "scene": "sink-florida",
    "gap": 0.25,
-   "text": "Most of Florida is built on limestone, and limestone dissolves in slightly acidic rainwater."
+   "text": "Most of Florida is built on limestone, and limestone dissolves in slightly acidic rainwater.",
+   "sfx": [
+    [
+     "bubble",
+     2.4
+    ]
+   ]
   },
   {
    "id": "c2",
    "scene": "sink-void",
    "gap": 0.25,
-   "text": "So underneath the lawns there are voids, and the only thing holding the roof of a void up is the sand sitting on it."
+   "text": "So underneath the lawns there are voids, and the only thing holding the roof of a void up is the sand sitting on it.",
+   "sfx": [
+    [
+     "creak",
+     3.9
+    ]
+   ]
   },
   {
    "id": "c3",
@@ -248,7 +393,14 @@
    "id": "c7",
    "scene": "sink-reopen",
    "gap": 0.25,
-   "text": "The house was demolished. The sinkhole has reopened twice since, in the same spot."
+   "text": "The house was demolished. The sinkhole has reopened twice since, in the same spot.",
+   "sfx": [
+    [
+     "pack:hey_what_happened",
+     2.6,
+     0.7
+    ]
+   ]
   },
   {
    "id": "c8",
@@ -260,13 +412,25 @@
    "id": "d0",
    "scene": "four",
    "gap": 0.35,
-   "text": "Four. The slosh."
+   "text": "Four. The slosh.",
+   "sfx": [
+    [
+     "whoosh",
+     0.0
+    ]
+   ]
   },
   {
    "id": "d1",
    "scene": "seiche-what",
    "gap": 0.25,
-   "text": "A seiche is what happens when a body of water is pushed at exactly its own rhythm, and starts sloshing like a bath."
+   "text": "A seiche is what happens when a body of water is pushed at exactly its own rhythm, and starts sloshing like a bath.",
+   "sfx": [
+    [
+     "squelch",
+     2.2
+    ]
+   ]
   },
   {
    "id": "d2",
@@ -278,7 +442,14 @@
    "id": "d3",
    "scene": "seiche-lochs",
    "gap": 0.25,
-   "text": "Two thousand kilometres away, the water in Loch Lomond and Loch Ness stood up and started swinging, in lakes nobody had felt shake."
+   "text": "Two thousand kilometres away, the water in Loch Lomond and Loch Ness stood up and started swinging, in lakes nobody had felt shake.",
+   "sfx": [
+    [
+     "pack:huh",
+     4.4,
+     0.7
+    ]
+   ]
   },
   {
    "id": "d4",
@@ -296,7 +467,13 @@
    "id": "d6",
    "scene": "seiche-amp",
    "gap": 0.25,
-   "text": "A metre and a half, trough to peak, for hours. Eight thousand kilometres from the epicentre."
+   "text": "A metre and a half, trough to peak, for hours. Eight thousand kilometres from the epicentre.",
+   "sfx": [
+    [
+     "thud",
+     3.4
+    ]
+   ]
   },
   {
    "id": "d8",
@@ -308,7 +485,13 @@
    "id": "e0",
    "scene": "five",
    "gap": 0.35,
-   "text": "Five. The sun."
+   "text": "Five. The sun.",
+   "sfx": [
+    [
+     "whoosh",
+     0.0
+    ]
+   ]
   },
   {
    "id": "e1",
@@ -320,7 +503,13 @@
    "id": "e2",
    "scene": "carr-aurora",
    "gap": 0.25,
-   "text": "Auroras reached Cuba and Hawaii. In the north-eastern United States you could read a newspaper outdoors at one in the morning."
+   "text": "Auroras reached Cuba and Hawaii. In the north-eastern United States you could read a newspaper outdoors at one in the morning.",
+   "sfx": [
+    [
+     "shimmer",
+     0.4
+    ]
+   ]
   },
   {
    "id": "e3",
@@ -332,43 +521,87 @@
    "id": "e4",
    "scene": "carr-batteries",
    "gap": 0.25,
-   "text": "Operators disconnected their batteries and kept sending messages anyway, running the line on the current the storm was inducing in it."
+   "text": "Operators disconnected their batteries and kept sending messages anyway, running the line on the current the storm was inducing in it.",
+   "sfx": [
+    [
+     "error",
+     3.2
+    ]
+   ]
   },
   {
    "id": "e5",
    "scene": "carr-fire",
    "gap": 0.25,
-   "text": "In some offices the paper caught fire."
+   "text": "In some offices the paper caught fire.",
+   "sfx": [
+    [
+     "fizz",
+     1.4
+    ]
+   ]
   },
   {
    "id": "e6",
    "scene": "carr-then",
    "gap": 0.25,
-   "text": "In eighteen fifty-nine, that was the entire damage report. Scorched paper and a few burnt relay stations."
+   "text": "In eighteen fifty-nine, that was the entire damage report. Scorched paper and a few burnt relay stations.",
+   "sfx": [
+    [
+     "pack:easy",
+     3.4,
+     0.55
+    ]
+   ]
   },
   {
    "id": "e7",
    "scene": "carr-now",
    "gap": 0.25,
-   "text": "The problem is what we have built since."
+   "text": "The problem is what we have built since.",
+   "sfx": [
+    [
+     "tick",
+     0.2
+    ]
+   ]
   },
   {
    "id": "e8",
    "scene": "carr-transformers",
    "gap": 0.25,
-   "text": "A storm that size today would push direct current into a grid built for alternating current, until the largest transformers cook themselves from inside."
+   "text": "A storm that size today would push direct current into a grid built for alternating current, until the largest transformers cook themselves from inside.",
+   "sfx": [
+    [
+     "rumble",
+     4.2
+    ]
+   ]
   },
   {
    "id": "e9",
    "scene": "carr-lead",
    "gap": 0.25,
-   "text": "Those transformers are custom-built, and there is no warehouse of spares."
+   "text": "Those transformers are custom-built, and there is no warehouse of spares.",
+   "sfx": [
+    [
+     "pack:denied",
+     3.0,
+     0.7
+    ]
+   ]
   },
   {
    "id": "e10",
    "scene": "carr-nrc",
    "gap": 0.25,
-   "text": "The most cited assessment put recovery at four to ten years, and the cost in trillions."
+   "text": "The most cited assessment put recovery at four to ten years, and the cost in trillions.",
+   "sfx": [
+    [
+     "sadtrom",
+     3.6
+    ]
+   ]
   },
   {
    "id": "e11",
@@ -380,7 +613,13 @@
    "id": "f0",
    "scene": "six",
    "gap": 0.35,
-   "text": "Six. The one you have been told about."
+   "text": "Six. The one you have been told about.",
+   "sfx": [
+    [
+     "whoosh",
+     0.0
+    ]
+   ]
   },
   {
    "id": "f1",
@@ -398,25 +637,52 @@
    "id": "f3",
    "scene": "toba-story",
    "gap": 0.25,
-   "text": "And then the story you have heard: that it nearly finished us, and everyone alive now descends from a few thousand survivors."
+   "text": "And then the story you have heard: that it nearly finished us, and everyone alive now descends from a few thousand survivors.",
+   "sfx": [
+    [
+     "siren",
+     3.4,
+     0.6
+    ]
+   ]
   },
   {
    "id": "f4",
    "scene": "toba-doubt",
    "gap": 0.25,
-   "text": "That part has quietly fallen apart."
+   "text": "That part has quietly fallen apart.",
+   "sfx": [
+    [
+     "pack:disc_scratch",
+     0.2,
+     0.85
+    ]
+   ]
   },
   {
    "id": "f5",
    "scene": "toba-genomes",
    "gap": 0.25,
-   "text": "Whole-genome sequencing can see population crashes. It does not see one at seventy-four thousand years."
+   "text": "Whole-genome sequencing can see population crashes. It does not see one at seventy-four thousand years.",
+   "sfx": [
+    [
+     "blip",
+     3.2
+    ]
+   ]
   },
   {
    "id": "f6",
    "scene": "toba-sites",
    "gap": 0.25,
-   "text": "And archaeological sites in Africa and India show people carrying on either side of the ash layer, apparently unbothered."
+   "text": "And archaeological sites in Africa and India show people carrying on either side of the ash layer, apparently unbothered.",
+   "sfx": [
+    [
+     "pack:correct_buzzer",
+     4.0,
+     0.6
+    ]
+   ]
   },
   {
    "id": "f7",
@@ -428,7 +694,13 @@
    "id": "f8",
    "scene": "toba-yellow",
    "gap": 0.25,
-   "text": "And the supervolcano everyone worries about now would be the least sudden death on this list."
+   "text": "And the supervolcano everyone worries about now would be the least sudden death on this list.",
+   "sfx": [
+    [
+     "rumble",
+     2.8
+    ]
+   ]
   },
   {
    "id": "f9",
@@ -440,25 +712,50 @@
    "id": "g0",
    "scene": "seven",
    "gap": 0.35,
-   "text": "Seven. The one from outside."
+   "text": "Seven. The one from outside.",
+   "sfx": [
+    [
+     "whoosh",
+     0.0
+    ]
+   ]
   },
   {
    "id": "g1",
    "scene": "grb-what",
    "gap": 0.25,
-   "text": "A gamma-ray burst is the most energetic event in the universe. A star collapses and fires two narrow beams from its poles."
+   "text": "A gamma-ray burst is the most energetic event in the universe. A star collapses and fires two narrow beams from its poles.",
+   "sfx": [
+    [
+     "shimmer",
+     2.6
+    ]
+   ]
   },
   {
    "id": "g2",
    "scene": "grb-energy",
    "gap": 0.25,
-   "text": "In a few seconds it releases more energy than our sun will produce in its entire life."
+   "text": "In a few seconds it releases more energy than our sun will produce in its entire life.",
+   "sfx": [
+    [
+     "boom",
+     2.4
+    ]
+   ]
   },
   {
    "id": "g3",
    "scene": "grb-narrow",
    "gap": 0.25,
-   "text": "The beams are narrow, which is the only reassuring sentence in this chapter."
+   "text": "The beams are narrow, which is the only reassuring sentence in this chapter.",
+   "sfx": [
+    [
+     "pack:huh_that_was_close",
+     2.4,
+     0.7
+    ]
+   ]
   },
   {
    "id": "g4",
@@ -476,7 +773,13 @@
    "id": "g5b",
    "scene": "boat",
    "gap": 0.25,
-   "text": "In October twenty twenty-two we were hit by the brightest one ever recorded. It came from a galaxy one point nine billion light years away."
+   "text": "In October twenty twenty-two we were hit by the brightest one ever recorded. It came from a galaxy one point nine billion light years away.",
+   "sfx": [
+    [
+     "shimmer",
+     0.6
+    ]
+   ]
   },
   {
    "id": "g5c",
@@ -488,7 +791,14 @@
    "id": "g5d",
    "scene": "boat-odds",
    "gap": 0.25,
-   "text": "Estimates put a burst that bright at about one every ten thousand years. It was not aimed at us properly. It was pointed somewhere near us."
+   "text": "Estimates put a burst that bright at about one every ten thousand years. It was not aimed at us properly. It was pointed somewhere near us.",
+   "sfx": [
+    [
+     "pack:bruh",
+     5.4,
+     0.7
+    ]
+   ]
   },
   {
    "id": "g7",
@@ -506,13 +816,33 @@
    "id": "z1",
    "scene": "board",
    "gap": 0.3,
-   "text": "Supervolcano, months. Solar storm, seventeen hours. Seiche, half an hour. Pyroclastic flow, seconds. Limnic eruption, sinkhole, gamma-ray burst: nothing at all."
+   "text": "Supervolcano, months. Solar storm, seventeen hours. Seiche, half an hour. Pyroclastic flow, seconds. Limnic eruption, sinkhole, gamma-ray burst: nothing at all.",
+   "sfx": [
+    [
+     "blip",
+     0.4
+    ],
+    [
+     "blip",
+     2.2
+    ],
+    [
+     "blip",
+     4.0
+    ]
+   ]
   },
   {
    "id": "z2",
    "scene": "close-1",
    "gap": 0.3,
-   "text": "Four of the seven give you no useful notice whatsoever."
+   "text": "Four of the seven give you no useful notice whatsoever.",
+   "sfx": [
+    [
+     "boom",
+     1.6
+    ]
+   ]
   },
   {
    "id": "z3",
@@ -524,7 +854,14 @@
    "id": "z4",
    "scene": "signoff",
    "gap": 0.3,
-   "text": "The ground is not solid, the air is not reliably breathable, and the sky is not empty. Sleep well."
+   "text": "The ground is not solid, the air is not reliably breathable, and the sky is not empty. Sleep well.",
+   "sfx": [
+    [
+     "pack:goodnight_girl",
+     6.4,
+     0.7
+    ]
+   ]
   }
  ]
 }
