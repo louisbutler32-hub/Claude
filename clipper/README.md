@@ -55,6 +55,43 @@ python3 upload.py projects/gold-bars/config.json
 
 Output lands in `out/<slug>.mp4` — 1080×1920, 60fps, mastered to −17.3 LUFS.
 
+## When the source is too big to hand over
+
+A 30-minute 1080p video is a couple of gigabytes. It does not need to move —
+**an edit list is just timecodes, and timecodes do not care what resolution
+they were picked at.** `scout.py` splits the job in two so nothing large is
+ever transferred.
+
+**Stage 1 — survey.** Run against the full file; produces a few megabytes.
+
+```bash
+python3 scout.py "C:/Users/You/Downloads/source.mp4"
+```
+
+```
+scout/
+  info.json      duration, resolution, frame rate
+  shots.txt      every scene change with timecodes  (~30 KB of text)
+  sheet_NN.jpg   contact sheets, timecode burned into every frame
+```
+
+For a 31-minute source that is about **7 MB**. `shots.txt` is the valuable
+part — it turns "find a good shot near 10:40" into a list to pick from.
+
+**Stage 2 — pull only the shots the cut uses.** Once the edit list exists, it
+is only ~58 seconds of footage:
+
+```bash
+python3 scout.py "C:/.../source.mp4" --windows 1:20-1:31,8:22-8:24,... --budget 25
+```
+
+58 seconds inside a 25 MB budget is ~3400 kbps — good quality, and it uploads.
+It writes `windows.mp4` plus `windows.json`, which records what came from where
+so a config can be written against it without guessing.
+
+**Or skip both** and render locally: the config is the only thing that has to
+travel, and `render.py` runs against the original where it already lives.
+
 ## Where files go
 
 Each project has three drop-in folders. They are tracked in git (empty, via
