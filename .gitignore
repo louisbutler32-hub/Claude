@@ -26,3 +26,6 @@ clipper/projects/_selftest/
 
 __pycache__/
 *.pyc
+
+# third-party sound packs: not ours to redistribute
+.sfx
