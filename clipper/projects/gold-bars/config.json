@@ -1,38 +1,101 @@
 {
-  "slug": "gold-bars",
-  "title": "He Turned a Box of Old Jewelry into a Solid Gold Bar 😳 (@NileRed/YT)",
-  "title_alternates": [
-    "He Dissolved Gold Jewelry in Acid to See What Was Really Inside 😳 (@NileRed/YT)",
-    "This Guy Melted a Box of Old Chains into One Gold Bar 😲 (@NileRed/YT)"
-  ],
-  "summary": "A viewer mailed this chemist a box of old gold jewelry and asked him to turn it into a single solid bar. The stamps said he should get 77.9 grams. He got 75 — and then the scrap pile he almost threw away changed everything.",
-  "credit": {
-    "creator": "@NileRed",
-    "url": "https://www.youtube.com/watch?v=37Kn-kIsVu8"
+ "slug": "gold-bars",
+ "title": "He Turned a Box of Old Jewelry into a Solid Gold Bar \ud83d\ude33 (@NileRed/YT)",
+ "title_alternates": [
+  "He Dissolved Gold Jewelry in Acid to See What Was Really Inside \ud83d\ude33 (@NileRed/YT)",
+  "This Guy Melted a Box of Old Chains into One Gold Bar \ud83d\ude32 (@NileRed/YT)"
+ ],
+ "summary": "A viewer mailed this chemist a box of old gold jewelry and asked him to turn it into a single solid bar. The stamps said he should get 77.9 grams. He got 75 \u2014 and then the scrap pile he almost threw away changed everything.",
+ "credit": {
+  "creator": "@NileRed",
+  "url": "https://www.youtube.com/watch?v=37Kn-kIsVu8"
+ },
+ "source": "source/nilered-gold.mp4",
+ "words": "vo/narration.words.json",
+ "vo": "vo/narration.wav",
+ "clips": [],
+ "keywords": {
+  "gold": "#FFD700",
+  "acid": "#00D4FF"
+ },
+ "annotations": [
+  {
+   "t": 17.0,
+   "dur": 1.0,
+   "type": "arrow",
+   "x": 0.6,
+   "y": 0.55,
+   "angle": 40
   },
-  "source": "source/nilered-gold.mp4",
-  "words": "vo/narration.words.json",
-  "vo": "vo/narration.wav",
-  "clips": [],
-  "keywords": { "gold": "#FFD700", "acid": "#00D4FF" },
-  "annotations": [
-    { "t": 17.0, "dur": 1.0, "type": "arrow",  "x": 0.60, "y": 0.55, "angle": 40 },
-    { "t": 30.0, "dur": 1.1, "type": "circle", "x": 0.48, "y": 0.50 },
-    { "t": 41.2, "dur": 1.0, "type": "circle", "x": 0.50, "y": 0.58 }
-  ],
-  "source_audio_windows": [],
-  "thumbnail": { "frame": 24.5, "text": "81 GRAMS|OF PURE GOLD", "size": 150 },
-  "tags": [
-    "gold", "gold bar", "pure gold", "gold refining", "nilered", "chemistry",
-    "science experiment", "aqua regia", "nitric acid", "gold jewelry",
-    "melting gold", "science shorts", "how its made", "experiment", "satisfying"
-  ],
-  "hashtags": ["#shorts", "#science", "#gold", "#chemistry"],
-  "beats": [
-    { "t": "0.0-3.4",   "beat": "HOOK",        "line": "What would happen if you dissolved a whole box of gold jewellery in acid?" },
-    { "t": "29.4-31.6", "beat": "TURN",        "line": "Except the torch burned straight through the crucible." },
-    { "t": "37.7-40.8", "beat": "EXPECTATION", "line": "Those stamps said he should end up with seventy seven grams." },
-    { "t": "41.1-44.5", "beat": "CONFLICT",    "line": "He got seventy five." },
-    { "t": "55.1-58.2", "beat": "BUTTON",      "line": "Then he had to mail every single gram of it back." }
-  ]
+  {
+   "t": 30.0,
+   "dur": 1.1,
+   "type": "circle",
+   "x": 0.48,
+   "y": 0.5
+  },
+  {
+   "t": 41.2,
+   "dur": 1.0,
+   "type": "circle",
+   "x": 0.5,
+   "y": 0.58
+  }
+ ],
+ "source_audio_windows": [],
+ "thumbnail": {
+  "frame": 24.5,
+  "text": "81 GRAMS|OF PURE GOLD",
+  "size": 150
+ },
+ "tags": [
+  "gold",
+  "gold bar",
+  "pure gold",
+  "gold refining",
+  "nilered",
+  "chemistry",
+  "science experiment",
+  "aqua regia",
+  "nitric acid",
+  "gold jewelry",
+  "melting gold",
+  "science shorts",
+  "how its made",
+  "experiment",
+  "satisfying"
+ ],
+ "hashtags": [
+  "#shorts",
+  "#science",
+  "#gold",
+  "#chemistry"
+ ],
+ "beats": [
+  {
+   "t": "0.0-3.4",
+   "beat": "HOOK",
+   "line": "What would happen if you dissolved a whole box of gold jewellery in acid?"
+  },
+  {
+   "t": "29.4-31.6",
+   "beat": "TURN",
+   "line": "Except the torch burned straight through the crucible."
+  },
+  {
+   "t": "37.7-40.8",
+   "beat": "EXPECTATION",
+   "line": "Those stamps said he should end up with seventy seven grams."
+  },
+  {
+   "t": "41.1-44.5",
+   "beat": "CONFLICT",
+   "line": "He got seventy five."
+  },
+  {
+   "t": "55.1-58.2",
+   "beat": "BUTTON",
+   "line": "Then he had to mail every single gram of it back."
+  }
+ ]
 }

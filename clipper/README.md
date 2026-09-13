@@ -12,7 +12,8 @@ editor.
 
 1. **I source the concept** — a long-form video with a built-in twist.
    Candidates and their beat maps live in [`CONCEPTS.md`](CONCEPTS.md).
-2. **You drop the source video in** `projects/<slug>/source/`.
+2. **You drop the source video in** `projects/<slug>/source/` — any filename;
+   it just has to be the only video in there.
 3. **I write the script and the edit list** — `config.json`, one entry per shot.
 4. **You record or generate the VO**, drop it in `projects/<slug>/vo/`.
 5. **`transcribe.py`** turns the VO into word timings.
@@ -53,6 +54,23 @@ python3 upload.py projects/gold-bars/config.json
 ```
 
 Output lands in `out/<slug>.mp4` — 1080×1920, 60fps, mastered to −17.3 LUFS.
+
+## Where files go
+
+Each project has three drop-in folders. They are tracked in git (empty, via
+`.gitkeep`) so they exist on a fresh clone; their contents are ignored.
+
+```
+projects/<slug>/
+  source/   the long-form video          <- drop it here
+  vo/       narration, and its .words.json
+  music/    the bed
+```
+
+**Filenames do not matter.** The `source`, `vo` and `music` fields in the
+config are hints — if the folder holds exactly one file of the right type, that
+is what gets used, whatever it is called. Only when a folder has two or more
+does the config field have to pick between them.
 
 ## config.json
 

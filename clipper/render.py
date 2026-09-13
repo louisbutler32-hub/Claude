@@ -28,7 +28,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from lib import annotate, audio, captions, spec, video  # noqa: E402
+from lib import annotate, audio, captions, media, spec, video  # noqa: E402
 from lib.video import run  # noqa: E402
 from validate import validate  # noqa: E402
 
@@ -72,13 +72,16 @@ def main():
         cfg = json.load(fh)
 
     slug = cfg.get("slug") or os.path.basename(base)
-    source = resolve(base, cfg["source"])
-    if not os.path.exists(source):
-        raise SystemExit(f"source footage not found: {source}")
+    source = media.find("video", resolve(base, cfg.get("source")),
+                        os.path.join(base, "source"), label="source footage",
+                        key="source")
 
     clips = cfg.get("clips") or []
     if not clips:
-        raise SystemExit("config has no clips")
+        raise SystemExit(
+            "config has no clips yet — the edit list is empty.\n"
+            "Nothing to cut until \"clips\" has in/out times against the source."
+        )
 
     work = os.path.join(base, ".work")
     os.makedirs(work, exist_ok=True)
@@ -132,8 +135,12 @@ def main():
     ])
 
     # ---------------------------------------------------------- 4. audio
-    vo = resolve(base, cfg.get("vo"))
-    music = resolve(base, cfg.get("music"))
+    vo = media.find("audio", resolve(base, cfg.get("vo")),
+                    os.path.join(base, "vo"), required=False, label="voiceover",
+                    key="vo")
+    music = media.find("audio", resolve(base, cfg.get("music")),
+                       os.path.join(base, "music"), required=False,
+                       label="music bed", key="music")
     windows = cfg.get("source_audio_windows") or []
     track = None
     if vo or music or windows:

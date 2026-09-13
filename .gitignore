@@ -11,12 +11,17 @@ public/audio
 .tts
 .compile
 
-# clipper: source footage, renders and intermediates stay local
+# clipper: source footage, renders and intermediates stay local.
+# The drop-in folders themselves are tracked (via .gitkeep) so they exist on
+# a fresh clone — only what you put in them is ignored.
 clipper/out/
 clipper/projects/*/.work/
-clipper/projects/*/source/
-clipper/projects/*/vo/*.mp3
-clipper/projects/*/music/
+clipper/projects/*/source/*
+clipper/projects/*/vo/*
+clipper/projects/*/music/*
+!clipper/projects/*/source/.gitkeep
+!clipper/projects/*/vo/.gitkeep
+!clipper/projects/*/music/.gitkeep
 clipper/projects/_selftest/
 
 __pycache__/
