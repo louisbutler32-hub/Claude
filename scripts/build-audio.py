@@ -184,10 +184,68 @@ VEHICLE_ROUNDS = [
      "Motorcycles zoom on the road, faster than a bicycle.", "Vroom vroom!"),
 ]
 
+# Dinosaurs: (id, Ana names it, Ana describes it, Emma says where it lived, sound)
+DINO_ROUNDS = [
+    ("trex", "It's a T-Rex! T-Rex.", "A big green T-Rex.",
+     "T-Rex lived in the forest, and was the biggest hunter around.", "ROAR!"),
+    ("triceratops", "It's a Triceratops! Triceratops.", "An orange Triceratops with three horns.",
+     "Triceratops lived among the ferns, munching on plants.", "Snort snort!"),
+    ("pterodactyl", "It's a Pterodactyl! Pterodactyl.", "A purple Pterodactyl.",
+     "Pterodactyl flew high above the volcano.", "Caw caw!"),
+    ("stegosaurus", "It's a Stegosaurus! Stegosaurus.", "A blue Stegosaurus with spiky plates.",
+     "Stegosaurus lived by the rocks, with plates along its back.", "Stomp stomp!"),
+    ("velociraptor", "It's a Velociraptor! Velociraptor.", "A yellow Velociraptor.",
+     "Velociraptor lived in the ferns, quick and clever.", "Screech!"),
+    ("brachiosaurus", "It's a Brachiosaurus! Brachiosaurus.", "A green Brachiosaurus with a long neck.",
+     "Brachiosaurus lived among the tall palm trees, reaching the highest leaves.", "Hmmmmm!"),
+    ("ankylosaurus", "It's an Ankylosaurus! Ankylosaurus.", "A gold Ankylosaurus with a club tail.",
+     "Ankylosaurus lived by the rocks, safe under its bumpy armor.", "Thud thud!"),
+    ("spinosaurus", "It's a Spinosaurus! Spinosaurus.", "A blue Spinosaurus with a big sail.",
+     "Spinosaurus lived by the swamp, fishing in the water.", "ROAR!"),
+    ("parasaurolophus", "It's a Parasaurolophus! Parasaurolophus.", "A pink Parasaurolophus with a curvy crest.",
+     "Parasaurolophus lived in the ferns, honking to its friends.", "Honk honk!"),
+    ("diplodocus", "It's a Diplodocus! Diplodocus.", "A long green Diplodocus.",
+     "Diplodocus lived among the palm trees, the longest dinosaur around.", "Munch munch!"),
+    ("iguanodon", "It's an Iguanodon! Iguanodon.", "A green Iguanodon with a thumb spike.",
+     "Iguanodon lived in the ferns, walking on two legs or four.", "Snort snort!"),
+    ("allosaurus", "It's an Allosaurus! Allosaurus.", "A red Allosaurus.",
+     "Allosaurus lived by the rocks, hunting for its dinner.", "ROAR!"),
+]
+
+# Sea creatures: (id, Ana names it, Ana describes it, Emma says where it lives, sound)
+SEA_ROUNDS = [
+    ("octopus", "It's an octopus! Octopus.", "A pink octopus with eight arms.",
+     "Octopuses live on the seabed, hiding among the rocks.", "Splash!"),
+    ("shark", "It's a shark! Shark.", "A grey shark with sharp teeth.",
+     "Sharks live in the open sea, swimming all around.", "Snap snap!"),
+    ("crab", "It's a crab! Crab.", "A red crab with two big claws.",
+     "Crabs live on the seabed, scuttling sideways.", "Click click!"),
+    ("starfish", "It's a starfish! Starfish.", "An orange starfish.",
+     "Starfish live on the seabed, five points and all.", "Wiggle wiggle!"),
+    ("clownfish", "It's a clownfish! Clownfish.", "An orange and white clownfish.",
+     "Clownfish live by the coral, darting in and out.", "Blub blub!"),
+    ("seahorse", "It's a seahorse! Seahorse.", "A little yellow seahorse.",
+     "Seahorses live among the seaweed, floating up and down.", "Bubble bubble!"),
+    ("whale", "It's a whale! Whale.", "A big blue whale.",
+     "Whales live in the deep blue sea, the biggest of them all.", "Splash!"),
+    ("turtle", "It's a turtle! Turtle.", "A green sea turtle.",
+     "Turtles live by the coral, swimming slow and steady.", "Plip plop!"),
+    ("dolphin", "It's a dolphin! Dolphin.", "A grey dolphin.",
+     "Dolphins live in the open sea, jumping and splashing.", "Eee-eee!"),
+    ("jellyfish", "It's a jellyfish! Jellyfish.", "A purple jellyfish.",
+     "Jellyfish live in the sea, floating along with the water.", "Wobble wobble!"),
+    ("lobster", "It's a lobster! Lobster.", "A red lobster with two big claws.",
+     "Lobsters live on the seabed, tucked in by the rocks.", "Click click!"),
+    ("squid", "It's a squid! Squid.", "A purple squid.",
+     "Squid live in the open sea, squirting and swimming fast.", "Squirt!"),
+]
+
 SUBJECTS = {
     "short": dict(rounds=[], kind="short", word="number",
                   frames=SHORT_FRAMES),
     "vehicles": dict(rounds=VEHICLE_ROUNDS, kind="go", word="vehicle"),
+    "dinosaurs": dict(rounds=DINO_ROUNDS, kind="live", word="dinosaur"),
+    "sea": dict(rounds=SEA_ROUNDS, kind="live", word="sea creature"),
     "veggies": dict(rounds=VEGGIE_ROUNDS, kind="grow", word="vegetable"),
     "animals": dict(rounds=ANIMAL_ROUNDS, kind="live", word="animal"),
     "numbers": dict(rounds=NUMBER_ROUNDS, kind="count", word="number"),
@@ -220,6 +278,17 @@ ARTICLE = {
     "tractor": "the tractor", "helicopter": "the helicopter",
     "digger": "the digger", "bicycle": "the bicycle",
     "motorcycle": "the motorcycle",
+    "trex": "the T-Rex", "triceratops": "the Triceratops",
+    "pterodactyl": "the Pterodactyl", "stegosaurus": "the Stegosaurus",
+    "velociraptor": "the Velociraptor", "brachiosaurus": "the Brachiosaurus",
+    "ankylosaurus": "the Ankylosaurus", "spinosaurus": "the Spinosaurus",
+    "parasaurolophus": "the Parasaurolophus", "diplodocus": "the Diplodocus",
+    "iguanodon": "the Iguanodon", "allosaurus": "the Allosaurus",
+    "octopus": "the octopus", "shark": "the shark", "crab": "the crab",
+    "starfish": "the starfish", "clownfish": "the clownfish",
+    "seahorse": "the seahorse", "whale": "the whale", "turtle": "the turtle",
+    "dolphin": "the dolphin", "jellyfish": "the jellyfish",
+    "lobster": "the lobster", "squid": "the squid",
 }
 
 # a little variety so twelve rounds don't read identically
@@ -239,6 +308,34 @@ PEEKS_GROW = [
     "Who's that behind the bushes?",
     "Look, something is hopping along!",
     "Here comes another vegetable. What could it be?",
+    "Ooh! Something is hiding in the bushes.",
+    "Look! Can you see what's peeking out?",
+    "One more is hiding. Can you find it?",
+]
+PEEKS_DINO = [
+    "Let's go and find some dinosaurs! Ooh, something is hiding in the bushes.",
+    "Look! Something else is hiding.",
+    "Ooh! Who is hiding in the bushes now?",
+    "Here comes another one. Can you see it?",
+    "Look! Something is peeking out.",
+    "Ooh! Something is hiding again.",
+    "Who's that behind the bushes?",
+    "Look, something is stomping along!",
+    "Here comes another dinosaur. What could it be?",
+    "Ooh! Something is hiding in the bushes.",
+    "Look! Can you see what's peeking out?",
+    "One more is hiding. Can you find it?",
+]
+PEEKS_SEA = [
+    "Let's go and find some sea creatures! Ooh, something is hiding in the bushes.",
+    "Look! Something else is hiding.",
+    "Ooh! Who is hiding in the bushes now?",
+    "Here comes another one. Can you see it?",
+    "Look! Something is peeking out.",
+    "Ooh! Something is hiding again.",
+    "Who's that behind the bushes?",
+    "Look, something is swimming along!",
+    "Here comes another sea creature. What could it be?",
     "Ooh! Something is hiding in the bushes.",
     "Look! Can you see what's peeking out?",
     "One more is hiding. Can you find it?",
@@ -286,7 +383,11 @@ PEEKS_GO = [
     "One more is hiding. Can you find it?",
 ]
 PEEKS = {
-    "grow": PEEKS_GROW, "live": PEEKS_LIVE, "count": PEEKS_COUNT, "go": PEEKS_GO,
+    "grow": PEEKS_GROW,
+    "live": {
+        "animals": PEEKS_LIVE, "dinosaurs": PEEKS_DINO, "sea": PEEKS_SEA,
+    }.get(SUBJECT, PEEKS_LIVE),
+    "count": PEEKS_COUNT, "go": PEEKS_GO,
 }.get(CONF["kind"], PEEKS_GROW)  # the Short has no peek beat
 
 # ── counting layout, mirrored from src/numbers/numbers.ts ─────────────
@@ -322,7 +423,11 @@ def vo_schedule():
         return short_schedule()
     opener = {
         "grow": "Chomp chomp! Veggies!",
-        "live": "Chomp chomp! Animals!",
+        "live": {
+            "animals": "Chomp chomp! Animals!",
+            "dinosaurs": "Chomp chomp! Dinosaurs!",
+            "sea": "Chomp chomp! Sea Life!",
+        }[SUBJECT],
         "count": "Chomp chomp! Numbers!",
         "go": "Chomp chomp! Vehicles!",
     }[CONF["kind"]]
@@ -368,9 +473,12 @@ def vo_schedule():
             continue
 
         # the middle of the round: where it grows, or where it lives
-        verb = {"grow": "grow", "live": "live", "go": "go"}[CONF["kind"]]
-        lines.append((b + B_WHERE, f"Now, where does {the} {verb}?",
-                      "emma", f"{n:02d}-{vid}-where"))
+        if CONF["kind"] == "live" and SUBJECT == "dinosaurs":
+            where_q = f"Now, where did {the} live?"
+        else:
+            verb = {"grow": "grow", "live": "live", "go": "go"}[CONF["kind"]]
+            where_q = f"Now, where does {the} {verb}?"
+        lines.append((b + B_WHERE, where_q, "emma", f"{n:02d}-{vid}-where"))
         lines.append((b + B_FACT, mid_line, "emma", f"{n:02d}-{vid}-fact"))
 
         if CONF["kind"] == "grow":
