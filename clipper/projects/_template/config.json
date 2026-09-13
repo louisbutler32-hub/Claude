@@ -1,0 +1,28 @@
+{
+  "slug": "example",
+  "title": "He Turned X into Y 😳 (@Creator/YT)",
+
+  "source": "source/long-form.mp4",
+  "vo": "vo/narration.wav",
+  "words": "vo/narration.words.json",
+  "music": "music/bed.mp3",
+
+  "clips": [
+    { "in": 124.30, "out": 125.40, "pan": 0.0, "zoom": 1.0 },
+    { "in": 61.00,  "out": 62.05,  "pan": -0.3 },
+    { "in": 402.80, "out": 404.90, "zoom": 1.15 }
+  ],
+
+  "keywords": {
+    "gold": "#FFD700",
+    "impossible": "#00D4FF"
+  },
+
+  "annotations": [
+    { "t": 16.2, "dur": 1.0, "type": "arrow",  "x": 0.62, "y": 0.55, "angle": 40 },
+    { "t": 31.4, "dur": 1.1, "type": "circle", "x": 0.45, "y": 0.48 },
+    { "t": 47.0, "dur": 1.0, "type": "double-circle", "x": 0.5, "y": 0.5, "scale": 0.8 }
+  ],
+
+  "source_audio_windows": [[55.5, 60.0]]
+}

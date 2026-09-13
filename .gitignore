@@ -4,8 +4,17 @@ out
 *.log
 
 __pycache__/
+*.pyc
 *.wav
 .audio-build
 public/audio
 .tts
 .compile
+
+# clipper: source footage, renders and intermediates stay local
+clipper/out/
+clipper/projects/*/.work/
+clipper/projects/*/source/
+clipper/projects/*/vo/*.mp3
+clipper/projects/*/music/
+clipper/projects/_selftest/
