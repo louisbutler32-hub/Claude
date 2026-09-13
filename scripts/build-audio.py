@@ -34,11 +34,13 @@ VOICES = {
 }
 
 SUBJECT = (sys.argv[1] if len(sys.argv) > 1 else "veggies").lower()
+NO_MUSIC = "--no-music" in sys.argv
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WORK = os.path.join(ROOT, ".audio-build", SUBJECT)
 OUT_DIR = os.path.join(ROOT, "public", "audio")
-OUT = os.path.join(OUT_DIR, f"{SUBJECT}-mix.mp3")
+OUT_NAME = f"{SUBJECT}-no-music-mix.mp3" if NO_MUSIC else f"{SUBJECT}-mix.mp3"
+OUT = os.path.join(OUT_DIR, OUT_NAME)
 
 FFMPEG = os.environ.get("FFMPEG", "ffmpeg")
 
@@ -781,15 +783,17 @@ def main():
         place(sfx, SPARK, b + B_LAND, 0.7)
         place(sfx, TADA, b + B_CELEBRATE, 0.55)
 
-    print("music bed…")
-    music = music_bed(total)
-
-    # duck the bed under anything spoken
-    duck_src = smooth_env(voice) + 0.6 * smooth_env(sfx)
-    duck = 1.0 - 0.62 * np.clip(duck_src / 0.16, 0, 1)
-    music = music * duck
-
-    mix = 0.98 * voice + 0.62 * sfx + 0.20 * music
+    if NO_MUSIC:
+        print("skipping music bed (--no-music)…")
+        mix = 0.98 * voice + 0.62 * sfx
+    else:
+        print("music bed…")
+        music = music_bed(total)
+        # duck the bed under anything spoken
+        duck_src = smooth_env(voice) + 0.6 * smooth_env(sfx)
+        duck = 1.0 - 0.62 * np.clip(duck_src / 0.16, 0, 1)
+        music = music * duck
+        mix = 0.98 * voice + 0.62 * sfx + 0.20 * music
 
     # soft-clip anything left over, then normalise to -1 dBFS
     mix = np.tanh(mix * 1.06)
