@@ -24,13 +24,34 @@ editor.
 
 ## Setup
 
+New machine? Read [`START-HERE.md`](START-HERE.md) — it has the Windows steps
+and the current project state.
+
 ```bash
-apt-get install -y ffmpeg
-pip install faster-whisper pillow
+# Windows
+winget install Gyan.FFmpeg
+python -m pip install pillow faster-whisper
+
+# macOS / Linux
+brew install ffmpeg          # or: sudo apt-get install -y ffmpeg
+pip install pillow faster-whisper
 ```
 
-Poppins Black ships in `assets/fonts/` — libass finds it via `fontsdir`, so
+Then check it:
+
+```bash
+python doctor.py
+```
+
+It verifies ffmpeg, ffprobe, the Python packages and — easy to miss — that
+ffmpeg has **libass** compiled in. Without libass the caption filter silently
+does nothing and you get a picture cut with no words on it.
+
+Poppins Black ships in `assets/fonts/`; libass finds it via `fontsdir`, so
 nothing needs installing system-wide.
+
+On Windows the command is `python`, not `python3`. Everything below uses
+`python3` — swap it if you are on Windows.
 
 ## Running it
 
@@ -145,7 +166,10 @@ which of the things that made the reference work are missing from yours:
 
 ```
 clipper/
-  FORMAT.md          the measured spec — read this first
+  START-HERE.md      setup, current state, next action — read this first
+  FORMAT.md          the measured spec
+  doctor.py          checks the machine has what it needs
+  scout.py           survey a big source without moving it
   CONCEPTS.md        sourced long-form candidates, ranked, with beat maps
   render.py          cut -> composite -> caption -> mix -> master
   transcribe.py      VO -> word timings

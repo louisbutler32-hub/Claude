@@ -49,3 +49,17 @@ that it is the compressed one, with the command to build the master.
 `edge-tts` output is for timing the edit, not for shipping. It stays
 gitignored. Each episode's track is a drop-in slot at
 `public/audio/<subject>-mix.mp3`.
+
+## Shorts — the clipper
+
+`clipper/` is a separate line from the learning videos: it cuts one long-form
+YouTube video into a 60s Short in a measured format, with the source creator
+credited in the title.
+
+**Read `clipper/START-HERE.md` before touching it.** It covers the setup, the
+current project state, and the next action. The format spec is
+`clipper/FORMAT.md` and every constant in `clipper/lib/spec.py` was measured
+off the reference video — treat them as findings, not preferences.
+
+Source videos are gigabytes, so this runs locally, never in a web session.
+Run `python clipper/doctor.py` to check the machine has what it needs.
