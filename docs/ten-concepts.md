@@ -15,7 +15,7 @@ every frame drawn in code, no footage and no licensed assets.
 | 04 | Your Body, Hour by Hour, After You Die | |
 | 05 | What Ancient People Thought Fossils Were | |
 | 06 | 6 Animals That Survive Being Eaten | |
-| 07 | 7 Ways the Earth Kills You Without Warning | **in progress** — `src/earth` |
+| 07 | 7 Ways the Earth Kills You Without Warning | **built** — `src/earth`, 8:00 |
 | 08 | What Would Actually Happen If You Fell In | |
 | 09 | 8 Things That Are Basically Immortal | |
 | 10 | The 5 Deadliest Things in Your House | |
