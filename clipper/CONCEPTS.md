@@ -14,6 +14,56 @@ All view counts below were checked, not estimated.
 
 ---
 
+## The pick — video #1
+
+**Turning old jewelry into pure gold bars** (NileRed, 39M, `37Kn-kIsVu8`).
+Fully worked at the bottom of this page; ready to cut as soon as the source
+lands.
+
+The reference channel is the only clean evidence available for *why* one clip
+outruns another: same format, same editor, same source creator, four videos —
+15M, 527K, 167K, 139K. A 30x spread with execution held constant. So the topic
+is the dominant variable, and it is worth being exact about what the 15M one
+had that the other three did not:
+
+- a **branded product everyone has an opinion about** (Red Bull, not "cotton balls")
+- **implied bodily stakes** — 100 cans in one sip reads as a lethal dose
+- a **round, absurd number** — 100
+- a **portable fact** — "one tiny sip equals an entire can"
+
+Gold wins on a different lever than Red Bull did, and that is deliberate:
+
+1. **Destroying something valuable is a stronger hook than concentrating
+   something cheap.** "Dissolved a whole box of gold jewellery in acid" creates
+   *is he about to ruin it* tension in the hook itself. The Red Bull clip had
+   to manufacture its tension over 30 seconds.
+2. **Two expectation-breaks, not one** — the crucible failing at 51% and the
+   weight shortfall at 71%. Two retention saves where the reference has one.
+3. **The button provokes comments.** "He had to mail every single gram back"
+   is a gut-punch; "crazy good" is not. Comments drive Shorts distribution.
+4. **The payoff is instantly legible** — a bar of gold and a dollar figure. No
+   other candidate's payoff reads as fast at phone size.
+5. **No research risk.** The beat map is built from the actual transcript with
+   verified figures. Everything else on this page needs a transcript pass
+   first.
+
+### Video #2 — test the other lever
+
+**Turning children's glue into drinkable alcohol** (NileRed, 13M, `QzP3vx8XadU`).
+
+Gold tests the **value** lever. Glue tests the **transgression** lever — every
+adult was told as a child not to eat the glue, and the payoff is him drinking
+it. That is much closer to the visceral wince that carried the Red Bull clip.
+
+Running these two first means whichever wins tells us which lever to lean into
+for the next ten. Running two value-lever videos back to back would teach us
+nothing.
+
+One note on the glue script: keep the narration reporting, never instructing.
+Third person throughout, and no line that reads as a method.
+
+---
+
 ## What makes a source clippable
 
 In order of weight:
