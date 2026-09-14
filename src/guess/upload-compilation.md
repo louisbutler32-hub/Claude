@@ -61,12 +61,22 @@ toddler learning compilation, learning videos for toddlers, guess the shadow, pr
 ## Upload settings
 
 Category **Education**, audience **Yes, made for kids**, language English.
-Thumbnail: `thumbnail-compilation.jpg` (`npm run compilation:thumb`).
+Thumbnail: four to choose from (`npm run compilation:thumb` builds all).
 
-It deliberately breaks from the episode thumbnails. Those lead on a shadow,
-because the guess is the hook. A compilation is chosen for length and
-variety instead, so this one leads on **41 MINUTES** and shows the cast in
-full colour — one from each episode, fruit included.
+| file | concept | why it might win |
+|---|---|---|
+| `thumbnail-compilation.jpg` | 41 MINUTES over the colour cast | length and variety in one look — the safe default |
+| `thumbnail-compilation-quad.jpg` | four tinted panels, "4 in 1" badge | the only one that says *four separate shows* at a glance |
+| `thumbnail-compilation-shadows.jpg` | four black shadows, 41 MINUTES | keeps the channel's hook; highest contrast of the set |
+| `thumbnail-compilation-board.jpg` | one board holding all four episodes | densest, and the most obviously "a lot of content" |
+
+Three of the four break from the episode thumbnails on purpose. Those lead
+on a shadow because the guess is the hook; a compilation is picked for
+length and variety, so these lead on the running time or the count. The
+shadow version is the exception, kept for continuity with the episodes.
+
+Each says "41 minutes" or "4 in 1" in the art, so all four need editing if
+the compilation gains a fifth episode.
 
 The chapter marks are already embedded in the file, so YouTube picks them up
 without the description list — but keep the list anyway, since it is what

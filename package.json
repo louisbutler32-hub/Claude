@@ -58,11 +58,20 @@
     "killers": "remotion render KillersVideo out/killers.mp4",
     "killers:vo": "python3 scripts/make-vo.py killers",
     "killers:thumb": "remotion still Killers-Thumbnail out/thumbnail-what-caught-them.jpg --image-format=jpeg --quality=92 && remotion still Killers-Thumbnail-Figures out/thumbnail-ten-silhouettes.jpg --image-format=jpeg --quality=92",
-    "compilation:thumb": "remotion still Compilation-Thumbnail out/thumbnail-compilation.png",
+    "compilation:thumb": "remotion still Compilation-Thumbnail out/thumbnail-compilation.png && remotion still Compilation-Thumbnail-Quad out/thumbnail-compilation-quad.png && remotion still Compilation-Thumbnail-Shadows out/thumbnail-compilation-shadows.png && remotion still Compilation-Thumbnail-Board out/thumbnail-compilation-board.png",
     "earth": "remotion render EarthVideo out/earth.mp4",
     "earth:vo": "python3 scripts/make-vo.py earth",
     "earth:sfx": "python3 scripts/make-sfx.py earth",
-    "earth:thumb": "remotion still Earth-Thumbnail out/thumbnail-how-much-warning.jpg --image-format=jpeg --quality=92 && remotion still Earth-Thumbnail-Lake out/thumbnail-the-lake.jpg --image-format=jpeg --quality=92"
+    "earth:thumb": "remotion still Earth-Thumbnail out/thumbnail-how-much-warning.jpg --image-format=jpeg --quality=92 && remotion still Earth-Thumbnail-Lake out/thumbnail-the-lake.jpg --image-format=jpeg --quality=92",
+    "vehicles": "remotion render VehicleVideo out/vehicles.mp4",
+    "vehicles:audio": "python3 scripts/build-audio.py vehicles",
+    "vehicles:thumb": "remotion still Vehicle-Thumbnail out/thumbnail-guess-the-vehicle.png && remotion still Vehicle-Thumbnail-Board out/thumbnail-vehicles-all-12.png",
+    "dinosaurs": "remotion render DinoVideo out/dinosaurs.mp4",
+    "dinosaurs:audio": "python3 scripts/build-audio.py dinosaurs",
+    "dinosaurs:thumb": "remotion still Dino-Thumbnail out/thumbnail-guess-the-dinosaur.png && remotion still Dino-Thumbnail-Board out/thumbnail-dinosaurs-all-12.png",
+    "sea": "remotion render SeaVideo out/sea.mp4",
+    "sea:audio": "python3 scripts/build-audio.py sea",
+    "sea:thumb": "remotion still Sea-Thumbnail out/thumbnail-guess-the-sea-creature.png && remotion still Sea-Thumbnail-Board out/thumbnail-sea-life-all-12.png"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",

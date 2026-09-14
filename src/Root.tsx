@@ -27,10 +27,27 @@ import {
 } from "./veggies/VeggieVideo";
 import { ArtSheet } from "./veggies/ArtSheet";
 import { AnimalArtSheet } from "./animals/ArtSheet";
+import { VehicleArtSheet } from "./vehicles/ArtSheet";
+import { DinoArtSheet } from "./dinosaurs/ArtSheet";
+import { SeaArtSheet } from "./sea/ArtSheet";
+import { SeaVideo, SEA_DURATION_IN_FRAMES } from "./sea/SeaVideo";
+import { DinoVideo, DINO_DURATION_IN_FRAMES } from "./dinosaurs/DinoVideo";
+import {
+  VehicleVideo,
+  VEHICLE_DURATION_IN_FRAMES,
+} from "./vehicles/VehicleVideo";
 import { Banner, BannerGuides, BannerWhite } from "./guess/Banner";
-import { CompilationThumb } from "./guess/CompilationThumb";
+import {
+  CompilationThumb,
+  CompilationThumbBoard,
+  CompilationThumbQuad,
+  CompilationThumbShadows,
+} from "./guess/CompilationThumb";
 import { AnimalThumbA, AnimalThumbB } from "./animals/Thumbnail";
 import { NumberThumbA, NumberThumbB } from "./numbers/Thumbnail";
+import { VehicleThumbA, VehicleThumbB } from "./vehicles/Thumbnail";
+import { DinoThumbA, DinoThumbB } from "./dinosaurs/Thumbnail";
+import { SeaThumbA, SeaThumbB } from "./sea/Thumbnail";
 import {
   CountingShort,
   SHORT_FRAMES,
@@ -224,6 +241,54 @@ export const RemotionRoot: React.FC = () => {
         height={1080}
       />
       <Composition
+        id="Vehicle-Thumbnail"
+        component={VehicleThumbA}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Vehicle-Thumbnail-Board"
+        component={VehicleThumbB}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Dino-Thumbnail"
+        component={DinoThumbA}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Dino-Thumbnail-Board"
+        component={DinoThumbB}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Sea-Thumbnail"
+        component={SeaThumbA}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Sea-Thumbnail-Board"
+        component={SeaThumbB}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
         id="Counting-Short"
         component={CountingShort}
         durationInFrames={SHORT_FRAMES}
@@ -234,6 +299,78 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="Compilation-Thumbnail"
         component={CompilationThumb}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="VehicleVideo"
+        component={VehicleVideo}
+        durationInFrames={VEHICLE_DURATION_IN_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Vehicle-ArtSheet"
+        component={VehicleArtSheet}
+        durationInFrames={30}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="DinoVideo"
+        component={DinoVideo}
+        durationInFrames={DINO_DURATION_IN_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Dino-ArtSheet"
+        component={DinoArtSheet}
+        durationInFrames={30}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="SeaVideo"
+        component={SeaVideo}
+        durationInFrames={SEA_DURATION_IN_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Sea-ArtSheet"
+        component={SeaArtSheet}
+        durationInFrames={30}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Compilation-Thumbnail-Quad"
+        component={CompilationThumbQuad}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Compilation-Thumbnail-Shadows"
+        component={CompilationThumbShadows}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Compilation-Thumbnail-Board"
+        component={CompilationThumbBoard}
         durationInFrames={1}
         fps={30}
         width={1920}
