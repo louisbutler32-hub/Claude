@@ -54,6 +54,7 @@ import { FaceVideo, FACE_DURATION_SECONDS } from "./face/FaceVideo";
 import { MummyVideo, MUMMY_DURATION_SECONDS } from "./mummy/MummyVideo";
 import { KillersVideo, KILLERS_DURATION_SECONDS } from "./killers/KillersVideo";
 import { EarthVideo, EARTH_DURATION_SECONDS } from "./earth/EarthVideo";
+import { Earth2Video, EARTH2_DURATION_SECONDS } from "./earth2/Earth2Video";
 import { EarthThumbA, EarthThumbB } from "./earth/Thumbnail";
 import { KillersThumbA, KillersThumbB } from "./killers/Thumbnail";
 import { MummyThumbA, MummyThumbB } from "./mummy/Thumbnail";
@@ -78,6 +79,15 @@ export const RemotionRoot: React.FC = () => {
         id="EarthVideo"
         component={EarthVideo}
         durationInFrames={EARTH_DURATION_SECONDS * 30}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      <Composition
+        id="Earth2Video"
+        component={Earth2Video}
+        durationInFrames={EARTH2_DURATION_SECONDS * 30}
         fps={30}
         width={1920}
         height={1080}

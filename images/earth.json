@@ -1,0 +1,67 @@
+{
+  "subject": "earth",
+  "note": "Real things that were really photographed. The drawing still does the explaining; these are the evidence beats. NASA = public domain. LOC = rights read per item.",
+  "images": [
+    {
+      "slug": "crater-lake",
+      "source": "nasa",
+      "query": "crater lake volcano from space"
+    },
+    {
+      "slug": "volcano-plume",
+      "source": "nasa",
+      "query": "volcanic eruption seen from International Space Station"
+    },
+    {
+      "slug": "pyroclastic",
+      "source": "loc",
+      "query": "volcano eruption 1902 Martinique",
+      "stereo": true
+    },
+    {
+      "slug": "ruined-city",
+      "source": "loc",
+      "query": "Martinique volcanic disaster city"
+    },
+    {
+      "slug": "sinkhole",
+      "source": "nasa",
+      "query": "karst limestone terrain from space"
+    },
+    {
+      "slug": "aurora",
+      "source": "nasa",
+      "query": "aurora from International Space Station"
+    },
+    {
+      "slug": "solar-flare",
+      "source": "nasa",
+      "query": "solar flare Solar Dynamics Observatory"
+    },
+    {
+      "slug": "cme",
+      "source": "nasa",
+      "query": "coronal mass ejection"
+    },
+    {
+      "slug": "caldera",
+      "source": "nasa",
+      "query": "caldera lake seen from space"
+    },
+    {
+      "slug": "telegraph",
+      "source": "loc",
+      "query": "telegraph office operators"
+    },
+    {
+      "slug": "grid",
+      "source": "loc",
+      "query": "electrical transformer substation"
+    },
+    {
+      "slug": "deep-space",
+      "source": "nasa",
+      "query": "supernova remnant Hubble"
+    }
+  ]
+}
