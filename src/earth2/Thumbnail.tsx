@@ -35,16 +35,30 @@ const Head: React.FC<{ lines: string[]; color?: string; y?: number; size?: numbe
 /** A — the bedroom, mid-collapse. */
 export const Earth2ThumbA: React.FC = () => {
   useDoodleFont();
+  const floor = 720;
   return (
     <AbsoluteFill style={{ backgroundColor: NIGHT }}>
       <svg viewBox={`0 0 ${W} ${H}`} width="100%" height="100%">
-        <path d={`M 0 760 L ${W} 760 L ${W} ${H} L 0 ${H} Z`} {...line(STROKE)} fill="#2a323f" />
-        <path d={blob(W / 2 + 80, 900, 300, 6, 0.13)} {...line(0)} fill="#05070b" />
-        <Bed x={W / 2 - 330} y={760} w={430} color="#cfc8ba" />
-        <g transform="translate(150 120) rotate(26 960 700)">
-          <Figure x={960} y={700} pose="fall" scale={1.5} color="#cfc8ba" breathe={false} />
+        {/* the floor, with a hole torn out of the middle of it */}
+        <path d={`M 0 ${floor} L ${W} ${floor} L ${W} ${H} L 0 ${H} Z`} {...line(STROKE + 2)} fill="#2f3847" />
+        <defs>
+          <clipPath id="below-floor">
+            <rect x={0} y={floor} width={W} height={H - floor} />
+          </clipPath>
+        </defs>
+        {/* clipped to below the floor line, so it reads as an opening
+            rather than a dark mound sitting on top of the boards */}
+        <g clipPath="url(#below-floor)">
+          <path d={blob(1150, 1010, 420, 6, 0.14)} {...line(STROKE + 2, "#0a0d13")} fill="#05070b" />
         </g>
-        <Head lines={["YOU ARE ASLEEP.", "THE FLOOR IS NOT."]} y={150} size={112} />
+        <path d={`M 760 ${floor} L 1540 ${floor}`} {...line(STROKE + 2, "#05070b")} />
+        {/* the bed, tipping in */}
+        <g transform={`rotate(15 560 ${floor})`}>
+          <Bed x={520} y={floor} w={520} color="#cfc8ba" />
+        </g>
+        {/* falling: arms straight up, legs apart, no extra rotation to muddle it */}
+        <Figure x={1150} y={1010} pose="drop" scale={2.4} color="#f2ece0" breathe={false} />
+        <Head lines={["YOU ARE ASLEEP.", "THE FLOOR IS NOT."]} y={165} size={124} />
       </svg>
     </AbsoluteFill>
   );

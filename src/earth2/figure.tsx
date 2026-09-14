@@ -14,7 +14,7 @@ import { STROKE, blob, ink, line, rng } from "../planets/kit";
 // look drawn by the same hand as everything else.
 
 export type Pose =
-  | "sleep" | "stand" | "look" | "point" | "run" | "fall" | "flail" | "gone";
+  | "sleep" | "stand" | "look" | "point" | "run" | "fall" | "flail" | "drop" | "gone";
 
 type Limb = { arm: [number, number]; leg: [number, number]; lean: number };
 
@@ -27,6 +27,9 @@ const POSES: Record<Pose, Limb> = {
   run:   { arm: [58, -44], leg: [42, -30], lean: 12 },
   fall:  { arm: [128, -128], leg: [38, -20], lean: 18 },
   flail: { arm: [148, -140], leg: [26, -34], lean: -6 },
+  // arms out near horizontal — reads as falling without sweeping
+  // the limbs up through the head, which "fall" does at big scale
+  drop:  { arm: [102, -102], leg: [34, -16], lean: 6 },
   gone:  { arm: [0, 0], leg: [0, 0], lean: 0 },
 };
 
