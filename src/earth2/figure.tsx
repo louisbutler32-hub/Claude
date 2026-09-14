@@ -53,14 +53,34 @@ export const Figure: React.FC<{
   const frame = useCurrentFrame();
   if (pose === "gone" || taken >= 1) return null;
 
+  if (pose === "sleep") {
+    const S = 180 * scale;
+    const hr = 40 * scale;
+    const st = { ...line(STROKE * scale * 0.9, color), strokeLinecap: "round" as const };
+    const rise = breathe ? Math.sin(frame / 24) * 2 : 0;   // the chest
+    const midY = y - hr * 0.55 + rise;
+    const head = x + S * 0.42;
+    return (
+      <g opacity={1 - taken * 0.85}>
+        <path d={blob(head + hr, midY - hr * 0.1, hr, seed, 0.05)} {...line(STROKE * scale * 0.9, color)} fill="none" />
+        <path d={`M ${x - S * 0.38} ${midY} L ${head} ${midY}`} {...st} />
+        {/* legs, trailing off the near end */}
+        <path d={`M ${x - S * 0.38} ${midY} L ${x - S * 0.66} ${midY + S * 0.1}`} {...st} />
+        <path d={`M ${x - S * 0.38} ${midY} L ${x - S * 0.64} ${midY - S * 0.06}`} {...st} />
+        {/* one arm across the body */}
+        <path d={`M ${x + S * 0.1} ${midY} L ${x - S * 0.04} ${midY + S * 0.16}`} {...st} />
+      </g>
+    );
+  }
+
   const p = POSES[pose];
-  const S = 92 * scale;                    // body height, head excluded
+  const S = 180 * scale;                   // body height, head excluded
   const sway = breathe ? Math.sin(frame / 11) * 1.6 : 0;
   const wob = breathe ? Math.sin(frame / 7 + seed) * 1.1 : 0;
 
   // Lean tips the whole figure about its feet.
   const lean = p.lean + sway * 0.4;
-  const headR = 25 * scale;
+  const headR = 46 * scale;
   const hipY = y - S * 0.46;
   const shoY = y - S * 0.92;
   const headY = shoY - headR * 0.95;

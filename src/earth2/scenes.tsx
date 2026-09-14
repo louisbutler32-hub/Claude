@@ -50,7 +50,7 @@ const Word: React.FC<{
   return (
     <text
       x={W / 2} y={y} textAnchor="middle" opacity={a}
-      fontSize={sub ? size * 0.42 : size}
+      fontSize={sub ? Math.max(46, size * 0.62) : size}
       fill={color ?? INK}
       style={{ fontFamily: "'ComicRelief', 'Comic Sans MS', cursive", fontWeight: sub ? 400 : 700 }}
     >
@@ -122,9 +122,9 @@ const SCENES: Record<string, React.FC> = {
     return (
       <>
         <Stars n={40} />
-        <Ground y={880} fill="#242c39" />
-        <Bed x={W / 2} y={880} color="#cfc8ba" />
-        <Figure x={W / 2 - 60} y={880 - 66} pose="sleep" scale={0.82} color="#cfc8ba" />
+        <Ground y={784} fill="#242c39" />
+        <Bed x={W / 2} y={784} color="#cfc8ba" />
+        <Figure x={W / 2 - 40} y={784 - 78} pose="sleep" scale={1.15} color="#cfc8ba" />
         <Word y={200} size={62} color="#cfc8ba" delay={4}>11:31 pm</Word>
         <g opacity={0.5 + 0.3 * Math.sin(p * 9)}>
           <circle cx={W / 2 + 340} cy={300} r={5} fill="#cfc8ba" />
@@ -137,7 +137,7 @@ const SCENES: Record<string, React.FC> = {
       <Stars n={30} />
       <Ground y={620} fill="#242c39" />
       <Bed x={W / 2} y={620} w={360} color="#cfc8ba" />
-      <Figure x={W / 2 - 50} y={620 - 58} pose="sleep" scale={0.72} color="#cfc8ba" />
+      <Figure x={W / 2 - 36} y={620 - 62} pose="sleep" scale={0.95} color="#cfc8ba" />
       <Reveal from="down" delay={6}>
         <Strata y={620} layers={[{ h: 70, fill: "#cfc6b2", label: "carpet" }, { h: 90, fill: "#b9b0a0", label: "concrete" }, { h: 120, fill: "#d8c79c", label: "sand" }, { h: 260, fill: "#a9a08c", label: "limestone" }]} />
       </Reveal>
@@ -241,9 +241,9 @@ const SCENES: Record<string, React.FC> = {
     return (
       <>
         <Paper />
-        <Ground y={860} />
+        <Ground y={772} />
         <g transform={`translate(${interpolate(p, [0, 1], [-200, 260])} 0)`}>
-          <Figure x={W / 2} y={860} pose="run" scale={1.1} />
+          <Figure x={W / 2} y={772} pose="run" scale={1.1} />
         </g>
       </>
     );
@@ -253,25 +253,25 @@ const SCENES: Record<string, React.FC> = {
   "shore": () => (
     <>
       <Paper fill={SKY} />
-      <CraterLake x={W / 2} y={700} scale={1.15} charge={0} />
-      <Figure x={330} y={868} pose="look" scale={1.05} />
+      <CraterLake x={W / 2} y={700} scale={1.45} charge={0} />
+      <Figure x={250} y={905} pose="look" scale={1.25} />
     </>
   ),
   "lake-deep": () => (
     <>
       <Paper fill={SKY} />
-      <CraterLake x={W / 2} y={700} scale={1.15} charge={0} />
+      <CraterLake x={W / 2} y={700} scale={1.45} charge={0} />
       <Reveal delay={4}><Word y={200} size={86} color={INK}>200 m deep</Word></Reveal>
     </>
   ),
-  "lake-gas": () => <><Paper fill={SKY} /><CraterLake x={W / 2} y={700} scale={1.15} charge={0.35} /></>,
-  "lake-charge": () => <><Paper fill={SKY} /><CraterLake x={W / 2} y={700} scale={1.15} charge={0.8} /></>,
+  "lake-gas": () => <><Paper fill={SKY} /><CraterLake x={W / 2} y={700} scale={1.45} charge={0.35} /></>,
+  "lake-charge": () => <><Paper fill={SKY} /><CraterLake x={W / 2} y={700} scale={1.45} charge={0.8} /></>,
   "lake-shake": () => {
     const p = useP();
     return (
       <>
         <Paper fill={SKY} />
-        <g transform={`translate(${Math.sin(p * 40) * 7} 0)`}><CraterLake x={W / 2} y={700} scale={1.15} charge={0.9} /></g>
+        <g transform={`translate(${Math.sin(p * 40) * 7} 0)`}><CraterLake x={W / 2} y={700} scale={1.45} charge={0.9} /></g>
       </>
     );
   },
@@ -280,7 +280,7 @@ const SCENES: Record<string, React.FC> = {
     return (
       <>
         <Paper fill={SKY} />
-        <CraterLake x={W / 2} y={700} scale={1.15} charge={1} />
+        <CraterLake x={W / 2} y={700} scale={1.45} charge={1} />
         <Spread from={W / 2} to={W / 2} y={700 - ramp(p, 0, 1) * 240} fill={GAS} />
       </>
     );
@@ -290,7 +290,7 @@ const SCENES: Record<string, React.FC> = {
     return (
       <>
         <Paper fill={SKY} />
-        <CraterLake x={W / 2} y={700} scale={1.15} charge={1} />
+        <CraterLake x={W / 2} y={700} scale={1.45} charge={1} />
         <g opacity={0.9}>
           <path
             d={`M ${W / 2 - 150} 760 L ${W / 2 - 110} ${760 - ramp(p, 0, 1) * 640} L ${W / 2 + 110} ${760 - ramp(p, 0, 1) * 640} L ${W / 2 + 150} 760 Z`}
@@ -328,17 +328,17 @@ const SCENES: Record<string, React.FC> = {
     return (
       <>
         <Paper fill={SKY} />
-        <Ground y={860} />
-        <GasFlow level={0.55} y={860} />
-        <Figure x={W / 2} y={860} pose="stand" scale={1.2} taken={ramp(p, 0.45, 1) * 0.85} />
+        <Ground y={772} />
+        <GasFlow level={0.55} y={772} />
+        <Figure x={W / 2} y={772} pose="stand" scale={1.2} taken={ramp(p, 0.45, 1) * 0.85} />
       </>
     );
   },
   "lake-toll": () => (
     <>
       <Paper fill={SKY} />
-      <Ground y={880} />
-      <GasFlow level={0.5} y={880} />
+      <Ground y={784} />
+      <GasFlow level={0.5} y={784} />
       <Num to={1746} y={430} size={190} />
       <Word y={540} size={40} color={GREY} sub delay={14}>people</Word>
     </>
@@ -346,8 +346,8 @@ const SCENES: Record<string, React.FC> = {
   "lake-slept": () => (
     <>
       <Paper fill={SKY} />
-      <Ground y={880} />
-      <GasFlow level={0.45} y={880} />
+      <Ground y={784} />
+      <GasFlow level={0.45} y={784} />
       <Reveal delay={4}><Word y={380} size={76} color={INK}>almost nobody woke up</Word></Reveal>
     </>
   ),
@@ -359,7 +359,7 @@ const SCENES: Record<string, React.FC> = {
         {["Nyos", "Monoun", "Kivu"].map((n, i) => (
           <g key={n} opacity={ramp(p, 0.1 + i * 0.22, 0.35 + i * 0.22)}>
             <path d={blob(430 + i * 530, 520, 130, 20 + i, 0.07)} {...line(STROKE)} fill={WATER} />
-            <text x={430 + i * 530} y={740} textAnchor="middle" fontSize={46} fill={INK}
+            <text x={430 + i * 530} y={740} textAnchor="middle" fontSize={60} fill={INK}
               style={{ fontFamily: "'ComicRelief', 'Comic Sans MS', cursive" }}>{n}</text>
           </g>
         ))}
@@ -372,10 +372,10 @@ const SCENES: Record<string, React.FC> = {
       <>
         <Paper />
         <path d={blob(430, 560, 90, 20, 0.07)} {...line(STROKE)} fill={WATER} />
-        <text x={430} y={720} textAnchor="middle" fontSize={40} fill={GREY}
+        <text x={430} y={720} textAnchor="middle" fontSize={58} fill={GREY}
           style={{ fontFamily: "'ComicRelief', 'Comic Sans MS', cursive" }}>Nyos</text>
         <path d={blob(1300, 540, 90 + ramp(p, 0.1, 0.9) * 260, 22, 0.06)} {...line(STROKE)} fill={WATER} />
-        <text x={1300} y={900} textAnchor="middle" fontSize={52} fill={INK}
+        <text x={1300} y={800} textAnchor="middle" fontSize={68} fill={INK}
           style={{ fontFamily: "'ComicRelief', 'Comic Sans MS', cursive" }}>Kivu</text>
         <Reveal delay={16}><Word y={170} size={60} color={RED}>2 million people</Word></Reveal>
       </>
@@ -384,7 +384,7 @@ const SCENES: Record<string, React.FC> = {
   "lake-pipes": () => (
     <>
       <Paper fill={SKY} />
-      <CraterLake x={W / 2} y={700} scale={1.15} charge={0.2} />
+      <CraterLake x={W / 2} y={700} scale={1.45} charge={0.2} />
       <Photo slug="crater-lake" x={1180} y={120} w={620} h={400} seed={11} />
     </>
   ),
@@ -393,25 +393,25 @@ const SCENES: Record<string, React.FC> = {
   "hill": () => (
     <>
       <Paper fill={SKY} />
-      <Ground y={880} />
-      <Volcano x={1300} y={880} scale={1.1} flow={0.2} />
-      <Figure x={430} y={880} pose="look" scale={1.05} />
+      <Ground y={784} />
+      <Volcano x={1300} y={784} scale={1.1} flow={0.2} />
+      <Figure x={430} y={784} pose="look" scale={1.05} />
     </>
   ),
   "hill-smoke": () => (
     <>
       <Paper fill={SKY} />
-      <Ground y={880} />
-      <Volcano x={1300} y={880} scale={1.1} flow={0.6} />
-      <House x={430} y={880} scale={0.9} />
-      <House x={660} y={880} scale={0.8} />
+      <Ground y={784} />
+      <Volcano x={1300} y={784} scale={1.1} flow={0.6} />
+      <House x={430} y={784} scale={0.9} />
+      <House x={660} y={784} scale={0.8} />
     </>
   ),
   "hill-election": () => (
     <>
       <Paper fill={SKY} />
-      <Ground y={880} />
-      <Volcano x={1400} y={880} scale={1.0} flow={0.7} />
+      <Ground y={784} />
+      <Volcano x={1400} y={784} scale={1.0} flow={0.7} />
       <Photo slug="pyroclastic" x={180} y={210} w={700} h={470} seed={5} />
       <Word y={150} size={44} color={GREY} sub>Saint-Pierre, 1902</Word>
     </>
@@ -422,8 +422,8 @@ const SCENES: Record<string, React.FC> = {
       <>
         <Paper fill={SKY} />
         <g transform={`translate(${Math.sin(p * 55) * 9} 0)`}>
-          <Ground y={880} />
-          <Volcano x={1300} y={880} scale={1.1} flow={1} />
+          <Ground y={784} />
+          <Volcano x={1300} y={784} scale={1.1} flow={1} />
         </g>
       </>
     );
@@ -438,8 +438,8 @@ const SCENES: Record<string, React.FC> = {
   "hill-flow-2": () => (
     <>
       <Paper fill={SKY} />
-      <Ground y={880} />
-      <Volcano x={1300} y={880} scale={1.1} flow={0.4} />
+      <Ground y={784} />
+      <Volcano x={1300} y={784} scale={1.1} flow={0.4} />
       <Reveal delay={6}><Word y={190} size={86} color={RED}>1,000 °C</Word></Reveal>
     </>
   ),
@@ -448,10 +448,10 @@ const SCENES: Record<string, React.FC> = {
     return (
       <>
         <Paper fill={SKY} />
-        <Ground y={880} />
-        <House x={340} y={880} scale={0.85} />
-        <House x={560} y={880} scale={0.95} />
-        <Volcano x={1500} y={880} scale={1.0} flow={1} />
+        <Ground y={784} />
+        <House x={340} y={784} scale={0.85} />
+        <House x={560} y={784} scale={0.95} />
+        <Volcano x={1500} y={784} scale={1.0} flow={1} />
         <Spread from={W + 200} to={-300} y={800} fill="#8a8378" />
         <Reveal delay={10}><Word y={170} size={62} color={RED}>600 km/h</Word></Reveal>
       </>
@@ -460,7 +460,7 @@ const SCENES: Record<string, React.FC> = {
   "hill-instant": () => (
     <>
       <Paper fill={SKY} />
-      <Ground y={880} />
+      <Ground y={784} />
       <Spread from={W} to={-200} y={790} fill="#8a8378" />
       <Reveal delay={8}><Word y={200} size={66}>too fast to burn</Word></Reveal>
     </>
@@ -468,7 +468,7 @@ const SCENES: Record<string, React.FC> = {
   "hill-hercul": () => (
     <>
       <Paper />
-      <Ground y={900} fill="#b6ac98" />
+      <Ground y={800} fill="#b6ac98" />
       <Reveal delay={4}><Word y={260} size={62}>brain tissue</Word></Reveal>
       <Reveal delay={14}><Word y={380} size={86} color={RED}>turned to glass</Word></Reveal>
     </>
@@ -489,7 +489,7 @@ const SCENES: Record<string, React.FC> = {
   "hill-toll": () => (
     <>
       <Paper fill={SKY} />
-      <Ground y={900} fill="#8a8378" />
+      <Ground y={800} fill="#8a8378" />
       <Num to={28000} y={440} size={180} />
       <Word y={550} size={40} color={GREY} sub delay={16}>in under a minute</Word>
     </>
@@ -497,30 +497,30 @@ const SCENES: Record<string, React.FC> = {
   "hill-survivor": () => (
     <>
       <Paper />
-      <Ground y={880} fill="#8a8378" />
+      <Ground y={784} fill="#8a8378" />
       {/* the cell */}
-      <path d={`M 760 480 L 1160 480 L 1160 880 L 760 880 Z`} {...line(STROKE + 1)} fill="#5c564c" />
+      <path d={`M 640 360 L 1280 360 L 1280 784 L 640 784 Z`} {...line(STROKE + 1)} fill="#5c564c" />
       {[0, 1, 2].map((i) => (
-        <path key={i} d={`M ${900 + i * 40} 560 L ${900 + i * 40} 640`} {...line(STROKE - 1, "#e8e2d6")} />
+        <path key={i} d={`M ${880 + i * 60} 430 L ${880 + i * 60} 560`} {...line(STROKE - 1, "#e8e2d6")} />
       ))}
-      <Figure x={960} y={860} pose="stand" scale={0.9} color="#e8e2d6" />
+      <Figure x={960} y={770} pose="stand" scale={1.5} color="#e8e2d6" />
       <Reveal delay={10}><Word y={220} size={62}>two survived</Word></Reveal>
     </>
   ),
   "hill-cell": () => (
     <>
       <Paper />
-      <Ground y={880} fill="#8a8378" />
-      <path d={`M 760 480 L 1160 480 L 1160 880 L 760 880 Z`} {...line(STROKE + 1)} fill="#5c564c" />
-      <Figure x={960} y={860} pose="sleep" scale={0.9} color="#e8e2d6" />
+      <Ground y={784} fill="#8a8378" />
+      <path d={`M 640 360 L 1280 360 L 1280 784 L 640 784 Z`} {...line(STROKE + 1)} fill="#5c564c" />
+      <Figure x={900} y={740} pose="sleep" scale={1.3} color="#e8e2d6" />
       <Reveal delay={8}><Word y={230} size={56} color={GREY}>locked up the night before</Word></Reveal>
     </>
   ),
   "hill-circus": () => (
     <>
       <Paper fill={SKY} />
-      <Ground y={880} />
-      <Figure x={W / 2} y={880} pose="point" scale={1.25} />
+      <Ground y={784} />
+      <Figure x={W / 2} y={784} pose="point" scale={1.25} />
       <Reveal delay={10}><Word y={210} size={66} color={AMBER}>he toured with a circus</Word></Reveal>
     </>
   ),
@@ -529,16 +529,16 @@ const SCENES: Record<string, React.FC> = {
   "basin": () => (
     <>
       <Paper fill={SKY} />
-      <Ground y={900} fill="#7d8a6a" />
-      <path d={`M 300 700 L 1620 700 L 1620 900 L 300 900 Z`} {...line(STROKE)} fill={WATER} />
-      <Figure x={220} y={900} pose="look" scale={1.0} />
+      <Ground y={800} fill="#7d8a6a" />
+      <path d={`M 300 600 L 1620 600 L 1620 800 L 300 800 Z`} {...line(STROKE)} fill={WATER} />
+      <Figure x={220} y={800} pose="look" scale={1.0} />
     </>
   ),
   "basin-calm": () => (
     <>
       <Paper fill={SKY} />
-      <Ground y={900} fill="#7d8a6a" />
-      <path d={`M 300 700 L 1620 700 L 1620 900 L 300 900 Z`} {...line(STROKE)} fill={WATER} />
+      <Ground y={800} fill="#7d8a6a" />
+      <path d={`M 300 600 L 1620 600 L 1620 800 L 300 800 Z`} {...line(STROKE)} fill={WATER} />
       <Reveal delay={8}><Word y={230} size={58} color={GREY}>a still day</Word></Reveal>
     </>
   ),
@@ -547,10 +547,10 @@ const SCENES: Record<string, React.FC> = {
     return (
       <>
         <Paper />
-        <Ground y={900} fill="#b6ac98" />
+        <Ground y={800} fill="#b6ac98" />
         <g transform={`translate(${Math.sin(p * 60) * 12} 0)`}>
-          <House x={1400} y={900} scale={1.2} tilt={ramp(p, 0.3, 1) * 22} />
-          <House x={1620} y={900} scale={1.0} tilt={-ramp(p, 0.4, 1) * 16} />
+          <House x={1400} y={800} scale={1.2} tilt={ramp(p, 0.3, 1) * 22} />
+          <House x={1620} y={800} scale={1.0} tilt={-ramp(p, 0.4, 1) * 16} />
         </g>
         <Word y={200} size={54} color={GREY} sub>Lisbon, 1755</Word>
         <Reveal delay={14}><Word y={300} size={62} color={RED}>2,000 km away</Word></Reveal>
@@ -563,11 +563,11 @@ const SCENES: Record<string, React.FC> = {
     return (
       <>
         <Paper fill={SKY} />
-        <Ground y={900} fill="#7d8a6a" />
+        <Ground y={800} fill="#7d8a6a" />
         {[0, 1, 2].map((i) => (
-          <circle key={i} cx={1700} cy={880} r={200 + r * 900 + i * 180} {...line(2, FAINT)} fill="none" opacity={0.5} />
+          <circle key={i} cx={1700} cy={784} r={200 + r * 900 + i * 180} {...line(2, FAINT)} fill="none" opacity={0.5} />
         ))}
-        <Figure x={300} y={900} pose="stand" scale={1.0} />
+        <Figure x={300} y={800} pose="stand" scale={1.0} />
       </>
     );
   },
@@ -601,9 +601,9 @@ const SCENES: Record<string, React.FC> = {
     return (
       <>
         <Paper fill={SKY} />
-        <Ground y={920} fill="#7d8a6a" />
-        <path d={`M 300 ${740 + tilt} L 1620 ${740 - tilt} L 1620 920 L 300 920 Z`} {...line(STROKE)} fill={WATER} />
-        <Figure x={220} y={920} pose="flail" scale={1.0} />
+        <Ground y={812} fill="#7d8a6a" />
+        <path d={`M 300 ${620 + tilt} L 1620 ${620 - tilt} L 1620 812 L 300 812 Z`} {...line(STROKE)} fill={WATER} />
+        <Figure x={220} y={812} pose="flail" scale={1.0} />
       </>
     );
   },
@@ -613,8 +613,8 @@ const SCENES: Record<string, React.FC> = {
     return (
       <>
         <Paper fill={SKY} />
-        <Ground y={920} fill="#7d8a6a" />
-        <path d={`M 300 ${740 + tilt} L 1620 ${740 - tilt} L 1620 920 L 300 920 Z`} {...line(STROKE)} fill={WATER} />
+        <Ground y={812} fill="#7d8a6a" />
+        <path d={`M 300 ${620 + tilt} L 1620 ${620 - tilt} L 1620 812 L 300 812 Z`} {...line(STROKE)} fill={WATER} />
         <Word y={190} size={52} color={GREY} sub>Scotland, 1755</Word>
       </>
     );
@@ -625,8 +625,8 @@ const SCENES: Record<string, React.FC> = {
     return (
       <>
         <Paper fill={SKY} />
-        <Ground y={920} fill="#6d7a66" />
-        <path d={`M 300 ${740 + tilt} L 1620 ${740 - tilt} L 1620 920 L 300 920 Z`} {...line(STROKE)} fill={WATER} />
+        <Ground y={812} fill="#6d7a66" />
+        <path d={`M 300 ${620 + tilt} L 1620 ${620 - tilt} L 1620 812 L 300 812 Z`} {...line(STROKE)} fill={WATER} />
         <Reveal delay={10}><Word y={190} size={58}>30 minutes later</Word></Reveal>
       </>
     );
@@ -636,10 +636,10 @@ const SCENES: Record<string, React.FC> = {
     return (
       <>
         <Paper fill={SKY} />
-        <Ground y={920} fill="#6d7a66" />
-        <path d={`M 0 760 L ${W} 760 L ${W} 920 L 0 920 Z`} {...line(STROKE)} fill={WATER} />
+        <Ground y={812} fill="#6d7a66" />
+        <path d={`M 0 640 L ${W} 640 L ${W} 812 L 0 812 Z`} {...line(STROKE)} fill={WATER} />
         <g transform={`translate(${interpolate(p, [0, 1], [0, 420])} ${Math.sin(p * 14) * 22})`}>
-          <path d={blob(700, 730, 78, 9, 0.1)} {...line(STROKE)} fill="#c8bfa8" />
+          <path d={blob(700, 600, 130, 9, 0.1)} {...line(STROKE)} fill="#c8bfa8" />
         </g>
       </>
     );
@@ -686,7 +686,7 @@ const SCENES: Record<string, React.FC> = {
         <g>
           {Array.from({ length: 24 }, (_, i) => (
             <g key={i} opacity={i < 22 ? 1 - ramp(p, 0.25, 0.85) : 1}>
-              <Figure x={220 + (i % 12) * 130} y={480 + Math.floor(i / 12) * 300} pose="stand" scale={0.5} seed={i} breathe={false} color={GREY} />
+              <Figure x={220 + (i % 12) * 130} y={480 + Math.floor(i / 12) * 300} pose="stand" scale={0.9} seed={i} breathe={false} color={GREY} />
             </g>
           ))}
         </g>
@@ -734,7 +734,7 @@ const SCENES: Record<string, React.FC> = {
         <Ground y={820} />
         <Volcano x={W / 2} y={820 - ramp(p, 0.2, 1) * 40} scale={1.3} flow={0.4} />
         {Array.from({ length: 14 }, (_, i) => (
-          <circle key={i} cx={420 + i * 80} cy={940} r={4 + Math.abs(Math.sin(p * 20 + i)) * 14}
+          <circle key={i} cx={420 + i * 80} cy={860} r={6 + Math.abs(Math.sin(p * 20 + i)) * 18}
             fill={RED} opacity={0.6} />
         ))}
       </>
@@ -743,9 +743,9 @@ const SCENES: Record<string, React.FC> = {
   "cont-irony": () => (
     <>
       <Paper />
-      <Ground y={880} />
-      <Volcano x={1420} y={880} scale={1.1} flow={0.35} />
-      <Figure x={420} y={880} pose="run" scale={1.1} />
+      <Ground y={784} />
+      <Volcano x={1420} y={784} scale={1.1} flow={0.35} />
+      <Figure x={420} y={784} pose="run" scale={1.1} />
       <Reveal delay={12}><Word y={200} size={58}>you could walk away</Word></Reveal>
     </>
   ),
@@ -768,7 +768,7 @@ const SCENES: Record<string, React.FC> = {
   "sun-1859": () => (
     <>
       <Paper />
-      <circle cx={W / 2} cy={520} r={250} {...line(STROKE)} fill={AMBER} />
+      <circle cx={W / 2} cy={500} r={320} {...line(STROKE)} fill={AMBER} />
       <path d={blob(W / 2 + 90, 470, 54, 8, 0.12)} {...line(STROKE - 1)} fill="#7a5a20" />
       <Word y={H - 140} size={50} color={GREY} sub>1 September 1859</Word>
     </>
@@ -816,7 +816,7 @@ const SCENES: Record<string, React.FC> = {
         <g>
           {Array.from({ length: 70 }, (_, i) => {
             const x = r() * W, y = 200 + r() * 700;
-            return <circle key={i} cx={x} cy={y} r={3} fill={AMBER} opacity={ramp(p, i / 140, i / 140 + 0.2)} />;
+            return <circle key={i} cx={x} cy={y} r={9} fill={AMBER} opacity={ramp(p, (i / 70) * 0.6, (i / 70) * 0.6 + 0.15)} />;
           })}
         </g>
       </>
@@ -904,7 +904,7 @@ const SCENES: Record<string, React.FC> = {
       <>
         <Paper fill={NIGHT} />
         <Stars n={60} />
-        <circle cx={W / 2} cy={620} r={190} {...line(STROKE, "#6f8fae")} fill="#28405a" />
+        <circle cx={W / 2} cy={600} r={260} {...line(STROKE, "#6f8fae")} fill="#28405a" />
         <path d={`M ${W / 2 - 190} 620 A 190 190 0 0 1 ${W / 2 + 190} 620`} {...line(STROKE + 3, RED)} fill="none"
           opacity={ramp(p, 0.3, 0.9)} />
         <Reveal delay={16}><Word y={220} size={56} color="#e8e2d6">ozone, one hemisphere</Word></Reveal>
@@ -942,7 +942,7 @@ const SCENES: Record<string, React.FC> = {
         <Paper fill={NIGHT} />
         <Stars n={60} />
         {items.map((s, i) => (
-          <text key={s} x={W / 2} y={220 + i * 106} textAnchor="middle" fontSize={58}
+          <text key={s} x={W / 2} y={200 + i * 118} textAnchor="middle" fontSize={76}
             fill={i === 6 ? RED : "#e8e2d6"} opacity={ramp(p, i * 0.1, i * 0.1 + 0.18)}
             style={{ fontFamily: "'ComicRelief', 'Comic Sans MS', cursive" }}>{s}</text>
         ))}
@@ -969,8 +969,8 @@ const SCENES: Record<string, React.FC> = {
     <>
       <Paper fill={NIGHT} />
       <Stars n={50} />
-      <Bed x={W / 2} y={880} color="#cfc8ba" />
-      <Figure x={W / 2 - 60} y={880 - 66} pose="sleep" scale={0.82} color="#cfc8ba" />
+      <Bed x={W / 2} y={784} color="#cfc8ba" />
+      <Figure x={W / 2 - 40} y={784 - 78} pose="sleep" scale={1.15} color="#cfc8ba" />
       <Reveal delay={8}><Word y={250} size={70} color="#e8e2d6">sleep well</Word></Reveal>
     </>
   ),
@@ -983,7 +983,7 @@ const SCENES: Record<string, React.FC> = {
     return (
       <>
         <Paper fill={NIGHT} />
-        <Ground y={880} fill="#242c39" />
+        <Ground y={784} fill="#242c39" />
         {Array.from({ length: 34 }, (_, i) => {
           const x = r() * W;
           const y = ((r() * H + p * 900 + i * 40) % (H + 120)) - 60;
@@ -1009,8 +1009,8 @@ const SCENES: Record<string, React.FC> = {
     return (
       <>
         <Paper fill={SKY} />
-        <Ground y={880} />
-        <Volcano x={1400} y={880} scale={1.0} flow={1} />
+        <Ground y={784} />
+        <Volcano x={1400} y={784} scale={1.0} flow={1} />
         <Spread from={W} to={W / 2} y={810} fill="#8a8378" />
         <Reveal delay={10}><Word y={190} size={58}>denser than air</Word></Reveal>
       </>
@@ -1024,10 +1024,10 @@ const SCENES: Record<string, React.FC> = {
       <>
         <Paper />
         <path d={`M 200 ${520 + a} L 820 ${520 - a} L 820 660 L 200 660 Z`} {...line(STROKE)} fill={WATER} />
-        <text x={510} y={740} textAnchor="middle" fontSize={44} fill={GREY}
+        <text x={510} y={740} textAnchor="middle" fontSize={62} fill={GREY}
           style={{ fontFamily: "'ComicRelief', 'Comic Sans MS', cursive" }}>a bath</text>
         <path d={`M 1100 ${520 + b} L 1720 ${520 - b} L 1720 660 L 1100 660 Z`} {...line(STROKE)} fill={WATER} />
-        <text x={1410} y={740} textAnchor="middle" fontSize={44} fill={GREY}
+        <text x={1410} y={740} textAnchor="middle" fontSize={62} fill={GREY}
           style={{ fontFamily: "'ComicRelief', 'Comic Sans MS', cursive" }}>a loch</text>
       </>
     );
@@ -1061,7 +1061,7 @@ const SCENES: Record<string, React.FC> = {
         <Photo slug="grid" x={1180} y={240} w={620} h={520} seed={4} credit={false} />
         {Array.from({ length: 9 }, (_, i) => (
           <g key={i} opacity={ramp(p, i * 0.08, i * 0.08 + 0.2)}>
-            <Figure x={200 + (i % 5) * 130} y={520 + Math.floor(i / 5) * 300} pose="stand" scale={0.55} seed={i} breathe={false} />
+            <Figure x={200 + (i % 5) * 130} y={520 + Math.floor(i / 5) * 300} pose="stand" scale={0.95} seed={i} breathe={false} />
           </g>
         ))}
         <Reveal delay={18}><Word y={180} size={54} color={RED}>all at once</Word></Reveal>
@@ -1076,7 +1076,7 @@ const SCENES: Record<string, React.FC> = {
         <Stars n={70} />
         <path d={`M ${W / 2} 40 L ${W / 2 - 48} ${40 + ramp(p, 0, 0.8) * 1000} L ${W / 2 + 48} ${40 + ramp(p, 0, 0.8) * 1000} Z`}
           fill="#9fc2e0" opacity={0.85} />
-        <circle cx={W / 2} cy={880} r={70} {...line(STROKE, "#6f8fae")} fill="#28405a" />
+        <circle cx={W / 2} cy={790} r={130} {...line(STROKE, "#6f8fae")} fill="#28405a" />
       </>
     );
   },
