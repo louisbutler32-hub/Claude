@@ -71,7 +71,12 @@
     "dinosaurs:thumb": "remotion still Dino-Thumbnail out/thumbnail-guess-the-dinosaur.png && remotion still Dino-Thumbnail-Board out/thumbnail-dinosaurs-all-12.png",
     "sea": "remotion render SeaVideo out/sea.mp4",
     "sea:audio": "python3 scripts/build-audio.py sea",
-    "sea:thumb": "remotion still Sea-Thumbnail out/thumbnail-guess-the-sea-creature.png && remotion still Sea-Thumbnail-Board out/thumbnail-sea-life-all-12.png"
+    "sea:thumb": "remotion still Sea-Thumbnail out/thumbnail-guess-the-sea-creature.png && remotion still Sea-Thumbnail-Board out/thumbnail-sea-life-all-12.png",
+    "earth2": "remotion render Earth2Video out/earth2.mp4",
+    "earth2:vo": "python3 scripts/make-vo.py earth2",
+    "earth2:sfx": "python3 scripts/make-sfx.py earth2",
+    "earth2:img": "python3 scripts/fetch-images.py earth",
+    "earth2:thumb": "remotion still Earth2-Thumb-A out/thumbnail-earth2-floor.jpg --image-format=jpeg --quality=92 && remotion still Earth2-Thumb-B out/thumbnail-earth2-flow.jpg --image-format=jpeg --quality=92"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",
