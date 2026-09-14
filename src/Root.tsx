@@ -72,6 +72,7 @@ import { MummyVideo, MUMMY_DURATION_SECONDS } from "./mummy/MummyVideo";
 import { KillersVideo, KILLERS_DURATION_SECONDS } from "./killers/KillersVideo";
 import { EarthVideo, EARTH_DURATION_SECONDS } from "./earth/EarthVideo";
 import { Earth2Video, EARTH2_DURATION_SECONDS } from "./earth2/Earth2Video";
+import { Earth2ThumbA, Earth2ThumbB } from "./earth2/Thumbnail";
 import { EarthThumbA, EarthThumbB } from "./earth/Thumbnail";
 import { KillersThumbA, KillersThumbB } from "./killers/Thumbnail";
 import { MummyThumbA, MummyThumbB } from "./mummy/Thumbnail";
@@ -109,6 +110,11 @@ export const RemotionRoot: React.FC = () => {
         width={1920}
         height={1080}
       />
+
+      <Composition id="Earth2-Thumb-A" component={Earth2ThumbA}
+        durationInFrames={1} fps={30} width={1920} height={1080} />
+      <Composition id="Earth2-Thumb-B" component={Earth2ThumbB}
+        durationInFrames={1} fps={30} width={1920} height={1080} />
 
       <Composition
         id="Earth-Thumbnail"
