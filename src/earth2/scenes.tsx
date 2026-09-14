@@ -974,6 +974,112 @@ const SCENES: Record<string, React.FC> = {
       <Reveal delay={8}><Word y={250} size={70} color="#e8e2d6">sleep well</Word></Reveal>
     </>
   ),
+
+  // added for density — the script was running short and the gap scaler
+  // would otherwise have stretched every pause to nearly a second.
+  "rain-acid": () => {
+    const p = useP();
+    const r = rng(17);
+    return (
+      <>
+        <Paper fill={NIGHT} />
+        <Ground y={880} fill="#242c39" />
+        {Array.from({ length: 34 }, (_, i) => {
+          const x = r() * W;
+          const y = ((r() * H + p * 900 + i * 40) % (H + 120)) - 60;
+          return <path key={i} d={`M ${x} ${y} L ${x - 6} ${y + 34}`} {...line(3, "#7fa8c4")} />;
+        })}
+        <Reveal delay={10}><Word y={230} size={58} color="#e8e2d6">slightly acidic</Word></Reveal>
+      </>
+    );
+  },
+  "lime-dissolve": () => {
+    const p = useP();
+    return (
+      <>
+        <Paper fill={NIGHT} />
+        <Ground y={420} fill="#242c39" />
+        <path d={blob(W / 2, 760, 150 + ramp(p, 0, 1) * 210, 33, 0.09)} {...line(0)} fill={NIGHT} />
+        <Word y={H - 90} size={44} color={FAINT} sub delay={8}>it never stops</Word>
+      </>
+    );
+  },
+  "hill-density": () => {
+    const p = useP();
+    return (
+      <>
+        <Paper fill={SKY} />
+        <Ground y={880} />
+        <Volcano x={1400} y={880} scale={1.0} flow={1} />
+        <Spread from={W} to={W / 2} y={810} fill="#8a8378" />
+        <Reveal delay={10}><Word y={190} size={58}>denser than air</Word></Reveal>
+      </>
+    );
+  },
+  "basin-resonance": () => {
+    const p = useP();
+    const a = Math.sin(p * 13) * 34;
+    const b = Math.sin(p * 5) * 34;
+    return (
+      <>
+        <Paper />
+        <path d={`M 200 ${520 + a} L 820 ${520 - a} L 820 660 L 200 660 Z`} {...line(STROKE)} fill={WATER} />
+        <text x={510} y={740} textAnchor="middle" fontSize={44} fill={GREY}
+          style={{ fontFamily: "'ComicRelief', 'Comic Sans MS', cursive" }}>a bath</text>
+        <path d={`M 1100 ${520 + b} L 1720 ${520 - b} L 1720 660 L 1100 660 Z`} {...line(STROKE)} fill={WATER} />
+        <text x={1410} y={740} textAnchor="middle" fontSize={44} fill={GREY}
+          style={{ fontFamily: "'ComicRelief', 'Comic Sans MS', cursive" }}>a loch</text>
+      </>
+    );
+  },
+  "basin-why": () => (
+    <>
+      <Paper />
+      <Reveal delay={4}><Word y={H / 2 - 20} size={110}>seiche</Word></Reveal>
+      <Reveal delay={16}><Word y={H / 2 + 110} size={46} color={GREY} sub>no wave. no tsunami. no local quake.</Word></Reveal>
+    </>
+  ),
+  "sun-fails": () => {
+    const p = useP();
+    const items = ["water", "fuel", "payments", "refrigeration"];
+    return (
+      <>
+        <Paper fill={NIGHT} />
+        {items.map((n, i) => (
+          <text key={n} x={W / 2} y={330 + i * 130} textAnchor="middle" fontSize={68}
+            fill={ramp(p, 0.12 + i * 0.18, 0.3 + i * 0.18) > 0.5 ? "#4a4640" : "#e8e2d6"}
+            style={{ fontFamily: "'ComicRelief', 'Comic Sans MS', cursive" }}>{n}</text>
+        ))}
+      </>
+    );
+  },
+  "sun-order": () => {
+    const p = useP();
+    return (
+      <>
+        <Paper />
+        <Photo slug="grid" x={1180} y={240} w={620} h={520} seed={4} credit={false} />
+        {Array.from({ length: 9 }, (_, i) => (
+          <g key={i} opacity={ramp(p, i * 0.08, i * 0.08 + 0.2)}>
+            <Figure x={200 + (i % 5) * 130} y={520 + Math.floor(i / 5) * 300} pose="stand" scale={0.55} seed={i} breathe={false} />
+          </g>
+        ))}
+        <Reveal delay={18}><Word y={180} size={54} color={RED}>all at once</Word></Reveal>
+      </>
+    );
+  },
+  "out-odds": () => {
+    const p = useP();
+    return (
+      <>
+        <Paper fill={NIGHT} />
+        <Stars n={70} />
+        <path d={`M ${W / 2} 40 L ${W / 2 - 48} ${40 + ramp(p, 0, 0.8) * 1000} L ${W / 2 + 48} ${40 + ramp(p, 0, 0.8) * 1000} Z`}
+          fill="#9fc2e0" opacity={0.85} />
+        <circle cx={W / 2} cy={880} r={70} {...line(STROKE, "#6f8fae")} fill="#28405a" />
+      </>
+    );
+  },
 };
 
 export const renderScene = (name: string) => {

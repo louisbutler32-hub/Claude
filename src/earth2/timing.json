@@ -1,1 +1,618 @@
-[]
+[
+ {
+  "id": "l0",
+  "scene": "bedroom",
+  "text": "You are asleep. It is half past eleven at night.",
+  "start": 0.0,
+  "end": 2.862
+ },
+ {
+  "id": "l1",
+  "scene": "bedroom-under",
+  "text": "Under your bed there is carpet, and under the carpet a slab of concrete.",
+  "start": 3.64,
+  "end": 7.645
+ },
+ {
+  "id": "l2",
+  "scene": "strata-sand",
+  "text": "Under the concrete there is sand.",
+  "start": 8.286,
+  "end": 10.36
+ },
+ {
+  "id": "l3",
+  "scene": "strata-lime",
+  "text": "Under the sand there is limestone, and the limestone has been dissolving quietly for forty thousand years.",
+  "start": 11.001,
+  "end": 17.043
+ },
+ {
+  "id": "l4",
+  "scene": "floor-goes",
+  "text": "Tonight it finishes.",
+  "start": 17.958,
+  "end": 19.477
+ },
+ {
+  "id": "l5",
+  "scene": "hole",
+  "text": "The hole that opened under Jeffrey Bush in Seffner, Florida, was about six metres across.",
+  "start": 20.621,
+  "end": 25.907
+ },
+ {
+  "id": "l6",
+  "scene": "hole-brother",
+  "text": "His brother heard him shout, ran in, and started digging with his hands.",
+  "start": 26.548,
+  "end": 30.295
+ },
+ {
+  "id": "l7",
+  "scene": "hole-deputy",
+  "text": "A sheriff's deputy pulled the brother back out as the floor kept going.",
+  "start": 30.936,
+  "end": 34.729
+ },
+ {
+  "id": "l8",
+  "scene": "hole-filled",
+  "text": "Jeffrey was never recovered. The house was demolished and the hole was filled with gravel.",
+  "start": 35.599,
+  "end": 40.503
+ },
+ {
+  "id": "l9",
+  "scene": "ground-truth",
+  "text": "There was no crack. No creak. No warning of any kind.",
+  "start": 41.647,
+  "end": 44.697
+ },
+ {
+  "id": "l10",
+  "scene": "ground-truth-2",
+  "text": "Limestone does not announce itself. It just stops holding.",
+  "start": 45.337,
+  "end": 48.852
+ },
+ {
+  "id": "l11",
+  "scene": "keep-going",
+  "text": "That is the ground. Let's keep you alive and go outside.",
+  "start": 49.882,
+  "end": 53.038
+ },
+ {
+  "id": "l12",
+  "scene": "shore",
+  "text": "You are standing on the shore of a lake in Cameroon. It is a beautiful lake.",
+  "start": 54.182,
+  "end": 58.636
+ },
+ {
+  "id": "l13",
+  "scene": "lake-deep",
+  "text": "It is also two hundred metres deep, and it sits in the throat of a dead volcano.",
+  "start": 59.414,
+  "end": 64.337
+ },
+ {
+  "id": "l14",
+  "scene": "lake-gas",
+  "text": "Carbon dioxide seeps up from the magma below and dissolves into the cold water at the bottom.",
+  "start": 64.978,
+  "end": 70.263
+ },
+ {
+  "id": "l15",
+  "scene": "lake-charge",
+  "text": "The weight of the water above holds it there. For years. For decades.",
+  "start": 70.904,
+  "end": 74.839
+ },
+ {
+  "id": "l16",
+  "scene": "lake-shake",
+  "text": "Then something disturbs it. A landslip. A cold night. Nobody is sure which.",
+  "start": 75.754,
+  "end": 80.36
+ },
+ {
+  "id": "l17",
+  "scene": "lake-flip",
+  "text": "The deep water rises a few metres \u2014 and the gas comes out of it like a shaken bottle.",
+  "start": 81.321,
+  "end": 86.209
+ },
+ {
+  "id": "l18",
+  "scene": "lake-column",
+  "text": "A column of carbon dioxide a hundred metres high leaves the lake in about twenty seconds.",
+  "start": 87.238,
+  "end": 92.709
+ },
+ {
+  "id": "l19",
+  "scene": "lake-heavy",
+  "text": "It is heavier than air. So it does not rise and disperse. It pours downhill.",
+  "start": 93.349,
+  "end": 97.925
+ },
+ {
+  "id": "l20",
+  "scene": "lake-villages",
+  "text": "It goes into the valleys at about seventy kilometres an hour, and it fills them.",
+  "start": 98.84,
+  "end": 103.079
+ },
+ {
+  "id": "l21",
+  "scene": "lake-breath",
+  "text": "You do not smell it. You do not choke. There is simply no oxygen in the breath you just took.",
+  "start": 103.719,
+  "end": 108.847
+ },
+ {
+  "id": "l22",
+  "scene": "lake-toll",
+  "text": "At Lake Nyos in nineteen eighty-six that killed one thousand seven hundred and forty-six people, and every animal for twenty-five kilometres.",
+  "start": 109.876,
+  "end": 118.069
+ },
+ {
+  "id": "l23",
+  "scene": "lake-slept",
+  "text": "Almost nobody woke up.",
+  "start": 119.213,
+  "end": 121.042
+ },
+ {
+  "id": "l24",
+  "scene": "lake-three",
+  "text": "Three lakes on Earth are known to do this. Nyos, Monoun, and Kivu.",
+  "start": 122.3,
+  "end": 126.726
+ },
+ {
+  "id": "l25",
+  "scene": "lake-kivu",
+  "text": "Kivu holds about a thousand times more gas, and two million people live around it.",
+  "start": 127.504,
+  "end": 132.32
+ },
+ {
+  "id": "l26",
+  "scene": "lake-pipes",
+  "text": "Nyos now has pipes in it, venting the gas on purpose, forever.",
+  "start": 133.349,
+  "end": 137.184
+ },
+ {
+  "id": "l27",
+  "scene": "hill",
+  "text": "Turn around. There is a hill behind the town.",
+  "start": 138.328,
+  "end": 140.857
+ },
+ {
+  "id": "l28",
+  "scene": "hill-smoke",
+  "text": "It has been smoking for two weeks and everybody has got used to it.",
+  "start": 141.681,
+  "end": 145.429
+ },
+ {
+  "id": "l29",
+  "scene": "hill-election",
+  "text": "In Saint-Pierre, Martinique, in nineteen oh two, there was an election coming, and the newspaper said the mountain was nothing to worry about.",
+  "start": 146.07,
+  "end": 153.545
+ },
+ {
+  "id": "l30",
+  "scene": "hill-collapse",
+  "text": "On the eighth of May the side of the mountain gives way.",
+  "start": 154.506,
+  "end": 157.437
+ },
+ {
+  "id": "l31",
+  "scene": "hill-flow",
+  "text": "What comes out is not lava. Lava you can walk away from.",
+  "start": 158.466,
+  "end": 162.07
+ },
+ {
+  "id": "l32",
+  "scene": "hill-flow-2",
+  "text": "This is rock, ash and gas at around a thousand degrees, moving as one fluid.",
+  "start": 162.71,
+  "end": 167.373
+ },
+ {
+  "id": "l33",
+  "scene": "hill-speed",
+  "text": "It reaches the town in about a minute, at roughly six hundred kilometres an hour.",
+  "start": 168.288,
+  "end": 173.011
+ },
+ {
+  "id": "l34",
+  "scene": "hill-instant",
+  "text": "It does not burn you the way fire burns you. It is far too fast for that.",
+  "start": 174.041,
+  "end": 178.368
+ },
+ {
+  "id": "l35",
+  "scene": "hill-hercul",
+  "text": "At Herculaneum, researchers found skulls where the brain tissue had turned to glass.",
+  "start": 179.283,
+  "end": 183.838
+ },
+ {
+  "id": "l36",
+  "scene": "hill-glass",
+  "text": "That takes a temperature spike of several hundred degrees and then an almost instant cooling.",
+  "start": 184.867,
+  "end": 189.96
+ },
+ {
+  "id": "l37",
+  "scene": "hill-toll",
+  "text": "Saint-Pierre had about twenty-eight thousand people in it. The flow took under a minute.",
+  "start": 191.104,
+  "end": 195.794
+ },
+ {
+  "id": "l38",
+  "scene": "hill-survivor",
+  "text": "Two survived. One of them, Ludger Sylbaris, was in an underground cell with one small grated window.",
+  "start": 196.938,
+  "end": 202.92
+ },
+ {
+  "id": "l39",
+  "scene": "hill-cell",
+  "text": "He had been locked up the night before, after a fight.",
+  "start": 203.881,
+  "end": 206.712
+ },
+ {
+  "id": "l40",
+  "scene": "hill-circus",
+  "text": "He was badly burned through the grate, and he lived. He later toured with a circus.",
+  "start": 207.81,
+  "end": 212.143
+ },
+ {
+  "id": "l41",
+  "scene": "basin",
+  "text": "Now stand by a lake with no volcano anywhere near it. Scotland will do.",
+  "start": 213.333,
+  "end": 217.923
+ },
+ {
+  "id": "l42",
+  "scene": "basin-calm",
+  "text": "It is a still day. Nothing is happening here at all.",
+  "start": 218.747,
+  "end": 221.737
+ },
+ {
+  "id": "l43",
+  "scene": "basin-lisbon",
+  "text": "Two thousand kilometres south, the seabed off Portugal moves, and Lisbon is destroyed.",
+  "start": 222.377,
+  "end": 227.252
+ },
+ {
+  "id": "l44",
+  "scene": "basin-wave",
+  "text": "The shaking that reaches Scotland is far too gentle for anyone to feel.",
+  "start": 228.213,
+  "end": 232.387
+ },
+ {
+  "id": "l45",
+  "scene": "basin-match",
+  "text": "But it arrives at almost exactly the rate the loch likes to rock at.",
+  "start": 233.302,
+  "end": 237.248
+ },
+ {
+  "id": "l46",
+  "scene": "basin-push",
+  "text": "Like a hand pushing a swing at the right moment, over and over.",
+  "start": 237.888,
+  "end": 241.401
+ },
+ {
+  "id": "l47",
+  "scene": "basin-slosh",
+  "text": "The whole loch tilts. The water climbs one end and falls away from the other.",
+  "start": 242.362,
+  "end": 246.707
+ },
+ {
+  "id": "l48",
+  "scene": "basin-obs",
+  "text": "In seventeen fifty-five, people across Scotland watched calm lochs stand up and start swinging.",
+  "start": 247.737,
+  "end": 252.956
+ },
+ {
+  "id": "l49",
+  "scene": "basin-norway",
+  "text": "After the Japanese earthquake of twenty eleven, Norwegian fjords did the same thing about thirty minutes later.",
+  "start": 253.871,
+  "end": 260.264
+ },
+ {
+  "id": "l50",
+  "scene": "basin-moor",
+  "text": "Boats were torn off their moorings in water that had felt nothing.",
+  "start": 261.293,
+  "end": 264.656
+ },
+ {
+  "id": "l51",
+  "scene": "cont",
+  "text": "Go deeper. Not under the house \u2014 under the continent.",
+  "start": 265.799,
+  "end": 268.655
+ },
+ {
+  "id": "l52",
+  "scene": "cont-chamber",
+  "text": "A supervolcano is not a mountain. It is a chamber of part-molten rock the size of a county.",
+  "start": 269.478,
+  "end": 275.584
+ },
+ {
+  "id": "l53",
+  "scene": "cont-toba",
+  "text": "Toba, in Sumatra, erupted about seventy-four thousand years ago and left a caldera you can see from orbit.",
+  "start": 276.499,
+  "end": 283.187
+ },
+ {
+  "id": "l54",
+  "scene": "cont-myth",
+  "text": "And here is where you have probably been told something that is not true.",
+  "start": 284.148,
+  "end": 287.829
+ },
+ {
+  "id": "l55",
+  "scene": "cont-bottleneck",
+  "text": "The story goes that Toba nearly wiped out humanity, and that everyone alive descends from a few thousand survivors.",
+  "start": 288.859,
+  "end": 295.581
+ },
+ {
+  "id": "l56",
+  "scene": "cont-genome",
+  "text": "Whole-genome sequencing does not find that crash. And archaeological sites either side of the ash layer show people simply carrying on.",
+  "start": 296.542,
+  "end": 304.462
+ },
+ {
+  "id": "l57",
+  "scene": "cont-real",
+  "text": "The eruption was real and enormous. The near-extinction is not supported.",
+  "start": 305.56,
+  "end": 309.929
+ },
+ {
+  "id": "l58",
+  "scene": "cont-warning",
+  "text": "There is something else about supervolcanoes nobody mentions.",
+  "start": 311.073,
+  "end": 314.684
+ },
+ {
+  "id": "l59",
+  "scene": "cont-months",
+  "text": "Of everything on this list, it is the one that would give you the most warning.",
+  "start": 315.645,
+  "end": 319.617
+ },
+ {
+  "id": "l60",
+  "scene": "cont-swarm",
+  "text": "Filling a chamber that size lifts the ground and sets off months of earthquake swarms. You would see it coming for a very long time.",
+  "start": 320.532,
+  "end": 327.769
+ },
+ {
+  "id": "l61",
+  "scene": "cont-irony",
+  "text": "The one everybody is frightened of is the one you could walk away from.",
+  "start": 328.913,
+  "end": 332.803
+ },
+ {
+  "id": "l62",
+  "scene": "sun",
+  "text": "Keep going out. Ninety-three million miles out.",
+  "start": 334.061,
+  "end": 336.891
+ },
+ {
+  "id": "l63",
+  "scene": "sun-cme",
+  "text": "The sun throws a billion tonnes of charged particles into space. Sometimes at us.",
+  "start": 337.715,
+  "end": 342.937
+ },
+ {
+  "id": "l64",
+  "scene": "sun-1859",
+  "text": "On the first of September eighteen fifty-nine, Richard Carrington watched a white flare cross a sunspot.",
+  "start": 343.898,
+  "end": 349.76
+ },
+ {
+  "id": "l65",
+  "scene": "sun-aurora",
+  "text": "Seventeen hours later the aurora reached the Caribbean. People in Boston read newspapers by it at one in the morning.",
+  "start": 350.675,
+  "end": 357.371
+ },
+ {
+  "id": "l66",
+  "scene": "sun-telegraph",
+  "text": "Telegraph lines threw sparks. Some operators were shocked. Some paper caught fire.",
+  "start": 358.4,
+  "end": 363.315
+ },
+ {
+  "id": "l67",
+  "scene": "sun-disconnect",
+  "text": "And a few operators found they could disconnect their batteries entirely and keep sending \u2014 the aurora was powering the line.",
+  "start": 364.276,
+  "end": 370.894
+ },
+ {
+  "id": "l68",
+  "scene": "sun-1859-grid",
+  "text": "In eighteen fifty-nine there were about a hundred and twenty thousand miles of telegraph wire in the world.",
+  "start": 372.038,
+  "end": 377.665
+ },
+ {
+  "id": "l69",
+  "scene": "sun-now",
+  "text": "Now picture the same storm hitting a planet wired end to end.",
+  "start": 378.58,
+  "end": 382.12
+ },
+ {
+  "id": "l70",
+  "scene": "sun-transformer",
+  "text": "The transformers at risk are the very large ones, and they are built to order.",
+  "start": 383.15,
+  "end": 387.621
+ },
+ {
+  "id": "l71",
+  "scene": "sun-lead",
+  "text": "A replacement can take a year or more to arrive. There is no warehouse full of spares.",
+  "start": 388.582,
+  "end": 393.374
+ },
+ {
+  "id": "l72",
+  "scene": "sun-17",
+  "text": "The warning, if we spot the flare, is about seventeen hours. Which sounds generous.",
+  "start": 394.472,
+  "end": 399.272
+ },
+ {
+  "id": "l73",
+  "scene": "sun-what",
+  "text": "Seventeen hours is enough to take a grid offline on purpose. It is not enough to rewire a country.",
+  "start": 400.233,
+  "end": 406.467
+ },
+ {
+  "id": "l74",
+  "scene": "out",
+  "text": "One more step out. All the way out.",
+  "start": 407.656,
+  "end": 409.863
+ },
+ {
+  "id": "l75",
+  "scene": "out-collapse",
+  "text": "A star far bigger than ours runs out of fuel and collapses.",
+  "start": 410.779,
+  "end": 414.291
+ },
+ {
+  "id": "l76",
+  "scene": "out-beams",
+  "text": "It fires two narrow beams from its poles, and in a few seconds each beam carries more energy than our sun will make in its entire life.",
+  "start": 415.252,
+  "end": 423.057
+ },
+ {
+  "id": "l77",
+  "scene": "out-narrow",
+  "text": "The beams are narrow. That is the only reason this is rare rather than routine.",
+  "start": 424.155,
+  "end": 428.77
+ },
+ {
+  "id": "l78",
+  "scene": "out-2022",
+  "text": "In October twenty twenty-two one of them arrived, from one point nine billion light years away.",
+  "start": 429.731,
+  "end": 435.156
+ },
+ {
+  "id": "l79",
+  "scene": "out-ion",
+  "text": "It was bright enough to disturb the upper atmosphere of this planet. From one point nine billion light years.",
+  "start": 436.071,
+  "end": 442.161
+ },
+ {
+  "id": "l80",
+  "scene": "out-close",
+  "text": "If one happened close, and pointed the right way, it would strip ozone off an entire hemisphere.",
+  "start": 443.26,
+  "end": 448.395
+ },
+ {
+  "id": "l81",
+  "scene": "out-warning",
+  "text": "The warning would be the light itself.",
+  "start": 449.425,
+  "end": 451.627
+ },
+ {
+  "id": "l82",
+  "scene": "out-none",
+  "text": "It travels at the speed of light. So does the information that it is coming.",
+  "start": 452.771,
+  "end": 456.936
+ },
+ {
+  "id": "l83",
+  "scene": "out-none-2",
+  "text": "There is no warning. There is no version of this where there is warning.",
+  "start": 457.966,
+  "end": 461.734
+ },
+ {
+  "id": "l84",
+  "scene": "close-1",
+  "text": "The ground under your feet. The lake. The hill. The water. The rock. The star. And the thing outside it all.",
+  "start": 462.992,
+  "end": 468.29
+ },
+ {
+  "id": "l85",
+  "scene": "close-2",
+  "text": "Most of it will never happen to you.",
+  "start": 469.32,
+  "end": 471.431
+ },
+ {
+  "id": "l86",
+  "scene": "close-3",
+  "text": "But it is all happening somewhere, to somebody, roughly on schedule.",
+  "start": 472.392,
+  "end": 476.042
+ },
+ {
+  "id": "l87",
+  "scene": "signoff",
+  "text": "Sleep well.",
+  "start": 477.186,
+  "end": 478.177
+ }
+]
