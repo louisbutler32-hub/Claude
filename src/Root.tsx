@@ -31,6 +31,10 @@ import { VehicleArtSheet } from "./vehicles/ArtSheet";
 import { DinoArtSheet } from "./dinosaurs/ArtSheet";
 import { SeaArtSheet } from "./sea/ArtSheet";
 import { SeaVideo, SEA_DURATION_IN_FRAMES } from "./sea/SeaVideo";
+import {
+  ColourVideo,
+  COLOUR_DURATION_IN_FRAMES,
+} from "./colours/ColourVideo";
 import { DinoVideo, DINO_DURATION_IN_FRAMES } from "./dinosaurs/DinoVideo";
 import {
   VehicleVideo,
@@ -48,6 +52,7 @@ import { NumberThumbA, NumberThumbB } from "./numbers/Thumbnail";
 import { VehicleThumbA, VehicleThumbB } from "./vehicles/Thumbnail";
 import { DinoThumbA, DinoThumbB } from "./dinosaurs/Thumbnail";
 import { SeaThumbA, SeaThumbB } from "./sea/Thumbnail";
+import { ColourThumbA, ColourThumbB } from "./colours/Thumbnail";
 import {
   CountingShort,
   SHORT_FRAMES,
@@ -338,6 +343,30 @@ export const RemotionRoot: React.FC = () => {
         id="Dino-ArtSheet"
         component={DinoArtSheet}
         durationInFrames={30}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="ColourVideo"
+        component={ColourVideo}
+        durationInFrames={COLOUR_DURATION_IN_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Colour-Thumbnail"
+        component={ColourThumbA}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Colour-Thumbnail-Board"
+        component={ColourThumbB}
+        durationInFrames={1}
         fps={30}
         width={1920}
         height={1080}

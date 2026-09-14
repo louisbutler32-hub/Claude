@@ -154,7 +154,7 @@ const GuessRoundScene: React.FC<{
               x={HERO_X}
               y={heroPosY}
               size={heroScale}
-              sil={frame < BEAT.reveal}
+              sil={!subject.noSilhouette && frame < BEAT.reveal}
             />
           </g>
         </svg>
@@ -165,7 +165,7 @@ const GuessRoundScene: React.FC<{
 
       {frame < BEAT.reveal ? (
         <WobbleText
-          text="What is that?"
+          text={subject.question ?? "What is that?"}
           start={BEAT.question}
           size={132}
           y={74}

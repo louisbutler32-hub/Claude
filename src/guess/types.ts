@@ -52,4 +52,12 @@ export type GuessSubject = {
   MidBeat: React.FC<{ id: string }>;
   /** produce ringing the title card */
   ringItems: RingItem[];
+  /**
+   * Skip the black-shadow phase — the item stays in full colour the whole
+   * round. For a subject where the thing being taught (a colour) cannot be
+   * read from a silhouette by definition.
+   */
+  noSilhouette?: boolean;
+  /** the on-screen prompt before the reveal. Defaults to "What is that?" */
+  question?: string;
 };

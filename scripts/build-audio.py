@@ -214,6 +214,38 @@ DINO_ROUNDS = [
      "Allosaurus lived by the rocks, hunting for its dinner.", "ROAR!"),
 ]
 
+# Colours: (id, Ana names it, Ana describes it, Emma on friend one, Emma on
+# friend two). No shadow beat and no board-slot verb — the reveal is the
+# colour itself, and the middle of the round is two cast members from other
+# episodes sharing the same colour. Black and white only have one real
+# "friend" on screen, so their second line is a general colour fact instead.
+COLOUR_ROUNDS = [
+    ("red", "It's red! Red.", "This juicy tomato is red.",
+     "Fire engines are red too!", "And so is the Allosaurus!"),
+    ("orange", "It's orange! Orange.", "This crunchy carrot is orange.",
+     "Lions have orange fur!", "And the clownfish is orange too!"),
+    ("yellow", "It's yellow! Yellow.", "This sweet corn is yellow.",
+     "School buses are yellow!", "And so is the duck!"),
+    ("green", "It's green! Green.", "This bushy broccoli is green.",
+     "Frogs are green too!", "And so is the Brachiosaurus!"),
+    ("blue", "It's blue! Blue.", "This big whale is blue.",
+     "The train is blue too!", "And so is the Stegosaurus!"),
+    ("purple", "It's purple! Purple.", "This shiny eggplant is purple.",
+     "The squid is purple too!", "And so is the Pterodactyl!"),
+    ("pink", "It's pink! Pink.", "This round little pig is pink.",
+     "The octopus is pink too!", "And so is the Parasaurolophus!"),
+    ("brown", "It's brown! Brown.", "This lumpy potato is brown.",
+     "The dog is brown too!", "And so is the mushroom!"),
+    ("black", "It's black! Black.", "This penguin's coat is black.",
+     "The cat is black too!", "Black is the colour of a dark night sky."),
+    ("white", "It's white! White.", "This fluffy sheep is white.",
+     "The boat is white too!", "White is the colour of snow and fluffy clouds."),
+    ("grey", "It's grey! Grey.", "This big elephant is grey.",
+     "The shark is grey too!", "And so is the police car!"),
+    ("rainbow", "It's a rainbow! Rainbow.", "A rainbow has every colour in it.",
+     "Red, orange, yellow, and green!", "Blue and purple too — all together!"),
+]
+
 # Sea creatures: (id, Ana names it, Ana describes it, Emma says where it lives, sound)
 SEA_ROUNDS = [
     ("octopus", "It's an octopus! Octopus.", "A pink octopus with eight arms.",
@@ -251,6 +283,7 @@ SUBJECTS = {
     "veggies": dict(rounds=VEGGIE_ROUNDS, kind="grow", word="vegetable"),
     "animals": dict(rounds=ANIMAL_ROUNDS, kind="live", word="animal"),
     "numbers": dict(rounds=NUMBER_ROUNDS, kind="count", word="number"),
+    "colours": dict(rounds=COLOUR_ROUNDS, kind="colour", word="colour"),
 }
 if SUBJECT not in SUBJECTS:
     sys.exit(f"unknown subject {SUBJECT!r}; try {', '.join(SUBJECTS)}")
@@ -291,6 +324,10 @@ ARTICLE = {
     "seahorse": "the seahorse", "whale": "the whale", "turtle": "the turtle",
     "dolphin": "the dolphin", "jellyfish": "the jellyfish",
     "lobster": "the lobster", "squid": "the squid",
+    "red": "red", "orange": "orange", "yellow": "yellow", "green": "green",
+    "blue": "blue", "purple": "purple", "pink": "pink", "brown": "brown",
+    "black": "black", "white": "white", "grey": "grey",
+    "rainbow": "the rainbow",
 }
 
 # a little variety so twelve rounds don't read identically
@@ -299,6 +336,12 @@ QUESTIONS = [
     "Hmm, what is that?", "What is that?", "Ooh, what could that be?",
     "What is that?", "Hmm, what is that?", "What is that?",
     "Ooh, what is that?", "What is that?", "What is that?",
+]
+COLOUR_QUESTIONS = [
+    "What colour is it?", "Ooh, what colour is it?", "What colour is it?",
+    "Hmm, what colour is it?", "What colour is it?", "Ooh, what colour could that be?",
+    "What colour is it?", "Hmm, what colour is it?", "What colour is it?",
+    "Ooh, what colour is it?", "What colour is it?", "What colour is it?",
 ]
 PEEKS_GROW = [
     "Let's go and find some vegetables! Ooh, something is hiding in the bushes.",
@@ -384,12 +427,26 @@ PEEKS_GO = [
     "Look! Can you see what's peeking out?",
     "One more is hiding. Can you find it?",
 ]
+PEEKS_COLOUR = [
+    "Let's learn some colours! Ooh, something is hiding in the bushes.",
+    "Look! Another colour is hiding.",
+    "Ooh! What colour is hiding now?",
+    "Here comes another one. Can you see it?",
+    "Look! A colour is peeking out.",
+    "Ooh! Something is hiding again.",
+    "What colour is behind the bushes?",
+    "Look, a colour is hopping along!",
+    "Here comes another colour. What could it be?",
+    "Ooh! Something is hiding in the bushes.",
+    "Look! Can you see what colour is peeking out?",
+    "One more colour is hiding. Can you find it?",
+]
 PEEKS = {
     "grow": PEEKS_GROW,
     "live": {
         "animals": PEEKS_LIVE, "dinosaurs": PEEKS_DINO, "sea": PEEKS_SEA,
     }.get(SUBJECT, PEEKS_LIVE),
-    "count": PEEKS_COUNT, "go": PEEKS_GO,
+    "count": PEEKS_COUNT, "go": PEEKS_GO, "colour": PEEKS_COLOUR,
 }.get(CONF["kind"], PEEKS_GROW)  # the Short has no peek beat
 
 # ── counting layout, mirrored from src/numbers/numbers.ts ─────────────
@@ -429,11 +486,13 @@ def vo_schedule():
             "animals": "Chomp chomp! Animals!",
             "dinosaurs": "Chomp chomp! Dinosaurs!",
             "sea": "Chomp chomp! Sea Life!",
-        }[SUBJECT],
+        }.get(SUBJECT, "Chomp chomp! Animals!"),
         "count": "Chomp chomp! Numbers!",
         "go": "Chomp chomp! Vehicles!",
+        "colour": "Chomp chomp! Colours!",
     }[CONF["kind"]]
     lines = [(18, opener, "ana", "intro")]
+    q_list = COLOUR_QUESTIONS if CONF["kind"] == "colour" else QUESTIONS
 
     for n, row in enumerate(ROUNDS):
         vid, name_line, desc_line, mid_line = row[:4]
@@ -442,11 +501,25 @@ def vo_schedule():
 
         # narrator sets the beat up, the kid plays the guessing game
         lines.append((b + B_PEEK, PEEKS[n], "emma", f"{n:02d}-{vid}-peek"))
-        lines.append((b + B_QUESTION, QUESTIONS[n], "ana", f"{n:02d}-{vid}-q"))
+        lines.append((b + B_QUESTION, q_list[n], "ana", f"{n:02d}-{vid}-q"))
         lines.append((b + B_NAME, name_line, "ana", f"{n:02d}-{vid}-name"))
         lines.append((b + B_DESC, desc_line, "ana", f"{n:02d}-{vid}-desc"))
 
         ask_at = B_ASK
+
+        if CONF["kind"] == "colour":
+            # no board verb, no shadow, no sound beat — just the colour
+            # turning up on two other cast members (one for black/white)
+            line2 = row[4]
+            lines.append((b + 850, mid_line, "emma", f"{n:02d}-{vid}-friend1"))
+            lines.append((b + 985, line2, "emma", f"{n:02d}-{vid}-friend2"))
+            lines.append((b + 1252, f"Can you find {the} on the board?",
+                          "emma", f"{n:02d}-{vid}-ask"))
+            praise = (f"You found it! That's {NUMBERS[n]}."
+                      if n < N_ROUNDS - 1 else
+                      "That's all twelve! You learned every colour! Hooray!")
+            lines.append((b + B_COUNT, praise, "emma", f"{n:02d}-{vid}-count"))
+            continue
 
         if CONF["kind"] == "count":
             # the narrator leads, then the kid counts each thing onto the
