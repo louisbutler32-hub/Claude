@@ -86,6 +86,9 @@ import { MansaMusa, MANSA_DURATION_IN_FRAMES } from "./maps/mansa";
 import { Shelterbelt, SHELTERBELT_DURATION_IN_FRAMES } from "./maps/shelterbelt";
 import { MinecraftShort, MINECRAFT_FRAMES } from "./minecraft/MinecraftShort";
 import { MinecraftThumb } from "./minecraft/Thumbnail";
+import { PebbloSheet } from "./minecraft/PebbloSheet";
+import { CharacterOptions } from "./minecraft/characters";
+import { DigShort, DigThumb, DIG_FRAMES } from "./minecraft-dig/DigShort";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -99,6 +102,39 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
         defaultProps={{ audio: "audio/minecraft-mix.mp3" }}
+      />
+      <Composition
+        id="DigShort"
+        component={DigShort}
+        durationInFrames={DIG_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{ audio: null }}
+      />
+      <Composition
+        id="Dig-Thumbnail"
+        component={DigThumb}
+        durationInFrames={1}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="Character-Options"
+        component={CharacterOptions}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Pebblo-Sheet"
+        component={PebbloSheet}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
       />
       <Composition
         id="Minecraft-Thumbnail"
