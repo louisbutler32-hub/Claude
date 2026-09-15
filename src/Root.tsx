@@ -89,7 +89,7 @@ import { MinecraftThumb } from "./minecraft/Thumbnail";
 import { PebbloSheet } from "./minecraft/PebbloSheet";
 import { CharacterOptions } from "./minecraft/characters";
 import { PvpShort, PvpThumb, PVP_FRAMES } from "./minecraft-pvp/PvpShort";
-import { BrandAvatar, BrandBanner, BrandBannerGuides } from "./brand/BlockQuake";
+import { BrandAvatar, BrandBanner, BrandBannerGuides } from "./brand/OofCraft";
 import { DigShort, DigThumb, DIG_FRAMES } from "./minecraft-dig/DigShort";
 
 export const RemotionRoot: React.FC = () => {

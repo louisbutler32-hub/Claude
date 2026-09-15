@@ -7,9 +7,8 @@ import { Sword } from "../minecraft/mobs";
 import { Item } from "../minecraft/pixels";
 
 /**
- * Channel art for the rebrand of @LaughQuakees: "BlockQuake" — Minecraft
- * animations with Pix. The name keeps the old channel's "Quake" so the
- * handle and the memory of it carry over, and puts blocks in front of it.
+ * Channel art for the rebrand of @LaughQuakees: "Oof Craft" — Minecraft
+ * animations with Pix.
  *
  * Avatar: 800×800, Pix's face filling the circle YouTube crops to.
  * Banner: 2560×1440 as uploaded; everything that matters sits inside the
@@ -25,10 +24,10 @@ const DIRT = "#665e52";
 const Wordmark: React.FC<{ x: number; y: number; size: number }> = ({ x, y, size }) => (
   <g transform={`translate(${x} ${y})`} fontFamily="Silkscreen, monospace" textAnchor="middle">
     <text y={0} fontSize={size} fill="#ffffff" stroke={NAVY} strokeWidth={size * 0.16} strokeLinejoin="round" paintOrder="stroke">
-      BLOCK
+      OOF
     </text>
     <text y={size * 1.05} fontSize={size} fill={ORANGE} stroke={NAVY} strokeWidth={size * 0.16} strokeLinejoin="round" paintOrder="stroke">
-      QUAKE
+      CRAFT
     </text>
   </g>
 );

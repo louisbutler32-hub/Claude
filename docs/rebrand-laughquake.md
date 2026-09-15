@@ -1,4 +1,4 @@
-# Rebranding @LaughQuakees into BlockQuake
+# Rebranding @LaughQuakees into Oof Craft
 
 ## What the channel is right now
 
@@ -35,12 +35,11 @@ matters is that a new viewer who taps the channel name sees only Minecraft.
 
 ## The new identity
 
-- **Name:** BlockQuake. It keeps "Quake" so the current handle still makes
-  sense and any of the five subscribers recognise it, and puts blocks in
-  front of it.
-- **Handle:** try `@blockquake`; if taken, `@blockquakes`, then
-  `@blockquaketoons`. Change it in Studio → Customisation → Basic info. One
-  handle change per fortnight is allowed, so pick before you type.
+- **Name:** Oof Craft. "Oof" is the game's own damage sound and the noise
+  every one of these videos ends on.
+- **Handle:** try `@oofcraft`; if taken, `@oofcrafts`, then `@oofcrafttoons`.
+  Change it in Studio → Customisation → Basic info. One handle change per
+  fortnight is allowed, so pick before you type.
 - **Character:** Pix (orange hoodie, headset, green eyes). Every Short,
   every thumbnail, the avatar and the banner use the same character, which
   is how a viewer learns to recognise the channel in a feed.
@@ -99,7 +98,7 @@ not landing and the caption needs to be sharper.
 ## Order of operations
 
 1. Set the eight animal Shorts to Private.
-2. Rename to BlockQuake, change the handle, paste the description, set the
+2. Rename to Oof Craft, change the handle, paste the description, set the
    keywords, country, audience and default upload settings.
 3. Upload the avatar and banner.
 4. Upload the PvP Short as the first post, with the upload copy from
