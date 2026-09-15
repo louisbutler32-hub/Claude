@@ -88,7 +88,7 @@ export const BrandBanner: React.FC<{ guides?: boolean }> = ({ guides = false }) 
         <text x={cx - 280} y={cy + 162} textAnchor="middle" fontFamily="Selawik, sans-serif" fontSize={40} fill="#ffffff">
           Minecraft animations · new every week
         </text>
-        <Pix x={cx + 400} y={cy - 110} scale={0.82} pose={raised} mood="joy" hands={({ R }) => <Sword x={R[0] + 30} y={R[1] - 60} px={7} rotate={-20} />} />
+        <Pix x={cx + 400} y={cy - 12} scale={0.82} pose={raised} mood="joy" hands={({ R }) => <Sword x={R[0] + 30} y={R[1] - 60} px={7} rotate={-20} />} />
         <Item name="goldApple" x={cx + 220} y={cy + 150} px={8} />
         <Item name="cobble" x={cx + 640} y={cy + 160} px={8} />
         {guides && (
