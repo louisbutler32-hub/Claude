@@ -18,6 +18,11 @@ export const loadMinecraftFonts = () => {
       { weight: "400" }
     ),
     new FontFace(
+      "Silkscreen",
+      `url(${staticFile("fonts/Silkscreen-Regular.ttf")}) format("truetype")`,
+      { weight: "400" }
+    ),
+    new FontFace(
       "ComicRelief",
       `url(${staticFile("fonts/ComicRelief.ttf")}) format("truetype")`,
       { weight: "400" }

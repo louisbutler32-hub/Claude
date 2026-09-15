@@ -88,6 +88,7 @@ import { MinecraftShort, MINECRAFT_FRAMES } from "./minecraft/MinecraftShort";
 import { MinecraftThumb } from "./minecraft/Thumbnail";
 import { PebbloSheet } from "./minecraft/PebbloSheet";
 import { CharacterOptions } from "./minecraft/characters";
+import { PvpShort, PvpThumb, PVP_FRAMES } from "./minecraft-pvp/PvpShort";
 import { DigShort, DigThumb, DIG_FRAMES } from "./minecraft-dig/DigShort";
 
 export const RemotionRoot: React.FC = () => {
@@ -115,6 +116,23 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="Dig-Thumbnail"
         component={DigThumb}
+        durationInFrames={1}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="PvpShort"
+        component={PvpShort}
+        durationInFrames={PVP_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{ audio: null }}
+      />
+      <Composition
+        id="Pvp-Thumbnail"
+        component={PvpThumb}
         durationInFrames={1}
         fps={30}
         width={1080}

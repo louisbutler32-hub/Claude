@@ -141,6 +141,51 @@ grid: nothing. Turns the grid upside down: nothing. Pours a bucket of water
 over it: nothing. Cut to Pebblo living in a house made entirely of slabs,
 resigned. Stop.
 
+## Second batch — chasing the reference's biggest hit
+
+The channel's runaway hit is the *Java vs Bedrock* comparison. Everything
+about that format travels: the labels do the setup without a caption, the
+two halves are the same scene so the edit is cheap, and every Minecraft
+player has a side to argue for in the comments. So the second batch is
+built around comparisons and one-line premises with a built-in argument.
+
+### 13. Java Players vs Bedrock Players: PvP  *(built — `src/minecraft-pvp/`, with Volt)*
+Java swings, waits for the attack-cooldown bar, swings; three hits, the
+zombie drops, precise. Bedrock has no cooldown: a spam-click blur that
+evaporates the zombie, then the cow that wanders in, then the chicken,
+then the ground itself, while the sword wears down to a handle. Cut back
+to Java, still waiting for the bar, face reading "meh". Stop.
+**Why this one:** it is the most-argued difference between the editions,
+it is entirely visual, it escalates four times in seven seconds, and it
+gives the robot's pixel face its best gag — the screen switching from
+"focus" to "joy" mid-blur.
+
+### 14. Java Players vs Bedrock Players: the boat
+Java: Volt paddles a boat onto a block of ice and it slides off the edge
+of the map. Bedrock: Volt puts a horse in the boat, then a villager, then
+a cow, and sails the whole zoo through lava. Java, staring, in the ocean.
+
+### 15. Minecrafters who leave the game while flying
+Caption. Volt in creative mode, mid-air over a lava lake, checks the time.
+Logs out. Logs back in: survival. One frame of screen-face realisation.
+Stop before the splash.
+
+### 16. When you finally find diamonds
+Caption. Volt spots blue in the wall; the screen face goes to "love".
+Mines it. It is a single diamond. Then the pickaxe breaks. Then a creeper.
+Hold on the "off" screen. Stop.
+
+### 17. Every Minecraft server's spawn area
+Caption. Volt arrives at spawn: a single sign, "welcome!". Zoom out: a
+crater the size of a country, forty half-built dirt towers, one chest with
+a single rotten flesh in it, a sign reading "free diamonds → lava". Stop.
+
+### 18. What the villager thinks is happening
+Two labels: "You" / "The villager". You: trading a stack of paper for one
+emerald, delighted. The villager: watching a robot hand over its life's
+savings for a rock, "Hrmm". Escalate: you hand over a hundred paper, get
+one book. Villager's face. Stop.
+
 ## Packaging notes for the batch
 
 - Title formula that the references use: the caption, plus an emoji, plus
