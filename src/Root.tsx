@@ -89,6 +89,7 @@ import { MinecraftThumb } from "./minecraft/Thumbnail";
 import { PebbloSheet } from "./minecraft/PebbloSheet";
 import { CharacterOptions } from "./minecraft/characters";
 import { PvpShort, PvpThumb, PVP_FRAMES } from "./minecraft-pvp/PvpShort";
+import { BrandAvatar, BrandBanner, BrandBannerGuides } from "./brand/BlockQuake";
 import { DigShort, DigThumb, DIG_FRAMES } from "./minecraft-dig/DigShort";
 
 export const RemotionRoot: React.FC = () => {
@@ -121,6 +122,9 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      <Composition id="Brand-Avatar" component={BrandAvatar} durationInFrames={1} fps={30} width={800} height={800} />
+      <Composition id="Brand-Banner" component={BrandBanner} durationInFrames={1} fps={30} width={2560} height={1440} />
+      <Composition id="Brand-Banner-Guides" component={BrandBannerGuides} durationInFrames={1} fps={30} width={2560} height={1440} />
       <Composition
         id="PvpShort"
         component={PvpShort}

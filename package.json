@@ -88,6 +88,7 @@
     "dig:audio": "remotion render DigShort out/dig-straight-down.mp4 --props='{\"audio\":\"audio/dig-mix.mp3\"}'",
     "dig:thumb": "remotion still Dig-Thumbnail out/thumbnail-dig-straight-down.jpg --image-format=jpeg --quality=92",
     "pvp": "remotion render PvpShort out/java-vs-bedrock-pvp.mp4",
+    "brand": "remotion still Brand-Avatar out/brand-avatar-800.png && remotion still Brand-Banner out/brand-banner-2560x1440.png && remotion still Brand-Banner-Guides out/brand-banner-guides.png",
     "pvp:mix": "python3 scripts/build-pvp-audio.py",
     "pvp:audio": "remotion render PvpShort out/java-vs-bedrock-pvp.mp4 --props='{\"audio\":\"audio/pvp-mix.mp3\"}'",
     "pvp:thumb": "remotion still Pvp-Thumbnail out/thumbnail-java-vs-bedrock-pvp.jpg --image-format=jpeg --quality=92",
