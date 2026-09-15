@@ -1,9 +1,8 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { loadMinecraftFonts } from "../minecraft/fonts";
-import { POSE, pose, limb } from "../minecraft/figure";
+import { POSE } from "../minecraft/figure";
 import { Pix } from "../minecraft/pix";
-import { Sword } from "../minecraft/mobs";
 import { Item } from "../minecraft/pixels";
 
 /**
@@ -59,7 +58,6 @@ const Hills: React.FC<{ y: number }> = ({ y }) => (
 export const BrandBanner: React.FC<{ guides?: boolean }> = ({ guides = false }) => {
   loadMinecraftFonts();
   const cx = 1280, cy = 720;
-  const raised = pose({ armR: limb(96, -30, 70, -150), armL: limb(-80, 60, -96, 130) });
   return (
     <AbsoluteFill style={{ backgroundColor: SKY }}>
       <svg width={2560} height={1440} viewBox="0 0 2560 1440" style={{ position: "absolute", inset: 0 }}>
@@ -82,14 +80,15 @@ export const BrandBanner: React.FC<{ guides?: boolean }> = ({ guides = false }) 
         <rect x={0} y={930} width={2560} height={510} fill={GRASS} />
         <path d="M0,930 H2560" stroke={NAVY} strokeWidth={8} />
         {/* centre band: wordmark left of centre, Pix right of centre */}
-        <Wordmark x={cx - 280} y={cy - 40} size={130} />
-        <rect x={cx - 640} y={cy + 118} width={720} height={64} rx={32} fill={NAVY} />
-        <text x={cx - 280} y={cy + 162} textAnchor="middle" fontFamily="Selawik, sans-serif" fontSize={40} fill="#ffffff">
+        <Wordmark x={cx} y={cy - 40} size={130} />
+        <rect x={cx - 360} y={cy + 118} width={720} height={64} rx={32} fill={NAVY} />
+        <text x={cx} y={cy + 162} textAnchor="middle" fontFamily="Selawik, sans-serif" fontSize={40} fill="#ffffff">
           Minecraft animations · new every week
         </text>
-        <Pix x={cx + 400} y={cy - 12} scale={0.82} pose={raised} mood="joy" hands={({ R }) => <Sword x={R[0] + 30} y={R[1] - 60} px={7} rotate={-20} />} />
-        <Item name="goldApple" x={cx + 220} y={cy + 150} px={8} />
-        <Item name="cobble" x={cx + 640} y={cy + 160} px={8} />
+        <Item name="goldApple" x={cx - 560} y={cy + 150} px={8} />
+        <Item name="pickaxe" x={cx - 640} y={cy + 20} px={8} rotate={-10} />
+        <Item name="cobble" x={cx + 560} y={cy + 160} px={8} />
+        <Item name="redstone" x={cx + 660} y={cy + 40} px={7} />
         {guides && (
           <g fill="none" stroke="#ff0000" strokeWidth={4} strokeDasharray="20 12">
             <rect x={(2560 - 1546) / 2} y={(1440 - 423) / 2} width={1546} height={423} />
