@@ -1,5 +1,9 @@
 # Remotion video projects
 
+- **`MinecraftShort`** — "Minecrafters every time they lose their stuff", a
+  17-second vertical Short rebuilt shot for shot from a reference: caption
+  band, stick figure, creeper, cave, lava, spiders, the despawn
+  (`src/minecraft/`, [docs](src/minecraft/README.md)).
 - **`PlanetsVideo`** — "How Long Would You Last on Every Planet?" (8:00, all
   eight) — a doodle-style science essay in the white-paper/black-marker look,
   built to match a reference channel shot for shot

@@ -84,10 +84,31 @@ import { MummyThumbA, MummyThumbB } from "./mummy/Thumbnail";
 import { MongolsEurope, MONGOLS_DURATION_IN_FRAMES } from "./maps/mongols";
 import { MansaMusa, MANSA_DURATION_IN_FRAMES } from "./maps/mansa";
 import { Shelterbelt, SHELTERBELT_DURATION_IN_FRAMES } from "./maps/shelterbelt";
+import { MinecraftShort, MINECRAFT_FRAMES } from "./minecraft/MinecraftShort";
+import { MinecraftThumb } from "./minecraft/Thumbnail";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* ── Minecraft meme Short ── */}
+      <Composition
+        id="MinecraftShort"
+        component={MinecraftShort}
+        durationInFrames={MINECRAFT_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{ audio: "audio/minecraft-mix.mp3" }}
+      />
+      <Composition
+        id="Minecraft-Thumbnail"
+        component={MinecraftThumb}
+        durationInFrames={1}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
       {/* ── doodle science essays ── */}
       <Composition
         id="FaceVideo"

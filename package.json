@@ -79,7 +79,11 @@
     "earth2:vo": "python3 scripts/make-vo.py earth2",
     "earth2:sfx": "python3 scripts/make-sfx.py earth2",
     "earth2:img": "python3 scripts/fetch-images.py earth",
-    "earth2:thumb": "remotion still Earth2-Thumb-A out/thumbnail-earth2-floor.jpg --image-format=jpeg --quality=92 && remotion still Earth2-Thumb-B out/thumbnail-earth2-flow.jpg --image-format=jpeg --quality=92"
+    "earth2:thumb": "remotion still Earth2-Thumb-A out/thumbnail-earth2-floor.jpg --image-format=jpeg --quality=92 && remotion still Earth2-Thumb-B out/thumbnail-earth2-flow.jpg --image-format=jpeg --quality=92",
+    "minecraft": "remotion render MinecraftShort out/minecraft-short.mp4",
+    "minecraft:silent": "remotion render MinecraftShort out/minecraft-short-silent.mp4 --props='{\"audio\":null}'",
+    "minecraft:thumb": "remotion still Minecraft-Thumbnail out/thumbnail-minecraft-short.jpg --image-format=jpeg --quality=92",
+    "minecraft:sheet": "remotion render MinecraftShort out/minecraft-seq --sequence --scale=0.25 --image-format=jpeg --props='{\"audio\":null}'"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",
