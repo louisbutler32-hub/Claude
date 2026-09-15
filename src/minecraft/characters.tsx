@@ -235,12 +235,12 @@ export const CharacterOptions: React.FC = () => {
   loadMinecraftFonts();
   return (
     <AbsoluteFill style={{ backgroundColor: "#f4efe6" }}>
-      <svg width={1920} height={1080} viewBox="0 0 1920 1080" style={{ position: "absolute", inset: 0 }}>
+      <svg width={1920} height={1800} viewBox="0 0 1920 1800" style={{ position: "absolute", inset: 0 }}>
         <text x={50} y={64} fontFamily="Selawik, sans-serif" fontSize={44} fill="#222">
           Character concepts — pick one
         </text>
         {OPTIONS.map(({ name, blurb, C, scale }, r) => {
-          const cy = 178 + r * 192;
+          const cy = 300 + r * 300;
           return (
             <g key={name}>
               <text x={50} y={cy - 40} fontFamily="Selawik, sans-serif" fontSize={40} fill="#222">
@@ -255,7 +255,7 @@ export const CharacterOptions: React.FC = () => {
               <C x={1660} y={cy + 40} scale={scale} mood="happy" walk />
               {r === 0 &&
                 [...MOODS, "walk"].map((m, i) => (
-                  <text key={m} x={520 + i * 210 + (i === 5 ? 90 : 0)} y={100} textAnchor="middle" fontFamily="Selawik, sans-serif" fontSize={24} fill="#777">
+                  <text key={m} x={520 + i * 210 + (i === 5 ? 90 : 0)} y={118} textAnchor="middle" fontFamily="Selawik, sans-serif" fontSize={24} fill="#777">
                     {m}
                   </text>
                 ))}
