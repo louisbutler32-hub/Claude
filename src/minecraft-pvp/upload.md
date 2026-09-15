@@ -29,8 +29,15 @@ every week.
 🥕 Subscribe to Pebblo Pebble:
 https://www.youtube.com/@PebbloPebble
 
+Music: "Sneaky Snitch" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0
+https://creativecommons.org/licenses/by/4.0/
+
 #minecraft #minecraftshorts #minecraftmemes #javavsbedrock #minecraftanimation #shorts
 ```
+
+The music credit is not optional: Kevin MacLeod's tracks are Creative
+Commons Attribution, and the licence needs that block in the description.
 
 No chapter list: 13 seconds is too short for one.
 
@@ -54,7 +61,8 @@ channel, unless the owner decides the Minecraft line is general audience.
 
 Thumbnail: `thumbnail-java-vs-bedrock-pvp.jpg` (`npm run pvp:thumb`).
 
-Sound: the render is silent. The references run a music bed plus the
-game's own hit and crit sounds. Add the track in the Shorts editor at
-upload, or drop a licensed file at `public/audio/pvp-mix.mp3` and render
-with `npm run pvp:audio`.
+Sound: `scripts/build-pvp-audio.py` mixes the track from three files in
+`public/audio/src/` (gitignored — the owner supplies them): Sneaky Snitch,
+the game's hit sound and its damage sound. The tune runs at normal speed
+under both Java halves and sped up under the Bedrock half; a hit lands on
+every swing and the damage sound on every kill. Then `npm run pvp:audio`.
