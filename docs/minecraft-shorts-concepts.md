@@ -149,7 +149,7 @@ two halves are the same scene so the edit is cheap, and every Minecraft
 player has a side to argue for in the comments. So the second batch is
 built around comparisons and one-line premises with a built-in argument.
 
-### 13. Java Players vs Bedrock Players: PvP  *(built — `src/minecraft-pvp/`, with Volt)*
+### 13. Java Players vs Bedrock Players: PvP  *(built — `src/minecraft-pvp/`, with our Steve)*
 Java swings, waits for the attack-cooldown bar, swings; three hits, the
 zombie drops, precise. Bedrock has no cooldown: a spam-click blur that
 evaporates the zombie, then the cow that wanders in, then the chicken,
@@ -157,8 +157,14 @@ then the ground itself, while the sword wears down to a handle. Cut back
 to Java, still waiting for the bar, face reading "meh". Stop.
 **Why this one:** it is the most-argued difference between the editions,
 it is entirely visual, it escalates four times in seven seconds, and it
-gives the robot's pixel face its best gag — the screen switching from
-"focus" to "joy" mid-blur.
+gives the pixel face its best gag — switching from "focus" to "joy"
+mid-blur.
+
+**The character.** After the concept sheet, the pick was a version of the
+game's own default character rather than a new mascot: our Steve is a chibi
+with a head the size of his torso, thick black outlines round every block,
+and a pixel face that changes (the real one never does). It is in
+`src/minecraft/steve.tsx` and takes the same poses as everything else.
 
 ### 14. Java Players vs Bedrock Players: the boat
 Java: Volt paddles a boat onto a block of ice and it slides off the edge

@@ -23,13 +23,13 @@ Java Players vs Bedrock Players: PvP ⚔️
 Java: swing, wait for the little bar, swing. Bedrock: no cooldown, no
 mercy, no zombie, no cow, no chicken, no ground.
 
-Volt is a small robot with a screen for a face. New Minecraft animations
-every week.
+Our Steve, redrawn: big head, thick lines, and a face that actually
+changes. New Minecraft animations every week.
 
 🥕 Subscribe to Pebblo Pebble:
 https://www.youtube.com/@PebbloPebble
 
-Music: "Sneaky Snitch" Kevin MacLeod (incompetech.com)
+Music: "Sneaky Snitch" and "Run Amok" by Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0
 https://creativecommons.org/licenses/by/4.0/
 
@@ -44,7 +44,7 @@ No chapter list: 13 seconds is too short for one.
 ## Tags
 
 ```
-minecraft, minecraft shorts, java vs bedrock, java players vs bedrock players, bedrock players, java players, minecraft pvp, attack cooldown, minecraft animation, minecraft meme, minecraft memes, minecraft funny, minecraft logic, minecraft cartoon, minecraft comparison, gaming animation, minecraft short, animation meme, robot animation, shorts
+minecraft, minecraft shorts, java vs bedrock, java players vs bedrock players, bedrock players, java players, minecraft pvp, attack cooldown, minecraft animation, minecraft meme, minecraft memes, minecraft funny, minecraft logic, minecraft cartoon, minecraft comparison, gaming animation, minecraft short, animation meme, steve animation, shorts
 ```
 
 (389 characters, inside YouTube's 500.)
@@ -61,8 +61,12 @@ channel, unless the owner decides the Minecraft line is general audience.
 
 Thumbnail: `thumbnail-java-vs-bedrock-pvp.jpg` (`npm run pvp:thumb`).
 
-Sound: `scripts/build-pvp-audio.py` mixes the track from three files in
+Sound: `scripts/build-pvp-audio.py` mixes the track from four files in
 `public/audio/src/` (gitignored — the owner supplies them): Sneaky Snitch,
-the game's hit sound and its damage sound. The tune runs at normal speed
-under both Java halves and sped up under the Bedrock half; a hit lands on
-every swing and the damage sound on every kill. Then `npm run pvp:audio`.
+Run Amok, the game's hit sound and its damage sound. Sneaky Snitch runs
+under both Java halves, Run Amok sped up under the Bedrock half; a hit lands
+on every swing and the damage sound on every kill. Then `npm run pvp:audio`.
+
+Loop: the last frame is identical to the first (the cooldown bar fills
+exactly as the Short ends), and the closing music starts the tune that the
+opening continues, so it replays without a seam.

@@ -5,11 +5,14 @@
 
 Reads three files the channel owner supplies in public/audio/src/ (gitignored):
   sneaky-snitch.mp3   Kevin MacLeod, CC BY 4.0 — credit line goes in the description
+  run-amok.mp3        Kevin MacLeod, CC BY 4.0 — the fast half, sped up
   mc-hit.mp3          the game's hit sound
   mc-damage.mp3       the game's damage sound
-and writes public/audio/pvp-mix.mp3 on the Short's frame grid: the tune at
-normal speed under the two Java halves, the same tune sped up under the
-Bedrock half, a hit on every swing, a damage sound on every kill.
+and writes public/audio/pvp-mix.mp3 on the Short's frame grid: Sneaky
+Snitch under the two Java halves, Run Amok sped up under the Bedrock half,
+a hit on every swing, a damage sound on every kill. The closing Java half
+plays the tune from its start and the opening half continues from there,
+so the music is seamless when the Short loops.
 """
 import os, subprocess, sys, numpy as np
 
@@ -46,25 +49,27 @@ def fade(clip, a=0.02, b=0.02):
     return c
 
 if __name__ == "__main__":
-    for name in ("sneaky-snitch.mp3", "mc-hit.mp3", "mc-damage.mp3"):
+    for name in ("sneaky-snitch.mp3", "run-amok.mp3", "mc-hit.mp3", "mc-damage.mp3"):
         if not os.path.exists(os.path.join(SRC, name)):
             sys.exit("missing %s — see the docstring" % os.path.join(SRC, name))
     total = int(sec(FRAMES) * SR)
     mix = np.zeros((total, 2), dtype=np.float32)
 
-    # the tune, normal and sped up (pitch up too, the meme way)
+    # the slow tune, and the fast one sped up (pitch up too, the meme way)
     slow = decode(os.path.join(SRC, "sneaky-snitch.mp3"))
-    fast = decode(os.path.join(SRC, "sneaky-snitch.mp3"), "asetrate=%d,aresample=%d,atempo=1.25" % (int(SR * 1.3), SR))
+    fast = decode(os.path.join(SRC, "run-amok.mp3"), "asetrate=%d,aresample=%d,atempo=1.2" % (int(SR * 1.18), SR))
     MUSIC = 0.55
     java1 = (sec(0), sec(130))
     bed = (sec(130), sec(320))
     java2 = (sec(320), sec(FRAMES))
     def seg(src, t0, t1, src_offset):
         a = int(src_offset * SR); n = int((t1 - t0) * SR)
-        return fade(src[a:a + n], 0.05, 0.08)
-    place(mix, seg(slow, *java1, 0.0), java1[0], MUSIC)
+        return fade(src[a:a + n], 0.03, 0.06)
+    # the loop: the closing half starts the tune, the opening half continues it
+    java2_len = java2[1] - java2[0]
+    place(mix, seg(slow, *java1, java2_len), java1[0], MUSIC)
     place(mix, seg(fast, *bed, 0.0), bed[0], MUSIC)
-    place(mix, seg(slow, *java2, java1[1] - java1[0]), java2[0], MUSIC)
+    place(mix, seg(slow, *java2, 0.0), java2[0], MUSIC)
 
     # the two effects, trimmed to the hit itself
     hit = decode(os.path.join(SRC, "mc-hit.mp3"), "atrim=0.74:0.95,asetpts=PTS-STARTPTS")

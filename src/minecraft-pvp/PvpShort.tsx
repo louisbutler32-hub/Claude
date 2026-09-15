@@ -5,16 +5,17 @@ import { ease, lerpPose, limb, Pose, pose } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { Chicken, Cow, Sword, Tag, Zombie } from "../minecraft/mobs";
 import { Item, Puff } from "../minecraft/pixels";
-import { Volt, VoltMood } from "../minecraft/volt";
+import { Steve, SteveMood } from "../minecraft/steve";
 import { Overworld, OverworldProps } from "../minecraft/worlds";
 
 /**
- * "Java Players vs Bedrock Players: PvP" — 13 seconds, silent.
+ * "Java Players vs Bedrock Players: PvP" — 13 seconds.
  *
  * Java has an attack cooldown: swing, wait for the little bar, swing.
  * Bedrock has no cooldown: a spam-click blur that evaporates the zombie,
  * then the cow, then the chicken, then the ground. Cut back to Java, still
- * waiting for the bar. Hard stop.
+ * waiting for the bar — which fills exactly as the loop closes, so the last
+ * frame hands straight back to the first.
  */
 
 export const PVP_FRAMES = 390;
@@ -54,7 +55,7 @@ const Cooldown: React.FC<{ x: number; y: number; fill: number }> = ({ x, y, fill
 
 /* ---------------------------------------------------------------- */
 
-const JavaShot: React.FC<{ from: number; swings: number[]; killAt?: number; end: number; startMood?: VoltMood }> = ({ swings, killAt, end, startMood = "focus" }) => {
+const JavaShot: React.FC<{ from: number; swings: number[]; killAt?: number; end: number; startMood?: SteveMood; fillOver?: number; zombie?: boolean }> = ({ swings, killAt, end, startMood = "focus", fillOver, zombie = true }) => {
   const f = useCurrentFrame();
   // arm: 4 frames up-to-strike at each swing, then back to raised over 8
   let t = 0;
@@ -68,26 +69,26 @@ const JavaShot: React.FC<{ from: number; swings: number[]; killAt?: number; end:
   const hitFrames = swings.map((s) => s + 3);
   const hit = hitFrames.some((h) => f >= h && f < h + 6);
   const knock = hitFrames.reduce((k, h) => (f >= h ? k + Math.max(0, 60 - (f - h) * 6) : k), 0);
-  const cooldownFill = lastSwing < 0 ? 1 : Math.min(1, (f - lastSwing - 3) / 22);
+  const cooldownFill = fillOver !== undefined ? Math.min(1, f / fillOver) : lastSwing < 0 ? 1 : Math.min(1, (f - lastSwing - 3) / 22);
   const zEnter = ease(f, 0, 30);
   const zx = interpolate(zEnter, [0, 1], [1250, ZOMBIE_X]) + Math.min(knock, 60);
   const dead = killAt !== undefined && f >= killAt;
   const fallT = dead ? ease(f, killAt!, killAt! + 10) : 0;
   const gone = dead && f > killAt! + 12;
-  const mood: VoltMood = dead ? (f > killAt! + 20 ? "happy" : "plain") : f < 10 ? startMood : t > 0 ? "angry" : cooldownFill < 1 ? "focus" : "plain";
+  const mood: SteveMood = dead ? (f > killAt! + 20 ? "happy" : "plain") : fillOver !== undefined ? (cooldownFill < 1 ? startMood : "plain") : t > 0 ? "angry" : cooldownFill < 1 ? "focus" : "plain";
   const tap = cooldownFill < 1 && !dead ? Math.abs(Math.sin(f * 0.9)) * 10 : 0;
   return (
     <g>
       <Overworld />
       <OverworldProps />
-      {!gone && (
+      {!gone && zombie && (
         <g transform={`translate(${zx} ${GROUND - 322}) rotate(${fallT * 90} 0 322)`}>
           <Zombie x={0} y={0} scale={1.4} flash={hit} walk={zEnter < 1 ? f / 3 : 0} flip />
         </g>
       )}
       {dead && f <= killAt! + 16 && [0, 1, 2, 3].map((i) => <Puff key={i} x={zx - 60 + i * 50} y={GROUND - 120 - (f - killAt!) * 8 - i * 12} r={22} opacity={Math.max(0, 1 - (f - killAt!) / 14)} />)}
       {hit && <Crit x={zx} y={GROUND - 200} seed={`j${f}`} />}
-      <Volt x={VOLT_X} y={GROUND - 250} scale={1.5} pose={p} mood={mood} hands={({ R }) => swordAt(R, t)} />
+      <Steve x={VOLT_X} y={GROUND - 250} scale={1.5} pose={p} mood={mood} hands={({ R }) => swordAt(R, t)} />
       {/* foot tap while waiting */}
       {tap > 0 && <rect x={VOLT_X + 30} y={GROUND - 6 - tap} width={40} height={6} fill="#141414" opacity={0.25} />}
       {!dead && <Cooldown x={VOLT_X} y={GROUND - 640} fill={cooldownFill} />}
@@ -116,7 +117,7 @@ const BedrockShot: React.FC = () => {
   const holeT = ease(f, 150, 185);
   const worn = 1 - ease(f, 100, 180);
   const shake = spam ? [(random(`sx${f}`) - 0.5) * 12, (random(`sy${f}`) - 0.5) * 12] : [0, 0];
-  const mood: VoltMood = f < 20 ? "plain" : f < 35 ? "sly" : f < 60 ? "angry" : "joy";
+  const mood: SteveMood = f < 20 ? "plain" : f < 35 ? "sly" : f < 60 ? "angry" : "joy";
   const drops = (at: number, items: { name: "bread" | "goldIngot" | "ironIngot" | "cobble" }[], x: number) =>
     f >= at && f < at + 30
       ? items.map((it, i) => {
@@ -155,7 +156,7 @@ const BedrockShot: React.FC = () => {
             </g>
           );
         })}
-      <Volt x={VOLT_X} y={GROUND - 250} scale={1.5} pose={p} mood={mood} hands={({ R }) => swordAt(R, t, worn)} />
+      <Steve x={VOLT_X} y={GROUND - 250} scale={1.5} pose={p} mood={mood} hands={({ R }) => swordAt(R, t, worn)} />
       <Tag x={VOLT_X} y={GROUND - 720} text="Bedrock Players" />
     </g>
   );
@@ -171,7 +172,7 @@ export const PvpShort: React.FC<{ audio?: string | null }> = ({ audio = null }) 
       <Sequence from={SHOT.java[0]} durationInFrames={SHOT.java[1] - SHOT.java[0]} name="java">
         <AbsoluteFill>
           <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
-            <JavaShot from={0} swings={[34, 62, 90]} killAt={94} end={130} />
+            <JavaShot from={0} swings={[34, 62, 90]} killAt={94} end={130} startMood="plain" />
           </svg>
         </AbsoluteFill>
       </Sequence>
@@ -185,7 +186,7 @@ export const PvpShort: React.FC<{ audio?: string | null }> = ({ audio = null }) 
       <Sequence from={SHOT.back[0]} durationInFrames={SHOT.back[1] - SHOT.back[0]} name="back">
         <AbsoluteFill>
           <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
-            <JavaShot from={0} swings={[-20]} end={70} startMood="meh" />
+            <JavaShot from={0} swings={[]} end={70} startMood="meh" fillOver={64} zombie={false} />
           </svg>
         </AbsoluteFill>
       </Sequence>
@@ -206,7 +207,7 @@ export const PvpThumb: React.FC = () => {
         <path d="M0,750 H1080" stroke="#000" strokeWidth={9} />
         <Tag x={300} y={330} text="Java Players" size={44} />
         <Cooldown x={300} y={410} fill={0.4} />
-        <Volt x={300} y={790} scale={1.6} pose={RAISED} mood="meh" hands={({ R }) => swordAt(R, 0)} />
+        <Steve x={300} y={790} scale={1.6} pose={RAISED} mood="meh" hands={({ R }) => swordAt(R, 0)} />
         <Tag x={720} y={1130} text="Bedrock Players" size={44} />
         {[0.25, 0.5, 0.75].map((k) => {
           const g = lerpPose(RAISED, STRIKE, k);
@@ -217,7 +218,7 @@ export const PvpThumb: React.FC = () => {
             </g>
           );
         })}
-        <Volt x={720} y={1590} scale={1.6} pose={STRIKE} mood="joy" hands={({ R }) => swordAt(R, 1)} />
+        <Steve x={720} y={1590} scale={1.6} pose={STRIKE} mood="joy" hands={({ R }) => swordAt(R, 1)} />
         <Crit x={1000} y={1670} seed="thumb" n={9} spread={300} />
         <text x={540} y={1020} textAnchor="middle" fontFamily="Silkscreen, monospace" fontSize={150} fill="#ffffff" stroke="#141414" strokeWidth={10} paintOrder="stroke">
           PvP
