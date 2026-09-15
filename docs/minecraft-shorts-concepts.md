@@ -195,6 +195,76 @@ emerald, delighted. The villager: watching a robot hand over its life's
 savings for a rock, "Hrmm". Escalate: you hand over a hundred paper, get
 one book. Villager's face. Stop.
 
+## Third batch
+
+### 19. Java Players vs Bedrock Players: the chunk loads
+Java: Pix walks over a hill and the world is simply there. Bedrock: Pix
+walks over the hill into nothing, a white void, and stands on one floating
+grass block while trees pop into existence one by one around him. He sits
+down to wait. A cow loads in mid-air and falls past him. Stop.
+
+### 20. POV: you hear a cave noise
+Caption. Pix mining in a quiet tunnel, torch on the wall. Nothing happens.
+He keeps mining. Nothing happens. He looks left. He looks right. He places
+a block behind him, then one in front, then seals himself in a one-block
+box, torch inside, wide eyes. Stop on the eyes. (The whole gag is that
+there was never anything there.)
+
+### 21. When you fall in the void with your best gear
+Caption. Pix in full enchanted armour looking down over the edge of the End
+island. A slip. Falling, calm face, checks his inventory as he falls: the
+items scroll past. He waves goodbye to each one. Cut to the respawn screen.
+Stop.
+
+### 22. The pillager who saw you place a bed
+Two labels: "You" / "The village". You put a bed down in a village and lie
+in it. The village: every bell rings, the iron golem turns to look, thirty
+villagers converge on your bed and stand round it while you sleep. Stop.
+
+### 23. Wither skeleton when you have milk
+Caption: "The Wither effect vs one bucket of milk". Dramatic: the black
+hearts, Pix withering, the screen darkens, the boss music beat. He drinks
+the milk. Full health. The wither skeleton stands there. Pix shrugs. Stop.
+
+### 24. Every Minecraft house you built at age 9
+Caption. A quick montage, each one a single held frame: the dirt cube, the
+cobblestone tower with a lava moat, the house that is just a hole in a
+hill, the "mansion" that is one huge oak-plank box with glass, the base
+inside a mountain with a two-block-tall front door. Last: your current
+house. It is the dirt cube. Stop.
+
+### 25. Enchanting table logic
+Recipe format. Pix puts a diamond pickaxe on the table: "Efficiency IV, 30
+levels". Puts a wooden pickaxe on: "Silk Touch, Unbreaking III, Fortune
+III, Mending" for 1 level. He looks at the camera. Stop.
+
+### 26. What the creeper thinks it's doing
+Two labels: "You" / "The creeper". You: horror, sprinting away from a
+hissing green thing. The creeper: walking up to say hello, arms out for a
+hug, hisses because it is nervous, then everything goes white. The
+creeper's last frame is a smile. Stop.
+
+### 27. Minecrafters when the pickaxe breaks one block from diamonds
+Caption. Pix mining toward blue in the wall, happy, happier. The durability
+bar shrinks. One block away: the pickaxe shatters. He punches the stone
+with his fist. Two seconds pass. The block does not break. Stop on the fist.
+
+### 28. Every multiplayer server chat
+Caption. Pix at spawn. Chat messages appear one per beat, each sillier than
+the last: "anyone have diamonds", "free op", "who griefed my house",
+"i did", "im telling", "server restarting in 5 min". Pix logs out. Stop.
+
+### 29. The horse that does not want to be tamed
+Caption: "Taming a horse in Minecraft". Pix mounts. Bucked off. Mounts.
+Bucked off. Mounts, hearts appear, tamed. He puts a saddle on. The horse
+walks into the lake and stands there. Stop.
+
+### 30. Java Players vs Bedrock Players: the crash
+Java: Pix in a huge redstone contraption, game stutters, "Not responding",
+he waits, it recovers. Bedrock: Pix places one torch. Black screen. Xbox
+home menu. He stares at his controller. Stop. (The most-shared Bedrock
+complaint there is.)
+
 ## Packaging notes for the batch
 
 - Title formula that the references use: the caption, plus an emoji, plus
