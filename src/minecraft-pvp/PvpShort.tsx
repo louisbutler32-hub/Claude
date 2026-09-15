@@ -5,7 +5,7 @@ import { ease, lerpPose, limb, Pose, pose } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { Chicken, Cow, Sword, Tag, Zombie } from "../minecraft/mobs";
 import { Item, Puff } from "../minecraft/pixels";
-import { Steve, SteveMood } from "../minecraft/steve";
+import { Pix, PixMood } from "../minecraft/pix";
 import { Overworld, OverworldProps } from "../minecraft/worlds";
 
 /**
@@ -55,7 +55,7 @@ const Cooldown: React.FC<{ x: number; y: number; fill: number }> = ({ x, y, fill
 
 /* ---------------------------------------------------------------- */
 
-const JavaShot: React.FC<{ from: number; swings: number[]; killAt?: number; end: number; startMood?: SteveMood; fillOver?: number; zombie?: boolean }> = ({ swings, killAt, end, startMood = "focus", fillOver, zombie = true }) => {
+const JavaShot: React.FC<{ from: number; swings: number[]; killAt?: number; end: number; startMood?: PixMood; fillOver?: number; zombie?: boolean }> = ({ swings, killAt, end, startMood = "focus", fillOver, zombie = true }) => {
   const f = useCurrentFrame();
   // arm: 4 frames up-to-strike at each swing, then back to raised over 8
   let t = 0;
@@ -75,7 +75,7 @@ const JavaShot: React.FC<{ from: number; swings: number[]; killAt?: number; end:
   const dead = killAt !== undefined && f >= killAt;
   const fallT = dead ? ease(f, killAt!, killAt! + 10) : 0;
   const gone = dead && f > killAt! + 12;
-  const mood: SteveMood = dead ? (f > killAt! + 20 ? "happy" : "plain") : fillOver !== undefined ? (cooldownFill < 1 ? startMood : "plain") : t > 0 ? "angry" : cooldownFill < 1 ? "focus" : "plain";
+  const mood: PixMood = dead ? (f > killAt! + 20 ? "happy" : "plain") : fillOver !== undefined ? (cooldownFill < 1 ? startMood : "plain") : t > 0 ? "angry" : cooldownFill < 1 ? "focus" : "plain";
   const tap = cooldownFill < 1 && !dead ? Math.abs(Math.sin(f * 0.9)) * 10 : 0;
   return (
     <g>
@@ -88,7 +88,7 @@ const JavaShot: React.FC<{ from: number; swings: number[]; killAt?: number; end:
       )}
       {dead && f <= killAt! + 16 && [0, 1, 2, 3].map((i) => <Puff key={i} x={zx - 60 + i * 50} y={GROUND - 120 - (f - killAt!) * 8 - i * 12} r={22} opacity={Math.max(0, 1 - (f - killAt!) / 14)} />)}
       {hit && <Crit x={zx} y={GROUND - 200} seed={`j${f}`} />}
-      <Steve x={VOLT_X} y={GROUND - 250} scale={1.5} pose={p} mood={mood} hands={({ R }) => swordAt(R, t)} />
+      <Pix x={VOLT_X} y={GROUND - 250} scale={1.5} pose={p} mood={mood} hands={({ R }) => swordAt(R, t)} />
       {/* foot tap while waiting */}
       {tap > 0 && <rect x={VOLT_X + 30} y={GROUND - 6 - tap} width={40} height={6} fill="#141414" opacity={0.25} />}
       {!dead && <Cooldown x={VOLT_X} y={GROUND - 640} fill={cooldownFill} />}
@@ -117,7 +117,7 @@ const BedrockShot: React.FC = () => {
   const holeT = ease(f, 150, 185);
   const worn = 1 - ease(f, 100, 180);
   const shake = spam ? [(random(`sx${f}`) - 0.5) * 12, (random(`sy${f}`) - 0.5) * 12] : [0, 0];
-  const mood: SteveMood = f < 20 ? "plain" : f < 35 ? "sly" : f < 60 ? "angry" : "joy";
+  const mood: PixMood = f < 20 ? "plain" : f < 35 ? "sly" : f < 60 ? "angry" : "joy";
   const drops = (at: number, items: { name: "bread" | "goldIngot" | "ironIngot" | "cobble" }[], x: number) =>
     f >= at && f < at + 30
       ? items.map((it, i) => {
@@ -156,7 +156,7 @@ const BedrockShot: React.FC = () => {
             </g>
           );
         })}
-      <Steve x={VOLT_X} y={GROUND - 250} scale={1.5} pose={p} mood={mood} hands={({ R }) => swordAt(R, t, worn)} />
+      <Pix x={VOLT_X} y={GROUND - 250} scale={1.5} pose={p} mood={mood} hands={({ R }) => swordAt(R, t, worn)} />
       <Tag x={VOLT_X} y={GROUND - 720} text="Bedrock Players" />
     </g>
   );
@@ -207,7 +207,7 @@ export const PvpThumb: React.FC = () => {
         <path d="M0,750 H1080" stroke="#000" strokeWidth={9} />
         <Tag x={300} y={330} text="Java Players" size={44} />
         <Cooldown x={300} y={410} fill={0.4} />
-        <Steve x={300} y={790} scale={1.6} pose={RAISED} mood="meh" hands={({ R }) => swordAt(R, 0)} />
+        <Pix x={300} y={790} scale={1.6} pose={RAISED} mood="meh" hands={({ R }) => swordAt(R, 0)} />
         <Tag x={720} y={1130} text="Bedrock Players" size={44} />
         {[0.25, 0.5, 0.75].map((k) => {
           const g = lerpPose(RAISED, STRIKE, k);
@@ -218,7 +218,7 @@ export const PvpThumb: React.FC = () => {
             </g>
           );
         })}
-        <Steve x={720} y={1590} scale={1.6} pose={STRIKE} mood="joy" hands={({ R }) => swordAt(R, 1)} />
+        <Pix x={720} y={1590} scale={1.6} pose={STRIKE} mood="joy" hands={({ R }) => swordAt(R, 1)} />
         <Crit x={1000} y={1670} seed="thumb" n={9} spread={300} />
         <text x={540} y={1020} textAnchor="middle" fontFamily="Silkscreen, monospace" fontSize={150} fill="#ffffff" stroke="#141414" strokeWidth={10} paintOrder="stroke">
           PvP

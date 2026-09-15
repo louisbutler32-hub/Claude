@@ -23,7 +23,7 @@ Java Players vs Bedrock Players: PvP ⚔️
 Java: swing, wait for the little bar, swing. Bedrock: no cooldown, no
 mercy, no zombie, no cow, no chicken, no ground.
 
-Our Steve, redrawn: big head, thick lines, and a face that actually
+Meet Pix: orange hoodie, headset, green eyes, and a face that actually
 changes. New Minecraft animations every week.
 
 🥕 Subscribe to Pebblo Pebble:
@@ -44,7 +44,7 @@ No chapter list: 13 seconds is too short for one.
 ## Tags
 
 ```
-minecraft, minecraft shorts, java vs bedrock, java players vs bedrock players, bedrock players, java players, minecraft pvp, attack cooldown, minecraft animation, minecraft meme, minecraft memes, minecraft funny, minecraft logic, minecraft cartoon, minecraft comparison, gaming animation, minecraft short, animation meme, steve animation, shorts
+minecraft, minecraft shorts, java vs bedrock, java players vs bedrock players, bedrock players, java players, minecraft pvp, attack cooldown, minecraft animation, minecraft meme, minecraft memes, minecraft funny, minecraft logic, minecraft cartoon, minecraft comparison, gaming animation, minecraft short, animation meme, pix animation, shorts
 ```
 
 (389 characters, inside YouTube's 500.)
