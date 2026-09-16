@@ -114,8 +114,8 @@ export const DarienThumb: React.FC = () => (
       camera={{ lon: -92, lat: 12, scale: 3000 }}
       hud={
         <>
-          <Title lines={[{ text: "THE HOLE IN", size: 104 }, { text: "THE LONGEST", size: 104 }, { text: "ROAD ON EARTH", color: "#ffd23f", size: 104 }]} y={190} />
-          <Bottom text="30,000 KM · ONE 106 KM GAP" />
+          <Title lines={[{ text: "YOU CAN'T DRIVE", size: 100 }, { text: "ALASKA → ARGENTINA", size: 88 }, { text: "GUESS WHY", color: "#ffd23f", size: 150 }]} y={170} />
+          <Bottom text="30,000 KM OF ROAD · ONE 106 KM HOLE" />
         </>
       }
     >

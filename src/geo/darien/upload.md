@@ -1,13 +1,13 @@
-# Why You Can't Drive From Alaska to Argentina
+# Why Can't You Drive From Alaska to Argentina?
 
 ## Title
 
-Why You Can't Drive From Alaska to Argentina 🚗🌴
+Why Can't You Drive From Alaska to Argentina? 🚗🌴
 
 Alternates:
 
-- The 106 km Hole in the World's Longest Road 🛣️
-- The Road That Stops in the Jungle 🌴🚧 #shorts
+- You Can't Drive From Alaska to Argentina. Guess Why 🤔
+- The 106 km Hole in the World's Longest Road 🛣️ #shorts
 
 ## Description
 
