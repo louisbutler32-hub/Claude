@@ -115,7 +115,7 @@ export const DarienThumb: React.FC = () => (
       hud={
         <>
           <Title lines={[{ text: "YOU CAN'T DRIVE", size: 100 }, { text: "ALASKA → ARGENTINA", size: 88 }, { text: "GUESS WHY", color: "#ffd23f", size: 150 }]} y={170} />
-          <Bottom text="30,000 KM OF ROAD · ONE 106 KM HOLE" />
+          <Bottom text="30,000 KM · ONE 106 KM HOLE" />
         </>
       }
     >
