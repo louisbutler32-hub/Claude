@@ -1,9 +1,9 @@
-# Upload copy — What the creeper thinks it's doing
+# Upload copy — POV: A creeper walks up to you (both sides)
 
 ## Title
 
 ```
-What the creeper thinks it's doing 🥺💥 #shorts
+POV: A creeper walks up to you (both sides) 🥺💥 #shorts
 ```
 
 **Alternates:**

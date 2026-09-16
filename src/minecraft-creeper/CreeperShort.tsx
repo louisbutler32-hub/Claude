@@ -18,6 +18,15 @@ import { Overworld, OverworldProps } from "../minecraft/worlds";
  */
 
 export const CREEPER_FRAMES = 390;
+export const POV = ["POV: A creeper", "walks up to you", "(both sides)"];
+const BAND = 450;
+
+/** the reference's POV band: white, centred, three lines */
+const PovBand: React.FC = () => (
+  <div style={{ position: "absolute", left: 0, top: 0, width: W, height: BAND, background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <div style={{ fontFamily: "Selawik, 'Segoe UI', sans-serif", fontSize: 100, lineHeight: "104px", color: "#000", textAlign: "center", whiteSpace: "pre" }}>{POV.join("\n")}</div>
+  </div>
+);
 const SHOT = { you: [0, 165], creeper: [165, 390] } as const;
 const GROUND = 1500;
 
@@ -129,6 +138,7 @@ export const CreeperShort: React.FC<{ audio?: string | null }> = ({ audio = null
           </svg>
         </AbsoluteFill>
       </Sequence>
+      <PovBand />
     </AbsoluteFill>
   );
 };
@@ -147,9 +157,10 @@ export const CreeperThumb: React.FC = () => {
         <g transform="rotate(-14 300 900)">
           <Steve x={300} y={700} scale={1.5} pose={walkPose(0.3, 120, pose({ armL: limb(-90, 40, -140, -20), armR: limb(90, 40, 140, -20) }), false)} mood="scream" flip />
         </g>
-        <Tag x={720} y={1040} text="The creeper" size={44} />
-        <CreeperMob x={720} y={1560} scale={1.5} face="happy" arms flip hearts={3} />
+        <Tag x={720} y={1180} text="The creeper" size={44} />
+        <CreeperMob x={720} y={1620} scale={1.3} face="happy" arms flip hearts={3} />
       </svg>
+      <PovBand />
     </AbsoluteFill>
   );
 };
