@@ -125,6 +125,8 @@ export const Highlight: React.FC<{
 
 export const Wash: React.FC<{
   shape?: string;
+  /** several shapes washed as one: an empire's satellites */
+  shapes?: string[];
   ring?: LonLat[];
   color: string;
   opacity?: number;
@@ -137,6 +139,7 @@ export const Wash: React.FC<{
   dashed?: boolean;
 }> = ({
   shape,
+  shapes,
   ring,
   color,
   opacity = 0.55,
@@ -151,7 +154,7 @@ export const Wash: React.FC<{
   const { t, shape: get, ring: toPath } = useGeo();
   const a = alive(t, from, until, fade);
   if (a <= 0.001) return null;
-  const d = shape ? get(shape).d : ring ? toPath(ring) : "";
+  const d = shapes ? shapes.map((n) => get(n).d).join("") : shape ? get(shape).d : ring ? toPath(ring) : "";
   if (!d) return null;
   const drawn = easeOut(beat(t, from, draw));
   const fill = easeOut(beat(t, from + draw * 0.3, 0.8));

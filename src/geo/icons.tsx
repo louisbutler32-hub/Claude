@@ -29,7 +29,10 @@ export type IconKey =
   | "arrow"
   | "car"
   | "cross"
-  | "check";
+  | "check"
+  | "missile"
+  | "flagpost"
+  | "factory";
 
 const GOLD = "#f4c542";
 const GOLD_DARK = "#b8860b";
@@ -257,6 +260,35 @@ export const Icon: React.FC<{ icon: IconKey; size?: number; color?: string }> = 
       break;
     case "check":
       body = <path d="M18 54 L42 76 L84 26" stroke="#2ecc71" strokeWidth={14} strokeLinecap="round" strokeLinejoin="round" fill="none" />;
+      break;
+    case "missile":
+      body = (
+        <>
+          <path d="M50 6 C 62 20, 66 44, 62 72 H38 C34 44, 38 20, 50 6 Z" fill={c} />
+          <path d="M38 56 L22 76 H38 Z M62 56 L78 76 H62 Z" fill={c} />
+          <path d="M42 72 H58 L54 82 H46 Z" fill="#e63946" />
+          <path d="M44 84 q6 12 12 0" stroke="#ffb703" strokeWidth={6} fill="none" strokeLinecap="round" />
+          <circle cx={50} cy={34} r={5} fill="#0d2f45" />
+        </>
+      );
+      break;
+    case "flagpost":
+      body = (
+        <>
+          <rect x={22} y={8} width={6} height={84} rx={3} fill={c} />
+          <path d="M28 12 H84 L72 30 L84 48 H28 Z" fill="#e63946" />
+        </>
+      );
+      break;
+    case "factory":
+      body = (
+        <>
+          <path d="M10 90 V50 L34 64 V50 L58 64 V50 L82 64 V24 H92 V90 Z" fill={c} />
+          <rect x={20} y={70} width={10} height={10} fill="#0d2f45" opacity={0.6} />
+          <rect x={44} y={70} width={10} height={10} fill="#0d2f45" opacity={0.6} />
+          <rect x={68} y={70} width={10} height={10} fill="#0d2f45" opacity={0.6} />
+        </>
+      );
       break;
   }
   return (

@@ -1,0 +1,26 @@
+{
+ "voice": "am_liam", "speed": 0.92, "duration": "auto", "out": "src/geo/texas",
+ "lines": [
+  {"id": "a0", "scene": "hook", "gap": 0.3,
+   "text": "What if Texas had stayed a country?",
+   "cap": ["What if Texas", "had stayed a country?"]},
+  {"id": "a1", "scene": "republic", "gap": 0.3,
+   "text": "For nine years, it was one. From 1836 to 1845, the Republic of Texas had its own president, its own army, and embassies in London and Paris.",
+   "say": "For nine years, it was one. From eighteen thirty-six to eighteen forty-five, the Republic of Texas had its own president, its own army, and embassies in London and Paris.",
+   "cap": ["For nine years, it was one", "From 1836 to 1845,", "the Republic of Texas", "had its own president", "its own army", "and embassies in London and Paris"]},
+  {"id": "a2", "scene": "claim", "gap": 0.3,
+   "text": "It claimed land all the way up the Rio Grande: parts of what is now New Mexico, Colorado, Oklahoma, Kansas and Wyoming.",
+   "cap": ["It claimed land all the way", "up the Rio Grande", "parts of what is now", "New Mexico, Colorado,", "Oklahoma, Kansas and Wyoming"]},
+  {"id": "b0", "scene": "broke", "gap": 0.3,
+   "text": "It was also broke: 135,000 people and ten million dollars of debt. So in 1845, it joined the United States.",
+   "say": "It was also broke. A hundred and thirty-five thousand people, and ten million dollars of debt. So in eighteen forty-five, it joined the United States.",
+   "cap": ["It was also broke", "135,000 people", "and ten million dollars of debt", "So in 1845,", "it joined the United States"]},
+  {"id": "c0", "scene": "guess", "gap": 1.6,
+   "text": "What if it hadn't? Take a guess what Texas would be today.",
+   "cap": ["What if it hadn't?", "Take a guess", "what Texas would be today"]},
+  {"id": "z0", "scene": "reveal", "gap": 0.0,
+   "text": "The eighth largest economy on Earth, bigger than Canada or Russia. 31 million people. More than 40 percent of America's oil. And the United States might never have got California, because the war that won it started over Texas.",
+   "say": "The eighth largest economy on Earth, bigger than Canada or Russia. Thirty-one million people. More than forty percent of America's oil. And the United States might never have got California, because the war that won it started over Texas.",
+   "cap": ["The eighth largest economy on Earth", "bigger than Canada or Russia", "31 million people", "More than 40 percent", "of America's oil", "And the United States", "might never have got California", "because the war that won it", "started over Texas"]}
+ ]
+}

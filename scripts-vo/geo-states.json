@@ -1,0 +1,27 @@
+{
+ "voice": "am_liam", "speed": 0.92, "duration": "auto", "out": "src/geo/states",
+ "lines": [
+  {"id": "a0", "scene": "hook", "gap": 0.3,
+   "text": "What if every American state became its own country, and they all went to war?",
+   "cap": ["What if every American state", "became its own country", "and they all went to war?"]},
+  {"id": "a1", "scene": "california", "gap": 0.3,
+   "text": "California has the people: 39 million, and an economy bigger than Japan's.",
+   "say": "California has the people. Thirty-nine million, and an economy bigger than Japan's.",
+   "cap": ["California has the people", "39 million", "and an economy", "bigger than Japan's"]},
+  {"id": "a2", "scene": "texas", "gap": 0.3,
+   "text": "Texas has the oil: more than 40 percent of America's supply.",
+   "say": "Texas has the oil. More than forty percent of America's supply.",
+   "cap": ["Texas has the oil", "more than 40 percent", "of America's supply"]},
+  {"id": "a3", "scene": "virginia", "gap": 0.3,
+   "text": "Virginia has the navy: the largest naval base in the world, and the only shipyard that builds aircraft carriers.",
+   "say": "Virginia has the navy. The largest naval base in the world, and the only shipyard that builds aircraft carriers.",
+   "cap": ["Virginia has the navy", "the largest naval base in the world", "and the only shipyard", "that builds aircraft carriers"]},
+  {"id": "b0", "scene": "guess", "gap": 1.6,
+   "text": "So who wins? Take a guess.",
+   "cap": ["So who wins?", "Take a guess"]},
+  {"id": "z0", "scene": "reveal", "gap": 0.0,
+   "text": "Probably nobody. Because all 400 of America's land-based nuclear missiles sit in just three states: Wyoming, Montana and North Dakota. Together, they have fewer people than Brooklyn.",
+   "say": "Probably nobody. Because all four hundred of America's land-based nuclear missiles sit in just three states. Wyoming, Montana and North Dakota. Together, they have fewer people than Brooklyn.",
+   "cap": ["Probably nobody", "Because all 400", "of America's land-based nuclear missiles", "sit in just three states", "Wyoming, Montana", "and North Dakota", "Together, they have", "fewer people than Brooklyn"]}
+ ]
+}

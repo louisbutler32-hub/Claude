@@ -1,0 +1,86 @@
+[
+ {
+  "id": "a0",
+  "scene": "hook",
+  "text": "What if Texas had stayed a country?",
+  "start": 0.0,
+  "end": 2.149,
+  "cap": [
+   "What if Texas",
+   "had stayed a country?"
+  ]
+ },
+ {
+  "id": "a1",
+  "scene": "republic",
+  "text": "For nine years, it was one. From 1836 to 1845, the Republic of Texas had its own president, its own army, and embassies in London and Paris.",
+  "start": 2.448,
+  "end": 11.95,
+  "cap": [
+   "For nine years, it was one",
+   "From 1836 to 1845,",
+   "the Republic of Texas",
+   "had its own president",
+   "its own army",
+   "and embassies in London and Paris"
+  ]
+ },
+ {
+  "id": "a2",
+  "scene": "claim",
+  "text": "It claimed land all the way up the Rio Grande: parts of what is now New Mexico, Colorado, Oklahoma, Kansas and Wyoming.",
+  "start": 12.25,
+  "end": 19.56,
+  "cap": [
+   "It claimed land all the way",
+   "up the Rio Grande",
+   "parts of what is now",
+   "New Mexico, Colorado,",
+   "Oklahoma, Kansas and Wyoming"
+  ]
+ },
+ {
+  "id": "b0",
+  "scene": "broke",
+  "text": "It was also broke: 135,000 people and ten million dollars of debt. So in 1845, it joined the United States.",
+  "start": 19.859,
+  "end": 28.332,
+  "cap": [
+   "It was also broke",
+   "135,000 people",
+   "and ten million dollars of debt",
+   "So in 1845,",
+   "it joined the United States"
+  ]
+ },
+ {
+  "id": "c0",
+  "scene": "guess",
+  "text": "What if it hadn't? Take a guess what Texas would be today.",
+  "start": 28.631,
+  "end": 31.735,
+  "cap": [
+   "What if it hadn't?",
+   "Take a guess",
+   "what Texas would be today"
+  ]
+ },
+ {
+  "id": "z0",
+  "scene": "reveal",
+  "text": "The eighth largest economy on Earth, bigger than Canada or Russia. 31 million people. More than 40 percent of America's oil. And the United States might never have got California, because the war that won it started over Texas.",
+  "start": 33.334,
+  "end": 46.56,
+  "cap": [
+   "The eighth largest economy on Earth",
+   "bigger than Canada or Russia",
+   "31 million people",
+   "More than 40 percent",
+   "of America's oil",
+   "And the United States",
+   "might never have got California",
+   "because the war that won it",
+   "started over Texas"
+  ]
+ }
+]

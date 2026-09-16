@@ -60,6 +60,9 @@ def main():
 
     speech = sum(len(a) for a in takes) / SR
     gaps = sum(l.get("gap", 0.25) for l in lines)
+    if target == "auto":  # a short built to loop: as long as the words, no more
+        target = round(speech + gaps + TAIL, 2)
+        print("duration auto -> %.2fs" % target)
     room = target - TAIL - speech
     scale = room / gaps if gaps else 0
     print("\nspeech %.2fs + gaps %.2fs -> scale gaps by %.2f to hit %.1fs" % (speech, gaps, scale, target))

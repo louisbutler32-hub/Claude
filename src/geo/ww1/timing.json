@@ -1,0 +1,100 @@
+[
+ {
+  "id": "a0",
+  "scene": "hook",
+  "text": "What if Germany had won the First World War? In the spring of 1918, it nearly did.",
+  "start": 0.0,
+  "end": 5.022,
+  "cap": [
+   "What if Germany had won",
+   "the First World War?",
+   "In the spring of 1918,",
+   "it nearly did"
+  ]
+ },
+ {
+  "id": "a1",
+  "scene": "east",
+  "text": "Russia had just surrendered. At Brest-Litovsk, Germany took Finland, the Baltics, Poland, Belarus and Ukraine: a third of Russia's people, and nine tenths of its coal.",
+  "start": 5.322,
+  "end": 14.792,
+  "cap": [
+   "Russia had just surrendered",
+   "At Brest-Litovsk, Germany took",
+   "Finland, the Baltics, Poland,",
+   "Belarus and Ukraine",
+   "a third of Russia's people",
+   "and nine tenths of its coal"
+  ]
+ },
+ {
+  "id": "a2",
+  "scene": "west",
+  "text": "Fifty divisions moved west. By June, German troops were 56 kilometres from Paris, and a giant gun was shelling the city from 120 kilometres away.",
+  "start": 15.092,
+  "end": 24.974,
+  "cap": [
+   "Fifty divisions moved west",
+   "By June, German troops were",
+   "56 kilometres from Paris",
+   "and a giant gun",
+   "was shelling the city",
+   "from 120 kilometres away"
+  ]
+ },
+ {
+  "id": "b0",
+  "scene": "plan",
+  "text": "Berlin's plan was written in 1914: Belgium becomes a vassal, Luxembourg is annexed, France loses its iron mines and pays until it can't rearm.",
+  "start": 25.273,
+  "end": 34.851,
+  "cap": [
+   "Berlin's plan",
+   "was written in 1914",
+   "Belgium becomes a vassal",
+   "Luxembourg is annexed",
+   "France loses its iron mines",
+   "and pays until it can't rearm"
+  ]
+ },
+ {
+  "id": "b1",
+  "scene": "bloc",
+  "text": "And the whole continent joins one economic bloc, run from Berlin. They called it Mitteleuropa.",
+  "start": 35.15,
+  "end": 40.802,
+  "cap": [
+   "And the whole continent",
+   "joins one economic bloc",
+   "run from Berlin",
+   "They called it Mitteleuropa"
+  ]
+ },
+ {
+  "id": "c0",
+  "scene": "guess",
+  "text": "Then it all collapsed in a hundred days. What would have changed if it hadn't? Take a guess.",
+  "start": 41.152,
+  "end": 45.645,
+  "cap": [
+   "Then it all collapsed",
+   "in a hundred days",
+   "What would have changed",
+   "if it hadn't?",
+   "Take a guess"
+  ]
+ },
+ {
+  "id": "z0",
+  "scene": "reveal",
+  "text": "No Treaty of Versailles. No humiliated Germany. And, many historians argue, no Hitler.",
+  "start": 47.242,
+  "end": 52.79,
+  "cap": [
+   "No Treaty of Versailles",
+   "No humiliated Germany",
+   "And, many historians argue,",
+   "no Hitler"
+  ]
+ }
+]

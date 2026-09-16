@@ -1,0 +1,82 @@
+[
+ {
+  "id": "a0",
+  "scene": "hook",
+  "text": "What if Napoleon had won at Waterloo?",
+  "start": 0.0,
+  "end": 2.382,
+  "cap": [
+   "What if Napoleon had won",
+   "at Waterloo?"
+  ]
+ },
+ {
+  "id": "a1",
+  "scene": "escape",
+  "text": "In February 1815, he escaped from Elba with about a thousand men. Three weeks after landing, he was back in Paris, and the army had joined him.",
+  "start": 2.683,
+  "end": 11.377,
+  "cap": [
+   "In February 1815,",
+   "he escaped from Elba",
+   "with about a thousand men",
+   "Three weeks after landing",
+   "he was back in Paris",
+   "and the army had joined him"
+  ]
+ },
+ {
+  "id": "a2",
+  "scene": "battle",
+  "text": "On the 18th of June, at Waterloo, 73,000 French soldiers met 68,000 under Wellington. It was close. Then 50,000 Prussians arrived, and it was over.",
+  "start": 11.677,
+  "end": 22.071,
+  "cap": [
+   "On the 18th of June, at Waterloo,",
+   "73,000 French soldiers",
+   "met 68,000 under Wellington",
+   "It was close",
+   "Then 50,000 Prussians arrived",
+   "and it was over"
+  ]
+ },
+ {
+  "id": "b0",
+  "scene": "guess",
+  "text": "So what if Wellington had lost? Take a guess.",
+  "start": 22.371,
+  "end": 25.005,
+  "cap": [
+   "So what if Wellington had lost?",
+   "Take a guess"
+  ]
+ },
+ {
+  "id": "b1",
+  "scene": "fronts",
+  "text": "Almost nothing changes. Waterloo was one battle on one front. 850,000 allied soldiers were marching on France, from Austria, Russia and beyond. Napoleon had 250,000.",
+  "start": 26.606,
+  "end": 38.769,
+  "cap": [
+   "Almost nothing changes",
+   "Waterloo was one battle",
+   "on one front",
+   "850,000 allied soldiers",
+   "were marching on France",
+   "from Austria, Russia and beyond",
+   "Napoleon had 250,000"
+  ]
+ },
+ {
+  "id": "z0",
+  "scene": "reveal",
+  "text": "Outnumbered more than three to one, he would simply have lost the next one.",
+  "start": 39.069,
+  "end": 42.82,
+  "cap": [
+   "Outnumbered more than three to one",
+   "he would simply have lost",
+   "the next one"
+  ]
+ }
+]

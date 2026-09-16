@@ -1,0 +1,80 @@
+[
+ {
+  "id": "a0",
+  "scene": "hook",
+  "text": "What if every American state became its own country, and they all went to war?",
+  "start": 0.0,
+  "end": 4.338,
+  "cap": [
+   "What if every American state",
+   "became its own country",
+   "and they all went to war?"
+  ]
+ },
+ {
+  "id": "a1",
+  "scene": "california",
+  "text": "California has the people: 39 million, and an economy bigger than Japan's.",
+  "start": 4.639,
+  "end": 9.465,
+  "cap": [
+   "California has the people",
+   "39 million",
+   "and an economy",
+   "bigger than Japan's"
+  ]
+ },
+ {
+  "id": "a2",
+  "scene": "texas",
+  "text": "Texas has the oil: more than 40 percent of America's supply.",
+  "start": 9.765,
+  "end": 13.511,
+  "cap": [
+   "Texas has the oil",
+   "more than 40 percent",
+   "of America's supply"
+  ]
+ },
+ {
+  "id": "a3",
+  "scene": "virginia",
+  "text": "Virginia has the navy: the largest naval base in the world, and the only shipyard that builds aircraft carriers.",
+  "start": 13.811,
+  "end": 20.283,
+  "cap": [
+   "Virginia has the navy",
+   "the largest naval base in the world",
+   "and the only shipyard",
+   "that builds aircraft carriers"
+  ]
+ },
+ {
+  "id": "b0",
+  "scene": "guess",
+  "text": "So who wins? Take a guess.",
+  "start": 20.583,
+  "end": 22.298,
+  "cap": [
+   "So who wins?",
+   "Take a guess"
+  ]
+ },
+ {
+  "id": "z0",
+  "scene": "reveal",
+  "text": "Probably nobody. Because all 400 of America's land-based nuclear missiles sit in just three states: Wyoming, Montana and North Dakota. Together, they have fewer people than Brooklyn.",
+  "start": 23.901,
+  "end": 35.07,
+  "cap": [
+   "Probably nobody",
+   "Because all 400",
+   "of America's land-based nuclear missiles",
+   "sit in just three states",
+   "Wyoming, Montana",
+   "and North Dakota",
+   "Together, they have",
+   "fewer people than Brooklyn"
+  ]
+ }
+]

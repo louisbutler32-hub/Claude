@@ -18,7 +18,15 @@ export type FlagKey =
   | "argentina"
   | "canada"
   | "mexico"
-  | "uk";
+  | "uk"
+  | "germany"
+  | "germany1914"
+  | "belgium"
+  | "netherlands"
+  | "austria"
+  | "prussia"
+  | "texas"
+  | "napoleon";
 
 type Box = { x: number; y: number; w: number; h: number };
 
@@ -35,6 +43,14 @@ export const FLAG_COLOR: Record<FlagKey, string> = {
   canada: "#d80621",
   mexico: "#006847",
   uk: "#012169",
+  germany: "#dd0000",
+  germany1914: "#1a1a1a",
+  belgium: "#fdda24",
+  netherlands: "#ae1c28",
+  austria: "#ed2939",
+  prussia: "#1a1a1a",
+  texas: "#002868",
+  napoleon: "#0055a4",
 };
 
 const star = (cx: number, cy: number, r: number): string => {
@@ -213,7 +229,39 @@ export const Flag: React.FC<{ flag: FlagKey } & Box> = ({ flag, ...b }) => {
       return <>{bands(b, ["#006847", "#ffffff", "#ce1126"], true)}</>;
     case "uk":
       return <Uk {...b} />;
+    case "germany":
+      return <>{bands(b, ["#1a1a1a", "#dd0000", "#ffce00"], false)}</>;
+    // the Kaiserreich tricolour, 1871-1918
+    case "germany1914":
+      return <>{bands(b, ["#1a1a1a", "#ffffff", "#dd0000"], false)}</>;
+    case "belgium":
+      return <>{bands(b, ["#1a1a1a", "#fdda24", "#ef3340"], true)}</>;
+    case "netherlands":
+      return <>{bands(b, ["#ae1c28", "#ffffff", "#21468b"], false)}</>;
+    case "austria":
+      return <>{bands(b, ["#ed2939", "#ffffff", "#ed2939"], false)}</>;
+    // Prussia's black over white
+    case "prussia":
+      return <>{bands(b, ["#1a1a1a", "#ffffff"], false)}</>;
+    case "texas":
+      return <Texas {...b} />;
+    // the First Empire's tricolour, same cloth as France's
+    case "napoleon":
+      return <>{bands(b, ["#0055a4", "#ffffff", "#ef4135"], true)}</>;
   }
+};
+
+/** The Lone Star: a blue hoist with a white star, white over red at the fly. */
+const Texas: React.FC<Box> = (b) => {
+  const hoist = b.w / 3;
+  return (
+    <>
+      <rect x={b.x} y={b.y} width={hoist + 0.5} height={b.h} fill="#002868" />
+      <rect x={b.x + hoist} y={b.y} width={b.w - hoist} height={b.h / 2 + 0.5} fill="#ffffff" />
+      <rect x={b.x + hoist} y={b.y + b.h / 2} width={b.w - hoist} height={b.h / 2} fill="#bf0a30" />
+      <path d={star(b.x + hoist / 2, b.y + b.h / 2, Math.min(hoist, b.h) * 0.36)} fill="#ffffff" />
+    </>
+  );
 };
 
 /** The soft moving sheen that makes a flat flag read as cloth. */

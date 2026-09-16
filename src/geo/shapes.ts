@@ -127,3 +127,11 @@ export const projectPoint = (p: LonLat, proj: Projector): [number, number] => {
 };
 
 export { WORLD };
+
+/** Distinct, map-friendly fills for a patchwork of many shapes. */
+export const PATCHWORK = [
+  "#e76f51", "#f4a261", "#e9c46a", "#2a9d8f", "#8ab17d", "#e63946", "#457b9d", "#ffb703",
+  "#fb8500", "#8338ec", "#3a86ff", "#ff006e", "#06d6a0", "#ef476f", "#118ab2", "#f78c6b",
+  "#9b5de5", "#00bbf9", "#00f5d4", "#fee440", "#d62828", "#7209b7", "#4cc9f0", "#f72585",
+];
+export const patch = (i: number) => PATCHWORK[i % PATCHWORK.length];

@@ -96,7 +96,11 @@ import { DigShort, DigThumb, DIG_FRAMES } from "./minecraft-dig/DigShort";
 import { BeringShort, BERING_FPS, BERING_SECONDS } from "./geo/bering/BeringShort";
 import { LouisianaShort, LOUISIANA_FPS, LOUISIANA_SECONDS } from "./geo/louisiana/LouisianaShort";
 import { DarienShort, DARIEN_FPS, DARIEN_FRAMES } from "./geo/darien/DarienShort";
-import { BeringThumb, DarienThumb, LouisianaThumb, THUMB_FRAMES } from "./geo/Thumbnails";
+import { BeringThumb, DarienThumb, LouisianaThumb, StatesThumb, TexasThumb, WaterlooThumb, Ww1Thumb, THUMB_FRAMES } from "./geo/Thumbnails";
+import { Ww1Short, WW1_FPS, WW1_FRAMES } from "./geo/ww1/Ww1Short";
+import { WaterlooShort, WATERLOO_FPS, WATERLOO_FRAMES } from "./geo/waterloo/WaterlooShort";
+import { TexasShort, TEXAS_FPS, TEXAS_FRAMES } from "./geo/texas/TexasShort";
+import { StatesShort, STATES_FPS, STATES_FRAMES } from "./geo/states/StatesShort";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -127,6 +131,14 @@ export const RemotionRoot: React.FC = () => {
         height={1920}
         defaultProps={{ music: null, narration: "assets/vo/geo-darien.mp3" }}
       />
+      <Composition id="Geo-Ww1" component={Ww1Short} durationInFrames={WW1_FRAMES} fps={WW1_FPS} width={1080} height={1920} defaultProps={{ music: null, narration: "assets/vo/geo-ww1.mp3" }} />
+      <Composition id="Geo-Waterloo" component={WaterlooShort} durationInFrames={WATERLOO_FRAMES} fps={WATERLOO_FPS} width={1080} height={1920} defaultProps={{ music: null, narration: "assets/vo/geo-waterloo.mp3" }} />
+      <Composition id="Geo-Texas" component={TexasShort} durationInFrames={TEXAS_FRAMES} fps={TEXAS_FPS} width={1080} height={1920} defaultProps={{ music: null, narration: "assets/vo/geo-texas.mp3" }} />
+      <Composition id="Geo-States" component={StatesShort} durationInFrames={STATES_FRAMES} fps={STATES_FPS} width={1080} height={1920} defaultProps={{ music: null, narration: "assets/vo/geo-states.mp3" }} />
+      <Composition id="Geo-Ww1-Thumb" component={Ww1Thumb} durationInFrames={THUMB_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="Geo-Waterloo-Thumb" component={WaterlooThumb} durationInFrames={THUMB_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="Geo-Texas-Thumb" component={TexasThumb} durationInFrames={THUMB_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="Geo-States-Thumb" component={StatesThumb} durationInFrames={THUMB_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Geo-Bering-Thumb" component={BeringThumb} durationInFrames={THUMB_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Geo-Louisiana-Thumb" component={LouisianaThumb} durationInFrames={THUMB_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Geo-Darien-Thumb" component={DarienThumb} durationInFrames={THUMB_FRAMES} fps={30} width={1080} height={1920} />

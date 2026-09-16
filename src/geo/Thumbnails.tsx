@@ -3,8 +3,9 @@ import { AbsoluteFill } from "remotion";
 import { PURCHASE } from "./louisiana/LouisianaShort";
 import { FONT_SANS } from "./fonts";
 import { GeoCanvas } from "./GeoCanvas";
-import { Highlight, Label, Measure, Route } from "./layers";
+import { Highlight, Label, Measure, Route, Wash } from "./layers";
 import { LonLat } from "./projection";
+import { patch, shapeNames } from "./shapes";
 
 // ── Thumbnails, 9:16 ──────────────────────────────────────────────────
 // A frame from the short with the hook written across the top in the
@@ -123,6 +124,82 @@ export const DarienThumb: React.FC = () => (
       <Route points={SOUTH} in={0} dur={0.01} color="#ffd23f" width={8} />
       <Route points={[[-77.69, 8.16], [-76.72, 8.09]]} in={0} dur={0.01} color="#ff4b3e" width={14} glow />
       <Label at={[-77.2, 8.1]} text="106 KM" size={54} in={0} dy={-90} color="#ff4b3e" />
+    </GeoCanvas>
+  </AbsoluteFill>
+);
+
+export const Ww1Thumb: React.FC = () => (
+  <AbsoluteFill>
+    <GeoCanvas
+      camera={{ lon: 12, lat: 50.5, scale: 6600 }}
+      hud={
+        <>
+          <Title lines={[{ text: "WHAT IF", size: 100 }, { text: "GERMANY WON", size: 118 }, { text: "WORLD WAR 1?", color: "#ffd23f", size: 118 }]} y={170} />
+          <Bottom text="1918 · 56 KM FROM PARIS" />
+        </>
+      }
+    >
+      <Wash shapes={["france", "belgium", "netherlands", "luxembourg", "denmark", "austria", "hungary", "czechia", "poland", "italy", "sweden", "norway", "finland", "estonia", "latvia", "lithuania", "belarus", "ukraine"]} color="#8b1e1e" opacity={0.45} outline="#ffffff" outlineWidth={2.5} in={0} draw={0.01} />
+      <Highlight shape="germany" flag="germany1914" in={0} />
+    </GeoCanvas>
+  </AbsoluteFill>
+);
+
+export const WaterlooThumb: React.FC = () => (
+  <AbsoluteFill>
+    <GeoCanvas
+      camera={{ lon: 9, lat: 48.5, scale: 5600 }}
+      hud={
+        <>
+          <Title lines={[{ text: "WHAT IF", size: 100 }, { text: "NAPOLEON WON", size: 112 }, { text: "WATERLOO?", color: "#ffd23f", size: 140 }]} y={170} />
+          <Bottom text="1815 · 250,000 VS 850,000" />
+        </>
+      }
+    >
+      <Highlight shape="france" flag="napoleon" in={0} />
+      <Route points={[[16.37, 48.2], [7.75, 48.58]]} in={0} dur={0.01} color="#e63946" width={10} head="dot" />
+      <Route points={[[21.0, 52.2], [8.27, 50.0]]} in={0} dur={0.01} color="#e63946" width={10} head="dot" />
+      <Route points={[[13.4, 52.5], [6.96, 50.94]]} in={0} dur={0.01} color="#e63946" width={10} head="dot" />
+      <Route points={[[-0.13, 51.5], [4.35, 50.85]]} in={0} dur={0.01} color="#e63946" width={10} head="dot" />
+      <Route points={[[7.69, 45.07], [5.6, 45.4]]} in={0} dur={0.01} color="#e63946" width={10} head="dot" />
+    </GeoCanvas>
+  </AbsoluteFill>
+);
+
+export const TexasThumb: React.FC = () => (
+  <AbsoluteFill>
+    <GeoCanvas
+      camera={{ lon: -99.5, lat: 31.0, scale: 8200 }}
+      hud={
+        <>
+          <Title lines={[{ text: "WHAT IF TEXAS", size: 104 }, { text: "STAYED A", size: 104 }, { text: "COUNTRY?", color: "#ffd23f", size: 150 }]} y={170} />
+          <Bottom text="WORLD'S 8TH LARGEST ECONOMY" />
+        </>
+      }
+    >
+      <Highlight shape="state:Texas" flag="texas" in={0} />
+    </GeoCanvas>
+  </AbsoluteFill>
+);
+
+const LOWER48_THUMB = shapeNames().filter(
+  (n) => n.startsWith("state:") && !["state:Alaska", "state:Hawaii", "state:District of Columbia"].includes(n)
+);
+
+export const StatesThumb: React.FC = () => (
+  <AbsoluteFill>
+    <GeoCanvas
+      camera={{ lon: -97, lat: 37.5, scale: 4600 }}
+      hud={
+        <>
+          <Title lines={[{ text: "50 STATES", size: 120 }, { text: "AT WAR", size: 120 }, { text: "WHO WINS?", color: "#ffd23f", size: 140 }]} y={170} />
+          <Bottom text="THE ANSWER IS THREE STATES" />
+        </>
+      }
+    >
+      {LOWER48_THUMB.map((name, i) => (
+        <Wash key={name} shape={name} color={patch(i)} opacity={0.62} outline="#ffffff" outlineWidth={2} in={0} draw={0.01} />
+      ))}
     </GeoCanvas>
   </AbsoluteFill>
 );
