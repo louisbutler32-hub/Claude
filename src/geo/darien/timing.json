@@ -2,27 +2,25 @@
  {
   "id": "a0",
   "scene": "hook",
-  "text": "Have you ever wondered why you can't drive from Alaska to Argentina?",
+  "text": "This is why you can't drive from Alaska to Argentina.",
   "start": 0.0,
-  "end": 3.673,
+  "end": 3.162,
   "cap": [
-   "Have you ever wondered",
-   "why you can't drive",
-   "from Alaska to Argentina?"
+   "This is why you can't drive",
+   "from Alaska to Argentina"
   ]
  },
  {
   "id": "a1",
   "scene": "road",
-  "text": "The Pan-American Highway runs from Prudhoe Bay in Alaska to Ushuaia in Argentina: about 30,000 kilometres through 14 countries, the longest road in the world.",
-  "start": 3.839,
-  "end": 13.814,
+  "text": "The Pan-American Highway runs from Prudhoe Bay in Alaska to Ushuaia in Argentina: about 30,000 kilometres, the longest road in the world.",
+  "start": 3.404,
+  "end": 12.184,
   "cap": [
    "The Pan-American Highway",
    "runs from Prudhoe Bay in Alaska",
    "to Ushuaia in Argentina",
    "about 30,000 kilometres",
-   "through 14 countries",
    "the longest road in the world"
   ]
  },
@@ -30,8 +28,8 @@
   "id": "a2",
   "scene": "stops",
   "text": "But between Panama and Colombia, it simply stops. For 106 kilometres, there is no road at all: the Dari\u00e9n Gap.",
-  "start": 13.951,
-  "end": 20.855,
+  "start": 12.426,
+  "end": 19.33,
   "cap": [
    "But between Panama and Colombia",
    "it simply stops",
@@ -42,84 +40,39 @@
  },
  {
   "id": "b0",
-  "scene": "towns",
-  "text": "The highway ends at Yaviza in Panama, and starts again at Turbo in Colombia.",
-  "start": 21.02,
-  "end": 25.599,
-  "cap": [
-   "The highway ends",
-   "at Yaviza in Panama",
-   "and starts again",
-   "at Turbo in Colombia"
-  ]
- },
- {
-  "id": "b1",
-  "scene": "between",
-  "text": "In between: mountains, rainforest, and the swamps of the Atrato River, 80 kilometres wide.",
-  "start": 25.736,
-  "end": 30.982,
-  "cap": [
-   "In between:",
-   "mountains, rainforest",
-   "and the swamps of the Atrato River",
-   "80 kilometres wide"
-  ]
- },
- {
-  "id": "b2",
   "scene": "expedition",
-  "text": "In 1960, an expedition tried to drive across anyway. It took 136 days: about 200 metres an hour.",
-  "start": 31.148,
-  "end": 39.066,
+  "text": "In 1960, an expedition tried to drive across it anyway. It took them 136 days: about 200 metres an hour.",
+  "start": 19.62,
+  "end": 27.983,
   "cap": [
    "In 1960, an expedition",
-   "tried to drive across anyway",
-   "It took 136 days",
+   "tried to drive across it anyway",
+   "It took them 136 days",
    "about 200 metres an hour"
   ]
  },
  {
   "id": "c0",
-  "scene": "attempts",
-  "text": "Work on the road began in 1971 and was halted three years later. A second attempt was abandoned in 1994.",
-  "start": 39.231,
-  "end": 46.876,
+  "scene": "guess",
+  "text": "So why is there no road? Can you guess?",
+  "start": 28.322,
+  "end": 30.61,
   "cap": [
-   "Work on the road began in 1971",
-   "and was halted",
-   "three years later",
-   "A second attempt",
-   "was abandoned in 1994"
-  ]
- },
- {
-  "id": "c1",
-  "scene": "why",
-  "text": "Why? The jungle keeps foot-and-mouth disease out of North America. It is a national park. And the people who live there do not want a road.",
-  "start": 47.041,
-  "end": 54.764,
-  "cap": [
-   "Why?",
-   "The jungle keeps",
-   "foot-and-mouth disease",
-   "out of North America",
-   "It is a national park",
-   "And the people who live there",
-   "do not want a road"
+   "So why is there no road?",
+   "Can you guess?"
   ]
  },
  {
   "id": "z0",
-  "scene": "button",
-  "text": "So to drive from Alaska to Argentina, you still have to put your car on a boat.",
-  "start": 54.929,
-  "end": 59.385,
+  "scene": "reveal",
+  "text": "Huge mountains, dense rainforest, and a swamp 80 kilometres wide.",
+  "start": 32.256,
+  "end": 36.55,
   "cap": [
-   "So to drive from Alaska",
-   "to Argentina",
-   "you still have to put",
-   "your car on a boat"
+   "Huge mountains",
+   "dense rainforest",
+   "and a swamp",
+   "80 kilometres wide"
   ]
  }
 ]

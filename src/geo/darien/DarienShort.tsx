@@ -9,15 +9,20 @@ import timing from "./timing.json";
 
 // ── The Darién Gap: the hole in the longest road in the world ─────────
 //
-// 60 s, 9:16. Timed off timing.json, which the voice build writes.
+// ~37 s, 9:16, built to loop: it opens on "This is why…", asks the viewer
+// to guess, gives the three reasons and cuts on the last word, so the
+// loop drops straight back into the answer's setup. Timed off timing.json.
 //
 //   python3 scripts/make-vo.py geo-darien
 //   npm run geo:darien
 
-export const DARIEN_SECONDS = 60;
 export const DARIEN_FPS = 30;
 
 const LINES = timing as Line[];
+/** The short cuts 0.15 s after the last word, so the loop lands straight
+ *  back on "This is why". */
+export const DARIEN_SECONDS = LINES[LINES.length - 1].end + 0.15;
+export const DARIEN_FRAMES = Math.round(DARIEN_SECONDS * DARIEN_FPS);
 const B = beatsOf(LINES, DARIEN_SECONDS);
 
 // ── the road, city to city ────────────────────────────────────────────
@@ -49,28 +54,21 @@ const ATRATO: LonLat[] = [
 const PARK: LonLat[] = [
   [-78.45, 8.75], [-77.95, 8.95], [-77.45, 8.7], [-77.25, 8.1], [-77.45, 7.5], [-77.95, 7.3], [-78.3, 7.6], [-78.5, 8.2],
 ];
-const COLON: LonLat = [-79.9, 9.36];
-const CARTAGENA: LonLat = [-75.5, 10.4];
-const SEA_LANE: LonLat[] = [COLON, [-78.6, 10.3], [-77.0, 10.9], CARTAGENA];
 
 const CAMERA: CameraKey[] = [
   { at: 0, lon: -96, lat: 4, scale: 2700 },
   { at: B.stops.start - 0.3, lon: -94, lat: 5, scale: 2850 },
   { at: B.stops.start + 2.0, lon: -77.4, lat: 8.15, scale: 95000 },
-  { at: B.towns.start, lon: -77.3, lat: 8.1, scale: 100000 },
-  { at: B.between.start, lon: -77.2, lat: 8.0, scale: 115000 },
-  { at: B.expedition.start, lon: -77.2, lat: 8.05, scale: 120000 },
-  { at: B.attempts.start, lon: -77.2, lat: 8.1, scale: 118000 },
-  { at: B.why.start, lon: -77.4, lat: 8.15, scale: 110000 },
-  { at: B.button.start - 0.2, lon: -77.4, lat: 8.2, scale: 108000 },
-  { at: B.button.start + 1.5, lon: -77.8, lat: 9.3, scale: 24000 },
-  { at: DARIEN_SECONDS, lon: -77.8, lat: 9.4, scale: 23000 },
+  { at: B.expedition.start, lon: -77.25, lat: 8.05, scale: 112000 },
+  { at: B.guess.start, lon: -77.2, lat: 8.05, scale: 120000 },
+  { at: B.reveal.start, lon: -77.25, lat: 8.0, scale: 118000 },
+  { at: DARIEN_SECONDS, lon: -77.3, lat: 7.95, scale: 112000 },
 ];
 
 const T_GAP_CLOSE = B.stops.start + 2.0;
-const T_SEA = B.button.start + 1.5;
 const ROAD_START = B.road.start + 0.8;
-const ROAD_DUR = 4.6;
+const ROAD_DUR = 4.4;
+const END = DARIEN_SECONDS + 1;
 
 /** Audio is two drop-in slots. The narration ships with the repo. The music
  *  is a licensed track cut by scripts/make-geo-music.py into public/audio
@@ -90,39 +88,27 @@ export const DarienShort: React.FC<DarienProps> = ({ music = null, narration = "
       camera={CAMERA}
       hud={
         <>
-          {/* ── hook ── */}
-          <Tag text="?" in={0.7} until={B.road.start + 0.6} at={[-77.5, 8.2]} size={64} bg="#e63946" />
-
           {/* ── the road ── */}
-          <Callout text="30,000 KM" icon="road" in={B.road.start + 5.6} until={B.stops.start + 0.8} y={300} size={60} />
-          <Callout text="14 COUNTRIES" in={B.road.start + 7.3} until={B.stops.start + 0.8} y={420} size={48} font="sans" weight={800} glow="rgba(255,255,255,0.45)" />
-          <Tag text="THE LONGEST ROAD IN THE WORLD" in={B.road.start + 8.6} until={B.stops.start + 0.8} x={540} y={510} size={30} bg="#f5a623" color="#1a1a1a" />
+          <Callout text="30,000 KM" icon="road" in={B.road.start + 5.5} until={B.stops.start + 0.8} y={300} size={60} />
+          <Tag text="THE LONGEST ROAD IN THE WORLD" in={B.road.start + 7.2} until={B.stops.start + 0.8} x={540} y={420} size={30} bg="#f5a623" color="#1a1a1a" />
 
           {/* ── the gap ── */}
-          <Tag text="DARIÉN GAP" in={B.stops.start + 5.6} until={B.expedition.start} at={[-77.35, 7.55]} size={38} bg="#e63946" />
-
-          {/* ── in between ── */}
-          <IconRow icons={["mountain", "tree", "swamp"]} in={B.between.start + 0.6} until={B.expedition.start + 0.2} y={430} step={0.75} size={130} />
+          <Tag text="DARIÉN GAP" in={B.stops.start + 5.4} until={B.guess.start} at={[-77.35, 7.55]} size={38} bg="#e63946" />
 
           {/* ── the 1960 expedition ── */}
-          <BigNumber text="1960" in={B.expedition.start + 0.2} until={B.attempts.start} y={300} size={140} />
-          <Callout text="136 DAYS" icon="calendar" in={B.expedition.start + 4.3} until={B.attempts.start} y={450} size={56} />
-          <Callout text="200 M PER HOUR" in={B.expedition.start + 6.2} until={B.attempts.start} y={560} size={44} font="caption" weight={700} glow="rgba(255,255,255,0.35)" />
+          <BigNumber text="1960" in={B.expedition.start + 0.2} until={B.guess.start} y={300} size={140} />
+          <Callout text="136 DAYS" icon="calendar" in={B.expedition.start + 4.1} until={B.guess.start} y={450} size={56} />
+          <Callout text="200 M PER HOUR" in={B.expedition.start + 6.0} until={B.guess.start} y={560} size={44} font="caption" weight={700} glow="rgba(255,255,255,0.35)" />
 
-          {/* ── the attempts ── */}
-          <Callout text="1971 · WORK BEGINS" in={B.attempts.start + 0.4} until={B.why.start + 0.3} x={100} y={300} size={46} font="sans" weight={800} align="left" glow="rgba(255,255,255,0.4)" />
-          <Callout text="1974 · HALTED" in={B.attempts.start + 3.0} until={B.why.start + 0.3} x={100} y={390} size={46} font="sans" weight={800} align="left" color="#ff6b6b" glow="rgba(255,80,60,0.5)" />
-          <Callout text="1992 · SECOND ATTEMPT" in={B.attempts.start + 4.6} until={B.why.start + 0.3} x={100} y={480} size={46} font="sans" weight={800} align="left" glow="rgba(255,255,255,0.4)" />
-          <Callout text="1994 · ABANDONED" in={B.attempts.start + 6.2} until={B.why.start + 0.3} x={100} y={570} size={46} font="sans" weight={800} align="left" color="#ff6b6b" glow="rgba(255,80,60,0.5)" />
+          {/* ── guess ── */}
+          <BigNumber text="?" in={B.guess.start + 0.2} until={B.reveal.start} y={420} size={260} color="#ffd23f" />
+          <Tag text="CAN YOU GUESS WHY?" in={B.guess.start + 1.3} until={B.reveal.start} x={540} y={620} size={34} bg="#e63946" />
 
-          {/* ── why ── */}
-          <IconRow icons={["disease", "tree", "people"]} in={B.why.start + 1.2} until={B.button.start + 0.3} y={330} step={2.5} size={130} />
-          <Tag text="FOOT-AND-MOUTH" in={B.why.start + 1.6} until={B.button.start + 0.3} x={540} y={450} size={30} />
-          <Tag text="NATIONAL PARK" in={B.why.start + 4.1} until={B.button.start + 0.3} x={540} y={450 + 60} size={30} />
-          <Tag text="THE PEOPLE WHO LIVE THERE" in={B.why.start + 6.6} until={B.button.start + 0.3} x={540} y={450 + 120} size={30} />
-
-          {/* ── button ── */}
-          <Callout text="BY SHIP" icon="ship" in={T_SEA + 2.2} until={DARIEN_SECONDS} y={330} size={58} font="sans" weight={800} glow="rgba(255,255,255,0.45)" />
+          {/* ── the reveal: three reasons, then the cut ── */}
+          <IconRow icons={["mountain", "tree", "swamp"]} in={B.reveal.start + 0.15} until={END} y={360} step={0.95} size={150} />
+          <Tag text="1,845 M PEAKS" in={B.reveal.start + 0.5} until={END} x={540} y={500} size={30} />
+          <Tag text="RAINFOREST" in={B.reveal.start + 1.4} until={END} x={540} y={560} size={30} />
+          <Tag text="80 KM OF SWAMP" in={B.reveal.start + 2.4} until={END} x={540} y={620} size={30} />
 
           <Captions lines={LINES} />
         </>
@@ -139,35 +125,25 @@ export const DarienShort: React.FC<DarienProps> = ({ music = null, narration = "
       <Route points={SOUTH_ROAD} in={ROAD_START + ROAD_DUR * 0.62} dur={ROAD_DUR * 0.38} until={T_GAP_CLOSE + 0.5} color="#ffd23f" width={7} head="dot" />
 
       {/* ── the gap, close ── */}
-      <Highlight shape="panama" flag="panama" in={T_GAP_CLOSE - 0.5} until={B.between.start + 0.4} minArea={1} flagBox={[[-79.6, 9.5], [-77.1, 7.2]]} glow={0.7} />
-      <Highlight shape="colombia" flag="colombia" in={T_GAP_CLOSE - 0.4} until={B.between.start + 0.4} minArea={1} flagBox={[[-77.3, 9.5], [-75.0, 6.6]]} glow={0.7} />
-      <Label at={[-78.6, 8.75]} text="PANAMA" size={50} in={T_GAP_CLOSE} until={B.between.start + 0.4} />
-      <Label at={[-76.3, 7.1]} text="COLOMBIA" size={50} in={T_GAP_CLOSE + 0.2} until={B.between.start + 0.4} />
-      <Route points={NORTH_ROAD} from={0.965} in={T_GAP_CLOSE - 0.4} dur={0.01} until={T_SEA} color="#ffd23f" width={9} />
-      <Route points={SOUTH_ROAD} to={0.06} in={T_GAP_CLOSE - 0.4} dur={0.01} until={T_SEA} color="#ffd23f" width={9} />
-      <Route points={GAP} in={B.stops.start + 2.4} dur={0.9} until={T_SEA} color="#ff4b3e" width={8} dashed glow={false} />
+      <Highlight shape="panama" flag="panama" in={T_GAP_CLOSE - 0.5} until={B.expedition.start + 0.4} minArea={1} flagBox={[[-79.6, 9.5], [-77.1, 7.2]]} glow={0.7} />
+      <Highlight shape="colombia" flag="colombia" in={T_GAP_CLOSE - 0.4} until={B.expedition.start + 0.4} minArea={1} flagBox={[[-77.3, 9.5], [-75.0, 6.6]]} glow={0.7} />
+      <Label at={[-78.6, 8.75]} text="PANAMA" size={50} in={T_GAP_CLOSE} until={B.expedition.start + 0.4} />
+      <Label at={[-76.3, 7.1]} text="COLOMBIA" size={50} in={T_GAP_CLOSE + 0.2} until={B.expedition.start + 0.4} />
+      <Route points={NORTH_ROAD} from={0.965} in={T_GAP_CLOSE - 0.4} dur={0.01} until={END} color="#ffd23f" width={9} />
+      <Route points={SOUTH_ROAD} to={0.06} in={T_GAP_CLOSE - 0.4} dur={0.01} until={END} color="#ffd23f" width={9} />
+      <Route points={GAP} in={B.stops.start + 2.4} dur={0.9} until={END} color="#ff4b3e" width={8} dashed glow={false} />
       <Measure from={YAVIZA} to={TURBO} text="106 km" in={B.stops.start + 3.4} until={B.expedition.start} offset={-110} color="#ffffff" width={0} />
-
-      {/* ── the towns ── */}
-      <Pin at={YAVIZA} label="Yaviza" in={B.towns.start + 0.8} until={B.button.start} side="left" />
-      <Pin at={TURBO} label="Turbo" in={B.towns.start + 2.8} until={B.button.start} side="right" />
-
-      {/* ── in between ── */}
-      <Wash ring={ATRATO} color="#3aa6c9" opacity={0.5} outline="#bfe8f5" in={B.between.start + 2.6} until={B.expedition.start + 0.4} />
-      <Label at={[-76.85, 7.62]} text="ATRATO SWAMPS" size={34} in={B.between.start + 3.0} until={B.expedition.start + 0.4} weight={800} />
-      <Measure from={[-77.15, 7.45]} to={[-76.5, 7.45]} text="80 km" in={B.between.start + 4.2} until={B.expedition.start + 0.4} offset={70} />
+      <Pin at={YAVIZA} label="Yaviza" in={T_GAP_CLOSE + 0.6} until={B.reveal.start + 1.8} side="left" />
+      <Pin at={TURBO} label="Turbo" in={T_GAP_CLOSE + 1.0} until={B.reveal.start + 1.8} side="right" />
 
       {/* ── the 1960 crawl ── */}
-      <Route points={GAP} in={B.expedition.start + 1.2} dur={6.4} until={B.attempts.start + 0.3} color="#ffffff" width={6} dashed glow={false} headIcon="car" headSize={96} />
+      <Route points={GAP} in={B.expedition.start + 1.2} dur={5.2} until={B.reveal.start} color="#ffffff" width={6} dashed glow={false} headIcon="car" headSize={96} />
 
-      {/* ── why: the park ── */}
-      <Wash ring={PARK} color="#3ec46d" opacity={0.42} outline="#c8f5d6" in={B.why.start + 3.6} until={B.button.start + 0.3} dashed />
-      <Label at={[-77.85, 8.05]} text="DARIÉN NATIONAL PARK" size={32} in={B.why.start + 4.0} until={B.button.start + 0.3} weight={800} />
-
-      {/* ── button: the car goes by sea ── */}
-      <Pin at={COLON} label="Colón" in={T_SEA + 0.2} side="left" labelSize={30} size={46} />
-      <Pin at={CARTAGENA} label="Cartagena" in={T_SEA + 0.6} side="right" labelSize={30} size={46} />
-      <Route points={SEA_LANE} in={T_SEA + 0.9} dur={2.6} color="#ffffff" width={6} dashed glow={false} headIcon="ship" headSize={100} />
+      {/* ── the reveal ── */}
+      <Wash ring={PARK} color="#3ec46d" opacity={0.35} outline="#c8f5d6" in={B.reveal.start + 1.3} until={END} dashed />
+      <Wash ring={ATRATO} color="#3aa6c9" opacity={0.5} outline="#bfe8f5" in={B.reveal.start + 2.2} until={END} />
+      <Label at={[-76.85, 7.62]} text="ATRATO SWAMPS" size={34} in={B.reveal.start + 2.5} until={END} weight={800} />
+      <Measure from={[-77.15, 7.45]} to={[-76.5, 7.45]} text="80 km" in={B.reveal.start + 2.7} until={END} offset={70} />
     </GeoCanvas>
   </AbsoluteFill>
 );

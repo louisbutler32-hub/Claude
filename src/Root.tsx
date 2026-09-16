@@ -95,7 +95,7 @@ import { DigShort, DigThumb, DIG_FRAMES } from "./minecraft-dig/DigShort";
 
 import { BeringShort, BERING_FPS, BERING_SECONDS } from "./geo/bering/BeringShort";
 import { LouisianaShort, LOUISIANA_FPS, LOUISIANA_SECONDS } from "./geo/louisiana/LouisianaShort";
-import { DarienShort, DARIEN_FPS, DARIEN_SECONDS } from "./geo/darien/DarienShort";
+import { DarienShort, DARIEN_FPS, DARIEN_FRAMES } from "./geo/darien/DarienShort";
 import { BeringThumb, DarienThumb, LouisianaThumb, THUMB_FRAMES } from "./geo/Thumbnails";
 
 export const RemotionRoot: React.FC = () => {
@@ -121,7 +121,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="Geo-Darien"
         component={DarienShort}
-        durationInFrames={DARIEN_SECONDS * DARIEN_FPS}
+        durationInFrames={DARIEN_FRAMES}
         fps={DARIEN_FPS}
         width={1080}
         height={1920}

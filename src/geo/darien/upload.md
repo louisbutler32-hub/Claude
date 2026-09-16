@@ -11,7 +11,7 @@ Alternates:
 
 ## Description
 
-Have you ever wondered why you can't drive from Alaska to Argentina? The Pan-American Highway runs from Prudhoe Bay, Alaska to Ushuaia, Argentina — about 30,000 km through 14 countries, the longest road in the world. But between Panama and Colombia it simply stops: for 106 km there is no road at all. This is the Darién Gap. The highway ends at Yaviza in Panama and starts again at Turbo in Colombia; in between are mountains, rainforest and the swamps of the Atrato River, at least 80 km wide. In 1960 an expedition drove across anyway, in a Land Rover and a Jeep: it took 136 days, about 200 metres an hour. Work on the road began in 1971 and was halted three years later; a second attempt was abandoned in 1994. The jungle keeps foot-and-mouth disease out of North America, the gap is a national park, and the people who live there do not want a road. So to drive from Alaska to Argentina, you still have to put your car on a boat.
+This is why you can't drive from Alaska to Argentina. The Pan-American Highway runs from Prudhoe Bay, Alaska to Ushuaia, Argentina — about 30,000 km, the longest road in the world. But between Panama and Colombia it simply stops: for 106 km there is no road at all. This is the Darién Gap. In 1960 an expedition drove across it anyway, in a Land Rover and a Jeep: it took 136 days, about 200 metres an hour. So why is there no road? Huge mountains, dense rainforest, and the swamps of the Atrato River, at least 80 km wide.
 
 Every frame is a real satellite map (NASA Blue Marble) drawn in code. The road, the swamp and the park are drawn approximately.
 
@@ -25,7 +25,7 @@ https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
 🥕 Subscribe to Pebblo Pebble:
 https://www.youtube.com/@PebbloPebble
 
-Sources: Wikipedia — Pan-American Highway (~30,000 km, 14 countries, Prudhoe Bay to Ushuaia); Darién Gap (106 km, Yaviza and Turbo, Atrato marshland at least 80 km wide, the 1959–60 Trans-Darién Expedition's 136 days at 201 m/h, planning 1971–74, the 1992–94 attempt, foot-and-mouth disease, Darién National Park).
+Sources: Wikipedia — Pan-American Highway (~30,000 km, Prudhoe Bay to Ushuaia); Darién Gap (106 km, Yaviza and Turbo, Cerro Tacarcuna 1,845 m, Atrato marshland at least 80 km wide, the 1959–60 Trans-Darién Expedition's 136 days at 201 m/h).
 
 #shorts #geography #panamericanhighway #dariengap #panama #colombia #maps #facts #geoshorts #roadtrip #alaska #argentina #learning #viralmap #interestingplace
 
@@ -44,7 +44,7 @@ people see.
 
 | field | value |
 |---|---|
-| Aspect | 9:16, 1080×1920, 60 s, 30 fps — a Short |
+| Aspect | 9:16, 1080×1920, ~37 s, 30 fps — a Short built to loop: it cuts on the last word of the answer and reopens on "This is why…" |
 | Category | Education |
 | Audience | **not made for kids** (general-audience geography) |
 | Chapters | none — Shorts do not show them |
