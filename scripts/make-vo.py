@@ -72,8 +72,11 @@ def main():
         start = int(cursor * SR)
         track[start:start + len(audio)] += audio
         end = cursor + len(audio) / SR
-        timing.append({"id": line["id"], "scene": line["scene"], "text": line["text"],
-                       "start": round(cursor, 3), "end": round(end, 3)})
+        entry = {"id": line["id"], "scene": line["scene"], "text": line["text"],
+                 "start": round(cursor, 3), "end": round(end, 3)}
+        if "cap" in line:  # caption chunks, when the script sets them by hand
+            entry["cap"] = line["cap"]
+        timing.append(entry)
         cursor = end + line.get("gap", 0.25) * scale
     print("last word ends at %.2fs" % timing[-1]["end"])
 

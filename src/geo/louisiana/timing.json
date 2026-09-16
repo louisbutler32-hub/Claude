@@ -1,0 +1,125 @@
+[
+ {
+  "id": "a0",
+  "scene": "hook",
+  "text": "Not many Americans know that their country nearly doubled in size overnight, for less than three cents an acre.",
+  "start": 0.0,
+  "end": 6.011,
+  "cap": [
+   "Not many Americans know",
+   "that their country",
+   "nearly doubled in size overnight",
+   "for less than three cents an acre"
+  ]
+ },
+ {
+  "id": "a1",
+  "scene": "year",
+  "text": "In 1803, Louisiana was not a state. It was a French territory stretching from the Gulf of Mexico to Canada: over two million square kilometres.",
+  "start": 6.292,
+  "end": 15.239,
+  "cap": [
+   "In 1803,",
+   "Louisiana was not a state",
+   "It was a French territory",
+   "stretching from the Gulf of Mexico",
+   "to Canada",
+   "over two million square kilometres"
+  ]
+ },
+ {
+  "id": "a2",
+  "scene": "jefferson",
+  "text": "President Jefferson wanted just one city: New Orleans, the port that controlled the Mississippi River. He was ready to pay up to 10 million dollars for it.",
+  "start": 15.472,
+  "end": 24.051,
+  "cap": [
+   "President Jefferson wanted",
+   "just one city",
+   "New Orleans",
+   "the port that controlled",
+   "the Mississippi River",
+   "He was ready to pay",
+   "up to 10 million dollars for it"
+  ]
+ },
+ {
+  "id": "b0",
+  "scene": "napoleon",
+  "text": "But Napoleon had a problem. He was losing Haiti to a slave revolt, and a war with Britain was coming. He needed money, fast.",
+  "start": 24.285,
+  "end": 31.638,
+  "cap": [
+   "But Napoleon had a problem",
+   "He was losing Haiti",
+   "to a slave revolt",
+   "and a war with Britain",
+   "was coming",
+   "He needed money, fast"
+  ]
+ },
+ {
+  "id": "b1",
+  "scene": "offer",
+  "text": "So he offered the Americans all of it. Every acre of Louisiana, for 15 million dollars.",
+  "start": 31.872,
+  "end": 37.504,
+  "cap": [
+   "So he offered the Americans",
+   "all of it",
+   "Every acre of Louisiana",
+   "for 15 million dollars"
+  ]
+ },
+ {
+  "id": "b2",
+  "scene": "today",
+  "text": "That is about 380 million dollars today. Roughly 18 dollars per square mile.",
+  "start": 37.784,
+  "end": 43.376,
+  "cap": [
+   "That is about",
+   "380 million dollars today",
+   "Roughly 18 dollars",
+   "per square mile"
+  ]
+ },
+ {
+  "id": "c0",
+  "scene": "states",
+  "text": "The land now covers all or part of 15 states, from Louisiana to Montana.",
+  "start": 43.656,
+  "end": 48.511,
+  "cap": [
+   "The land now covers",
+   "all or part of 15 states",
+   "from Louisiana",
+   "to Montana"
+  ]
+ },
+ {
+  "id": "c1",
+  "scene": "iowa",
+  "text": "An acre of Iowa farmland now sells for over 11,000 dollars: about 400,000 times what Jefferson paid.",
+  "start": 48.792,
+  "end": 56.441,
+  "cap": [
+   "An acre of Iowa farmland",
+   "now sells for",
+   "over 11,000 dollars",
+   "about 400,000 times",
+   "what Jefferson paid"
+  ]
+ },
+ {
+  "id": "z0",
+  "scene": "button",
+  "text": "Still the best real-estate deal in history.",
+  "start": 56.768,
+  "end": 59.27,
+  "cap": [
+   "Still the best",
+   "real-estate deal in history"
+  ]
+ }
+]

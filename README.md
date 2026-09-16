@@ -15,6 +15,12 @@
   crocodile eats it, and it fills one more slot on the collection board.
 - **`WhatIfVideo`** — "What If The Straw Hats Were Reborn" essay edit (4:45)
 - **`BountyVideo`** — "The Most Broken Bounty Jump" data-viz video (13:00)
+- **`Geo-Bering` / `Geo-Louisiana` / `Geo-Darien`** — sixty-second vertical
+  map explainers in the satellite-map Shorts format: real NASA imagery under
+  a continuous camera, countries wearing their flags, numbers in engraved
+  callouts, a cut-away diagram when the map can't say it, and captions a
+  phrase at a time (`src/geo/`, [docs](src/geo/README.md)). The tiles are
+  built locally from public-domain imagery with `npm run geo:tiles`.
 - **`Map-WW2-Europe`** — animated historical map system (`src/maps/`,
   [docs](src/maps/README.md)). Real Natural Earth vector coastlines, a
   keyframed camera, territories that change hands, engraved place names,

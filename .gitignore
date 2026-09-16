@@ -29,3 +29,8 @@ __pycache__/
 
 # third-party sound packs: not ours to redistribute
 .sfx
+
+# geo shorts: the NASA Blue Marble source and the tile pyramid cut from it
+# are derived and a few hundred MB — rebuild with scripts/build-geo-basemap.py
+.geo
+public/assets/geo/tiles

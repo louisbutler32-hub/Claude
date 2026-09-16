@@ -63,3 +63,14 @@ off the reference video — treat them as findings, not preferences.
 
 Source videos are gigabytes, so this runs locally, never in a web session.
 Run `python clipper/doctor.py` to check the machine has what it needs.
+
+## Shorts — the geo maps
+
+`src/geo/` is the satellite-map explainer line (Bering, Louisiana, Darién):
+one camera over NASA Blue Marble tiles, flags on the countries, numbers in
+callouts, captions a phrase at a time. **Read `src/geo/README.md` first.**
+
+The tiles are derived from public-domain imagery and gitignored — on a fresh
+clone run `pip install pillow numpy && npm run geo:tiles` (about ten minutes)
+before rendering, or every frame is flat sea. Thumbnails for this line are
+9:16, via `npm run geo:<name>:thumb`.

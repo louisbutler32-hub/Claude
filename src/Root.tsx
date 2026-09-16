@@ -93,9 +93,43 @@ import { CreeperShort, CreeperThumb, CREEPER_FRAMES } from "./minecraft-creeper/
 import { BrandAvatar, BrandBanner, BrandBannerGuides } from "./brand/OofCraft";
 import { DigShort, DigThumb, DIG_FRAMES } from "./minecraft-dig/DigShort";
 
+import { BeringShort, BERING_FPS, BERING_SECONDS } from "./geo/bering/BeringShort";
+import { LouisianaShort, LOUISIANA_FPS, LOUISIANA_SECONDS } from "./geo/louisiana/LouisianaShort";
+import { DarienShort, DARIEN_FPS, DARIEN_SECONDS } from "./geo/darien/DarienShort";
+import { BeringThumb, DarienThumb, LouisianaThumb, THUMB_FRAMES } from "./geo/Thumbnails";
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* ── geo shorts: satellite-map explainers, 9:16 ── */}
+      <Composition
+        id="Geo-Bering"
+        component={BeringShort}
+        durationInFrames={BERING_SECONDS * BERING_FPS}
+        fps={BERING_FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="Geo-Louisiana"
+        component={LouisianaShort}
+        durationInFrames={LOUISIANA_SECONDS * LOUISIANA_FPS}
+        fps={LOUISIANA_FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="Geo-Darien"
+        component={DarienShort}
+        durationInFrames={DARIEN_SECONDS * DARIEN_FPS}
+        fps={DARIEN_FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition id="Geo-Bering-Thumb" component={BeringThumb} durationInFrames={THUMB_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="Geo-Louisiana-Thumb" component={LouisianaThumb} durationInFrames={THUMB_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="Geo-Darien-Thumb" component={DarienThumb} durationInFrames={THUMB_FRAMES} fps={30} width={1080} height={1920} />
+
       {/* ── Minecraft meme Short ── */}
       <Composition
         id="MinecraftShort"

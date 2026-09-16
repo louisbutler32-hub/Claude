@@ -1,0 +1,10 @@
+{
+  "tileSize": 512,
+  "worldMaxZoom": 5,
+  "regions": [
+    { "name": "bering",    "west": 158,  "east": 222, "south": 50, "north": 76, "maxZoom": 8 },
+    { "name": "louisiana", "west": -128, "east": -66, "south": 22, "north": 52, "maxZoom": 7 },
+    { "name": "gulf",      "west": -96,  "east": -86, "south": 27, "north": 33, "maxZoom": 8 },
+    { "name": "darien",    "west": -84,  "east": -72, "south": 4,  "north": 12, "maxZoom": 9 }
+  ]
+}
