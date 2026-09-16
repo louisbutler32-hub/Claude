@@ -99,3 +99,82 @@ export const Chicken: React.FC<{ x: number; y: number; scale?: number; flash?: b
     </g>
   );
 };
+
+/** A creeper with feelings: face variants, a walk bob, the pre-explosion swell, and (for the joke) little hug arms. */
+export type CreeperFace = "normal" | "happy" | "sad" | "nervous" | "smile";
+export const CreeperMob: React.FC<{
+  x: number;
+  y: number;
+  scale?: number;
+  face?: CreeperFace;
+  walk?: number;
+  /** 0-1: the white flash and swell before it goes */
+  swell?: number;
+  arms?: boolean;
+  flip?: boolean;
+  hearts?: number;
+}> = ({ x, y, scale = 1, face = "normal", walk = 0, swell = 0, arms = false, flip = false, hearts = 0 }) => {
+  const g = "#3f8b48";
+  const gd = "#2f6b37";
+  const bob = Math.abs(Math.sin(walk)) * 6;
+  const s = 1 + swell * 0.18;
+  const L = "#141414";
+  const eye = (cx: number) =>
+    face === "happy" || face === "smile" ? (
+      <path d={`M${cx - 22},-6 q22,-30 44,0`} fill="none" stroke={L} strokeWidth={10} strokeLinecap="round" />
+    ) : face === "sad" || face === "nervous" ? (
+      <>
+        <rect x={cx - 20} y={-22} width={40} height={30} fill="#0a1a0c" />
+        <path d={`M${cx - 26},-30 l${cx < 0 ? 40 : -40},${cx < 0 ? -10 : -10}`} fill="none" stroke={L} strokeWidth={9} strokeLinecap="round" transform={cx < 0 ? "" : `translate(${cx * 2 - 8} 0) scale(-1 1) translate(${-cx * 2 + 8} 0)`} />
+      </>
+    ) : (
+      <rect x={cx - 20} y={-26} width={40} height={36} fill="#0a1a0c" />
+    );
+  const mouth =
+    face === "happy" || face === "smile" ? (
+      <path d="M-34,26 q34,44 68,0 z" fill="#0a1a0c" />
+    ) : face === "sad" ? (
+      <path d="M-30,60 q30,-34 60,0" fill="none" stroke="#0a1a0c" strokeWidth={14} strokeLinecap="round" />
+    ) : face === "nervous" ? (
+      <path d="M-30,46 q10,-12 20,0 q10,12 20,0 q10,-12 20,0" fill="none" stroke="#0a1a0c" strokeWidth={12} strokeLinecap="round" />
+    ) : (
+      <path d="M-30,14 h60 v46 h-20 v30 h-20 v-30 h-20 z" fill="#0a1a0c" />
+    );
+  return (
+    <g transform={`translate(${x} ${y - bob}) scale(${flip ? -scale : scale} ${scale})`}>
+      {/* legs */}
+      {[-62, -22, 18, 58].map((lx, i) => (
+        <rect key={i} x={lx + Math.sin(walk + i) * 6} y={150} width={40} height={50} fill={gd} stroke={L} strokeWidth={9} strokeLinejoin="round" />
+      ))}
+      <g transform={`scale(${s})`}>
+        <rect x={-70} y={-6} width={140} height={170} rx={8} fill={g} stroke={L} strokeWidth={11} strokeLinejoin="round" />
+        {arms && (
+          <>
+            <path d="M-70,40 q-50,-30 -90,-70" fill="none" stroke={L} strokeWidth={26} strokeLinecap="round" />
+            <path d="M-70,40 q-50,-30 -90,-70" fill="none" stroke={g} strokeWidth={14} strokeLinecap="round" />
+            <path d="M70,40 q50,-30 90,-70" fill="none" stroke={L} strokeWidth={26} strokeLinecap="round" />
+            <path d="M70,40 q50,-30 90,-70" fill="none" stroke={g} strokeWidth={14} strokeLinecap="round" />
+          </>
+        )}
+        <g transform="translate(0 -110)">
+          <rect x={-96} y={-96} width={192} height={192} rx={10} fill={g} stroke={L} strokeWidth={11} strokeLinejoin="round" />
+          {eye(-44)}
+          {eye(44)}
+          {mouth}
+          {(face === "happy" || face === "nervous" || face === "smile") && (
+            <>
+              <circle cx={-72} cy={30} r={12} fill="#ff9ab0" opacity={0.8} />
+              <circle cx={72} cy={30} r={12} fill="#ff9ab0" opacity={0.8} />
+            </>
+          )}
+          {face === "nervous" && <path d="M92,-60 q14,20 0,30 q-14,-10 0,-30 z" fill="#65c5fb" stroke={L} strokeWidth={4} />}
+          {swell > 0 && <rect x={-96} y={-96} width={192} height={192} rx={10} fill="#ffffff" opacity={swell * 0.85} />}
+        </g>
+        {swell > 0 && <rect x={-70} y={-6} width={140} height={170} rx={8} fill="#ffffff" opacity={swell * 0.85} />}
+      </g>
+      {Array.from({ length: hearts }, (_, i) => (
+        <path key={i} transform={`translate(${-80 + i * 70} ${-250 - (i % 2) * 40}) scale(1.6)`} d="M0,10 l-14,-14 a8,8 0 0 1 14,-8 a8,8 0 0 1 14,8 z" fill="#ff4d6d" stroke={L} strokeWidth={3} />
+      ))}
+    </g>
+  );
+};
