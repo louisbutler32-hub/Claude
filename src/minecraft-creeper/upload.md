@@ -20,7 +20,7 @@ POV: the creeper's side of the story 🟩 #shorts
 ```
 You: a hissing green thing, run. The creeper: just wanted a hug. 🥺💥
 
-Pix, a creeper, and the world's worst misunderstanding. New Minecraft
+Steve, a creeper, and the world's worst misunderstanding. New Minecraft
 animation every week.
 
 🥕 Subscribe:
@@ -36,7 +36,7 @@ https://creativecommons.org/licenses/by/4.0/
 ## Tags
 
 ```
-minecraft, minecraft shorts, minecraft creeper, creeper, creeper explosion, minecraft animation, minecraft meme, minecraft memes, minecraft funny, minecraft logic, minecraft cartoon, minecraft pov, creeper hug, minecraft relatable, gaming animation, pix animation, minecraft short, animation meme, oof craft, shorts
+minecraft, minecraft shorts, minecraft creeper, creeper, creeper explosion, minecraft animation, minecraft meme, minecraft memes, minecraft funny, minecraft logic, minecraft cartoon, minecraft pov, creeper hug, minecraft relatable, gaming animation, steve animation, minecraft short, animation meme, oof craft, shorts
 ```
 
 (387 characters.)
