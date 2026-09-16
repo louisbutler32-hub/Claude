@@ -125,6 +125,7 @@ export const RemotionRoot: React.FC = () => {
         fps={DARIEN_FPS}
         width={1080}
         height={1920}
+        defaultProps={{ music: null, narration: "assets/vo/geo-darien.mp3" }}
       />
       <Composition id="Geo-Bering-Thumb" component={BeringThumb} durationInFrames={THUMB_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Geo-Louisiana-Thumb" component={LouisianaThumb} durationInFrames={THUMB_FRAMES} fps={30} width={1080} height={1920} />

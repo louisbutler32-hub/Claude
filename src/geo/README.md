@@ -103,7 +103,13 @@ so a camera parked over the Bering Strait sees both shores.
    `npm run geo:<name>`, `npm run geo:<name>:thumb`, and write `upload.md`.
 
 The music bed is synthesised by `scripts/make-geo-bed.py` (sine waves, so
-nothing to license) and sits ~14 dB under the voice.
+nothing to license) and sits ~14 dB under the voice. A short can carry a
+licensed track instead: `scripts/make-geo-music.py <name> <track.mp3>` cuts
+a levelled 60 s bed into `public/audio/geo-<name>-music.mp3` (gitignored —
+the licence is the channel's, not the repo's) and the short takes it as a
+`music` prop, so the default render has no bed and `npm run geo:<name>:music`
+adds it. The Darién short is wired this way, with Kevin MacLeod's
+"Accralate" (CC BY 4.0, credited in its `upload.md`).
 
 ## Accuracy notes
 

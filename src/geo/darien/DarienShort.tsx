@@ -72,10 +72,20 @@ const T_SEA = B.button.start + 1.5;
 const ROAD_START = B.road.start + 0.8;
 const ROAD_DUR = 4.6;
 
-export const DarienShort: React.FC = () => (
+/** Audio is two drop-in slots. The narration ships with the repo. The music
+ *  is a licensed track cut by scripts/make-geo-music.py into public/audio
+ *  (gitignored), so the default render carries no bed at all:
+ *
+ *    npm run geo:darien          narration only
+ *    npm run geo:darien:music    narration + audio/geo-darien-music.mp3
+ *    npm run geo:darien:mute     music only, for a voice recorded later
+ */
+export type DarienProps = { music?: string | null; narration?: string | null };
+
+export const DarienShort: React.FC<DarienProps> = ({ music = null, narration = "assets/vo/geo-darien.mp3" }) => (
   <AbsoluteFill>
-    <Audio src={staticFile("assets/vo/geo-darien.mp3")} />
-    <Audio src={staticFile("assets/vo/geo-bed.mp3")} volume={0.22} />
+    {narration ? <Audio src={staticFile(narration)} /> : null}
+    {music ? <Audio src={staticFile(music)} /> : null}
     <GeoCanvas
       camera={CAMERA}
       hud={

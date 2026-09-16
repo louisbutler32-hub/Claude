@@ -108,7 +108,9 @@
     "geo:louisiana:thumb": "remotion still Geo-Louisiana-Thumb out/thumbnail-geo-louisiana.jpg --frame=45 --image-format=jpeg --quality=92",
     "geo:darien": "remotion render Geo-Darien out/geo-darien.mp4",
     "geo:darien:vo": "python3 scripts/make-vo.py geo-darien",
-    "geo:darien:thumb": "remotion still Geo-Darien-Thumb out/thumbnail-geo-darien.jpg --frame=45 --image-format=jpeg --quality=92"
+    "geo:darien:thumb": "remotion still Geo-Darien-Thumb out/thumbnail-geo-darien.jpg --frame=45 --image-format=jpeg --quality=92",
+    "geo:darien:music": "remotion render Geo-Darien out/geo-darien.mp4 --props='{\"music\":\"audio/geo-darien-music.mp3\"}'",
+    "geo:darien:mute": "remotion render Geo-Darien out/geo-darien-music-only.mp4 --props='{\"music\":\"audio/geo-darien-music.mp3\",\"narration\":null}'"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",

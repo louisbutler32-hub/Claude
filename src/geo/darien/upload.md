@@ -15,6 +15,10 @@ Have you ever wondered why you can't drive from Alaska to Argentina? The Pan-Ame
 
 Every frame is a real satellite map (NASA Blue Marble) drawn in code. The road, the swamp and the park are drawn approximately.
 
+Music: "Accralate" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
 📚 ALL OUR LEARNING VIDEOS
 https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
 
@@ -45,3 +49,4 @@ people see.
 | Audience | **not made for kids** (general-audience geography) |
 | Chapters | none — Shorts do not show them |
 | `#shorts` | in the description; optional in the title |
+| Music | "Accralate" by Kevin MacLeod, CC BY 4.0 — the credit block above must stay in the description. The track is a local drop-in at `public/audio/geo-darien-music.mp3` (cut with `python3 scripts/make-geo-music.py darien <track.mp3>`), not in the repo. Render with `npm run geo:darien:music`. |
