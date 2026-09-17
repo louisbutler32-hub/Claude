@@ -93,7 +93,7 @@ export const WaterlooShort: React.FC<WaterlooProps> = ({ music = null, narration
       }
     >
       {/* ── the question ── */}
-      <Highlight shape="france" flag="napoleon" in={0.3} until={T_BATTLE - 0.3} />
+      <Highlight shape="france" flag="napoleon" in={0.3} until={B.battle.start - 0.2} />
       <Label at={[2.4, 46.6]} text="FRANCE" size={60} in={0.8} until={B.escape.start + 1.2} />
       <Spot at={WATERLOO} in={1.0} until={B.escape.start + 1.0} color="#ffd23f" r={42} />
       <Label at={WATERLOO} text="WATERLOO" size={38} in={1.2} until={B.escape.start + 1.0} dy={-70} weight={800} />
@@ -106,11 +106,11 @@ export const WaterlooShort: React.FC<WaterlooProps> = ({ music = null, narration
 
       {/* ── the battle ── */}
       <Pin at={BRUSSELS} label="Brussels" in={T_BATTLE} until={B.fronts.start} side="top" labelSize={30} size={44} />
-      <Pin at={WATERLOO} label="Waterloo" in={T_BATTLE + 0.4} until={B.fronts.start} side="right" />
-      <Label at={[4.41, 50.6]} text="NAPOLEON · 73,000" size={40} color="#7fb0ff" in={B.battle.start + 2.6} until={B.fronts.start} weight={800} />
-      <Label at={[4.41, 50.745]} text="WELLINGTON · 68,000" size={40} color="#ff6b6b" in={B.battle.start + 4.6} until={B.fronts.start} weight={800} />
+      <Pin at={WATERLOO} label="Waterloo" in={T_BATTLE + 0.4} until={B.fronts.start} side="left" />
+      <Label at={[4.41, 50.585]} text="NAPOLEON · 73,000" size={46} color="#7fb0ff" in={B.battle.start + 2.6} until={B.fronts.start} weight={800} />
+      <Label at={[4.41, 50.775]} text="WELLINGTON · 68,000" size={46} color="#ff6b6b" in={B.battle.start + 4.6} until={B.fronts.start} weight={800} />
       <Route points={[WAVRE, PLANCENOIT]} in={B.battle.start + 8.4} dur={1.0} until={B.fronts.start} color="#ffffff" width={8} head="dot" />
-      <Label at={[4.66, 50.72]} text="PRUSSIANS · 50,000" size={36} color="#ffffff" in={B.battle.start + 8.8} until={B.fronts.start} weight={800} dy={-50} />
+      <Label at={[4.72, 50.735]} text="PRUSSIANS · 50,000" size={40} color="#ffffff" in={B.battle.start + 8.8} until={B.fronts.start} weight={800} dy={-56} />
 
       {/* ── four fronts ── */}
       <Highlight shape="france" flag="napoleon" in={T_FRONTS - 0.4} until={END} glow={0.6} />
@@ -120,8 +120,8 @@ export const WaterlooShort: React.FC<WaterlooProps> = ({ music = null, narration
       <Route points={[LONDON, BRUSSELS]} in={B.fronts.start + 3.2} dur={1.0} until={END} color="#e63946" width={9} head="dot" />
       <Route points={[TURIN, [5.6, 45.4]]} in={B.fronts.start + 3.4} dur={1.0} until={END} color="#e63946" width={9} head="dot" />
       <Label at={[15.5, 47.4]} text="AUSTRIA" size={36} in={B.fronts.start + 5.2} until={END} weight={800} />
-      <Label at={[22, 53.2]} text="RUSSIA" size={36} in={B.fronts.start + 5.8} until={END} weight={800} />
-      <Label at={[13.4, 53.5]} text="PRUSSIA" size={36} in={B.fronts.start + 6.2} until={END} weight={800} />
+      <Label at={[24.5, 53.6]} text="RUSSIA" size={36} in={B.fronts.start + 5.8} until={END} weight={800} />
+      <Label at={[12.6, 54.2]} text="PRUSSIA" size={36} in={B.fronts.start + 6.2} until={END} weight={800} />
       <Label at={[-1.8, 52.6]} text="BRITAIN" size={36} in={B.fronts.start + 6.6} until={END} weight={800} />
     </GeoCanvas>
   </AbsoluteFill>

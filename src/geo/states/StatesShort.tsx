@@ -41,8 +41,8 @@ const CAMERA: CameraKey[] = [
   { at: B.guess.start - 0.2, lon: -78, lat: 37.8, scale: 15500 },
   { at: B.guess.start + 1.2, lon: -97, lat: 38.5, scale: 4600 },
   { at: B.reveal.start + 3.0, lon: -97, lat: 38.5, scale: 4600 },
-  { at: B.reveal.start + 4.6, lon: -105, lat: 44.5, scale: 7200 },
-  { at: END, lon: -105, lat: 44.5, scale: 7300 },
+  { at: B.reveal.start + 4.6, lon: -105.5, lat: 44.8, scale: 8000 },
+  { at: END, lon: -105.5, lat: 44.8, scale: 8100 },
 ];
 
 const T_CA = B.california.start + 1.4;
@@ -102,9 +102,9 @@ export const StatesShort: React.FC<StatesProps> = ({ music = null, narration = "
 
       {/* ── the three states with the missiles ── */}
       <Highlight shapes={SILOS} color="#e63946" in={B.reveal.start + 4.8} until={END} />
-      <Label at={[-107.5, 43.0]} text="WYOMING" size={36} in={B.reveal.start + 6.4} until={END} weight={800} />
-      <Label at={[-110.0, 47.0]} text="MONTANA" size={36} in={B.reveal.start + 7.0} until={END} weight={800} />
-      <Label at={[-100.5, 47.5]} text="NORTH DAKOTA" size={36} in={B.reveal.start + 7.8} until={END} weight={800} />
+      <Label at={[-107.6, 42.7]} text="WYOMING" size={34} in={B.reveal.start + 6.4} until={END} weight={800} />
+      <Label at={[-111.2, 46.4]} text="MONTANA" size={34} in={B.reveal.start + 7.0} until={END} weight={800} />
+      <Label at={[-100.4, 48.3]} text="NORTH DAKOTA" size={34} in={B.reveal.start + 7.8} until={END} weight={800} />
     </GeoCanvas>
   </AbsoluteFill>
 );

@@ -38,9 +38,9 @@ const CAMERA: CameraKey[] = [
   { at: B.east.start, lon: 16, lat: 52.5, scale: 7000 },
   { at: B.east.start + 1.6, lon: 24, lat: 54, scale: 6400 },
   { at: B.west.start - 0.3, lon: 24, lat: 54, scale: 6300 },
-  { at: B.west.start + 1.6, lon: 3.6, lat: 49.4, scale: 24000 },
-  { at: B.plan.start, lon: 4.0, lat: 49.7, scale: 20000 },
-  { at: B.bloc.start - 0.3, lon: 4.2, lat: 49.8, scale: 19000 },
+  { at: B.west.start + 1.6, lon: 3.9, lat: 49.5, scale: 52000 },
+  { at: B.plan.start, lon: 4.2, lat: 49.75, scale: 48000 },
+  { at: B.bloc.start - 0.3, lon: 4.4, lat: 49.85, scale: 46000 },
   { at: B.bloc.start + 1.5, lon: 12, lat: 50.5, scale: 6600 },
   { at: B.reveal.start, lon: 11, lat: 50.5, scale: 6400 },
   { at: END, lon: 10.5, lat: 50.5, scale: 6200 },
@@ -67,11 +67,11 @@ export const Ww1Short: React.FC<Ww1Props> = ({ music = null, narration = "assets
 
           {/* ── the west ── */}
           <Callout text="50 DIVISIONS" icon="arrow" in={B.west.start + 0.3} until={B.west.start + 4.0} y={330} size={54} font="sans" weight={800} glow="rgba(255,255,255,0.45)" />
-          <Tag text="PARIS GUN · 120 km" in={B.west.start + 7.2} until={B.plan.start + 0.4} at={[4.3, 49.95]} size={30} bg="#e63946" />
+          <Tag text="PARIS GUN · 120 km" in={B.west.start + 7.2} until={B.plan.start + 0.4} at={[3.52, 49.6]} dy={-70} size={30} bg="#e63946" />
 
           {/* ── the plan ── */}
           <BigNumber text="1914" in={B.plan.start + 1.0} until={B.plan.start + 3.2} y={300} size={130} />
-          <Tag text="VASSAL STATE" in={B.plan.start + 2.6} until={T_BLOC} at={[4.6, 50.55]} size={30} bg="#1a1a1a" />
+          <Tag text="VASSAL STATE" in={B.plan.start + 2.6} until={T_BLOC} at={[4.6, 50.55]} size={32} bg="#1a1a1a" />
           <Tag text="ANNEXED" in={B.plan.start + 4.6} until={T_BLOC} at={[6.1, 49.85]} size={30} bg="#1a1a1a" dy={-40} />
           <Tag text="IRON MINES" in={B.plan.start + 6.2} until={T_BLOC} at={BRIEY} size={30} dy={60} />
           <Callout text="INDEMNITY" icon="coin" in={B.plan.start + 8.0} until={B.bloc.start + 1.2} y={330} size={54} />
