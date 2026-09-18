@@ -52,6 +52,7 @@ const CAMERA: CameraKey[] = [
 ];
 
 const T_WEST = B.west.start + 1.6;
+const T_EAST_OFF = B.west.start - 0.1;
 const T_EMPIRE = B.empire.start + 1.4;
 
 export type Ww1Props = { music?: string | null; narration?: string | null };
@@ -101,16 +102,16 @@ export const Ww1Short: React.FC<Ww1Props> = ({ music = null, narration = "assets
       }
     >
       {/* ── the question: the Kaiser's Germany ── */}
-      <Highlight shape="germany" flag="germany1914" in={0.3} until={T_WEST - 0.4} />
+      <Highlight shape="germany" flag="germany1914" in={0.3} until={T_EAST_OFF} />
       <Label at={[10.4, 51.3]} text="GERMANY" size={56} in={0.8} until={B.east.start + 1.4} />
 
       {/* ── the east: Brest-Litovsk ── */}
-      <Wash shapes={KINGDOMS} color="#1a1a1a" opacity={0.55} outline="#ffffff" outlineWidth={3} in={B.east.start + 1.6} until={T_WEST - 0.2} draw={1.4} />
-      <Label at={[26.5, 64]} text="FINLAND" size={36} in={B.east.start + 3.0} until={T_WEST - 0.2} weight={800} />
-      <Label at={[24.8, 57.2]} text="THE BALTICS" size={36} in={B.east.start + 3.8} until={T_WEST - 0.2} weight={800} />
-      <Label at={[19.6, 52.2]} text="POLAND" size={36} in={B.east.start + 4.4} until={T_WEST - 0.2} weight={800} />
-      <Label at={[28, 53.6]} text="BELARUS" size={36} in={B.east.start + 5.0} until={T_WEST - 0.2} weight={800} />
-      <Label at={[31.5, 49.0]} text="UKRAINE" size={36} in={B.east.start + 5.6} until={T_WEST - 0.2} weight={800} />
+      <Wash shapes={KINGDOMS} color="#1a1a1a" opacity={0.55} outline="#ffffff" outlineWidth={3} in={B.east.start + 1.6} until={T_EAST_OFF} draw={1.4} />
+      <Label at={[26.5, 64]} text="FINLAND" size={36} in={B.east.start + 3.0} until={T_EAST_OFF} weight={800} />
+      <Label at={[24.8, 57.2]} text="THE BALTICS" size={36} in={B.east.start + 3.8} until={T_EAST_OFF} weight={800} />
+      <Label at={[19.6, 52.2]} text="POLAND" size={36} in={B.east.start + 4.4} until={T_EAST_OFF} weight={800} />
+      <Label at={[28, 53.6]} text="BELARUS" size={36} in={B.east.start + 5.0} until={T_EAST_OFF} weight={800} />
+      <Label at={[31.5, 49.0]} text="UKRAINE" size={36} in={B.east.start + 5.6} until={T_EAST_OFF} weight={800} />
 
       {/* ── the west: fifty divisions ── */}
       <Route points={[[6.1, 50.9], [3.6, 49.7]]} in={B.west.start + 0.6} dur={1.3} until={B.guess.start + 0.4} color="#e63946" width={9} head="dot" />
