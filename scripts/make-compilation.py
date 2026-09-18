@@ -2,18 +2,21 @@
 """
 Joins the guess-format episodes into one long compilation.
 
-The episodes are rendered at 1920x1080; the original fruit video is 1280x720,
-so everything is normalised to a single codec, size and frame rate before
-concatenating — otherwise the join produces a file that plays wrong (or not
-at all) on some players.
+Defaults to all seven of our own episodes — vegetable, animal, number,
+vehicle, dinosaur, sea creature, colours. The original fruit episode isn't
+ours to redistribute, so it's opt-in only via --fruit, not part of the
+default set.
+
+The episodes are all rendered at 1920x1080, but a passed-in --fruit file
+might not be, so everything is normalised to a single codec, size and frame
+rate before concatenating — otherwise the join produces a file that plays
+wrong (or not at all) on some players.
 
 Chapter marks are written for each episode boundary, so the compilation is
-navigable rather than one 40-minute block.
+navigable rather than one long block.
 
 Usage:
-    python3 scripts/make-compilation.py \\
-        --fruit path/to/fruit.mp4 \\
-        --out out/compilation.mp4
+    python3 scripts/make-compilation.py --out out/compilation.mp4
 """
 
 import argparse
@@ -44,11 +47,20 @@ def duration(path):
 
 
 def normalise(src, dst, crf):
-    """One codec, one size, one frame rate, one audio layout."""
+    """One codec, one size, one frame rate, one audio layout.
+
+    Frame rate and pixel format are set as output options (-r, -pix_fmt)
+    rather than filtergraph tokens (fps=.., format=..) — some ffmpeg builds
+    (Remotion's bundled compositor binary among them) are compiled with only
+    a curated filter set and don't carry those two filters, while -r and
+    -pix_fmt are core options no build omits.
+    """
     subprocess.run([
         FFMPEG, "-hide_banner", "-loglevel", "error", "-y",
         "-i", src,
-        "-vf", f"scale={W}:{H}:flags=lanczos,fps={FPS},format=yuv420p",
+        "-vf", f"scale={W}:{H}:flags=lanczos",
+        "-r", str(FPS),
+        "-pix_fmt", "yuv420p",
         "-c:v", "libx264", "-crf", str(crf), "-preset", "veryfast",
         "-c:a", "aac", "-b:a", "96k", "-ar", "44100", "-ac", "2",
         "-movflags", "+faststart",
@@ -88,6 +100,10 @@ def main():
         ("Guess the Vegetable", "chomp-chomp-veggies.mp4"),
         ("Guess the Animal", "animals.mp4"),
         ("Guess the Number", "numbers.mp4"),
+        ("Guess the Vehicle", "vehicles.mp4"),
+        ("Guess the Dinosaur", "dinosaurs.mp4"),
+        ("Guess the Sea Creature", "sea.mp4"),
+        ("Learn the Colours", "colours.mp4"),
     ):
         p = os.path.join(ROOT, "out", name)
         if os.path.exists(p):

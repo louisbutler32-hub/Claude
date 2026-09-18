@@ -1,9 +1,12 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { ANIMAL_ART, AnimalDefs } from "../animals/animals";
+import { RainbowArt } from "../colours/extras";
+import { DinoDefs, DINO_ART } from "../dinosaurs/dinosaurs";
 import { NUMBER_ART } from "../numbers/numbers";
+import { SeaDefs, SEA_ART } from "../sea/sea";
 import { VeggieDefs, VEGGIE_ART } from "../veggies/veggies";
-import { Body, Face, Shine } from "./art";
+import { VehicleDefs, VEHICLE_ART } from "../vehicles/vehicles";
 import { Crocodile } from "./critters";
 import { loadVeggieFonts } from "./fonts";
 import { fonts } from "./palette";
@@ -21,56 +24,13 @@ import {
 } from "./scene";
 
 /**
- * Thumbnail for the 41-minute compilation.
+ * Thumbnail for the seven-episode compilation.
  *
  * Single episodes lead on the shadow, because the guess is the hook. A
  * compilation sells on length and variety instead, so this one leads on the
- * running time and shows the cast in full colour — one from each of the
- * four episodes, fruit included.
+ * running time and shows the cast in full colour — one hero from each of
+ * the seven episodes.
  */
-
-/** The compilation covers the fruit episode too, so it needs one apple. */
-const Apple: React.FC<{ sil?: boolean }> = ({ sil }) => (
-  <Body sil={sil}>
-    <g>
-      <path
-        d="M 4 -74 q -4 -26 14 -38 q 10 20 -2 40 Z"
-        fill="#7a5a3a"
-        stroke="#6a4a2e"
-        strokeWidth={5}
-        strokeLinejoin="round"
-      />
-      <path
-        d="M 16 -70 q 44 -30 74 -12 q -20 38 -70 24 Z"
-        fill="#5aa84f"
-        stroke="#43893c"
-        strokeWidth={4}
-        strokeLinejoin="round"
-      />
-      <path
-        d="M 0 -62 q 22 -20 50 -6 q 40 20 36 74 q -4 62 -42 76 q -26 10 -44 -4
-           q -18 14 -44 4 q -38 -14 -42 -76 q -4 -54 36 -74 q 28 -14 50 6 Z"
-        fill="url(#gApple)"
-      />
-      {!sil ? (
-        <>
-          <Shine cx={-38} cy={-18} rx={13} ry={28} o={0.45} />
-          <Face cy={10} gap={26} blushGap={54} />
-        </>
-      ) : null}
-    </g>
-  </Body>
-);
-
-const AppleDefs: React.FC = () => (
-  <defs>
-    <radialGradient id="gApple" cx="0.34" cy="0.26" r="0.86">
-      <stop offset="0%" stopColor="#f4796d" />
-      <stop offset="60%" stopColor="#e85a52" />
-      <stop offset="100%" stopColor="#cf4139" />
-    </radialGradient>
-  </defs>
-);
 
 const TITLE: [string, string][] = [
   ["#ef8a3c", "#c96a22"],
@@ -142,23 +102,13 @@ const PANELS: {
   render: () => React.ReactNode;
 }[] = [
   {
-    label: "FRUIT",
-    tint: "#f6d9d4",
-    ink: "#c23f38",
-    render: () => (
-      <g transform="scale(1.85)">
-        <Apple />
-      </g>
-    ),
-  },
-  {
     label: "VEGGIES",
     tint: "#e2efd2",
     ink: "#4a7f2e",
     render: () => {
       const Carrot = VEGGIE_ART.carrot;
       return (
-        <g transform="scale(1.75)">
+        <g transform="scale(1.6)">
           <Carrot />
         </g>
       );
@@ -171,7 +121,7 @@ const PANELS: {
     render: () => {
       const Cow = ANIMAL_ART.cow;
       return (
-        <g transform="scale(1.85)">
+        <g transform="scale(1.7)">
           <Cow />
         </g>
       );
@@ -184,44 +134,102 @@ const PANELS: {
     render: () => {
       const Seven = NUMBER_ART["7"];
       return (
-        <g transform="scale(2.0)">
+        <g transform="scale(1.85)">
           <Seven />
         </g>
       );
     },
   },
+  {
+    label: "VEHICLES",
+    tint: "#f6d9d4",
+    ink: "#c23f38",
+    render: () => {
+      const FireEngine = VEHICLE_ART.fireEngine;
+      return (
+        <g transform="scale(1.5)">
+          <FireEngine />
+        </g>
+      );
+    },
+  },
+  {
+    label: "DINOSAURS",
+    tint: "#ddeecb",
+    ink: "#357038",
+    render: () => {
+      const TRex = DINO_ART.trex;
+      return (
+        <g transform="scale(1.5)">
+          <TRex />
+        </g>
+      );
+    },
+  },
+  {
+    label: "SEA LIFE",
+    tint: "#cfe6ee",
+    ink: "#2d6699",
+    render: () => {
+      const Octopus = SEA_ART.octopus;
+      return (
+        <g transform="scale(1.75)">
+          <Octopus />
+        </g>
+      );
+    },
+  },
+  {
+    label: "COLOURS",
+    tint: "#f0dcec",
+    ink: "#8b58b3",
+    render: () => (
+      <g transform="scale(1.3)">
+        <RainbowArt />
+      </g>
+    ),
+  },
 ];
+
+/** A dedicated strip above the grid for the count/length badge, so it never
+ *  has to sit on top of — and fight for space with — a panel label. */
+const BANNER_H = 168;
 
 export const CompilationThumbQuad: React.FC = () => {
   loadVeggieFonts();
-  const halfW = W / 2;
-  const halfH = H / 2;
+  const topRow = PANELS.slice(0, 4);
+  const botRow = PANELS.slice(4);
+  const gridH = H - BANNER_H;
+  const topH = BANNER_H + gridH * 0.52;
+  const botH = H - topH;
   return (
     <AbsoluteFill style={{ backgroundColor: "#dceaee", overflow: "hidden" }}>
       <SceneFilters />
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
         <VeggieDefs />
         <AnimalDefs />
-        <AppleDefs />
-        {PANELS.map((p, i) => {
-          const x = (i % 2) * halfW;
-          const y = Math.floor(i / 2) * halfH;
+        <VehicleDefs />
+        <DinoDefs />
+        <SeaDefs />
+        {topRow.map((p, i) => {
+          const w = W / topRow.length;
+          const x = i * w;
           return (
             <g key={p.label}>
-              <rect x={x} y={y} width={halfW} height={halfH} fill={p.tint} />
-              <g transform={`translate(${x + halfW / 2} ${y + halfH / 2 - 26})`}>
+              <rect x={x} y={BANNER_H} width={w} height={topH - BANNER_H} fill={p.tint} />
+              <g transform={`translate(${x + w / 2} ${BANNER_H + (topH - BANNER_H) / 2 - 20})`}>
                 {p.render()}
               </g>
               <text
-                x={x + halfW / 2}
-                y={y + halfH - 34}
+                x={x + w / 2}
+                y={topH - 26}
                 textAnchor="middle"
                 fontFamily={fonts.script}
                 fontWeight={800}
-                fontSize={76}
+                fontSize={56}
                 fill={p.ink}
                 stroke="#ffffff"
-                strokeWidth={14}
+                strokeWidth={11}
                 paintOrder="stroke"
               >
                 {p.label}
@@ -229,17 +237,50 @@ export const CompilationThumbQuad: React.FC = () => {
             </g>
           );
         })}
-        <g stroke="#ffffff" strokeWidth={16}>
-          <line x1={halfW} y1={0} x2={halfW} y2={H} />
-          <line x1={0} y1={halfH} x2={W} y2={halfH} />
+        {botRow.map((p, i) => {
+          const w = W / botRow.length;
+          const x = i * w;
+          return (
+            <g key={p.label}>
+              <rect x={x} y={topH} width={w} height={botH} fill={p.tint} />
+              <g transform={`translate(${x + w / 2} ${topH + botH / 2 - 20})`}>
+                {p.render()}
+              </g>
+              <text
+                x={x + w / 2}
+                y={H - 26}
+                textAnchor="middle"
+                fontFamily={fonts.script}
+                fontWeight={800}
+                fontSize={56}
+                fill={p.ink}
+                stroke="#ffffff"
+                strokeWidth={11}
+                paintOrder="stroke"
+              >
+                {p.label}
+              </text>
+            </g>
+          );
+        })}
+        <g stroke="#ffffff" strokeWidth={14}>
+          <line x1={0} y1={topH} x2={W} y2={topH} />
+          {topRow.slice(1).map((p, i) => (
+            <line key={p.label} x1={((i + 1) * W) / topRow.length} y1={BANNER_H} x2={((i + 1) * W) / topRow.length} y2={topH} />
+          ))}
+          {botRow.slice(1).map((p, i) => (
+            <line key={p.label} x1={((i + 1) * W) / botRow.length} y1={topH} x2={((i + 1) * W) / botRow.length} y2={H} />
+          ))}
         </g>
-        {/* centre badge */}
-        <circle cx={W / 2} cy={H / 2} r={210} fill="#ef559b" stroke="#ffffff" strokeWidth={20} />
-        <text x={W / 2} y={H / 2 - 22} textAnchor="middle" fontFamily={fonts.script} fontWeight={800} fontSize={116} fill="#ffffff">
-          4 in 1
+        {/* the banner strip, painted over the grid's top edge so it never
+            competes with a panel label for space */}
+        <rect x={0} y={0} width={W} height={BANNER_H} fill="#ef559b" />
+        <line x1={0} y1={BANNER_H} x2={W} y2={BANNER_H} stroke="#ffffff" strokeWidth={14} />
+        <text x={W / 2 - 220} y={BANNER_H / 2 + 24} textAnchor="middle" fontFamily={fonts.script} fontWeight={800} fontSize={88} fill="#ffffff">
+          7 in 1
         </text>
-        <text x={W / 2} y={H / 2 + 82} textAnchor="middle" fontFamily={fonts.display} fontSize={66} fill="#ffffff">
-          41 MIN
+        <text x={W / 2 + 220} y={BANNER_H / 2 + 20} textAnchor="middle" fontFamily={fonts.display} fontSize={52} fill="#ffffff">
+          73 MINUTES
         </text>
       </svg>
       <PaperGrain opacity={0.1} />
@@ -251,11 +292,18 @@ export const CompilationThumbQuad: React.FC = () => {
 /* C — the format's hook, at compilation length                        */
 /* ------------------------------------------------------------------ */
 
+const SHADOW_CAST: { Art: React.FC<{ sil?: boolean }>; x: number; scale: number }[] = [
+  { Art: VEGGIE_ART.carrot, x: 100, scale: 1.05 },
+  { Art: ANIMAL_ART.cow, x: 387, scale: 1.05 },
+  { Art: NUMBER_ART["7"], x: 673, scale: 1.2 },
+  { Art: VEHICLE_ART.fireEngine, x: 960, scale: 0.85 },
+  { Art: DINO_ART.trex, x: 1247, scale: 0.85 },
+  { Art: SEA_ART.octopus, x: 1533, scale: 1.0 },
+  { Art: RainbowArt, x: 1810, scale: 0.75 },
+];
+
 export const CompilationThumbShadows: React.FC = () => {
   loadVeggieFonts();
-  const Carrot = VEGGIE_ART.carrot;
-  const Cow = ANIMAL_ART.cow;
-  const Seven = NUMBER_ART["7"];
   return (
     <AbsoluteFill style={{ backgroundColor: "#dceaee", overflow: "hidden" }}>
       <SceneFilters />
@@ -270,36 +318,43 @@ export const CompilationThumbShadows: React.FC = () => {
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
         <VeggieDefs />
         <AnimalDefs />
-        <AppleDefs />
-        <g transform="translate(330 768) scale(1.95)"><Apple sil /></g>
-        <g transform="translate(770 762) scale(1.9)"><Carrot sil /></g>
-        <g transform="translate(1200 756) scale(1.95)"><Cow sil /></g>
-        <g transform="translate(1630 756) scale(2.15)"><Seven sil /></g>
+        <VehicleDefs />
+        <DinoDefs />
+        <SeaDefs />
+        {SHADOW_CAST.map(({ Art, x, scale }, i) => (
+          <g key={i} transform={`translate(${x} 762) scale(${scale})`}>
+            <Art sil />
+          </g>
+        ))}
       </svg>
-      <Punch text="41 MINUTES" size={206} top={34} />
-      <Punch text="OF SHADOW GUESSING" size={88} top={256} colors={WHITE} steady />
+      <Punch text="73 MINUTES" size={196} top={34} />
+      <Punch text="OF SHADOW GUESSING" size={82} top={252} colors={WHITE} steady />
       <PaperGrain opacity={0.12} />
     </AbsoluteFill>
   );
 };
 
 /* ------------------------------------------------------------------ */
-/* D — one board holding all four episodes                             */
+/* D — one board holding all seven episodes                            */
 /* ------------------------------------------------------------------ */
 
-const MIXED: { kind: "veg" | "animal" | "num" | "apple"; id: string; s: number }[] = [
-  { kind: "apple", id: "apple", s: 0.92 },
+const MIXED: {
+  kind: "veg" | "animal" | "num" | "vehicle" | "dino" | "sea" | "colour";
+  id: string;
+  s: number;
+}[] = [
+  { kind: "veg", id: "tomato", s: 1.0 },
   { kind: "veg", id: "carrot", s: 0.95 },
-  { kind: "veg", id: "broccoli", s: 0.95 },
-  { kind: "veg", id: "pumpkin", s: 0.98 },
+  { kind: "vehicle", id: "fireEngine", s: 0.86 },
+  { kind: "dino", id: "trex", s: 0.86 },
+  { kind: "sea", id: "octopus", s: 0.92 },
   { kind: "animal", id: "cow", s: 0.9 },
   { kind: "animal", id: "duck", s: 0.74 },
-  { kind: "animal", id: "lion", s: 0.82 },
-  { kind: "animal", id: "frog", s: 0.82 },
+  { kind: "colour", id: "rainbow", s: 0.68 },
   { kind: "num", id: "3", s: 0.92 },
   { kind: "num", id: "7", s: 0.92 },
   { kind: "num", id: "10", s: 1.1 },
-  { kind: "veg", id: "tomato", s: 1.0 },
+  { kind: "veg", id: "broccoli", s: 0.95 },
 ];
 
 export const CompilationThumbBoard: React.FC = () => {
@@ -314,7 +369,9 @@ export const CompilationThumbBoard: React.FC = () => {
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
         <VeggieDefs />
         <AnimalDefs />
-        <AppleDefs />
+        <VehicleDefs />
+        <DinoDefs />
+        <SeaDefs />
         <g transform="translate(0 -74) scale(0.84) translate(180 40)">
           <rect x={300} y={16} width={1300} height={870} rx={92} fill="#ef559b" filter="url(#wobble)" />
           <rect x={334} y={50} width={1232} height={802} rx={62} fill="#bbd08f" />
@@ -324,13 +381,19 @@ export const CompilationThumbBoard: React.FC = () => {
             const cx = 334 + 154 + col * 308;
             const cy = 50 + 134 + row * 267;
             const Art =
-              m.kind === "apple"
-                ? Apple
-                : m.kind === "veg"
+              m.kind === "veg"
                 ? VEGGIE_ART[m.id as keyof typeof VEGGIE_ART]
                 : m.kind === "animal"
                 ? ANIMAL_ART[m.id]
-                : NUMBER_ART[m.id];
+                : m.kind === "num"
+                ? NUMBER_ART[m.id]
+                : m.kind === "vehicle"
+                ? VEHICLE_ART[m.id]
+                : m.kind === "dino"
+                ? DINO_ART[m.id]
+                : m.kind === "sea"
+                ? SEA_ART[m.id]
+                : RainbowArt;
             return (
               <g key={i} transform={`translate(${cx} ${cy}) scale(${m.s})`}>
                 <Art />
@@ -339,7 +402,7 @@ export const CompilationThumbBoard: React.FC = () => {
           })}
         </g>
       </svg>
-      <Punch text="4 SHOWS IN ONE" size={128} top={806} />
+      <Punch text="7 SHOWS IN ONE" size={124} top={806} />
       <PaperGrain opacity={0.12} />
     </AbsoluteFill>
   );
@@ -347,11 +410,21 @@ export const CompilationThumbBoard: React.FC = () => {
 
 export const CompilationThumb: React.FC = () => {
   loadVeggieFonts();
-  const Carrot = VEGGIE_ART.carrot;
-  const Broccoli = VEGGIE_ART.broccoli;
-  const Cow = ANIMAL_ART.cow;
-  const Duck = ANIMAL_ART.duck;
-  const Seven = NUMBER_ART["7"];
+  const CAST: {
+    Art: React.FC<{ sil?: boolean }>;
+    x: number;
+    y: number;
+    rot: number;
+    scale: number;
+  }[] = [
+    { Art: VEGGIE_ART.carrot, x: 110, y: 726, rot: -8, scale: 2.2 },
+    { Art: ANIMAL_ART.cow, x: 393, y: 736, rot: 6, scale: 2.3 },
+    { Art: NUMBER_ART["7"], x: 677, y: 720, rot: -5, scale: 2.5 },
+    { Art: VEHICLE_ART.fireEngine, x: 940, y: 746, rot: 7, scale: 1.9 },
+    { Art: DINO_ART.trex, x: 1230, y: 734, rot: 0, scale: 1.45 },
+    { Art: SEA_ART.octopus, x: 1560, y: 738, rot: 5, scale: 2.0 },
+    { Art: RainbowArt, x: 1770, y: 730, rot: -4, scale: 1.25 },
+  ];
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#dceaee", overflow: "hidden" }}>
@@ -369,32 +442,21 @@ export const CompilationThumb: React.FC = () => {
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
         <VeggieDefs />
         <AnimalDefs />
-        <AppleDefs />
-        <g transform="translate(250 726) rotate(-8) scale(2.35)">
-          <Apple />
-        </g>
-        <g transform="translate(640 736) rotate(6) scale(2.2)">
-          <Carrot />
-        </g>
-        <g transform="translate(1010 720) rotate(-5) scale(2.3)">
-          <Cow />
-        </g>
-        <g transform="translate(1390 746) rotate(7) scale(1.75)">
-          <Duck />
-        </g>
-        <g transform="translate(1720 724) rotate(-6) scale(2.5)">
-          <Seven />
-        </g>
-        <g transform="translate(150 1040) rotate(4) scale(1.5)">
-          <Broccoli />
-        </g>
+        <VehicleDefs />
+        <DinoDefs />
+        <SeaDefs />
+        {CAST.map(({ Art, x, y, rot, scale }, i) => (
+          <g key={i} transform={`translate(${x} ${y}) rotate(${rot}) scale(${scale})`}>
+            <Art />
+          </g>
+        ))}
         <g transform={`translate(1436 ${H - 22}) scale(0.72)`}>
           <Crocodile chomp={0.1} step={1.1} />
         </g>
       </svg>
 
-      <Punch text="41 MINUTES" size={218} top={38} />
-      <Punch text="OF GUESSING FUN" size={104} top={268} colors={WHITE} steady />
+      <Punch text="73 MINUTES" size={200} top={38} />
+      <Punch text="OF GUESSING FUN" size={98} top={264} colors={WHITE} steady />
       <PaperGrain opacity={0.12} />
     </AbsoluteFill>
   );
