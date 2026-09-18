@@ -2,7 +2,15 @@
 // Every visual beat in a short is keyed to when a line of narration
 // starts, so a regenerated voice re-times the whole edit for free.
 
-export type Line = { id: string; scene: string; text: string; start: number; end: number; cap?: string[] };
+export type Line = {
+  id: string;
+  scene: string;
+  text: string;
+  start: number;
+  end: number;
+  cap?: string[];
+  words?: [string, number, number][];
+};
 
 export type Beats = Record<string, { start: number; end: number; next: number }>;
 

@@ -310,7 +310,14 @@ export const IconRow: React.FC<{
 // the frame. Chunks come from the script ("cap"), or are cut every four
 // words, and share the line's time in proportion to their length.
 
-export type CaptionLine = { text: string; start: number; end: number; cap?: string[] };
+export type CaptionLine = {
+  text: string;
+  start: number;
+  end: number;
+  cap?: string[];
+  /** per-word timings from scripts/align-words.py, for one-word captions */
+  words?: [string, number, number][];
+};
 
 const autoChunk = (text: string): string[] => {
   const words = text.replace(/\s+/g, " ").trim().split(" ");
@@ -348,6 +355,82 @@ export const captionAt = (lines: CaptionLine[], t: number): string | null => {
     }
   }
   return null;
+};
+
+/** The word being spoken at `t`, with when it started. Uses the aligned
+ *  timings when the line has them, else shares the line's time out by
+ *  word length. A word holds through the pause after it until the next
+ *  word starts, so the screen is never blank mid-line. */
+export const wordAt = (lines: CaptionLine[], t: number): { word: string; start: number } | null => {
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const next = lines[i + 1];
+    const lineEnd = next ? next.start : line.end + 0.3;
+    if (t < line.start || t >= lineEnd) continue;
+    const words: [string, number, number][] =
+      line.words && line.words.length
+        ? line.words
+        : (() => {
+            const ws = line.text.split(/\s+/).filter(Boolean);
+            const weights = ws.map((w) => Math.max(2, w.replace(/[^a-z0-9]/gi, "").length));
+            const total = weights.reduce((a, b) => a + b, 0);
+            let acc = line.start;
+            return ws.map((w, k) => {
+              const d = ((line.end - line.start) * weights[k]) / total;
+              const out: [string, number, number] = [w, acc, acc + d];
+              acc += d;
+              return out;
+            });
+          })();
+    for (let k = 0; k < words.length; k++) {
+      const [w, ws] = words[k];
+      const until = k + 1 < words.length ? words[k + 1][1] : lineEnd;
+      if (t >= ws && t < until) return { word: w, start: ws };
+    }
+    // before the first word of the line: show nothing
+    return null;
+  }
+  return null;
+};
+
+const NUMBERISH = /[0-9%$]/;
+
+/** One word at a time, bigger, and up at two thirds of the frame so the
+ *  Shorts title and channel overlay never sit on top of it. Each word pops
+ *  in; numbers go yellow. */
+export const WordCaptions: React.FC<{ lines: CaptionLine[]; y?: number; size?: number }> = ({ lines, y, size = 76 }) => {
+  const { t, height, width } = useGeo();
+  const hit = wordAt(lines, t);
+  if (!hit) return null;
+  const pop = overshoot(beat(t, hit.start, 0.14));
+  const word = hit.word.replace(/[.;:!?,]+$/g, "");
+  const yellow = NUMBERISH.test(word);
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: 0,
+        width,
+        top: (y ?? height * 0.66) - size * 0.7,
+        textAlign: "center",
+        fontFamily: FONT_SANS,
+        fontWeight: 900,
+        fontSize: size,
+        lineHeight: 1.2,
+        color: yellow ? "#ffd23f" : "#ffffff",
+        letterSpacing: "0.005em",
+        transform: `scale(${0.82 + 0.18 * pop})`,
+        transformOrigin: "center",
+        textShadow: "0 3px 0 rgba(0,0,0,0.55), 0 4px 18px rgba(0,0,0,0.85), 0 0 4px rgba(0,0,0,0.7)",
+        WebkitTextStroke: "2px rgba(0,0,0,0.45)",
+        paintOrder: "stroke fill",
+        padding: "0 40px",
+        boxSizing: "border-box",
+      }}
+    >
+      {word}
+    </div>
+  );
 };
 
 export const Captions: React.FC<{ lines: CaptionLine[]; y?: number; size?: number }> = ({ lines, y, size = 46 }) => {

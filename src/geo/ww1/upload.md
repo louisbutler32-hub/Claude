@@ -11,7 +11,7 @@ Alternates:
 
 ## Description
 
-What if Germany had won the First World War? In the spring of 1918 it nearly did. Russia had just surrendered at Brest-Litovsk, handing Germany Finland, the Baltics, Poland, Belarus and Ukraine — about a third of Russia's population and nine tenths of its coalfields. Fifty divisions moved west; by June German troops were 56 km from Paris and the Paris Gun was shelling the city from 120 km away. Berlin's war aims had been written in September 1914: Belgium a vassal state, Luxembourg annexed, France stripped of the Briey iron mines and made to pay an indemnity high enough to stop it rearming, and the continent bound into a German-led economic bloc, Mitteleuropa. Then the Hundred Days Offensive collapsed the German army. Had it not: no Treaty of Versailles, no humiliated Germany, and — as many historians have argued — no Hitler.
+What if Germany had won the First World War? In the spring of 1918 it nearly did. Russia had just surrendered at Brest-Litovsk, handing Germany Finland, the Baltics, Poland, Belarus and Ukraine — about a third of Russia's population and nine tenths of its coalfields. Fifty divisions moved west; by June German troops were 56 km from Paris and the Paris Gun was shelling the city from 120 km away. Then the Hundred Days Offensive collapsed the German army. But what if it hadn't? Berlin had written its peace terms in September 1914: France loses the Briey iron mines and pays an indemnity for decades, Belgium becomes a satellite, Luxembourg a German state, the Kaiser's new eastern kingdoms answer to Berlin, and a German customs union — Mitteleuropa — runs from the Atlantic to the Black Sea, a common market seventy years early. No Versailles, no reparations, no humiliated Germany for an angry Austrian corporal to exploit. Many historians argue that means no Hitler, and no Second World War as we know it.
 
 Every frame is a real satellite map (NASA Blue Marble) drawn in code. The map washes show modern borders standing in for 1918 ones, and Mitteleuropa as the September Programme listed it.
 
@@ -44,7 +44,7 @@ people see.
 
 | field | value |
 |---|---|
-| Aspect | 9:16, 1080×1920, ~53 s, 30 fps — a Short built to loop: it cuts on the last word of the answer and reopens on the question |
+| Aspect | 9:16, 1080×1920, ~62 s, 30 fps — a Short built to loop: it cuts on the last word of the answer and reopens on the question |
 | Category | Education |
 | Audience | **not made for kids** (general-audience history) |
 | Chapters | none — Shorts do not show them |

@@ -11,7 +11,7 @@ Alternates:
 
 ## Description
 
-What if every American state became its own country, and they all went to war? California has the people — 39 million — and an economy larger than Japan's, the fourth-largest in the world. Texas has the oil: more than 40% of America's crude. Virginia has the navy: Naval Station Norfolk is the largest naval station in the world, and Newport News is the only shipyard that builds aircraft carriers. So who wins? Probably nobody. All 400 of America's land-based Minuteman III nuclear missiles sit at three bases in Wyoming, Montana and North Dakota — three states that together have fewer people than Brooklyn.
+What if every American state became its own country, and they all went to war? California has the people — 39 million — and an economy larger than Japan's. Texas has the oil: more than 40% of America's crude. Virginia has the navy: the largest naval station in the world, and the only shipyard that builds aircraft carriers. So who wins? Play it out. Day one, Texas turns off the oil, and within weeks California's freeways are empty and the Midwest can't run its tractors. Then the farm states stop the trains: Iowa and Illinois grow the corn, California's Central Valley grows over half the country's fruit, vegetables and nuts, and nobody can feed themselves alone. Virginia's fleet can blockade the coasts, but every ship needs Texas fuel and Midwest grain. And then everyone remembers the missiles: all 400 of America's land-based Minuteman III missiles sit at three bases in Wyoming, Montana and North Dakota — three states with fewer people than Brooklyn between them. The winner is the three states nobody looked at. And since everyone knows it, the war never starts.
 
 Every frame is a real satellite map (NASA Blue Marble) drawn in code. A thought experiment, not a forecast. Each state is coloured as its own country.
 
@@ -25,7 +25,7 @@ https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
 🥕 Subscribe to Pebblo Pebble:
 https://www.youtube.com/@PebbloPebble
 
-Sources: Wikipedia — List of U.S. states by population (2025 estimates: California 39.4 million, Wyoming 588,753, Montana 1,144,694, North Dakota 799,358); Economy of California ($4.048 trillion in 2024, fourth-largest in the world, ahead of Japan); Oil and gas industry in Texas (41% of US crude, 2019); Naval Station Norfolk ('the world's largest naval station'); Newport News Shipbuilding ('the sole designer, builder, and refueler of aircraft carriers'); LGM-30 Minuteman (400 deployed: F.E. Warren, Minot and Malmstrom); Brooklyn (2,653,963, 2025 estimate).
+Sources: Wikipedia — Economy of California (the Central Valley grows 'over half the country's fruits, vegetables, and nuts'); List of U.S. states by population (2025 estimates: California 39.4 million, Wyoming 588,753, Montana 1,144,694, North Dakota 799,358); Economy of California ($4.048 trillion in 2024, fourth-largest in the world, ahead of Japan); Oil and gas industry in Texas (41% of US crude, 2019); Naval Station Norfolk ('the world's largest naval station'); Newport News Shipbuilding ('the sole designer, builder, and refueler of aircraft carriers'); LGM-30 Minuteman (400 deployed: F.E. Warren, Minot and Malmstrom); Brooklyn (2,653,963, 2025 estimate).
 
 #shorts #usa #geography #whatif #maps #california #texas #virginia #wyoming #facts #learning #viralmap #geoshorts #unitedstates #thoughtexperiment
 
@@ -44,7 +44,7 @@ people see.
 
 | field | value |
 |---|---|
-| Aspect | 9:16, 1080×1920, ~35 s, 30 fps — a Short built to loop: it cuts on the last word of the answer and reopens on the question |
+| Aspect | 9:16, 1080×1920, ~62 s, 30 fps — a Short built to loop: it cuts on the last word of the answer and reopens on the question |
 | Category | Education |
 | Audience | **not made for kids** (general-audience history) |
 | Chapters | none — Shorts do not show them |

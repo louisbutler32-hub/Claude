@@ -5,23 +5,151 @@
   "text": "What if every American state became its own country, and they all went to war?",
   "start": 0.0,
   "end": 4.338,
-  "cap": [
-   "What if every American state",
-   "became its own country",
-   "and they all went to war?"
+  "words": [
+   [
+    "What",
+    0.0,
+    0.18
+   ],
+   [
+    "if",
+    0.18,
+    0.34
+   ],
+   [
+    "every",
+    0.34,
+    0.66
+   ],
+   [
+    "American",
+    0.66,
+    1.08
+   ],
+   [
+    "state",
+    1.08,
+    1.46
+   ],
+   [
+    "became",
+    1.46,
+    1.82
+   ],
+   [
+    "its",
+    1.82,
+    2.08
+   ],
+   [
+    "own",
+    2.08,
+    2.26
+   ],
+   [
+    "country,",
+    2.26,
+    2.68
+   ],
+   [
+    "and",
+    2.68,
+    3.2
+   ],
+   [
+    "they",
+    3.2,
+    3.32
+   ],
+   [
+    "all",
+    3.32,
+    3.54
+   ],
+   [
+    "went",
+    3.54,
+    3.72
+   ],
+   [
+    "to",
+    3.72,
+    3.92
+   ],
+   [
+    "war?",
+    3.92,
+    4.18
+   ]
   ]
  },
  {
   "id": "a1",
   "scene": "california",
   "text": "California has the people: 39 million, and an economy bigger than Japan's.",
-  "start": 4.639,
-  "end": 9.465,
-  "cap": [
-   "California has the people",
-   "39 million",
-   "and an economy",
-   "bigger than Japan's"
+  "start": 4.638,
+  "end": 9.464,
+  "words": [
+   [
+    "California",
+    4.66,
+    5.08
+   ],
+   [
+    "has",
+    5.08,
+    5.54
+   ],
+   [
+    "the",
+    5.54,
+    5.68
+   ],
+   [
+    "people:",
+    5.68,
+    5.94
+   ],
+   [
+    "39",
+    6.4,
+    6.84
+   ],
+   [
+    "million,",
+    6.84,
+    7.26
+   ],
+   [
+    "and",
+    7.26,
+    7.54
+   ],
+   [
+    "an",
+    7.54,
+    7.68
+   ],
+   [
+    "economy",
+    7.68,
+    8.06
+   ],
+   [
+    "bigger",
+    8.06,
+    8.44
+   ],
+   [
+    "than",
+    8.44,
+    8.72
+   ],
+   [
+    "Japan's.",
+    8.72,
+    9.42
+   ]
   ]
  },
  {
@@ -29,52 +157,791 @@
   "scene": "texas",
   "text": "Texas has the oil: more than 40 percent of America's supply.",
   "start": 9.765,
-  "end": 13.511,
-  "cap": [
-   "Texas has the oil",
-   "more than 40 percent",
-   "of America's supply"
+  "end": 13.51,
+  "words": [
+   [
+    "Texas",
+    9.82,
+    10.08
+   ],
+   [
+    "has",
+    10.08,
+    10.42
+   ],
+   [
+    "the",
+    10.42,
+    10.62
+   ],
+   [
+    "oil:",
+    10.62,
+    10.9
+   ],
+   [
+    "more",
+    11.36,
+    11.44
+   ],
+   [
+    "than",
+    11.44,
+    11.58
+   ],
+   [
+    "40",
+    11.58,
+    11.86
+   ],
+   [
+    "percent",
+    11.86,
+    12.24
+   ],
+   [
+    "of",
+    12.24,
+    12.38
+   ],
+   [
+    "America's",
+    12.38,
+    12.9
+   ],
+   [
+    "supply.",
+    12.9,
+    13.2
+   ]
   ]
  },
  {
   "id": "a3",
   "scene": "virginia",
   "text": "Virginia has the navy: the largest naval base in the world, and the only shipyard that builds aircraft carriers.",
-  "start": 13.811,
-  "end": 20.283,
-  "cap": [
-   "Virginia has the navy",
-   "the largest naval base in the world",
-   "and the only shipyard",
-   "that builds aircraft carriers"
+  "start": 13.81,
+  "end": 20.281,
+  "words": [
+   [
+    "Virginia",
+    13.84,
+    14.24
+   ],
+   [
+    "has",
+    14.24,
+    14.68
+   ],
+   [
+    "the",
+    14.68,
+    14.84
+   ],
+   [
+    "navy:",
+    14.84,
+    15.12
+   ],
+   [
+    "the",
+    15.7,
+    15.8
+   ],
+   [
+    "largest",
+    15.8,
+    16.16
+   ],
+   [
+    "naval",
+    16.16,
+    16.54
+   ],
+   [
+    "base",
+    16.54,
+    16.88
+   ],
+   [
+    "in",
+    16.88,
+    17.1
+   ],
+   [
+    "the",
+    17.1,
+    17.2
+   ],
+   [
+    "world,",
+    17.2,
+    17.48
+   ],
+   [
+    "and",
+    17.48,
+    17.78
+   ],
+   [
+    "the",
+    17.78,
+    17.9
+   ],
+   [
+    "only",
+    17.9,
+    18.18
+   ],
+   [
+    "shipyard",
+    18.18,
+    18.68
+   ],
+   [
+    "that",
+    18.68,
+    18.86
+   ],
+   [
+    "builds",
+    18.86,
+    19.12
+   ],
+   [
+    "aircraft",
+    19.12,
+    19.58
+   ],
+   [
+    "carriers.",
+    19.58,
+    20.02
+   ]
   ]
  },
  {
   "id": "b0",
   "scene": "guess",
   "text": "So who wins? Take a guess.",
-  "start": 20.583,
-  "end": 22.298,
-  "cap": [
-   "So who wins?",
-   "Take a guess"
+  "start": 20.581,
+  "end": 22.296,
+  "words": [
+   [
+    "So",
+    20.581,
+    20.8
+   ],
+   [
+    "who",
+    20.8,
+    20.98
+   ],
+   [
+    "wins?",
+    20.98,
+    21.3
+   ],
+   [
+    "Take",
+    21.46,
+    21.64
+   ],
+   [
+    "a",
+    21.64,
+    21.82
+   ],
+   [
+    "guess.",
+    21.82,
+    21.94
+   ]
+  ]
+ },
+ {
+  "id": "c0",
+  "scene": "day1",
+  "text": "Day one: Texas turns off the oil. Within weeks, California's freeways are empty and the Midwest can't run its tractors.",
+  "start": 23.897,
+  "end": 30.756,
+  "words": [
+   [
+    "Day",
+    23.897,
+    24.14
+   ],
+   [
+    "one:",
+    24.14,
+    24.36
+   ],
+   [
+    "Texas",
+    24.56,
+    24.76
+   ],
+   [
+    "turns",
+    24.76,
+    25.12
+   ],
+   [
+    "off",
+    25.12,
+    25.38
+   ],
+   [
+    "the",
+    25.38,
+    25.58
+   ],
+   [
+    "oil.",
+    25.58,
+    25.78
+   ],
+   [
+    "Within",
+    26.28,
+    26.46
+   ],
+   [
+    "weeks,",
+    26.46,
+    26.78
+   ],
+   [
+    "California's",
+    27.02,
+    27.66
+   ],
+   [
+    "freeways",
+    27.66,
+    28.08
+   ],
+   [
+    "are",
+    28.08,
+    28.22
+   ],
+   [
+    "empty",
+    28.22,
+    28.56
+   ],
+   [
+    "and",
+    28.56,
+    28.88
+   ],
+   [
+    "the",
+    28.88,
+    29.02
+   ],
+   [
+    "Midwest",
+    29.02,
+    29.3
+   ],
+   [
+    "can't",
+    29.3,
+    29.82
+   ],
+   [
+    "run",
+    29.82,
+    29.94
+   ],
+   [
+    "its",
+    29.94,
+    30.08
+   ],
+   [
+    "tractors.",
+    30.08,
+    30.66
+   ]
+  ]
+ },
+ {
+  "id": "c1",
+  "scene": "food",
+  "text": "Then the farm states stop the trains. Iowa and Illinois grow the corn; California grows half the country's fruit and vegetables. Nobody can feed themselves alone.",
+  "start": 31.056,
+  "end": 40.73,
+  "words": [
+   [
+    "Then",
+    31.056,
+    31.26
+   ],
+   [
+    "the",
+    31.26,
+    31.38
+   ],
+   [
+    "farm",
+    31.38,
+    31.64
+   ],
+   [
+    "states",
+    31.64,
+    31.94
+   ],
+   [
+    "stop",
+    31.94,
+    32.28
+   ],
+   [
+    "the",
+    32.28,
+    32.46
+   ],
+   [
+    "trains.",
+    32.46,
+    32.82
+   ],
+   [
+    "Iowa",
+    33.34,
+    33.7
+   ],
+   [
+    "and",
+    33.7,
+    33.9
+   ],
+   [
+    "Illinois",
+    33.9,
+    34.22
+   ],
+   [
+    "grow",
+    34.22,
+    34.58
+   ],
+   [
+    "the",
+    34.58,
+    34.78
+   ],
+   [
+    "corn;",
+    34.78,
+    35.08
+   ],
+   [
+    "California",
+    35.58,
+    36.02
+   ],
+   [
+    "grows",
+    36.02,
+    36.54
+   ],
+   [
+    "half",
+    36.54,
+    36.82
+   ],
+   [
+    "the",
+    36.82,
+    36.96
+   ],
+   [
+    "country's",
+    36.96,
+    37.4
+   ],
+   [
+    "fruit",
+    37.4,
+    37.64
+   ],
+   [
+    "and",
+    37.64,
+    37.86
+   ],
+   [
+    "vegetables.",
+    37.86,
+    38.28
+   ],
+   [
+    "Nobody",
+    38.86,
+    39.16
+   ],
+   [
+    "can",
+    39.16,
+    39.48
+   ],
+   [
+    "feed",
+    39.48,
+    39.7
+   ],
+   [
+    "themselves",
+    39.7,
+    40.04
+   ],
+   [
+    "alone.",
+    40.04,
+    40.48
+   ]
+  ]
+ },
+ {
+  "id": "c2",
+  "scene": "navy",
+  "text": "Virginia's fleet blockades the coasts, but every ship needs Texas fuel and Midwest grain.",
+  "start": 41.03,
+  "end": 46.293,
+  "words": [
+   [
+    "Virginia's",
+    41.1,
+    41.7
+   ],
+   [
+    "fleet",
+    41.7,
+    41.88
+   ],
+   [
+    "blockades",
+    41.88,
+    42.46
+   ],
+   [
+    "the",
+    42.46,
+    42.6
+   ],
+   [
+    "coasts,",
+    42.6,
+    43.3
+   ],
+   [
+    "but",
+    43.3,
+    43.52
+   ],
+   [
+    "every",
+    43.52,
+    43.78
+   ],
+   [
+    "ship",
+    43.78,
+    44.06
+   ],
+   [
+    "needs",
+    44.06,
+    44.34
+   ],
+   [
+    "Texas",
+    44.34,
+    44.7
+   ],
+   [
+    "fuel",
+    44.7,
+    45.12
+   ],
+   [
+    "and",
+    45.12,
+    45.34
+   ],
+   [
+    "Midwest",
+    45.34,
+    45.66
+   ],
+   [
+    "grain.",
+    45.66,
+    46.04
+   ]
+  ]
+ },
+ {
+  "id": "c3",
+  "scene": "missiles",
+  "text": "And then everyone remembers the missiles. All 400 of America's land-based nuclear missiles sit in three states: Wyoming, Montana and North Dakota, with fewer people than Brooklyn between them.",
+  "start": 46.593,
+  "end": 58.062,
+  "words": [
+   [
+    "And",
+    46.593,
+    46.72
+   ],
+   [
+    "then",
+    46.72,
+    46.84
+   ],
+   [
+    "everyone",
+    46.84,
+    47.3
+   ],
+   [
+    "remembers",
+    47.3,
+    47.72
+   ],
+   [
+    "the",
+    47.72,
+    48.04
+   ],
+   [
+    "missiles.",
+    48.04,
+    48.28
+   ],
+   [
+    "All",
+    49.0,
+    49.18
+   ],
+   [
+    "400",
+    49.18,
+    49.72
+   ],
+   [
+    "of",
+    49.72,
+    49.9
+   ],
+   [
+    "America's",
+    49.9,
+    50.46
+   ],
+   [
+    "land-based",
+    50.46,
+    50.98
+   ],
+   [
+    "nuclear",
+    50.98,
+    51.34
+   ],
+   [
+    "missiles",
+    51.34,
+    51.84
+   ],
+   [
+    "sit",
+    51.84,
+    52.1
+   ],
+   [
+    "in",
+    52.1,
+    52.3
+   ],
+   [
+    "three",
+    52.3,
+    52.52
+   ],
+   [
+    "states:",
+    52.52,
+    52.84
+   ],
+   [
+    "Wyoming,",
+    53.46,
+    53.86
+   ],
+   [
+    "Montana",
+    54.32,
+    54.7
+   ],
+   [
+    "and",
+    54.7,
+    55.0
+   ],
+   [
+    "North",
+    55.0,
+    55.24
+   ],
+   [
+    "Dakota,",
+    55.24,
+    55.68
+   ],
+   [
+    "with",
+    55.68,
+    56.06
+   ],
+   [
+    "fewer",
+    56.06,
+    56.32
+   ],
+   [
+    "people",
+    56.32,
+    56.68
+   ],
+   [
+    "than",
+    56.68,
+    56.9
+   ],
+   [
+    "Brooklyn",
+    56.9,
+    57.26
+   ],
+   [
+    "between",
+    57.26,
+    57.66
+   ],
+   [
+    "them.",
+    57.66,
+    57.96
+   ]
   ]
  },
  {
   "id": "z0",
   "scene": "reveal",
-  "text": "Probably nobody. Because all 400 of America's land-based nuclear missiles sit in just three states: Wyoming, Montana and North Dakota. Together, they have fewer people than Brooklyn.",
-  "start": 23.901,
-  "end": 35.07,
-  "cap": [
-   "Probably nobody",
-   "Because all 400",
-   "of America's land-based nuclear missiles",
-   "sit in just three states",
-   "Wyoming, Montana",
-   "and North Dakota",
-   "Together, they have",
-   "fewer people than Brooklyn"
+  "text": "So the winner is the three states nobody looked at. And since everyone knows it, the war never starts.",
+  "start": 58.362,
+  "end": 63.83,
+  "words": [
+   [
+    "So",
+    58.362,
+    58.52
+   ],
+   [
+    "the",
+    58.52,
+    58.66
+   ],
+   [
+    "winner",
+    58.66,
+    58.88
+   ],
+   [
+    "is",
+    58.88,
+    59.12
+   ],
+   [
+    "the",
+    59.12,
+    59.26
+   ],
+   [
+    "three",
+    59.26,
+    59.5
+   ],
+   [
+    "states",
+    59.5,
+    59.8
+   ],
+   [
+    "nobody",
+    59.8,
+    60.28
+   ],
+   [
+    "looked",
+    60.28,
+    60.6
+   ],
+   [
+    "at.",
+    60.6,
+    60.86
+   ],
+   [
+    "And",
+    61.2,
+    61.42
+   ],
+   [
+    "since",
+    61.42,
+    61.6
+   ],
+   [
+    "everyone",
+    61.6,
+    61.96
+   ],
+   [
+    "knows",
+    61.96,
+    62.28
+   ],
+   [
+    "it,",
+    62.28,
+    62.46
+   ],
+   [
+    "the",
+    62.56,
+    62.62
+   ],
+   [
+    "war",
+    62.62,
+    62.86
+   ],
+   [
+    "never",
+    62.86,
+    63.12
+   ],
+   [
+    "starts.",
+    63.12,
+    63.5
+   ]
   ]
  }
 ]

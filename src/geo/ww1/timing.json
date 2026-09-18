@@ -5,11 +5,92 @@
   "text": "What if Germany had won the First World War? In the spring of 1918, it nearly did.",
   "start": 0.0,
   "end": 5.022,
-  "cap": [
-   "What if Germany had won",
-   "the First World War?",
-   "In the spring of 1918,",
-   "it nearly did"
+  "words": [
+   [
+    "What",
+    0.0,
+    0.2
+   ],
+   [
+    "if",
+    0.2,
+    0.34
+   ],
+   [
+    "Germany",
+    0.34,
+    0.7
+   ],
+   [
+    "had",
+    0.7,
+    0.98
+   ],
+   [
+    "won",
+    0.98,
+    1.12
+   ],
+   [
+    "the",
+    1.12,
+    1.26
+   ],
+   [
+    "First",
+    1.26,
+    1.48
+   ],
+   [
+    "World",
+    1.48,
+    1.8
+   ],
+   [
+    "War?",
+    1.8,
+    2.14
+   ],
+   [
+    "In",
+    2.56,
+    2.74
+   ],
+   [
+    "the",
+    2.74,
+    2.84
+   ],
+   [
+    "spring",
+    2.84,
+    3.08
+   ],
+   [
+    "of",
+    3.08,
+    3.24
+   ],
+   [
+    "1918,",
+    3.24,
+    3.86
+   ],
+   [
+    "it",
+    4.18,
+    4.24
+   ],
+   [
+    "nearly",
+    4.24,
+    4.48
+   ],
+   [
+    "did.",
+    4.48,
+    4.84
+   ]
   ]
  },
  {
@@ -18,13 +99,137 @@
   "text": "Russia had just surrendered. At Brest-Litovsk, Germany took Finland, the Baltics, Poland, Belarus and Ukraine: a third of Russia's people, and nine tenths of its coal.",
   "start": 5.322,
   "end": 14.792,
-  "cap": [
-   "Russia had just surrendered",
-   "At Brest-Litovsk, Germany took",
-   "Finland, the Baltics, Poland,",
-   "Belarus and Ukraine",
-   "a third of Russia's people",
-   "and nine tenths of its coal"
+  "words": [
+   [
+    "Russia",
+    5.322,
+    5.64
+   ],
+   [
+    "had",
+    5.64,
+    5.86
+   ],
+   [
+    "just",
+    5.86,
+    6.06
+   ],
+   [
+    "surrendered.",
+    6.06,
+    6.5
+   ],
+   [
+    "At",
+    7.1,
+    7.24
+   ],
+   [
+    "Brest-Litovsk,",
+    7.24,
+    8.16
+   ],
+   [
+    "Germany",
+    8.16,
+    8.38
+   ],
+   [
+    "took",
+    8.38,
+    8.68
+   ],
+   [
+    "Finland,",
+    8.68,
+    9.02
+   ],
+   [
+    "the",
+    9.28,
+    9.34
+   ],
+   [
+    "Baltics,",
+    9.34,
+    9.78
+   ],
+   [
+    "Poland,",
+    9.96,
+    10.18
+   ],
+   [
+    "Belarus",
+    10.46,
+    10.76
+   ],
+   [
+    "and",
+    11.06,
+    11.11
+   ],
+   [
+    "Ukraine:",
+    11.1,
+    11.44
+   ],
+   [
+    "a",
+    12.08,
+    12.24
+   ],
+   [
+    "third",
+    12.24,
+    12.42
+   ],
+   [
+    "of",
+    12.42,
+    12.58
+   ],
+   [
+    "Russia's",
+    12.58,
+    12.94
+   ],
+   [
+    "people,",
+    12.94,
+    13.24
+   ],
+   [
+    "and",
+    13.24,
+    13.48
+   ],
+   [
+    "nine",
+    13.48,
+    13.72
+   ],
+   [
+    "tenths",
+    13.72,
+    14.14
+   ],
+   [
+    "of",
+    14.14,
+    14.2
+   ],
+   [
+    "its",
+    14.2,
+    14.34
+   ],
+   [
+    "coal.",
+    14.34,
+    14.62
+   ]
   ]
  },
  {
@@ -33,68 +238,683 @@
   "text": "Fifty divisions moved west. By June, German troops were 56 kilometres from Paris, and a giant gun was shelling the city from 120 kilometres away.",
   "start": 15.092,
   "end": 24.974,
-  "cap": [
-   "Fifty divisions moved west",
-   "By June, German troops were",
-   "56 kilometres from Paris",
-   "and a giant gun",
-   "was shelling the city",
-   "from 120 kilometres away"
+  "words": [
+   [
+    "Fifty",
+    15.14,
+    15.4
+   ],
+   [
+    "divisions",
+    15.4,
+    15.78
+   ],
+   [
+    "moved",
+    15.78,
+    16.26
+   ],
+   [
+    "west.",
+    16.26,
+    16.64
+   ],
+   [
+    "By",
+    17.3,
+    17.44
+   ],
+   [
+    "June,",
+    17.44,
+    17.74
+   ],
+   [
+    "German",
+    18.24,
+    18.42
+   ],
+   [
+    "troops",
+    18.42,
+    18.76
+   ],
+   [
+    "were",
+    18.76,
+    19.0
+   ],
+   [
+    "56",
+    19.0,
+    19.46
+   ],
+   [
+    "kilometres",
+    19.46,
+    19.9
+   ],
+   [
+    "from",
+    19.9,
+    20.28
+   ],
+   [
+    "Paris,",
+    20.28,
+    20.62
+   ],
+   [
+    "and",
+    20.82,
+    21.2
+   ],
+   [
+    "a",
+    21.2,
+    21.32
+   ],
+   [
+    "giant",
+    21.32,
+    21.58
+   ],
+   [
+    "gun",
+    21.58,
+    21.88
+   ],
+   [
+    "was",
+    21.88,
+    22.06
+   ],
+   [
+    "shelling",
+    22.06,
+    22.42
+   ],
+   [
+    "the",
+    22.42,
+    22.6
+   ],
+   [
+    "city",
+    22.6,
+    22.84
+   ],
+   [
+    "from",
+    22.84,
+    23.04
+   ],
+   [
+    "120",
+    23.04,
+    23.86
+   ],
+   [
+    "kilometres",
+    23.86,
+    24.38
+   ],
+   [
+    "away.",
+    24.38,
+    24.74
+   ]
   ]
  },
  {
   "id": "b0",
-  "scene": "plan",
-  "text": "Berlin's plan was written in 1914: Belgium becomes a vassal, Luxembourg is annexed, France loses its iron mines and pays until it can't rearm.",
+  "scene": "guess",
+  "text": "Then it all collapsed in a hundred days. But what if it hadn't? Take a guess.",
   "start": 25.273,
-  "end": 34.851,
-  "cap": [
-   "Berlin's plan",
-   "was written in 1914",
-   "Belgium becomes a vassal",
-   "Luxembourg is annexed",
-   "France loses its iron mines",
-   "and pays until it can't rearm"
-  ]
- },
- {
-  "id": "b1",
-  "scene": "bloc",
-  "text": "And the whole continent joins one economic bloc, run from Berlin. They called it Mitteleuropa.",
-  "start": 35.15,
-  "end": 40.802,
-  "cap": [
-   "And the whole continent",
-   "joins one economic bloc",
-   "run from Berlin",
-   "They called it Mitteleuropa"
+  "end": 29.219,
+  "words": [
+   [
+    "Then",
+    25.273,
+    25.44
+   ],
+   [
+    "it",
+    25.44,
+    25.52
+   ],
+   [
+    "all",
+    25.52,
+    25.68
+   ],
+   [
+    "collapsed",
+    25.68,
+    26.12
+   ],
+   [
+    "in",
+    26.12,
+    26.3
+   ],
+   [
+    "a",
+    26.3,
+    26.371
+   ],
+   [
+    "hundred",
+    26.371,
+    26.62
+   ],
+   [
+    "days.",
+    26.62,
+    27.0
+   ],
+   [
+    "But",
+    27.42,
+    27.64
+   ],
+   [
+    "what",
+    27.64,
+    27.78
+   ],
+   [
+    "if",
+    27.78,
+    27.94
+   ],
+   [
+    "it",
+    27.94,
+    28.06
+   ],
+   [
+    "hadn't?",
+    28.06,
+    28.34
+   ],
+   [
+    "Take",
+    28.34,
+    28.62
+   ],
+   [
+    "a",
+    28.62,
+    28.78
+   ],
+   [
+    "guess.",
+    28.78,
+    28.94
+   ]
   ]
  },
  {
   "id": "c0",
-  "scene": "guess",
-  "text": "Then it all collapsed in a hundred days. What would have changed if it hadn't? Take a guess.",
-  "start": 41.152,
-  "end": 45.645,
-  "cap": [
-   "Then it all collapsed",
-   "in a hundred days",
-   "What would have changed",
-   "if it hadn't?",
-   "Take a guess"
+  "scene": "peace",
+  "text": "Berlin had written the peace terms in 1914. France signs them: it loses its iron mines and pays for decades. Belgium becomes a satellite. Luxembourg, a German state.",
+  "start": 30.816,
+  "end": 41.548,
+  "words": [
+   [
+    "Berlin",
+    30.816,
+    31.08
+   ],
+   [
+    "had",
+    31.08,
+    31.36
+   ],
+   [
+    "written",
+    31.36,
+    31.62
+   ],
+   [
+    "the",
+    31.62,
+    31.76
+   ],
+   [
+    "peace",
+    31.76,
+    31.94
+   ],
+   [
+    "terms",
+    31.94,
+    32.18
+   ],
+   [
+    "in",
+    32.18,
+    32.42
+   ],
+   [
+    "1914.",
+    32.42,
+    33.02
+   ],
+   [
+    "France",
+    33.72,
+    33.94
+   ],
+   [
+    "signs",
+    33.94,
+    34.34
+   ],
+   [
+    "them:",
+    34.34,
+    34.58
+   ],
+   [
+    "it",
+    34.94,
+    35.02
+   ],
+   [
+    "loses",
+    35.02,
+    35.28
+   ],
+   [
+    "its",
+    35.28,
+    35.5
+   ],
+   [
+    "iron",
+    35.5,
+    35.86
+   ],
+   [
+    "mines",
+    35.86,
+    36.26
+   ],
+   [
+    "and",
+    36.26,
+    36.5
+   ],
+   [
+    "pays",
+    36.5,
+    36.78
+   ],
+   [
+    "for",
+    36.78,
+    37.02
+   ],
+   [
+    "decades.",
+    37.02,
+    37.36
+   ],
+   [
+    "Belgium",
+    38.06,
+    38.42
+   ],
+   [
+    "becomes",
+    38.42,
+    38.84
+   ],
+   [
+    "a",
+    38.84,
+    39.04
+   ],
+   [
+    "satellite.",
+    39.04,
+    39.46
+   ],
+   [
+    "Luxembourg,",
+    39.98,
+    40.52
+   ],
+   [
+    "a",
+    40.52,
+    40.74
+   ],
+   [
+    "German",
+    40.74,
+    41.02
+   ],
+   [
+    "state.",
+    41.02,
+    41.38
+   ]
+  ]
+ },
+ {
+  "id": "c1",
+  "scene": "empire",
+  "text": "In the east, the Kaiser's new kingdoms answer to Berlin. And a German customs union runs from the Atlantic to the Black Sea: a common market, seventy years early.",
+  "start": 41.847,
+  "end": 51.234,
+  "words": [
+   [
+    "In",
+    41.9,
+    41.98
+   ],
+   [
+    "the",
+    41.98,
+    42.08
+   ],
+   [
+    "east,",
+    42.08,
+    42.4
+   ],
+   [
+    "the",
+    42.62,
+    42.67
+   ],
+   [
+    "Kaiser's",
+    42.65,
+    43.2
+   ],
+   [
+    "new",
+    43.2,
+    43.32
+   ],
+   [
+    "kingdoms",
+    43.32,
+    43.8
+   ],
+   [
+    "answer",
+    43.8,
+    44.08
+   ],
+   [
+    "to",
+    44.08,
+    44.3
+   ],
+   [
+    "Berlin.",
+    44.3,
+    44.6
+   ],
+   [
+    "And",
+    45.0,
+    45.3
+   ],
+   [
+    "a",
+    45.3,
+    45.42
+   ],
+   [
+    "German",
+    45.42,
+    45.64
+   ],
+   [
+    "customs",
+    45.64,
+    46.04
+   ],
+   [
+    "union",
+    46.04,
+    46.48
+   ],
+   [
+    "runs",
+    46.48,
+    46.84
+   ],
+   [
+    "from",
+    46.84,
+    47.12
+   ],
+   [
+    "the",
+    47.12,
+    47.28
+   ],
+   [
+    "Atlantic",
+    47.28,
+    47.66
+   ],
+   [
+    "to",
+    47.66,
+    47.96
+   ],
+   [
+    "the",
+    47.96,
+    48.08
+   ],
+   [
+    "Black",
+    48.08,
+    48.26
+   ],
+   [
+    "Sea:",
+    48.26,
+    48.58
+   ],
+   [
+    "a",
+    49.2,
+    49.34
+   ],
+   [
+    "common",
+    49.34,
+    49.58
+   ],
+   [
+    "market,",
+    49.58,
+    49.96
+   ],
+   [
+    "seventy",
+    49.96,
+    50.4
+   ],
+   [
+    "years",
+    50.4,
+    50.76
+   ],
+   [
+    "early.",
+    50.76,
+    51.08
+   ]
   ]
  },
  {
   "id": "z0",
-  "scene": "reveal",
-  "text": "No Treaty of Versailles. No humiliated Germany. And, many historians argue, no Hitler.",
-  "start": 47.242,
-  "end": 52.79,
-  "cap": [
-   "No Treaty of Versailles",
-   "No humiliated Germany",
-   "And, many historians argue,",
-   "no Hitler"
+  "scene": "nowar",
+  "text": "No Versailles. No reparations. No humiliated Germany for an angry Austrian corporal to exploit. Many historians argue that means no Hitler, and no Second World War as we know it.",
+  "start": 51.533,
+  "end": 62.85,
+  "words": [
+   [
+    "No",
+    51.58,
+    51.74
+   ],
+   [
+    "Versailles.",
+    51.74,
+    52.72
+   ],
+   [
+    "No",
+    52.72,
+    52.86
+   ],
+   [
+    "reparations.",
+    52.86,
+    53.54
+   ],
+   [
+    "No",
+    54.12,
+    54.32
+   ],
+   [
+    "humiliated",
+    54.32,
+    54.96
+   ],
+   [
+    "Germany",
+    54.96,
+    55.36
+   ],
+   [
+    "for",
+    55.36,
+    55.72
+   ],
+   [
+    "an",
+    55.72,
+    55.84
+   ],
+   [
+    "angry",
+    55.84,
+    56.2
+   ],
+   [
+    "Austrian",
+    56.2,
+    56.68
+   ],
+   [
+    "corporal",
+    56.68,
+    57.18
+   ],
+   [
+    "to",
+    57.18,
+    57.32
+   ],
+   [
+    "exploit.",
+    57.32,
+    57.76
+   ],
+   [
+    "Many",
+    57.76,
+    58.56
+   ],
+   [
+    "historians",
+    58.56,
+    59.0
+   ],
+   [
+    "argue",
+    59.0,
+    59.52
+   ],
+   [
+    "that",
+    59.52,
+    59.76
+   ],
+   [
+    "means",
+    59.76,
+    59.94
+   ],
+   [
+    "no",
+    59.94,
+    60.24
+   ],
+   [
+    "Hitler,",
+    60.24,
+    60.56
+   ],
+   [
+    "and",
+    60.56,
+    60.9
+   ],
+   [
+    "no",
+    60.9,
+    61.08
+   ],
+   [
+    "Second",
+    61.08,
+    61.4
+   ],
+   [
+    "World",
+    61.4,
+    61.7
+   ],
+   [
+    "War",
+    61.7,
+    62.02
+   ],
+   [
+    "as",
+    62.02,
+    62.26
+   ],
+   [
+    "we",
+    62.26,
+    62.4
+   ],
+   [
+    "know",
+    62.4,
+    62.58
+   ],
+   [
+    "it.",
+    62.58,
+    62.76
+   ]
   ]
  }
 ]
