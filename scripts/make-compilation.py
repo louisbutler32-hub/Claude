@@ -132,13 +132,30 @@ def main():
     total = chapter_metadata(parts, meta)
 
     print("  joining…")
-    subprocess.run([
+    join_cmd = [
         FFMPEG, "-hide_banner", "-loglevel", "error", "-y",
         "-f", "concat", "-safe", "0", "-i", listing,
         "-i", meta, "-map_metadata", "1",
         "-c", "copy", "-movflags", "+faststart",
         args.out,
-    ], check=True)
+    ]
+    result = subprocess.run(join_cmd)
+    if result.returncode != 0:
+        # some ffmpeg builds (Remotion's bundled compositor binary among
+        # them) are compiled without the ffmetadata demuxer, so reading
+        # chapters.txt as an -i input fails outright. Chapters embedded in
+        # the file are a nice-to-have — YouTube also reads the chapter list
+        # straight out of the description — so fall back to a chapterless
+        # join rather than failing the whole compile.
+        print("  embedding chapters failed (ffmpeg build likely lacks the "
+              "ffmetadata demuxer) — joining without embedded chapters; "
+              "the description's chapter list still works on YouTube")
+        subprocess.run([
+            FFMPEG, "-hide_banner", "-loglevel", "error", "-y",
+            "-f", "concat", "-safe", "0", "-i", listing,
+            "-c", "copy", "-movflags", "+faststart",
+            args.out,
+        ], check=True)
 
     mb = os.path.getsize(args.out) / 1048576
     print(f"\nwrote {args.out}  ({mb:.0f} MB, {int(total // 60)}:{int(total % 60):02d})")
