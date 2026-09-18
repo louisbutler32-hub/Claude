@@ -265,6 +265,57 @@ he waits, it recovers. Bedrock: Pix places one torch. Black screen. Xbox
 home menu. He stares at his controller. Stop. (The most-shared Bedrock
 complaint there is.)
 
+## Longer, differently-built videos
+
+Everything above this line follows one shape: 10-17 seconds, one setting
+(the overworld field), one caption device (a top band or a POV line), one
+escalation, hard stop. That shape is a strength for a fast weekly cadence,
+but stacked one after another it makes the channel's videos look like
+reskins of each other. Two Shorts break that pattern on purpose:
+
+### Built: First time in the Nether — 24s, `src/minecraft-nether/`
+Five real scenes instead of two labelled halves, and a setting the channel
+has never shown: the Nether gets its own palette (netherrack red-brown, a
+black cave ceiling instead of sky, a lava floor, glowstone as the only warm
+light), its own mob (a ghast, floating, nine trailing tentacles, fires a
+tracked fireball), and its own small corner caption ("DAY 12", "THE
+NETHER", "3 SECONDS LATER", "HOME") instead of a caption band or a POV
+line. Day 12: finally enough obsidian for a portal. First trip through,
+and there is a ghast waiting.
+
+### Built: Building the perfect house (then losing it) — 30s, `src/minecraft-build/`
+The longest Short on the channel, and a genuinely different structure: a
+documentary build saga across four in-story days rather than a joke with
+an escalation. A day-counter chip (white, black border, top-left) is the
+on-screen device this time. Day 1 clears the plot, Day 2 raises the walls,
+Day 3 the roof goes on and he is proud of it, Night 1 a creeper he never
+saw takes half of it, Day 4 he surveys the wreck and picks the pickaxe
+back up. Night and day get genuinely different lighting (a star field and
+moon over a darkened palette, not just a tinted overlay), which no earlier
+Short on the channel has done.
+
+**Why build these two:** a channel that posts the same 13-second format
+three times in a row reads as one video with the serial numbers filed
+off. A longer, structurally different Short in the mix — different
+setting, different pacing, different on-screen text device — gives
+viewers who found the channel through the fast ones a reason to stay for
+something else, and it tests whether the audience wants short comparison
+gags, longer stories, or both before the channel commits harder to either.
+
+### More concepts in this longer shape
+
+- **The Ender Dragon fight, cold open to credits** (35-45s): the crystals,
+  the first hit, a near-death dodge, the final blow, the dragon egg — a
+  five-beat boss fight instead of a joke, in the End's own black-and-purple
+  palette (unbuilt).
+- **Villager trading spree, three seasons** (30s): spring (one emerald for
+  a stick), summer (a whole farm built around one trade route), autumn
+  (the market crashes, villagers won't look at him) — a rise-and-fall
+  structure instead of an escalation (unbuilt).
+- **The ocean monument raid** (30-40s): an entirely underwater palette
+  (blue-green, light shafts, bubbles), guardians instead of overworld mobs,
+  a real objective (the sponge room) instead of a gag (unbuilt).
+
 ## Packaging notes for the batch
 
 - Title formula that the references use: the caption, plus an emoji, plus

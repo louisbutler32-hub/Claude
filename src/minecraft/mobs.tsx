@@ -178,3 +178,47 @@ export const CreeperMob: React.FC<{
     </g>
   );
 };
+
+/** A ghast: a big floating white cube with a sad face and nine trailing tentacles. */
+export const Ghast: React.FC<{ x: number; y: number; scale?: number; angry?: boolean; bob?: number; charging?: boolean }> = ({ x, y, scale = 1, angry = false, bob = 0, charging = false }) => {
+  const drift = Math.sin(bob) * 14;
+  const L = "#141414";
+  return (
+    <g transform={`translate(${x} ${y + drift}) scale(${scale})`}>
+      {Array.from({ length: 9 }, (_, i) => {
+        const tx = -160 + i * 40;
+        const wob = Math.sin(bob * 1.4 + i) * 10;
+        return <rect key={i} x={tx} y={130} width={16} height={190 + (i % 3) * 20 + wob} fill="#f2f2ea" stroke={L} strokeWidth={7} strokeLinejoin="round" />;
+      })}
+      <rect x={-180} y={-130} width={360} height={260} rx={18} fill="#f2f2ea" stroke={L} strokeWidth={13} strokeLinejoin="round" />
+      <rect x={-180} y={-130} width={360} height={260} rx={18} fill="#c9c9be" opacity={0.25} />
+      {/* the sad/angry brows and eyes */}
+      <g stroke={L} strokeWidth={11} strokeLinecap="round">
+        <line x1={-100} y1={angry ? -50 : -30} x2={-50} y2={angry ? -30 : -46} />
+        <line x1={50} y1={angry ? -30 : -46} x2={100} y2={angry ? -50 : -30} />
+      </g>
+      <rect x={-90} y={-22} width={26} height={34} fill={L} />
+      <rect x={64} y={-22} width={26} height={34} fill={L} />
+      <path d={charging ? "M-40,60 h80 v10 h-80 z" : "M-36,54 q36,40 72,0"} fill={charging ? "#ff5a2a" : "none"} stroke={L} strokeWidth={10} strokeLinecap="round" />
+      {charging && (
+        <circle cx={0} cy={20} r={24 + Math.sin(bob * 3) * 4} fill="#ff8a2a" stroke={L} strokeWidth={6} />
+      )}
+    </g>
+  );
+};
+
+/** A fireball with a trailing flame, travelling from (x0,y0) to (x1,y1) at t 0-1. */
+export const Fireball: React.FC<{ x0: number; y0: number; x1: number; y1: number; t: number }> = ({ x0, y0, x1, y1, t }) => {
+  const x = x0 + (x1 - x0) * t, y = y0 + (y1 - y0) * t;
+  return (
+    <g transform={`translate(${x} ${y})`}>
+      <circle r={22} fill="#8a3a1a" stroke="#141414" strokeWidth={7} />
+      <circle r={14} fill="#ff8a2a" />
+      <circle r={7} fill="#ffe08a" />
+      <g opacity={0.6}>
+        <ellipse cx={(x0 - x) * 0.15} cy={(y0 - y) * 0.15} rx={16} ry={10} fill="#ff8a2a" />
+        <ellipse cx={(x0 - x) * 0.3} cy={(y0 - y) * 0.3} rx={10} ry={7} fill="#ffb85a" />
+      </g>
+    </g>
+  );
+};
