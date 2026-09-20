@@ -10,6 +10,7 @@ __pycache__/
 public/audio
 .tts
 .compile
+.compile-longform
 
 # clipper: source footage, renders and intermediates stay local.
 # The drop-in folders themselves are tracked (via .gitkeep) so they exist on

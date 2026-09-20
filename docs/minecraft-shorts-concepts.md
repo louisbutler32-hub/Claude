@@ -265,6 +265,29 @@ he waits, it recovers. Bedrock: Pix places one torch. Black screen. Xbox
 home menu. He stares at his controller. Stop. (The most-shared Bedrock
 complaint there is.)
 
+## The long-form compilation
+
+`src/minecraft-longform/` — one 3:04 long-form video, **built**, joining
+the five Shorts above (dig straight down, PvP, creeper, Nether, build
+saga) behind a new intro, a chapter card per Short, a "behind the build"
+segment, a "vote for episode 6" segment, and an outro. Chaptered, 9
+sections, first at 0:00, each ≥10s.
+
+**Worth being clear about:** this does not feed the Shorts feed — YouTube
+places Shorts on Shorts-only signals (swipe-through, loop rate), not on
+what else a channel has posted. What it does do is give a channel with
+only 13-second clips something substantial for a new visitor to watch, and
+it's a legitimate thing to have regardless. `src/minecraft-longform/upload.md`
+has the full reasoning plus the ready-to-paste chapter list.
+
+Along the way, `src/minecraft-dig/DigShort.tsx` (the dig-straight-down
+Short) got moved off the retired Pebblo character onto Steve, so all six
+pieces in the compilation now share one consistent character. The
+original meme recreation (`src/minecraft/MinecraftShort.tsx`, "Minecrafters
+every time they lose their stuff") still uses Pebblo and was left out of
+this compilation for that reason — converting it is a fair follow-up if
+it should join later.
+
 ## Longer, differently-built videos
 
 Everything above this line follows one shape: 10-17 seconds, one setting

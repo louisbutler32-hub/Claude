@@ -1,9 +1,9 @@
 import React from "react";
 import { AbsoluteFill, Audio, interpolate, random, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { H, PANEL_TOP, W } from "../minecraft/beats";
-import { ease, FaceKind, lerpPose, limb, POSE, pose, walkPose } from "../minecraft/figure";
+import { ease, lerpPose, limb, POSE, pose, walkPose } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
-import { Pebblo, PEBBLO_TINT } from "../minecraft/pebblo";
+import { Steve, SteveMood, STEVE_TINT } from "../minecraft/steve";
 import { Item, Pixels, Puff } from "../minecraft/pixels";
 import { CaveWide, LavaLake, Overworld, OverworldProps, Streaks } from "../minecraft/worlds";
 import { cave as C, lava as L } from "../minecraft/palette";
@@ -11,7 +11,7 @@ import { cave as C, lava as L } from "../minecraft/palette";
 /**
  * "Minecrafters who dig straight down:" — 14 seconds.
  *
- * Pebblo mines a hole at his feet, the shaft scrolls past coal, iron and
+ * Steve mines a hole at his feet, the shaft scrolls past coal, iron and
  * gold, a diamond glints, a warm glow comes up from below, the block cracks,
  * lava. Respawn on the grass, deadpan, and he starts digging down again.
  */
@@ -44,14 +44,14 @@ const CaveShot: React.FC = () => {
   const y = 1130 + sunk * 90;
   const sw = swingPose(f);
   const holeH = sunk * 90 + (f > EV.sink[0] - 8 ? 30 : 0);
-  const face: FaceKind = f < 24 ? "sly" : "scheming";
+  const face: SteveMood = f < 24 ? "sly" : "sly";
   return (
     <g>
       <CaveWide />
       {holeH > 0 && <rect x={560} y={1200} width={200} height={holeH + 40} fill="#1c1c1c" />}
       {holeH > 0 && <path d={`M560,1200 v${holeH + 40} h200 v${-(holeH + 40)}`} fill="none" stroke="#000" strokeWidth={12} strokeLinejoin="round" />}
       <g clipPath="url(#digFloor)">
-        <Pebblo x={660} y={y} pose={sw.pose} face={face} look={[0, 6]} hands={({ R }) => pickIn(R, sw.up)} />
+        <Steve x={660} y={y} pose={sw.pose} mood={face} hands={({ R }) => pickIn(R, sw.up)} />
       </g>
       {sw.hit && (
         <g fill="#8a8a8a">
@@ -98,7 +98,7 @@ const ShaftShot: React.FC = () => {
   const glow = interpolate(f, [EV.glow - 90, EV.crack - 90 + 12], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const abs = f + SHOT.shaft[0];
   const diamondNear = Math.abs(ORES[5].y - depth - 1250) < 400;
-  const face: FaceKind = abs >= EV.crack ? "shocked" : abs >= EV.notice ? "worried" : diamondNear ? "joy" : "smile";
+  const face: SteveMood = abs >= EV.crack ? "shocked" : abs >= EV.notice ? "worried" : diamondNear ? "joy" : "happy";
   const look: readonly [number, number] = abs >= EV.notice ? [0, 10] : diamondNear ? [-10, 0] : [0, 4];
   const crack = abs >= EV.crack;
   return (
@@ -143,13 +143,13 @@ const ShaftShot: React.FC = () => {
       {/* lava glow from below */}
       <rect x={330} y={1310} width={420} height={H - 1310} fill="url(#digGlow)" opacity={glow} />
       <rect x={0} y={PANEL_TOP} width={W} height={H - PANEL_TOP} fill="#ff8a1e" opacity={glow * 0.12} />
-      <Pebblo
+      <Steve
         x={540}
         y={1180 + (crack ? Math.sin(f * 2.5) * 4 : 0)}
         pose={abs >= EV.notice ? pose({ armR: limb(70, 60, 60, 120), armL: limb(-70, 60, -80, 120) }) : sw.pose}
-        face={face}
-        look={look}
-        tint={glow > 0.4 ? PEBBLO_TINT.lava : PEBBLO_TINT.normal}
+        mood={face}
+       
+        tint={glow > 0.4 ? STEVE_TINT.warm : STEVE_TINT.normal}
         hands={({ R }) => pickIn(R, abs < EV.notice && sw.up)}
       />
       {sw.hit && abs < EV.notice && (
@@ -177,13 +177,13 @@ const LavaShot: React.FC = () => {
     <g>
       <LavaLake t={f} />
       <g clipPath="url(#lavaLine)">
-        <Pebblo
+        <Steve
           x={540}
           y={y}
           scale={1.3}
           pose={hurt ? POSE.spread : POSE.up}
-          face={hurt ? "hurt" : "scream"}
-          tint={hurt ? PEBBLO_TINT.hurt : PEBBLO_TINT.lava}
+          mood={hurt ? "hurt" : "scream"}
+          tint={hurt ? STEVE_TINT.hurt : STEVE_TINT.warm}
           tilt={hurt ? 0 : Math.sin(f) * 4}
         />
       </g>
@@ -212,7 +212,7 @@ const GrassShot: React.FC = () => {
   const f = useCurrentFrame();
   const abs = f + SHOT.grass[0];
   const pop = interpolate(abs, [EV.respawn, EV.respawn + 3], [0.6, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const face: FaceKind = abs < EV.meh ? "worried" : abs < EV.digAgain ? "meh" : "plain";
+  const face: SteveMood = abs < EV.meh ? "worried" : abs < EV.digAgain ? "meh" : "plain";
   const sw = swingPose(abs - EV.digAgain, 14);
   const p = abs < EV.pickOut ? POSE.spread : abs < EV.digAgain ? lerpPose(POSE.spread, pose({ armR: limb(80, -20, 40, -120) }), ease(abs, EV.pickOut, EV.pickOut + 6)) : sw.pose;
   return (
@@ -220,7 +220,7 @@ const GrassShot: React.FC = () => {
       <Overworld />
       <OverworldProps />
       {abs >= EV.respawn && (
-        <Pebblo x={540} y={1240} scale={1.5 * pop} pose={p} face={face} look={abs < EV.meh ? [0, 0] : [0, 8]} hands={({ R }) => (abs >= EV.pickOut ? pickIn(R, abs < EV.digAgain || sw.up) : null)} />
+        <Steve x={540} y={1240} scale={1.5 * pop} pose={p} mood={face} hands={({ R }) => (abs >= EV.pickOut ? pickIn(R, abs < EV.digAgain || sw.up) : null)} />
       )}
       {abs >= EV.digAgain && sw.hit && (
         <g fill="#5a4a34">
@@ -303,7 +303,7 @@ export const DigThumb: React.FC = () => {
           <path d="M330,1310 H750" stroke="#000" strokeWidth={12} fill="none" />
           <path d="M420,1330 l40,60 l-30,50 l50,40 M560,1320 l-20,70 l40,30 l-10,60" stroke="#000" strokeWidth={8} fill="none" strokeLinecap="round" />
           <rect x={330} y={1310} width={420} height={H - 1310} fill="url(#digGlowT)" />
-          <Pebblo x={540} y={1180} scale={1.15} pose={pose({ armR: limb(70, 60, 60, 120), armL: limb(-70, 60, -80, 120) })} face="worried" look={[0, 10]} tint={PEBBLO_TINT.lava} hands={({ R }) => pickIn(R, false)} />
+          <Steve x={540} y={1180} scale={1.15} pose={pose({ armR: limb(70, 60, 60, 120), armL: limb(-70, 60, -80, 120) })} mood="worried" tint={STEVE_TINT.warm} hands={({ R }) => pickIn(R, false)} />
         </g>
       </svg>
       <Caption />

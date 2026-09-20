@@ -92,6 +92,13 @@ import { PvpShort, PvpThumb, PVP_FRAMES } from "./minecraft-pvp/PvpShort";
 import { CreeperShort, CreeperThumb, CREEPER_FRAMES } from "./minecraft-creeper/CreeperShort";
 import { NetherShort, NetherThumb, NETHER_FRAMES } from "./minecraft-nether/NetherShort";
 import { BuildShort, BuildThumb, BUILD_FRAMES } from "./minecraft-build/BuildShort";
+import {
+  LongIntro, INTRO_FRAMES,
+  Chapter1Card, Chapter2Card, Chapter3Card, Chapter4Card, Chapter5Card, CHAPTER_FRAMES,
+  LongCast, CAST_FRAMES,
+  LongVote, VOTE_FRAMES,
+  LongOutro, OUTRO_FRAMES,
+} from "./minecraft-longform/LongformParts";
 import { BrandAvatar, BrandBanner, BrandBannerGuides } from "./brand/OofCraft";
 import { DigShort, DigThumb, DIG_FRAMES } from "./minecraft-dig/DigShort";
 
@@ -175,6 +182,15 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Brand-Avatar" component={BrandAvatar} durationInFrames={1} fps={30} width={800} height={800} />
       <Composition id="Brand-Banner" component={BrandBanner} durationInFrames={1} fps={30} width={2560} height={1440} />
       <Composition id="Brand-Banner-Guides" component={BrandBannerGuides} durationInFrames={1} fps={30} width={2560} height={1440} />
+      <Composition id="Long-Intro" component={LongIntro} durationInFrames={INTRO_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Long-Chapter1" component={Chapter1Card} durationInFrames={CHAPTER_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Long-Chapter2" component={Chapter2Card} durationInFrames={CHAPTER_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Long-Chapter3" component={Chapter3Card} durationInFrames={CHAPTER_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Long-Chapter4" component={Chapter4Card} durationInFrames={CHAPTER_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Long-Chapter5" component={Chapter5Card} durationInFrames={CHAPTER_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Long-Cast" component={LongCast} durationInFrames={CAST_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Long-Vote" component={LongVote} durationInFrames={VOTE_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Long-Outro" component={LongOutro} durationInFrames={OUTRO_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="BuildShort" component={BuildShort} durationInFrames={BUILD_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Build-Thumbnail" component={BuildThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="NetherShort" component={NetherShort} durationInFrames={NETHER_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
