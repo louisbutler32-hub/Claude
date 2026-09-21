@@ -12,6 +12,10 @@ public/audio
 .compile
 .compile-longform
 
+# scratch pool of downloaded photo candidates for the real-image episodes —
+# only the final picked cutouts (under public/images/<episode>/) are tracked
+.photo-review
+
 # clipper: source footage, renders and intermediates stay local.
 # The drop-in folders themselves are tracked (via .gitkeep) so they exist on
 # a fresh clone — only what you put in them is ignored.
