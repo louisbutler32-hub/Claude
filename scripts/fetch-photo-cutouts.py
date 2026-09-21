@@ -41,22 +41,31 @@ UA = "PebbloPebble-PhotoSourcing/1.0 (https://www.youtube.com/@PebbloPebble; con
 BLOCKED_HOSTS = ("upload.wikimedia.org",)
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Anonymous Openverse API access rate-limits hard and unpredictably (plain
+# 401s, not just 429s). A free self-serve client (POST /v1/auth_tokens/
+# register/, then /v1/auth_tokens/token/ for a bearer token) raises that
+# ceiling a lot — set here as an env var so the token isn't hardcoded.
+OPENVERSE_TOKEN = os.environ.get("OPENVERSE_TOKEN", "")
+
 _last = [0.0]
 
 
-def get(url, gap=0.6, tries=4):
+def get(url, gap=0.3, tries=5, api=False):
     for i in range(tries):
         wait = gap - (time.time() - _last[0])
         if wait > 0:
             time.sleep(wait)
         _last[0] = time.time()
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": UA})
+            headers = {"User-Agent": UA}
+            if api and OPENVERSE_TOKEN:
+                headers["Authorization"] = f"Bearer {OPENVERSE_TOKEN}"
+            req = urllib.request.Request(url, headers=headers)
             with urllib.request.urlopen(req, timeout=45) as r:
                 return r.read()
         except urllib.error.HTTPError as e:
-            if e.code == 429 and i < tries - 1:
-                time.sleep(5 * (i + 1))
+            if e.code in (429, 401) and i < tries - 1:
+                time.sleep(4 * (i + 1))
                 continue
             raise
         except Exception:
@@ -71,7 +80,7 @@ def search(query, want):
                "q": query, "license_type": "commercial",
                "page_size": str(want * 4), "mature": "false",
            }))
-    data = json.loads(get(url))
+    data = json.loads(get(url, api=True))
     out = []
     for r in data.get("results", []):
         img_url = r.get("url", "")
