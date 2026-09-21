@@ -75,9 +75,15 @@ def get(url, gap=0.3, tries=5, api=False):
 
 
 def search(query, want):
+    # "commercial" alone only excludes non-commercial (nc) licenses — it lets
+    # by-nd through, and ND (No Derivatives) forbids exactly what this
+    # pipeline does to every photo (crop, background-removal, compositing).
+    # "modification" is the other half: it excludes nd (and sa's copyleft
+    # obligation doesn't block us either way). Both together leaves only
+    # by, by-sa, cc0, pdm.
     url = ("https://api.openverse.org/v1/images/?"
            + urllib.parse.urlencode({
-               "q": query, "license_type": "commercial",
+               "q": query, "license_type": "commercial,modification",
                "page_size": str(want * 4), "mature": "false",
            }))
     data = json.loads(get(url, api=True))
