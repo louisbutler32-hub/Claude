@@ -52,6 +52,20 @@ pause after every shadow so there's time to shout out the answer.
 8:44 🐫 Camel
 9:36 🦚 Peacock
 
+📷 PHOTO CREDITS
+Zebra — Harlequeen (CC BY 2.0)
+Giraffe — virtualsphere (CC BY-SA 2.0)
+Tiger — derrickbrutel (CC BY-SA 2.0)
+Bear — BLM Alaska (CC BY 2.0)
+Monkey — Indo_girl2010 (CC BY 2.0)
+Kangaroo, Koala — Eric Kilby (CC BY-SA 2.0)
+Fox — Mount Rainier NPS (CC BY 2.0)
+Hedgehog — It's No Game (CC BY 2.0)
+Peacock — Koshyk (CC BY 2.0)
+Panda, Camel — public domain (CC0/PDM)
+All via Openverse (openverse.org); full licence links in
+public/images/wild/credits.json.
+
 📚 ALL OUR LEARNING VIDEOS
 https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
 
