@@ -1,0 +1,122 @@
+[
+  {
+    "id": "cow",
+    "file": "cow.png",
+    "width": 537,
+    "height": 611,
+    "title": "20130911-OC-RBN-3766",
+    "license": "by 2.0",
+    "creator": "USDAgov",
+    "page": "https://www.flickr.com/photos/41284017@N08/9733482033"
+  },
+  {
+    "id": "lion",
+    "file": "lion.png",
+    "width": 725,
+    "height": 660,
+    "title": "Lion",
+    "license": "cc0 1.0",
+    "creator": "Mathias Appel",
+    "page": "https://www.flickr.com/photos/91501748@N07/16138033883"
+  },
+  {
+    "id": "duck",
+    "file": "duck.png",
+    "width": 596,
+    "height": 260,
+    "title": "NS-00772 - Male Mallard Duck",
+    "license": "by-sa 2.0",
+    "creator": "archer10 (Dennis)",
+    "page": "https://www.flickr.com/photos/22490717@N02/27491533876"
+  },
+  {
+    "id": "frog",
+    "file": "frog.png",
+    "width": 320,
+    "height": 255,
+    "title": "Green Frog",
+    "license": "by 2.0",
+    "creator": "ghadjikyriacou",
+    "page": "https://www.flickr.com/photos/46434981@N08/6079414442"
+  },
+  {
+    "id": "pig",
+    "file": "pig.png",
+    "width": 810,
+    "height": 847,
+    "title": "Miss Piggie ... Pretty in pink",
+    "license": "by 2.0",
+    "creator": "crabchick",
+    "page": "https://www.flickr.com/photos/62327186@N00/7094953445"
+  },
+  {
+    "id": "penguin",
+    "file": "penguin.png",
+    "width": 316,
+    "height": 446,
+    "title": "Penguin standing rock",
+    "license": "cc0 1.0",
+    "creator": null,
+    "page": "https://www.rawpixel.com/image/3296153/free-photo-image-penguin-animal"
+  },
+  {
+    "id": "owl",
+    "file": "owl.png",
+    "width": 543,
+    "height": 1017,
+    "title": "Bubo virginianus (great horned owl)",
+    "license": "by 2.0",
+    "creator": "James St. John",
+    "page": "https://www.flickr.com/photos/47445767@N05/8364323121"
+  },
+  {
+    "id": "elephant",
+    "file": "elephant.png",
+    "width": 416,
+    "height": 522,
+    "title": "Rather small and disproportionate",
+    "license": "by 2.0",
+    "creator": "shankar s.",
+    "page": "https://www.flickr.com/photos/77742560@N06/11931992173"
+  },
+  {
+    "id": "sheep",
+    "file": "sheep.png",
+    "width": 132,
+    "height": 138,
+    "title": "Counting Sheep ...... five",
+    "license": "cc0 1.0",
+    "creator": "Terry Kearney",
+    "page": "https://www.flickr.com/photos/24490288@N04/16622584999"
+  },
+  {
+    "id": "fish",
+    "file": "fish.png",
+    "width": 941,
+    "height": 559,
+    "title": "Fish.",
+    "license": "by 2.0",
+    "creator": "Dr._Colleen_Morgan",
+    "page": "https://www.flickr.com/photos/56323217@N00/3266278155"
+  },
+  {
+    "id": "cat",
+    "file": "cat.png",
+    "width": 1010,
+    "height": 601,
+    "title": "Cat",
+    "license": "by 2.0",
+    "creator": "Beige Alert",
+    "page": "https://www.flickr.com/photos/53332339@N00/2402448468"
+  },
+  {
+    "id": "dog",
+    "file": "dog.png",
+    "width": 793,
+    "height": 579,
+    "title": "Labrador Puppy - Knebworth Country Show 2013 - Explored :-)",
+    "license": "by-sa 2.0",
+    "creator": "Airwolfhound",
+    "page": "https://www.flickr.com/photos/24874528@N04/9497272666"
+  }
+]
