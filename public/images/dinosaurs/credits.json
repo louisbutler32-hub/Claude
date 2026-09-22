@@ -1,0 +1,122 @@
+[
+  {
+    "id": "trex",
+    "file": "trex.png",
+    "width": 906,
+    "height": 593,
+    "title": "Tyrannosaurus (Not in My Collection)",
+    "license": "pdm 1.0",
+    "creator": "RobinGoodfellow_(m)",
+    "page": "https://www.flickr.com/photos/130140542@N03/46828554561"
+  },
+  {
+    "id": "triceratops",
+    "file": "triceratops.png",
+    "width": 788,
+    "height": 396,
+    "title": "Triceratops 20190722-IZE-5",
+    "license": "by 2.0",
+    "creator": "Zachi Evenor",
+    "page": "https://www.flickr.com/photos/40794167@N05/48348565756"
+  },
+  {
+    "id": "pterodactyl",
+    "file": "pterodactyl.png",
+    "width": 613,
+    "height": 583,
+    "title": "You've got Mail - Sie haben Post",
+    "license": "by-sa 2.0",
+    "creator": "Photocapy",
+    "page": "https://www.flickr.com/photos/81635051@N00/1817335274"
+  },
+  {
+    "id": "stegosaurus",
+    "file": "stegosaurus.png",
+    "width": 1004,
+    "height": 774,
+    "title": "Juvenile Stegosaurus dinosaur model showing bipedality (based on fossil footprint evidence from the Morrison Formation, Upper Jurassic; Quarry 5, Dinosaur Ridge, west of Denver, north-central Colorado, USA)",
+    "license": "by 2.0",
+    "creator": "James St. John",
+    "page": "https://www.flickr.com/photos/47445767@N05/15516845036"
+  },
+  {
+    "id": "velociraptor",
+    "file": "velociraptor.png",
+    "width": 814,
+    "height": 551,
+    "title": "Deinonychus attacks Diplodocus - older model - Museum of the Rockies - 2013-07-08",
+    "license": "by-sa 2.0",
+    "creator": "Tim Evanson",
+    "page": "https://www.flickr.com/photos/23165290@N00/9325192070"
+  },
+  {
+    "id": "brachiosaurus",
+    "file": "brachiosaurus.png",
+    "width": 778,
+    "height": 770,
+    "title": "Horizon Vinyl Kit / JP Brachiosaurus",
+    "license": "cc0 1.0",
+    "creator": "RobinGoodfellow_(m)",
+    "page": "https://www.flickr.com/photos/130140542@N03/49037404241"
+  },
+  {
+    "id": "ankylosaurus",
+    "file": "ankylosaurus.png",
+    "width": 959,
+    "height": 570,
+    "title": "Ankylosaurus Model",
+    "license": "cc0 1.0",
+    "creator": "Gary Lee Todd, Ph.D.",
+    "page": "https://www.flickr.com/photos/101561334@N08/35685064266"
+  },
+  {
+    "id": "spinosaurus",
+    "file": "spinosaurus.png",
+    "width": 896,
+    "height": 503,
+    "title": "Young Spinosaurus",
+    "license": "pdm 1.0",
+    "creator": "RobinGoodfellow_(m)",
+    "page": "https://www.flickr.com/photos/130140542@N03/43111323120"
+  },
+  {
+    "id": "parasaurolophus",
+    "file": "parasaurolophus.png",
+    "width": 181,
+    "height": 245,
+    "title": "Parasaurolophus model in the Leeds Corn Exchange",
+    "license": "by 2.0",
+    "creator": "chris.rycroft",
+    "page": "https://www.flickr.com/photos/193316968@N06/52624725520"
+  },
+  {
+    "id": "diplodocus",
+    "file": "diplodocus.png",
+    "width": 956,
+    "height": 292,
+    "title": "Diplodocus 20191029_185827",
+    "license": "by 2.0",
+    "creator": "Zachi Evenor",
+    "page": "https://www.flickr.com/photos/40794167@N05/48986095188"
+  },
+  {
+    "id": "iguanodon",
+    "file": "iguanodon.png",
+    "width": 841,
+    "height": 672,
+    "title": "Emily the Iguanodon",
+    "license": "by 2.0",
+    "creator": "Tim Sheerman-Chase",
+    "page": "https://www.flickr.com/photos/68932647@N00/53162104528"
+  },
+  {
+    "id": "allosaurus",
+    "file": "allosaurus.png",
+    "width": 435,
+    "height": 584,
+    "title": "3C Allosaurus",
+    "license": "by 2.0",
+    "creator": "Orin Zebest",
+    "page": "https://www.flickr.com/photos/33917831@N00/226864808"
+  }
+]

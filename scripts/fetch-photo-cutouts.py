@@ -93,7 +93,7 @@ def search(query, want):
         host = urllib.parse.urlparse(img_url).netloc
         if host in BLOCKED_HOSTS:
             continue
-        if not img_url or r.get("width", 0) < 600:
+        if not img_url or (r.get("width") or 0) < 600:
             continue
         out.append({
             "id": r["id"], "title": r.get("title") or "untitled",

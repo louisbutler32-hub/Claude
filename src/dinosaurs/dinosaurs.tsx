@@ -1,11 +1,28 @@
 import React from "react";
 import { Body, Face, Shine } from "../guess/art";
+import { photoArt, type PhotoCredit } from "../guess/photoArt";
 import type { GuessArt } from "../guess/types";
+import dinoPhotoCredits from "../../public/images/dinosaurs/credits.json";
 
 /**
  * The twelve dinosaurs. Same trick: drawn once, coloured or flattened to a
  * shadow by the `sil` filter — the shape that must carry the whole guess.
+ *
+ * This hand-drawn cast (DINO_ART) stays the canonical one — colours and the
+ * compilation thumbnail pull individual members of it in to keep one
+ * consistent art style across the whole channel. The Dinosaurs episode
+ * itself uses real-world cutouts instead (DINO_PHOTO_ART, DINO_PHOTO_CREDITS
+ * below) — since no photograph of a living dinosaur exists, these are
+ * museum models, statues and toy figures rather than photos of the animal
+ * itself. See scripts/fetch-photo-cutouts.py for how they were sourced and
+ * licensed.
  */
+
+export const DINO_PHOTO_CREDITS: PhotoCredit[] = dinoPhotoCredits;
+export const DINO_PHOTO_ART: Record<string, GuessArt> = photoArt(
+  "dinosaurs",
+  DINO_PHOTO_CREDITS
+);
 
 const OUT = "#3a3226";
 

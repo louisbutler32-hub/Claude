@@ -12,7 +12,7 @@ Guess the Dinosaur! 🦕 Learn Dinosaur Names and Sounds for Toddlers | Chomp Ch
 What Dinosaur Is That? 🦖 Roar Along for Toddlers & Preschoolers
 ```
 ```
-Guess the Dinosaur by its Shadow! 🦕 12 Dinosaurs for Kids to Learn
+Guess the Dinosaur by its Shadow! 🦕 Real Dinosaur Models for Toddlers
 ```
 
 ## Description
@@ -20,9 +20,12 @@ Guess the Dinosaur by its Shadow! 🦕 12 Dinosaurs for Kids to Learn
 ```
 Can you guess the dinosaur from its shadow? 🦖🦕🌋
 
-A mystery shadow rises out of the bushes… what could it be? Guess along with
-us, find out where each dinosaur lived, and hear the sound it makes! Every
-dinosaur you name fills one more space on the board — can you collect all 12?
+This episode uses real museum models and dinosaur figures instead of
+drawings — no camera ever caught a real dinosaur, so every shape here is a
+lifelike replica, photographed like the real thing. A mystery shadow rises
+out of the bushes… what could it be? Guess along with us, find out where
+each dinosaur lived, and hear the sound it makes! Every dinosaur you name
+fills one more space on the board — can you collect all 12?
 
 🌿 WHAT YOUR LITTLE ONE WILL LEARN
 • 12 dinosaur names — T-Rex, Triceratops, Pterodactyl, Stegosaurus,
@@ -49,6 +52,18 @@ pause after every shadow so there's time to shout out the answer.
 7:52 🦕 Diplodocus
 8:44 🦕 Iguanodon
 9:36 🦖 Allosaurus
+
+📷 PHOTO CREDITS
+Triceratops, Diplodocus — Zachi Evenor (CC BY 2.0)
+Pterodactyl — Photocapy (CC BY-SA 2.0)
+Stegosaurus — James St. John (CC BY 2.0)
+Velociraptor — Tim Evanson (CC BY-SA 2.0)
+Parasaurolophus — chris.rycroft (CC BY 2.0)
+Iguanodon — Tim Sheerman-Chase (CC BY 2.0)
+Allosaurus — Orin Zebest (CC BY 2.0)
+T-Rex, Brachiosaurus, Ankylosaurus, Spinosaurus — public domain (CC0/PDM)
+All via Openverse (openverse.org); full licence links in
+public/images/dinosaurs/credits.json.
 
 📚 ALL OUR LEARNING VIDEOS
 https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg

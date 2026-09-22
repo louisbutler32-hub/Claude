@@ -1,5 +1,7 @@
 import React from "react";
 import { BoardThumb, ShadowThumb, type ThumbConfig } from "../guess/Thumbnail";
+import { usePhotoArt } from "../guess/photoArt";
+import { DINO_PHOTO_CREDITS } from "./dinosaurs";
 import { dinoSubject } from "./subject";
 
 const config: ThumbConfig = {
@@ -13,5 +15,11 @@ const config: ThumbConfig = {
   boardLine: "CAN YOU NAME ALL 12?",
 };
 
-export const DinoThumbA: React.FC = () => <ShadowThumb config={config} />;
-export const DinoThumbB: React.FC = () => <BoardThumb config={config} />;
+export const DinoThumbA: React.FC = () => {
+  usePhotoArt("dinosaurs", DINO_PHOTO_CREDITS);
+  return <ShadowThumb config={config} />;
+};
+export const DinoThumbB: React.FC = () => {
+  usePhotoArt("dinosaurs", DINO_PHOTO_CREDITS);
+  return <BoardThumb config={config} />;
+};

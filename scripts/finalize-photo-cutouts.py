@@ -21,6 +21,7 @@ import sys
 
 import numpy as np
 from PIL import Image
+from scipy import ndimage
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAD = 6
@@ -39,6 +40,29 @@ def crisp_alpha(img: Image.Image) -> Image.Image:
     arr = np.array(img)
     a = arr[:, :, 3]
     arr[:, :, 3] = np.where(a < ALPHA_NOISE_FLOOR, 0, a)
+    # Some previewers (and any consumer that isn't careful about alpha)
+    # show the leftover RGB under a fully transparent pixel instead of
+    # compositing it away — harmless in a spec-correct renderer, but zero
+    # it too so a stray hue never surfaces where it shouldn't.
+    arr[arr[:, :, 3] == 0] = 0
+    return Image.fromarray(arr)
+
+
+def keep_largest_component(img: Image.Image) -> Image.Image:
+    """rembg sometimes leaves a small disconnected blob in frame — a chip
+    of pedestal, a fold of background it misread as foreground — separate
+    from the actual subject. Keeping only the largest connected alpha
+    region drops those automatically instead of hand-picking a box per
+    image; a genuinely connected prop (fur, a held object) is untouched
+    since it's part of the same component as the subject."""
+    arr = np.array(img)
+    mask = arr[:, :, 3] > ALPHA_NOISE_FLOOR
+    lbl, n = ndimage.label(mask)
+    if n <= 1:
+        return img
+    sizes = ndimage.sum(mask, lbl, range(1, n + 1))
+    biggest = 1 + int(np.argmax(sizes))
+    arr[:, :, 3] = np.where(lbl == biggest, arr[:, :, 3], 0)
     return Image.fromarray(arr)
 
 
@@ -83,6 +107,7 @@ def main():
         if not os.path.exists(src_png):
             sys.exit(f"missing {src_png}")
         img = crisp_alpha(Image.open(src_png).convert("RGBA"))
+        img = keep_largest_component(img)
         trimmed = trim(img)
         dst_file = f"{aid}.png"
         trimmed.save(os.path.join(out_dir, dst_file))

@@ -4,7 +4,7 @@ import { Item } from "../guess/Board";
 import { fonts } from "../guess/palette";
 import { GROUND_Y, H, W } from "../guess/scene";
 import type { GuessSubject } from "../guess/types";
-import { DinoDefs, DINO_ART, DINO_NAME, DINO_SOUND } from "./dinosaurs";
+import { DinoDefs, DINO_NAME, DINO_PHOTO_ART, DINO_SOUND } from "./dinosaurs";
 import { DinoHabitat } from "./habitats";
 
 /**
@@ -153,7 +153,7 @@ export const dinoSubject: GuessSubject = {
     ["#c25b3c", "#a1462b"],
   ],
   Defs: DinoDefs,
-  art: DINO_ART,
+  art: DINO_PHOTO_ART,
   names: DINO_NAME,
   boardOrder: [
     "trex", "triceratops", "stegosaurus", "brachiosaurus",
