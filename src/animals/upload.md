@@ -12,7 +12,7 @@ Guess the Animal! 🐄 Learn Animal Names and Sounds for Toddlers | Chomp Chomp 
 What Animal Is That? 🦁 Animal Sounds for Toddlers & Preschoolers
 ```
 ```
-Guess the Animal by its Shadow! 🐘 12 Animals and the Sounds They Make
+Guess the Animal by its Shadow! 🐘 Real Animal Photos for Toddlers
 ```
 
 ## Description
@@ -20,9 +20,10 @@ Guess the Animal by its Shadow! 🐘 12 Animals and the Sounds They Make
 ```
 Can you guess the animal from its shadow? 🐄🦆🦁
 
-A mystery shadow rises out of the bushes… what could it be? Guess along with
-us, find out where each animal lives, and listen to the sound it makes! Every
-animal you name fills one more space on the board — can you collect all 12?
+This episode uses real animal photos instead of drawings — a mystery shadow
+rises out of the bushes… what could it be? Guess along with us, find out
+where each animal lives, and listen to the sound it makes! Every animal you
+name fills one more space on the board — can you collect all 12?
 
 🐾 WHAT YOUR LITTLE ONE WILL LEARN
 • 12 animal names — cow, lion, duck, frog, pig, penguin, owl, elephant,
@@ -48,6 +49,20 @@ pause after every shadow so there's time to shout out the answer.
 7:52 🐠 Fish
 8:44 🐱 Cat
 9:36 🐶 Dog
+
+📷 PHOTO CREDITS
+Cow — USDAgov (CC BY 2.0)
+Duck — archer10 (Dennis) (CC BY-SA 2.0)
+Frog — ghadjikyriacou (CC BY 2.0)
+Pig — crabchick (CC BY 2.0)
+Owl — James St. John (CC BY 2.0)
+Elephant — shankar s. (CC BY 2.0)
+Fish — Dr. Colleen Morgan (CC BY 2.0)
+Cat — Beige Alert (CC BY 2.0)
+Dog — Airwolfhound (CC BY-SA 2.0)
+Lion, Penguin, Sheep — public domain (CC0)
+All via Openverse (openverse.org); full licence links in
+public/images/animals/credits.json.
 
 📚 ALL OUR LEARNING VIDEOS
 https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
