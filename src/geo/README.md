@@ -9,6 +9,9 @@ narration a phrase at a time in small white type at 80% of the frame.
 ```
 src/geo/
   GeoCanvas.tsx     the map: camera, satellite tiles, colour grade, context
+  title3d.tsx       Title3D — the big word, extruded and lying in the shot
+  characters.tsx    Character, Dialogue, Solid, Spotlight — countries with faces
+  props.tsx         MapProp, PropRow — objects dropped onto the ground
   Basemap.tsx       the tile layer — which tiles exist, where they sit
   projection.ts     flat Mercator camera (shares keys/easing with src/maps)
   shapes.ts         countries and states → screen paths, antimeridian-safe
@@ -83,6 +86,59 @@ Rings that cross the antimeridian are stored unwrapped past +180°, and the
 renderer draws every polygon at whichever ±360° copy is nearest the camera,
 so a camera parked over the Bering Strait sees both shores.
 
+## The four things that make it read as a cartoon
+
+Measured off four reference Shorts (the euro, the 13 colonies, the Great
+Lakes, Holland). These are what separate the format from a labelled map,
+and all four are in `texas/TexasShort.tsx` if you want a worked example.
+
+**Countries are characters.** `<Character>` fills a country flat and
+saturated, outlines it dark, and gives it big white eyes, heavy brows, a
+thin mouth and optional hanging arms. It blinks, bobs, and its pupils point
+where you aim `look`. Nine moods — `proud`, `worried`, `smug`, `shocked`
+and the rest — and the shape itself is the body, so the character rides the
+camera with the ground.
+
+**They talk.** `<Dialogue>` hangs a line of speech above a character's head
+on a thin leader, so an argument between two countries reads without a
+single caption. Keep the lines to three or four words.
+
+**The big words are renders, not captions.** `<Title3D>` lays the word on a
+plane inside the shot — turned, tilted, extruded so you see its thickness,
+a warm bloom behind it and a flattened copy thrown onto the terrain as a
+shadow. It swings in and settles. One per beat, never two.
+
+**Objects, not adjectives.** `<MapProp>` drops a drawn object onto a place
+— derrick, coin, cash, barrel, people, cattle, capitol, flagpole, ship,
+factory, wheat, star — with a contact shadow and a bounce. `<PropRow>`
+lays out a row of them and can dim the tail, which is how a proportion
+reads faster than a percentage.
+
+Captions run one word at a time (`WordCaptions`) at about 61% of frame
+height, clear of the Shorts title and channel overlay.
+
+## Sound
+
+The references land roughly **one sound effect per second** — 58 to 74 per
+minute, measured. That density is most of what separates them from a slide
+show, so a short without it sounds cheap however good the picture is.
+
+Each short keeps a cue sheet at `src/geo/<name>/sfx.json`, a list of
+`[cue, seconds, gain]`. `scripts/make-geo-sfx.py <name>` renders it to
+`public/audio/geo-<name>-sfx.mp3`, which the composition plays under the
+narration. Sixteen cues are synthesised from noise and sine sweeps, so
+nothing is licensed and nothing is downloaded:
+
+```
+whoosh  whoosh_down  pop  click  thud  boom  ding  chime
+coin    cash  stamp  riser  swell  error  pageturn  rumble
+```
+
+**To use real recordings instead**, drop a wav in `public/audio/sfx/` named
+after the cue — `public/audio/sfx/whoosh.wav` — and the build uses it in
+place of the synth, resampling as needed. Mix and match: any cue without a
+file falls back to the synthesised one.
+
 ## Building a short
 
 1. **Script** — `scripts-vo/geo-<name>.json`. One line per beat, each with a
@@ -102,7 +158,8 @@ so a camera parked over the Bering Strait sees both shores.
 5. **Render** — register in `src/Root.tsx`, add the npm scripts, then
    `npm run geo:<name>`, `npm run geo:<name>:thumb`, and write `upload.md`.
 
-The music bed is synthesised by `scripts/make-geo-bed.py` (sine waves, so
+The music bed is separate from the effects. It is synthesised by
+`scripts/make-geo-bed.py` (sine waves, so
 nothing to license) and sits ~14 dB under the voice. A short can carry a
 licensed track instead: `scripts/make-geo-music.py <name> <track.mp3>` cuts
 a levelled 60 s bed into `public/audio/geo-<name>-music.mp3` (gitignored —

@@ -1,18 +1,25 @@
 import React from "react";
 import { AbsoluteFill, Audio, staticFile } from "remotion";
+import { Character, Dialogue, Solid, Spotlight } from "../characters";
 import { GeoCanvas } from "../GeoCanvas";
-import { BigNumber, Callout, Captions, Tag } from "../hud";
-import { Highlight, Label, Pin, Wash } from "../layers";
+import { Callout, Tag, WordCaptions } from "../hud";
+import { Label, Route } from "../layers";
+import { MapProp, PropRow } from "../props";
 import { CameraKey, LonLat } from "../projection";
 import { Line, beatsOf } from "../timing";
+import { Title3D, TitleSub } from "../title3d";
 import timing from "./timing.json";
 
 // ── What if Texas had stayed a country? ───────────────────────────────
 //
-// ~50 s, 9:16, built to loop. Nine years as a republic, what it claimed,
-// why it joined, a guess, and what it would be today — cut on "Texas".
+// ~79 s, 9:16, built to loop. Rebuilt to the reference-channel format:
+// countries are characters with faces that talk to each other, the big
+// words are 3D renders lying in the shot, objects get dropped on the map
+// instead of written out, and a sound lands on nearly every beat.
 //
 //   python3 scripts/make-vo.py geo-texas
+//   python3 scripts/align-words.py geo-texas
+//   python3 scripts/make-geo-sfx.py texas
 //   npm run geo:texas:music
 
 export const TEXAS_FPS = 30;
@@ -22,87 +29,197 @@ export const TEXAS_FRAMES = Math.round(TEXAS_SECONDS * TEXAS_FPS);
 const B = beatsOf(LINES, TEXAS_SECONDS);
 const END = TEXAS_SECONDS + 1;
 
+// ── the board ─────────────────────────────────────────────────────────
+const TX = "state:Texas";
 const AUSTIN: LonLat = [-97.74, 30.27];
+const SAN_JACINTO: LonLat = [-95.08, 29.75];
+const TEXAS_C: LonLat = [-99.4, 31.3];
+const WASHINGTON: LonLat = [-77.04, 38.91];
+const LONDON: LonLat = [-0.13, 51.5];
+const PARIS: LonLat = [2.35, 48.86];
+const GULF: LonLat = [-94.0, 27.4];
+const PERMIAN: LonLat = [-102.3, 31.9];
+const HOUSTON: LonLat = [-95.37, 29.76];
+const DALLAS: LonLat = [-96.8, 32.78];
 
-/** The Republic's claim: the Rio Grande to its source, due north to 42°,
- *  then the Adams–Onís line back round to the Gulf. Approximate. */
-const CLAIM: LonLat[] = [
-  [-97.15, 25.95], [-98.5, 26.3], [-99.5, 27.5], [-101.4, 29.7], [-103.0, 29.2], [-104.5, 29.6],
-  [-106.5, 31.75], [-106.7, 33.0], [-106.9, 35.1], [-105.95, 36.5], [-105.9, 37.5], [-107.5, 37.75],
-  [-107.5, 42.0], [-106.35, 42.0], [-106.35, 39.2], [-105.9, 38.5], [-104.5, 38.3], [-102.0, 38.05],
-  [-100.0, 38.0], [-100.0, 34.5], [-98.0, 34.1], [-96.5, 33.8], [-94.0, 33.6], [-94.0, 32.0],
-  [-93.7, 31.0], [-93.8, 29.7], [-95.0, 29.0], [-96.5, 28.3],
-];
+/** The 1848 cession — what the war with Mexico actually bought. */
+const CESSION = ["state:California", "state:Nevada", "state:Utah", "state:Arizona", "state:New Mexico", "state:Colorado"];
+/** Everything the United States already held in 1845, for the "no Texas" map. */
+const WEST_COAST = ["state:California", "state:Oregon", "state:Washington"];
 
-const CESSION = ["state:California", "state:Nevada", "state:Utah", "state:Arizona"];
+const TEX_BLUE = "#2c5fa8";
+const TEX_RED = "#c8382e";
+const US_BLUE = "#3567b5";
+const MEX_GREEN = "#2f9e5f";
+const UK_PURPLE = "#8e4fc0";
 
 const CAMERA: CameraKey[] = [
-  { at: 0, lon: -99.5, lat: 31.5, scale: 8500 },
-  { at: B.republic.start, lon: -99, lat: 32, scale: 8800 },
-  { at: B.claim.start, lon: -101, lat: 34, scale: 7600 },
-  { at: B.claim.start + 1.5, lon: -102.5, lat: 35.5, scale: 6200 },
-  { at: B.broke.start, lon: -101, lat: 33.5, scale: 7000 },
-  { at: B.guess.start, lon: -99.5, lat: 31.5, scale: 8500 },
-  { at: B.reveal.start + 7.4, lon: -99.5, lat: 31.5, scale: 8600 },
-  { at: B.reveal.start + 9.0, lon: -110, lat: 34.5, scale: 5200 },
-  { at: END, lon: -111, lat: 34.5, scale: 5000 },
+  { at: 0, lon: -99.4, lat: 31.4, scale: 30000 },
+  { at: B.won.start - 0.2, lon: -99.6, lat: 31.0, scale: 31500 },
+  { at: B.won.start + 1.4, lon: -101.5, lat: 27.0, scale: 17000 },
+  { at: B.real.start, lon: -100.2, lat: 30.2, scale: 24000 },
+  { at: B.real.start + 2.6, lon: -99.4, lat: 31.2, scale: 29000 },
+  { at: B.real.start + 4.9, lon: -55, lat: 42, scale: 4200 },
+  { at: B.problem.start, lon: -99.4, lat: 31.3, scale: 30000 },
+  { at: B.debt.start, lon: -99.2, lat: 31.4, scale: 31000 },
+  { at: B.mexico.start, lon: -101.8, lat: 26.5, scale: 15000 },
+  { at: B.ask.start, lon: -97.5, lat: 33.0, scale: 15000 },
+  { at: B.no.start, lon: -96.0, lat: 34.5, scale: 13000 },
+  { at: B.no.end - 0.5, lon: -95.0, lat: 35.0, scale: 12500 },
+  { at: B.britain.start + 1.2, lon: -48, lat: 47, scale: 4000 },
+  { at: B.yes.start, lon: -97.5, lat: 33.0, scale: 14000 },
+  { at: B.guess.start, lon: -99.4, lat: 31.3, scale: 28000 },
+  { at: B.econ.start + 0.4, lon: -99.4, lat: 31.3, scale: 22000 },
+  { at: B.oil.start, lon: -100.2, lat: 31.6, scale: 26000 },
+  { at: B.people.start, lon: -98.8, lat: 31.2, scale: 27000 },
+  { at: B.war.start, lon: -101.5, lat: 28.5, scale: 15000 },
+  { at: B.cession.start + 0.6, lon: -106, lat: 32.5, scale: 10000 },
+  { at: B.reveal.start + 0.6, lon: -114, lat: 38.5, scale: 8600 },
+  { at: END, lon: -116.5, lat: 39.5, scale: 8200 },
 ];
 
-export type TexasProps = { music?: string | null; narration?: string | null };
+const T_EUROPE = B.real.start + 4.9;
+const T_ATLANTIC = B.britain.start + 1.2;
 
-export const TexasShort: React.FC<TexasProps> = ({ music = null, narration = "assets/vo/geo-texas.mp3" }) => (
+export type TexasProps = { music?: string | null; narration?: string | null; sfx?: string | null };
+
+export const TexasShort: React.FC<TexasProps> = ({
+  music = null,
+  narration = "assets/vo/geo-texas.mp3",
+  sfx = "audio/geo-texas-sfx.mp3",
+}) => (
   <AbsoluteFill>
     {narration ? <Audio src={staticFile(narration)} /> : null}
+    {sfx ? <Audio src={staticFile(sfx)} volume={0.5} /> : null}
     {music ? <Audio src={staticFile(music)} /> : null}
     <GeoCanvas
       camera={CAMERA}
       hud={
         <>
-          {/* ── the republic ── */}
-          <BigNumber text="1836 – 1845" in={B.republic.start + 1.2} until={B.claim.start} y={300} size={104} />
-          <Callout text="EMBASSIES IN LONDON AND PARIS" icon="flagpost" in={B.republic.start + 7.4} until={B.claim.start + 0.4} y={450} size={38} font="sans" weight={800} glow="rgba(255,255,255,0.45)" />
+          {/* ── the open ── */}
+          <Title3D text="TEXAS" in={0.15} until={B.won.start + 0.3} y={560} size={190} turn={-26} tilt={12} roll={-5} glow="rgba(255,170,40,0.9)" />
+          <TitleSub text="ITS OWN COUNTRY · 1836–1845" in={0.9} until={B.won.start + 0.3} y={720} size={38} />
+
+          {/* ── the war ── */}
+          <Title3D text="1836" in={B.won.start + 0.5} until={B.real.start} y={430} size={165} turn={-18} tilt={9} glow="rgba(255,90,40,0.85)" />
+
+          {/* ── a real country ── */}
+          <Tag text="PRESIDENT" in={B.real.start + 1.5} until={B.problem.start} at={[-97.3, 27.6]} dy={60} size={32} />
+          <Tag text="ITS OWN FLAG" in={B.real.start + 2.2} until={B.problem.start} at={[-103.6, 33.8]} dy={60} size={32} />
+          <Tag text="ITS OWN MONEY" in={B.real.start + 3.2} until={B.problem.start} at={[-94.2, 33.8]} dy={60} size={32} />
+          <Tag text="LONDON" in={T_EUROPE + 0.9} until={B.problem.start} at={LONDON} dy={-130} size={30} bg="#8e4fc0" />
+          <Tag text="PARIS" in={T_EUROPE + 1.4} until={B.problem.start} at={PARIS} dy={110} size={30} bg="#8e4fc0" />
 
           {/* ── broke ── */}
-          <Callout text="135,000 PEOPLE" icon="people" in={B.broke.start + 1.4} until={B.guess.start} y={330} size={50} font="sans" weight={800} glow="rgba(255,255,255,0.45)" />
-          <Callout text="$10 MILLION DEBT" icon="coin" in={B.broke.start + 3.4} until={B.guess.start} y={450} size={54} />
-          <BigNumber text="1845" in={B.broke.start + 5.4} until={B.guess.start + 0.6} y={1250} size={130} />
+          <Title3D text="BROKE" in={B.problem.start + 1.3} until={B.debt.start + 0.4} y={520} size={185} turn={-20} tilt={10} roll={4} glow="rgba(255,60,50,0.9)" />
+          <Callout text="$10 MILLION IN DEBT" icon="coin" in={B.debt.start + 2.6} until={B.mexico.start} y={1300} size={52} />
+
+          {/* ── Mexico ── */}
+          <Dialogue text={"Texas is still\nours."} shape="mexico" in={B.mexico.start + 2.0} until={B.ask.start} size={50} rise={230} />
+
+          {/* ── the ask ── */}
+          <Dialogue text={"Can we join?"} shape={TX} in={B.ask.start + 1.0} until={B.no.start + 0.4} size={56} rise={230} dx={-40} />
+          <Dialogue text={"No."} at={[-88, 39]} in={B.no.start + 0.5} until={B.britain.start} size={84} rise={90} />
+
+          {/* ── Britain ── */}
+          <Dialogue text={"Hello, Texas."} at={[-2, 54]} in={T_ATLANTIC + 0.9} until={B.yes.start} size={48} rise={120} leader={false} />
+          <Dialogue text={"...actually,\nlet's talk."} at={[-88, 41]} in={T_ATLANTIC + 2.6} until={B.yes.start} size={46} rise={110} leader={false} />
+
+          {/* ── 1845 ── */}
+          <Title3D text="1845" in={B.yes.start + 1.6} until={B.guess.start} y={470} size={170} turn={-16} tilt={9} glow="rgba(70,170,255,0.85)" />
 
           {/* ── guess ── */}
-          <BigNumber text="?" in={B.guess.start + 0.2} until={B.reveal.start} y={420} size={260} color="#ffd23f" />
-          <Tag text="WHAT WOULD TEXAS BE TODAY?" in={B.guess.start + 1.4} until={B.reveal.start} x={540} y={620} size={34} bg="#e63946" />
+          <Title3D text="WHAT IF?" in={B.guess.start + 0.3} until={B.econ.start + 0.8} y={520} size={165} turn={-22} tilt={11} roll={-6} glow="rgba(255,200,40,0.95)" />
 
-          {/* ── the reveal, then the cut ── */}
-          <Callout text="8TH LARGEST ECONOMY" sub="bigger than Canada or Russia" icon="coin" in={B.reveal.start + 0.3} until={END} y={300} size={50} />
-          <Callout text="31 MILLION PEOPLE" icon="people" in={B.reveal.start + 4.4} until={END} y={450} size={46} font="sans" weight={800} glow="rgba(255,255,255,0.45)" />
-          <Callout text="40% OF AMERICA'S OIL" icon="gold" in={B.reveal.start + 6.0} until={END} y={560} size={46} font="sans" weight={800} glow="rgba(255,255,255,0.45)" />
-          <Tag text="MEXICAN CESSION · 1848" in={B.reveal.start + 10.6} until={END} at={[-114.5, 40.2]} size={30} bg="#e63946" />
+          {/* ── the payoff ── */}
+          <Title3D text="#8" in={B.econ.start + 2.2} until={B.oil.start} y={420} size={230} turn={-14} tilt={8} glow="rgba(255,190,40,0.95)" />
+          <TitleSub text="LARGEST ECONOMY ON EARTH" in={B.econ.start + 2.6} until={B.oil.start} y={590} size={40} />
+          <Tag text="BIGGER THAN CANADA" in={B.econ.start + 4.2} until={B.oil.start} x={540} y={700} size={34} bg="#c8382e" />
+          <Tag text="BIGGER THAN RUSSIA" in={B.econ.start + 5.2} until={B.oil.start} x={540} y={770} size={34} bg="#c8382e" />
+          <Title3D text="40%" in={B.oil.start + 2.4} until={B.people.start} y={430} size={195} turn={-18} tilt={9} glow="rgba(60,60,60,0.9)" color="#ffffff" />
+          <TitleSub text="OF AMERICA'S OIL" in={B.oil.start + 2.8} until={B.people.start} y={570} size={44} />
+          <Title3D text="31 MILLION" in={B.people.start + 1.2} until={B.war.start} y={430} size={112} turn={-16} tilt={9} glow="rgba(255,150,40,0.85)" />
 
-          <Captions lines={LINES} />
+          {/* ── the twist ── */}
+          <Title3D text="NO CALIFORNIA" in={B.reveal.start + 3.0} until={END} y={470} size={96} turn={-20} tilt={10} roll={-4} glow="rgba(255,60,50,0.95)" />
+
+          <WordCaptions lines={LINES} y={1180} size={82} />
         </>
       }
     >
-      {/* ── the Lone Star ── */}
-      <Highlight shape="state:Texas" flag="texas" in={0.3} until={B.broke.start + 5.8} />
-      <Label at={[-99.3, 31.3]} text="TEXAS" size={72} in={0.9} until={B.republic.start + 1.6} />
+      {/* ── the open: Texas, proud ── */}
+      <Character shape={TX} in={0.2} until={B.won.start} color={TEX_BLUE} mood="proud" look={[0, -0.3]} arms raise={0.25} />
 
-      {/* ── the republic ── */}
-      <Pin at={AUSTIN} label="Austin" in={B.republic.start + 3.6} until={B.broke.start} side="right" />
+      {/* ── the war with Mexico ── */}
+      <Solid shape="mexico" color={MEX_GREEN} in={B.won.start + 0.2} until={B.real.start} />
+      <Character shape={TX} in={B.won.start + 0.2} until={B.real.start} color={TEX_RED} mood="angry" look={[-0.6, 0.2]} arms raise={0.7} />
+      <MapProp at={SAN_JACINTO} kind="star" in={B.won.start + 2.4} until={B.real.start} size={190} />
 
-      {/* ── the claim ── */}
-      <Wash ring={CLAIM} color="#bf0a30" opacity={0.35} outline="#ffffff" outlineWidth={3} in={B.claim.start + 0.6} until={B.guess.start} dashed draw={1.4} />
-      <Label at={[-105.4, 34.4]} text="NEW MEXICO" size={32} in={B.claim.start + 3.6} until={B.guess.start} weight={800} />
-      <Label at={[-106.9, 38.9]} text="COLORADO" size={32} in={B.claim.start + 4.6} until={B.guess.start} weight={800} />
-      <Label at={[-100.6, 36.3]} text="OKLAHOMA" size={32} in={B.claim.start + 5.4} until={B.guess.start} weight={800} />
-      <Label at={[-101.2, 37.7]} text="KANSAS" size={32} in={B.claim.start + 6.0} until={B.guess.start} weight={800} />
-      <Label at={[-106.9, 41.6]} text="WYOMING" size={32} in={B.claim.start + 6.6} until={B.guess.start} weight={800} />
+      {/* ── a real country ── */}
+      <Character shape={TX} in={B.real.start} until={B.problem.start} color={TEX_BLUE} mood="happy" look={[0, 0]} />
+      <MapProp at={[-97.3, 27.6]} kind="capitol" in={B.real.start + 1.2} until={B.problem.start} size={200} />
+      <MapProp at={[-103.6, 33.8]} kind="flagpole" in={B.real.start + 2.0} until={B.problem.start} size={200} />
+      <MapProp at={[-94.2, 33.8]} kind="coin" in={B.real.start + 3.0} until={B.problem.start} size={185} />
+      <Route points={[HOUSTON, [-60, 38], LONDON]} in={B.real.start + 4.6} dur={2.0} until={B.problem.start} color="#ffd23f" width={6} dashed glow={false} head="dot" />
+      <Route points={[HOUSTON, [-50, 42], PARIS]} in={B.real.start + 5.2} dur={2.0} until={B.problem.start} color="#ffd23f" width={6} dashed glow={false} head="dot" />
 
-      {/* ── it joins: the flag changes ── */}
-      <Highlight shape="state:Texas" flag="usa" in={B.broke.start + 6.0} until={B.guess.start + 0.8} />
+      {/* ── broke ── */}
+      <Character shape={TX} in={B.problem.start} until={B.mexico.start} color={TEX_BLUE} mood="worried" look={[0, 0.4]} arms raise={0} />
+      <PropRow at={[-99.6, 35.6]} kind="people" count={5} in={B.debt.start + 0.5} until={B.mexico.start} size={150} />
+      <MapProp at={[-97.2, 26.6]} kind="cash" in={B.debt.start + 2.4} until={B.mexico.start} size={220} />
 
-      {/* ── what it would be: the Lone Star again ── */}
-      <Highlight shape="state:Texas" flag="texas" in={B.guess.start + 0.6} until={END} />
-      <Wash shapes={CESSION} color="#ff4b3e" opacity={0.45} outline="#ffffff" outlineWidth={2.5} in={B.reveal.start + 9.6} until={END} draw={1.2} />
-      <Label at={[-119.6, 37.2]} text="CALIFORNIA" size={44} in={B.reveal.start + 10.0} until={END} rotate={-62} weight={800} />
+      {/* ── Mexico is not finished ── */}
+      <Character shape="mexico" in={B.mexico.start} until={B.ask.start} color={MEX_GREEN} mood="angry" look={[0.5, -0.3]} arms raise={0.35} faceY={-0.12} />
+      <Character shape={TX} in={B.mexico.start} until={B.ask.start} color={TEX_BLUE} mood="shocked" look={[0, 0.35]} />
+
+      {/* ── the ask, and the no ── */}
+      <Solid shape="usa" color={US_BLUE} in={B.ask.start - 0.2} until={B.yes.start + 0.4} opacity={0.88} />
+      <Character shape={TX} in={B.ask.start - 0.1} until={B.no.start + 0.6} color={TEX_BLUE} mood="thinking" look={[0.8, -0.2]} />
+      <Character shape="usa" in={B.no.start} until={B.britain.start} color={US_BLUE} mood="smug" look={[-0.7, 0.1]} faceX={0.06} faceY={-0.05} faceScale={0.3} />
+      <Character shape={TX} in={B.no.start + 0.7} until={B.britain.start} color={TEX_BLUE} mood="sad" look={[0.2, 0.5]} />
+
+      {/* ── Britain gets interested ── */}
+      <Character shape="uk" in={T_ATLANTIC} until={B.yes.start} color={UK_PURPLE} mood="smug" look={[-0.8, 0.1]} arms raise={0.3} />
+      <Character shape={TX} in={T_ATLANTIC} until={B.yes.start} color={TEX_BLUE} mood="happy" look={[0.9, -0.1]} />
+      <Route points={[HOUSTON, [-45, 44], LONDON]} in={T_ATLANTIC + 0.5} dur={1.6} until={B.yes.start} color="#c9a4ff" width={7} head="dot" />
+      <Character shape="usa" in={T_ATLANTIC + 1.8} until={B.yes.start} color={US_BLUE} mood="shocked" look={[0.6, 0]} faceX={0.06} faceY={-0.05} faceScale={0.3} />
+
+      {/* ── it joins ── */}
+      <Solid shape="usa" color={US_BLUE} in={B.yes.start} until={B.guess.start} opacity={0.9} />
+      <Character shape={TX} in={B.yes.start + 0.3} until={B.guess.start} color={US_BLUE} mood="plain" look={[0, 0]} />
+      <Spotlight shape={TX} in={B.yes.start + 1.4} until={B.guess.start} color="#ffd23f" />
+
+      {/* ── the guess ── */}
+      <Character shape={TX} in={B.guess.start} until={B.econ.start} color={TEX_BLUE} mood="thinking" look={[0.4, -0.4]} arms raise={0.2} />
+
+      {/* ── bigger than Canada, bigger than Russia ── */}
+      <Character shape={TX} in={B.econ.start + 0.2} until={B.oil.start} color={TEX_BLUE} mood="proud" look={[0, 0]} arms raise={0.5} />
+      <PropRow at={[-99.4, 35.8]} kind="coin" count={8} in={B.econ.start + 3.4} until={B.oil.start} size={125} step={0.11} />
+
+      {/* ── the oil ── */}
+      <Character shape={TX} in={B.oil.start} until={B.people.start} color={TEX_BLUE} mood="smug" look={[0.2, 0]} />
+      <MapProp at={[-103.4, 33.4]} kind="derrick" in={B.oil.start + 0.5} until={B.people.start} size={240} />
+      <MapProp at={[-97.6, 27.4]} kind="derrick" in={B.oil.start + 0.9} until={B.people.start} size={200} />
+      <MapProp at={[-94.4, 33.6]} kind="derrick" in={B.oil.start + 1.3} until={B.people.start} size={200} />
+      <PropRow at={[-99.6, 25.4]} kind="barrel" count={10} in={B.oil.start + 3.4} until={B.people.start} size={120} dim={4} />
+
+      {/* ── the people ── */}
+      <Character shape={TX} in={B.people.start} until={B.war.start} color={TEX_BLUE} mood="happy" look={[0, 0]} />
+      <PropRow at={[-98.6, 35.8]} kind="people" count={6} in={B.people.start + 0.4} until={B.war.start} size={140} />
+      <MapProp at={DALLAS} kind="flagpole" in={B.people.start + 2.6} until={B.war.start} size={190} />
+
+      {/* ── the war nobody expects ── */}
+      <Character shape={TX} in={B.war.start} until={B.cession.start + 0.6} color={TEX_BLUE} mood="shocked" look={[-0.4, 0.2]} />
+      <Solid shape="mexico" color={MEX_GREEN} in={B.war.start + 0.5} until={B.cession.start} opacity={0.9} />
+      <MapProp at={[-101.2, 25.2]} kind="star" in={B.war.start + 1.1} until={B.cession.start + 0.6} size={150} />
+      <Solid shape="mexico" color={MEX_GREEN} in={B.cession.start} until={B.reveal.start + 0.6} />
+      <Route points={[[-99.5, 27.5], [-103.5, 25.5], [-99.1, 19.4]]} in={B.cession.start + 1.6} dur={1.6} until={B.reveal.start + 0.6} color="#ff4b3e" width={9} head="dot" />
+
+      {/* ── the cession, then the twist ── */}
+      <Solid shapes={CESSION} color="#e8a33d" in={B.cession.start + 3.4} until={B.reveal.start + 2.6} draw={1.4} />
+      <Label at={[-119.4, 37.2]} text="CALIFORNIA" size={46} in={B.cession.start + 4.4} until={B.reveal.start + 2.6} rotate={-62} weight={800} />
+      <Solid shapes={WEST_COAST} color="#c8382e" in={B.reveal.start + 2.6} until={END} draw={0.9} />
+      <Character shape={TX} in={B.reveal.start + 1.2} until={END} color={TEX_BLUE} mood="smug" look={[-0.8, 0]} />
     </GeoCanvas>
   </AbsoluteFill>
 );

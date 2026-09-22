@@ -145,7 +145,7 @@ export const RemotionRoot: React.FC = () => {
       />
       <Composition id="Geo-Ww1" component={Ww1Short} durationInFrames={WW1_FRAMES} fps={WW1_FPS} width={1080} height={1920} defaultProps={{ music: null, narration: "assets/vo/geo-ww1.mp3" }} />
       <Composition id="Geo-Waterloo" component={WaterlooShort} durationInFrames={WATERLOO_FRAMES} fps={WATERLOO_FPS} width={1080} height={1920} defaultProps={{ music: null, narration: "assets/vo/geo-waterloo.mp3" }} />
-      <Composition id="Geo-Texas" component={TexasShort} durationInFrames={TEXAS_FRAMES} fps={TEXAS_FPS} width={1080} height={1920} defaultProps={{ music: null, narration: "assets/vo/geo-texas.mp3" }} />
+      <Composition id="Geo-Texas" component={TexasShort} durationInFrames={TEXAS_FRAMES} fps={TEXAS_FPS} width={1080} height={1920} defaultProps={{ music: null, narration: "assets/vo/geo-texas.mp3", sfx: "audio/geo-texas-sfx.mp3" }} />
       <Composition id="Geo-States" component={StatesShort} durationInFrames={STATES_FRAMES} fps={STATES_FPS} width={1080} height={1920} defaultProps={{ music: null, narration: "assets/vo/geo-states.mp3" }} />
       <Composition id="Geo-Ww1-Thumb" component={Ww1Thumb} durationInFrames={THUMB_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Geo-Waterloo-Thumb" component={WaterlooThumb} durationInFrames={THUMB_FRAMES} fps={30} width={1080} height={1920} />

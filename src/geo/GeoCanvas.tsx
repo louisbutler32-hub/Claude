@@ -87,7 +87,9 @@ export const GeoCanvas: React.FC<{
   return (
     <GeoContext.Provider value={value}>
       <AbsoluteFill style={{ backgroundColor: SEA, overflow: "hidden" }}>
-        <Basemap proj={value.proj} scale={cam.scale} />
+        <div style={{ position: "absolute", inset: 0, filter: "saturate(1.32) contrast(1.1) brightness(1.16)" }}>
+          <Basemap proj={value.proj} scale={cam.scale} />
+        </div>
         {grade ? <Grade scale={cam.scale} /> : null}
         <svg
           width={width}
@@ -139,16 +141,16 @@ const Grade: React.FC<{ scale: number }> = ({ scale }) => (
     />
     <AbsoluteFill
       style={{
-        background: "#2a8ea6",
+        background: "#38a0bd",
         mixBlendMode: "screen",
-        opacity: 0.16,
+        opacity: 0.1,
         pointerEvents: "none",
       }}
     />
     <AbsoluteFill
       style={{
         background:
-          "radial-gradient(90% 62% at 50% 46%, rgba(0,0,0,0) 48%, rgba(2,12,26,0.55) 100%)",
+          "radial-gradient(96% 68% at 50% 46%, rgba(0,0,0,0) 56%, rgba(2,12,26,0.42) 100%)",
         pointerEvents: "none",
       }}
     />
