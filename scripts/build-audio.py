@@ -123,6 +123,34 @@ ANIMAL_ROUNDS = [
      "Dogs live with us too, in a house or a cosy kennel.", "Woof! Woof!"),
 ]
 
+# Wild Animals: the second animal episode, zoo and safari animals this time.
+WILD_ROUNDS = [
+    ("zebra",    "It's a zebra! Zebra.",     "A black and white striped zebra.",
+     "Zebras live on the grassy savanna, in a big herd.", "Neigh! Neigh!"),
+    ("giraffe",  "It's a giraffe! Giraffe.", "A tall spotty giraffe.",
+     "Giraffes live on the savanna, reaching the tallest treetops.", "Munch munch!"),
+    ("tiger",    "It's a tiger! Tiger.",     "An orange striped tiger.",
+     "Tigers live in the jungle, prowling through the tall grass.", "ROAR!"),
+    ("bear",     "It's a bear! Bear.",       "A big brown bear.",
+     "Bears live in the forest, fishing in the river.", "Grrrowl!"),
+    ("monkey",   "It's a monkey! Monkey.",   "A cheeky little monkey.",
+     "Monkeys live in the jungle, swinging from tree to tree.", "Ooh ooh, ah ah!"),
+    ("kangaroo", "It's a kangaroo! Kangaroo.", "A brown kangaroo with a big tail.",
+     "Kangaroos live in the outback, hopping across the red dirt.", "Boing boing!"),
+    ("panda",    "It's a panda! Panda.",     "A black and white panda.",
+     "Pandas live in the bamboo forest, munching all day long.", "Crunch crunch!"),
+    ("koala",    "It's a koala! Koala.",     "A grey fluffy koala.",
+     "Koalas live up a eucalyptus tree, snoozing most of the day.", "Snooze snooze!"),
+    ("fox",      "It's a fox! Fox.",         "A red bushy-tailed fox.",
+     "Foxes live in the forest, curled up in a cosy den.", "Yip yip!"),
+    ("camel",    "It's a camel! Camel.",     "A brown camel with two humps.",
+     "Camels live in the desert, walking across the sandy dunes.", "Grunt grunt!"),
+    ("hedgehog", "It's a hedgehog! Hedgehog.", "A little spiky hedgehog.",
+     "Hedgehogs live in the garden, snuffling through the leaves.", "Snuffle snuffle!"),
+    ("peacock",  "It's a peacock! Peacock.", "A peacock with a beautiful tail.",
+     "Peacocks live in the garden, showing off their feathers.", "Squawk!"),
+]
+
 # Numbers: (id, Ana names it, Ana describes it, Emma leads the count, plural)
 NUMBER_ROUNDS = [
     ("1",  "It's number one! One.",       "The number one.",
@@ -282,6 +310,7 @@ SUBJECTS = {
     "sea": dict(rounds=SEA_ROUNDS, kind="live", word="sea creature"),
     "veggies": dict(rounds=VEGGIE_ROUNDS, kind="grow", word="vegetable"),
     "animals": dict(rounds=ANIMAL_ROUNDS, kind="live", word="animal"),
+    "wild": dict(rounds=WILD_ROUNDS, kind="live", word="animal"),
     "numbers": dict(rounds=NUMBER_ROUNDS, kind="count", word="number"),
     "colours": dict(rounds=COLOUR_ROUNDS, kind="colour", word="colour"),
 }
@@ -303,6 +332,10 @@ ARTICLE = {
     "pig": "the pig", "penguin": "the penguin", "owl": "the owl",
     "elephant": "the elephant", "sheep": "the sheep", "fish": "the fish",
     "cat": "the cat", "dog": "the dog",
+    "zebra": "the zebra", "giraffe": "the giraffe", "tiger": "the tiger",
+    "bear": "the bear", "monkey": "the monkey", "kangaroo": "the kangaroo",
+    "panda": "the panda", "koala": "the koala", "fox": "the fox",
+    "camel": "the camel", "hedgehog": "the hedgehog", "peacock": "the peacock",
     "1": "number one", "2": "number two", "3": "number three",
     "4": "number four", "5": "number five", "6": "number six",
     "7": "number seven", "8": "number eight", "9": "number nine",
@@ -484,6 +517,7 @@ def vo_schedule():
         "grow": "Chomp chomp! Veggies!",
         "live": {
             "animals": "Chomp chomp! Animals!",
+            "wild": "Chomp chomp! Wild Animals!",
             "dinosaurs": "Chomp chomp! Dinosaurs!",
             "sea": "Chomp chomp! Sea Life!",
         }.get(SUBJECT, "Chomp chomp! Animals!"),

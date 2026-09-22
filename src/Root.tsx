@@ -27,6 +27,7 @@ import {
 } from "./veggies/VeggieVideo";
 import { ArtSheet } from "./veggies/ArtSheet";
 import { AnimalArtSheet } from "./animals/ArtSheet";
+import { WildArtSheet } from "./wild/ArtSheet";
 import { VehicleArtSheet } from "./vehicles/ArtSheet";
 import { DinoArtSheet } from "./dinosaurs/ArtSheet";
 import { SeaArtSheet } from "./sea/ArtSheet";
@@ -48,6 +49,7 @@ import {
   CompilationThumbShadows,
 } from "./guess/CompilationThumb";
 import { AnimalThumbA, AnimalThumbB } from "./animals/Thumbnail";
+import { WildThumbA, WildThumbB } from "./wild/Thumbnail";
 import { NumberThumbA, NumberThumbB } from "./numbers/Thumbnail";
 import { VehicleThumbA, VehicleThumbB } from "./vehicles/Thumbnail";
 import { DinoThumbA, DinoThumbB } from "./dinosaurs/Thumbnail";
@@ -66,6 +68,7 @@ import {
   AnimalVideo,
   ANIMAL_DURATION_IN_FRAMES,
 } from "./animals/AnimalVideo";
+import { WildVideo, WILD_DURATION_IN_FRAMES } from "./wild/WildVideo";
 import { PlanetsVideo, PLANETS_DURATION_SECONDS } from "./planets/PlanetsVideo";
 import { ThumbnailA, ThumbnailB } from "./planets/Thumbnail";
 import {
@@ -387,6 +390,22 @@ export const RemotionRoot: React.FC = () => {
         height={1080}
       />
       <Composition
+        id="Wild-Thumbnail"
+        component={WildThumbA}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Wild-Thumbnail-Board"
+        component={WildThumbB}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
         id="Number-Thumbnail"
         component={NumberThumbA}
         durationInFrames={1}
@@ -605,6 +624,22 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="Animal-ArtSheet"
         component={AnimalArtSheet}
+        durationInFrames={30}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="WildVideo"
+        component={WildVideo}
+        durationInFrames={WILD_DURATION_IN_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Wild-ArtSheet"
+        component={WildArtSheet}
         durationInFrames={30}
         fps={30}
         width={1920}
