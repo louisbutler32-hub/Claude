@@ -19,11 +19,8 @@ Music: "Accralate" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/
 
-📚 ALL OUR LEARNING VIDEOS
-https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
-
-🥕 Subscribe to Pebblo Pebble:
-https://www.youtube.com/@PebbloPebble
+🎬 Subscribe to BANE History:
+https://www.youtube.com/@BANEHistory
 
 Sources: Wikipedia — Pan-American Highway (~30,000 km, Prudhoe Bay to Ushuaia); Darién Gap (106 km, Yaviza and Turbo, Cerro Tacarcuna 1,845 m, Atrato marshland at least 80 km wide, the 1959–60 Trans-Darién Expedition's 136 days at 201 m/h).
 

@@ -15,11 +15,8 @@ Not many Americans know that their country nearly doubled in size overnight, for
 
 Every frame is a real satellite map (NASA Blue Marble) drawn in code. The purchase boundary is drawn approximately.
 
-📚 ALL OUR LEARNING VIDEOS
-https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
-
-🥕 Subscribe to Pebblo Pebble:
-https://www.youtube.com/@PebbloPebble
+🎬 Subscribe to BANE History:
+https://www.youtube.com/@BANEHistory
 
 Sources: Wikipedia — Louisiana Purchase (828,000 sq mi / 2,140,000 km², $15 million, under 3 cents per acre, ~$18 per square mile, ~$380 million in 2024 dollars, 15 states); Iowa State University Land Value Survey 2024 ($11,467 per acre).
 

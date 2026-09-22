@@ -19,11 +19,8 @@ Music: "Accralate" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/
 
-📚 ALL OUR LEARNING VIDEOS
-https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
-
-🥕 Subscribe to Pebblo Pebble:
-https://www.youtube.com/@PebbloPebble
+🎬 Subscribe to BANE History:
+https://www.youtube.com/@BANEHistory
 
 Sources: Wikipedia — Republic of Texas (independence 2 March 1836, annexation 29 December 1845, ~135,000 people in 1845, recognition by France, UK, Netherlands, Belgium, the 1850 $10 million settlement of its claims and debt); Economy of Texas (GDP $2.769 trillion in 2024; eighth-largest economy if a country, ahead of Canada, South Korea, Russia and Australia in 2022); List of U.S. states by population (Texas 31.7 million, 2025 estimate); Oil and gas industry in Texas (41% of US crude oil in 2019); Mexican Cession (1848; California, Nevada, Utah, most of Arizona and more).
 

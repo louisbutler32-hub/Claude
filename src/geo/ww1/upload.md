@@ -19,11 +19,8 @@ Music: "Accralate" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/
 
-📚 ALL OUR LEARNING VIDEOS
-https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
-
-🥕 Subscribe to Pebblo Pebble:
-https://www.youtube.com/@PebbloPebble
+🎬 Subscribe to BANE History:
+https://www.youtube.com/@BANEHistory
 
 Sources: Wikipedia — German spring offensive (21 March 1918, within 56 km of Paris on 3 June, ~50 divisions freed by Brest-Litovsk); Treaty of Brest-Litovsk (3 March 1918; 34% of population, 89% of coalfields); Paris Gun (shelled Paris from 120 km, 250 killed); Septemberprogramm (9 September 1914: Belgium, Luxembourg, Briey, indemnity, Mitteleuropa). The 'no Hitler' counterfactual is argued in e.g. Niall Ferguson, The Pity of War.
 

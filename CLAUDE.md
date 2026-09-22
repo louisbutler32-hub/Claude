@@ -1,11 +1,16 @@
 # Working notes
 
-## The channel
+## The channels
 
-Everything here is for **Pebblo Pebble** — https://www.youtube.com/@PebbloPebble
+Two channels ship out of this repo. Check which one a subject belongs to
+before writing a title or description — the footer block differs.
 
-Every learning video's description links the learning playlist:
-https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
+**Pebblo Pebble** — https://www.youtube.com/@PebbloPebble — the kids'
+learning-video line (`src/guess/`, `src/veggies/`, `src/numbers/`,
+`src/animals/`, `src/vehicles/`, `src/dinosaurs/`, `src/sea/`, and the
+doodle-essay subjects: `src/earth/`, `src/mummy/`, `src/face/`,
+`src/killers/`, `src/planets/`). Every one of these links the learning
+playlist: https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
 
 Both go near the end of the description, above the hashtags, in this block:
 
@@ -15,6 +20,16 @@ https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
 
 🥕 Subscribe to Pebblo Pebble:
 https://www.youtube.com/@PebbloPebble
+```
+
+**BANE History** — https://www.youtube.com/@BANEHistory — the satellite-map
+Shorts line, all of `src/geo/` (Bering, Louisiana, Darién, and the four
+what-if alternate-history shorts: WW1, Waterloo, Texas, the states at war).
+No known playlist to link yet — the block is just:
+
+```
+🎬 Subscribe to BANE History:
+https://www.youtube.com/@BANEHistory
 ```
 
 ## Delivering a video
@@ -75,11 +90,16 @@ Run `python clipper/doctor.py` to check the machine has what it needs.
 
 ## Shorts — the geo maps
 
-`src/geo/` is the satellite-map explainer line (Bering, Louisiana, Darién):
-one camera over NASA Blue Marble tiles, flags on the countries, numbers in
-callouts, captions a phrase at a time. **Read `src/geo/README.md` first.**
+`src/geo/` is the satellite-map explainer line — Bering, Louisiana, Darién,
+and the four what-if alternate-history shorts (WW1, Waterloo, Texas, the
+states at war): one camera over NASA Blue Marble tiles, flags on the
+countries, numbers in callouts. **Read `src/geo/README.md` first.** This
+whole line ships on **BANE History**, not Pebblo Pebble — see "The channels"
+above for the footer block.
 
 The tiles are derived from public-domain imagery and gitignored — on a fresh
 clone run `pip install pillow numpy && npm run geo:tiles` (about ten minutes)
 before rendering, or every frame is flat sea. Thumbnails for this line are
-9:16, via `npm run geo:<name>:thumb`.
+9:16, via `npm run geo:<name>:thumb`. The what-if shorts use one-word
+captions (`WordCaptions`) instead of the phrase captions (`Captions`) the
+first three use — see `src/geo/hud.tsx`.

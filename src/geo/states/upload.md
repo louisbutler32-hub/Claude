@@ -19,11 +19,8 @@ Music: "Accralate" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/
 
-📚 ALL OUR LEARNING VIDEOS
-https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
-
-🥕 Subscribe to Pebblo Pebble:
-https://www.youtube.com/@PebbloPebble
+🎬 Subscribe to BANE History:
+https://www.youtube.com/@BANEHistory
 
 Sources: Wikipedia — Economy of California (the Central Valley grows 'over half the country's fruits, vegetables, and nuts'); List of U.S. states by population (2025 estimates: California 39.4 million, Wyoming 588,753, Montana 1,144,694, North Dakota 799,358); Economy of California ($4.048 trillion in 2024, fourth-largest in the world, ahead of Japan); Oil and gas industry in Texas (41% of US crude, 2019); Naval Station Norfolk ('the world's largest naval station'); Newport News Shipbuilding ('the sole designer, builder, and refueler of aircraft carriers'); LGM-30 Minuteman (400 deployed: F.E. Warren, Minot and Malmstrom); Brooklyn (2,653,963, 2025 estimate).
 

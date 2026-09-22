@@ -15,11 +15,8 @@ Have you ever wondered why there is no bridge between Russia and America? At its
 
 Every frame is a real satellite map (NASA Blue Marble) drawn in code.
 
-📚 ALL OUR LEARNING VIDEOS
-https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
-
-🥕 Subscribe to Pebblo Pebble:
-https://www.youtube.com/@PebbloPebble
+🎬 Subscribe to BANE History:
+https://www.youtube.com/@BANEHistory
 
 Sources: Wikipedia — Bering Strait crossing (82.5 km, ≤55 m depth, ice floes up to 1.8 m, ~1,200 km of road needed on the Alaskan side, Kolyma Highway ~2,000 km, Gilpin 1890, the 2007–2011 $65 billion plan); Diomede Islands (3.8 km, 21 hours, Tomorrow/Yesterday Island); Lynne Cox (7 August 1987, 2 h 6 min, 6–7 °C water).
 

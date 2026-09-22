@@ -19,11 +19,8 @@ Music: "Accralate" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/
 
-📚 ALL OUR LEARNING VIDEOS
-https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
-
-🥕 Subscribe to Pebblo Pebble:
-https://www.youtube.com/@PebbloPebble
+🎬 Subscribe to BANE History:
+https://www.youtube.com/@BANEHistory
 
 Sources: Wikipedia — Hundred Days (escape 26 February 1815, landing 1 March, Paris 20 March, abdication 22 June; '250,000 Frenchmen faced about 850,000 allied soldiers on four fronts'); Battle of Waterloo (72,000–73,000 French, ~68,000 under Wellington, ~50,000 Prussians); Napoleon's escape from Elba (~1,000 men).
 
