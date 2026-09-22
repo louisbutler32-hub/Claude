@@ -19,10 +19,38 @@ import json
 import os
 import sys
 
+import numpy as np
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAD = 6
+
+# Only drop near-zero noise (stray low-confidence flecks) — do NOT stretch
+# the upper range. A first version of this stretched mid-confidence alpha
+# toward fully opaque too, which on rembg's actual failure mode (a patch of
+# BACKGROUND that got moderate-high confidence, not a thin uncertain edge)
+# made a soft, barely-visible smear into a hard, fully-opaque rectangle —
+# worse than doing nothing. Wrong-but-confident is a content error a curve
+# can't fix; see patch_region() for how those get handled instead.
+ALPHA_NOISE_FLOOR = 25
+
+
+def crisp_alpha(img: Image.Image) -> Image.Image:
+    arr = np.array(img)
+    a = arr[:, :, 3]
+    arr[:, :, 3] = np.where(a < ALPHA_NOISE_FLOOR, 0, a)
+    return Image.fromarray(arr)
+
+
+def patch_region(img: Image.Image, box: tuple[int, int, int, int]) -> Image.Image:
+    """Force a rectangular region fully transparent — for a spot rembg's
+    mask got confidently wrong (an in-frame background patch, not a thin
+    uncertain edge), found by eye and cleaned by hand rather than guessed
+    at with a global curve."""
+    arr = np.array(img)
+    l, t, r, b = box
+    arr[t:b, l:r, 3] = 0
+    return Image.fromarray(arr)
 
 
 def trim(img: Image.Image) -> Image.Image:
@@ -54,7 +82,7 @@ def main():
         src_credit = os.path.join(review_dir, f"{candidate}.credit.json")
         if not os.path.exists(src_png):
             sys.exit(f"missing {src_png}")
-        img = Image.open(src_png).convert("RGBA")
+        img = crisp_alpha(Image.open(src_png).convert("RGBA"))
         trimmed = trim(img)
         dst_file = f"{aid}.png"
         trimmed.save(os.path.join(out_dir, dst_file))

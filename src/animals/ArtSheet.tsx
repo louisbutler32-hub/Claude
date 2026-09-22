@@ -3,19 +3,26 @@ import { AbsoluteFill } from "remotion";
 import { loadVeggieFonts } from "../guess/fonts";
 import { fonts } from "../guess/palette";
 import { SceneFilters } from "../guess/scene";
-import { AnimalDefs, ANIMAL_ART, ANIMAL_NAME } from "./animals";
+import {
+  AnimalDefs,
+  ANIMAL_NAME,
+  ANIMAL_PHOTO_ART,
+  ANIMAL_PHOTO_CREDITS,
+} from "./animals";
+import { usePhotoArt } from "../guess/photoArt";
 
 /** Contact sheet of all twelve animals, colour beside silhouette. */
 export const AnimalArtSheet: React.FC = () => {
   loadVeggieFonts();
-  const ids = Object.keys(ANIMAL_ART);
+  usePhotoArt("animals", ANIMAL_PHOTO_CREDITS);
+  const ids = Object.keys(ANIMAL_PHOTO_ART);
   return (
     <AbsoluteFill style={{ backgroundColor: "#eef4ea" }}>
       <SceneFilters />
       <svg width={1920} height={1080} style={{ position: "absolute", inset: 0 }}>
         <AnimalDefs />
         {ids.map((id, i) => {
-          const Art = ANIMAL_ART[id];
+          const Art = ANIMAL_PHOTO_ART[id];
           const col = i % 6;
           const row = Math.floor(i / 6);
           const cx = 170 + col * 300;

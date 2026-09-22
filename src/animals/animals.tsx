@@ -1,7 +1,9 @@
 import React from "react";
 import { Body, Face, Shine } from "../guess/art";
 import { Cat, Dog, Frog, Penguin } from "../guess/critters";
+import { photoArt, type PhotoCredit } from "../guess/photoArt";
 import type { GuessArt } from "../guess/types";
+import animalPhotoCredits from "../../public/images/animals/credits.json";
 
 /**
  * The twelve animals.
@@ -10,6 +12,13 @@ import type { GuessArt } from "../guess/types";
  * cheer at the board in every episode, so the cast stays consistent across
  * the series; they are just wrapped here so they can play at hero scale
  * and cast their own shadow. The other eight are drawn for this episode.
+ *
+ * This hand-drawn cast (ANIMAL_ART) stays the canonical one — colours,
+ * numbers, the channel banner and the compilation thumbnails all pull
+ * individual members of it in to keep one consistent art style across the
+ * whole channel. The Animals episode itself uses real photo cutouts
+ * instead (ANIMAL_PHOTO_ART, ANIMAL_PHOTO_CREDITS below) — see
+ * scripts/fetch-photo-cutouts.py for how they were sourced and licensed.
  */
 
 export const AnimalDefs: React.FC = () => (
@@ -403,6 +412,12 @@ export const ANIMAL_ART: Record<string, GuessArt> = {
   fish: FishArt,
   penguin: PenguinArt,
 };
+
+export const ANIMAL_PHOTO_CREDITS = animalPhotoCredits as PhotoCredit[];
+export const ANIMAL_PHOTO_ART: Record<string, GuessArt> = photoArt(
+  "animals",
+  ANIMAL_PHOTO_CREDITS
+);
 
 export const ANIMAL_NAME: Record<string, string> = {
   cow: "Cow",

@@ -1,5 +1,7 @@
 import React from "react";
+import { ANIMAL_PHOTO_CREDITS } from "./animals";
 import { BoardThumb, ShadowThumb, type ThumbConfig } from "../guess/Thumbnail";
+import { usePhotoArt } from "../guess/photoArt";
 import { animalSubject } from "./subject";
 
 const config: ThumbConfig = {
@@ -13,5 +15,11 @@ const config: ThumbConfig = {
   boardLine: "CAN YOU NAME ALL 12?",
 };
 
-export const AnimalThumbA: React.FC = () => <ShadowThumb config={config} />;
-export const AnimalThumbB: React.FC = () => <BoardThumb config={config} />;
+export const AnimalThumbA: React.FC = () => {
+  usePhotoArt("animals", ANIMAL_PHOTO_CREDITS);
+  return <ShadowThumb config={config} />;
+};
+export const AnimalThumbB: React.FC = () => {
+  usePhotoArt("animals", ANIMAL_PHOTO_CREDITS);
+  return <BoardThumb config={config} />;
+};

@@ -4,7 +4,12 @@ import { Item } from "../guess/Board";
 import { fonts } from "../guess/palette";
 import { BushPair, GROUND_Y, H, W } from "../guess/scene";
 import type { GuessSubject } from "../guess/types";
-import { AnimalDefs, ANIMAL_ART, ANIMAL_NAME, ANIMAL_SOUND } from "./animals";
+import {
+  AnimalDefs,
+  ANIMAL_NAME,
+  ANIMAL_PHOTO_ART,
+  ANIMAL_SOUND,
+} from "./animals";
 import { AnimalHabitat } from "./habitats";
 
 /**
@@ -166,7 +171,7 @@ export const animalSubject: GuessSubject = {
     ["#e07f9c", "#bb5c78"],
   ],
   Defs: AnimalDefs,
-  art: ANIMAL_ART,
+  art: ANIMAL_PHOTO_ART,
   names: ANIMAL_NAME,
   boardOrder: [
     "cow", "duck", "pig", "sheep",
