@@ -59,14 +59,14 @@ const CAMERA: CameraKey[] = [
   { at: B.won.start + 1.4, lon: -101.5, lat: 27.0, scale: 17000 },
   { at: B.real.start, lon: -100.2, lat: 30.2, scale: 24000 },
   { at: B.real.start + 2.6, lon: -99.4, lat: 31.2, scale: 29000 },
-  { at: B.real.start + 4.9, lon: -55, lat: 42, scale: 4200 },
+  { at: B.real.start + 4.9, lon: -95.5, lat: 30.5, scale: 17000 },
   { at: B.problem.start, lon: -99.4, lat: 31.3, scale: 30000 },
   { at: B.debt.start, lon: -99.2, lat: 31.4, scale: 31000 },
   { at: B.mexico.start, lon: -101.8, lat: 26.5, scale: 15000 },
   { at: B.ask.start, lon: -97.5, lat: 33.0, scale: 15000 },
   { at: B.no.start, lon: -96.0, lat: 34.5, scale: 13000 },
   { at: B.no.end - 0.5, lon: -95.0, lat: 35.0, scale: 12500 },
-  { at: B.britain.start + 1.2, lon: -48, lat: 47, scale: 4000 },
+  { at: B.britain.start + 1.2, lon: -93.5, lat: 30.0, scale: 13000 },
   { at: B.yes.start, lon: -97.5, lat: 33.0, scale: 14000 },
   { at: B.guess.start, lon: -99.4, lat: 31.3, scale: 28000 },
   { at: B.econ.start + 0.4, lon: -99.4, lat: 31.3, scale: 22000 },
@@ -79,6 +79,7 @@ const CAMERA: CameraKey[] = [
 ];
 
 const T_EUROPE = B.real.start + 4.9;
+const GULF_OUT: LonLat = [-88.5, 26.5];
 const T_ATLANTIC = B.britain.start + 1.2;
 
 export type TexasProps = { music?: string | null; narration?: string | null; sfx?: string | null };
@@ -107,8 +108,8 @@ export const TexasShort: React.FC<TexasProps> = ({
           <Tag text="PRESIDENT" in={B.real.start + 1.5} until={B.problem.start} at={[-97.3, 27.6]} dy={60} size={32} />
           <Tag text="ITS OWN FLAG" in={B.real.start + 2.2} until={B.problem.start} at={[-103.6, 33.8]} dy={60} size={32} />
           <Tag text="ITS OWN MONEY" in={B.real.start + 3.2} until={B.problem.start} at={[-94.2, 33.8]} dy={60} size={32} />
-          <Tag text="LONDON" in={T_EUROPE + 0.9} until={B.problem.start} at={LONDON} dy={-130} size={30} bg="#8e4fc0" />
-          <Tag text="PARIS" in={T_EUROPE + 1.4} until={B.problem.start} at={PARIS} dy={110} size={30} bg="#8e4fc0" />
+          <Tag text="→ LONDON" in={T_EUROPE + 1.0} until={B.problem.start} at={[-89.5, 28.4]} size={32} bg="#8e4fc0" />
+          <Tag text="→ PARIS" in={T_EUROPE + 1.6} until={B.problem.start} at={[-88.0, 24.6]} size={32} bg="#8e4fc0" />
 
           {/* ── broke ── */}
           <Title3D text="BROKE" in={B.problem.start + 1.3} until={B.debt.start + 0.4} y={520} size={185} turn={-20} tilt={10} roll={4} glow="rgba(255,60,50,0.9)" />
@@ -122,8 +123,8 @@ export const TexasShort: React.FC<TexasProps> = ({
           <Dialogue text={"No."} at={[-88, 39]} in={B.no.start + 0.5} until={B.britain.start} size={84} rise={90} />
 
           {/* ── Britain ── */}
-          <Dialogue text={"Hello, Texas."} at={[-2, 54]} in={T_ATLANTIC + 0.9} until={B.yes.start} size={48} rise={120} leader={false} />
-          <Dialogue text={"...actually,\nlet's talk."} at={[-88, 41]} in={T_ATLANTIC + 2.6} until={B.yes.start} size={46} rise={110} leader={false} />
+          <Dialogue text={"Britain here.\nWant a deal?"} at={[-88.0, 27.0]} in={T_ATLANTIC + 0.6} until={B.yes.start} size={46} rise={150} leader={false} />
+          <Dialogue text={"...wait."} at={[-96.5, 38.5]} in={T_ATLANTIC + 2.2} until={B.yes.start} size={58} rise={80} leader={false} />
 
           {/* ── 1845 ── */}
           <Title3D text="1845" in={B.yes.start + 1.6} until={B.guess.start} y={470} size={170} turn={-16} tilt={9} glow="rgba(70,170,255,0.85)" />
@@ -160,8 +161,8 @@ export const TexasShort: React.FC<TexasProps> = ({
       <MapProp at={[-97.3, 27.6]} kind="capitol" in={B.real.start + 1.2} until={B.problem.start} size={200} />
       <MapProp at={[-103.6, 33.8]} kind="flagpole" in={B.real.start + 2.0} until={B.problem.start} size={200} />
       <MapProp at={[-94.2, 33.8]} kind="coin" in={B.real.start + 3.0} until={B.problem.start} size={185} />
-      <Route points={[HOUSTON, [-60, 38], LONDON]} in={B.real.start + 4.6} dur={2.0} until={B.problem.start} color="#ffd23f" width={6} dashed glow={false} head="dot" />
-      <Route points={[HOUSTON, [-50, 42], PARIS]} in={B.real.start + 5.2} dur={2.0} until={B.problem.start} color="#ffd23f" width={6} dashed glow={false} head="dot" />
+      <Route points={[HOUSTON, [-92.5, 27.6], [-86.5, 28.8]]} in={T_EUROPE + 0.2} dur={1.5} until={B.problem.start} color="#ffd23f" width={7} dashed glow={false} headIcon="ship" headSize={130} />
+      <Route points={[HOUSTON, [-93.5, 26.0], [-85.5, 24.8]]} in={T_EUROPE + 0.8} dur={1.5} until={B.problem.start} color="#ffd23f" width={7} dashed glow={false} headIcon="ship" headSize={130} />
 
       {/* ── broke ── */}
       <Character shape={TX} in={B.problem.start} until={B.mexico.start} color={TEX_BLUE} mood="worried" look={[0, 0.4]} arms raise={0} />
@@ -179,10 +180,9 @@ export const TexasShort: React.FC<TexasProps> = ({
       <Character shape={TX} in={B.no.start + 0.7} until={B.britain.start} color={TEX_BLUE} mood="sad" look={[0.2, 0.5]} />
 
       {/* ── Britain gets interested ── */}
-      <Character shape="uk" in={T_ATLANTIC} until={B.yes.start} color={UK_PURPLE} mood="smug" look={[-0.8, 0.1]} arms raise={0.3} />
-      <Character shape={TX} in={T_ATLANTIC} until={B.yes.start} color={TEX_BLUE} mood="happy" look={[0.9, -0.1]} />
-      <Route points={[HOUSTON, [-45, 44], LONDON]} in={T_ATLANTIC + 0.5} dur={1.6} until={B.yes.start} color="#c9a4ff" width={7} head="dot" />
-      <Character shape="usa" in={T_ATLANTIC + 1.8} until={B.yes.start} color={US_BLUE} mood="shocked" look={[0.6, 0]} faceX={0.06} faceY={-0.05} faceScale={0.3} />
+      <Character shape={TX} in={T_ATLANTIC - 0.6} until={B.yes.start} color={TEX_BLUE} mood="happy" look={[0.9, -0.1]} />
+      <Route points={[[-84.0, 26.0], [-88.5, 27.4], [-93.2, 28.6]]} in={T_ATLANTIC - 0.5} dur={1.6} until={B.yes.start} color="#c9a4ff" width={8} headIcon="ship" headSize={150} />
+      <Character shape="usa" in={T_ATLANTIC + 1.6} until={B.yes.start} color={US_BLUE} mood="shocked" look={[0.6, 0.2]} faceX={0.02} faceY={-0.16} faceScale={0.26} />
 
       {/* ── it joins ── */}
       <Solid shape="usa" color={US_BLUE} in={B.yes.start} until={B.guess.start} opacity={0.9} />

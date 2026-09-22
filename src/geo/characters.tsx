@@ -185,7 +185,7 @@ export const Character: React.FC<CharacterProps> = ({
   fade = 0.4,
   idle = true,
 }) => {
-  const { t, shape: get } = useGeo();
+  const { t, shape: get, width } = useGeo();
   const a = alive(t, from, until, fade);
   if (a <= 0.001) return null;
   const s = get(shape);
@@ -197,8 +197,10 @@ export const Character: React.FC<CharacterProps> = ({
   const [x0, y0, x1, y1] = main.box;
   const w = x1 - x0;
   const h = y1 - y0;
-  const faceW = Math.max(28, Math.min(w, h) * faceScale * 1.35);
-  const cx = x0 + w * (0.5 + faceX);
+  // A country far bigger than the frame would otherwise wear a face the
+  // size of the screen — cap it against the viewport, not just the shape.
+  const faceW = Math.max(28, Math.min(Math.min(w, h) * faceScale * 1.35, width * 0.3));
+  const cx = Math.max(faceW * 0.7, Math.min(width - faceW * 0.7, x0 + w * (0.5 + faceX)));
   const cy = y0 + h * (0.5 + faceY);
   const stroke = Math.max(2.4, faceW * 0.042);
 
