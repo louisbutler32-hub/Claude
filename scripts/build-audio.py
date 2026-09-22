@@ -66,6 +66,18 @@ B_BOARD_POP = 1256
 B_LAND = 1382
 B_CELEBRATE = 1386
 
+# "Like and subscribe", said three times: once out loud together with the
+# on-screen card during round 0's silent drift-in beat (before B_PEEK, so
+# nothing else is playing) — LikeSubscribeBanner in src/guess/LikeSubscribe.tsx
+# must stay in step with LIKE_SUB_START_OFFSET below — and twice more, spoken
+# only, later in the episode.
+LIKE_SUB_START_OFFSET = 30
+LIKE_SUB_VERBAL_OFFSET = B_COUNT + 100
+LIKE_SUB_VERBAL_LINES = [
+    "Don't forget to like and subscribe!",
+    "Thanks for watching — like and subscribe for more!",
+]
+
 # ── the script ────────────────────────────────────────────────────────
 # Each entry: (id, Ana names it, Ana describes it, Emma says where/how)
 VEGGIE_ROUNDS = [
@@ -124,29 +136,35 @@ ANIMAL_ROUNDS = [
 ]
 
 # Wild Animals: the second animal episode, zoo and safari animals this time.
+#
+# NOTE: this order must match src/wild/subject.tsx's `rounds` array
+# exactly — both are indexed by round number n, and round_base(n) assumes
+# round n here IS round n on screen. (A previous version of this list was
+# in a different order than the video and had the narration naming the
+# wrong animal for 6 of the 12 rounds — reordered to fix that.)
 WILD_ROUNDS = [
     ("zebra",    "It's a zebra! Zebra.",     "A black and white striped zebra.",
      "Zebras live on the grassy savanna, in a big herd.", "Neigh! Neigh!"),
-    ("giraffe",  "It's a giraffe! Giraffe.", "A tall spotty giraffe.",
-     "Giraffes live on the savanna, reaching the tallest treetops.", "Munch munch!"),
     ("tiger",    "It's a tiger! Tiger.",     "An orange striped tiger.",
      "Tigers live in the jungle, prowling through the tall grass.", "ROAR!"),
-    ("bear",     "It's a bear! Bear.",       "A big brown bear.",
-     "Bears live in the forest, fishing in the river.", "Grrrowl!"),
+    ("giraffe",  "It's a giraffe! Giraffe.", "A tall spotty giraffe.",
+     "Giraffes live on the savanna, reaching the tallest treetops.", "Munch munch!"),
+    ("koala",    "It's a koala! Koala.",     "A grey fluffy koala.",
+     "Koalas live up a eucalyptus tree, snoozing most of the day.", "Snooze snooze!"),
     ("monkey",   "It's a monkey! Monkey.",   "A cheeky little monkey.",
      "Monkeys live in the jungle, swinging from tree to tree.", "Ooh ooh, ah ah!"),
     ("kangaroo", "It's a kangaroo! Kangaroo.", "A brown kangaroo with a big tail.",
      "Kangaroos live in the outback, hopping across the red dirt.", "Boing boing!"),
+    ("bear",     "It's a bear! Bear.",       "A big brown bear.",
+     "Bears live in the forest, fishing in the river.", "Grrrowl!"),
     ("panda",    "It's a panda! Panda.",     "A black and white panda.",
      "Pandas live in the bamboo forest, munching all day long.", "Crunch crunch!"),
-    ("koala",    "It's a koala! Koala.",     "A grey fluffy koala.",
-     "Koalas live up a eucalyptus tree, snoozing most of the day.", "Snooze snooze!"),
     ("fox",      "It's a fox! Fox.",         "A red bushy-tailed fox.",
      "Foxes live in the forest, curled up in a cosy den.", "Yip yip!"),
-    ("camel",    "It's a camel! Camel.",     "A brown camel with two humps.",
-     "Camels live in the desert, walking across the sandy dunes.", "Grunt grunt!"),
     ("hedgehog", "It's a hedgehog! Hedgehog.", "A little spiky hedgehog.",
      "Hedgehogs live in the garden, snuffling through the leaves.", "Snuffle snuffle!"),
+    ("camel",    "It's a camel! Camel.",     "A brown camel with two humps.",
+     "Camels live in the desert, walking across the sandy dunes.", "Grunt grunt!"),
     ("peacock",  "It's a peacock! Peacock.", "A peacock with a beautiful tail.",
      "Peacocks live in the garden, showing off their feathers.", "Squawk!"),
 ]
@@ -497,6 +515,17 @@ def round_base(n):
     return INTRO_LEN + n * ROUND_LEN
 
 
+def like_sub_verbal_rounds(n_rounds):
+    """Two round indices, spread through the back half of the episode, for
+    the spoken-only like/subscribe reminders (round 0 already gets one,
+    paired with the on-screen card)."""
+    if n_rounds <= 2:
+        return [min(1, n_rounds - 1)]
+    def at(frac):
+        return min(n_rounds - 2, max(1, round((n_rounds - 1) * frac)))
+    return sorted(set([at(0.5), at(0.85)]))
+
+
 def short_schedule():
     """The Short: a hook, ten numbers, a payoff."""
     lines = [(4, "Can you count to ten?", "emma", "s-hook")]
@@ -527,11 +556,19 @@ def vo_schedule():
     }[CONF["kind"]]
     lines = [(18, opener, "ana", "intro")]
     q_list = COLOUR_QUESTIONS if CONF["kind"] == "colour" else QUESTIONS
+    verbal_rounds = like_sub_verbal_rounds(N_ROUNDS)
 
     for n, row in enumerate(ROUNDS):
         vid, name_line, desc_line, mid_line = row[:4]
         b = round_base(n)
         the = ARTICLE[vid]
+
+        if n == 0:
+            # said out loud together with the on-screen card — nothing else
+            # is on screen or on the soundtrack yet at this point
+            lines.append((b + LIKE_SUB_START_OFFSET,
+                          "Like and subscribe to Pebblo Pebble!", "emma",
+                          "likesub-start"))
 
         # narrator sets the beat up, the kid plays the guessing game
         lines.append((b + B_PEEK, PEEKS[n], "emma", f"{n:02d}-{vid}-peek"))
@@ -553,6 +590,10 @@ def vo_schedule():
                       if n < N_ROUNDS - 1 else
                       "That's all twelve! You learned every colour! Hooray!")
             lines.append((b + B_COUNT, praise, "emma", f"{n:02d}-{vid}-count"))
+            if n in verbal_rounds:
+                lines.append((b + LIKE_SUB_VERBAL_OFFSET,
+                              LIKE_SUB_VERBAL_LINES[verbal_rounds.index(n)],
+                              "emma", f"likesub-{n}"))
             continue
 
         if CONF["kind"] == "count":
@@ -579,6 +620,10 @@ def vo_schedule():
                       if n < N_ROUNDS - 1 else
                       "That's all twelve! You found every number. Hooray!")
             lines.append((b + B_COUNT, praise, "emma", f"{n:02d}-{vid}-count"))
+            if n in verbal_rounds:
+                lines.append((b + LIKE_SUB_VERBAL_OFFSET,
+                              LIKE_SUB_VERBAL_LINES[verbal_rounds.index(n)],
+                              "emma", f"likesub-{n}"))
             continue
 
         # the middle of the round: where it grows, or where it lives
@@ -612,6 +657,10 @@ def vo_schedule():
             praise = (f"That's all twelve! You found every {CONF['word']}. "
                       "Hooray!")
         lines.append((b + B_COUNT, praise, "emma", f"{n:02d}-{vid}-count"))
+        if n in verbal_rounds:
+            lines.append((b + LIKE_SUB_VERBAL_OFFSET,
+                          LIKE_SUB_VERBAL_LINES[verbal_rounds.index(n)],
+                          "emma", f"likesub-{n}"))
 
     return lines
 

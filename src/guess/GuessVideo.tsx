@@ -14,7 +14,7 @@ import { Board, FlyToSlot, Item } from "./Board";
 import { Cat, Dog, DRIFTERS, DRIFTER_FLIES, Frog, Penguin } from "./critters";
 import { loadVeggieFonts } from "./fonts";
 import { Confetti, PopLines, RevealFlash, Sparkles } from "./fx";
-import { likeSubRounds, LikeSubscribeBanner } from "./LikeSubscribe";
+import { LikeSubscribeBanner } from "./LikeSubscribe";
 import {
   BushPair,
   Clouds,
@@ -48,10 +48,9 @@ const GuessRoundScene: React.FC<{
   round: GuessRound;
   solved: string[];
   roundIndex: number;
-  totalRounds: number;
   /** the last round holds the finished board instead of dropping it */
   finale?: boolean;
-}> = ({ subject, round, solved, roundIndex, totalRounds, finale = false }) => {
+}> = ({ subject, round, solved, roundIndex, finale = false }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const id = round.id;
@@ -61,7 +60,9 @@ const GuessRoundScene: React.FC<{
   const onMid = frame >= BEAT.mid && frame < BEAT.midOut;
   const boardUp = frame >= BEAT.boardRise - 4;
   const celebrating = frame >= BEAT.celebrate && frame < boardExit + 20;
-  const showLikeSub = celebrating && likeSubRounds(totalRounds).includes(roundIndex);
+  /** said out loud too (scripts/build-audio.py, LIKE_SUB_START_OFFSET) —
+   *  only round 0 gets the card, during its silent drift-in beat. */
+  const showLikeSub = roundIndex === 0;
 
   const riseS = spring({
     frame: frame - BEAT.silRise,
@@ -222,9 +223,6 @@ const GuessRoundScene: React.FC<{
             size={1.6}
           />
           <Confetti start={BEAT.celebrate} />
-          {showLikeSub ? (
-            <LikeSubscribeBanner start={BEAT.celebrate + 14} out={boardExit} />
-          ) : null}
           {finale ? (
             <>
               <Sparkles
@@ -268,6 +266,8 @@ const GuessRoundScene: React.FC<{
           </svg>
         </>
       ) : null}
+
+      {showLikeSub ? <LikeSubscribeBanner /> : null}
     </AbsoluteFill>
   );
 };
@@ -300,7 +300,6 @@ export const GuessVideo: React.FC<{
             round={round}
             solved={subject.rounds.slice(0, i).map((r) => r.id)}
             roundIndex={i}
-            totalRounds={subject.rounds.length}
             finale={i === subject.rounds.length - 1}
           />
         </Sequence>

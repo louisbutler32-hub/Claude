@@ -3,37 +3,34 @@ import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { fonts, textShadow } from "./palette";
 
 /**
- * The "like and subscribe" reminder. Shows up to three times per episode,
- * timed to the celebrate beat of a handful of rounds so it never competes
- * with the guessing itself — a small corner card, not a full-screen
- * interruption. Every episode picks up the same three moments
- * automatically via `LIKE_SUB_ROUNDS` below, so nothing per-subject is
- * needed to keep this consistent going forward.
+ * The "like and subscribe" reminder. Said three times per episode — once
+ * out loud together with this on-screen card, during the very first
+ * round's silent drift-in beat (nothing else is happening on screen or on
+ * the soundtrack yet, so it doesn't compete with anything), and twice more
+ * spoken only, later in the episode. The spoken lines live in
+ * scripts/build-audio.py (search LIKE_SUB) — LIKE_SUB_START here must stay
+ * in step with that script's LIKE_SUB_START_OFFSET, since the card is
+ * timed to land with the voice line.
  */
 
 const OUT = "#3d5c34";
 
-/** Which round indices (0-based) show the reminder, given the episode's
- *  total round count — spread across the video rather than clustered. */
-export function likeSubRounds(totalRounds: number): number[] {
-  if (totalRounds <= 1) return [0];
-  const at = (frac: number) =>
-    Math.min(totalRounds - 1, Math.round((totalRounds - 1) * frac));
-  return Array.from(new Set([at(0.25), at(0.6), at(0.92)]));
-}
+/** Local-round frame the card pops in on, round 0 only — matches
+ *  LIKE_SUB_START_OFFSET in build-audio.py (must stay in sync), and lands
+ *  at 5.0s into the video exactly (INTRO_LEN 120 + 30 frames @ 30fps). */
+export const LIKE_SUB_START = 30;
+/** Frame the card starts fading out. */
+export const LIKE_SUB_OUT = 118;
 
-export const LikeSubscribeBanner: React.FC<{ start: number; out: number }> = ({
-  start,
-  out,
-}) => {
+export const LikeSubscribeBanner: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const pop = spring({
-    frame: frame - start,
+    frame: frame - LIKE_SUB_START,
     fps,
     config: { damping: 12, mass: 0.5, stiffness: 170 },
   });
-  const fade = interpolate(frame, [out, out + 14], [1, 0], {
+  const fade = interpolate(frame, [LIKE_SUB_OUT, LIKE_SUB_OUT + 14], [1, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });

@@ -55,12 +55,28 @@ Anything aimed at under-13s has to be flagged **made for kids** on upload.
 
 ## Like & Subscribe reminder
 
-Every guess-format episode shows a "👍 Like & Subscribe for more!" corner
-card three times, automatically — it's wired into the shared engine
-(`src/guess/LikeSubscribe.tsx`, called from `src/guess/GuessVideo.tsx`),
-timed to the celebrate beat of three evenly-spread rounds
-(`likeSubRounds()`), so no per-episode work is needed to keep it in every
-video going forward.
+Every guess-format episode says "like and subscribe" three times,
+automatically, via the shared engine — no per-episode work needed:
+
+- **Once, out loud together with an on-screen card** ("👍 Like & Subscribe
+  for more! 🔔"), during round 0's silent drift-in beat — 5 seconds into
+  the video, before anything else is on screen or on the soundtrack, so it
+  never competes with the guessing itself. Card: `src/guess/LikeSubscribe.tsx`,
+  mounted from `src/guess/GuessVideo.tsx`. Voice line: `LIKE_SUB_START_OFFSET`
+  in `scripts/build-audio.py` — keep the two in step if either moves.
+- **Twice more, spoken only** (no card), later in the episode, at two
+  round indices `like_sub_verbal_rounds()` spreads through the back half.
+
+Both live in `scripts/build-audio.py`, so re-run that script's build (e.g.
+`python3 scripts/build-audio.py <subject>`) after changing either — the
+video-side engine change alone doesn't update the shipped `-mix.mp3`.
+
+**Round order matters:** whatever `<subject>_ROUNDS` list feeds the audio
+script must be in the *exact same order* as that subject's `rounds` array
+in `src/<subject>/subject.tsx` — both are indexed by round number, and a
+mismatch means the narration names the wrong thing. Check this explicitly
+when adding a new episode; it's easy to write the two lists independently
+and have them drift (happened once, on Wild Animals).
 
 ## Renders are big
 
