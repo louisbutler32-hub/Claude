@@ -38,6 +38,15 @@ at least 10s or YouTube rejects the list.
 
 Anything aimed at under-13s has to be flagged **made for kids** on upload.
 
+## Like & Subscribe reminder
+
+Every guess-format episode shows a "👍 Like & Subscribe for more!" corner
+card three times, automatically — it's wired into the shared engine
+(`src/guess/LikeSubscribe.tsx`, called from `src/guess/GuessVideo.tsx`),
+timed to the celebrate beat of three evenly-spread rounds
+(`likeSubRounds()`), so no per-episode work is needed to keep it in every
+video going forward.
+
 ## Renders are big
 
 A full episode render is ~110-145 MB, over the 30 MiB send limit. Send a
