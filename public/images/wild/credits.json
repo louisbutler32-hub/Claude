@@ -1,1 +1,122 @@
-[]
+[
+  {
+    "id": "zebra",
+    "file": "zebra.png",
+    "width": 676,
+    "height": 495,
+    "title": "zebra 2",
+    "license": "by 2.0",
+    "creator": "Harlequeen",
+    "page": "https://www.flickr.com/photos/27887748@N00/9295894858"
+  },
+  {
+    "id": "giraffe",
+    "file": "giraffe.png",
+    "width": 605,
+    "height": 956,
+    "title": "Giraffe",
+    "license": "by-sa 2.0",
+    "creator": "virtualsphere",
+    "page": "https://www.flickr.com/photos/64383503@N00/9458740803"
+  },
+  {
+    "id": "tiger",
+    "file": "tiger.png",
+    "width": 706,
+    "height": 593,
+    "title": "An Indian tiger in the wild. Royal, Bengal tiger",
+    "license": "by-sa 2.0",
+    "creator": "derrickbrutel",
+    "page": "https://www.flickr.com/photos/143951935@N07/27466438332"
+  },
+  {
+    "id": "bear",
+    "file": "bear.png",
+    "width": 586,
+    "height": 423,
+    "title": "Brown Bear standing in river",
+    "license": "by 2.0",
+    "creator": "BLM Alaska",
+    "page": "https://www.flickr.com/photos/76641642@N08/50377060656"
+  },
+  {
+    "id": "monkey",
+    "file": "monkey.png",
+    "width": 478,
+    "height": 702,
+    "title": "Monkey sitting in a tree",
+    "license": "by 2.0",
+    "creator": "Indo_girl2010",
+    "page": "https://www.flickr.com/photos/54545616@N04/5450444718"
+  },
+  {
+    "id": "kangaroo",
+    "file": "kangaroo.png",
+    "width": 319,
+    "height": 906,
+    "title": "Kangaroo Standing",
+    "license": "by-sa 2.0",
+    "creator": "Eric Kilby",
+    "page": "https://www.flickr.com/photos/8749778@N06/17043699069"
+  },
+  {
+    "id": "panda",
+    "file": "panda.png",
+    "width": 507,
+    "height": 584,
+    "title": "Giant Panda sitting Giant Panda Breeding Center Chengdu China",
+    "license": "pdm 1.0",
+    "creator": "amanderson2",
+    "page": "https://www.flickr.com/photos/49399018@N00/27135210119"
+  },
+  {
+    "id": "koala",
+    "file": "koala.png",
+    "width": 662,
+    "height": 893,
+    "title": "Koala Sitting on Branch",
+    "license": "by-sa 2.0",
+    "creator": "Eric Kilby",
+    "page": "https://www.flickr.com/photos/8749778@N06/31494733464"
+  },
+  {
+    "id": "fox",
+    "file": "fox.png",
+    "width": 342,
+    "height": 267,
+    "title": "Collared",
+    "license": "by 2.0",
+    "creator": "Mount Rainier NPS",
+    "page": "https://www.flickr.com/photos/78037339@N03/7030763293"
+  },
+  {
+    "id": "camel",
+    "file": "camel.png",
+    "width": 162,
+    "height": 115,
+    "title": "5:00am\u2026 Wake up before the sun, start to run.",
+    "license": "by 2.0",
+    "creator": "Untitled blue",
+    "page": "https://www.flickr.com/photos/61728987@N00/2603959306"
+  },
+  {
+    "id": "hedgehog",
+    "file": "hedgehog.png",
+    "width": 738,
+    "height": 506,
+    "title": "Hedgehog scavenging",
+    "license": "by 2.0",
+    "creator": "It's No Game",
+    "page": "https://www.flickr.com/photos/29057345@N04/6526995487"
+  },
+  {
+    "id": "peacock",
+    "file": "peacock.png",
+    "width": 825,
+    "height": 581,
+    "title": "Peacock",
+    "license": "by 2.0",
+    "creator": "Koshyk",
+    "page": "https://www.flickr.com/photos/97235261@N00/8779612030"
+  }
+]
