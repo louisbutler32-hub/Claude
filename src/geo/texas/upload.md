@@ -1,19 +1,23 @@
-# What if Texas Had Stayed a Country?
+# Why Did Texas Give Up Being a Country?
 
 ## Title
 
-What if Texas Had Stayed a Country? 🤠🗺️
+Why Did Texas Give Up Being a Country? 🤠🗺️
 
 Alternates:
 
-- Texas Was Its Own Country for 9 Years 😳
-- The Republic of Texas, if It Never Joined the US 🇺🇸 #shorts
+- Texas Was Its Own Country. Britain Is Why It Stopped 🇬🇧
+- The Real Reason Texas Joined the USA 😳 #shorts
 
 ## Description
 
-For nine years, Texas was its own country. In 1836 it won a war against Mexico and declared independence — a real republic, with its own president, its own army, its own currency and legations in London and Paris. There was one problem: it was broke. About 135,000 people and roughly $10 million of debt it had no way to pay, and Mexico had never accepted losing. So Texas asked the United States to take it in, and Washington said no — Texas allowed slavery, and admitting it would tip the balance in Congress. Then Texas started talking to Britain, and suddenly the answer was yes. It joined in 1845.
+Texas was its own country for nine years — so why did it ever give that up? The Republic of Texas was real: its own president, its own army, its own currency, and legations in London and Paris. It was bigger than France, and it had beaten Mexico in a war to exist at all.
 
-So what if it hadn't? Today an independent Texas would be the eighth-largest economy on Earth, bigger than Canada or Russia, pumping more than 40% of America's oil, with 31 million people. But here is the part nobody expects: annexing Texas is what started the Mexican–American War, and winning that war is how the United States got California. No Texas, no war. No war, no California.
+The obvious answer is money. Texas was broke: about 135,000 people and roughly $10 million of debt it could never pay. But that is not why it joined — because Texas asked to join, and America said no. Texas allowed slavery, and admitting it would tip the balance of the Senate.
+
+So what changed Washington's mind? Britain. Texas began negotiating with London, and Britain wanted exactly what Texas had: cotton, and a friendly country wedged under the United States. A British ally on the southern border was the one thing Washington could not allow, and in 1845 the answer became yes.
+
+And here is what nobody expects: annexing Texas started the Mexican–American War. America won it and took everything from the Rio Grande to the Pacific — California, Nevada, Utah, Arizona. Texas is the reason America reaches the west coast at all.
 
 Every frame is a real satellite map (NASA Blue Marble) drawn in code. The Republic's claimed boundary is drawn approximately.
 
@@ -43,7 +47,7 @@ people see.
 
 | field | value |
 |---|---|
-| Aspect | 9:16, 1080×1920, ~79 s, 30 fps — a Short built to loop: it cuts on the last word of the answer and reopens on the question |
+| Aspect | 9:16, 1080×1920, ~73 s, 30 fps — a Short built to loop: it cuts on the last word of the answer and reopens on the question |
 | Category | Education |
 | Audience | **not made for kids** (general-audience history) |
 | Chapters | none — Shorts do not show them |

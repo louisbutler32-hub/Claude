@@ -2,1258 +2,1166 @@
  {
   "id": "a0",
   "scene": "hook",
-  "text": "For nine years, Texas was its own country.",
+  "text": "Texas was its own country for nine years. So why did it ever give that up?",
   "start": 0.0,
-  "end": 2.578,
+  "end": 4.34,
   "words": [
    [
-    "For",
-    0.0,
-    0.16
-   ],
-   [
-    "nine",
-    0.16,
-    0.4
-   ],
-   [
-    "years,",
-    0.4,
-    0.8
-   ],
-   [
     "Texas",
-    0.96,
-    1.2
+    0.0,
+    0.32
    ],
    [
     "was",
-    1.2,
-    1.48
+    0.32,
+    0.58
    ],
    [
     "its",
-    1.48,
-    1.68
+    0.58,
+    0.74
    ],
    [
     "own",
-    1.68,
-    1.88
+    0.74,
+    0.98
    ],
    [
-    "country.",
-    1.88,
-    2.32
+    "country",
+    0.98,
+    1.38
+   ],
+   [
+    "for",
+    1.38,
+    1.56
+   ],
+   [
+    "nine",
+    1.56,
+    1.84
+   ],
+   [
+    "years.",
+    1.84,
+    2.26
+   ],
+   [
+    "So",
+    2.56,
+    2.82
+   ],
+   [
+    "why",
+    2.82,
+    3.1
+   ],
+   [
+    "did",
+    3.1,
+    3.28
+   ],
+   [
+    "it",
+    3.28,
+    3.38
+   ],
+   [
+    "ever",
+    3.38,
+    3.58
+   ],
+   [
+    "give",
+    3.58,
+    3.78
+   ],
+   [
+    "that",
+    3.78,
+    4.0
+   ],
+   [
+    "up?",
+    4.0,
+    4.22
    ]
   ]
  },
  {
   "id": "a1",
-  "scene": "won",
-  "text": "In 1836 it won a war against Mexico and declared independence.",
-  "start": 2.858,
-  "end": 7.297,
+  "scene": "real",
+  "text": "And this was a real country. Its own president. Its own army. Its own currency, and embassies in London and Paris.",
+  "start": 4.6,
+  "end": 11.33,
   "words": [
    [
-    "In",
-    2.86,
-    2.98
-   ],
-   [
-    "1836",
-    2.98,
-    3.92
-   ],
-   [
-    "it",
-    4.2,
-    4.26
-   ],
-   [
-    "won",
-    4.26,
-    4.4
-   ],
-   [
-    "a",
-    4.4,
-    4.5
-   ],
-   [
-    "war",
-    4.5,
+    "And",
+    4.6,
     4.74
    ],
    [
-    "against",
+    "this",
     4.74,
-    5.1
+    4.9
    ],
    [
-    "Mexico",
-    5.1,
-    5.58
+    "was",
+    4.9,
+    5.06
+   ],
+   [
+    "a",
+    5.06,
+    5.18
+   ],
+   [
+    "real",
+    5.18,
+    5.4
+   ],
+   [
+    "country.",
+    5.4,
+    5.82
+   ],
+   [
+    "Its",
+    6.22,
+    6.38
+   ],
+   [
+    "own",
+    6.38,
+    6.62
+   ],
+   [
+    "president.",
+    6.62,
+    6.98
+   ],
+   [
+    "Its",
+    7.48,
+    7.64
+   ],
+   [
+    "own",
+    7.64,
+    7.88
+   ],
+   [
+    "army.",
+    7.88,
+    8.2
+   ],
+   [
+    "Its",
+    8.62,
+    8.74
+   ],
+   [
+    "own",
+    8.74,
+    8.94
+   ],
+   [
+    "currency,",
+    8.94,
+    9.44
    ],
    [
     "and",
-    5.58,
-    6.06
+    9.44,
+    9.64
    ],
    [
-    "declared",
-    6.06,
-    6.36
+    "embassies",
+    9.64,
+    10.18
    ],
    [
-    "independence.",
-    6.36,
-    6.98
+    "in",
+    10.18,
+    10.32
+   ],
+   [
+    "London",
+    10.32,
+    10.6
+   ],
+   [
+    "and",
+    10.6,
+    10.8
+   ],
+   [
+    "Paris.",
+    10.8,
+    11.08
    ]
   ]
  },
  {
   "id": "a2",
-  "scene": "real",
-  "text": "This was a real country. Its own president, its own army, its own money, and embassies in London and Paris.",
-  "start": 7.557,
-  "end": 13.686,
+  "scene": "size",
+  "text": "It was bigger than France, and it had beaten Mexico in a war to exist at all.",
+  "start": 11.59,
+  "end": 15.701,
   "words": [
    [
-    "This",
-    7.557,
-    7.76
+    "It",
+    11.59,
+    11.7
    ],
    [
     "was",
-    7.76,
-    7.9
+    11.7,
+    11.84
    ],
    [
-    "a",
-    7.9,
-    8.02
+    "bigger",
+    11.84,
+    12.12
    ],
    [
-    "real",
-    8.02,
-    8.24
+    "than",
+    12.12,
+    12.34
    ],
    [
-    "country.",
-    8.24,
-    8.66
-   ],
-   [
-    "Its",
-    9.16,
-    9.34
-   ],
-   [
-    "own",
-    9.34,
-    9.54
-   ],
-   [
-    "president,",
-    9.54,
-    9.9
-   ],
-   [
-    "its",
-    10.28,
-    10.38
-   ],
-   [
-    "own",
-    10.38,
-    10.62
-   ],
-   [
-    "army,",
-    10.62,
-    10.98
-   ],
-   [
-    "its",
-    11.18,
-    11.26
-   ],
-   [
-    "own",
-    11.26,
-    11.5
-   ],
-   [
-    "money,",
-    11.5,
-    11.78
+    "France,",
+    12.34,
+    12.8
    ],
    [
     "and",
-    11.9,
-    12.0
+    12.98,
+    13.2
    ],
    [
-    "embassies",
-    12.0,
-    12.52
+    "it",
+    13.2,
+    13.28
+   ],
+   [
+    "had",
+    13.28,
+    13.38
+   ],
+   [
+    "beaten",
+    13.38,
+    13.58
+   ],
+   [
+    "Mexico",
+    13.58,
+    14.12
    ],
    [
     "in",
-    12.52,
-    12.68
+    14.12,
+    14.38
    ],
    [
-    "London",
-    12.68,
-    12.94
+    "a",
+    14.38,
+    14.48
    ],
    [
-    "and",
-    12.94,
-    13.14
+    "war",
+    14.48,
+    14.62
    ],
    [
-    "Paris.",
-    13.14,
-    13.42
+    "to",
+    14.62,
+    14.8
+   ],
+   [
+    "exist",
+    14.8,
+    15.16
+   ],
+   [
+    "at",
+    15.16,
+    15.36
+   ],
+   [
+    "all.",
+    15.36,
+    15.58
    ]
   ]
  },
  {
   "id": "b0",
-  "scene": "problem",
-  "text": "There was just one problem. It was broke.",
-  "start": 13.986,
-  "end": 16.28,
+  "scene": "obvious",
+  "text": "The obvious answer is money. Texas was broke.",
+  "start": 16.001,
+  "end": 18.984,
   "words": [
    [
-    "There",
-    13.986,
-    14.18
+    "The",
+    16.001,
+    16.14
+   ],
+   [
+    "obvious",
+    16.14,
+    16.52
+   ],
+   [
+    "answer",
+    16.52,
+    16.96
+   ],
+   [
+    "is",
+    16.96,
+    17.2
+   ],
+   [
+    "money.",
+    17.2,
+    17.48
+   ],
+   [
+    "Texas",
+    17.82,
+    18.1
    ],
    [
     "was",
-    14.18,
-    14.32
-   ],
-   [
-    "just",
-    14.32,
-    14.52
-   ],
-   [
-    "one",
-    14.52,
-    14.82
-   ],
-   [
-    "problem.",
-    14.82,
-    15.32
-   ],
-   [
-    "It",
-    15.5,
-    15.56
-   ],
-   [
-    "was",
-    15.56,
-    15.7
+    18.1,
+    18.44
    ],
    [
     "broke.",
-    15.7,
-    16.0
+    18.44,
+    18.76
    ]
   ]
  },
  {
   "id": "b1",
   "scene": "debt",
-  "text": "A hundred and thirty-five thousand people, and ten million dollars of debt it had no way to pay.",
-  "start": 16.54,
-  "end": 21.697,
+  "text": "A hundred and thirty-five thousand people, and ten million dollars of debt it could never pay.",
+  "start": 19.244,
+  "end": 24.125,
   "words": [
    [
     "A",
-    16.54,
-    16.644
+    19.244,
+    19.354
    ],
    [
     "hundred",
-    16.644,
-    17.008
+    19.354,
+    19.741
    ],
    [
     "and",
-    17.008,
-    17.164
+    19.741,
+    19.906
    ],
    [
     "thirty-five",
-    17.164,
-    17.684
+    19.906,
+    20.458
    ],
    [
     "thousand",
-    17.684,
-    18.1
+    20.458,
+    20.9
    ],
    [
     "people,",
-    18.1,
-    18.44
+    20.9,
+    21.24
    ],
    [
     "and",
-    18.44,
-    18.98
+    21.68,
+    21.8
    ],
    [
     "ten",
-    18.98,
-    19.22
+    21.8,
+    22.02
    ],
    [
     "million",
-    19.22,
-    19.54
+    22.02,
+    22.34
    ],
    [
     "dollars",
-    19.54,
-    19.59
+    22.34,
+    22.39
    ],
    [
     "of",
-    19.57,
-    20.14
+    22.37,
+    22.96
    ],
    [
     "debt",
-    20.14,
-    20.38
+    22.96,
+    23.2
    ],
    [
     "it",
-    20.38,
-    20.54
+    23.2,
+    23.36
    ],
    [
-    "had",
-    20.54,
-    20.68
-   ],
-   [
-    "no",
-    20.68,
-    20.92
-   ],
-   [
-    "way",
-    20.92,
-    21.16
-   ],
-   [
-    "to",
-    21.16,
-    21.32
-   ],
-   [
-    "pay.",
-    21.32,
-    21.56
-   ]
-  ]
- },
- {
-  "id": "b2",
-  "scene": "mexico",
-  "text": "And Mexico had never accepted losing. It still called Texas a rebel province.",
-  "start": 21.956,
-  "end": 26.913,
-  "words": [
-   [
-    "And",
-    21.956,
-    22.12
-   ],
-   [
-    "Mexico",
-    22.12,
-    22.52
-   ],
-   [
-    "had",
-    22.52,
-    22.86
+    "could",
+    23.36,
+    23.44
    ],
    [
     "never",
-    22.86,
-    23.14
+    23.44,
+    23.66
    ],
    [
-    "accepted",
-    23.14,
-    23.62
-   ],
-   [
-    "losing.",
-    23.62,
-    23.96
-   ],
-   [
-    "It",
-    24.56,
-    24.66
-   ],
-   [
-    "still",
-    24.66,
-    24.92
-   ],
-   [
-    "called",
-    24.92,
-    25.2
-   ],
-   [
-    "Texas",
-    25.2,
-    25.66
-   ],
-   [
-    "a",
-    25.66,
-    25.9
-   ],
-   [
-    "rebel",
-    25.9,
-    26.16
-   ],
-   [
-    "province.",
-    26.16,
-    26.72
+    "pay.",
+    23.66,
+    23.98
    ]
   ]
  },
  {
   "id": "c0",
-  "scene": "ask",
-  "text": "So Texas asked the United States to take it in.",
-  "start": 27.213,
-  "end": 30.041,
+  "scene": "but",
+  "text": "But that is not why it joined. Because Texas asked to join, and America said no.",
+  "start": 24.425,
+  "end": 29.075,
   "words": [
    [
-    "So",
-    27.213,
-    27.38
+    "But",
+    24.425,
+    24.56
    ],
    [
-    "Texas",
-    27.38,
-    27.76
+    "that",
+    24.56,
+    24.74
    ],
    [
-    "asked",
-    27.76,
-    28.18
+    "is",
+    24.74,
+    24.9
    ],
    [
-    "the",
-    28.18,
-    28.38
+    "not",
+    24.9,
+    25.1
    ],
    [
-    "United",
-    28.38,
-    28.58
-   ],
-   [
-    "States",
-    28.58,
-    29.08
-   ],
-   [
-    "to",
-    29.08,
-    29.34
-   ],
-   [
-    "take",
-    29.34,
-    29.58
+    "why",
+    25.1,
+    25.32
    ],
    [
     "it",
-    29.58,
-    29.72
+    25.32,
+    25.44
    ],
    [
-    "in.",
-    29.72,
-    29.9
+    "joined.",
+    25.44,
+    25.76
+   ],
+   [
+    "Because",
+    26.26,
+    26.46
+   ],
+   [
+    "Texas",
+    26.46,
+    26.82
+   ],
+   [
+    "asked",
+    26.82,
+    27.16
+   ],
+   [
+    "to",
+    27.16,
+    27.36
+   ],
+   [
+    "join,",
+    27.36,
+    27.66
+   ],
+   [
+    "and",
+    27.66,
+    27.92
+   ],
+   [
+    "America",
+    27.92,
+    28.26
+   ],
+   [
+    "said",
+    28.26,
+    28.62
+   ],
+   [
+    "no.",
+    28.62,
+    28.9
    ]
   ]
  },
  {
   "id": "c1",
-  "scene": "no",
-  "text": "Washington said no. Texas allowed slavery, and admitting it would tip the balance in Congress.",
-  "start": 30.301,
-  "end": 35.543,
+  "scene": "why",
+  "text": "Texas allowed slavery. Letting it in would tip the balance of the Senate, and Washington would not touch it.",
+  "start": 29.335,
+  "end": 35.119,
   "words": [
    [
-    "Washington",
-    30.301,
-    30.76
-   ],
-   [
-    "said",
-    30.76,
-    31.12
-   ],
-   [
-    "no.",
-    31.12,
-    31.46
-   ],
-   [
     "Texas",
-    31.96,
-    32.24
+    29.335,
+    29.62
    ],
    [
     "allowed",
-    32.24,
-    32.64
+    29.62,
+    30.02
    ],
    [
-    "slavery,",
-    32.64,
-    33.12
+    "slavery.",
+    30.02,
+    30.66
    ],
    [
-    "and",
-    33.12,
-    33.48
-   ],
-   [
-    "admitting",
-    33.48,
-    33.76
+    "Letting",
+    31.16,
+    31.42
    ],
    [
     "it",
-    33.76,
-    33.94
-   ],
-   [
-    "would",
-    33.94,
-    34.02
-   ],
-   [
-    "tip",
-    34.02,
-    34.2
-   ],
-   [
-    "the",
-    34.2,
-    34.34
-   ],
-   [
-    "balance",
-    34.34,
-    34.66
+    31.42,
+    31.6
    ],
    [
     "in",
-    34.66,
+    31.6,
+    31.82
+   ],
+   [
+    "would",
+    31.82,
+    32.0
+   ],
+   [
+    "tip",
+    32.0,
+    32.18
+   ],
+   [
+    "the",
+    32.18,
+    32.38
+   ],
+   [
+    "balance",
+    32.38,
+    32.68
+   ],
+   [
+    "of",
+    32.68,
+    32.86
+   ],
+   [
+    "the",
+    32.86,
+    33.0
+   ],
+   [
+    "Senate,",
+    33.0,
+    33.26
+   ],
+   [
+    "and",
+    33.26,
+    33.58
+   ],
+   [
+    "Washington",
+    33.58,
+    34.06
+   ],
+   [
+    "would",
+    34.06,
+    34.38
+   ],
+   [
+    "not",
+    34.38,
+    34.56
+   ],
+   [
+    "touch",
+    34.56,
     34.88
    ],
    [
-    "Congress.",
+    "it.",
     34.88,
-    35.28
-   ]
-  ]
- },
- {
-  "id": "c2",
-  "scene": "britain",
-  "text": "So Texas started talking to Britain instead. And that changed everything.",
-  "start": 35.843,
-  "end": 40.05,
-  "words": [
-   [
-    "So",
-    35.86,
-    36.02
-   ],
-   [
-    "Texas",
-    36.02,
-    36.34
-   ],
-   [
-    "started",
-    36.34,
-    36.74
-   ],
-   [
-    "talking",
-    36.74,
-    37.06
-   ],
-   [
-    "to",
-    37.06,
-    37.3
-   ],
-   [
-    "Britain",
-    37.3,
-    37.56
-   ],
-   [
-    "instead.",
-    37.56,
-    38.08
-   ],
-   [
-    "And",
-    38.42,
-    38.74
-   ],
-   [
-    "that",
-    38.74,
-    38.9
-   ],
-   [
-    "changed",
-    38.9,
-    39.32
-   ],
-   [
-    "everything.",
-    39.32,
-    39.82
-   ]
-  ]
- },
- {
-  "id": "c3",
-  "scene": "yes",
-  "text": "Suddenly the answer was yes. In 1845, Texas joined the United States.",
-  "start": 40.31,
-  "end": 45.148,
-  "words": [
-   [
-    "Suddenly",
-    40.31,
-    40.7
-   ],
-   [
-    "the",
-    40.7,
-    40.88
-   ],
-   [
-    "answer",
-    40.88,
-    41.24
-   ],
-   [
-    "was",
-    41.24,
-    41.46
-   ],
-   [
-    "yes.",
-    41.46,
-    41.76
-   ],
-   [
-    "In",
-    42.3,
-    42.44
-   ],
-   [
-    "1845,",
-    42.44,
-    43.16
-   ],
-   [
-    "Texas",
-    43.24,
-    43.8
-   ],
-   [
-    "joined",
-    43.8,
-    44.18
-   ],
-   [
-    "the",
-    44.18,
-    44.32
-   ],
-   [
-    "United",
-    44.32,
-    44.5
-   ],
-   [
-    "States.",
-    44.5,
-    44.94
+    35.06
    ]
   ]
  },
  {
   "id": "d0",
-  "scene": "guess",
-  "text": "So what if it hadn't? Take a guess.",
-  "start": 45.448,
-  "end": 47.375,
+  "scene": "reopen",
+  "text": "So what changed their mind?",
+  "start": 35.419,
+  "end": 37.172,
   "words": [
    [
     "So",
-    45.448,
-    45.66
+    35.419,
+    35.62
    ],
    [
     "what",
-    45.66,
-    45.86
+    35.62,
+    35.82
    ],
    [
-    "if",
-    45.86,
-    45.98
+    "changed",
+    35.82,
+    36.24
    ],
    [
-    "it",
-    45.98,
-    46.08
+    "their",
+    36.24,
+    36.48
    ],
    [
-    "hadn't?",
-    46.08,
-    46.48
-   ],
-   [
-    "Take",
-    46.48,
-    46.74
-   ],
-   [
-    "a",
-    46.74,
-    46.9
-   ],
-   [
-    "guess.",
-    46.9,
-    47.06
+    "mind?",
+    36.48,
+    36.84
    ]
   ]
  },
  {
   "id": "e0",
-  "scene": "econ",
-  "text": "Today, an independent Texas would be the eighth largest economy on Earth. Bigger than Canada. Bigger than Russia.",
-  "start": 48.875,
-  "end": 55.466,
+  "scene": "britain",
+  "text": "Britain. Texas started negotiating with London, and Britain wanted exactly what Texas had: cotton, and a country wedged under the United States.",
+  "start": 38.372,
+  "end": 46.579,
   "words": [
    [
-    "Today,",
-    48.875,
-    49.16
-   ],
-   [
-    "an",
-    49.24,
-    49.42
-   ],
-   [
-    "independent",
-    49.42,
-    49.82
+    "Britain.",
+    38.372,
+    38.82
    ],
    [
     "Texas",
-    49.82,
-    50.32
+    38.82,
+    39.06
    ],
    [
-    "would",
-    50.32,
-    50.58
+    "started",
+    39.06,
+    39.46
    ],
    [
-    "be",
-    50.58,
-    50.72
+    "negotiating",
+    39.46,
+    40.0
+   ],
+   [
+    "with",
+    40.0,
+    40.36
+   ],
+   [
+    "London,",
+    40.36,
+    40.68
+   ],
+   [
+    "and",
+    41.0,
+    41.2
+   ],
+   [
+    "Britain",
+    41.2,
+    41.42
+   ],
+   [
+    "wanted",
+    41.42,
+    41.76
+   ],
+   [
+    "exactly",
+    41.76,
+    42.3
+   ],
+   [
+    "what",
+    42.3,
+    42.56
+   ],
+   [
+    "Texas",
+    42.56,
+    42.88
+   ],
+   [
+    "had:",
+    42.88,
+    43.28
+   ],
+   [
+    "cotton,",
+    43.76,
+    44.16
+   ],
+   [
+    "and",
+    44.16,
+    44.46
+   ],
+   [
+    "a",
+    44.46,
+    44.6
+   ],
+   [
+    "country",
+    44.6,
+    44.86
+   ],
+   [
+    "wedged",
+    44.86,
+    45.36
+   ],
+   [
+    "under",
+    45.36,
+    45.54
    ],
    [
     "the",
-    50.72,
-    50.84
+    45.54,
+    45.66
    ],
    [
-    "eighth",
-    50.84,
-    51.1
+    "United",
+    45.66,
+    45.9
    ],
    [
-    "largest",
-    51.1,
-    51.58
-   ],
-   [
-    "economy",
-    51.58,
-    52.1
-   ],
-   [
-    "on",
-    52.1,
-    52.4
-   ],
-   [
-    "Earth.",
-    52.4,
-    52.74
-   ],
-   [
-    "Bigger",
-    53.14,
-    53.36
-   ],
-   [
-    "than",
-    53.36,
-    53.6
-   ],
-   [
-    "Canada.",
-    53.6,
-    54.02
-   ],
-   [
-    "Bigger",
-    54.4,
-    54.64
-   ],
-   [
-    "than",
-    54.64,
-    54.9
-   ],
-   [
-    "Russia.",
-    54.9,
-    55.22
+    "States.",
+    45.9,
+    46.42
    ]
   ]
  },
  {
   "id": "e1",
-  "scene": "oil",
-  "text": "It would pump more than forty percent of America's oil, and America would have to buy it.",
-  "start": 55.726,
-  "end": 60.285,
+  "scene": "panic",
+  "text": "A British ally on the southern border was the one thing Washington could not allow.",
+  "start": 46.839,
+  "end": 51.184,
   "words": [
    [
-    "It",
-    55.726,
-    55.82
+    "A",
+    46.84,
+    46.94
    ],
    [
-    "would",
-    55.82,
-    55.96
+    "British",
+    46.94,
+    47.16
    ],
    [
-    "pump",
-    55.96,
-    56.2
+    "ally",
+    47.16,
+    47.56
    ],
    [
-    "more",
-    56.2,
-    56.44
+    "on",
+    47.56,
+    47.82
    ],
    [
-    "than",
-    56.44,
-    56.6
+    "the",
+    47.82,
+    47.94
    ],
    [
-    "forty",
-    56.6,
-    56.9
+    "southern",
+    47.94,
+    48.2
    ],
    [
-    "percent",
-    56.9,
-    57.32
+    "border",
+    48.2,
+    48.58
    ],
    [
-    "of",
-    57.32,
-    57.46
+    "was",
+    48.58,
+    48.98
    ],
    [
-    "America's",
-    57.46,
-    57.98
+    "the",
+    48.98,
+    49.14
    ],
    [
-    "oil,",
-    57.98,
-    58.2
+    "one",
+    49.14,
+    49.34
    ],
    [
-    "and",
-    58.2,
-    58.76
+    "thing",
+    49.34,
+    49.56
    ],
    [
-    "America",
-    58.76,
-    59.12
+    "Washington",
+    49.56,
+    50.1
    ],
    [
-    "would",
-    59.12,
-    59.42
+    "could",
+    50.1,
+    50.48
    ],
    [
-    "have",
-    59.42,
-    59.6
+    "not",
+    50.48,
+    50.68
    ],
    [
-    "to",
-    59.6,
-    59.74
-   ],
-   [
-    "buy",
-    59.74,
-    59.98
-   ],
-   [
-    "it.",
-    59.98,
-    60.16
+    "allow.",
+    50.68,
+    51.02
    ]
   ]
  },
  {
   "id": "e2",
-  "scene": "people",
-  "text": "Thirty-one million people would carry a Texan passport.",
-  "start": 60.545,
-  "end": 63.587,
+  "scene": "yes",
+  "text": "In 1845, the answer became yes. Texas joined, and it joined fast.",
+  "start": 51.484,
+  "end": 56.488,
   "words": [
    [
-    "Thirty-one",
-    60.56,
-    60.92
+    "In",
+    51.484,
+    51.62
    ],
    [
-    "million",
-    60.92,
-    61.38
+    "1845,",
+    51.62,
+    52.36
    ],
    [
-    "people",
-    61.38,
-    61.8
+    "the",
+    52.68,
+    52.76
    ],
    [
-    "would",
-    61.8,
-    62.06
+    "answer",
+    52.76,
+    53.1
    ],
    [
-    "carry",
-    62.06,
-    62.34
+    "became",
+    53.1,
+    53.46
    ],
    [
-    "a",
-    62.34,
-    62.5
+    "yes.",
+    53.46,
+    53.84
    ],
    [
-    "Texan",
-    62.5,
-    62.9
+    "Texas",
+    54.42,
+    54.7
    ],
    [
-    "passport.",
-    62.9,
-    63.28
+    "joined,",
+    54.7,
+    55.2
+   ],
+   [
+    "and",
+    55.2,
+    55.42
+   ],
+   [
+    "it",
+    55.42,
+    55.52
+   ],
+   [
+    "joined",
+    55.52,
+    55.82
+   ],
+   [
+    "fast.",
+    55.82,
+    56.24
    ]
   ]
  },
  {
   "id": "f0",
-  "scene": "war",
-  "text": "But here is the part nobody expects.",
-  "start": 63.887,
-  "end": 66.161,
+  "scene": "twist",
+  "text": "And here is what nobody expects.",
+  "start": 56.788,
+  "end": 58.846,
   "words": [
    [
-    "But",
-    63.887,
-    64.02
+    "And",
+    56.788,
+    56.92
    ],
    [
     "here",
-    64.02,
-    64.3
+    56.92,
+    57.18
    ],
    [
     "is",
-    64.3,
-    64.52
+    57.18,
+    57.4
    ],
    [
-    "the",
-    64.52,
-    64.64
-   ],
-   [
-    "part",
-    64.64,
-    64.86
+    "what",
+    57.4,
+    57.56
    ],
    [
     "nobody",
-    64.86,
-    65.2
+    57.56,
+    57.92
    ],
    [
     "expects.",
-    65.2,
-    65.84
+    57.92,
+    58.48
    ]
   ]
  },
  {
   "id": "f1",
-  "scene": "cession",
-  "text": "Annexing Texas is what started the war with Mexico. And winning that war is how America got California.",
-  "start": 66.421,
-  "end": 72.464,
+  "scene": "war",
+  "text": "Annexing Texas started a war with Mexico. America won it, and took everything from the Rio Grande to the Pacific.",
+  "start": 59.106,
+  "end": 65.765,
   "words": [
    [
     "Annexing",
-    66.421,
-    66.9
+    59.106,
+    59.6
    ],
    [
     "Texas",
-    66.9,
-    67.22
-   ],
-   [
-    "is",
-    67.22,
-    67.6
-   ],
-   [
-    "what",
-    67.6,
-    67.76
+    59.6,
+    59.9
    ],
    [
     "started",
-    67.76,
-    68.1
+    59.9,
+    60.34
    ],
    [
-    "the",
-    68.1,
-    68.24
+    "a",
+    60.34,
+    60.5
    ],
    [
     "war",
-    68.24,
-    68.46
+    60.5,
+    60.72
    ],
    [
     "with",
-    68.46,
-    68.66
+    60.72,
+    60.9
    ],
    [
     "Mexico.",
-    68.66,
-    69.08
-   ],
-   [
-    "And",
-    69.54,
-    69.82
-   ],
-   [
-    "winning",
-    69.82,
-    70.0
-   ],
-   [
-    "that",
-    70.0,
-    70.24
-   ],
-   [
-    "war",
-    70.24,
-    70.52
-   ],
-   [
-    "is",
-    70.52,
-    70.72
-   ],
-   [
-    "how",
-    70.72,
-    70.92
+    60.9,
+    61.36
    ],
    [
     "America",
-    70.92,
-    71.24
+    62.04,
+    62.34
    ],
    [
-    "got",
-    71.24,
-    71.62
+    "won",
+    62.34,
+    62.74
    ],
    [
-    "California.",
-    71.62,
-    72.16
+    "it,",
+    62.74,
+    62.9
+   ],
+   [
+    "and",
+    62.9,
+    63.18
+   ],
+   [
+    "took",
+    63.18,
+    63.38
+   ],
+   [
+    "everything",
+    63.38,
+    63.78
+   ],
+   [
+    "from",
+    63.78,
+    64.08
+   ],
+   [
+    "the",
+    64.08,
+    64.2
+   ],
+   [
+    "Rio",
+    64.2,
+    64.48
+   ],
+   [
+    "Grande",
+    64.48,
+    64.9
+   ],
+   [
+    "to",
+    64.9,
+    65.04
+   ],
+   [
+    "the",
+    65.04,
+    65.14
+   ],
+   [
+    "Pacific.",
+    65.14,
+    65.5
    ]
   ]
  },
  {
   "id": "z0",
   "scene": "reveal",
-  "text": "No Texas, no war. No war, no California. The whole west coast might never have been American at all.",
-  "start": 72.724,
-  "end": 78.67,
+  "text": "California, Nevada, Utah, Arizona. Texas is the reason America reaches the west coast at all.",
+  "start": 66.025,
+  "end": 72.26,
   "words": [
    [
-    "No",
-    72.78,
-    72.92
+    "California,",
+    66.025,
+    66.46
    ],
    [
-    "Texas,",
-    72.92,
-    73.3
+    "Nevada,",
+    66.84,
+    67.12
    ],
    [
-    "no",
-    73.54,
-    73.66
+    "Utah,",
+    67.56,
+    67.76
    ],
    [
-    "war.",
-    73.66,
-    74.0
+    "Arizona.",
+    68.08,
+    68.32
    ],
    [
-    "No",
-    74.28,
-    74.44
+    "Texas",
+    69.06,
+    69.34
    ],
    [
-    "war,",
-    74.44,
-    74.78
+    "is",
+    69.34,
+    69.66
    ],
    [
-    "no",
-    74.88,
-    74.96
+    "the",
+    69.66,
+    69.82
    ],
    [
-    "California.",
-    74.96,
-    75.5
+    "reason",
+    69.82,
+    70.12
    ],
    [
-    "The",
-    76.08,
-    76.2
+    "America",
+    70.12,
+    70.5
    ],
    [
-    "whole",
-    76.2,
-    76.38
+    "reaches",
+    70.5,
+    71.0
+   ],
+   [
+    "the",
+    71.0,
+    71.24
    ],
    [
     "west",
-    76.38,
-    76.64
+    71.24,
+    71.44
    ],
    [
     "coast",
-    76.64,
-    76.9
-   ],
-   [
-    "might",
-    76.9,
-    77.18
-   ],
-   [
-    "never",
-    77.18,
-    77.46
-   ],
-   [
-    "have",
-    77.46,
-    77.6
-   ],
-   [
-    "been",
-    77.6,
-    77.74
-   ],
-   [
-    "American",
-    77.74,
-    78.16
+    71.44,
+    71.7
    ],
    [
     "at",
-    78.16,
-    78.38
+    71.7,
+    71.92
    ],
    [
     "all.",
-    78.38,
-    78.58
+    71.92,
+    72.14
    ]
   ]
  }

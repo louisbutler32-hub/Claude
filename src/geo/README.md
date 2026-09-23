@@ -92,21 +92,29 @@ Measured off four reference Shorts (the euro, the 13 colonies, the Great
 Lakes, Holland). These are what separate the format from a labelled map,
 and all four are in `texas/TexasShort.tsx` if you want a worked example.
 
-**Countries are characters.** `<Character>` fills a country flat and
-saturated, outlines it dark, and gives it big white eyes, heavy brows, a
-thin mouth and optional hanging arms. It blinks, bobs, and its pupils point
-where you aim `look`. Nine moods — `proud`, `worried`, `smug`, `shocked`
-and the rest — and the shape itself is the body, so the character rides the
-camera with the ground.
+**No cartoon faces.** Two of the four references put googly eyes on
+countries. That is not this channel — the look here is the clean,
+professional end of the format (the Great Lakes and Holland videos). A
+first pass built the faces and they were wrong; `annotate.tsx` replaced
+them.
 
-**They talk.** `<Dialogue>` hangs a line of speech above a character's head
-on a thin leader, so an argument between two countries reads without a
-single caption. Keep the lines to three or four words.
+**Flat fills, white edges, names on the ground.** `<Region>` fills a
+country saturated and opaque with a white outline, optionally with a soft
+outer glow for the one thing being discussed. `<PlaceName>` sets its name
+in heavy white caps on the country itself, rotated along it where that
+reads better.
 
 **The big words are renders, not captions.** `<Title3D>` lays the word on a
 plane inside the shot — turned, tilted, extruded so you see its thickness,
 a warm bloom behind it and a flattened copy thrown onto the terrain as a
 shadow. It swings in and settles. One per beat, never two.
+
+**Point at things.** `<Ring>` draws a rough yellow ellipse around a place,
+the way the Great Lakes video circles the lakes, and `<Leader>` runs a
+stalk out to a label. `<BigStat>` plants a big yellow number on screen with
+a leader down to its subject. `<ScaleSilhouette>` drops another country's
+outline onto the map at a matched scale — the fastest way to say "bigger
+than France" without saying a number.
 
 **Objects, not adjectives.** `<MapProp>` drops a drawn object onto a place
 — derrick, coin, cash, barrel, people, cattle, capitol, flagpole, ship,
@@ -116,6 +124,18 @@ reads faster than a percentage.
 
 Captions run one word at a time (`WordCaptions`) at about 61% of frame
 height, clear of the Shorts title and channel overlay.
+
+## Retention
+
+Every short here is written against
+[`docs/dopamine-ladder.md`](../../docs/dopamine-ladder.md) — six rungs,
+of which four are inside the video. In practice two decide most of it:
+**ask a question out loud in the first three seconds** rather than stating
+a fact, and **offer the obvious answer and knock it down** before giving
+the real one, so the loop reopens instead of closing. `texas/` is the
+worked example: question at 0 s, the money answer offered and broken at
+24 s, reopened at 35 s, Britain at 38 s, and the consequence nobody
+expects at 59 s.
 
 ## Sound
 
