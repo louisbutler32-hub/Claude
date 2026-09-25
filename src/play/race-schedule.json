@@ -1,0 +1,26 @@
+{
+  "fps": 30,
+  "duration": 840,
+  "headlineFrom": 4,
+  "headlineUntil": 96,
+  "countFrom": 18,
+  "countBeat": 18,
+  "go": 78,
+  "events": {
+    "rollerSlide": 195,
+    "snatchedJump": 252,
+    "slipperSlip": 330,
+    "winnerSlip": 450,
+    "snatchedLands": 552,
+    "winnerLands": 588,
+    "rollerLands": 609,
+    "eagleStart": 645,
+    "eagleGrab": 663,
+    "eagleEnd": 687,
+    "slipperLands": 690,
+    "slipperOff": 714,
+    "rollerYawn": 738,
+    "rollerOff": 768,
+    "win": 792
+  }
+}

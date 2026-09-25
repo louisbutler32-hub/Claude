@@ -7,9 +7,9 @@ before writing a title or description — the footer block differs.
 
 **Pebblo Pebble** — https://www.youtube.com/@PebbloPebble — the kids'
 learning-video line (`src/guess/`, `src/veggies/`, `src/numbers/`,
-`src/animals/`, `src/vehicles/`, `src/dinosaurs/`, `src/sea/`, and the
-doodle-essay subjects: `src/earth/`, `src/mummy/`, `src/face/`,
-`src/killers/`, `src/planets/`). Every one of these links the learning
+`src/animals/`, `src/vehicles/`, `src/dinosaurs/`, `src/sea/`, the
+play-along Shorts in `src/play/`, and the doodle-essay subjects:
+`src/earth/`, `src/mummy/`, `src/face/`, `src/killers/`, `src/planets/`). Every one of these links the learning
 playlist: https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
 
 Both go near the end of the description, above the hashtags, in this block:
@@ -89,6 +89,15 @@ that it is the compressed one, with the command to build the master.
 `edge-tts` output is for timing the edit, not for shipping. It stays
 gitignored. Each episode's track is a drop-in slot at
 `public/audio/<subject>-mix.mp3`.
+
+## Shorts — the play-along line
+
+`src/play/` makes interactive vertical Shorts in the look of the two
+reference clips: "play along with the beat!" (a rhythm game) and "Choose
+your champion!" (a rope race). They use their own cast (Pebblo, Capy, Bun,
+Mint). **Read `src/play/README.md` first.** Timing lives in
+`beat-pattern.json` and `race-schedule.json`, which the audio builder reads
+too. Run `npm run play:audio` before rendering on a fresh clone.
 
 ## Shorts — the clipper
 

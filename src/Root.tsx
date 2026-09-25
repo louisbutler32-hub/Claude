@@ -91,6 +91,9 @@ import { MinecraftShort, MINECRAFT_FRAMES } from "./minecraft/MinecraftShort";
 import { MinecraftThumb } from "./minecraft/Thumbnail";
 import { PebbloSheet } from "./minecraft/PebbloSheet";
 import { CastSheet } from "./guess/CastSheet";
+import { PlaySheet } from "./play/PlaySheet";
+import { BeatShort, BEAT_FRAMES } from "./play/BeatShort";
+import { RaceShort, RACE_FRAMES } from "./play/RaceShort";
 import { FruitVideo, FRUIT_DURATION_IN_FRAMES } from "./fruit/FruitVideo";
 import { FruitArtSheet } from "./fruit/ArtSheet";
 import { FruitThumbA, FruitThumbB } from "./fruit/Thumbnail";
@@ -275,6 +278,33 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="Fruit-Thumbnail-Board"
         component={FruitThumbB}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      {/* ── interactive Shorts: the play line (src/play) ── */}
+      <Composition
+        id="Play-Beat"
+        component={BeatShort}
+        durationInFrames={BEAT_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{ audio: "audio/play-beat-mix.mp3" }}
+      />
+      <Composition
+        id="Play-Race"
+        component={RaceShort}
+        durationInFrames={RACE_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{ winner: "pebblo" as const, audio: "audio/play-race-mix.mp3" }}
+      />
+      <Composition
+        id="Play-Sheet"
+        component={PlaySheet}
         durationInFrames={1}
         fps={30}
         width={1920}
