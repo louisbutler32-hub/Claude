@@ -107,6 +107,36 @@ VEGGIE_ROUNDS = [
      "Mushrooms grow in the shade, near old logs and trees."),
 ]
 
+# Fruit — the first episode on the channel's own cast (src/guess/cast.tsx).
+# Same "grow" kind as the vegetables; Munch does the eating instead of the
+# crocodile. Order MUST match `rounds` in src/fruit/subject.tsx.
+FRUIT_ROUNDS = [
+    ("apple",      "It's an apple! Apple.",           "A shiny red apple.",
+     "Apples grow on trees. They hang from the branches until they're ripe!"),
+    ("banana",     "It's a banana! Banana.",          "A long yellow banana.",
+     "Bananas grow way up high, in big bunches under the palm leaves."),
+    ("orange",     "It's an orange! Orange.",         "A round juicy orange.",
+     "Oranges grow on trees, where it's warm and sunny."),
+    ("strawberry", "It's a strawberry! Strawberry.",  "A sweet red strawberry.",
+     "Strawberries grow low down, on little plants close to the ground."),
+    ("grapes",     "It's grapes! Grapes.",            "A bunch of purple grapes.",
+     "Grapes grow on a vine, hanging down in big bunches."),
+    ("watermelon", "It's a watermelon! Watermelon.",  "A big juicy watermelon.",
+     "Watermelons grow on the ground, on a long leafy vine."),
+    ("pear",       "It's a pear! Pear.",              "A green pear.",
+     "Pears grow on trees, just like apples do."),
+    ("pineapple",  "It's a pineapple! Pineapple.",    "A spiky yellow pineapple.",
+     "Pineapples grow right in the middle of a spiky plant, one on each!"),
+    ("cherry",     "It's cherries! Cherries.",        "Two little red cherries.",
+     "Cherries grow on trees, in pairs, on long thin stems."),
+    ("lemon",      "It's a lemon! Lemon.",            "A sour yellow lemon.",
+     "Lemons grow on small trees, where it's warm all year."),
+    ("peach",      "It's a peach! Peach.",            "A soft fuzzy peach.",
+     "Peaches grow on trees, and they're fuzzy on the outside!"),
+    ("kiwi",       "It's a kiwi! Kiwi.",              "A fuzzy brown kiwi, green inside.",
+     "Kiwis grow on a vine, hanging down from a wire."),
+]
+
 # Animals carry a fifth field: the noise Ana makes on the sound beat.
 ANIMAL_ROUNDS = [
     ("cow",      "It's a cow! Cow.",           "A big black and white cow.",
@@ -323,6 +353,11 @@ SEA_ROUNDS = [
 SUBJECTS = {
     "short": dict(rounds=[], kind="short", word="number",
                   frames=SHORT_FRAMES),
+    # the Peekaboo Pebblo line: its own opener, its own chomper, its own
+    # peek lines (the defaults below are the original "Chomp Chomp" ones)
+    "fruit": dict(rounds=FRUIT_ROUNDS, kind="grow", word="fruit",
+                  opener="Peekaboo! Fruit!", chomper="Munch",
+                  peeks="fruit"),
     "vehicles": dict(rounds=VEHICLE_ROUNDS, kind="go", word="vehicle"),
     "dinosaurs": dict(rounds=DINO_ROUNDS, kind="live", word="dinosaur"),
     "sea": dict(rounds=SEA_ROUNDS, kind="live", word="sea creature"),
@@ -379,6 +414,11 @@ ARTICLE = {
     "blue": "blue", "purple": "purple", "pink": "pink", "brown": "brown",
     "black": "black", "white": "white", "grey": "grey",
     "rainbow": "the rainbow",
+    "apple": "the apple", "banana": "the banana", "orange": "the orange",
+    "strawberry": "the strawberry", "grapes": "the grapes",
+    "watermelon": "the watermelon", "pineapple": "the pineapple",
+    "pear": "the pear", "cherry": "the cherries", "lemon": "the lemon",
+    "peach": "the peach", "kiwi": "the kiwi",
 }
 
 # a little variety so twelve rounds don't read identically
@@ -404,6 +444,20 @@ PEEKS_GROW = [
     "Who's that behind the bushes?",
     "Look, something is hopping along!",
     "Here comes another vegetable. What could it be?",
+    "Ooh! Something is hiding in the bushes.",
+    "Look! Can you see what's peeking out?",
+    "One more is hiding. Can you find it?",
+]
+PEEKS_FRUIT = [
+    "Peekaboo! Let's find some fruit with Pebblo. Ooh, something is hiding in the bushes.",
+    "Look! Something else is hiding.",
+    "Ooh! Who is hiding in the bushes now?",
+    "Here comes another one. Can you see it?",
+    "Look! Something is peeking out.",
+    "Ooh! Something is hiding again.",
+    "Who's that behind the bushes?",
+    "Look, something is hopping along!",
+    "Here comes another fruit. What could it be?",
     "Ooh! Something is hiding in the bushes.",
     "Look! Can you see what's peeking out?",
     "One more is hiding. Can you find it?",
@@ -493,7 +547,7 @@ PEEKS_COLOUR = [
     "One more colour is hiding. Can you find it?",
 ]
 PEEKS = {
-    "grow": PEEKS_GROW,
+    "grow": PEEKS_FRUIT if CONF.get("peeks") == "fruit" else PEEKS_GROW,
     "live": {
         "animals": PEEKS_LIVE, "dinosaurs": PEEKS_DINO, "sea": PEEKS_SEA,
     }.get(SUBJECT, PEEKS_LIVE),
@@ -542,7 +596,7 @@ def vo_schedule():
     """[(frame, text, voice, tag)] for every spoken line."""
     if CONF["kind"] == "short":
         return short_schedule()
-    opener = {
+    opener = CONF.get("opener") or {
         "grow": "Chomp chomp! Veggies!",
         "live": {
             "animals": "Chomp chomp! Animals!",
@@ -636,7 +690,8 @@ def vo_schedule():
         lines.append((b + B_FACT, mid_line, "emma", f"{n:02d}-{vid}-fact"))
 
         if CONF["kind"] == "grow":
-            lines.append((b + B_CROC, "Uh oh! Here comes the crocodile.",
+            chomper = CONF.get("chomper", "the crocodile")
+            lines.append((b + B_CROC, f"Uh oh! Here comes {chomper}.",
                           "emma", f"{n:02d}-{vid}-croc"))
         elif CONF["kind"] in ("live", "go"):
             verb2 = "sound" if CONF["kind"] == "live" else "go"

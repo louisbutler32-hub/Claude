@@ -129,6 +129,7 @@ const QMark: React.FC<{ x: number; y: number; size: number; rot?: number }> = ({
 export const ShadowThumb: React.FC<{ config: ThumbConfig }> = ({ config }) => {
   loadVeggieFonts();
   const { subject, noun, heroes } = config;
+  const Mascot = subject.cast?.Mascot;
   return (
     <AbsoluteFill style={{ backgroundColor: "#dceaee", overflow: "hidden" }}>
       <SceneFilters />
@@ -164,9 +165,15 @@ export const ShadowThumb: React.FC<{ config: ThumbConfig }> = ({ config }) => {
       <PunchLine text={noun} colors={TITLE_COLORS} size={224} top={176} />
 
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
-        <g transform={`translate(240 ${H - 96}) scale(1.02)`}>
-          <Crocodile chomp={0.1} step={1.1} />
-        </g>
+        {Mascot ? (
+          <g transform={`translate(200 ${H - 190}) scale(1.25)`}>
+            <Mascot step={1.1} />
+          </g>
+        ) : (
+          <g transform={`translate(240 ${H - 96}) scale(1.02)`}>
+            <Crocodile chomp={0.1} step={1.1} />
+          </g>
+        )}
       </svg>
       <PaperGrain opacity={0.12} />
     </AbsoluteFill>

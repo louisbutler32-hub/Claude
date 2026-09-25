@@ -1,4 +1,5 @@
 import type React from "react";
+import type { Cast } from "./cast";
 import type { DrifterId } from "./critters";
 
 /**
@@ -60,4 +61,12 @@ export type GuessSubject = {
   noSilhouette?: boolean;
   /** the on-screen prompt before the reveal. Defaults to "What is that?" */
   question?: string;
+  /**
+   * The channel's own characters (src/guess/cast.tsx): the mascot on the
+   * title card and the thumbnails, the host who peeks over the bush while
+   * the viewer guesses, and the friends who cheer at the board. Episodes
+   * without one keep the original crocodile and animals, so the published
+   * ones still render as uploaded.
+   */
+  cast?: Cast;
 };

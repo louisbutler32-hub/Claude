@@ -90,6 +90,10 @@ import { Shelterbelt, SHELTERBELT_DURATION_IN_FRAMES } from "./maps/shelterbelt"
 import { MinecraftShort, MINECRAFT_FRAMES } from "./minecraft/MinecraftShort";
 import { MinecraftThumb } from "./minecraft/Thumbnail";
 import { PebbloSheet } from "./minecraft/PebbloSheet";
+import { CastSheet } from "./guess/CastSheet";
+import { FruitVideo, FRUIT_DURATION_IN_FRAMES } from "./fruit/FruitVideo";
+import { FruitArtSheet } from "./fruit/ArtSheet";
+import { FruitThumbA, FruitThumbB } from "./fruit/Thumbnail";
 import { CharacterOptions } from "./minecraft/characters";
 import { PvpShort, PvpThumb, PVP_FRAMES } from "./minecraft-pvp/PvpShort";
 import { CreeperShort, CreeperThumb, CREEPER_FRAMES } from "./minecraft-creeper/CreeperShort";
@@ -240,6 +244,49 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1080}
         height={1920}
+      />
+
+      {/* ── Peekaboo Pebblo — the guess format on the channel's own cast ── */}
+      <Composition
+        id="FruitVideo"
+        component={FruitVideo}
+        durationInFrames={FRUIT_DURATION_IN_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{ audio: "audio/fruit-mix.mp3" }}
+      />
+      <Composition
+        id="Fruit-ArtSheet"
+        component={FruitArtSheet}
+        durationInFrames={30}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Fruit-Thumbnail"
+        component={FruitThumbA}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Fruit-Thumbnail-Board"
+        component={FruitThumbB}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Cast-Sheet"
+        component={CastSheet}
+        durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
       />
 
       {/* ── doodle science essays ── */}

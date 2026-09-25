@@ -6,10 +6,16 @@ import { fonts } from "./palette";
 import { H, W } from "./scene";
 import type { GuessSubject } from "./types";
 
-/** "Chomp Chomp <SUBJECT>", each letter painted a different colour. */
+/**
+ * "<series line> <SUBJECT>", each letter of the subject painted a different
+ * colour, the mascot in the corner. Episodes with a cast get its series line
+ * and mascot; the originals keep "Chomp Chomp" and the crocodile.
+ */
 export const TitleCard: React.FC<{ subject: GuessSubject }> = ({ subject }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const cast = subject.cast;
+  const Mascot = cast?.Mascot;
 
   const banner = spring({
     frame: frame - 2,
@@ -57,12 +63,23 @@ export const TitleCard: React.FC<{ subject: GuessSubject }> = ({ subject }) => {
           );
         })}
 
-        <g
-          transform={`translate(1560 960) scale(${1.05 * chomp})`}
-          opacity={chomp}
-        >
-          <Crocodile chomp={0.15} step={frame / 5} />
-        </g>
+        {Mascot && cast ? (
+          <g
+            transform={`translate(${cast.mascotAt.x} ${cast.mascotAt.y}) scale(${
+              cast.mascotAt.s * chomp
+            })`}
+            opacity={chomp}
+          >
+            <Mascot step={frame / 5} />
+          </g>
+        ) : (
+          <g
+            transform={`translate(1560 960) scale(${1.05 * chomp})`}
+            opacity={chomp}
+          >
+            <Crocodile chomp={0.15} step={frame / 5} />
+          </g>
+        )}
 
         <g
           transform={`translate(960 470) scale(${0.86 + banner * 0.14})`}
@@ -105,7 +122,7 @@ export const TitleCard: React.FC<{ subject: GuessSubject }> = ({ subject }) => {
           transform: `translateY(${(1 - chomp) * -30}px)`,
         }}
       >
-        Chomp Chomp
+        {cast?.titleLine ?? "Chomp Chomp"}
       </div>
 
       <div

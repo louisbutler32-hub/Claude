@@ -11,6 +11,7 @@ import {
 } from "remotion";
 import { BEAT, INTRO_LEN, ROUND_LEN, totalFrames } from "./beats";
 import { Board, FlyToSlot, Item } from "./Board";
+import { PebbloKid, type Cast } from "./cast";
 import { Cat, Dog, DRIFTERS, DRIFTER_FLIES, Frog, Penguin } from "./critters";
 import { loadVeggieFonts } from "./fonts";
 import { Confetti, PopLines, RevealFlash, Sparkles } from "./fx";
@@ -42,6 +43,76 @@ import { CornerLabel, WobbleText } from "./ui";
 
 const HERO_X = 960;
 const HERO_Y = 610;
+
+/** The reference edit's supporting animals, for the episodes built before
+ *  the channel had a cast of its own. */
+const LEGACY_CHEER: Cast["cheer"] = [
+  { C: Cat, x: 140, y: 946 },
+  { C: Frog, x: 640, y: 1000 },
+  { C: Penguin, x: 1252, y: 986 },
+  { C: Dog, x: 1768, y: 950 },
+];
+
+/** Where the host peeks from — behind the left bush, clear of the hero. */
+const PEEK_X = 330;
+const PEEK_UP_Y = 470;
+const PEEK_DOWN_Y = 860;
+const PEEK_OUT = 760;
+
+/**
+ * The host, peeking over the left bush while the viewer guesses. It rises
+ * with the silhouette, looks up at it and thinks, throws its arms up on the
+ * reveal, and ducks back down before the subject takes over the scene.
+ * Drawn behind the bushes, so only what clears the bush line shows.
+ */
+const HostPeek: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  if (frame < BEAT.silRise || frame > PEEK_OUT + 40) return null;
+
+  const up = spring({
+    frame: frame - BEAT.silRise - 14,
+    fps,
+    config: { damping: 12, mass: 0.8, stiffness: 100 },
+  });
+  const downT = interpolate(frame, [PEEK_OUT, PEEK_OUT + 36], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const down = downT * downT * (3 - 2 * downT);
+  const rise = up * (1 - down);
+  const y = interpolate(rise, [0, 1], [PEEK_DOWN_Y, PEEK_UP_Y]);
+
+  const revealed = frame >= BEAT.reveal;
+  const hopS = revealed
+    ? spring({
+        frame: frame - BEAT.reveal,
+        fps,
+        config: { damping: 7, mass: 0.4, stiffness: 200 },
+      })
+    : 0;
+  const hop = Math.sin(hopS * Math.PI) * 70;
+  // a blink every three seconds or so
+  const blinkPhase = (frame + 37) % 92;
+  const blink = blinkPhase < 7 ? Math.sin((blinkPhase / 7) * Math.PI) : 0;
+  const lookUp = interpolate(frame, [BEAT.silRise, BEAT.question], [0.2, -0.7], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+
+  return (
+    <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+      <g transform={`translate(${PEEK_X} ${y - hop}) scale(1.05)`}>
+        <PebbloKid
+          pose={revealed ? "tada" : "think"}
+          look={revealed ? [0, 0] : [0.9, lookUp]}
+          blink={blink}
+          step={frame / 9}
+        />
+      </g>
+    </svg>
+  );
+};
 
 const GuessRoundScene: React.FC<{
   subject: GuessSubject;
@@ -117,6 +188,7 @@ const GuessRoundScene: React.FC<{
       fps,
       config: { damping: 11, mass: 0.5, stiffness: 160 },
     });
+  const cheerSquad = subject.cast?.cheer ?? LEGACY_CHEER;
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#dceaee" }}>
@@ -125,6 +197,7 @@ const GuessRoundScene: React.FC<{
       <Sun happy={celebrating} />
       <Grass tulips={boardUp} />
 
+      {subject.cast && !onMid ? <HostPeek /> : null}
       {onMid ? <subject.MidBeat id={id} /> : <BushPair />}
 
       {frame <= BEAT.driftOut ? (
@@ -245,18 +318,15 @@ const GuessRoundScene: React.FC<{
             </>
           ) : null}
           <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
-            {[
-              { C: Cat, x: 140, y: 946 },
-              { C: Frog, x: 640, y: 1000 },
-              { C: Penguin, x: 1252, y: 986 },
-              { C: Dog, x: 1768, y: 950 },
-            ].map((a, i) => {
+            {cheerSquad.map((a, i) => {
               const s = cheer(i);
               const A = a.C;
               return (
                 <g
                   key={i}
-                  transform={`translate(${a.x} ${a.y + (1 - s) * 220}) scale(1.05)`}
+                  transform={`translate(${a.x} ${a.y + (1 - s) * 220}) scale(${
+                    a.scale ?? 1.05
+                  })`}
                   opacity={s}
                 >
                   <A />
