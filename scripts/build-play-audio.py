@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
-Soundtracks for the interactive Shorts (src/play/), synthesised from
-scratch so there is nothing to license:
+Fallback soundtracks for the play-along Shorts (src/play/), synthesised
+from scratch so there is nothing to license. The Shorts default to the
+reference clips' own audio (scripts/extract-play-audio.py); these are the
+licence-free alternative, timed from the same JSON:
 
   beat   a 112.5 BPM song — kick on every stomp note, clap on every clap
          note, hats, a bass root and a plucked chord arpeggio — read from
@@ -168,7 +170,9 @@ def cheer(dur=2.4):
 
 def place(track, clip, frame, gain=1.0):
     s = int(round(frame / FPS * SR))
-    if s >= len(track):
+    if s < 0:
+        clip, s = clip[-s:], 0
+    if s >= len(track) or len(clip) == 0:
         return
     e = min(s + len(clip), len(track))
     track[s:e] += clip[: e - s] * gain
@@ -204,105 +208,85 @@ CHORDS = [
 
 # ── the beat short ────────────────────────────────────────────────────
 def build_beat():
+    """The fallback track: a kick on every stomp, a clap on every clap,
+    and a bed at the tempo the hits imply. The real soundtrack is the
+    reference's (scripts/extract-play-audio.py)."""
     P = json.load(open(os.path.join(ROOT, "src", "play", "beat-pattern.json")))
     frames = P["duration"]
     total = int(frames / FPS * SR)
     sfx = np.zeros(total, np.float32)
     music = np.zeros(total, np.float32)
-    B = P["beatFrames"]
     K, C, HH = kick(), clap(), hat()
 
-    # count-in
-    for i in range(4):
-        place(sfx, tick(1400 if i < 3 else 1900), P["countFrom"] + i * B, 0.8)
+    for fr, _ in P["count"]:
+        place(sfx, tick(1400), fr, 0.7)
+    for fr in P["hits"]["L"]:
+        place(sfx, K, fr, 1.0)
+    for fr in P["hits"]["R"]:
+        place(sfx, C, fr, 0.9)
 
-    hits = []
-    for b, bar in enumerate(P["bars"]):
-        for i, ch in enumerate(bar):
-            fr = P["firstHit"] + (b * 4 + i) * B
-            if ch == "L":
-                hits.append((fr, "L"))
-                place(sfx, K, fr, 1.0)
-            elif ch == "R":
-                hits.append((fr, "R"))
-                place(sfx, C, fr, 0.9)
-    last = max(h[0] for h in hits)
-
-    # the song underneath: hats on the offbeat, bass on the bar, plucks
-    n_beats = (last - P["firstHit"]) // B + 1
-    for k in range(n_beats):
-        fr = P["firstHit"] + k * B
-        bar = k // 4
-        chord = CHORDS[bar % 4]
-        place(music, HH, fr + B / 2, 0.5)
+    # one bar = stomp, stomp, clap, rest: two beats between claps
+    claps = P["hits"]["R"]
+    beat = (claps[-1] - claps[0]) / (len(claps) - 1) / 2
+    fr = float(claps[0]) - 2 * beat
+    k = 0
+    while fr < P["bravoAt"]:
+        chord = CHORDS[(k // 4) % 4]
+        place(music, HH, fr + beat / 2, 0.45)
         if k % 4 == 0:
-            place(music, bass(chord[0] / 2, 1.6), fr, 0.7)
-        # arpeggio: one pluck per beat, a second on the offbeat
-        place(music, pluck(chord[(k % 4)], 0.7), fr, 0.42)
-        place(music, pluck(chord[(k + 2) % 4] * 2, 0.5), fr + B / 2, 0.22)
+            place(music, bass(chord[0] / 2, 1.8), fr, 0.7)
+        place(music, pluck(chord[k % 4], 0.7), fr, 0.4)
+        fr += beat
+        k += 1
 
-    # BRAVO: fanfare and applause
     place(sfx, tada(), P["bravoAt"], 0.8)
     place(sfx, cheer(), P["bravoAt"] + 4, 0.7)
-
-    mix = 0.9 * sfx + 0.55 * music
-    write(mix, "play-beat-mix", frames / FPS)
+    write(0.9 * sfx + 0.55 * music, "play-beat-mix", frames / FPS)
 
 
 # ── the race short ────────────────────────────────────────────────────
 def build_race():
+    """The fallback track, with effects on every story beat."""
     S = json.load(open(os.path.join(ROOT, "src", "play", "race-schedule.json")))
-    E = S["events"]
+    T = {k: v * FPS for k, v in S["t"].items()}
     frames = S["duration"]
     total = int(frames / FPS * SR)
     sfx = np.zeros(total, np.float32)
     music = np.zeros(total, np.float32)
     K, C, HH = kick(), clap(), hat()
 
-    # count-in and GO
-    for i in range(3):
-        place(sfx, tick(1400), S["countFrom"] + i * S["countBeat"], 0.8)
-    place(sfx, whistle_up(), S["countFrom"] + 3 * S["countBeat"], 0.8)
+    for fr, word in S["count"]:
+        place(sfx, whistle_up() if word.startswith("GO") else tick(1400), fr, 0.8)
 
-    # 96 BPM bed from GO to the win
     beat = 60.0 / 96.0 * FPS
-    fr = float(S["go"])
+    fr = float(S["count"][-1][0])
     k = 0
-    while fr < E["win"] - 4:
-        bar = k // 4
-        chord = CHORDS[bar % 4]
-        if k % 2 == 0:
-            place(music, K, fr, 0.8)
-        else:
-            place(music, C, fr, 0.45)
+    while fr < T["win"] - 4:
+        chord = CHORDS[(k // 4) % 4]
+        place(music, K if k % 2 == 0 else C, fr, 0.7 if k % 2 == 0 else 0.4)
         place(music, HH, fr + beat / 2, 0.45)
         if k % 4 == 0:
             place(music, bass(chord[0] / 2, 2.0), fr, 0.65)
         place(music, pluck(chord[k % 4], 0.6), fr, 0.36)
-        place(music, pluck(chord[(k + 1) % 4] * 2, 0.4), fr + beat / 2, 0.2)
         fr += beat
         k += 1
 
-    # the story beats
-    place(sfx, slide_down(), E["rollerSlide"], 0.7)
-    place(sfx, boing(), E["snatchedJump"], 0.7)
-    place(sfx, slide_down(), E["slipperSlip"], 0.7)
-    place(sfx, tick(900, 0.2), E["slipperSlip"] + 18, 0.5)
-    place(sfx, slide_down(), E["winnerSlip"], 0.55)
-    for key in ("snatchedLands", "winnerLands", "rollerLands", "slipperLands"):
-        place(sfx, thud(), E[key], 0.6)
-        place(sfx, tick(2200, 0.12), E[key] + 2, 0.35)
-    place(sfx, screech(), E["eagleStart"] + 6, 0.7)
-    place(sfx, screech(), E["eagleGrab"] + 4, 0.5)
-    place(sfx, fall_whistle(), E["slipperOff"] + 10, 0.7)
+    place(sfx, thud(), T["hit"], 0.8)
+    place(sfx, fall_whistle(), T["hit"] + 4, 0.6)
+    place(sfx, boing(), T["leap"], 0.7)
+    place(sfx, thud(), T["tussle"], 0.8)
+    place(sfx, fall_whistle(), T["tussle"] + 8, 0.6)
+    place(sfx, boing(), T["dogJump"], 0.6)
     for i in range(3):
-        place(sfx, snore(), E["rollerYawn"] - 20 + i * 24, 0.6)
-    place(sfx, fall_whistle(), E["rollerOff"], 0.7)
-    place(sfx, tada(), E["win"], 0.85)
-    place(sfx, cheer(2.0), E["win"] + 6, 0.6)
-
-    mix = 0.9 * sfx + 0.5 * music
-    write(mix, "play-race-mix", frames / FPS)
+        place(sfx, boing(), T["bunnyBack"] + i * 10, 0.4)
+    place(sfx, screech(), T["catYell"], 0.5)
+    place(sfx, fall_whistle(), T["bunnyFall"], 0.7)
+    place(sfx, screech(), T["eagleIn"], 0.7)
+    place(sfx, fall_whistle(), T["dogFall"], 0.7)
+    place(sfx, thud(), T["stand"], 0.6)
+    place(sfx, tada(), T["win"], 0.85)
+    place(sfx, cheer(2.0), T["win"] + 6, 0.6)
+    write(0.9 * sfx + 0.5 * music, "play-race-mix", frames / FPS)
 
 
 if __name__ == "__main__":

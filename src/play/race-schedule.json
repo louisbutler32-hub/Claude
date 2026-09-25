@@ -1,26 +1,57 @@
 {
-  "fps": 30,
-  "duration": 840,
-  "headlineFrom": 4,
-  "headlineUntil": 96,
-  "countFrom": 18,
-  "countBeat": 18,
-  "go": 78,
-  "events": {
-    "rollerSlide": 195,
-    "snatchedJump": 252,
-    "slipperSlip": 330,
-    "winnerSlip": 450,
-    "snatchedLands": 552,
-    "winnerLands": 588,
-    "rollerLands": 609,
-    "eagleStart": 645,
-    "eagleGrab": 663,
-    "eagleEnd": 687,
-    "slipperLands": 690,
-    "slipperOff": 714,
-    "rollerYawn": 738,
-    "rollerOff": 768,
-    "win": 792
-  }
+ "_about": "Frames measured off the reference clip; the story beats sit where the reference's do, so the picture lands on the reference audio.",
+ "fps": 30,
+ "duration": 826,
+ "headline": [
+  0,
+  78
+ ],
+ "count": [
+  [
+   5,
+   "3"
+  ],
+  [
+   24,
+   "2"
+  ],
+  [
+   44,
+   "1"
+  ],
+  [
+   64,
+   "GO!"
+  ]
+ ],
+ "countEnd": 78,
+ "t": {
+  "jump": 2.7,
+  "bunnyTurn": 5.15,
+  "hit": 5.42,
+  "bunnyLaughEnd": 6.25,
+  "catAngry": 6.1,
+  "leap": 7.95,
+  "tussle": 8.2,
+  "tussleEnd": 9.7,
+  "dogBack": 9.7,
+  "catBack": 10.9,
+  "dogJump": 13.2,
+  "dogJumpEnd": 13.45,
+  "bunnyBack": 13.4,
+  "catHop": 15.4,
+  "catYell": 15.6,
+  "bunnyScared": 16.8,
+  "yellEnd": 17.6,
+  "bunnyFall": 17.6,
+  "eagleIn": 20.55,
+  "grab": 20.85,
+  "eagleOut": 21.2,
+  "dogShock": 21.2,
+  "dogFall": 21.6,
+  "pullUp": 24.55,
+  "stand": 24.95,
+  "win": 25.6,
+  "crown": 25.8
+ }
 }

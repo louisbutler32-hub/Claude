@@ -1,11 +1,109 @@
 {
-  "fps": 30,
-  "duration": 840,
-  "beatFrames": 16,
-  "headlineFrom": 6,
-  "headlineUntil": 150,
-  "countFrom": 36,
-  "firstHit": 100,
-  "bars": ["L-R-", "L-R-", "LLR-", "L-RR", "LRLR", "L-R-", "LLR-", "LRLR", "L-R-", "LLRR", "LRLR"],
-  "bravoAt": 800
+ "_about": "Every frame here was measured off the reference clip (button presses, count-in, singer entrance, BRAVO), so the picture lands on the reference audio.",
+ "fps": 30,
+ "duration": 831,
+ "hits": {
+  "L": [
+   7,
+   16,
+   48,
+   57,
+   87,
+   96,
+   128,
+   137,
+   169,
+   178,
+   210,
+   219,
+   250,
+   260,
+   291,
+   300,
+   330,
+   339,
+   370,
+   380,
+   411,
+   420,
+   452,
+   461,
+   491,
+   500,
+   532,
+   540,
+   570,
+   580,
+   611,
+   620,
+   652,
+   661,
+   693,
+   702,
+   734,
+   743,
+   772,
+   782
+  ],
+  "R": [
+   25,
+   66,
+   104,
+   145,
+   186,
+   227,
+   268,
+   309,
+   348,
+   389,
+   430,
+   470,
+   510,
+   550,
+   589,
+   630,
+   670,
+   711,
+   752,
+   791
+  ]
+ },
+ "pressFrames": {
+  "L": 5,
+  "R": 10
+ },
+ "notesFrom": 91,
+ "fall": 36,
+ "headline": [
+  0,
+  104
+ ],
+ "count": [
+  [
+   2,
+   "4"
+  ],
+  [
+   31,
+   "3"
+  ],
+  [
+   49,
+   "2"
+  ],
+  [
+   66,
+   "1"
+  ]
+ ],
+ "countEnd": 80,
+ "beamsOut": [
+  84,
+  94
+ ],
+ "singerIn": [
+  126,
+  158
+ ],
+ "bravoAt": 778
 }

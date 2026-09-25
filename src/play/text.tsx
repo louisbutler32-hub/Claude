@@ -93,34 +93,35 @@ export const Headline: React.FC<{ text: string; from: number; until: number; y?:
 };
 
 /**
- * The red hand-drawn count. `steps` are the words, one per `beat` frames,
- * starting at `from`. Each pops in and holds until the next.
+ * The red hand-drawn count. `marks` are [frame, word] pairs; each word pops
+ * in on its frame and holds until the next one (the last until `end`).
  */
-export const Countdown: React.FC<{ steps: string[]; from: number; beat: number; y?: number; size?: number }> = ({
-  steps,
-  from,
-  beat,
+export const Countdown: React.FC<{ marks: [number, string][]; end: number; y?: number; size?: number; gap?: number }> = ({
+  marks,
+  end,
   y = 680,
   size = 120,
+  gap = 0,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const i = Math.floor((frame - from) / beat);
-  if (frame < from || i >= steps.length) return null;
-  const local = frame - from - i * beat;
+  let i = -1;
+  for (let k = 0; k < marks.length; k++) if (frame >= marks[k][0]) i = k;
+  if (i < 0 || frame >= end) return null;
+  const until = i + 1 < marks.length ? marks[i + 1][0] - gap : end;
+  if (frame >= until) return null;
+  const local = frame - marks[i][0];
   const s = spring({ frame: local, fps, config: { damping: 9, mass: 0.5, stiffness: 220 } });
-  const fade = interpolate(local, [beat - 6, beat], [1, 0.6], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const word = steps[i];
+  const word = marks[i][1];
   return (
     <Marker
       text={word}
-      size={word.length > 2 ? size * 0.9 : size}
+      size={word.length > 2 ? size * 1.05 : size}
       y={y}
       fill="#e3363f"
       line="#ffffff"
       lineW={size * 0.09}
-      opacity={fade}
-      scale={0.6 + 0.4 * s}
+      scale={0.55 + 0.45 * s}
       rotate={(i % 2 ? 1 : -1) * 4}
     />
   );

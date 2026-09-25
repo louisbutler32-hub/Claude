@@ -1,197 +1,463 @@
 import React from "react";
-import { AbsoluteFill, Audio, interpolate, random, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
-import { CHAR, CHAR_IDS, CHAR_TOP, type CharId, type Pose } from "./chars";
+import { AbsoluteFill, Audio, random, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { CHAR, CHAR_TOP, type CharId, type Pose } from "./chars";
 import schedule from "./race-schedule.json";
 import { Countdown, Headline, loadPlayFonts, Payoff } from "./text";
 
 /**
- * "Choose your champion!" — the rope-race Short.
+ * "Choose your champion!" — the rope-race Short, rebuilt beat for beat on
+ * the reference clip so it sits on the reference audio.
  *
- * Four ropes on a paper wall, the four characters at the bottom. 3-2-1-GO!
- * and they climb while the camera follows the leader; one slides, one
- * leaps, one slips and dangles. The ledge arrives with sky above it. The
- * first one up gets snatched by an eagle, the late one slips straight off
- * the edge, one yawns and rolls off in its sleep — and whoever is left
- * standing gets the crown.
+ * Four ropes, four racers: Bruno the bear, Mimi the cat, Biscuit the puppy,
+ * Poppy the bunny. 3-2-1-GO! and they climb, drawn from behind, while the
+ * camera rolls up the ropes. Poppy knocks Biscuit off; Mimi gets cross and
+ * tackles Poppy and they both drop; Biscuit climbs back and hops ropes;
+ * Poppy bounces back up and Mimi shouts her off (the rope snaps); an eagle
+ * snatches Bruno near the top and Biscuit lets go in fright; Mimi pulls up
+ * over the ledge alone — WINNER! and a crown.
  *
- * `winner` picks who is left standing. The other three take the other
- * roles, so the same engine renders four different episodes.
+ * Times (seconds) are in race-schedule.json and match the reference's.
  */
 
 export const W = 1080;
 export const H = 1920;
 export const RACE_FRAMES = schedule.duration;
 
-const E = schedule.events;
+const T = schedule.t;
 const FPS = 30;
-const T0 = schedule.go / FPS;
-
-const ROPE_X = [180, 420, 660, 900];
-const FLOOR_W = 1400; // world y the characters start on
-const KNOT_W = 1250; // world y of the rope ends at the start
-const CLIMB = 4200; // world units from the floor to the ledge
-const LEDGE_W = FLOOR_W - CLIMB;
-const CHAR_SCALE = 1.0;
-/** the winner hops from its rope to the middle before the crown drops */
-const HOP_START = 770;
-const HOP_END = 790;
-/** the eagle sweeps in from the right and leaves off the top-left */
-const EAGLE_ENTER_X = 1400;
-const EAGLE_EXIT_X = -420;
-
-type Role = "winner" | "snatched" | "roller" | "slipper";
-
-/** Who plays which part. Bun wants to be the fast one, Capy the sleeper,
- *  Mint the slipper; whoever is the winner hands their part to Pebblo. */
-export const castRoles = (winner: CharId): Record<Role, CharId> => {
-  const pref: Record<CharId, Role> = { pebblo: "winner", bun: "snatched", capy: "roller", mint: "slipper" };
-  const roles = { ...pref };
-  if (winner !== "pebblo") {
-    roles.pebblo = pref[winner];
-    roles[winner] = "winner";
-  }
-  const out = {} as Record<Role, CharId>;
-  (Object.keys(roles) as CharId[]).forEach((c) => {
-    out[roles[c]] = c;
-  });
-  return out;
-};
+const LANE = [180, 428, 668, 908];
+const SC = 0.92;
+const STAND_Y = 1470;
+const HANG_Y = 1290;
+const KNOT_Y = 1232;
+const OFF = 2300;
 
 /* ------------------------------------------------------------------ */
-/* the climb — height above the floor, in world units, per role         */
+/* timing helpers                                                      */
 /* ------------------------------------------------------------------ */
 
-const f = (fr: number) => fr / FPS;
-const lerpKf = (t: number, kf: [number, number][]) => {
-  if (t <= kf[0][0]) return kf[0][1];
-  for (let i = 1; i < kf.length; i++) {
-    if (t <= kf[i][0]) {
-      const [t0, h0] = kf[i - 1];
-      const [t1, h1] = kf[i];
-      const u = (t - t0) / (t1 - t0);
-      return h0 + (h1 - h0) * u;
+const smooth = (u: number) => u * u * (3 - 2 * u);
+const clamp01 = (u: number) => Math.max(0, Math.min(1, u));
+/** keyframed value with smooth easing between keys */
+const kf = (t: number, keys: [number, number][]) => {
+  if (t <= keys[0][0]) return keys[0][1];
+  for (let i = 1; i < keys.length; i++) {
+    if (t <= keys[i][0]) {
+      const [t0, v0] = keys[i - 1];
+      const [t1, v1] = keys[i];
+      return v0 + (v1 - v0) * smooth((t - t0) / (t1 - t0));
     }
   }
-  return kf[kf.length - 1][1];
+  return keys[keys.length - 1][1];
+};
+/** linear keyframes (for the camera, which must not stop at every key) */
+const lin = (t: number, keys: [number, number][]) => {
+  if (t <= keys[0][0]) return keys[0][1];
+  for (let i = 1; i < keys.length; i++) {
+    if (t <= keys[i][0]) {
+      const [t0, v0] = keys[i - 1];
+      const [t1, v1] = keys[i];
+      return v0 + ((v1 - v0) * (t - t0)) / (t1 - t0);
+    }
+  }
+  return keys[keys.length - 1][1];
+};
+const u = (t: number, a: number, b: number) => clamp01((t - a) / (b - a));
+/** fall with gravity from y0 starting at t0 */
+const fall = (t: number, t0: number, y0: number) => y0 + 0.5 * 3600 * Math.max(0, t - t0) ** 2;
+
+/**
+ * Camera: how far the world has scrolled down the screen. The ledge sits at
+ * screen y = SCROLL - LEDGE_AT, arriving at the top at 16.7 s and settling
+ * at about half height, as in the reference.
+ */
+const LEDGE_AT = 3040;
+const SCROLL: [number, number][] = [
+  [0, 0],
+  [2.8, 0],
+  [3.3, 80],
+  [5.0, 700],
+  [16.7, 3040],
+  [18.0, 3270],
+  [19.2, 3366],
+  [20.4, 3539],
+  [21.0, 3616],
+  [22.2, 3789],
+  [23.4, 3866],
+  [24.6, 3981],
+  [25.8, 4038],
+  [30, 4038],
+];
+const scroll = (t: number) => lin(t, SCROLL);
+const ledgeY = (t: number) => scroll(t) - LEDGE_AT;
+
+/* ------------------------------------------------------------------ */
+/* poses                                                               */
+/* ------------------------------------------------------------------ */
+
+/** Hand over hand up the rope, from behind. */
+const climb = (t: number, seed: number): Pose => {
+  const ph = Math.floor(t * 30 / 7 + seed * 1.7) % 2;
+  const wob = Math.sin(t * 9 + seed);
+  return {
+    back: true,
+    handL: ph ? [-18, -280] : [-18, -258],
+    handR: ph ? [18, -258] : [18, -280],
+    squash: 0.97 + wob * 0.015,
+    tilt: wob * 2,
+    wag: wob * 14,
+  };
 };
 
-const HEIGHT: Record<Role, [number, number][]> = {
-  snatched: [
-    [T0, 0],
-    [f(E.snatchedJump), 1560],
-    [f(E.snatchedJump) + 0.12, 1560],
-    [f(E.snatchedJump) + 0.55, 2000],
-    [f(E.snatchedLands), CLIMB],
-  ],
-  winner: [
-    [T0, 0],
-    [f(E.winnerSlip), 3150],
-    [f(E.winnerSlip) + 0.5, 2960],
-    [f(E.winnerSlip) + 0.9, 2960],
-    [f(E.winnerLands), CLIMB],
-  ],
-  roller: [
-    [T0, 0],
-    [f(E.rollerSlide), 900],
-    [f(E.rollerSlide) + 1.0, 620],
-    [f(E.rollerSlide) + 1.5, 620],
-    [f(E.rollerLands), CLIMB],
-  ],
-  slipper: [
-    [T0, 0],
-    [f(E.slipperSlip), 2100],
-    [f(E.slipperSlip) + 0.6, 1520],
-    [f(E.slipperSlip) + 1.1, 1520],
-    [f(E.slipperLands), CLIMB],
-  ],
+const blinkEyes = (frame: number, seed: number): Pose["eyes"] => ((frame + seed * 29) % 84 < 4 ? "closed" : "open");
+
+type State = { x: number; y: number; rot?: number; pose: Pose; show?: boolean; crown?: number };
+
+/** Lineup, crouch and jump onto the ropes (shared by all four). */
+const start = (t: number, frame: number, lane: number, seed: number): State | null => {
+  const x = LANE[lane];
+  if (t < 2.55) {
+    return { x, y: STAND_Y + Math.sin(t * 5 + seed) * 3, pose: { eyes: blinkEyes(frame, seed), look: [0, -0.3], wag: Math.sin(t * 6 + seed) * 12 } };
+  }
+  if (t < T.jump) {
+    return { x, y: STAND_Y, pose: { eyes: "open", squash: 0.9, armL: [-30, 30], armR: [30, 30] } };
+  }
+  if (t < T.jump + 0.16) {
+    const k = u(t, T.jump, T.jump + 0.16);
+    return { x, y: STAND_Y + (HANG_Y - STAND_Y) * k - Math.sin(k * Math.PI) * 60, pose: { back: true, handL: [-18, -280], handR: [18, -280], squash: 1.06 } };
+  }
+  return null;
 };
 
-const heightOf = (role: Role, t: number) => lerpKf(t, HEIGHT[role]);
-const leaderHeight = (t: number) => Math.max(...(Object.keys(HEIGHT) as Role[]).map((r) => heightOf(r, t)));
+/* ------------------------------------------------------------------ */
+/* the four racers                                                     */
+/* ------------------------------------------------------------------ */
 
-/** World y at the top of the screen. Follows the leader, never above the
- *  point that leaves the ledge sitting in the middle of the frame. */
-const cameraTop = (t: number) => {
-  const raw = FLOOR_W - leaderHeight(t) - 880;
-  return Math.max(LEDGE_W - 900, Math.min(0, raw));
+const BEAR_Y: [number, number][] = [
+  [2.86, HANG_Y],
+  [5.2, HANG_Y],
+  [9.7, 1190],
+  [12, 1170],
+  [14.4, 1260],
+  [15.6, 1250],
+  [16.3, 1080],
+  [16.8, 780],
+  [18, 760],
+  [20.4, 740],
+  [20.9, 740],
+];
+
+/** Where the eagle is: in from the upper right, down onto Bruno, off to the left. */
+const eaglePos = (t: number): { x: number; y: number } => {
+  const bx = LANE[0];
+  const by = kf(T.grab, BEAR_Y) - CHAR_TOP.bear * SC - 30;
+  if (t < T.grab) {
+    const k = smooth(u(t, T.eagleIn, T.grab));
+    return { x: 1300 + (bx - 1300) * k, y: by - 380 * (1 - k) ** 2 };
+  }
+  const k = u(t, T.grab, T.eagleOut);
+  return { x: bx + (-420 - bx) * k, y: by - 560 * k * k - 60 * k };
 };
+
+const bear = (t: number, frame: number): State => {
+  const s = start(t, frame, 0, 0);
+  if (s) return s;
+  if (t < T.grab) {
+    const p = climb(t, 0);
+    // a nervous look up as the eagle's shadow arrives
+    if (t > T.eagleIn + 0.12) return { x: LANE[0], y: kf(t, BEAR_Y), pose: { eyes: "shock", mouth: "o", fx: "shock", armL: [-70, -90], armR: [70, -90], look: [0.6, -1] } };
+    return { x: LANE[0], y: kf(t, BEAR_Y), pose: p };
+  }
+  const e = eaglePos(t);
+  return {
+    x: e.x + 8,
+    y: e.y + 40 + CHAR_TOP.bear * SC,
+    rot: Math.sin(t * 30) * 6,
+    pose: { eyes: "shock", mouth: "o", armL: [-40, -110], armR: [40, -110], fx: "shock", squash: 1.04 },
+    show: e.x > -300,
+  };
+};
+
+const DOG_BACK_Y: [number, number][] = [
+  [T.dogBack, 2150],
+  [10.3, 1760],
+  [11.3, 1600],
+  [12.0, 1340],
+  [12.7, 1250],
+  [T.dogJump, 1250],
+];
+const DOG_LANE1_Y: [number, number][] = [
+  [T.dogJumpEnd, 1222],
+  [14.4, 1240],
+  [15.6, 1320],
+  [16.8, 1140],
+  [18, 1040],
+  [20.4, 820],
+  [T.dogFall, 820],
+];
+
+const dog = (t: number, frame: number): State => {
+  const s = start(t, frame, 2, 2);
+  if (s) return s;
+  if (t < T.hit) return { x: LANE[2], y: HANG_Y, pose: climb(t, 2) };
+  if (t < T.dogBack) {
+    const y = fall(t, T.hit + 0.08, HANG_Y);
+    return {
+      x: LANE[2] - 20 * u(t, T.hit, T.hit + 0.2),
+      y,
+      rot: -60 * u(t, T.hit, T.hit + 0.9),
+      pose: { eyes: "shock", mouth: "o", fx: "shock", armL: [-80, -60], armR: [80, -60] },
+      show: y < OFF,
+    };
+  }
+  if (t < T.dogJump) return { x: LANE[2], y: kf(t, DOG_BACK_Y), pose: climb(t, 2) };
+  if (t < T.dogJumpEnd) {
+    const k = u(t, T.dogJump, T.dogJumpEnd);
+    return {
+      x: LANE[2] + (LANE[1] - LANE[2]) * smooth(k),
+      y: 1250 + (1222 - 1250) * k - Math.sin(k * Math.PI) * 80,
+      rot: -18 * Math.sin(k * Math.PI),
+      pose: { eyes: "happy", mouth: "open", armL: [-90, -40], armR: [60, -90], wag: 20 },
+    };
+  }
+  if (t < T.dogShock) return { x: LANE[1], y: kf(t, DOG_LANE1_Y), pose: climb(t, 2) };
+  if (t < T.dogFall)
+    return {
+      x: LANE[1] + Math.sin(t * 60) * 3,
+      y: 820,
+      pose: { eyes: "shock", mouth: "o", fx: "sweat", armL: [-40, -120], armR: [40, -120], look: [-0.8, -1] },
+    };
+  const y = fall(t, T.dogFall, 820);
+  return { x: LANE[1], y, rot: 40 * u(t, T.dogFall, T.dogFall + 0.8), pose: { eyes: "shock", mouth: "o", fx: "shock", armL: [-80, -70], armR: [80, -70] }, show: y < OFF };
+};
+
+const CAT_BACK_Y: [number, number][] = [
+  [T.catBack, 2100],
+  [12.0, 1830],
+  [13.2, 1450],
+  [14.4, 1230],
+  [T.catHop, 1120],
+];
+const CAT_FINISH_Y = (t: number): number =>
+  kf(t, [
+    [T.yellEnd + 0.4, 1000],
+    [21, 1080],
+    [22.2, 1000],
+    [23.4, 960],
+    [T.pullUp, ledgeY(T.pullUp) + 70],
+  ]);
+
+const cat = (t: number, frame: number): State => {
+  const s = start(t, frame, 1, 1);
+  if (s) return s;
+  if (t < T.catAngry) return { x: LANE[1], y: kf(t, [[2.86, HANG_Y], [T.catAngry, 1300]]), pose: climb(t, 1) };
+  if (t < T.leap) {
+    const shake = Math.sin(t * 50) * 3;
+    return {
+      x: LANE[1] + shake,
+      y: 1305,
+      rot: 6,
+      pose: { eyes: "angry", mouth: Math.floor(t * 6) % 2 ? "shout" : "flat", fx: "anger", look: [1, 0], armL: [-70, -30], armR: [70, -30] },
+    };
+  }
+  if (t < T.tussle) {
+    const k = u(t, T.leap, T.tussle);
+    return {
+      x: LANE[1] + (LANE[3] - 30 - LANE[1]) * smooth(k),
+      y: 1305 - Math.sin(k * Math.PI) * 90,
+      rot: -28 * k,
+      pose: { eyes: "angry", mouth: "shout", armL: [60, -60], armR: [100, -20], fx: "anger" },
+    };
+  }
+  if (t < T.catBack) {
+    const y = fall(t, T.tussle + 0.3, 1300);
+    return {
+      x: LANE[3] - 30 - 150 * smooth(u(t, T.tussle, T.tussle + 0.8)) + Math.sin(t * 40) * 14,
+      y,
+      rot: -28 + Math.sin(t * 25) * 20 + 120 * u(t, T.tussle + 0.3, T.tussleEnd),
+      pose: { eyes: "angry", mouth: "shout", armL: [70, -70], armR: [96, -10], fx: "anger" },
+      show: y < OFF,
+    };
+  }
+  if (t < T.catHop) return { x: LANE[2], y: kf(t, CAT_BACK_Y), pose: climb(t, 1) };
+  if (t < T.yellEnd) {
+    const hop = u(t, T.catHop, T.catYell);
+    const y = 1120 + (800 - 1120) * (1 - (1 - hop) ** 2);
+    return {
+      x: LANE[2] + Math.sin(t * 50) * (t > T.catYell ? 3 : 0),
+      y: y + Math.sin(t * 10) * 4,
+      rot: 12,
+      pose: { eyes: "angry", mouth: "shout", fx: "anger", look: [0.8, 1], armL: [-70, -30], armR: [80, 40] },
+    };
+  }
+  if (t < T.pullUp) {
+    const y = t < T.yellEnd + 0.4 ? 800 + (1000 - 800) * smooth(u(t, T.yellEnd, T.yellEnd + 0.4)) : CAT_FINISH_Y(t);
+    return { x: LANE[2], y, pose: climb(t, 1) };
+  }
+  const ly = ledgeY(t);
+  if (t < T.stand) {
+    const k = u(t, T.pullUp, T.stand);
+    return {
+      x: LANE[2],
+      y: ly + 70 * (1 - smooth(k)),
+      rot: 18 * Math.sin(k * Math.PI),
+      pose: { eyes: "closed", mouth: "flat", armL: [-60, -110], armR: [60, -110], squash: 0.94 + 0.06 * k },
+    };
+  }
+  if (t < T.win)
+    return { x: LANE[2], y: ly, pose: { eyes: "closed", mouth: "smile", wag: Math.sin(t * 5) * 14, squash: 1 + Math.sin(t * 5) * 0.01 } };
+  return {
+    x: LANE[2],
+    y: ly,
+    pose: { eyes: "happy", mouth: "open", armL: [-70, -100], armR: [70, -100], wag: Math.sin(t * 8) * 20 },
+    crown: u(t, T.crown, T.crown + 0.2),
+  };
+};
+
+const bunny = (t: number, frame: number): State => {
+  const s = start(t, frame, 3, 3);
+  if (s) return s;
+  if (t < T.bunnyTurn) return { x: LANE[3], y: HANG_Y, pose: climb(t, 3) };
+  if (t < T.hit + 0.05) {
+    const k = u(t, T.bunnyTurn, T.hit);
+    return {
+      x: LANE[3] - 50 * smooth(k),
+      y: HANG_Y,
+      rot: -12 * k,
+      pose: { eyes: "happy", mouth: "grin", handL: [-150 * k - 30, -120], armR: [40, -60] },
+    };
+  }
+  if (t < T.bunnyLaughEnd) {
+    return {
+      x: LANE[3] - 50 + 50 * smooth(u(t, T.hit + 0.3, T.bunnyLaughEnd)),
+      y: HANG_Y + Math.abs(Math.sin(t * 16)) * -8,
+      rot: Math.sin(t * 24) * 5,
+      pose: { eyes: "happy", mouth: "open", armL: [8, 10], armR: [-8, 10] },
+    };
+  }
+  if (t < T.tussle) return { x: LANE[3], y: HANG_Y, pose: climb(t, 3) };
+  if (t < T.tussleEnd) {
+    const y = fall(t, T.tussle + 0.3, 1320);
+    return {
+      x: LANE[3] + 20 - 150 * smooth(u(t, T.tussle, T.tussle + 0.8)) + Math.sin(t * 40 + 2) * 14,
+      y,
+      rot: 20 + Math.sin(t * 25 + 1) * 20 + 140 * u(t, T.tussle + 0.3, T.tussleEnd),
+      pose: { eyes: "shock", mouth: "o", fx: "sweat", armL: [-80, -60], armR: [80, -60] },
+      show: y < OFF,
+    };
+  }
+  if (t < T.bunnyBack) return { x: LANE[3], y: OFF + 100, pose: {}, show: false };
+  if (t < 15.3) {
+    const base = kf(t, [
+      [T.bunnyBack, 2150],
+      [14.3, 1450],
+      [15.3, 1300],
+    ]);
+    const hop = Math.abs(Math.sin((t - T.bunnyBack) * Math.PI * 3.2));
+    return { x: LANE[3], y: base - hop * 70, pose: { eyes: "happy", mouth: "grin", armL: [-60, -80], armR: [60, -80], squash: 0.94 + hop * 0.08 } };
+  }
+  if (t < T.bunnyScared) return { x: LANE[3], y: kf(t, [[15.3, 1300], [T.bunnyScared, 1180]]), pose: climb(t, 3) };
+  if (t < T.bunnyFall)
+    return {
+      x: LANE[3] + Math.sin(t * 60) * 4,
+      y: 1180 - 20 * u(t, T.bunnyScared, T.bunnyFall),
+      pose: { eyes: "shock", mouth: "o", fx: "sweat", look: [-0.8, -1], armL: [-30, -130], armR: [30, -130] },
+    };
+  const y = fall(t, T.bunnyFall, 1160);
+  return { x: LANE[3], y, rot: -50 * u(t, T.bunnyFall, T.bunnyFall + 0.8), pose: { eyes: "shock", mouth: "o", fx: "shock", armL: [-80, -70], armR: [80, -70] }, show: y < OFF };
+};
+
+const RACERS: { id: CharId; fn: (t: number, frame: number) => State }[] = [
+  { id: "bear", fn: bear },
+  { id: "dog", fn: dog },
+  { id: "bunny", fn: bunny },
+  { id: "cat", fn: cat },
+];
 
 /* ------------------------------------------------------------------ */
 /* scenery                                                             */
 /* ------------------------------------------------------------------ */
 
-const Rope: React.FC<{ x: number; top: number; bottom: number }> = ({ x, top, bottom }) => {
+const Rope: React.FC<{ x: number; top: number; bottom: number; worldShift: number; frayed?: boolean }> = ({ x, top, bottom, worldShift, frayed }) => {
   const y0 = Math.max(top, -40);
   const y1 = Math.min(bottom, H + 40);
   if (y1 <= y0) return null;
   const ticks: React.ReactNode[] = [];
-  const start = Math.ceil((y0 - top) / 26);
-  const end = Math.floor((y1 - top) / 26);
-  for (let i = start; i <= end; i++) {
-    const y = top + i * 26;
-    ticks.push(<path key={i} d={i % 2 ? `M ${x - 7} ${y} l 14 10` : `M ${x + 7} ${y} l -14 10`} />);
+  const first = Math.ceil((y0 - worldShift) / 24);
+  const last = Math.floor((y1 - worldShift) / 24);
+  for (let i = first; i <= last; i++) {
+    const y = i * 24 + worldShift;
+    ticks.push(<path key={i} d={`M ${x - 8} ${y} q 8 6 16 12`} />);
   }
   return (
     <g>
-      <path d={`M ${x} ${top} L ${x} ${bottom}`} stroke="#b7955f" strokeWidth={18} strokeLinecap="round" />
-      <path d={`M ${x} ${top} L ${x} ${bottom}`} stroke="#dcbf8e" strokeWidth={12} strokeLinecap="round" />
-      <g stroke="#a98651" strokeWidth={3.5} strokeLinecap="round" opacity={0.8}>
+      <path d={`M ${x} ${y0} L ${x} ${y1}`} stroke="#b08c58" strokeWidth={20} strokeLinecap="butt" />
+      <path d={`M ${x} ${y0} L ${x} ${y1}`} stroke="#dcbf8e" strokeWidth={14} strokeLinecap="butt" />
+      <path d={`M ${x - 3} ${y0} L ${x - 3} ${y1}`} stroke="#ecd8b4" strokeWidth={3} opacity={0.8} />
+      <g stroke="#a48152" strokeWidth={3} fill="none" strokeLinecap="round" opacity={0.85}>
         {ticks}
       </g>
+      {frayed ? (
+        <g stroke="#c9a66f" strokeWidth={4} strokeLinecap="round">
+          <path d={`M ${x - 6} ${bottom} l -6 24 M ${x} ${bottom} l 1 30 M ${x + 6} ${bottom} l 7 22`} />
+        </g>
+      ) : null}
     </g>
   );
 };
 
 const Knot: React.FC<{ x: number; y: number }> = ({ x, y }) => (
   <g>
-    <ellipse cx={x} cy={y} rx={14} ry={18} fill="#dcbf8e" stroke="#b7955f" strokeWidth={4} />
+    <ellipse cx={x} cy={y} rx={15} ry={19} fill="#dcbf8e" stroke="#b08c58" strokeWidth={4} />
+    <path d={`M ${x - 10} ${y - 6} q 10 8 20 0 M ${x - 10} ${y + 4} q 10 8 20 0`} stroke="#b08c58" strokeWidth={3} fill="none" />
     <g stroke="#c9a66f" strokeWidth={4} strokeLinecap="round">
-      <path d={`M ${x - 6} ${y + 14} l -4 22 M ${x} ${y + 16} l 2 24 M ${x + 6} ${y + 14} l 6 20`} />
+      <path d={`M ${x - 6} ${y + 16} l -4 22 M ${x} ${y + 18} l 2 24 M ${x + 6} ${y + 16} l 6 20`} />
     </g>
   </g>
 );
 
-/** Sky above, grass edge on the wall top. Only drawn once the ledge is near. */
 const Ledge: React.FC<{ y: number }> = ({ y }) => {
-  if (y < -200) return null;
-  const scallops = Array.from({ length: 14 }, (_, i) => {
-    const x = i * 84 + random(`gs${i}`) * 30;
-    const d = 18 + random(`gd${i}`) * 26;
-    return `M ${x} ${y} q 30 ${d} 60 0`;
+  if (y < -60) return null;
+  const scallops = Array.from({ length: 16 }, (_, i) => {
+    const x = i * 72 + random(`gs${i}`) * 24 - 10;
+    const d = 14 + random(`gd${i}`) * 22;
+    return `M ${x} ${y} q 26 ${d} 52 0`;
   }).join(" ");
   return (
     <g>
       <defs>
         <linearGradient id="rsSky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#c9e6f6" />
-          <stop offset="100%" stopColor="#ecf7fc" />
+          <stop offset="0%" stopColor="#bfe3f7" />
+          <stop offset="100%" stopColor="#eaf7fd" />
         </linearGradient>
       </defs>
-      <rect x={0} y={Math.min(y, 0) - 2400} width={W} height={y - Math.min(y, 0) + 2400} fill="url(#rsSky)" />
-      <rect x={0} y={y - 4} width={W} height={12} fill="#a7c495" />
-      <path d={scallops} fill="#b9d6a3" />
-      <path d={`M 0 ${y} L ${W} ${y}`} stroke="#93b47f" strokeWidth={5} />
-      {Array.from({ length: 9 }, (_, i) => {
-        const x = 40 + i * 130 + random(`gt${i}`) * 60;
-        return <path key={i} d={`M ${x} ${y + 2} q -6 -22 4 -34 q 8 14 6 34`} fill="#9dbf86" />;
+      <rect x={0} y={-10} width={W} height={y + 10} fill="url(#rsSky)" />
+      <rect x={0} y={y - 5} width={W} height={12} fill="#a9c797" />
+      <path d={scallops} fill="#bcd8a6" opacity={0.95} />
+      <path d={`M 0 ${y} L ${W} ${y}`} stroke="#8fb07b" strokeWidth={5} />
+      {Array.from({ length: 11 }, (_, i) => {
+        const x = 30 + i * 100 + random(`gt${i}`) * 50;
+        return <path key={i} d={`M ${x} ${y + 2} q -6 -20 4 -30 q 8 12 6 30`} fill="#9dbf86" />;
       })}
     </g>
   );
 };
 
-const Eagle: React.FC<{ x: number; y: number; flap: number }> = ({ x, y, flap }) => (
-  <g transform={`translate(${x} ${y})`}>
+const Eagle: React.FC<{ flap: number }> = ({ flap }) => (
+  <g>
     <g fill="#8a5a3a" stroke="#4e3220" strokeWidth={6} strokeLinejoin="round">
-      <path d={`M -30 -10 q -110 ${-70 - flap * 40} -230 ${-40 - flap * 70} q 60 30 100 60 q 40 20 130 30 Z`} />
-      <path d={`M 30 -10 q 110 ${-70 - flap * 40} 230 ${-40 - flap * 70} q -60 30 -100 60 q -40 20 -130 30 Z`} />
-      <ellipse cx={0} cy={0} rx={70} ry={42} />
-      <path d="M -60 20 q -30 40 -70 46 q 30 -34 50 -60 Z" />
+      <path d={`M -30 -10 q -110 ${-70 - flap * 40} -230 ${-40 - flap * 70} q 30 10 20 26 q 40 -2 40 24 q 40 0 40 26 q 50 10 130 30 Z`} />
+      <path d={`M 30 -10 q 110 ${-70 - flap * 40} 230 ${-40 - flap * 70} q -30 10 -20 26 q -40 -2 -40 24 q -40 0 -40 26 q -50 10 -130 30 Z`} />
+      <ellipse cx={0} cy={0} rx={72} ry={44} />
+      <path d="M -62 16 q -34 36 -76 40 q 26 -30 44 -60 Z" />
     </g>
-    <circle cx={70} cy={-14} r={34} fill="#f4efe6" stroke="#4e3220" strokeWidth={6} />
-    <path d="M 100 -14 l 34 8 l -30 16 Z" fill="#f2b23c" stroke="#4e3220" strokeWidth={4} strokeLinejoin="round" />
-    <circle cx={80} cy={-20} r={5} fill="#2b2530" />
-    <g stroke="#f2b23c" strokeWidth={7} strokeLinecap="round">
-      <path d="M -20 36 l -6 30 M 20 36 l 6 30" />
+    <ellipse cx={-10} cy={6} rx={40} ry={22} fill="#a2724d" opacity={0.6} />
+    <circle cx={72} cy={-16} r={36} fill="#f4efe6" stroke="#4e3220" strokeWidth={6} />
+    <path d="M 102 -16 q 22 0 32 12 q -14 8 -30 8 Z" fill="#f2b23c" stroke="#4e3220" strokeWidth={4} strokeLinejoin="round" />
+    <circle cx={84} cy={-22} r={6} fill="#2b2530" />
+    <path d={`M 72 -38 l 22 6`} stroke="#4e3220" strokeWidth={5} strokeLinecap="round" />
+    <g stroke="#f2b23c" strokeWidth={8} strokeLinecap="round">
+      <path d="M -16 38 l -6 30 M 18 38 l 6 30" />
     </g>
   </g>
 );
@@ -202,195 +468,127 @@ const Crown: React.FC = () => (
     <circle cx={-60} cy={-36} r={7} />
     <circle cx={0} cy={-48} r={7} />
     <circle cx={60} cy={-36} r={7} />
+    <path d="M -46 8 L 46 8" stroke="#e0a92a" strokeWidth={4} />
   </g>
 );
 
-/* ------------------------------------------------------------------ */
-/* one racer                                                           */
-/* ------------------------------------------------------------------ */
-
-/** Hand over hand up the rope, seen from behind. */
-const climbPose = (frame: number, seed: number): Pose => {
-  const ph = ((frame + seed * 5) % 14) / 14;
-  const up = ph < 0.5;
-  const reach = Math.sin(ph * Math.PI * 2);
-  return {
-    back: true,
-    handL: up ? [-10, -236 - reach * 10] : [-10, -150],
-    handR: up ? [10, -150] : [10, -236 + reach * 10],
-    squash: 0.96 + reach * 0.03,
-    tilt: reach * 3,
-  };
-};
-
-const Racer: React.FC<{ id: CharId; role: Role; camTop: number; roles: Record<Role, CharId> }> = ({ id, role, camTop }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const t = frame / FPS;
-  const C = CHAR[id];
-  const laneIdx = CHAR_IDS.indexOf(id);
-  const x = ROPE_X[laneIdx];
-  const h = heightOf(role, t);
-  const landed = h >= CLIMB - 1;
-  const ledgeY = LEDGE_W - camTop;
-  const idle = frame < schedule.go;
-  let pose: Pose = {};
-  let px = x;
-  let py = FLOOR_W - h - camTop;
-  let extra: React.ReactNode = null;
-  let rot = 0;
-
-  if (idle) {
-    const bob = Math.sin(frame / 9 + laneIdx) * 4;
-    py += bob;
-    const blink = (frame + laneIdx * 23) % 70 < 4;
-    pose = { eyes: blink ? "closed" : "open", look: [0, 0.2] };
-  } else if (!landed) {
-    pose = climbPose(frame, laneIdx);
-    // the moments that break the climb
-    if (role === "roller" && frame >= E.rollerSlide && frame < E.rollerSlide + 45) {
-      pose = { eyes: "dizzy", mouth: "flat", armL: [-40, -110], armR: [30, -110], tilt: Math.sin(frame / 2) * 8 };
-    }
-    if (role === "snatched" && frame >= E.snatchedJump && frame < E.snatchedJump + 20) {
-      pose = { eyes: "happy", mouth: "open", armL: [-50, -80], armR: [50, -80], squash: 1.06 };
-    }
-    if (role === "slipper" && frame >= E.slipperSlip && frame < E.slipperSlip + 36) {
-      pose = { eyes: "shock", mouth: "o", armL: [-60, -100], armR: [60, -100], tilt: Math.sin(frame / 1.5) * 10 };
-    }
-    if (role === "winner" && frame >= E.winnerSlip && frame < E.winnerSlip + 28) {
-      pose = { eyes: "shock", mouth: "o", armL: [-20, -120], armR: [20, -120], tilt: -6 };
-    }
-  } else {
-    // standing on the ledge
-    py = ledgeY;
-    const sinceLand = frame - (role === "snatched" ? E.snatchedLands : role === "winner" ? E.winnerLands : role === "roller" ? E.rollerLands : E.slipperLands);
-    const landS = spring({ frame: sinceLand, fps, config: { damping: 9, mass: 0.5, stiffness: 200 } });
-    pose = { squash: 1 - Math.sin(landS * Math.PI) * 0.12, eyes: "open", mouth: id === "mint" ? "grin" : "smile" };
-
-    if (role === "snatched" && frame >= E.eagleGrab) {
-      // carried off
-      const u = interpolate(frame, [E.eagleGrab, E.eagleEnd], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-      const ex = interpolate(u, [0, 1], [x, EAGLE_EXIT_X]);
-      const ey = interpolate(Math.pow(u, 0.7), [0, 1], [ledgeY - 60, ledgeY - 1000]);
-      px = ex;
-      py = ey + 150;
-      pose = { eyes: "shock", mouth: "o", armL: [-60, -110], armR: [60, -110], tilt: Math.sin(frame / 2) * 6 };
-    }
-    if (role === "slipper" && frame >= E.slipperOff) {
-      const dt = (frame - E.slipperOff) / FPS;
-      const pre = Math.min(dt, 0.35);
-      px = x + pre * 90; // a step forward first...
-      py = ledgeY + (dt > 0.35 ? 0.5 * 3200 * (dt - 0.35) ** 2 : 0) - (dt < 0.35 ? Math.sin((pre / 0.35) * Math.PI) * 30 : 0);
-      rot = dt > 0.35 ? (dt - 0.35) * 260 : 0;
-      pose = { eyes: "shock", mouth: "o", armL: [-70, -80], armR: [70, -80] };
-    } else if (role === "slipper" && frame >= E.slipperLands + 8) {
-      pose = { ...pose, eyes: "happy", mouth: "open" };
-    }
-    if (role === "roller" && frame >= E.rollerYawn) {
-      const yawn = interpolate(frame, [E.rollerYawn, E.rollerOff], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-      pose = { eyes: "closed", mouth: yawn < 0.5 ? "o" : "flat", tilt: yawn * 34, armL: [-40, 30], armR: [40, 30] };
-      if (frame >= E.rollerOff) {
-        const dt = (frame - E.rollerOff) / FPS;
-        px = x + dt * 140;
-        py = ledgeY + 0.5 * 3000 * dt * dt;
-        rot = 34 + dt * 300;
-        pose = { eyes: "closed", mouth: "o", armL: [-60, 0], armR: [60, 0] };
-        extra = (
-          <text x={40} y={-CHAR_TOP[id] - 10} fontFamily="'ComicRelief', sans-serif" fontSize={40} fill="#6b5a7a" opacity={0.7}>
-            z
-          </text>
-        );
-      } else {
-        extra = (
-          <g fontFamily="'ComicRelief', sans-serif" fill="#6b5a7a" opacity={0.75}>
-            <text x={60} y={-CHAR_TOP[id] + 10 - ((frame * 2) % 60)} fontSize={34 + ((frame * 2) % 60) / 4}>
-              z
-            </text>
-          </g>
-        );
-      }
-    }
-    if (role === "winner" && frame >= HOP_START) {
-      // hop to the middle of the ledge, three little bounces
-      const u = interpolate(frame, [HOP_START, HOP_END], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-      const ease = u * u * (3 - 2 * u);
-      px = interpolate(ease, [0, 1], [x, W / 2]);
-      py = ledgeY - Math.abs(Math.sin(u * Math.PI * 3)) * 34;
-      if (frame < E.win) pose = { eyes: "happy", mouth: "smile", squash: 1 - Math.abs(Math.sin(u * Math.PI * 3)) * 0.05 };
-    }
-    if (role === "winner" && frame >= E.win) {
-      const w = spring({ frame: frame - E.win, fps, config: { damping: 8, mass: 0.5, stiffness: 160 } });
-      pose = { eyes: "happy", mouth: "open", armL: [-52, -76], armR: [52, -76], squash: 1 + Math.sin(w * Math.PI) * 0.06 };
-      const drop = spring({ frame: frame - E.win - 6, fps, config: { damping: 10, mass: 0.8, stiffness: 120 } });
-      extra = (
-        <g transform={`translate(0 ${-CHAR_TOP[id] - 30 - (1 - drop) * 500}) scale(1.1)`} opacity={drop}>
-          <Crown />
-        </g>
-      );
-    }
-  }
-
-  if (py > H + 400) return null;
-  return (
-    <g transform={`translate(${px} ${py}) rotate(${rot}) scale(${CHAR_SCALE})`}>
-      <C {...pose} />
-      {extra}
-    </g>
-  );
-};
-
-/* ------------------------------------------------------------------ */
-
-export const RaceShort: React.FC<{ winner?: CharId; audio?: string | null }> = ({
-  winner = "pebblo",
-  audio = "audio/play-race-mix.mp3",
-}) => {
-  loadPlayFonts();
-  const frame = useCurrentFrame();
-  const t = frame / FPS;
-  const camTop = cameraTop(t);
-  const roles = castRoles(winner);
-  const roleOf = (id: CharId) => (Object.keys(roles) as Role[]).find((r) => roles[r] === id) as Role;
-  const ledgeY = LEDGE_W - camTop;
-
-  // the eagle's flight
-  let eagle: React.ReactNode = null;
-  if (frame >= E.eagleStart && frame <= E.eagleEnd + 10) {
-    const sx = ROPE_X[CHAR_IDS.indexOf(roles.snatched)];
-    const u1 = interpolate(frame, [E.eagleStart, E.eagleGrab], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-    const u2 = interpolate(frame, [E.eagleGrab, E.eagleEnd], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-    const ex = frame < E.eagleGrab ? interpolate(u1, [0, 1], [EAGLE_ENTER_X, sx]) : interpolate(u2, [0, 1], [sx, EAGLE_EXIT_X]);
-    const ey =
-      frame < E.eagleGrab
-        ? interpolate(u1 * u1, [0, 1], [ledgeY - 900, ledgeY - 60])
-        : interpolate(Math.pow(u2, 0.7), [0, 1], [ledgeY - 60, ledgeY - 1000]);
-    // drawn facing right; it flies leftwards the whole time, so mirror it
-    eagle = (
-      <g transform={`translate(${ex} ${ey}) scale(-1 1) translate(${-ex} ${-ey})`}>
-        <Eagle x={ex} y={ey} flap={Math.sin(frame / 2.2)} />
+/** Impact star where Poppy's swipe lands, and the scuffle cloud. */
+const Impacts: React.FC<{ t: number }> = ({ t }) => {
+  const out: React.ReactNode[] = [];
+  const hitK = u(t, T.hit, T.hit + 0.25);
+  if (hitK > 0 && hitK < 1) {
+    out.push(
+      <g key="hit" transform={`translate(${LANE[2] + 40} ${HANG_Y - 220}) scale(${0.6 + hitK * 0.6})`} opacity={1 - hitK}>
+        <path d="M 0 -50 L 12 -14 L 50 -14 L 20 8 L 32 46 L 0 22 L -32 46 L -20 8 L -50 -14 L -12 -14 Z" fill="#fff4a8" stroke="#f0b23a" strokeWidth={5} strokeLinejoin="round" />
       </g>
     );
   }
+  if (t >= T.tussle && t < T.tussle + 0.9) {
+    const k = u(t, T.tussle, T.tussle + 0.9);
+    const cy = fall(t, T.tussle + 0.3, 1300) - 130;
+    out.push(
+      <g key="cloud" transform={`translate(${LANE[3] - 10 - 150 * smooth(k)} ${cy})`} opacity={1 - k * 0.8}>
+        {Array.from({ length: 7 }, (_, i) => {
+          const a = (i / 7) * Math.PI * 2 + t * 6;
+          return <circle key={i} cx={Math.cos(a) * 120} cy={Math.sin(a) * 90} r={34 + (i % 3) * 8} fill="#ffffff" opacity={0.85} />;
+        })}
+        {[0, 1, 2].map((i) => {
+          const a = t * 9 + i * 2.1;
+          return (
+            <path
+              key={`s${i}`}
+              d="M 0 -18 L 5 -5 L 18 -5 L 8 3 L 12 16 L 0 8 L -12 16 L -8 3 L -18 -5 L -5 -5 Z"
+              fill="#f7c948"
+              transform={`translate(${Math.cos(a) * 150} ${Math.sin(a) * 110})`}
+            />
+          );
+        })}
+      </g>
+    );
+  }
+  return <>{out}</>;
+};
+
+/* ------------------------------------------------------------------ */
+
+export const RaceShort: React.FC<{ audio?: string | null }> = ({ audio = "audio/play-race-ref.wav" }) => {
+  loadPlayFonts();
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / FPS;
+  const sc = scroll(t);
+  const ly = ledgeY(t);
+  const knots = KNOT_Y + sc;
+  // Poppy's rope snaps where she was when Mimi shouted her off
+  const snapped = t >= T.bunnyFall;
+  const snapBottom = 1160 - 240 + (sc - scroll(T.bunnyFall));
+
+  let eagle: React.ReactNode = null;
+  if (t >= T.eagleIn && t <= T.eagleOut + 0.05) {
+    const e = eaglePos(t);
+    eagle = (
+      <g transform={`translate(${e.x} ${e.y}) scale(-1 1)`}>
+        <Eagle flap={Math.sin(frame / 1.6)} />
+      </g>
+    );
+  }
+
+  const winAt = Math.round(T.win * fps);
 
   return (
     <AbsoluteFill style={{ background: "linear-gradient(#f8f4ef 0%, #efe8e1 60%, #e6ddd5 100%)" }}>
       {audio ? <Audio src={staticFile(audio)} /> : null}
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
-        <Ledge y={ledgeY} />
-        {ROPE_X.map((x) => (
-          <Rope key={x} x={x} top={ledgeY + 6} bottom={KNOT_W - camTop} />
+        <Ledge y={ly} />
+        {LANE.map((x, i) => (
+          <Rope
+            key={x}
+            x={x}
+            top={Math.max(ly + 4, -40)}
+            bottom={i === 3 && snapped ? snapBottom : knots}
+            worldShift={sc % 24}
+            frayed={i === 3 && snapped}
+          />
         ))}
-        {ROPE_X.map((x) => (
-          <Knot key={x} x={x} y={KNOT_W - camTop} />
-        ))}
-        {CHAR_IDS.map((id) => (
-          <Racer key={id} id={id} role={roleOf(id)} camTop={camTop} roles={roles} />
-        ))}
+        {knots < H + 60 ? LANE.map((x, i) => (i === 3 && snapped ? null : <Knot key={x} x={x} y={knots} />)) : null}
+        {RACERS.map(({ id, fn }) => {
+          const st = fn(t, frame);
+          if (st.show === false) return null;
+          const C = CHAR[id];
+          return (
+            <g key={id} transform={`translate(${st.x} ${st.y}) rotate(${st.rot ?? 0}) scale(${SC})`}>
+              <C {...st.pose} />
+              {st.crown ? (
+                <g transform={`translate(0 ${-CHAR_TOP[id] - 40 - (1 - st.crown) * 30}) scale(${0.4 + 0.6 * st.crown})`} opacity={Math.min(1, st.crown * 2)}>
+                  <Crown />
+                </g>
+              ) : null}
+            </g>
+          );
+        })}
+        <Impacts t={t} />
         {eagle}
       </svg>
-      <Headline text="Choose your champion!" from={schedule.headlineFrom} until={schedule.headlineUntil} y={560} dark size={74} />
-      <Countdown steps={["3", "2", "1", "GO!"]} from={schedule.countFrom} beat={schedule.countBeat} y={720} size={140} />
-      <Payoff text="WINNER!" from={E.win} y={ledgeY - 520 > 200 ? Math.min(ledgeY - 520, 620) : 520} size={116} />
+      <Headline text="Choose your champion!" from={schedule.headline[0]} until={schedule.headline[1]} y={500} dark size={74} />
+      <Countdown marks={schedule.count as [number, string][]} end={schedule.countEnd} gap={5} y={668} size={140} />
+      <Payoff text="WINNER!" from={winAt} y={480} size={116} />
+      {frame >= winAt ? <Sparkle frame={frame - winAt} /> : null}
     </AbsoluteFill>
+  );
+};
+
+/** A little burst of confetti dots around the payoff word, as in the reference. */
+const Sparkle: React.FC<{ frame: number }> = ({ frame }) => {
+  if (frame > 40) return null;
+  const k = frame / 40;
+  const cols = ["#ff7a9a", "#7ac8ff", "#ffd45a", "#8fe0a8"];
+  return (
+    <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+      {Array.from({ length: 14 }, (_, i) => {
+        const a = (i / 14) * Math.PI * 2;
+        const r = 120 + k * 200;
+        return <circle key={i} cx={540 + Math.cos(a) * r * 1.6} cy={480 + Math.sin(a) * r * 0.7} r={7 * (1 - k)} fill={cols[i % 4]} />;
+      })}
+    </svg>
   );
 };

@@ -291,7 +291,7 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1080}
         height={1920}
-        defaultProps={{ audio: "audio/play-beat-mix.mp3" }}
+        defaultProps={{ audio: "audio/play-beat-ref.wav" }}
       />
       <Composition
         id="Play-Race"
@@ -300,15 +300,15 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1080}
         height={1920}
-        defaultProps={{ winner: "pebblo" as const, audio: "audio/play-race-mix.mp3" }}
+        defaultProps={{ audio: "audio/play-race-ref.wav" }}
       />
       <Composition
         id="Play-Sheet"
         component={PlaySheet}
         durationInFrames={1}
         fps={30}
-        width={1920}
-        height={1080}
+        width={2400}
+        height={1500}
       />
       <Composition
         id="Cast-Sheet"
