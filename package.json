@@ -152,7 +152,11 @@
     "geo:states:vo": "python3 scripts/make-vo.py geo-states",
     "geo:states:thumb": "remotion still Geo-States-Thumb out/thumbnail-geo-states.jpg --frame=45 --image-format=jpeg --quality=92",
     "geo:states:music": "remotion render Geo-States out/geo-states.mp4 --props='{\"music\":\"audio/geo-states-music.mp3\"}'",
-    "geo:states:mute": "remotion render Geo-States out/geo-states-music-only.mp4 --props='{\"music\":\"audio/geo-states-music.mp3\",\"narration\":null}'"
+    "geo:states:mute": "remotion render Geo-States out/geo-states-music-only.mp4 --props='{\"music\":\"audio/geo-states-music.mp3\",\"narration\":null}'",
+    "find:lake": "remotion render Find-Lake-Frogs out/find-10-frogs-lake.mp4",
+    "find:meadow": "remotion render Find-Meadow-Cats out/find-10-cats-meadow.mp4",
+    "find:lake:thumb": "remotion still Find-Lake-Frogs-Thumb out/thumbnail-find-10-frogs-lake.jpg --frame=45 --image-format=jpeg --quality=92",
+    "find:meadow:thumb": "remotion still Find-Meadow-Cats-Thumb out/thumbnail-find-10-cats-meadow.jpg --frame=45 --image-format=jpeg --quality=92"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",

@@ -113,10 +113,45 @@ import { Ww1Short, WW1_FPS, WW1_FRAMES } from "./geo/ww1/Ww1Short";
 import { WaterlooShort, WATERLOO_FPS, WATERLOO_FRAMES } from "./geo/waterloo/WaterlooShort";
 import { TexasShort, TEXAS_FPS, TEXAS_FRAMES } from "./geo/texas/TexasShort";
 import { StatesShort, STATES_FPS, STATES_FRAMES } from "./geo/states/StatesShort";
+import { FindLakeFrogs, FindMeadowCats, FindLakeFrogsThumb, FindMeadowCatsThumb, FIND_FPS, FIND_FRAMES } from "./find/FindShort";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* ── find shorts: "Find 10 …" hidden-object counting, 9:16 ── */}
+      <Composition
+        id="Find-Lake-Frogs"
+        component={FindLakeFrogs}
+        durationInFrames={FIND_FRAMES}
+        fps={FIND_FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="Find-Meadow-Cats"
+        component={FindMeadowCats}
+        durationInFrames={FIND_FRAMES}
+        fps={FIND_FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="Find-Lake-Frogs-Thumb"
+        component={FindLakeFrogsThumb}
+        durationInFrames={FIND_FRAMES}
+        fps={FIND_FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="Find-Meadow-Cats-Thumb"
+        component={FindMeadowCatsThumb}
+        durationInFrames={FIND_FRAMES}
+        fps={FIND_FPS}
+        width={1080}
+        height={1920}
+      />
+
       {/* ── geo shorts: satellite-map explainers, 9:16 ── */}
       <Composition
         id="Geo-Bering"

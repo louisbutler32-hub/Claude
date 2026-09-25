@@ -7,7 +7,8 @@ before writing a title or description — the footer block differs.
 
 **Pebblo Pebble** — https://www.youtube.com/@PebbloPebble — the kids'
 learning-video line (`src/guess/`, `src/veggies/`, `src/numbers/`,
-`src/animals/`, `src/vehicles/`, `src/dinosaurs/`, `src/sea/`, and the
+`src/animals/`, `src/vehicles/`, `src/dinosaurs/`, `src/sea/`, the
+"Find 10" hidden-object Shorts in `src/find/`, and the
 doodle-essay subjects: `src/earth/`, `src/mummy/`, `src/face/`,
 `src/killers/`, `src/planets/`). Every one of these links the learning
 playlist: https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
