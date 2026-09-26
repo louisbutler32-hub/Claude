@@ -37,7 +37,7 @@ https://creativecommons.org/licenses/by/4.0/
 ## Tags
 
 ```
-minecraft, minecraft shorts, minecraft nether, nether portal, ghast, minecraft animation, minecraft meme, minecraft memes, minecraft funny, minecraft story, minecraft first time, minecraft cartoon, minecraft relatable, gaming animation, steve animation, minecraft short, animation story, oof craft, minecraft survival, shorts
+minecraft, minecraft shorts, minecraft nether, nether portal, ghast, minecraft animation, minecraft meme, minecraft memes, minecraft funny, minecraft story, minecraft first time, minecraft cartoon, minecraft relatable, gaming animation, stick figure animation, minecraft short, animation story, oof craft, minecraft survival, shorts
 ```
 
 (413 characters.)

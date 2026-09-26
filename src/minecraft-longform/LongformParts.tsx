@@ -1,11 +1,10 @@
 import React from "react";
 import { AbsoluteFill, Audio, interpolate, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { H, W } from "../minecraft/beats";
-import { ease, limb, POSE, pose } from "../minecraft/figure";
+import { ease, FaceKind, Figure, limb, POSE, pose } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { Sword } from "../minecraft/mobs";
 import { Item } from "../minecraft/pixels";
-import { Steve } from "../minecraft/steve";
 
 /**
  * The connective tissue for the long-form compilation: an intro, five
@@ -86,7 +85,7 @@ export const LongIntro: React.FC<{ audio?: string | null }> = ({ audio = null })
           })}
         </g>
         <g transform={`translate(540 1650) scale(${1 + Math.sin(f / 10) * 0.03})`}>
-          <Steve x={0} y={0} scale={1.5} pose={pose({ armR: limb(96, -30, 70, -150), armL: limb(-80, 60, -96, 130) })} mood="joy" hands={({ R }) => <Sword x={R[0] + 30} y={R[1] - 60} px={8} rotate={-20} />} />
+          <Figure x={0} y={0} scale={1.5} pose={pose({ armR: limb(96, -30, 70, -150), armL: limb(-80, 60, -96, 130) })} face="joy" hands={({ R }) => <Sword x={R[0] + 30} y={R[1] - 60} px={8} rotate={-20} />} />
         </g>
       </g>
     </Panel>
@@ -161,7 +160,7 @@ export const CAST_FRAMES = 600; // 20s
 
 const SLIDES = [
   { at: 0, title: "BEHIND THE BUILD", body: "No footage. No filters.\nEvery frame here is drawn in code." },
-  { at: 200, title: "MEET STEVE", body: "Chibi proportions, thick outlines,\nand a face that actually changes." },
+  { at: 200, title: "MEET THE CAST", body: "Round head, thick outlines,\nand a face that actually changes." },
   { at: 400, title: "ONE RIG, EVERY SCENE", body: "Same poses, same walk cycle —\nthe overworld, the Nether, all of it." },
 ];
 
@@ -171,12 +170,12 @@ export const LongCast: React.FC<{ audio?: string | null }> = ({ audio = null }) 
   const slide = SLIDES.reduce((cur, s) => (f >= s.at ? s : cur), SLIDES[0]);
   const local = f - slide.at;
   const pop = ease(local, 0, 16);
-  const faceRow: { mood: any; label: string }[] = [
+  const faceRow: { mood: FaceKind; label: string }[] = [
     { mood: "happy", label: "happy" },
     { mood: "worried", label: "worried" },
     { mood: "shocked", label: "shocked" },
     { mood: "joy", label: "joy" },
-    { mood: "angry", label: "angry" },
+    { mood: "gritted", label: "angry" },
   ];
   return (
     <Panel bg="#efe8d8">
@@ -191,19 +190,19 @@ export const LongCast: React.FC<{ audio?: string | null }> = ({ audio = null }) 
       ))}
       {slide.at === 0 && (
         <g transform="translate(540 900)" opacity={pop}>
-          <Steve x={0} y={0} scale={2.1} pose={POSE.stand} mood="plain" />
+          <Figure x={0} y={0} scale={2.1} pose={POSE.stand} face="plain" />
         </g>
       )}
       {slide.at === 200 && (
         <g transform="translate(540 1000)" opacity={pop}>
-          <Steve x={0} y={0} scale={2.4} pose={POSE.cheeks} mood="joy" armsOverHead />
+          <Figure x={0} y={0} scale={2.4} pose={POSE.cheeks} face="joy" armsOverHead />
         </g>
       )}
       {slide.at === 400 && (
         <g opacity={pop}>
           {faceRow.map((r, i) => (
             <g key={r.label} transform={`translate(${210 + i * 165} 950)`}>
-              <Steve x={0} y={0} scale={0.85} pose={POSE.stand} mood={r.mood} />
+              <Figure x={0} y={0} scale={0.85} pose={POSE.stand} face={r.mood} />
               <text x={0} y={220} textAnchor="middle" fontFamily="Selawik, sans-serif" fontSize={26} fill="#555">
                 {r.label}
               </text>
@@ -249,7 +248,7 @@ export const LongVote: React.FC<{ audio?: string | null }> = ({ audio = null }) 
         </text>
       ))}
       <g transform="translate(540 1380)" opacity={pop}>
-        <Steve x={0} y={0} scale={1.4} pose={POSE.stand} mood="focus" />
+        <Figure x={0} y={0} scale={1.4} pose={POSE.stand} face="thinking" />
       </g>
       <text x={540} y={1680} textAnchor="middle" fontFamily="Selawik, sans-serif" fontSize={34} fill="#ffffff" opacity={header}>
         comment your pick below
@@ -279,7 +278,7 @@ export const LongOutro: React.FC<{ audio?: string | null }> = ({ audio = null })
         EVERY WEEK
       </text>
       <g transform="translate(540 800)" opacity={pop}>
-        <Steve x={0} y={0} scale={1.5} pose={POSE.cheeks} mood="joy" armsOverHead />
+        <Figure x={0} y={0} scale={1.5} pose={POSE.cheeks} face="joy" armsOverHead />
       </g>
       <g transform={`translate(880 300) rotate(${bellRing})`} opacity={pop}>
         <path d="M-26,-32 q26,-26 52,0 v36 h4 v11 h-60 v-11 h4 z" fill="#ffe27a" stroke="#141414" strokeWidth={7} />

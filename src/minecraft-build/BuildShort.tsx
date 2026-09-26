@@ -1,11 +1,10 @@
 import React from "react";
 import { AbsoluteFill, Audio, interpolate, random, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { H, PANEL_TOP, W } from "../minecraft/beats";
-import { ease, lerpPose, limb, POSE, pose } from "../minecraft/figure";
+import { ease, FaceKind, Figure, lerpPose, limb, POSE, pose } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { CreeperMob } from "../minecraft/mobs";
 import { Item, Puff } from "../minecraft/pixels";
-import { Steve, SteveMood } from "../minecraft/steve";
 import { Overworld, OverworldProps } from "../minecraft/worlds";
 
 /**
@@ -134,7 +133,7 @@ const FoundationShot: React.FC = () => {
       <Overworld />
       <OverworldProps pan={0} />
       <rect x={HX - WALL_W / 2 - 20} y={GROUND - 6} width={(WALL_W + 40) * cleared} height={26} fill="#8a8a86" stroke="#141414" strokeWidth={8} />
-      <Steve x={480} y={GROUND - 250} scale={1.35} pose={p} mood="focus" hands={({ R }) => <Item name="pickaxe" x={R[0] + 40} y={R[1] - 30} px={9} rotate={-20} />} />
+      <Figure x={480} y={GROUND - 250} scale={1.35} pose={p} face="thinking" hands={({ R }) => <Item name="pickaxe" x={R[0] + 40} y={R[1] - 30} px={9} rotate={-20} />} />
     </g>
   );
 };
@@ -146,14 +145,14 @@ const FoundationShot: React.FC = () => {
 const WallsShot: React.FC = () => {
   const f = useAbs("walls");
   const wallT = ease(f, 10, 160);
-  const mood: SteveMood = "plain";
+  const mood: FaceKind = "plain";
   const p = f % 30 < 15 ? POSE.stand : pose({ armR: limb(80, -10, 30, -140) });
   return (
     <g>
       <Overworld />
       <OverworldProps />
       <House wallT={wallT} roofT={0} />
-      <Steve x={420} y={GROUND - 250} scale={1.25} pose={p} mood={mood} hands={({ R }) => <Item name="cobble" x={R[0] + 30} y={R[1] - 10} px={8} />} />
+      <Figure x={420} y={GROUND - 250} scale={1.25} pose={p} face={mood} hands={({ R }) => <Item name="cobble" x={R[0] + 30} y={R[1] - 10} px={8} />} />
     </g>
   );
 };
@@ -167,13 +166,13 @@ const RoofShot: React.FC = () => {
   const roofT = ease(f, 0, 70);
   const proud = f >= 80;
   const p = proud ? POSE.cheeks : POSE.chin;
-  const mood: SteveMood = proud ? "joy" : "happy";
+  const mood: FaceKind = proud ? "joy" : "happy";
   return (
     <g>
       <Overworld />
       <OverworldProps />
       <House wallT={1} roofT={roofT} />
-      <Steve x={420} y={GROUND - 250} scale={1.3} pose={p} mood={mood} armsOverHead={proud} />
+      <Figure x={420} y={GROUND - 250} scale={1.3} pose={p} face={mood} armsOverHead={proud} />
     </g>
   );
 };
@@ -191,7 +190,7 @@ const NightShot: React.FC = () => {
   const boom = l >= 195;
   const flash = boom ? interpolate(l, [195, 199, 220], [1, 0.9, 0], { extrapolateRight: "clamp" }) : 0;
   const shake = swell > 0 && !boom ? (random(`nb${f}`) - 0.5) * swell * 14 : 0;
-  const mood: SteveMood = boom ? "shocked" : l > 150 ? "worried" : "joy";
+  const mood: FaceKind = boom ? "shocked" : l > 150 ? "worried" : "joy";
   const p = boom ? POSE.headHold : admiring ? POSE.cheeks : POSE.headHold;
   return (
     <g transform={`translate(${shake} 0)`}>
@@ -201,7 +200,7 @@ const NightShot: React.FC = () => {
       <House wallT={1} roofT={1} lit />
       {l < 195 && <CreeperMob x={creeperX} y={GROUND - 200} scale={1.05} face="normal" walk={l / 4} swell={swell} flip />}
       {boom && l < 230 && [0, 1, 2, 3].map((i) => <Puff key={i} x={HX + 180 + i * 30} y={GROUND - 260 - (l - 195) * 10 - i * 16} r={44 - i * 4} opacity={Math.max(0, 1 - (l - 195) / 26)} />)}
-      <Steve x={420} y={GROUND - 250} scale={1.3} pose={p} mood={mood} armsOverHead={admiring} flip={l >= 150 && !boom} />
+      <Figure x={420} y={GROUND - 250} scale={1.3} pose={p} face={mood} armsOverHead={admiring} flip={l >= 150 && !boom} />
     </g>
   );
 };
@@ -213,14 +212,14 @@ const NightShot: React.FC = () => {
 const MorningShot: React.FC = () => {
   const f = useAbs("morning");
   const l = f - SHOT.morning[0];
-  const mood: SteveMood = l < 60 ? "worried" : l < 120 ? "meh" : "focus";
+  const mood: FaceKind = l < 60 ? "worried" : l < 120 ? "meh" : "thinking";
   const p = l < 60 ? POSE.stand : l < 120 ? pose({ armR: limb(96, 96, 34, -22) }) : lerpPose(POSE.stand, pose({ armR: limb(80, -10, 30, -140) }), ease(l, 120, 150));
   return (
     <g>
       <Overworld />
       <OverworldProps />
       <House wallT={1} roofT={1} damage={0.75} />
-      <Steve x={420} y={GROUND - 250} scale={1.3} pose={p} mood={mood} armsOverHead={l >= 60 && l < 120} hands={({ R }) => (l >= 150 ? <Item name="pickaxe" x={R[0] + 40} y={R[1] - 30} px={9} rotate={-20} /> : null)} />
+      <Figure x={420} y={GROUND - 250} scale={1.3} pose={p} face={mood} armsOverHead={l >= 60 && l < 120} hands={({ R }) => (l >= 150 ? <Item name="pickaxe" x={R[0] + 40} y={R[1] - 30} px={9} rotate={-20} /> : null)} />
     </g>
   );
 };
@@ -286,7 +285,7 @@ export const BuildThumb: React.FC = () => {
         <NightSky />
         <House wallT={1} roofT={1} damage={0.6} lit />
         <CreeperMob x={HX + 220} y={GROUND - 200} scale={1.1} face="happy" walk={2} flip />
-        <Steve x={420} y={GROUND - 250} scale={1.5} pose={pose({ armR: limb(96, 96, 34, -22) })} mood="worried" />
+        <Figure x={420} y={GROUND - 250} scale={1.5} pose={pose({ armR: limb(96, 96, 34, -22) })} face="worried" />
         <text x={540} y={230} textAnchor="middle" fontFamily="Silkscreen, monospace" fontSize={90} fill="#ffffff" stroke="#141414" strokeWidth={9} paintOrder="stroke">
           4 DAYS
         </text>

@@ -1,11 +1,10 @@
 import React from "react";
 import { AbsoluteFill, Audio, interpolate, random, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { H, W } from "../minecraft/beats";
-import { ease, POSE, walkPose } from "../minecraft/figure";
+import { ease, Figure, POSE, walkPose } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { Cow, Tag } from "../minecraft/mobs";
 import { TreeTop } from "../minecraft/pixels";
-import { Steve } from "../minecraft/steve";
 import { Overworld, OverworldProps } from "../minecraft/worlds";
 
 /**
@@ -16,9 +15,9 @@ import { Overworld, OverworldProps } from "../minecraft/worlds";
  * grass block while the trees pop into existence one at a time around
  * him. He sits down to wait. A cow loads in mid-air and falls past him.
  *
- * Reuses everything already built for the last comparison Short (Steve,
- * the Cow, the floating name tag) — only the void and the floating block
- * are new, since that's the whole joke.
+ * Reuses everything already built for the last comparison Short (the
+ * stick figure, the Cow, the floating name tag) — only the void and the
+ * floating block are new, since that's the whole joke.
  */
 
 export const CHUNKLOAD_FRAMES = 420;
@@ -64,7 +63,7 @@ const JavaShot: React.FC = () => {
     <g>
       <Overworld />
       <OverworldProps />
-      <Steve x={x} y={GROUND - 250} scale={1.35} pose={p ?? walkPose(0, 60)} mood="plain" />
+      <Figure x={x} y={GROUND - 250} scale={1.35} pose={p ?? walkPose(0, 60)} face="plain" />
       <Tag x={640} y={GROUND - 690} text="Java Players" />
     </g>
   );
@@ -118,12 +117,12 @@ const BedrockShot: React.FC = () => {
       })}
       {!cowGone && cowFallT > 0 && <Cow x={700} y={cowY} scale={0.9 + cowFallT * 0.2} />}
       {blockPop > 0.3 && (
-        <Steve
+        <Figure
           x={walking ? x : 540}
           y={GROUND - 250}
           scale={1.35}
           pose={walking ? walkPose(l / 6, 60) : sitting ? POSE.stand : walkPose(0, 60)}
-          mood={sitting ? "meh" : "worried"}
+          face={sitting ? "meh" : "worried"}
           armsOverHead={false}
         />
       )}
@@ -167,7 +166,7 @@ export const ChunkLoadThumb: React.FC = () => {
         <TreeTop x={860} y={1060} scale={0.9} />
         <TreeTop x={220} y={1140} scale={0.85} />
         <Cow x={780} y={780} scale={1.1} />
-        <Steve x={540} y={GROUND - 250} scale={1.6} mood="worried" pose={walkPose(0, 60)} />
+        <Figure x={540} y={GROUND - 250} scale={1.6} face="worried" pose={walkPose(0, 60)} />
         <Tag x={540} y={GROUND - 720} text="Bedrock Players" size={48} />
         <text x={540} y={230} textAnchor="middle" fontFamily="Silkscreen, monospace" fontSize={82} fill="#141414" stroke="#ffffff" strokeWidth={10} paintOrder="stroke">
           THE CHUNK

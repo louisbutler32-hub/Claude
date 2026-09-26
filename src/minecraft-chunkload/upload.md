@@ -37,7 +37,7 @@ https://creativecommons.org/licenses/by/4.0/
 ## Tags
 
 ```
-minecraft, minecraft shorts, java vs bedrock, java players vs bedrock players, bedrock players, java players, chunk loading, minecraft lag, minecraft animation, minecraft meme, minecraft memes, minecraft funny, minecraft logic, minecraft cartoon, minecraft comparison, gaming animation, steve animation, minecraft short, animation meme, oof craft, shorts
+minecraft, minecraft shorts, java vs bedrock, java players vs bedrock players, bedrock players, java players, chunk loading, minecraft lag, minecraft animation, minecraft meme, minecraft memes, minecraft funny, minecraft logic, minecraft cartoon, minecraft comparison, gaming animation, stick figure animation, minecraft short, animation meme, oof craft, shorts
 ```
 
 (378 characters.)
@@ -59,7 +59,7 @@ when the cow lands), then `npm run chunkload:audio`.
 `docs/minecraft-shorts-concepts.md` already flagged Java vs Bedrock as the
 reference channel's (@GarrettTheCarrot, 6.1M subs) best-performing format —
 this is the second one built in it, after the PvP Short. It reuses almost
-everything already in the repo (Steve, the Cow, the floating name tag,
-`TreeTop` from the guess-format pixel set) — the only new pieces are the
-pale void background and the floating grass block, since that's the whole
-joke.
+everything already in the repo (the stick figure, the Cow, the floating
+name tag, `TreeTop` from the guess-format pixel set) — the only new pieces
+are the pale void background and the floating grass block, since that's
+the whole joke.

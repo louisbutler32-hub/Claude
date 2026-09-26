@@ -1,10 +1,9 @@
 import React from "react";
 import { AbsoluteFill, Audio, interpolate, random, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { H, W } from "../minecraft/beats";
-import { ease, pose, limb, walkPose, POSE } from "../minecraft/figure";
+import { ease, FaceKind, Figure, pose, limb, TINT, walkPose, POSE } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { CreeperFace, CreeperMob, Tag } from "../minecraft/mobs";
-import { Steve, SteveMood, STEVE_TINT } from "../minecraft/steve";
 import { Puff } from "../minecraft/pixels";
 import { Overworld, OverworldProps } from "../minecraft/worlds";
 
@@ -54,7 +53,7 @@ const YouShot: React.FC = () => {
   const swell = interpolate(f, [96, 126], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const boom = f >= 126;
   const fling = ease(f, 126, 134);
-  const mood: SteveMood = boom ? "hurt" : noticed ? (f < 40 ? "shocked" : "scream") : "plain";
+  const mood: FaceKind = boom ? "hurt" : noticed ? (f < 40 ? "shocked" : "scream") : "plain";
   const p = boom ? POSE.spread : running ? runPose(f) : noticed ? POSE.headHold : POSE.stand;
   const flashIn = interpolate(f, [0, 10], [1, 0], { extrapolateRight: "clamp" });
   const flashBoom = boom ? interpolate(f, [126, 130, 165], [1, 0.9, 0], { extrapolateRight: "clamp" }) : 0;
@@ -67,7 +66,7 @@ const YouShot: React.FC = () => {
       {!boom && <CreeperMob x={creeperX} y={GROUND - 200} scale={1.15} face="normal" walk={f / 4} swell={swell} flip />}
       {boom && f < 150 && [0, 1, 2, 3, 4].map((i) => <Puff key={i} x={creeperX - 160 + i * 80} y={GROUND - 200 - (f - 126) * 10 - i * 30} r={50 - i * 4} opacity={Math.max(0, 1 - (f - 126) / 22)} />)}
       <g transform={boom ? `translate(${-fling * 900} ${-fling * 500}) rotate(${-fling * 200} ${pixX} ${GROUND - 250})` : running ? `rotate(-14 ${pixX} ${GROUND})` : ""}>
-        <Steve x={pixX} y={GROUND - 250} scale={1.4} pose={p} mood={mood} tint={boom ? STEVE_TINT.hurt : STEVE_TINT.normal} flip={running || boom} />
+        <Figure x={pixX} y={GROUND - 250} scale={1.4} pose={p} face={mood} tint={boom ? TINT.hurt : TINT.normal} flip={running || boom} />
       </g>
       {noticed && !running && f < 42 && <text x={pixX + 130} y={GROUND - 560} fontFamily="Silkscreen, monospace" fontSize={70} fill="#141414">!</text>}
       <Tag x={pixX} y={GROUND - 690} text="You" />
@@ -99,7 +98,7 @@ const CreeperShot: React.FC = () => {
       <OverworldProps />
       {!closeup && (
         <>
-          <Steve x={pixX} y={GROUND - 250} scale={1.4} pose={p} mood={running ? "scream" : f >= 30 ? "shocked" : "plain"} flip={running} />
+          <Figure x={pixX} y={GROUND - 250} scale={1.4} pose={p} face={running ? "scream" : f >= 30 ? "shocked" : "plain"} flip={running} />
           <CreeperMob x={creeperX} y={GROUND - 200} scale={1.15} face={face} walk={f / 4} swell={swell} arms flip hearts={hearts} />
           <Tag x={creeperX} y={GROUND - 690} text="The creeper" />
         </>
@@ -155,7 +154,7 @@ export const CreeperThumb: React.FC = () => {
         <path d="M0,750 H1080" stroke="#000" strokeWidth={9} />
         <Tag x={300} y={250} text="You" size={44} />
         <g transform="rotate(-14 300 900)">
-          <Steve x={300} y={700} scale={1.5} pose={walkPose(0.3, 120, pose({ armL: limb(-90, 40, -140, -20), armR: limb(90, 40, 140, -20) }), false)} mood="scream" flip />
+          <Figure x={300} y={700} scale={1.5} pose={walkPose(0.3, 120, pose({ armL: limb(-90, 40, -140, -20), armR: limb(90, 40, 140, -20) }), false)} face="scream" flip />
         </g>
         <Tag x={720} y={1180} text="The creeper" size={44} />
         <CreeperMob x={720} y={1620} scale={1.3} face="happy" arms flip hearts={3} />
