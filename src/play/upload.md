@@ -7,108 +7,124 @@ take a chapter list, so there isn't one.
 The cast is Biscuit the puppy, Poppy the bunny, Bruno the bear and Mimi the
 little cat.
 
+## The format: pio the platypus
+
+This line is packaged the way **pio the platypus** packages theirs. That
+channel made the two reference clips. These are their uploads of them,
+checked 26 Sep 2026:
+
+| their Short | title | description | tags | category |
+|---|---|---|---|---|
+| `UhvuC1BEB7g`, 2.5M views | `Who climbs the fastest? #animation #cute #funny #game #meme` | empty | none | People & Blogs |
+| `OouTA-9-3co`, 351K views | `We will rock you! #interactive #funny #cuteanimal #music #meme` | empty | none | People & Blogs |
+
+Across their last 50-odd Shorts, the titles follow the same rules:
+
+- The title is one short line in sentence case. Usually it's a question
+  or an instruction ("Protect Otti from the rain!"), or else a caption
+  ("Octopus kiss").
+- Then come **five** lowercase hashtags, almost always from the same
+  pool. By frequency, that's `#funny #animation #interactive #meme #cute`,
+  then `#relatable #cuteanimal #cuteanimals #game`. Only the song Short
+  uses `#music`.
+- There's no emoji in the title, no `#shorts`, and nothing in the
+  description.
+
+Ours match that. The one exception is the description, which holds the
+house subscribe block (see `CLAUDE.md`) and nothing else. The hooks are
+ours, not copies of theirs.
+
 > **About the audio.** Both renders carry the soundtrack of the reference
-> clips they were rebuilt from. That audio belongs to whoever made those
-> clips. Expect a Content ID claim or a muted track if it's uploaded as is.
-> If the references are other creators' Shorts, the clean way to use their
-> sound is YouTube's **Remix → Use this sound** on their Short, which
-> credits them and links back. The licence-free fallback tracks are
-> `npm run play:audio`, then render with `--props='{"audio":"audio/play-beat-mix.mp3"}'`.
+> clips. That audio isn't ours. The beat clip's song is Queen's "We Will
+> Rock You", which is how pio titled it. Expect a Content ID claim or a
+> muted track if it goes up as is. The licence-free tracks are
+> `npm run play:audio`, then render with
+> `--props='{"audio":"audio/play-beat-mix.mp3"}'`. The ready-made copies
+> are `out/play-beat-clean-audio.mp4` and `out/play-race-clean-audio.mp4`.
 
 ---
 
-## 1 · play along with the beat! (`Play-Beat`)
+## 1 · Choose your champion! (`Play-Race`), post first
 
 **Title**
 
 ```
-Play Along With the Beat! 🥁👏 Stomp & Clap Challenge #shorts
+Who gets to the top first? #animation #cute #funny #game #meme
 ```
 
 Alternates:
 
 ```
-Can You Keep the Beat? Stomp, Stomp, Clap! 🐶🎤 #shorts
+Choose your champion! #animation #cute #interactive #game #funny
 ```
 ```
-Stomp and Clap With Biscuit's Band! 🐻🐱 Play Along #shorts
+Who's the best climber? #cute #animation #funny #game #meme
 ```
 
 **Description**
 
 ```
-Can you keep the beat? 🥁👏
-
-Stomp when the red note lands, clap when the purple one does! Biscuit the
-puppy is singing on the big stage, Bruno the bear is stomping and Mimi the
-cat is clapping along. Play all the way to the end for a BRAVO! How many
-did you hit? 🥁
-
 🐾 Subscribe to Boppity Pals:
 https://www.youtube.com/@BoppityPals
-
-#shorts #playalong #rhythmgame #clapalong #cuteanimation
 ```
 
-**Tags**
+**Tags** (optional, since pio uses none)
 
 ```
-play along with the beat, rhythm game, stomp and clap, clap along, music game, keep the beat, interactive video, play along song, stomp clap song, dance along, interactive shorts, cute animation, kawaii, puppy, bear, kitten, boppity pals
+choose your champion, who will win, rope race, climbing race, interactive, cute animation, cute animals, boppity pals
+```
+
+**Thumbnail:** `out/thumbnail-play-race.jpg` (1080×1920, a frame from the
+Short, as pio's are)
+
+---
+
+## 2 · play along with the beat! (`Play-Beat`)
+
+**Title**
+
+```
+Stomp stomp clap! #interactive #funny #cuteanimal #music #meme
+```
+
+Alternates:
+
+```
+Play along with the beat! #interactive #funny #cuteanimal #music #game
+```
+```
+Can you keep the beat? #interactive #cute #funny #music #meme
+```
+
+**Description**
+
+```
+🐾 Subscribe to Boppity Pals:
+https://www.youtube.com/@BoppityPals
+```
+
+**Tags** (optional)
+
+```
+play along with the beat, stomp stomp clap, rhythm game, clap along, interactive, cute animation, cute animals, boppity pals
 ```
 
 **Thumbnail:** `out/thumbnail-play-beat.jpg` (1080×1920)
 
 ---
 
-## 2 · Choose your champion! (`Play-Race`)
+## Instagram Reels
 
-**Title**
-
-```
-Choose Your Champion! 🏆 Who Climbs to the Top? #shorts
-```
-
-Alternates:
-
-```
-Pick One Before They Climb! 🐻🐱🐶🐰 Who Wins the Rope Race? #shorts
-```
-```
-Bear, Cat, Puppy or Bunny? Choose Your Champion 👑 #shorts
-```
-
-**Description**
-
-```
-Choose your champion before the countdown ends! 🏆
-
-Bruno the bear, Mimi the cat, Biscuit the puppy and Poppy the bunny race
-up the ropes to the top. Somebody gets knocked off, somebody gets very
-cross, and somebody gets a surprise visitor from the sky… who will wear
-the crown? Who did you pick? Tell us in the comments! 👇
-
-🐾 Subscribe to Boppity Pals:
-https://www.youtube.com/@BoppityPals
-
-#shorts #chooseyourchampion #race #whowins #cuteanimation
-```
-
-**Tags**
-
-```
-choose your champion, pick one, who will win, rope race, climbing race, race to the top, interactive video, cute animation, kawaii, guess the winner, interactive shorts, bear, cat, puppy, bunny, boppity pals
-```
-
-**Thumbnail:** `out/thumbnail-play-race.jpg` (1080×1920)
-
----
+Use the same title line as the caption, word for word, hashtags and all.
+Instagram wouldn't serve pio's profile to a fetch, so this follows their
+YouTube uploads. It's the same brand and the same videos.
 
 ## Upload settings (both)
 
 | field | value |
 |---|---|
-| Category | Entertainment |
-| Audience | Decide it honestly, per `docs/channel-boppity-pals.md`. This copy is written for a general audience ("not made for kids"). If the channel is meant for young children it must be **made for kids**, and the comment prompts come out. |
+| Category | **People & Blogs** (pio's category) |
+| Audience | Decide it honestly, per `docs/channel-boppity-pals.md`. The format is a general-audience one. If the channel is meant for young children, it must be **made for kids**. |
 | Shorts | Vertical 1080×1920, about 27.6 seconds |
-| Playlist | Play Along With the Beat 🥁 / Choose Your Champion 🏆 |
-| Pinned comment | race: "Who did you pick? 🐻🐱🐶🐰" · beat: "How many did you hit? 🥁" |
+| Playlist | Choose Your Champion 🏆 / Play Along With the Beat 🥁 |
+| Pinned comment | race: "Who did you pick? 🐻🐱🐶🐰" · beat: "How many did you hit? 🥁". This one is our own addition, since pio doesn't pin one. |

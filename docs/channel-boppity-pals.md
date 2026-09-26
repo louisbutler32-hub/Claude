@@ -7,10 +7,32 @@ different audience from Pebblo Pebble's toddler learning videos. They also
 live on comments ("who did you pick?"), so mixing them into the Pebblo feed
 would hurt both.
 
+## The model: pio the platypus
+
+The two reference clips come from **pio the platypus**: YouTube channel
+`UC9WD7bBsWR1r6qwiazpNw3g`, and instagram.com/pio.the.platypus. The brief
+is to run this channel the way they run theirs. Here is what they do,
+checked 26 Sep 2026:
+
+- The channel name is all lowercase: "pio the platypus".
+- The channel description is two lines: `🛍️ pio merch shop 👇` and their
+  shop link. That's all.
+- Every Short has an empty description and no tags, in the People & Blogs
+  category.
+- The title is one short line, then five lowercase hashtags (the rules and
+  hashtag pool are in `src/play/upload.md`).
+- The biggest titles name a character ("Protect Otti from the rain!",
+  13M views).
+
+Their name, their platypus and their shop are theirs. We copy the format,
+not the brand.
+
 ## Name and handle
 
 - **Name:** Boppity Pals. "Bop" is the beat, "pals" is the four friends,
-  and it reads out loud the way the videos feel.
+  and it reads out loud the way the videos feel. Set the display name
+  lowercase, **boppity pals**, the way pio sets theirs. The wordmark on
+  the banner stays capitalised.
 - **Handle:** `@BoppityPals`. If it's gone when you get there, try
   `@BoppityPalsTV`, then `@BoppityPalsPlay`.
 
@@ -46,18 +68,17 @@ apart.
 
 ## Description
 
-Paste into Customisation → Basic info → Description:
+Paste into Customisation → Basic info → Description. It's two lines,
+the same shape as pio's:
 
 ```
-Play along with Biscuit, Poppy, Bruno and Mimi! 🐶🐰🐻🐱
-
-Boppity Pals makes tiny animated games you play, not just watch:
-
-🥁 PLAY ALONG WITH THE BEAT — stomp when the red note lands, clap on the purple one
-🏆 CHOOSE YOUR CHAMPION — pick a pal before the countdown ends and see who makes it to the top
-
-Pick your favourite pal and tell us who you chose! New Short every day. 💛
+play along with biscuit, poppy, bruno & mimi 🐶🐰🐻🐱
+new short every day 💛
 ```
+
+Once there's a shop, an Instagram or a second link, swap the second line
+for a `👇` line and add the link under Links, the way pio points at their
+shop.
 
 ## Keywords
 
@@ -95,7 +116,7 @@ consistent with the choice.
 
 Studio → Settings → Upload defaults:
 
-- Category **Entertainment**, language **English**
+- Category **People & Blogs** (pio's), language **English**
 - Visibility Public, comments **on** (unless made for kids)
 - Allow **Shorts remixing: video and audio**
 
@@ -104,13 +125,16 @@ here.
 
 ## Every upload
 
-- Title, description, tags and thumbnail: `src/<short>/upload.md`, with the
-  footer block below.
+- Title, description, tags and thumbnail: `src/<short>/upload.md`.
+- **Title:** one short hook plus five lowercase hashtags. No emoji and no
+  `#shorts`.
+- **Description:** the footer block below and nothing else. pio leaves
+  theirs blank.
 - Pin a comment that asks the question the Short sets up: "Who did you
   pick? 🐻🐱🐶🐰" on the race, "How many did you hit? 🥁" on the beat.
   Reply to comments for the first month.
 
-Footer block, above the hashtags:
+Footer block, which is the whole description:
 
 ```
 🐾 Subscribe to Boppity Pals:
@@ -120,7 +144,8 @@ https://www.youtube.com/@BoppityPals
 ## The music
 
 Both Shorts carry the soundtrack of the reference clips they were rebuilt
-from. That audio isn't ours (see `src/play/upload.md`). On this channel
+from. That audio isn't ours (see `src/play/upload.md`), and the beat
+clip's song is Queen's "We Will Rock You". On this channel
 that matters more than usual, because a claim on the very first uploads
 can hold back a new channel. If the references are other creators' Shorts,
 use **Remix → Use this sound** from their Short so the sound is credited

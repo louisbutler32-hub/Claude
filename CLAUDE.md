@@ -36,8 +36,11 @@ https://www.youtube.com/@BANEHistory
 the play-along Shorts line, all of `src/play/`. Its channel package (art,
 description, keywords, playlists, audience, posting plan) is in
 `docs/channel-boppity-pals.md`, and `npm run play:brand` renders the art.
-Once the channel exists, swap the real URL in here and in
-`src/play/upload.md`. The block is:
+The line is packaged like **pio the platypus**, the channel the
+references come from. Titles are one short hook plus five lowercase
+hashtags, the description is only the footer block, and the category is
+People & Blogs (see `src/play/upload.md`). Once the channel exists, swap
+the real URL in here and in `src/play/upload.md`. The block is:
 
 ```
 🐾 Subscribe to Boppity Pals:
