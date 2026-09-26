@@ -92,6 +92,7 @@ import { MinecraftThumb } from "./minecraft/Thumbnail";
 import { PebbloSheet } from "./minecraft/PebbloSheet";
 import { CharacterOptions } from "./minecraft/characters";
 import { PvpShort, PvpThumb, PVP_FRAMES } from "./minecraft-pvp/PvpShort";
+import { ChunkLoadShort, ChunkLoadThumb, CHUNKLOAD_FRAMES } from "./minecraft-chunkload/ChunkLoadShort";
 import { CreeperShort, CreeperThumb, CREEPER_FRAMES } from "./minecraft-creeper/CreeperShort";
 import { NetherShort, NetherThumb, NETHER_FRAMES } from "./minecraft-nether/NetherShort";
 import { BuildShort, BuildThumb, BUILD_FRAMES } from "./minecraft-build/BuildShort";
@@ -200,6 +201,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Nether-Thumbnail" component={NetherThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="CreeperShort" component={CreeperShort} durationInFrames={CREEPER_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Creeper-Thumbnail" component={CreeperThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="ChunkLoadShort" component={ChunkLoadShort} durationInFrames={CHUNKLOAD_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="ChunkLoad-Thumbnail" component={ChunkLoadThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition
         id="PvpShort"
         component={PvpShort}

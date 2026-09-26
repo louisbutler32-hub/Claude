@@ -197,7 +197,7 @@ one book. Villager's face. Stop.
 
 ## Third batch
 
-### 19. Java Players vs Bedrock Players: the chunk loads
+### 19. Java Players vs Bedrock Players: the chunk loads  *(built — `src/minecraft-chunkload/`)*
 Java: Pix walks over a hill and the world is simply there. Bedrock: Pix
 walks over the hill into nothing, a white void, and stands on one floating
 grass block while trees pop into existence one by one around him. He sits
