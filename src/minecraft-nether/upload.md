@@ -1,15 +1,15 @@
-# Upload copy — First time in the Nether
+# Upload copy — POV: You built a Nether portal (it did not go well)
 
 ## Title
 
 ```
-First time in the Nether 😱 (it did not go well) #shorts
+POV: You built a Nether portal (it did not go well) 😱 #shorts
 ```
 
 **Alternates:**
 
 ```
-Building a Nether portal for the first time #minecraft #shorts
+First time in the Nether 😱 (it did not go well) #minecraft #shorts
 ```
 ```
 POV: the ghast found you on your first Nether trip 🔥 #shorts
@@ -56,5 +56,7 @@ fireball hit), then `npm run nether:audio`.
 
 This one is longer and structured differently from the channel's other
 Shorts on purpose: five scenes across a real setting change (overworld →
-Nether → overworld) instead of two labelled halves, with a small corner
-caption naming each scene instead of a joke caption band.
+Nether → overworld) instead of two labelled halves. It carries the same
+POV band as the creeper Short up top, plus a small corner caption naming
+each of the five scenes underneath it — the band says what the video is,
+the corner tag says where you are in it.

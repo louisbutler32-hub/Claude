@@ -14,12 +14,23 @@ import { Overworld, OverworldProps } from "../minecraft/worlds";
  *
  * Longer and more varied than the earlier Shorts on purpose: a different
  * setting (the Nether gets its own palette, its own light source, its own
- * mob), a real scene count instead of two labelled halves, and a corner
- * "day/place" caption — a documentary device — instead of a meme caption
- * band or a POV line.
+ * mob), a real scene count instead of two labelled halves, and — like the
+ * creeper Short — a POV band up top, the same white-band, three-line,
+ * Selawik-set device measured off the reference. The small corner scene
+ * tag stays underneath it as a documentary label for each of the five
+ * scenes, since the POV line alone doesn't say which scene is which.
  */
 
 export const NETHER_FRAMES = 720;
+export const POV = ["POV: You built", "a Nether portal", "(it did not go well)"];
+const BAND = 450;
+
+/** the reference's POV band: white, top of frame, three centred lines. */
+const PovBand: React.FC = () => (
+  <div style={{ position: "absolute", left: 0, top: 0, width: W, height: BAND, background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <div style={{ fontFamily: "Selawik, 'Segoe UI', sans-serif", fontSize: 100, lineHeight: "104px", color: "#000", textAlign: "center", whiteSpace: "pre" }}>{POV.join("\n")}</div>
+  </div>
+);
 const SHOT = {
   build: [0, 180],
   cross: [180, 210],
@@ -221,6 +232,7 @@ export const NetherShort: React.FC<{ audio?: string | null }> = ({ audio = null 
           <SceneTag text="HOME" sub="never going back. (going back tomorrow.)" />
         </AbsoluteFill>
       </Sequence>
+      <PovBand />
     </AbsoluteFill>
   );
 };
