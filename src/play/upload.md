@@ -1,7 +1,8 @@
 # Upload copy — the play-along Shorts
 
-Two Shorts, both on **Pebblo Pebble**. Paste-ready. Shorts don't take a
-chapter list, so there isn't one.
+Two Shorts for **Boppity Pals**, the play-along channel (the full channel
+package is in `docs/channel-boppity-pals.md`). Paste-ready. Shorts don't
+take a chapter list, so there isn't one.
 
 The cast is Biscuit the puppy, Poppy the bunny, Bruno the bear and Mimi the
 little cat.
@@ -40,21 +41,19 @@ Can you keep the beat? 🥁👏
 
 Stomp when the red note lands, clap when the purple one does! Biscuit the
 puppy is singing on the big stage, Bruno the bear is stomping and Mimi the
-cat is clapping along. Play all the way to the end for a BRAVO!
+cat is clapping along. Play all the way to the end for a BRAVO! How many
+did you hit? 🥁
 
-📚 ALL OUR LEARNING VIDEOS
-https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
+🐾 Subscribe to Boppity Pals:
+https://www.youtube.com/@BoppityPals
 
-🥕 Subscribe to Pebblo Pebble:
-https://www.youtube.com/@PebbloPebble
-
-#shorts #playalong #rhythmgame #clapalong #kidsmusic
+#shorts #playalong #rhythmgame #clapalong #cuteanimation
 ```
 
 **Tags**
 
 ```
-play along with the beat, rhythm game, stomp and clap, clap along, music game for kids, keep the beat, interactive video, play along song, kids rhythm game, stomp clap song, dance along, kids music, interactive shorts, cute animation, puppy, bear, kitten
+play along with the beat, rhythm game, stomp and clap, clap along, music game, keep the beat, interactive video, play along song, stomp clap song, dance along, interactive shorts, cute animation, kawaii, puppy, bear, kitten, boppity pals
 ```
 
 **Thumbnail:** `out/thumbnail-play-beat.jpg` (1080×1920)
@@ -86,13 +85,10 @@ Choose your champion before the countdown ends! 🏆
 Bruno the bear, Mimi the cat, Biscuit the puppy and Poppy the bunny race
 up the ropes to the top. Somebody gets knocked off, somebody gets very
 cross, and somebody gets a surprise visitor from the sky… who will wear
-the crown? Did your champion make it?
+the crown? Who did you pick? Tell us in the comments! 👇
 
-📚 ALL OUR LEARNING VIDEOS
-https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
-
-🥕 Subscribe to Pebblo Pebble:
-https://www.youtube.com/@PebbloPebble
+🐾 Subscribe to Boppity Pals:
+https://www.youtube.com/@BoppityPals
 
 #shorts #chooseyourchampion #race #whowins #cuteanimation
 ```
@@ -100,7 +96,7 @@ https://www.youtube.com/@PebbloPebble
 **Tags**
 
 ```
-choose your champion, pick one, who will win, rope race, climbing race, race to the top, interactive video, cute animation, kids race, guess the winner, interactive shorts, bear, cat, puppy, bunny
+choose your champion, pick one, who will win, rope race, climbing race, race to the top, interactive video, cute animation, kawaii, guess the winner, interactive shorts, bear, cat, puppy, bunny, boppity pals
 ```
 
 **Thumbnail:** `out/thumbnail-play-race.jpg` (1080×1920)
@@ -112,6 +108,7 @@ choose your champion, pick one, who will win, rope race, climbing race, race to 
 | field | value |
 |---|---|
 | Category | Entertainment |
-| Audience | **Yes, it's made for kids.** Pebblo Pebble's audience is under 13, so this is required. |
+| Audience | Decide it honestly, per `docs/channel-boppity-pals.md`. This copy is written for a general audience ("not made for kids"). If the channel is meant for young children it must be **made for kids**, and the comment prompts come out. |
 | Shorts | Vertical 1080×1920, about 27.6 seconds |
-| Playlist | ALL OUR LEARNING VIDEOS |
+| Playlist | Play Along With the Beat 🥁 / Choose Your Champion 🏆 |
+| Pinned comment | race: "Who did you pick? 🐻🐱🐶🐰" · beat: "How many did you hit? 🥁" |

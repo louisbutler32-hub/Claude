@@ -110,6 +110,7 @@ import {
   LongOutro, OUTRO_FRAMES,
 } from "./minecraft-longform/LongformParts";
 import { BrandAvatar, BrandBanner, BrandBannerGuides } from "./brand/OofCraft";
+import { BoppityAvatar, BoppityAvatarGroup, BoppityBanner, BoppityBannerGuides, BoppityWatermark } from "./brand/BoppityPals";
 import { DigShort, DigThumb, DIG_FRAMES } from "./minecraft-dig/DigShort";
 
 import { BeringShort, BERING_FPS, BERING_SECONDS } from "./geo/bering/BeringShort";
@@ -189,6 +190,12 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      {/* ── Boppity Pals: channel art for the play-along Shorts ── */}
+      <Composition id="Boppity-Avatar" component={BoppityAvatar} durationInFrames={1} fps={30} width={800} height={800} />
+      <Composition id="Boppity-Avatar-Group" component={BoppityAvatarGroup} durationInFrames={1} fps={30} width={800} height={800} />
+      <Composition id="Boppity-Banner" component={BoppityBanner} durationInFrames={1} fps={30} width={2560} height={1440} />
+      <Composition id="Boppity-Banner-Guides" component={BoppityBannerGuides} durationInFrames={1} fps={30} width={2560} height={1440} />
+      <Composition id="Boppity-Watermark" component={BoppityWatermark} durationInFrames={1} fps={30} width={150} height={150} />
       <Composition id="Brand-Avatar" component={BrandAvatar} durationInFrames={1} fps={30} width={800} height={800} />
       <Composition id="Brand-Banner" component={BrandBanner} durationInFrames={1} fps={30} width={2560} height={1440} />
       <Composition id="Brand-Banner-Guides" component={BrandBannerGuides} durationInFrames={1} fps={30} width={2560} height={1440} />

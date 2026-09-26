@@ -2,14 +2,14 @@
 
 ## The channels
 
-Two channels ship out of this repo. Check which one a subject belongs to
+Three channels ship out of this repo. Check which one a subject belongs to
 before writing a title or description — the footer block differs.
 
 **Pebblo Pebble** — https://www.youtube.com/@PebbloPebble — the kids'
 learning-video line (`src/guess/`, `src/veggies/`, `src/numbers/`,
-`src/animals/`, `src/vehicles/`, `src/dinosaurs/`, `src/sea/`, the
-play-along Shorts in `src/play/`, and the doodle-essay subjects:
-`src/earth/`, `src/mummy/`, `src/face/`, `src/killers/`, `src/planets/`). Every one of these links the learning
+`src/animals/`, `src/vehicles/`, `src/dinosaurs/`, `src/sea/`, and the
+doodle-essay subjects: `src/earth/`, `src/mummy/`, `src/face/`,
+`src/killers/`, `src/planets/`). Every one of these links the learning
 playlist: https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
 
 Both go near the end of the description, above the hashtags, in this block:
@@ -30,6 +30,18 @@ No known playlist to link yet — the block is just:
 ```
 🎬 Subscribe to BANE History:
 https://www.youtube.com/@BANEHistory
+```
+
+**Boppity Pals**: proposed handle `@BoppityPals`, not yet claimed. This is
+the play-along Shorts line, all of `src/play/`. Its channel package (art,
+description, keywords, playlists, audience, posting plan) is in
+`docs/channel-boppity-pals.md`, and `npm run play:brand` renders the art.
+Once the channel exists, swap the real URL in here and in
+`src/play/upload.md`. The block is:
+
+```
+🐾 Subscribe to Boppity Pals:
+https://www.youtube.com/@BoppityPals
 ```
 
 ## Delivering a video

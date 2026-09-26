@@ -87,6 +87,7 @@
     "play:beat:thumb": "remotion still Play-Beat out/thumbnail-play-beat.jpg --frame=200 --image-format=jpeg --quality=92 --props='{\"audio\":null,\"thumb\":true}'",
     "play:race": "remotion render Play-Race out/play-race.mp4 && python3 scripts/mux-play-audio.py race",
     "play:race:thumb": "remotion still Play-Race out/thumbnail-play-race.jpg --frame=12 --image-format=jpeg --quality=92 --props='{\"audio\":null}'",
+    "play:brand": "remotion still Boppity-Avatar out/boppity-avatar-800.png && remotion still Boppity-Avatar-Group out/boppity-avatar-group-800.png && remotion still Boppity-Banner out/boppity-banner-2560x1440.png && remotion still Boppity-Banner-Guides out/boppity-banner-guides.png && remotion still Boppity-Watermark out/boppity-watermark-150.png --image-format=png",
     "colours": "remotion render ColourVideo out/colours.mp4",
     "colours:audio": "python3 scripts/build-audio.py colours",
     "colours:thumb": "remotion still Colour-Thumbnail out/thumbnail-learn-colours.png && remotion still Colour-Thumbnail-Board out/thumbnail-colours-all-12.png",

@@ -1,5 +1,8 @@
 # The play-along Shorts
 
+These ship on **Boppity Pals**. The channel package is in
+`docs/channel-boppity-pals.md`, and `npm run play:brand` renders the art.
+
 Interactive vertical Shorts rebuilt frame for frame on the two reference
 clips the channel owner supplied. The look, timing, story beats and
 soundtrack follow the references. The characters and every drawing are ours.
