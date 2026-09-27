@@ -38,8 +38,12 @@ import subprocess
 import sys
 import time
 import traceback
+import warnings
 from datetime import datetime, timezone
 from pathlib import Path
+
+# EasyOCR on CPU makes torch warn about pinned memory on every single frame
+warnings.filterwarnings("ignore", module=r"torch\.")
 
 HERE = Path(__file__).resolve().parent
 TILE_W = 180
@@ -299,6 +303,8 @@ def process(entry, args, models, ffmpeg):
     frames = []
     for shot in shots:
         t = shot["start"] + shot["duration"] / 2  # mid-shot: clear of any transition at the cut
+        if shot["index"] == 0:
+            t = min(t, 1.0)  # but the opening is what viewers see first — the hook, not 6s into a long shot
         frame = work / f"shot{shot['index']:03d}.jpg"
         grab_frame(ffmpeg, video, t, frame)
         shot["frame_time"] = round(t, 3)
@@ -325,7 +331,7 @@ def process(entry, args, models, ffmpeg):
         "source": {**{k: info.get(k) for k in ("format_id", "vcodec", "acodec")}, **stream},
         "analysis": {
             "analyzed_at": now(), "scene_threshold": args.threshold, "min_shot_seconds": args.min_shot,
-            "frame": "mid-shot", "ocr_min_conf": args.ocr_min_conf, "whisper_model": args.whisper_model,
+            "frame": "mid-shot (first shot: min(mid, 1.0s))", "ocr_min_conf": args.ocr_min_conf, "whisper_model": args.whisper_model,
             "versions": versions(),
         },
         "contact_sheet": sheet.name,

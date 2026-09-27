@@ -81,9 +81,12 @@ def position(box):
 
 
 def real_segments(doc):
-    """Drop what Whisper produces over music: the standard no-speech + low-confidence test."""
+    """Drop what Whisper invents over music: the standard no-speech + low-logprob test, plus segments
+    whose words it barely believed itself (its stock "You" / "Thank you." over a beat scores ~0.03)."""
     tr = doc.get("transcript") or {}
-    return [s for s in tr.get("segments", []) if not (s["no_speech_prob"] > 0.6 and s["avg_logprob"] < -1.0)]
+    return [s for s in tr.get("segments", [])
+            if not (s["no_speech_prob"] > 0.6 and s["avg_logprob"] < -1.0)
+            and (not s["words"] or sum(w["prob"] for w in s["words"]) / len(s["words"]) >= 0.4)]
 
 
 def lines_of(shot, min_conf):
@@ -204,7 +207,7 @@ def on_screen_text(docs, min_conf):
 
 TITLE_PATTERNS = {
     "X vs Y": r"\bvs\.?\b", "starts with POV": r"^\s*pov\b", "when …": r"\bwhen\b", "question": r"\?",
-    "#shorts": r"#shorts", "has emoji": r"[\U0001F300-\U0001FAFF☀-➿]", "ALL-CAPS word": r"\b[A-Z]{3,}\b",
+    "#shorts": r"#shorts", "has emoji": r"[\U0001F300-\U0001FAFF☀-➿]", "ALL-CAPS word": r"\b(?!POV\b)[A-Z]{3,}\b",
 }
 
 
@@ -244,7 +247,7 @@ def colours(docs, first_shot_only=False):
     total = sum(weight.values()) or 1
     out = []
     for key, w in sorted(weight.items(), key=lambda kv: -kv[1]):
-        r, g, b = (rgb_sum[key] / w).round().astype(int)
+        r, g, b = (int(v) for v in (rgb_sum[key] / w).round())
         h, l, sat = colorsys.rgb_to_hls(r / 255, g / 255, b / 255)
         out.append({"hex": f"#{r:02x}{g:02x}{b:02x}", "pct": round(100 * w / total, 1), "chromatic": sat > 0.2 and 0.12 < l < 0.92})
     return out
@@ -269,10 +272,19 @@ def palette_png(entries, dst):
 # report
 # --------------------------------------------------------------------------
 
+def num(v):
+    return f"{v:,.0f}" if abs(v) >= 1000 else f"{v:g}"
+
+
+def day(yyyymmdd):
+    return f"{yyyymmdd[:4]}-{yyyymmdd[4:6]}-{yyyymmdd[6:]}" if yyyymmdd else "?"
+
+
 def md_stats(s, unit="s"):
     if not s:
         return "—"
-    return f"median **{s['median']}{unit}** (p25 {s['p25']}{unit}, p75 {s['p75']}{unit}, p10–p90 {s['p10']}–{s['p90']}{unit})"
+    return (f"median **{num(s['median'])}{unit}** (p25 {num(s['p25'])}{unit}, p75 {num(s['p75'])}{unit}, "
+            f"p10–p90 {num(s['p10'])}–{num(s['p90'])}{unit})")
 
 
 def md_counts(pairs, head=("", "videos")):
@@ -285,11 +297,14 @@ def md_counts(pairs, head=("", "videos")):
 def render(r, channel):
     c, sl, hk, tx, ti, sp = r["corpus"], r["shots"], r["hook"], r["text"], r["titles"], r["speech"]
     o = [f"# Style report — {channel}", "",
-         f"{c['videos']} Shorts, {c['total_minutes']} minutes in all, uploaded {c['first_upload']} → {c['last_upload']}. "
+         f"{c['videos']} Shorts, {c['total_minutes']} minutes in all, uploaded {day(c['first_upload'])} → {day(c['last_upload'])}. "
          f"Length {md_stats(c['duration_s'])}."]
     if c["views"]:
         o.append(f"Views {md_stats(c['views'], '')}.")
     o += ["", "## Shot length", "",
+          "_Cuts are PySceneDetect ContentDetector hard cuts. A cut that keeps the same background (swapping only a "
+          "label or a character) and flash/dissolve transitions don't register, so read shot counts as a lower bound "
+          "and shot lengths as an upper bound — check the contact sheets for the Shorts that matter._", "",
           f"- **{sl['shot_seconds']['n']} shots**, each {md_stats(sl['shot_seconds'])}, mean {sl['shot_seconds']['mean']}s",
           f"- per video: {md_stats(sl['shots_per_video'], ' shots')}",
           f"- average shot length per video: {md_stats(sl['avg_shot_length_per_video'])}",
