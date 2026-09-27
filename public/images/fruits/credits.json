@@ -1,1 +1,122 @@
-[]
+[
+  {
+    "id": "apple",
+    "file": "apple.png",
+    "width": 704,
+    "height": 640,
+    "title": "Red Apples",
+    "license": "by 2.0",
+    "creator": "mari27454 (Marialba Italia)",
+    "page": "https://www.flickr.com/photos/23008537@N05/8250633862"
+  },
+  {
+    "id": "banana",
+    "file": "banana.png",
+    "width": 558,
+    "height": 233,
+    "title": "Free ripe yellow banana image",
+    "license": "cc0 1.0",
+    "creator": null,
+    "page": "https://www.rawpixel.com/image/5926741/photo-image-public-domain-tropical-fruit"
+  },
+  {
+    "id": "orange",
+    "file": "orange.png",
+    "width": 706,
+    "height": 716,
+    "title": "Orange-Close-Up_Single-Fruit__33217",
+    "license": "by 2.0",
+    "creator": "Public Domain Photos",
+    "page": "https://www.flickr.com/photos/28958738@N06/6827887132"
+  },
+  {
+    "id": "strawberry",
+    "file": "strawberry.png",
+    "width": 1024,
+    "height": 723,
+    "title": "Strawberries",
+    "license": "by 2.0",
+    "creator": "sanchom",
+    "page": "https://www.flickr.com/photos/7163248@N04/2842525085"
+  },
+  {
+    "id": "grape",
+    "file": "grape.png",
+    "width": 795,
+    "height": 934,
+    "title": "Grape cluster under pouring water",
+    "license": "cc0 1.0",
+    "creator": "Picdrome Public Domain Pictures",
+    "page": "https://www.flickr.com/photos/65798313@N06/6404970711"
+  },
+  {
+    "id": "watermelon",
+    "file": "watermelon.png",
+    "width": 649,
+    "height": 550,
+    "title": "a watermelon",
+    "license": "by 2.0",
+    "creator": "Aubree Flink",
+    "page": "https://www.flickr.com/photos/126121680@N04/14777894763"
+  },
+  {
+    "id": "pineapple",
+    "file": "pineapple.png",
+    "width": 409,
+    "height": 1013,
+    "title": "Pineapple Fruit",
+    "license": "cc0 1.0",
+    "creator": "Patrycja Tomaszczyk",
+    "page": "https://stocksnap.io/photo/pineapple-fruit-X0EC2UF71G"
+  },
+  {
+    "id": "kiwi",
+    "file": "kiwi.png",
+    "width": 518,
+    "height": 346,
+    "title": "Golden Kiwis",
+    "license": "by 2.0",
+    "creator": "Vegan Feast Catering",
+    "page": "https://www.flickr.com/photos/25128194@N02/4485268480"
+  },
+  {
+    "id": "mango",
+    "file": "mango.png",
+    "width": 385,
+    "height": 554,
+    "title": "A single young green mango hangs from a thin stem on a tree branch with several damaged and dry leaves.",
+    "license": "cc0 1.0",
+    "creator": "Faisal Ahammad",
+    "page": "https://wordpress.org/photos/photo/43169e5a17/"
+  },
+  {
+    "id": "cherry",
+    "file": "cherry.png",
+    "width": 680,
+    "height": 935,
+    "title": "Cherries",
+    "license": "by-sa 2.0",
+    "creator": "sk8geek",
+    "page": "https://www.flickr.com/photos/26170836@N05/7522149906"
+  },
+  {
+    "id": "peach",
+    "file": "peach.png",
+    "width": 1024,
+    "height": 798,
+    "title": "peach tree peaches fruit",
+    "license": "by 2.0",
+    "creator": "watts_photos",
+    "page": "https://www.flickr.com/photos/126288307@N05/27060075575"
+  },
+  {
+    "id": "pear",
+    "file": "pear.png",
+    "width": 928,
+    "height": 684,
+    "title": "DSC_9285",
+    "license": "by-sa 2.0",
+    "creator": "OnTask",
+    "page": "https://www.flickr.com/photos/22434330@N00/4855633476"
+  }
+]
