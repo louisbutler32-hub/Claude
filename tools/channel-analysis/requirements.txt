@@ -1,0 +1,10 @@
+# No NVIDIA GPU? Install the CPU build of torch first, or EasyOCR pulls a multi-GB CUDA one:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+yt-dlp[default]
+scenedetect
+opencv-python-headless
+easyocr
+faster-whisper
+Pillow
+numpy
+imageio-ffmpeg
