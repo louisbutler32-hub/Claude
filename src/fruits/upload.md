@@ -50,7 +50,15 @@ pause after every shadow so there's time to shout out the answer.
 9:32 🍐 Pear
 
 📷 PHOTO CREDITS
-Full licence links in public/images/fruits/credits.json.
+Apple — mari27454 (CC BY 2.0)
+Orange — Public Domain Photos (CC BY 2.0)
+Strawberry, Peach, Pear — Flickr photographers (CC BY-SA 2.0)
+Watermelon — wonderyort (CC BY-SA 2.0)
+Kiwi — Vegan Feast Catering (CC BY 2.0)
+Cherry — sk8geek (CC BY-SA 2.0)
+Banana, Grape, Pineapple, Mango — public domain (CC0)
+All via Openverse (openverse.org); full licence links in
+public/images/fruits/credits.json.
 
 📚 ALL OUR LEARNING VIDEOS
 https://www.youtube.com/playlist?list=PLoUPhFQ29b0IFLdy3cMomLyy1RDAkV2zg
