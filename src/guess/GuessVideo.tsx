@@ -282,17 +282,20 @@ export const GuessVideo: React.FC<{
   audio?: string;
 }> = ({ subject, audio }) => {
   loadVeggieFonts();
+  const introLen = subject.noTitleCard ? 0 : INTRO_LEN;
   return (
     <AbsoluteFill style={{ backgroundColor: "#dceaee" }}>
       {audio ? <Audio src={staticFile(audio)} /> : null}
       <SceneFilters />
-      <Sequence durationInFrames={INTRO_LEN}>
-        <TitleCard subject={subject} />
-      </Sequence>
+      {subject.noTitleCard ? null : (
+        <Sequence durationInFrames={INTRO_LEN}>
+          <TitleCard subject={subject} />
+        </Sequence>
+      )}
       {subject.rounds.map((round, i) => (
         <Sequence
           key={round.id}
-          from={INTRO_LEN + i * ROUND_LEN}
+          from={introLen + i * ROUND_LEN}
           durationInFrames={ROUND_LEN}
         >
           <GuessRoundScene
@@ -310,4 +313,4 @@ export const GuessVideo: React.FC<{
 };
 
 export const durationFor = (subject: GuessSubject) =>
-  totalFrames(subject.rounds.length);
+  totalFrames(subject.rounds.length, subject.noTitleCard ? 0 : INTRO_LEN);

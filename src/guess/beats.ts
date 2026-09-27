@@ -36,5 +36,6 @@ export const BEAT = {
   boardExit: 1478,
 } as const;
 
-export const totalFrames = (rounds: number) => INTRO_LEN + rounds * ROUND_LEN;
+export const totalFrames = (rounds: number, introLen: number = INTRO_LEN) =>
+  introLen + rounds * ROUND_LEN;
 export const roundBase = (n: number) => INTRO_LEN + n * ROUND_LEN;
