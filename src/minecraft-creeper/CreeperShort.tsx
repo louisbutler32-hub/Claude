@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Audio, interpolate, random, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { H, W } from "../minecraft/beats";
-import { ease, FaceKind, Figure, pose, limb, TINT, walkPose, POSE } from "../minecraft/figure";
+import { ease, FaceKind, Figure, pose, limb, TINT, Vignette, walkPose, POSE } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { CreeperFace, CreeperMob, Tag } from "../minecraft/mobs";
 import { Puff } from "../minecraft/pixels";
@@ -66,7 +66,7 @@ const YouShot: React.FC = () => {
       {!boom && <CreeperMob x={creeperX} y={GROUND - 200} scale={1.15} face="normal" walk={f / 4} swell={swell} flip />}
       {boom && f < 150 && [0, 1, 2, 3, 4].map((i) => <Puff key={i} x={creeperX - 160 + i * 80} y={GROUND - 200 - (f - 126) * 10 - i * 30} r={50 - i * 4} opacity={Math.max(0, 1 - (f - 126) / 22)} />)}
       <g transform={boom ? `translate(${-fling * 900} ${-fling * 500}) rotate(${-fling * 200} ${pixX} ${GROUND - 250})` : running ? `rotate(-14 ${pixX} ${GROUND})` : ""}>
-        <Figure x={pixX} y={GROUND - 250} scale={1.4} pose={p} face={mood} tint={boom ? TINT.hurt : TINT.normal} flip={running || boom} />
+        <Figure x={pixX} y={GROUND - 250} scale={1.4} pose={p} face={mood} tint={boom ? TINT.hurt : TINT.normal} flip={running || boom} shadow={!boom} />
       </g>
       {noticed && !running && f < 42 && <text x={pixX + 130} y={GROUND - 560} fontFamily="Silkscreen, monospace" fontSize={70} fill="#141414">!</text>}
       <Tag x={pixX} y={GROUND - 690} text="You" />
@@ -137,6 +137,7 @@ export const CreeperShort: React.FC<{ audio?: string | null }> = ({ audio = null
           </svg>
         </AbsoluteFill>
       </Sequence>
+      <Vignette w={W} h={H} />
       <PovBand />
     </AbsoluteFill>
   );
@@ -159,6 +160,7 @@ export const CreeperThumb: React.FC = () => {
         <Tag x={720} y={1180} text="The creeper" size={44} />
         <CreeperMob x={720} y={1620} scale={1.3} face="happy" arms flip hearts={3} />
       </svg>
+      <Vignette w={W} h={H} />
       <PovBand />
     </AbsoluteFill>
   );

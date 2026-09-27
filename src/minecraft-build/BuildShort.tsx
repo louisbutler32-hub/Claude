@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Audio, interpolate, random, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { H, PANEL_TOP, W } from "../minecraft/beats";
-import { ease, FaceKind, Figure, lerpPose, limb, POSE, pose } from "../minecraft/figure";
+import { ease, FaceKind, Figure, lerpPose, limb, POSE, pose, Vignette } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { CreeperMob } from "../minecraft/mobs";
 import { Item, Puff } from "../minecraft/pixels";
@@ -271,6 +271,7 @@ export const BuildShort: React.FC<{ audio?: string | null }> = ({ audio = null }
           <DayChip label="DAY 4" sub="again, then" />
         </AbsoluteFill>
       </Sequence>
+      <Vignette w={W} h={H} />
     </AbsoluteFill>
   );
 };
@@ -293,6 +294,7 @@ export const BuildThumb: React.FC = () => {
           1 CREEPER
         </text>
       </svg>
+      <Vignette w={W} h={H} />
     </AbsoluteFill>
   );
 };

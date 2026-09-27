@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Audio, interpolate, random, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { H, W } from "../minecraft/beats";
-import { ease, FaceKind, Figure, lerpPose, limb, Pose, pose } from "../minecraft/figure";
+import { ease, FaceKind, Figure, lerpPose, limb, Pose, pose, Vignette } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { Chicken, Cow, Sword, Tag, Zombie } from "../minecraft/mobs";
 import { Item, Puff } from "../minecraft/pixels";
@@ -189,6 +189,7 @@ export const PvpShort: React.FC<{ audio?: string | null }> = ({ audio = null }) 
           </svg>
         </AbsoluteFill>
       </Sequence>
+      <Vignette w={W} h={H} />
     </AbsoluteFill>
   );
 };
@@ -223,6 +224,7 @@ export const PvpThumb: React.FC = () => {
           PvP
         </text>
       </svg>
+      <Vignette w={W} h={H} />
     </AbsoluteFill>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Audio, interpolate, random, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { H, PANEL_TOP, W } from "../minecraft/beats";
-import { ease, FaceKind, Figure, lerpPose, limb, POSE, pose, walkPose } from "../minecraft/figure";
+import { ease, FaceKind, Figure, lerpPose, limb, POSE, pose, Vignette, walkPose } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { Fireball, Ghast } from "../minecraft/mobs";
 import { NetherPortal, NetherWorld, PortalBuildProgress } from "../minecraft/nether";
@@ -231,6 +231,7 @@ export const NetherShort: React.FC<{ audio?: string | null }> = ({ audio = null 
           <SceneTag text="HOME" sub="never going back. (going back tomorrow.)" />
         </AbsoluteFill>
       </Sequence>
+      <Vignette w={W} h={H} />
       <PovBand />
     </AbsoluteFill>
   );
@@ -251,6 +252,7 @@ export const NetherThumb: React.FC = () => {
           IN THE NETHER
         </text>
       </svg>
+      <Vignette w={W} h={H} />
     </AbsoluteFill>
   );
 };

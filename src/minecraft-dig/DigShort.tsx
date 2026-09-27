@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Audio, interpolate, random, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { H, PANEL_TOP, W } from "../minecraft/beats";
-import { ease, Figure, FaceKind, lerpPose, limb, POSE, pose, TINT, walkPose } from "../minecraft/figure";
+import { ease, Figure, FaceKind, lerpPose, limb, POSE, pose, TINT, Vignette, walkPose } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { Item, Pixels, Puff } from "../minecraft/pixels";
 import { CaveWide, LavaLake, Overworld, OverworldProps, Streaks } from "../minecraft/worlds";
@@ -183,6 +183,7 @@ const LavaShot: React.FC = () => {
           face={hurt ? "hurt" : "scream"}
           tint={hurt ? TINT.hurt : TINT.warm}
           tilt={hurt ? 0 : Math.sin(f) * 4}
+          shadow={false}
         />
       </g>
       <clipPath id="lavaLine">
@@ -266,6 +267,7 @@ export const DigShort: React.FC<{ audio?: string | null }> = ({ audio = null }) 
           </AbsoluteFill>
         </Sequence>
       ))}
+      <Vignette w={W} h={H} />
       <Caption />
     </AbsoluteFill>
   );
@@ -304,6 +306,7 @@ export const DigThumb: React.FC = () => {
           <Figure x={540} y={1180} scale={1.15} pose={pose({ armR: limb(70, 60, 60, 120), armL: limb(-70, 60, -80, 120) })} face="worried" tint={TINT.warm} hands={({ R }) => pickIn(R, false)} />
         </g>
       </svg>
+      <Vignette w={W} h={H} />
       <Caption />
     </AbsoluteFill>
   );

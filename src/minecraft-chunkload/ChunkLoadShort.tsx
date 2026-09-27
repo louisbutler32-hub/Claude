@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Audio, interpolate, random, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { H, W } from "../minecraft/beats";
-import { ease, Figure, POSE, walkPose } from "../minecraft/figure";
+import { ease, Figure, POSE, Vignette, walkPose } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { Cow, Tag } from "../minecraft/mobs";
 import { TreeTop } from "../minecraft/pixels";
@@ -152,6 +152,7 @@ export const ChunkLoadShort: React.FC<{ audio?: string | null }> = ({ audio = nu
           </svg>
         </AbsoluteFill>
       </Sequence>
+      <Vignette w={W} h={H} />
     </AbsoluteFill>
   );
 };
@@ -175,6 +176,7 @@ export const ChunkLoadThumb: React.FC = () => {
           HASN'T LOADED
         </text>
       </svg>
+      <Vignette w={W} h={H} />
     </AbsoluteFill>
   );
 };
