@@ -104,6 +104,16 @@ off the reference video — treat them as findings, not preferences.
 Source videos are gigabytes, so this runs locally, never in a web session.
 Run `python clipper/doctor.py` to check the machine has what it needs.
 
+## Retention — the dopamine ladder
+
+Every BANE History short is written against the six-rung framework in
+[`docs/dopamine-ladder.md`](docs/dopamine-ladder.md): stimulation,
+captivation, anticipation, validation, affection, revelation. Read it
+before writing a script, and walk the checklist at the end of it when the
+contact sheet comes back. The two rules that decide most of a short's
+retention: **open on a question, not a statement, inside three seconds**,
+and **never let the viewer go a stretch with nothing to wonder about**.
+
 ## Shorts — the geo maps
 
 `src/geo/` is the satellite-map explainer line — Bering, Louisiana, Darién,
@@ -119,3 +129,10 @@ before rendering, or every frame is flat sea. Thumbnails for this line are
 9:16, via `npm run geo:<name>:thumb`. The what-if shorts use one-word
 captions (`WordCaptions`) instead of the phrase captions (`Captions`) the
 first three use — see `src/geo/hud.tsx`.
+
+**No cartoon faces.** Two of the reference channels put googly eyes on
+countries; that is not the look for this channel. The style is the clean,
+professional one: flat saturated country fills with white outlines, bold
+names set on the country itself, yellow highlight rings with leader lines,
+big numbers on leaders, scale-comparison silhouettes, icon props, and 3D
+title words. `src/geo/annotate.tsx` holds those pieces.

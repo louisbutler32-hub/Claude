@@ -1,12 +1,11 @@
 import React from "react";
 import { AbsoluteFill, Audio, interpolate, random, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { H, PANEL_TOP, W } from "../minecraft/beats";
-import { ease, lerpPose, limb, POSE, pose, walkPose } from "../minecraft/figure";
+import { ease, FaceKind, Figure, lerpPose, limb, POSE, pose, Vignette, walkPose } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { Fireball, Ghast } from "../minecraft/mobs";
 import { NetherPortal, NetherWorld, PortalBuildProgress } from "../minecraft/nether";
 import { Item, Puff } from "../minecraft/pixels";
-import { Steve, SteveMood } from "../minecraft/steve";
 import { Overworld, OverworldProps } from "../minecraft/worlds";
 
 /**
@@ -14,12 +13,23 @@ import { Overworld, OverworldProps } from "../minecraft/worlds";
  *
  * Longer and more varied than the earlier Shorts on purpose: a different
  * setting (the Nether gets its own palette, its own light source, its own
- * mob), a real scene count instead of two labelled halves, and a corner
- * "day/place" caption — a documentary device — instead of a meme caption
- * band or a POV line.
+ * mob), a real scene count instead of two labelled halves, and — like the
+ * creeper Short — a POV band up top, the same white-band, three-line,
+ * Selawik-set device measured off the reference. The small corner scene
+ * tag stays underneath it as a documentary label for each of the five
+ * scenes, since the POV line alone doesn't say which scene is which.
  */
 
 export const NETHER_FRAMES = 720;
+export const POV = ["POV: You built", "a Nether portal", "(it did not go well)"];
+const BAND = 450;
+
+/** the reference's POV band: white, top of frame, three centred lines. */
+const PovBand: React.FC = () => (
+  <div style={{ position: "absolute", left: 0, top: 0, width: W, height: BAND, background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <div style={{ fontFamily: "Selawik, 'Segoe UI', sans-serif", fontSize: 100, lineHeight: "104px", color: "#000", textAlign: "center", whiteSpace: "pre" }}>{POV.join("\n")}</div>
+  </div>
+);
 const SHOT = {
   build: [0, 180],
   cross: [180, 210],
@@ -54,14 +64,14 @@ const BuildShot: React.FC = () => {
   const swing = (f % 14) / 14;
   const mining = f < 148;
   const armSwing = mining ? lerpPose(POSE.stand, pose({ armR: limb(80, -10, 30, -140) }), Math.sin(swing * Math.PI)) : POSE.chin;
-  const mood: SteveMood = f >= 165 ? "joy" : f >= 148 ? "focus" : "plain";
+  const mood: FaceKind = f >= 165 ? "joy" : f >= 148 ? "thinking" : "plain";
   return (
     <g>
       <Overworld />
       <OverworldProps />
       <PortalBuildProgress x={760} y={GROUND} scale={0.95} count={count} />
       {count >= 10 && <NetherPortal x={760} y={GROUND} scale={0.95} lit={lit} t={f} />}
-      <Steve x={520} y={GROUND - 250} scale={1.35} pose={armSwing} mood={mood} armsOverHead={mood === "joy"} hands={({ R }) => (mining ? <Item name="pickaxe" x={R[0] + 40} y={R[1] - 30} px={9} rotate={-20} /> : null)} />
+      <Figure x={520} y={GROUND - 250} scale={1.35} pose={armSwing} face={mood} armsOverHead={mood === "joy"} hands={({ R }) => (mining ? <Item name="pickaxe" x={R[0] + 40} y={R[1] - 30} px={9} rotate={-20} /> : null)} />
       {mining && f % 14 > 9 && f % 14 < 12 && (
         <g fill="#3a2a24">
           {[0, 1, 2].map((i) => <rect key={i} x={700 + i * 20} y={GROUND - 320 + random(`bd${f}${i}`) * -40} width={12} height={12} />)}
@@ -86,7 +96,7 @@ const CrossShot: React.FC = () => {
           <Overworld />
           <OverworldProps />
           <NetherPortal x={760} y={GROUND} scale={0.95} lit={1} t={f + 165} />
-          <Steve x={640} y={GROUND - 250} scale={1.35} pose={POSE.stand} mood="joy" />
+          <Figure x={640} y={GROUND - 250} scale={1.35} pose={POSE.stand} face="joy" />
         </>
       ) : (
         <NetherWorld t={f} />
@@ -104,14 +114,14 @@ const ArriveShot: React.FC = () => {
   const f = useAbs("arrive");
   const l = f - SHOT.arrive[0];
   const noticed = l >= 130;
-  const mood: SteveMood = l < 40 ? "shocked" : l < 130 ? "happy" : "scream";
+  const mood: FaceKind = l < 40 ? "shocked" : l < 130 ? "happy" : "scream";
   const p = noticed ? POSE.headHold : l < 40 ? POSE.spread : POSE.chin;
   const ghastX = interpolate(l, [90, 200], [1300, 880], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const bob = l / 12;
   return (
     <g>
       <NetherWorld t={f} pan={interpolate(l, [0, 210], [0, -70], { extrapolateRight: "clamp" })} />
-      <Steve x={480} y={GROUND - 250} scale={1.3} pose={p} mood={mood} armsOverHead={l >= 40 && l < 130} tint={undefined} />
+      <Figure x={480} y={GROUND - 250} scale={1.3} pose={p} face={mood} armsOverHead={l >= 40 && l < 130} />
       {l >= 90 && <Ghast x={ghastX} y={720} scale={0.8} bob={bob} angry={noticed} />}
       {noticed && <text x={480 + 170} y={GROUND - 570} fontFamily="Silkscreen, monospace" fontSize={64} fill="#ffe08a" stroke="#141414" strokeWidth={6} paintOrder="stroke">!</text>}
     </g>
@@ -133,7 +143,7 @@ const ChaseShot: React.FC = () => {
   const running = dodged;
   const pixX = running ? 620 - (l - 66) * 5 : 620;
   const p = running ? walkPose(l / 5, 110, pose({ armL: limb(-90, 40, -140, -20), armR: limb(90, 40, 140, -20) }), false) : POSE.headHold;
-  const mood: SteveMood = hit ? "hurt" : dodged ? "scream" : "shocked";
+  const mood: FaceKind = hit ? "hurt" : dodged ? "scream" : "shocked";
   const explosion = l >= 62 && l < 80;
   return (
     <g transform={`translate(${explosion ? (random(`shx${f}`) - 0.5) * 16 : 0} 0)`}>
@@ -141,7 +151,7 @@ const ChaseShot: React.FC = () => {
       <Ghast x={950} y={700} scale={0.85} bob={l / 12} angry charging={charging} />
       {fired && ballT < 1 && <Fireball x0={860} y0={720} x1={pixX + 40} y1={GROUND - 260} t={ballT} />}
       <g transform={running ? `rotate(-12 ${pixX} ${GROUND - 180})` : ""}>
-        <Steve x={pixX} y={GROUND - 250} scale={1.3} pose={p} mood={mood} flip={running} />
+        <Figure x={pixX} y={GROUND - 250} scale={1.3} pose={p} face={mood} flip={running} />
       </g>
       {explosion && (
         <g>
@@ -162,14 +172,14 @@ const HomeShot: React.FC = () => {
   const l = f - SHOT.home[0];
   const stumble = l < 20;
   const p = stumble ? pose({ legL: limb(-70, 220, -40, 330), legR: limb(50, 210, 90, 330) }) : l < 60 ? POSE.headHold : POSE.cheeks;
-  const mood: SteveMood = l < 20 ? "shocked" : l < 60 ? "worried" : "happy";
+  const mood: FaceKind = l < 20 ? "shocked" : l < 60 ? "worried" : "happy";
   return (
     <g>
       <Overworld />
       <OverworldProps />
       <NetherPortal x={760} y={GROUND} scale={0.95} lit={1} t={f + 720} />
       <g transform={stumble ? `rotate(8 640 ${GROUND - 180})` : ""}>
-        <Steve x={640} y={GROUND - 250} scale={1.35} pose={p} mood={mood} armsOverHead={l >= 60} />
+        <Figure x={640} y={GROUND - 250} scale={1.35} pose={p} face={mood} armsOverHead={l >= 60} />
       </g>
     </g>
   );
@@ -221,6 +231,8 @@ export const NetherShort: React.FC<{ audio?: string | null }> = ({ audio = null 
           <SceneTag text="HOME" sub="never going back. (going back tomorrow.)" />
         </AbsoluteFill>
       </Sequence>
+      <Vignette w={W} h={H} />
+      <PovBand />
     </AbsoluteFill>
   );
 };
@@ -232,7 +244,7 @@ export const NetherThumb: React.FC = () => {
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
         <NetherWorld t={40} />
         <Ghast x={780} y={620} scale={0.95} bob={2} angry charging />
-        <Steve x={340} y={GROUND - 280} scale={1.6} pose={POSE.headHold} mood="shocked" />
+        <Figure x={340} y={GROUND - 280} scale={1.6} pose={POSE.headHold} face="shocked" />
         <text x={540} y={220} textAnchor="middle" fontFamily="Silkscreen, monospace" fontSize={92} fill="#ffffff" stroke="#141414" strokeWidth={9} paintOrder="stroke">
           FIRST TIME
         </text>
@@ -240,6 +252,7 @@ export const NetherThumb: React.FC = () => {
           IN THE NETHER
         </text>
       </svg>
+      <Vignette w={W} h={H} />
     </AbsoluteFill>
   );
 };

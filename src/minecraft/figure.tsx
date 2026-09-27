@@ -125,7 +125,13 @@ export const walkPose = (
         armR: limb(72 + s * 26, 110, 70 + s * 60, 196),
       }
     : {};
-  return { ...base, ...legs, ...arms };
+  // a small double-bounce (two footfalls per full stride cycle) so a walk
+  // doesn't read as a torso gliding over scissoring legs — purely a
+  // function of `phase`, so it stays in step with anything already timed
+  // off the same phase value.
+  const bob = Math.abs(s) * (stride / 60) * 8;
+  const head: Pt = [base.head[0], base.head[1] - bob];
+  return { ...base, ...legs, ...arms, head };
 };
 
 export type Tint = { head: string; line: string; shirt: string };
@@ -380,6 +386,41 @@ export const Face: React.FC<{ kind: FaceKind; look?: Pt; line?: string }> = ({
   }
 };
 
+/** darken (negative amt) or lighten (positive) a #rrggbb color by amt in [-1,1]. */
+const shade = (hex: string, amt: number): string => {
+  const n = parseInt(hex.slice(1), 16);
+  const ch = (shift: number) => {
+    const v = (n >> shift) & 0xff;
+    const t = amt < 0 ? 0 : 255;
+    const mixed = Math.round(v + (t - v) * Math.abs(amt));
+    return Math.max(0, Math.min(255, mixed));
+  };
+  const [r, g, b] = [ch(16), ch(8), ch(0)];
+  return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+};
+
+/**
+ * A soft vignette dropped once over a whole composition — darkened corners
+ * and a hair of contrast so flat vector fills read with some depth instead
+ * of looking like a solid-color fill. Frame-independent, so it's safe to
+ * mount above every Sequence without touching per-shot timing.
+ */
+export const Vignette: React.FC<{ w: number; h: number; strength?: number }> = ({ w, h, strength = 1 }) => {
+  const id = React.useId();
+  return (
+    <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
+      <defs>
+        <radialGradient id={id} cx="50%" cy="42%" r="75%">
+          <stop offset="0%" stopColor="#000000" stopOpacity={0} />
+          <stop offset="72%" stopColor="#000000" stopOpacity={0} />
+          <stop offset="100%" stopColor="#000000" stopOpacity={0.22 * strength} />
+        </radialGradient>
+      </defs>
+      <rect x={0} y={0} width={w} height={h} fill={`url(#${id})`} />
+    </svg>
+  );
+};
+
 export const Figure: React.FC<{
   x: number;
   y: number;
@@ -398,6 +439,8 @@ export const Figure: React.FC<{
   lineWidth?: number;
   /** slide the features across the head, for a face turned toward something */
   faceOffset?: Pt;
+  /** a soft ellipse under the feet — turn off when airborne (falling, flung, swimming). */
+  shadow?: boolean;
 }> = ({
   x,
   y,
@@ -412,7 +455,10 @@ export const Figure: React.FC<{
   hands,
   lineWidth = 1,
   faceOffset = [0, 0],
+  shadow = true,
 }) => {
+  const gradId = React.useId();
+  const shineId = React.useId();
   const aw = 22 * lineWidth;
   const lw = 24 * lineWidth;
   const seg = (from: Pt, l: Limb, w: number) => (
@@ -427,7 +473,14 @@ export const Figure: React.FC<{
   );
   const head = (
     <g transform={`translate(${p.head[0]} ${p.head[1]}) rotate(${tilt})`}>
+      <defs>
+        <radialGradient id={shineId} cx="35%" cy="30%" r="70%">
+          <stop offset="0%" stopColor={shade(tint.head, 0.4)} stopOpacity={0.55} />
+          <stop offset="60%" stopColor={tint.head} stopOpacity={0} />
+        </radialGradient>
+      </defs>
       <circle r={HEAD_R} fill={tint.head} stroke={tint.line} strokeWidth={16 * lineWidth} />
+      <circle r={HEAD_R - 8} fill={`url(#${shineId})`} />
       <g transform={`translate(${faceOffset[0]} ${faceOffset[1]})`}>
         <Face kind={face} look={look} line={tint.line} />
       </g>
@@ -439,13 +492,23 @@ export const Figure: React.FC<{
       {seg(SHOULDER.R, p.armR, aw)}
     </>
   );
+  const feetY = Math.max(p.legL[1][1], p.legR[1][1]);
+  const feetX = (p.legL[1][0] + p.legR[1][0]) / 2;
   return (
     <g transform={`translate(${x} ${y}) scale(${flip ? -scale : scale} ${scale})`}>
+      {shadow && <ellipse cx={feetX} cy={feetY + 14} rx={78} ry={16} fill="#000000" opacity={0.18} />}
       {seg(HIP.L, p.legL, lw)}
       {seg(HIP.R, p.legR, lw)}
+      <defs>
+        <linearGradient id={gradId} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor={shade(tint.shirt, 0.22)} />
+          <stop offset="55%" stopColor={tint.shirt} />
+          <stop offset="100%" stopColor={shade(tint.shirt, -0.16)} />
+        </linearGradient>
+      </defs>
       <path
         d="M-50,0 Q-56,60 -62,124 L62,124 Q56,60 50,0 Z"
-        fill={tint.shirt}
+        fill={`url(#${gradId})`}
         stroke={tint.line}
         strokeWidth={14 * lineWidth}
         strokeLinejoin="round"

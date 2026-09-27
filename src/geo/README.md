@@ -9,6 +9,9 @@ narration a phrase at a time in small white type at 80% of the frame.
 ```
 src/geo/
   GeoCanvas.tsx     the map: camera, satellite tiles, colour grade, context
+  title3d.tsx       Title3D — the big word, extruded and lying in the shot
+  characters.tsx    Character, Dialogue, Solid, Spotlight — countries with faces
+  props.tsx         MapProp, PropRow — objects dropped onto the ground
   Basemap.tsx       the tile layer — which tiles exist, where they sit
   projection.ts     flat Mercator camera (shares keys/easing with src/maps)
   shapes.ts         countries and states → screen paths, antimeridian-safe
@@ -83,6 +86,79 @@ Rings that cross the antimeridian are stored unwrapped past +180°, and the
 renderer draws every polygon at whichever ±360° copy is nearest the camera,
 so a camera parked over the Bering Strait sees both shores.
 
+## The four things that make it read as a cartoon
+
+Measured off four reference Shorts (the euro, the 13 colonies, the Great
+Lakes, Holland). These are what separate the format from a labelled map,
+and all four are in `texas/TexasShort.tsx` if you want a worked example.
+
+**No cartoon faces.** Two of the four references put googly eyes on
+countries. That is not this channel — the look here is the clean,
+professional end of the format (the Great Lakes and Holland videos). A
+first pass built the faces and they were wrong; `annotate.tsx` replaced
+them.
+
+**Flat fills, white edges, names on the ground.** `<Region>` fills a
+country saturated and opaque with a white outline, optionally with a soft
+outer glow for the one thing being discussed. `<PlaceName>` sets its name
+in heavy white caps on the country itself, rotated along it where that
+reads better.
+
+**The big words are renders, not captions.** `<Title3D>` lays the word on a
+plane inside the shot — turned, tilted, extruded so you see its thickness,
+a warm bloom behind it and a flattened copy thrown onto the terrain as a
+shadow. It swings in and settles. One per beat, never two.
+
+**Point at things.** `<Ring>` draws a rough yellow ellipse around a place,
+the way the Great Lakes video circles the lakes, and `<Leader>` runs a
+stalk out to a label. `<BigStat>` plants a big yellow number on screen with
+a leader down to its subject. `<ScaleSilhouette>` drops another country's
+outline onto the map at a matched scale — the fastest way to say "bigger
+than France" without saying a number.
+
+**Objects, not adjectives.** `<MapProp>` drops a drawn object onto a place
+— derrick, coin, cash, barrel, people, cattle, capitol, flagpole, ship,
+factory, wheat, star — with a contact shadow and a bounce. `<PropRow>`
+lays out a row of them and can dim the tail, which is how a proportion
+reads faster than a percentage.
+
+Captions run one word at a time (`WordCaptions`) at about 61% of frame
+height, clear of the Shorts title and channel overlay.
+
+## Retention
+
+Every short here is written against
+[`docs/dopamine-ladder.md`](../../docs/dopamine-ladder.md) — six rungs,
+of which four are inside the video. In practice two decide most of it:
+**ask a question out loud in the first three seconds** rather than stating
+a fact, and **offer the obvious answer and knock it down** before giving
+the real one, so the loop reopens instead of closing. `texas/` is the
+worked example: question at 0 s, the money answer offered and broken at
+24 s, reopened at 35 s, Britain at 38 s, and the consequence nobody
+expects at 59 s.
+
+## Sound
+
+The references land roughly **one sound effect per second** — 58 to 74 per
+minute, measured. That density is most of what separates them from a slide
+show, so a short without it sounds cheap however good the picture is.
+
+Each short keeps a cue sheet at `src/geo/<name>/sfx.json`, a list of
+`[cue, seconds, gain]`. `scripts/make-geo-sfx.py <name>` renders it to
+`public/audio/geo-<name>-sfx.mp3`, which the composition plays under the
+narration. Sixteen cues are synthesised from noise and sine sweeps, so
+nothing is licensed and nothing is downloaded:
+
+```
+whoosh  whoosh_down  pop  click  thud  boom  ding  chime
+coin    cash  stamp  riser  swell  error  pageturn  rumble
+```
+
+**To use real recordings instead**, drop a wav in `public/audio/sfx/` named
+after the cue — `public/audio/sfx/whoosh.wav` — and the build uses it in
+place of the synth, resampling as needed. Mix and match: any cue without a
+file falls back to the synthesised one.
+
 ## Building a short
 
 1. **Script** — `scripts-vo/geo-<name>.json`. One line per beat, each with a
@@ -102,7 +178,8 @@ so a camera parked over the Bering Strait sees both shores.
 5. **Render** — register in `src/Root.tsx`, add the npm scripts, then
    `npm run geo:<name>`, `npm run geo:<name>:thumb`, and write `upload.md`.
 
-The music bed is synthesised by `scripts/make-geo-bed.py` (sine waves, so
+The music bed is separate from the effects. It is synthesised by
+`scripts/make-geo-bed.py` (sine waves, so
 nothing to license) and sits ~14 dB under the voice. A short can carry a
 licensed track instead: `scripts/make-geo-music.py <name> <track.mp3>` cuts
 a levelled 60 s bed into `public/audio/geo-<name>-music.mp3` (gitignored —

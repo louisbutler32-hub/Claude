@@ -67,7 +67,7 @@ paste the new list in.)
 ## Tags
 
 ```
-minecraft, minecraft animation, minecraft compilation, minecraft memes, minecraft relatable, minecraft shorts, java vs bedrock, minecraft creeper, minecraft nether, minecraft house build, minecraft funny, minecraft story, steve animation, minecraft cartoon, gaming animation, minecraft survival, animated compilation, oof craft, minecraft best moments, minecraft 2026
+minecraft, minecraft animation, minecraft compilation, minecraft memes, minecraft relatable, minecraft shorts, java vs bedrock, minecraft creeper, minecraft nether, minecraft house build, minecraft funny, minecraft story, stick figure animation, minecraft cartoon, gaming animation, minecraft survival, animated compilation, oof craft, minecraft best moments, minecraft 2026
 ```
 
 (388 characters.)
