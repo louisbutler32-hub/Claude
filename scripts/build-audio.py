@@ -135,6 +135,35 @@ ANIMAL_ROUNDS = [
      "Dogs live with us too, in a house or a cosy kennel.", "Woof! Woof!"),
 ]
 
+# Fruits: real photo cutouts, no title card — order must match
+# src/fruits/subject.tsx's `rounds` array exactly.
+FRUIT_ROUNDS = [
+    ("apple",      "It's an apple! Apple.",       "A crunchy red apple.",
+     "Apples grow on trees, in big apple orchards."),
+    ("banana",     "It's a banana! Banana.",      "A curvy yellow banana.",
+     "Bananas grow way up high, in big bunches on the plant."),
+    ("orange",     "It's an orange! Orange.",     "A juicy round orange.",
+     "Oranges grow on trees, all snug in their peel."),
+    ("strawberry", "It's a strawberry! Strawberry.", "A sweet red strawberry.",
+     "Strawberries grow low on the ground, close to their leaves."),
+    ("grape",      "It's grapes! Grapes.",        "A little bunch of grapes.",
+     "Grapes grow on a vine, all clustered together."),
+    ("watermelon", "It's a watermelon! Watermelon.", "A big juicy watermelon.",
+     "Watermelons grow on a vine, right on the ground."),
+    ("pineapple",  "It's a pineapple! Pineapple.", "A spiky golden pineapple.",
+     "Pineapples grow low on a plant, with spiky leaves on top."),
+    ("kiwi",       "It's a kiwi! Kiwi.",          "A fuzzy little kiwi.",
+     "Kiwis grow on a vine, all fuzzy on the outside."),
+    ("mango",      "It's a mango! Mango.",        "A sweet orange mango.",
+     "Mangoes grow on trees, in warm sunny places."),
+    ("cherry",     "It's cherries! Cherries.",    "Two shiny red cherries.",
+     "Cherries grow on trees, in little pairs on a stem."),
+    ("peach",      "It's a peach! Peach.",        "A soft fuzzy peach.",
+     "Peaches grow on trees, all soft and fuzzy in the sun."),
+    ("pear",       "It's a pear! Pear.",          "A juicy green pear.",
+     "Pears grow on trees, hanging round and heavy."),
+]
+
 # Wild Animals: the second animal episode, zoo and safari animals this time.
 #
 # NOTE: this order must match src/wild/subject.tsx's `rounds` array
@@ -331,13 +360,19 @@ SUBJECTS = {
     "wild": dict(rounds=WILD_ROUNDS, kind="live", word="animal"),
     "numbers": dict(rounds=NUMBER_ROUNDS, kind="count", word="number"),
     "colours": dict(rounds=COLOUR_ROUNDS, kind="colour", word="colour"),
+    # no_title_card: video opens straight on round 1 (src/fruits/subject.tsx
+    # noTitleCard) — no title card means no "Chomp chomp!" opener line, and
+    # round 0 starts at frame 0 instead of after INTRO_LEN.
+    "fruits": dict(rounds=FRUIT_ROUNDS, kind="grow", word="fruit",
+                   no_title_card=True),
 }
 if SUBJECT not in SUBJECTS:
     sys.exit(f"unknown subject {SUBJECT!r}; try {', '.join(SUBJECTS)}")
 CONF = SUBJECTS[SUBJECT]
 ROUNDS = CONF["rounds"]
 N_ROUNDS = len(ROUNDS)
-TOTAL_FRAMES = CONF.get("frames") or INTRO_LEN + N_ROUNDS * ROUND_LEN
+SUBJECT_INTRO_LEN = 0 if CONF.get("no_title_card") else INTRO_LEN
+TOTAL_FRAMES = CONF.get("frames") or SUBJECT_INTRO_LEN + N_ROUNDS * ROUND_LEN
 TOTAL_SEC = TOTAL_FRAMES / FPS
 
 # the word Emma uses in her questions
@@ -346,6 +381,11 @@ ARTICLE = {
     "pumpkin": "the pumpkin", "pepper": "the pepper", "cucumber": "the cucumber",
     "potato": "the potato", "onion": "the onion", "eggplant": "the eggplant",
     "peas": "the peas", "broccoli": "the broccoli", "mushroom": "the mushroom",
+    "apple": "the apple", "banana": "the banana", "orange": "the orange",
+    "strawberry": "the strawberry", "grape": "the grapes",
+    "watermelon": "the watermelon", "pineapple": "the pineapple",
+    "kiwi": "the kiwi", "mango": "the mango", "cherry": "the cherries",
+    "peach": "the peach", "pear": "the pear",
     "cow": "the cow", "lion": "the lion", "duck": "the duck", "frog": "the frog",
     "pig": "the pig", "penguin": "the penguin", "owl": "the owl",
     "elephant": "the elephant", "sheep": "the sheep", "fish": "the fish",
@@ -492,8 +532,10 @@ PEEKS_COLOUR = [
     "Look! Can you see what colour is peeking out?",
     "One more colour is hiding. Can you find it?",
 ]
+PEEKS_FRUIT = [t.replace("vegetables", "fruits").replace("vegetable", "fruit")
+               for t in PEEKS_GROW]
 PEEKS = {
-    "grow": PEEKS_GROW,
+    "grow": {"fruits": PEEKS_FRUIT}.get(SUBJECT, PEEKS_GROW),
     "live": {
         "animals": PEEKS_LIVE, "dinosaurs": PEEKS_DINO, "sea": PEEKS_SEA,
     }.get(SUBJECT, PEEKS_LIVE),
@@ -512,7 +554,7 @@ NUMBERS = ["one", "two", "three", "four", "five", "six",
 
 
 def round_base(n):
-    return INTRO_LEN + n * ROUND_LEN
+    return SUBJECT_INTRO_LEN + n * ROUND_LEN
 
 
 def like_sub_verbal_rounds(n_rounds):
@@ -554,7 +596,8 @@ def vo_schedule():
         "go": "Chomp chomp! Vehicles!",
         "colour": "Chomp chomp! Colours!",
     }[CONF["kind"]]
-    lines = [(18, opener, "ana", "intro")]
+    # no title card to introduce, so no spoken title either — straight in
+    lines = [] if CONF.get("no_title_card") else [(18, opener, "ana", "intro")]
     q_list = COLOUR_QUESTIONS if CONF["kind"] == "colour" else QUESTIONS
     verbal_rounds = like_sub_verbal_rounds(N_ROUNDS)
 

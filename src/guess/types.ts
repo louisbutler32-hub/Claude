@@ -60,4 +60,12 @@ export type GuessSubject = {
   noSilhouette?: boolean;
   /** the on-screen prompt before the reveal. Defaults to "What is that?" */
   question?: string;
+  /**
+   * Skip the "Chomp Chomp <SUBJECT>" title card — the video opens straight
+   * on round 1's silhouette rise instead. build-audio.py needs the matching
+   * per-subject `intro_len = 0` (see SUBJECTS in that script) and drops the
+   * spoken "Chomp chomp!" opener line, since there's no card for it to
+   * introduce.
+   */
+  noTitleCard?: boolean;
 };
