@@ -1,0 +1,58 @@
+{
+  "_": "Absolute frames at 30fps. SneakShort.tsx and scripts/build-sneak-audio.py both read this.",
+  "fps": 30,
+  "frames": 470,
+  "walk": {
+    "end": 66,
+    "x0": 127,
+    "speed": 4
+  },
+  "catch": 66,
+  "lookDown": [
+    86,
+    100
+  ],
+  "leans": [
+    [
+      100,
+      130,
+      30
+    ],
+    [
+      140,
+      170,
+      62
+    ],
+    [
+      180,
+      215,
+      86
+    ]
+  ],
+  "grab": 215,
+  "back": [
+    235,
+    255
+  ],
+  "jump": 275,
+  "jumpFrames": 15,
+  "hang": [
+    290,
+    306
+  ],
+  "fall": [
+    306,
+    336
+  ],
+  "oofs": [
+    338,
+    352,
+    366
+  ],
+  "chatLava": 376,
+  "poof": 380,
+  "respawn": 398,
+  "chatWorth": 418,
+  "crouch": 452,
+  "walkAgain": 460
+}

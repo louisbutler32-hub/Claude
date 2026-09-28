@@ -14,7 +14,7 @@ const PIX = "Silkscreen, monospace";
 /* ---------------------------- blocks ---------------------------- */
 
 /** One placed block, drawn flat with a thick outline like the rest of the world. */
-export const Block: React.FC<{ kind: "water" | "hay" | "slime" | "dirt" | "grass"; x: number; y: number; s: number; t?: number; squash?: number }> = ({
+export const Block: React.FC<{ kind: "water" | "hay" | "slime" | "dirt" | "grass" | "stone"; x: number; y: number; s: number; t?: number; squash?: number }> = ({
   kind, x, y, s, t = 0, squash = 0,
 }) => {
   const h = s * (1 - squash);
@@ -49,6 +49,16 @@ export const Block: React.FC<{ kind: "water" | "hay" | "slime" | "dirt" | "grass
         <rect x={x} y={top} width={s} height={h} fill="#7ccf5a" opacity={0.72} {...o} />
         <rect x={x + m} y={top + m * (h / s)} width={s - 2 * m} height={h - 2 * m * (h / s)} fill="#5fae42" opacity={0.85} stroke="#3f7f2a" strokeWidth={5} />
         <rect x={x + m * 0.6} y={top + 8} width={s * 0.18} height={h * 0.1} fill="#c9f7b0" opacity={0.8} />
+      </g>
+    );
+  }
+  if (kind === "stone") {
+    return (
+      <g>
+        <rect x={x} y={top} width={s} height={h} fill="#8c8c8c" {...o} />
+        {[0, 1, 2, 3].map((i) => (
+          <rect key={i} x={x + 12 + random(`s${x}${y}${i}`) * (s - 36)} y={top + 14 + random(`t${x}${y}${i}`) * (h - 34)} width={16} height={10} fill={i % 2 ? "#6f6f6f" : "#a3a3a3"} />
+        ))}
       </g>
     );
   }
@@ -192,10 +202,10 @@ export const DeathScreen: React.FC<{ f: number; ev: { youDied: number; subtitle:
 
 export const CAPTION = ["How to survive ANY", "fall in Minecraft:"];
 
-export const Caption: React.FC = () => (
+export const Caption: React.FC<{ lines?: string[] }> = ({ lines = CAPTION }) => (
   <div style={{ position: "absolute", left: 0, top: 0, width: W, height: PANEL_TOP, background: "#ffffff" }}>
     <div style={{ position: "absolute", left: 80, top: 111, fontFamily: "Selawik, 'Segoe UI', sans-serif", fontSize: 88, lineHeight: "118px", color: "#000", whiteSpace: "pre" }}>
-      {CAPTION.join("\n")}
+      {lines.join("\n")}
     </div>
   </div>
 );

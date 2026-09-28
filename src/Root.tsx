@@ -98,6 +98,7 @@ import { PvpShort, PvpThumb, PVP_FRAMES } from "./minecraft-pvp/PvpShort";
 import { ChunkLoadShort, ChunkLoadThumb, CHUNKLOAD_FRAMES } from "./minecraft-chunkload/ChunkLoadShort";
 import { FallShort, FallThumb, FALL_FRAMES } from "./minecraft-fall/FallShort";
 import { OofySheet } from "./minecraft/oofy";
+import { SneakShort, SneakThumb, SNEAK_FRAMES } from "./minecraft-sneak/SneakShort";
 import { CreeperShort, CreeperThumb, CREEPER_FRAMES } from "./minecraft-creeper/CreeperShort";
 import { NetherShort, NetherThumb, NETHER_FRAMES } from "./minecraft-nether/NetherShort";
 import { BuildShort, BuildThumb, BUILD_FRAMES } from "./minecraft-build/BuildShort";
@@ -211,6 +212,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="FallShort" component={FallShort} durationInFrames={FALL_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Fall-Thumbnail" component={FallThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Oofy-Sheet" component={OofySheet} durationInFrames={1} fps={30} width={1920} height={1080} />
+      <Composition id="SneakShort" component={SneakShort} durationInFrames={SNEAK_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Sneak-Thumbnail" component={SneakThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition
         id="PvpShort"
         component={PvpShort}
