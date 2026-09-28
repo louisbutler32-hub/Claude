@@ -5,6 +5,7 @@ import { AbsoluteFill, Audio, random, Sequence, staticFile, useCurrentFrame } fr
 import { H, PANEL_TOP, W } from "../minecraft/beats";
 import { ease, FaceKind, limb, Pose, pose, POSE, Pt, Vignette, walkPose } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
+import { HandDrawn, useDrawn } from "../minecraft/handdrawn";
 import { Oofy, OofyTint, OOFY_TINT } from "../minecraft/oofy";
 import { Pixels, Puff } from "../minecraft/pixels";
 import { Block, Caption, Chat, Hearts } from "../minecraft-fall/hud";
@@ -123,7 +124,9 @@ const dude = (f: number): Dude => {
 
 /* ------------------------------ scenery ------------------------------ */
 
-const Scenery: React.FC<{ f: number }> = ({ f }) => (
+const Scenery: React.FC<{ f: number }> = ({ f }) => {
+  const flat = useDrawn();
+  return (
   <g>
     <defs>
       <linearGradient id="snSky" x1="0" y1="0" x2="0" y2="1">
@@ -139,14 +142,14 @@ const Scenery: React.FC<{ f: number }> = ({ f }) => (
         <stop offset="100%" stopColor="#d4380d" />
       </linearGradient>
     </defs>
-    <rect x={0} y={PANEL_TOP} width={W} height={H - PANEL_TOP} fill="url(#snSky)" />
+    <rect x={0} y={PANEL_TOP} width={W} height={H - PANEL_TOP} fill={flat ? "#7db9f5" : "url(#snSky)"} />
     {/* the far wall of the ravine, darker and flatter so it reads as distance */}
     {/* its top sits well above the action, so a body leaning out reads as over the void, not lying on a ledge */}
     {Array.from({ length: 10 }, (_, r) => Array.from({ length: 11 }, (_, c) => (
       <rect key={`${r}-${c}`} x={c * 100} y={700 + r * 100} width={100} height={100} fill={random(`fw${r}${c}`) > 0.85 ? "#4d4d57" : "#5c5c68"} stroke="#44444d" strokeWidth={4} />
     )))}
     <rect x={0} y={680} width={W} height={30} fill="#5d8d56" />
-    <rect x={0} y={1100} width={W} height={LAVA - 1100} fill="url(#snGlow)" />
+    {!flat && <rect x={0} y={1100} width={W} height={LAVA - 1100} fill="url(#snGlow)" />}
     {/* the cliff he stands on */}
     {Array.from({ length: 7 }, (_, r) => Array.from({ length: 6 }, (_, c) => (
       <Block key={`${r}-${c}`} kind={r === 0 ? "grass" : r < 3 ? "dirt" : "stone"} x={EDGE - (c + 1) * BLK} y={GROUND + r * BLK} s={BLK} />
@@ -155,18 +158,22 @@ const Scenery: React.FC<{ f: number }> = ({ f }) => (
     <Block kind="stone" x={PRIZE[0] - BLK / 2} y={PRIZE[1] + 34} s={BLK} />
     {f < B.grab && <Pixels rows={DIAMOND} colors={DIAMOND_C} px={9} x={PRIZE[0]} y={PRIZE[1] + 8 + Math.sin(f / 7) * 6} />}
   </g>
-);
+  );
+};
 
-const Lava: React.FC<{ f: number }> = ({ f }) => (
+const Lava: React.FC<{ f: number }> = ({ f }) => {
+  const flat = useDrawn();
+  return (
   <g>
-    <rect x={0} y={LAVA} width={W} height={H - LAVA + 20} fill="url(#snLava)" />
+    <rect x={0} y={LAVA} width={W} height={H - LAVA + 20} fill={flat ? "#f08a1c" : "url(#snLava)"} />
     <path d={`M0,${LAVA} ${Array.from({ length: 12 }, (_, i) => `Q${i * 90 + 45},${LAVA - 10 + Math.sin(f / 8 + i) * 8} ${(i + 1) * 90},${LAVA}`).join(" ")}`} fill="none" stroke="#7a1d05" strokeWidth={8} />
     {Array.from({ length: 9 }, (_, i) => {
       const x = 60 + random(`lb${i}`) * 960, y = LAVA + 50 + random(`lc${i}`) * 150;
       return <ellipse key={i} cx={x + Math.sin(f / 13 + i) * 20} cy={y} rx={40 + random(`ld${i}`) * 30} ry={14} fill="#ffe066" opacity={0.55 + 0.3 * Math.sin(f / 9 + i * 2)} />;
     })}
   </g>
-);
+  );
+};
 
 const Flames: React.FC<{ x: number; y: number; f: number }> = ({ x, y, f }) => (
   <g>
@@ -219,7 +226,7 @@ const World: React.FC<{ offset: number }> = ({ offset }) => {
         <Scenery f={f} />
         {!d.gone && (
           <g transform={`rotate(${d.rot} ${d.pivot[0]} ${d.pivot[1]})`}>
-            <Oofy x={d.x} y={origin} scale={S} pose={d.p} face={d.face} look={d.look} tint={d.tint} shadow={f < B.jump || f >= B.respawn}
+            <Oofy x={d.x} y={origin} scale={S} pose={d.p} face={d.face} look={d.look} tint={d.tint} shadow={(f < B.jump || f >= B.respawn) && Math.abs(d.rot) < 6}
               hands={d.holding ? ({ R }) => <Pixels rows={DIAMOND} colors={DIAMOND_C} px={8} x={R[0] + 6} y={R[1] - 24} /> : undefined} />
           </g>
         )}
@@ -264,20 +271,41 @@ const Hud: React.FC = () => {
   );
 };
 
-export const SneakShort: React.FC<{ audio?: string | null }> = ({ audio = null }) => {
+/** `drawn` (the default) is the hand-drawn house style; drawn={false} is the original crisp, smooth render. */
+export const SneakShort: React.FC<{ audio?: string | null; drawn?: boolean }> = ({ audio = null, drawn = true }) => {
   loadMinecraftFonts();
   const [f0, f1] = B.fall;
   return (
     <AbsoluteFill style={{ backgroundColor: "#5aa0f2" }}>
       {audio ? <Audio src={staticFile(audio)} /> : null}
-      <Sequence durationInFrames={f0}><World offset={0} /></Sequence>
-      <Sequence from={f0} durationInFrames={f1 - f0}>
-        <CameraMotionBlur shutterAngle={200} samples={6}><AbsoluteFill><World offset={f0} /></AbsoluteFill></CameraMotionBlur>
-      </Sequence>
-      <Sequence from={f1} durationInFrames={B.frames - f1}><World offset={f1} /></Sequence>
+      <HandDrawn enabled={drawn}>
+        <Sequence durationInFrames={f0}><World offset={0} /></Sequence>
+        <Sequence from={f0} durationInFrames={f1 - f0}>
+          {drawn ? <World offset={f0} /> : <CameraMotionBlur shutterAngle={200} samples={6}><AbsoluteFill><World offset={f0} /></AbsoluteFill></CameraMotionBlur>}
+        </Sequence>
+        <Sequence from={f1} durationInFrames={B.frames - f1}><World offset={f1} /></Sequence>
+      </HandDrawn>
       <Hud />
-      <Vignette w={W} h={H} />
+      {!drawn && <Vignette w={W} h={H} />}
       <Caption lines={SNEAK_CAPTION} />
+    </AbsoluteFill>
+  );
+};
+
+/** before/after, side by side: the original crisp render and the hand-drawn house style */
+export const SneakCompare: React.FC<{ audio?: string | null }> = ({ audio = null }) => {
+  loadMinecraftFonts();
+  return (
+    <AbsoluteFill style={{ backgroundColor: "#141018" }}>
+      {audio ? <Audio src={staticFile(audio)} /> : null}
+      {[false, true].map((drawn, i) => (
+        <div key={i} style={{ position: "absolute", left: i * 540, top: 80, width: W, height: H, transform: "scale(0.5)", transformOrigin: "0 0", overflow: "hidden" }}>
+          <SneakShort drawn={drawn} />
+        </div>
+      ))}
+      {["BEFORE", "HAND-DRAWN"].map((t, i) => (
+        <div key={t} style={{ position: "absolute", left: i * 540, top: 0, width: 540, height: 80, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Silkscreen, monospace", fontSize: 34, color: i ? "#a78bfa" : "#bbbbbb" }}>{t}</div>
+      ))}
     </AbsoluteFill>
   );
 };

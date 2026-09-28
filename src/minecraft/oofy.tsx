@@ -2,6 +2,7 @@ import React from "react";
 import { AbsoluteFill } from "remotion";
 import { FaceKind, limb, Limb, pose, Pose, POSE, Pt, walkPose } from "./figure";
 import { loadMinecraftFonts } from "./fonts";
+import { useDrawn } from "./handdrawn";
 
 /**
  * Oofy — the Oof Craft mascot, drawn his own way rather than as a stick
@@ -162,7 +163,9 @@ export const OofyFace: React.FC<{ kind: FaceKind; look?: Pt; line?: string; skin
 /** the whole head, in head space: skin, blush, face, quiff, band-aid */
 export const OofyHead: React.FC<{ face: FaceKind; look?: Pt; tint?: OofyTint; bandAid?: boolean; faceOffset?: Pt; id?: string }> = ({
   face, look = [0, 0], tint = OOFY_TINT.normal, bandAid = true, faceOffset = [0, 0], id = "oofyHead",
-}) => (
+}) => {
+  const drawn = useDrawn(); // hand-drawn: flat skin, no shine
+  return (
   <g>
     <defs>
       <radialGradient id={`${id}-skin`} cx="38%" cy="32%" r="75%">
@@ -178,7 +181,7 @@ export const OofyHead: React.FC<{ face: FaceKind; look?: Pt; tint?: OofyTint; ba
         <rect x={x + 5} y={y + 5} width={w * 0.35} height={w * 0.35} fill={HAIR_LIT} />
       </g>
     ))}
-    <ellipse rx={HEAD_RX} ry={HEAD_RY} fill={`url(#${id}-skin)`} stroke={tint.line} strokeWidth={12} />
+    <ellipse rx={HEAD_RX} ry={HEAD_RY} fill={drawn ? tint.skin : `url(#${id}-skin)`} stroke={tint.line} strokeWidth={12} />
     <ellipse cx={-56} cy={20} rx={17} ry={10} fill={BLUSH} opacity={0.65} />
     <ellipse cx={56} cy={20} rx={17} ry={10} fill={BLUSH} opacity={0.65} />
     <g transform={`translate(${faceOffset[0]} ${faceOffset[1]})`}>
@@ -192,7 +195,8 @@ export const OofyHead: React.FC<{ face: FaceKind; look?: Pt; tint?: OofyTint; ba
       </g>
     )}
   </g>
-);
+  );
+};
 
 /* ------------------------------- the body ------------------------------- */
 
@@ -213,6 +217,7 @@ export const Oofy: React.FC<{
   bandAid?: boolean;
 }> = ({ x, y, scale = 1, pose: p, face, tint = OOFY_TINT.normal, look = [0, 0], tilt = 0, flip = false, armsOverHead = false, hands, faceOffset = [0, 0], shadow = true, bandAid = true }) => {
   const id = React.useId().replace(/:/g, "");
+  const drawn = useDrawn();
   const shoe = (foot: Pt) => (
     <g>
       <ellipse cx={foot[0] + 9} cy={foot[1] - 13} rx={31} ry={15} fill={tint.shoe} stroke={tint.line} strokeWidth={7} />
@@ -246,7 +251,7 @@ export const Oofy: React.FC<{
           <stop offset="100%" stopColor={shade(tint.hoodie, -0.2)} />
         </linearGradient>
       </defs>
-      <path d="M-56,6 Q-70,64 -66,118 Q-66,136 -48,136 L48,136 Q66,136 66,118 Q70,64 56,6 Q0,-12 -56,6 Z" fill={`url(#${id}-hood)`} stroke={tint.line} strokeWidth={11} strokeLinejoin="round" />
+      <path d="M-56,6 Q-70,64 -66,118 Q-66,136 -48,136 L48,136 Q66,136 66,118 Q70,64 56,6 Q0,-12 -56,6 Z" fill={drawn ? tint.hoodie : `url(#${id}-hood)`} stroke={tint.line} strokeWidth={11} strokeLinejoin="round" />
       <path d="M-34,86 L34,86 L30,120 L-30,120 Z" fill={shade(tint.hoodie, -0.12)} stroke={shade(tint.hoodie, -0.4)} strokeWidth={5} strokeLinejoin="round" />
       <path d="M-44,6 Q0,26 44,6" fill="none" stroke={shade(tint.hoodie, -0.35)} strokeWidth={9} strokeLinecap="round" />
       {[-14, 14].map((dx) => (
