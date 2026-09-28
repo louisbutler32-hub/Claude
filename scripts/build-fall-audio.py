@@ -245,7 +245,7 @@ if __name__ == "__main__":
             wet[a:a + ramp] = np.linspace(0, 1, ramp)
             wet[b:b + ramp] = np.linspace(1, 0, ramp)
         i0 = int(X * SR)
-        body = song[i0:i0 + n] * (1 - wet[:, None]) + muffled[i0:i0 + n] * 0.9 * wet[:, None]
+        body = song[i0:i0 + n] * (1 - wet[:, None]) + muffled[i0:i0 + n] * 0.45 * wet[:, None]  # a low-pass keeps the bass, so drop the level too or it isn't a hush
         place(mix, fade(body * MUSIC, 0.0, 0.03), 0)
         # the respawn plays the stretch just before X, so the last frame flows into the first
         pre = sec(S["respawn"][1] - S["respawn"][0])
