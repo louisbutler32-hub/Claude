@@ -4,14 +4,15 @@ import { evolvePath } from "@remotion/paths";
 import React from "react";
 import { AbsoluteFill, Audio, Freeze, random, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { H, PANEL_TOP, W } from "../minecraft/beats";
-import { ease, FaceKind, Figure, limb, Pose, pose, POSE, Tint, TINT, Vignette, walkPose } from "../minecraft/figure";
+import { ease, FaceKind, limb, Pose, pose, POSE, Tint, Vignette, walkPose } from "../minecraft/figure";
+import { Oofy, OOFY_TINT as TINT } from "../minecraft/oofy";
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { DeadBush, Item, Poppy, Puff } from "../minecraft/pixels";
 import B from "./beats.json";
 import { Block, Caption, Chat, DeathScreen, Hearts, Hotbar, SlotItem, YReadout } from "./hud";
 
 /**
- * "How to survive ANY fall in Minecraft" — 23 seconds.
+ * "How to survive ANY fall in Minecraft" — 23 seconds, starring Oofy.
  *
  * Three textbook clutches off the height limit, each landing on a real
  * mechanic: a water bucket, a hay bale after the bucket slips, and a slime
@@ -318,7 +319,7 @@ const FallShot: React.FC<{ which: "water" | "hay" | "slime" }> = ({ which }) => 
         </g>
       )}
       <Squash x={x} feet={feet} sx={sx} sy={sy} rotate={rotate}>
-        <Figure x={x} y={feet - FEET_UP} scale={SCALE} pose={p} face={face} tint={tint} look={look} shadow={landed && st.lift < 30} hands={({ R }) => hand(R)} />
+        <Oofy x={x} y={feet - FEET_UP} scale={SCALE} pose={p} face={face} tint={tint} look={look} shadow={landed && st.lift < 30} hands={({ R }) => hand(R)} />
       </Squash>
       {which === "hay" && l >= B.hay.slip - c.start && l < B.hay.slip - c.start + 30 && (
         // the bucket, out of reach
@@ -405,7 +406,7 @@ const LedgeShot: React.FC = () => {
       </g>
       {!gone && (
         <Squash x={x} feet={feet} sx={1 + sq * 0.7} sy={1 - sq} rotate={tip}>
-          <Figure x={x} y={feet - 335 * LS} scale={LS} pose={p} face={face} look={look} tint={landed ? TINT.hurt : TINT.normal} shadow={!falling} />
+          <Oofy x={x} y={feet - 335 * LS} scale={LS} pose={p} face={face} look={look} tint={landed ? TINT.hurt : TINT.normal} shadow={!falling} />
         </Squash>
       )}
       {f >= L.poof && f < L.poof + 16 && [0, 1, 2, 3, 4].map((i) => (
@@ -428,7 +429,7 @@ const RespawnShot: React.FC = () => {
       <Clouds cam={0} />
       <Cliff top={TRACK} bottom={TRACK + 4000} cam={0} grassTop />
       <Squash x={175} feet={TRACK} sx={1 + crouch * 0.6} sy={1 - crouch}>
-        <Figure x={175} y={TRACK - FEET_UP} scale={SCALE} pose={POSE.stand} face={face} look={f < B.respawn.chat + 10 ? [-8, 0] : [10, 10]}
+        <Oofy x={175} y={TRACK - FEET_UP} scale={SCALE} pose={POSE.stand} face={face} look={f < B.respawn.chat + 10 ? [-8, 0] : [10, 10]}
           hands={({ R }) => <Item name="bucket" x={R[0] + 10} y={R[1] + 34} px={8} />} />
       </Squash>
       <rect x={0} y={PANEL_TOP} width={W} height={H - PANEL_TOP} fill="#ffffff" opacity={1 - ease(l, 0, 8)} />
@@ -533,7 +534,7 @@ export const FallThumb: React.FC = () => {
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
         <Sky />
         <SpeedLines cam={900} vel={VMAX} />
-        <Figure x={330} y={560} scale={0.72} pose={REACH} face="sly" look={[4, 12]} shadow={false} hands={({ R }) => <Item name="bucket" x={R[0] + 10} y={R[1] + 34} px={8} rotate={120} />} />
+        <Oofy x={330} y={560} scale={0.72} pose={REACH} face="sly" look={[4, 12]} shadow={false} hands={({ R }) => <Item name="bucket" x={R[0] + 10} y={R[1] + 34} px={8} rotate={120} />} />
         <Block kind="water" x={255} y={mid - 150} s={150} />
         <text x={560} y={760} fontFamily="Silkscreen, monospace" fontSize={84} fill="#ffffff" stroke="#141414" strokeWidth={12} paintOrder="stroke">320</text>
         <text x={560} y={850} fontFamily="Silkscreen, monospace" fontSize={60} fill="#7CFC6A" stroke="#141414" strokeWidth={10} paintOrder="stroke">blocks: ok</text>
@@ -544,7 +545,7 @@ export const FallThumb: React.FC = () => {
         )))}
         {[0, 1, 2, 3, 4].map((col) => <Block key={`g${col}`} kind="grass" x={420 + col * 110} y={1690} s={110} />)}
         <g transform="rotate(90 560 1690)">
-          <Figure x={560} y={1690 - 335 * 0.62} scale={0.62} pose={POSE.spread} face="shocked" tint={TINT.hurt} shadow={false} />
+          <Oofy x={560} y={1690 - 335 * 0.62} scale={0.62} pose={POSE.spread} face="shocked" tint={TINT.hurt} shadow={false} />
         </g>
         <text x={560} y={1360} fontFamily="Silkscreen, monospace" fontSize={84} fill="#ffffff" stroke="#141414" strokeWidth={12} paintOrder="stroke">4</text>
         <text x={560} y={1450} fontFamily="Silkscreen, monospace" fontSize={60} fill="#ff4a3d" stroke="#141414" strokeWidth={10} paintOrder="stroke">blocks: dead</text>

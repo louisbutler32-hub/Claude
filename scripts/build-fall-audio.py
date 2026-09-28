@@ -4,8 +4,14 @@
 Everything is placed on frames read from src/minecraft-fall/beats.json, the
 same file the video reads, so picture and sound can't drift apart.
 
-  run-amok.mp3   Kevin MacLeod, CC BY 4.0 — the stunts, sped up like the PvP Short
-  mc-damage.mp3  the game's hurt sound — the "oof" on the hay bale and on the ledge
+  --music runamok (default)  run-amok.mp3, Kevin MacLeod, CC BY 4.0, sped up like the PvP Short
+  --music hbfs               harder-better-faster-stronger.mp3 (Daft Punk; the owner's copy,
+                             never committed). Starts 49.1s in, so "work it" arrives on the
+                             first clutch and "harder, better, faster, stronger" on the slime
+                             launch; "stronger" ends right as the music cuts at the ledge
+  --music none               no music: every effect, a few dB quieter, for uploading with a
+                             song added in YouTube's own Shorts sound picker
+  mc-damage.mp3              the game's hurt sound — the "oof" on the hay bale and on the ledge
 
 Everything else is synthesised here: wind that follows the actual fall
 speed, a slow-motion drop, splash and droplets, hotbar clicks, a hay-bale
@@ -14,9 +20,9 @@ scratch into silence, footsteps and a whistle, a sad trombone, and the
 respawn shimmer. The music under the respawn is the few seconds just
 before where the video's opening picks it up, so the loop is seamless.
 
-Writes public/audio/fall-mix.mp3. With --no-music, writes public/audio/fall-sfx.mp3
-instead: every effect, no Run Amok, a few dB quieter — for uploading with a
-real song added in YouTube's own Shorts sound picker.
+Writes public/audio/fall-mix.mp3, fall-mix-hbfs.mp3 or fall-sfx.mp3.
+Through each slow-motion clutch the music is muffled (low-passed) rather than
+just turned down, the way time-slowing sounds in a film.
 """
 import json
 import os
@@ -29,8 +35,16 @@ from mc_audio_lib import SR, boom, decode, fade, place, whoosh, write_mp3
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "public", "audio", "src")
-NO_MUSIC = "--no-music" in sys.argv
-OUT = os.path.join(ROOT, "public", "audio", "fall-sfx.mp3" if NO_MUSIC else "fall-mix.mp3")
+# name: (file, ffmpeg filter, seconds into the track where frame 0 sits, output)
+SONGS = {
+    "runamok": ("run-amok.mp3", "asetrate=%d,aresample=%d,atempo=1.2" % (int(44100 * 1.18), 44100), 1.5, "fall-mix.mp3"),
+    "hbfs": ("harder-better-faster-stronger.mp3", None, 49.13, "fall-mix-hbfs.mp3"),
+}
+CHOICE = sys.argv[sys.argv.index("--music") + 1] if "--music" in sys.argv else "none" if "--no-music" in sys.argv else "runamok"
+if CHOICE not in SONGS and CHOICE != "none":
+    sys.exit("--music must be one of: " + ", ".join(SONGS) + ", none")
+NO_MUSIC = CHOICE == "none"
+OUT = os.path.join(ROOT, "public", "audio", "fall-sfx.mp3" if NO_MUSIC else SONGS[CHOICE][3])
 FF = os.environ.get("FFMPEG", "ffmpeg")
 B = json.load(open(os.path.join(ROOT, "src", "minecraft-fall", "beats.json")))
 FPS = B["fps"]
@@ -207,33 +221,35 @@ def wind(key):
 # ------------------------------------------------------------ mix
 
 if __name__ == "__main__":
-    for name in ("run-amok.mp3", "mc-damage.mp3"):
+    for name in ("mc-damage.mp3",) + (() if NO_MUSIC else (SONGS[CHOICE][0],)):
         if not os.path.exists(os.path.join(SRC, name)):
             sys.exit("missing public/audio/src/" + name)
     total = sec(B["frames"])
     mix = np.zeros((int(total * SR), 2), dtype=np.float32)
     S, W_, H_, SL, LD, D, R = B["seg"], B["water"], B["hay"], B["slime"], B["ledge"], B["dead"], B["respawn"]
 
-    # music: sped-up Run Amok under the stunts, ducked through each slow-motion clutch, gone at the ledge
-    run = decode(FF, os.path.join(SRC, "run-amok.mp3"), "asetrate=%d,aresample=%d,atempo=1.2" % (int(SR * 1.18), SR))
-    X = 1.5  # the video opens this far into the track
-    music_len = sec(S["ledge"][0])
-    # the ledge is meant to feel like the music died: its whistle and heartbeat sit well under this
-    MUSIC, DUCK = 0.6, 0.2
-    gain = np.full(int(music_len * SR), MUSIC)
-    for ev in (W_, H_, SL):
-        a, b = int(sec(ev["slowStart"]) * SR), int(sec(ev["land"]) * SR)
-        ramp = N(0.1)
-        gain[a:b] = DUCK
-        gain[a:a + ramp] = np.linspace(MUSIC, DUCK, ramp)
-        gain[b:b + ramp] = np.linspace(DUCK, MUSIC, ramp)
-    body = run[int(X * SR):int(X * SR) + len(gain)] * gain[:, None]
+    # music under the stunts, muffled through each slow-motion clutch, gone at the ledge
     if not NO_MUSIC:
-        place(mix, fade(body, 0.0, 0.03), 0)
-    # the respawn plays the music just before X, so the last frame flows into the first
-    pre = sec(S["respawn"][1] - S["respawn"][0])
-    if not NO_MUSIC:
-        place(mix, fade(run[int((X - pre) * SR):int(X * SR)] * MUSIC, 0.25, 0.0), sec(S["respawn"][0]))
+        name, filt, X, _ = SONGS[CHOICE]
+        path = os.path.join(SRC, name)
+        song = decode(FF, path, filt)
+        muffled = decode(FF, path, (filt + "," if filt else "") + "lowpass=f=450,lowpass=f=450")
+        # the ledge is meant to feel like the music died: its whistle and heartbeat sit well under this
+        MUSIC = 0.6
+        n = int(sec(S["ledge"][0]) * SR)
+        wet = np.zeros(n)  # 0 = the song as is, 1 = fully muffled
+        ramp = N(0.12)
+        for ev in (W_, H_, SL):
+            a, b = int(sec(ev["slowStart"]) * SR), int(sec(ev["land"]) * SR)
+            wet[a:b] = 1
+            wet[a:a + ramp] = np.linspace(0, 1, ramp)
+            wet[b:b + ramp] = np.linspace(1, 0, ramp)
+        i0 = int(X * SR)
+        body = song[i0:i0 + n] * (1 - wet[:, None]) + muffled[i0:i0 + n] * 0.9 * wet[:, None]
+        place(mix, fade(body * MUSIC, 0.0, 0.03), 0)
+        # the respawn plays the stretch just before X, so the last frame flows into the first
+        pre = sec(S["respawn"][1] - S["respawn"][0])
+        place(mix, fade(song[int((X - pre) * SR):i0] * MUSIC, 0.25, 0.0), sec(S["respawn"][0]))
 
     oof = decode(FF, os.path.join(SRC, "mc-damage.mp3"), "atrim=0.20:0.62,asetpts=PTS-STARTPTS")
 
@@ -304,4 +320,4 @@ if __name__ == "__main__":
     place(mix, fade(whoosh(0.4, seed=81), 0.01, 0.15), sec(D["flash"] + 2), 0.3)
 
     write_mp3(FF, mix, OUT, lufs=-18 if NO_MUSIC else -14)  # quieter, so the added song sits on top
-    print("wrote", os.path.relpath(OUT, ROOT), f"({total:.1f}s)")
+    print("wrote", os.path.relpath(OUT, ROOT), f"({total:.1f}s, music: {CHOICE})")

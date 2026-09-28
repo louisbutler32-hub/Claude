@@ -25,14 +25,12 @@ A 4-block ledge ❌💀
 
 (4 blocks is exactly half a heart. He had exactly half a heart.)
 
-New Minecraft animation every week.
+Oofy always gets hurt. New Minecraft animation every week.
 
 🥕 Subscribe:
 https://www.youtube.com/@LaughQuakees
 
-Music: "Run Amok" by Kevin MacLeod (incompetech.com)
-Licensed under Creative Commons: By Attribution 4.0
-https://creativecommons.org/licenses/by/4.0/
+Music: see "Which version to upload" below — this block depends on it.
 
 #minecraft #minecraftshorts #minecraftmemes #mlg #minecraftanimation #shorts
 ```
@@ -40,10 +38,10 @@ https://creativecommons.org/licenses/by/4.0/
 ## Tags
 
 ```
-minecraft, minecraft shorts, minecraft fall damage, mlg water bucket, water bucket clutch, minecraft mlg, slime block, hay bale, minecraft death, you died, minecraft animation, minecraft meme, minecraft memes, minecraft funny, minecraft logic, minecraft cartoon, stick figure animation, gaming animation, oof craft, shorts
+minecraft, minecraft shorts, minecraft fall damage, mlg water bucket, water bucket clutch, minecraft mlg, slime block, hay bale, minecraft death, you died, minecraft animation, minecraft meme, minecraft memes, minecraft funny, minecraft logic, minecraft cartoon, stick figure animation, oofy, gaming animation, oof craft, shorts
 ```
 
-(322 characters, inside YouTube's 500.)
+(328 characters, inside YouTube's 500.)
 
 ## Pinned comment
 
@@ -54,6 +52,23 @@ has a story for is the cheapest comment bait there is:
 what's the dumbest way you've died in Minecraft? 💀
 ```
 
+## Which version to upload
+
+There are three renders of the same picture. Pick one, and use its music line
+in the description in place of the placeholder:
+
+| file | music | copyright | music line |
+|---|---|---|---|
+| `minecraft-fall-damage-hbfs.mp4` | Harder, Better, Faster, Stronger — baked in, cut to the story | **Will almost certainly be claimed by Content ID.** Usually the Short stays up but the label takes the revenue, and it can be blocked or muted in some countries | `Music: Daft Punk – Harder, Better, Faster, Stronger` |
+| `minecraft-fall-damage-no-music.mp4` | none — add the song in YouTube's Shorts sound picker when uploading | licensed through YouTube, no claim | *(delete the line — YouTube credits the song itself)* |
+| `minecraft-fall-damage.mp4` | Run Amok, Kevin MacLeod | free to use with credit | `Music: "Run Amok" by Kevin MacLeod (incompetech.com)` / `Licensed under Creative Commons: By Attribution 4.0` / `https://creativecommons.org/licenses/by/4.0/` |
+
+For the picker route, the song's hook lines up if it starts **49.1s in**:
+"work it, make it, do it" arrives on the water bucket, "harder, better, faster,
+stronger" on the slime launch, and the cut at **0:14.6** (the record scratch)
+falls right after "stronger". If the picker can't trim, the scratch still reads
+as a gag over the song.
+
 ## Upload settings
 
 Category **Gaming** (game: Minecraft), language English, uploaded as a
@@ -61,9 +76,12 @@ Short (23s, 1080×1920). Audience **not made for kids**.
 
 Thumbnail: `thumbnail-fall-damage.jpg` (`npm run fall:thumb`).
 
-Sound: `npm run fall:mix` builds the track (Run Amok from `public/audio/src/`
-plus the game's hurt sound for both "oof"s; every other sound is synthesised
-in `scripts/build-fall-audio.py`), then `npm run fall:audio`.
+Sound: `npm run fall:mix` (Run Amok), `fall:mix:hbfs` (Daft Punk) or
+`fall:sfx` (no music) builds the track from `public/audio/src/` plus the
+game's hurt sound for both "oof"s — every other sound is synthesised in
+`scripts/build-fall-audio.py` — then `npm run fall:audio` or
+`fall:audio:hbfs`. The songs themselves are the owner's files and are never
+committed.
 
 Loop: the respawn lands him back on the cliff edge in the opening frame's
 exact framing, crouching into the jump that frame 0 starts; the music under
