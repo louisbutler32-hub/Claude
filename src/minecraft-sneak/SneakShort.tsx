@@ -70,6 +70,8 @@ const handAt = (deg: number): Pt => {
   return [px + dx * Math.cos(r) - dy * Math.sin(r), py + dx * Math.sin(r) + dy * Math.cos(r)];
 };
 const PRIZE = handAt(B.leans[2][2]);
+/** the celebration leap carries him clear of the floating block and out from behind the hearts and keys, so the lava payoff is in the open */
+const JUMP = 400;
 
 type Dude = { x: number; feet: number; p: Pose; face: FaceKind; look: Pt; tint: OofyTint; rot: number; pivot: Pt; holding: boolean; gone: boolean; lower: number };
 
@@ -86,7 +88,7 @@ const dude = (f: number): Dude => {
     if (f >= B.back[1]) { d.p = crouch(CHEER, 0.6); d.face = "joy"; }
   } else if (f < B.hang[1]) {
     const t = Math.min(1, (f - B.jump) / B.jumpFrames);
-    d.x = STAND_X + 160 * t;
+    d.x = STAND_X + JUMP * t;
     d.feet = GROUND - 110 * (1 - (1 - t) ** 2);
     d.p = CHEER; d.lower = 0;
     d.face = f < B.hang[0] + 6 ? "joy" : "meh";
@@ -94,13 +96,13 @@ const dude = (f: number): Dude => {
   } else if (f < B.fall[1]) {
     const t = f - B.fall[0], T = B.fall[1] - B.fall[0];
     const top = GROUND - 110, dist = LAVA + 40 - top;
-    d.x = STAND_X + 160 + 30 * (t / T);
+    d.x = STAND_X + JUMP + 30 * (t / T);
     d.feet = top + dist * (t / T) ** 2;
     d.p = pose({ armL: limb(-120, -40 + 30 * Math.sin(f), -150, -150), armR: limb(120, -40 - 30 * Math.sin(f), 150, -150) });
     d.face = "scream"; d.lower = 0;
   } else if (f < B.poof + 2) {
     const t = f - B.fall[1];
-    d.x = STAND_X + 190;
+    d.x = STAND_X + JUMP + 30;
     d.feet = LAVA + 40 + Math.min(120, t * 2.6);
     d.p = walkPose(f / 3, 70, pose({ armL: limb(-120, -40 + 50 * Math.sin(f * 1.1), -160, -140), armR: limb(120, -40 - 50 * Math.sin(f * 1.1), 160, -140) }), false);
     d.face = "scream"; d.lower = 0;
@@ -229,7 +231,7 @@ const World: React.FC<{ offset: number }> = ({ offset }) => {
           return <circle key={i} cx={d.x + Math.cos(a) * v * splash} cy={LAVA + Math.sin(a) * v * splash + 0.9 * splash * splash} r={10 + random(`lr${i}`) * 8} fill="#ffb02e" stroke="#7a1d05" strokeWidth={3} opacity={1 - splash / 20} />;
         })}
         {f >= B.poof && f < B.poof + 18 && [0, 1, 2, 3].map((i) => (
-          <Puff key={i} x={STAND_X + 150 + i * 40} y={LAVA - 30 - (f - B.poof) * 6 - i * 16} r={30} opacity={Math.max(0, 1 - (f - B.poof) / 18)} />
+          <Puff key={i} x={STAND_X + JUMP - 10 + i * 40} y={LAVA - 30 - (f - B.poof) * 6 - i * 16} r={30} opacity={Math.max(0, 1 - (f - B.poof) / 18)} />
         ))}
         {f >= B.grab && f < B.grab + 14 && (
           <g opacity={1 - (f - B.grab) / 14} fill="#9ff3ee" stroke="#2a1b3d" strokeWidth={3}>

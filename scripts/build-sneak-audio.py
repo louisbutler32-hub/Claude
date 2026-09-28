@@ -110,10 +110,10 @@ if __name__ == "__main__":
     # the jump, the realisation, the drop
     place(mix, click(1800, 0.03), sec(B["jump"]), 0.7)
     place(mix, fade(whoosh(0.35, seed=13), 0.01, 0.1), sec(B["jump"]), 0.35)
-    place(mix, record_scratch(), sec(B["hang"][0]), 0.5)
-    place(mix, chirp(220, 140, 0.14), sec(B["hang"][0] + 8), 0.5)
-    for f in range(B["hang"][0] + 4, B["hang"][1], 6):  # hammering the shift key, for all the good it does
-        place(mix, click(2600, 0.012), sec(f), 0.3)
+    place(mix, record_scratch(), sec(B["hang"][0]), 0.3)
+    place(mix, chirp(220, 140, 0.14), sec(B["hang"][0] + 8), 0.2)
+    for f in range(B["hang"][0] + 4, B["hang"][1], 6):  # the realisation is meant to be near-silent: a scratch, a gulp, the shift key being mashed for all the good it does
+        place(mix, click(2600, 0.012), sec(f), 0.12)
     dur = sec(B["fall"][1] - B["fall"][0])
     n = N(dur)
     place(mix, stereo(tone(np.linspace(1400, 260, n), dur, vib=0.01, vib_rate=8) * env(n, 0.02, 0.05)), sec(B["fall"][0]), 0.3)
@@ -122,9 +122,9 @@ if __name__ == "__main__":
     land = B["fall"][1]
     place(mix, splash(seed=21), sec(land), 0.5)
     place(mix, fade(boom(0.5, seed=22), 0.002, 0.2), sec(land), 0.5)
-    place(mix, sizzle(), sec(land), 0.4)
+    place(mix, sizzle(), sec(land), 0.22)
     for f in B["oofs"]:
-        place(mix, oof, sec(f), 1.0)
+        place(mix, oof, sec(f), 1.6)  # the payoff: they have to cut through the sizzle
     n = N(0.4)
     place(mix, stereo(band(n, 2600, 1200, 71) * env(n, 0.02, 0.3)), sec(B["poof"]), 0.3)
 
