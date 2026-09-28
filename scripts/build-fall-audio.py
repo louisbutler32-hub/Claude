@@ -215,18 +215,20 @@ if __name__ == "__main__":
     run = decode(FF, os.path.join(SRC, "run-amok.mp3"), "asetrate=%d,aresample=%d,atempo=1.2" % (int(SR * 1.18), SR))
     X = 1.5  # the video opens this far into the track
     music_len = sec(S["ledge"][0])
-    gain = np.full(int(music_len * SR), 0.42)
+    # the ledge is meant to feel like the music died: its whistle and heartbeat sit well under this
+    MUSIC, DUCK = 0.6, 0.2
+    gain = np.full(int(music_len * SR), MUSIC)
     for ev in (W_, H_, SL):
         a, b = int(sec(ev["slowStart"]) * SR), int(sec(ev["land"]) * SR)
         ramp = N(0.1)
-        gain[a:b] = 0.14
-        gain[a:a + ramp] = np.linspace(0.42, 0.14, ramp)
-        gain[b:b + ramp] = np.linspace(0.14, 0.42, ramp)
+        gain[a:b] = DUCK
+        gain[a:a + ramp] = np.linspace(MUSIC, DUCK, ramp)
+        gain[b:b + ramp] = np.linspace(DUCK, MUSIC, ramp)
     body = run[int(X * SR):int(X * SR) + len(gain)] * gain[:, None]
     place(mix, fade(body, 0.0, 0.03), 0)
     # the respawn plays the music just before X, so the last frame flows into the first
     pre = sec(S["respawn"][1] - S["respawn"][0])
-    place(mix, fade(run[int((X - pre) * SR):int(X * SR)] * 0.42, 0.25, 0.0), sec(S["respawn"][0]))
+    place(mix, fade(run[int((X - pre) * SR):int(X * SR)] * MUSIC, 0.25, 0.0), sec(S["respawn"][0]))
 
     oof = decode(FF, os.path.join(SRC, "mc-damage.mp3"), "atrim=0.20:0.62,asetpts=PTS-STARTPTS")
 
@@ -272,19 +274,19 @@ if __name__ == "__main__":
     f = H_["land"] + 14
     while f < ledge_land:
         near = max(0.0, min(1.0, (f - S["ledge"][0]) / (LD["stepOff"] - S["ledge"][0])))
-        place(mix, heartbeat(), sec(f), 0.3 + 0.3 * near)
+        place(mix, heartbeat(), sec(f), 0.16 + 0.16 * near)
         f += 24 - 9 * near
 
     # 2. the ledge: music stops dead, footsteps and a whistle, a tiny drop, the oof
-    place(mix, record_scratch(), sec(S["ledge"][0]), 0.55)
+    place(mix, record_scratch(), sec(S["ledge"][0]), 0.4)
     f = LD["walk"][0] + LD["stride"] / 2
     while f < LD["walk"][1]:
-        place(mix, footstep(int(f)), sec(f), 0.25)
+        place(mix, footstep(int(f)), sec(f), 0.18)
         f += LD["stride"] / 2
-    place(mix, whistle([(784, 0, 6), (659, 6, 6), (784, 12, 6), (1047, 18, 8), (880, 26, 8), (784, 34, 12)]), sec(LD["walk"][0] + 2), 0.22)
+    place(mix, whistle([(784, 0, 6), (659, 6, 6), (784, 12, 6), (1047, 18, 8), (880, 26, 8), (784, 34, 12)]), sec(LD["walk"][0] + 2), 0.07)
     place(mix, fade(whoosh(0.2, seed=61), 0.005, 0.08), sec(LD["stepOff"]), 0.2)
     place(mix, fade(boom(0.3, seed=62), 0.002, 0.15), sec(ledge_land), 0.35)
-    place(mix, oof, sec(ledge_land + 1), 1.0)
+    place(mix, oof, sec(ledge_land + 1), 1.6)  # the punchline: the loudest thing in the video
     place(mix, thump(70, 0.2), sec(LD["tip"][1]), 0.4)
     n = N(0.4)
     place(mix, stereo(band(n, 2600, 1200, 71) * env(n, 0.02, 0.3)), sec(LD["poof"]), 0.3)

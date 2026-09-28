@@ -131,7 +131,10 @@ const Sky: React.FC = () => (
   </g>
 );
 
-const CLOUDS = Array.from({ length: 16 }, (_, i) => ({ x: random(`cx${i}`) * 1000 - 60, y: -900 + i * 420 + random(`cy${i}`) * 200, s: 0.7 + random(`cs${i}`) * 0.7 }));
+const CLOUDS = Array.from({ length: 16 }, (_, i) => ({ x: random(`cx${i}`) * 1000 - 60, y: -900 + i * 420 + random(`cy${i}`) * 200, s: 0.7 + random(`cs${i}`) * 0.7 })).filter(
+  // none beside the cliff edge in the opening frame, or he reads as standing on a cloud
+  (c) => !(c.y + 800 > 760 && c.y + 800 < 1180 && c.x < 560)
+);
 const Clouds: React.FC<{ cam: number }> = ({ cam }) => (
   <g fill="#f2f6fb" stroke="#141414" strokeWidth={8} strokeLinejoin="round">
     {CLOUDS.map((c, i) => {
@@ -454,14 +457,15 @@ const HudLayer: React.FC = () => {
   if (f >= S.slime[0] && f < S.respawn[0]) sel = 6;
 
   let Y = 320;
-  if (f < S.hay[0]) Y = fallState("water", f - S.water[0]).Y;
+  if (f < S.hay[0]) Y = Math.min(320, fallState("water", f - S.water[0]).Y); // the jump peaks above 320, the build limit doesn't
   else if (f < S.slime[0]) Y = fallState("hay", f - S.hay[0]).Y;
   else if (f < S.ledge[0]) Y = Math.max(64, fallState("slime", f - S.slime[0]).Y);
   else if (f < S.respawn[0]) Y = f < B.ledge.stepOff ? 64 : 60;
 
   const chats: [number, string][] = [[B.water.chat, "<You> ez"], [B.hay.chat, "<You> still counts"], [B.slime.chat, "<You> meant to do that"], [B.respawn.chat, "<You> one more try"]];
   const chat = chats.filter(([at]) => f >= at).pop();
-  const chatOpacity = chat ? Math.min(1, (f - chat[0]) / 3) * (1 - ease(f, chat[0] + 54, chat[0] + 62)) : 0;
+  // gone by the last frame, so the loop back to frame 0 has nothing to pop
+  const chatOpacity = chat ? Math.min(1, (f - chat[0]) / 3) * (1 - ease(f, chat[0] + 54, chat[0] + 62)) * (1 - ease(f, B.frames - 12, B.frames - 2)) : 0;
 
   return (
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
@@ -528,7 +532,6 @@ export const FallThumb: React.FC = () => {
     <AbsoluteFill style={{ backgroundColor: "#4f97f5" }}>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
         <Sky />
-        <Clouds cam={2600} />
         <SpeedLines cam={900} vel={VMAX} />
         <Figure x={330} y={560} scale={0.72} pose={REACH} face="sly" look={[4, 12]} shadow={false} hands={({ R }) => <Item name="bucket" x={R[0] + 10} y={R[1] + 34} px={8} rotate={120} />} />
         <Block kind="water" x={255} y={mid - 150} s={150} />
