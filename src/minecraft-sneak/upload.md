@@ -59,6 +59,7 @@ be honest, how many diamonds have you lost to lava? 💎🔥
 | file | music | copyright |
 |---|---|---|
 | `minecraft-crouching.mp4` | Sneaky Snitch, Kevin MacLeod (credit already in the description) | free to use with credit |
+| `minecraft-crouching-pink-panther.mp4` | The Pink Panther Theme — baked in, the bass entrance on frame 0, cut at the mid-air realisation | **will almost certainly be claimed by Content ID** — usually stays up with the revenue going to the rights holder; can be blocked or muted in some countries. Swap the music line for `Music: Henry Mancini – The Pink Panther Theme` |
 | `minecraft-crouching-no-music.mp4` | none — add a song in YouTube's Shorts sound picker | licensed through YouTube; delete the music line from the description |
 
 Song for the picker route: **"The Pink Panther Theme" (Henry Mancini)** —
@@ -73,7 +74,8 @@ Category **Gaming** (game: Minecraft), language English, uploaded as a Short
 
 Thumbnail: `thumbnail-crouching.jpg` (`npm run sneak:thumb`).
 
-Sound: `npm run sneak:mix` (Sneaky Snitch) or `sneak:sfx` (no music), then
+Sound: `npm run sneak:mix` (Sneaky Snitch), `sneak:mix:pink` (Pink Panther,
+the owner's copy in the ignored `public/audio/src/`) or `sneak:sfx` (no music), then
 `npm run sneak:audio`. Everything but the music and the three "oof"s is
 synthesised in `scripts/build-sneak-audio.py`.
 

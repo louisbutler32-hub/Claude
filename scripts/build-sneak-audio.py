@@ -6,6 +6,10 @@ video reads.
 
   --music snitch (default)  sneaky-snitch.mp3, Kevin MacLeod, CC BY 4.0 — the
                             sneakiest licensed track there is, for a crouch-walk
+  --music pink              pink-panther.mp3 (Henry Mancini; the owner's copy, never
+                            committed). Starts 6.35s in, so the bass line's entrance lands
+                            on frame 0 and his first sneaking step; the track is silent just
+                            before it, so each loop restarts on that entrance
   --music none              every effect, no music, a few dB quieter — for
                             uploading with a song added in YouTube's own picker
 
@@ -37,11 +41,16 @@ B = json.load(open(os.path.join(ROOT, "src", "minecraft-sneak", "beats.json")))
 FPS = B["fps"]
 sec = lambda f: f / FPS
 
+# name: (file, seconds into the track where frame 0 sits, output)
+SONGS = {
+    "snitch": ("sneaky-snitch.mp3", 1.0, "sneak-mix.mp3"),
+    "pink": ("pink-panther.mp3", 6.35, "sneak-mix-pink.mp3"),
+}
 CHOICE = sys.argv[sys.argv.index("--music") + 1] if "--music" in sys.argv else "snitch"
-if CHOICE not in ("snitch", "none"):
-    sys.exit("--music must be snitch or none")
+if CHOICE not in SONGS and CHOICE != "none":
+    sys.exit("--music must be one of: " + ", ".join(SONGS) + ", none")
 NO_MUSIC = CHOICE == "none"
-OUT = os.path.join(ROOT, "public", "audio", "sneak-sfx.mp3" if NO_MUSIC else "sneak-mix.mp3")
+OUT = os.path.join(ROOT, "public", "audio", "sneak-sfx.mp3" if NO_MUSIC else SONGS[CHOICE][2])
 
 
 def chirp(f0, f1, dur, harmonics=1):
@@ -74,17 +83,18 @@ def sizzle(dur=1.6):
 
 
 if __name__ == "__main__":
-    need = ("mc-damage.mp3",) + (() if NO_MUSIC else ("sneaky-snitch.mp3",))
+    need = ("mc-damage.mp3",) + (() if NO_MUSIC else (SONGS[CHOICE][0],))
     for name in need:
         if not os.path.exists(os.path.join(SRC, name)):
             sys.exit("missing public/audio/src/" + name)
     total = sec(B["frames"])
     mix = np.zeros((int(total * SR), 2), dtype=np.float32)
 
-    # music: Sneaky Snitch from the first step until he realises, mid-air
+    # music: from the first step until he realises, mid-air
     if not NO_MUSIC:
-        song = decode(FF, os.path.join(SRC, "sneaky-snitch.mp3"))
-        X, MUSIC = 1.0, 0.55  # frame 0 sits this far into the track
+        name, X, _ = SONGS[CHOICE]  # frame 0 sits X seconds into the track
+        song = decode(FF, os.path.join(SRC, name))
+        MUSIC = 0.55
         i0 = int(X * SR)
         body = song[i0:i0 + int(sec(B["hang"][0]) * SR)]
         place(mix, fade(body * MUSIC, 0.0, 0.02), 0)

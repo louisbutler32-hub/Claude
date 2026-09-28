@@ -115,6 +115,7 @@
     "sneak": "remotion render SneakShort out/minecraft-crouching.mp4",
     "sneak:mix": "python3 scripts/build-sneak-audio.py",
     "sneak:sfx": "python3 scripts/build-sneak-audio.py --music none",
+    "sneak:mix:pink": "python3 scripts/build-sneak-audio.py --music pink",
     "sneak:audio": "remotion render SneakShort out/minecraft-crouching.mp4 --props='{\"audio\":\"audio/sneak-mix.mp3\"}'",
     "sneak:thumb": "remotion still Sneak-Thumbnail out/thumbnail-crouching.jpg --image-format=jpeg --quality=92",
     "longform:mix": "python3 scripts/build-longform-audio.py",
