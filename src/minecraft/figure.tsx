@@ -439,6 +439,8 @@ export const Figure: React.FC<{
   lineWidth?: number;
   /** slide the features across the head, for a face turned toward something */
   faceOffset?: Pt;
+  /** drawn in head space after the face — hair, a hat, a band-aid; turns and tilts with the head */
+  headExtras?: React.ReactNode;
   /** a soft ellipse under the feet — turn off when airborne (falling, flung, swimming). */
   shadow?: boolean;
 }> = ({
@@ -455,6 +457,7 @@ export const Figure: React.FC<{
   hands,
   lineWidth = 1,
   faceOffset = [0, 0],
+  headExtras,
   shadow = true,
 }) => {
   const gradId = React.useId();
@@ -484,6 +487,7 @@ export const Figure: React.FC<{
       <g transform={`translate(${faceOffset[0]} ${faceOffset[1]})`}>
         <Face kind={face} look={look} line={tint.line} />
       </g>
+      {headExtras}
     </g>
   );
   const arms = (

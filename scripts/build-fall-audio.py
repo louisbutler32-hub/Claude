@@ -14,7 +14,9 @@ scratch into silence, footsteps and a whistle, a sad trombone, and the
 respawn shimmer. The music under the respawn is the few seconds just
 before where the video's opening picks it up, so the loop is seamless.
 
-Writes public/audio/fall-mix.mp3.
+Writes public/audio/fall-mix.mp3. With --no-music, writes public/audio/fall-sfx.mp3
+instead: every effect, no Run Amok, a few dB quieter — for uploading with a
+real song added in YouTube's own Shorts sound picker.
 """
 import json
 import os
@@ -27,7 +29,8 @@ from mc_audio_lib import SR, boom, decode, fade, place, whoosh, write_mp3
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "public", "audio", "src")
-OUT = os.path.join(ROOT, "public", "audio", "fall-mix.mp3")
+NO_MUSIC = "--no-music" in sys.argv
+OUT = os.path.join(ROOT, "public", "audio", "fall-sfx.mp3" if NO_MUSIC else "fall-mix.mp3")
 FF = os.environ.get("FFMPEG", "ffmpeg")
 B = json.load(open(os.path.join(ROOT, "src", "minecraft-fall", "beats.json")))
 FPS = B["fps"]
@@ -225,10 +228,12 @@ if __name__ == "__main__":
         gain[a:a + ramp] = np.linspace(MUSIC, DUCK, ramp)
         gain[b:b + ramp] = np.linspace(DUCK, MUSIC, ramp)
     body = run[int(X * SR):int(X * SR) + len(gain)] * gain[:, None]
-    place(mix, fade(body, 0.0, 0.03), 0)
+    if not NO_MUSIC:
+        place(mix, fade(body, 0.0, 0.03), 0)
     # the respawn plays the music just before X, so the last frame flows into the first
     pre = sec(S["respawn"][1] - S["respawn"][0])
-    place(mix, fade(run[int((X - pre) * SR):int(X * SR)] * MUSIC, 0.25, 0.0), sec(S["respawn"][0]))
+    if not NO_MUSIC:
+        place(mix, fade(run[int((X - pre) * SR):int(X * SR)] * MUSIC, 0.25, 0.0), sec(S["respawn"][0]))
 
     oof = decode(FF, os.path.join(SRC, "mc-damage.mp3"), "atrim=0.20:0.62,asetpts=PTS-STARTPTS")
 
@@ -298,5 +303,5 @@ if __name__ == "__main__":
     place(mix, shimmer(), sec(D["flash"]), 0.45)
     place(mix, fade(whoosh(0.4, seed=81), 0.01, 0.15), sec(D["flash"] + 2), 0.3)
 
-    write_mp3(FF, mix, OUT)
+    write_mp3(FF, mix, OUT, lufs=-18 if NO_MUSIC else -14)  # quieter, so the added song sits on top
     print("wrote", os.path.relpath(OUT, ROOT), f"({total:.1f}s)")

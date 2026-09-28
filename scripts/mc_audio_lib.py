@@ -75,12 +75,12 @@ def whoosh(dur=0.5, seed=9):
     return np.stack([band * env, band * env], 1)
 
 
-def write_mp3(ff, mix, out_path):
+def write_mp3(ff, mix, out_path, lufs=-14):
     peak = float(np.max(np.abs(mix)))
     if peak > 0.98:
         mix = mix * (0.98 / peak)
     tmp = out_path + ".f32"
     mix.astype(np.float32).tofile(tmp)
     subprocess.run([ff, "-v", "error", "-y", "-f", "f32le", "-ac", "2", "-ar", str(SR), "-i", tmp,
-                    "-af", "loudnorm=I=-14:TP=-1.5:LRA=9", "-c:a", "libmp3lame", "-b:a", "192k", out_path], check=True)
+                    "-af", f"loudnorm=I={lufs}:TP=-1.5:LRA=9", "-c:a", "libmp3lame", "-b:a", "192k", out_path], check=True)
     os.remove(tmp)
