@@ -1,0 +1,105 @@
+{
+  "_": "Absolute frames at 30fps. FallShort.tsx and scripts/build-fall-audio.py both read this, so picture and sound can't drift apart.",
+  "fps": 30,
+  "frames": 700,
+  "seg": {
+    "water": [
+      0,
+      132
+    ],
+    "hay": [
+      132,
+      272
+    ],
+    "slime": [
+      272,
+      440
+    ],
+    "ledge": [
+      440,
+      580
+    ],
+    "dead": [
+      580,
+      660
+    ],
+    "respawn": [
+      660,
+      700
+    ]
+  },
+  "water": {
+    "slowStart": 66,
+    "place": 86,
+    "land": 96,
+    "chat": 108
+  },
+  "hay": {
+    "slip": 158,
+    "scramble": [
+      163,
+      190
+    ],
+    "slowStart": 196,
+    "place": 210,
+    "land": 220,
+    "chat": 238
+  },
+  "slime": {
+    "slowStart": 300,
+    "place": 316,
+    "land": 326,
+    "chat": 412
+  },
+  "bounce": {
+    "v": 85,
+    "e": 0.45,
+    "g": 3.4,
+    "minV": 6
+  },
+  "ledge": {
+    "walk": [
+      444,
+      496
+    ],
+    "measure": [
+      466,
+      486
+    ],
+    "stepOff": 506,
+    "fallFrames": 17,
+    "tip": [
+      540,
+      552
+    ],
+    "poof": 556,
+    "stride": 20
+  },
+  "dead": {
+    "youDied": 590,
+    "subtitle": 598,
+    "score": 604,
+    "buttons": 610,
+    "cursor": [
+      612,
+      630
+    ],
+    "click": 640,
+    "flash": 652
+  },
+  "respawn": {
+    "chat": 670,
+    "crouch": 692
+  },
+  "physics": {
+    "g": 2.6,
+    "vmax": 95,
+    "v0": 30,
+    "slow": 0.25,
+    "tau0": {
+      "water": 0,
+      "hay": 24,
+      "slime": 24
+    }
+  }
+}
