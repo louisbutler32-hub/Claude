@@ -49,12 +49,14 @@ export const Sword: React.FC<{ x: number; y: number; px?: number; rotate?: numbe
 );
 
 /** a floating Minecraft-style name tag */
-export const Tag: React.FC<{ x: number; y: number; text: string; tilt?: number; size?: number }> = ({ x, y, text, tilt = -4, size = 44 }) => {
-  const w = text.length * size * 0.72 + 40;
+export const Tag: React.FC<{ x: number; y: number; text: string; tilt?: number; size?: number; font?: "silkscreen" | "monocraft" }> = ({ x, y, text, tilt = -4, size = 44, font = "silkscreen" }) => {
+  // Monocraft is the open lookalike of the game's own lettering, mixed case like a real name tag
+  const mono = font === "monocraft";
+  const w = text.length * size * (mono ? 0.6 : 0.72) + (mono ? size * 0.5 : 40);
   return (
     <g transform={`translate(${x} ${y}) rotate(${tilt})`}>
       <rect x={-w / 2} y={-size * 0.8} width={w} height={size * 1.5} fill="#2a3446" opacity={0.85} />
-      <text x={0} y={size * 0.32} textAnchor="middle" fontFamily="Silkscreen, monospace" fontSize={size} fill="#e9eef5">
+      <text x={0} y={size * 0.32} textAnchor="middle" fontFamily={mono ? "Monocraft, monospace" : "Silkscreen, monospace"} fontSize={size} fill="#e9eef5">
         {text}
       </text>
     </g>

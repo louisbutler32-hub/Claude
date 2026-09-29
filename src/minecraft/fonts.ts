@@ -23,6 +23,11 @@ export const loadMinecraftFonts = () => {
       { weight: "400" }
     ),
     new FontFace(
+      "Monocraft",
+      `url(${staticFile("fonts/Monocraft.ttf")}) format("truetype")`,
+      { weight: "400" }
+    ),
+    new FontFace(
       "ComicRelief",
       `url(${staticFile("fonts/ComicRelief.ttf")}) format("truetype")`,
       { weight: "400" }

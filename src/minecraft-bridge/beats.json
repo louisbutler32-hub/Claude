@@ -1,0 +1,22 @@
+{
+  "fps": 30,
+  "frames": 416,
+  "_note": "Every number is a frame of GarrettTheCarrot's 'Bridging in Minecraft (REANIMATED)', measured with a scene-change detector and a frame-by-frame pass — so the lifted soundtrack lands on the same beats",
+  "shots": {
+    "javaPeek": [0, 29],
+    "javaTop": [29, 65],
+    "bedrockWalk": [65, 149],
+    "javaWobble": [149, 176],
+    "javaFall": [176, 192],
+    "bedrockStairs": [192, 249],
+    "bedrockLoop": [249, 339],
+    "javaEnd": [339, 416]
+  },
+  "peek": { "risen": 6, "reach": 13, "pullBack": 16, "place": 22 },
+  "top": { "turn": 39, "jolts": [31, 45, 52, 59], "sway": [47, 60] },
+  "walk": { "standUp": 104, "walkFrom": 110 },
+  "wobble": { "freeze": 161, "tip": 163 },
+  "stairs": { "stepFrames": 4, "top": 236 },
+  "loop": { "enter": 290, "exit": 330, "radius": 16, "star": [316, 324], "twinkle": [324, 334] },
+  "end": { "phew": 350, "meh": 365, "proud": 369, "farRunner": 377, "passBy": 384, "knocked": 385, "gone": 408 }
+}

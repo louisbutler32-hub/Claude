@@ -82,6 +82,7 @@ const Wide: React.FC<{ look: Pt; line: string; pupil?: number }> = ({ look, line
   </g>
 );
 
+/** tilt > 0 raises the outer ends (cross, determined); tilt < 0 raises the inner ends (worried) */
 const Brows: React.FC<{ line: string; tilt: number; lift?: number; only?: "L" | "R" }> = ({ line, tilt, lift = 0, only }) => (
   <g stroke={line} strokeWidth={8} strokeLinecap="round">
     {only !== "R" && <path d={`M${-EX - 14},${EY - 30 - lift - tilt} L${-EX + 12},${EY - 30 - lift + tilt}`} />}
@@ -136,21 +137,31 @@ export const OofyFace: React.FC<{ kind: FaceKind; look?: Pt; line?: string; skin
           {kind === "crying" && [-EX, EX].map((x) => <path key={x} d={`M${x},${EY + 14} q-6,20 0,34`} stroke="#7ec8ff" strokeWidth={8} fill="none" strokeLinecap="round" />)}
         </>
       );
+    case "calm": // eyes shut, breathing out: the "phew"
+      return (
+        <>
+          <g {...ln} strokeWidth={8}>
+            <path d={`M${-EX - 14},${EY - 2} q14,14 28,0`} />
+            <path d={`M${EX - 14},${EY - 2} q14,14 28,0`} />
+          </g>
+          <path d="M-12,42 q12,6 24,0" {...ln} />
+        </>
+      );
     case "meh":
       return <><Eyes look={look} line={line} lids={0.55} skin={skin} /><path d="M-16,42 h32" {...ln} /></>;
     case "gritted":
       return (
         <>
           <Eyes look={look} line={line} />
-          <Brows line={line} tilt={-7} lift={-2} />
+          <Brows line={line} tilt={7} lift={-2} />
           <rect x={-28} y={30} width={56} height={24} rx={8} fill="#ffffff" stroke={line} strokeWidth={6} />
           <path d="M-28,42 H28 M-10,31 V53 M10,31 V53" stroke={line} strokeWidth={4} />
         </>
       );
     case "worried":
-      return <><Eyes look={look} line={line} /><Brows line={line} tilt={7} lift={6} /><path d="M-22,44 q11,-10 22,0 q11,10 22,0" {...ln} /></>;
+      return <><Eyes look={look} line={line} /><Brows line={line} tilt={-7} lift={6} /><path d="M-22,44 q11,-10 22,0 q11,10 22,0" {...ln} /></>;
     case "frown":
-      return <><Eyes look={look} line={line} /><Brows line={line} tilt={-7} /><path d="M-22,50 q22,-20 44,0" {...ln} /></>;
+      return <><Eyes look={look} line={line} /><Brows line={line} tilt={7} /><path d="M-22,50 q22,-20 44,0" {...ln} /></>;
     case "whistle":
       return <><Eyes look={[look[0] - 4, look[1] - 6]} line={line} /><ellipse cx={14} cy={42} rx={8} ry={10} fill="#5a1a2e" stroke={line} strokeWidth={5} /></>;
     case "thinking":

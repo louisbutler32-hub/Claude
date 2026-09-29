@@ -99,6 +99,7 @@ import { ChunkLoadShort, ChunkLoadThumb, CHUNKLOAD_FRAMES } from "./minecraft-ch
 import { FallShort, FallThumb, FALL_FRAMES } from "./minecraft-fall/FallShort";
 import { OofySheet } from "./minecraft/oofy";
 import { SneakCompare, SneakShort, SneakThumb, SNEAK_FRAMES } from "./minecraft-sneak/SneakShort";
+import { BridgeShort, BridgeThumb, BRIDGE_FRAMES } from "./minecraft-bridge/BridgeShort";
 import { CreeperShort, CreeperThumb, CREEPER_FRAMES } from "./minecraft-creeper/CreeperShort";
 import { NetherShort, NetherThumb, NETHER_FRAMES } from "./minecraft-nether/NetherShort";
 import { BuildShort, BuildThumb, BUILD_FRAMES } from "./minecraft-build/BuildShort";
@@ -215,6 +216,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="SneakShort" component={SneakShort} durationInFrames={SNEAK_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Sneak-Thumbnail" component={SneakThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Sneak-Compare" component={SneakCompare} durationInFrames={SNEAK_FRAMES} fps={30} width={1080} height={1040} defaultProps={{ audio: null }} />
+      <Composition id="BridgeShort" component={BridgeShort} durationInFrames={BRIDGE_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Bridge-Thumbnail" component={BridgeThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition
         id="PvpShort"
         component={PvpShort}

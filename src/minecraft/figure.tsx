@@ -172,6 +172,7 @@ export type FaceKind =
   | "frown"
   | "hurt"
   | "back"
+  | "calm"
   | "side"
   | "sideOpen"
   | "none";
