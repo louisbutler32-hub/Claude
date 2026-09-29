@@ -81,7 +81,7 @@ const Fence: React.FC<{ x: number; y: number; n: number; gap: number; s: number 
   </g>
 );
 
-const Room: React.FC<{ f: number; doorOpen: number; sun?: number }> = ({ f, doorOpen }) => (
+export const Room: React.FC<{ f: number; doorOpen: number; sun?: number }> = ({ f, doorOpen }) => (
   <g>
     <Planks x={-40} y={-1400} w={1160} h={2900} a="#5d4632" b="#54402d" />
     {/* the ceiling beam, and dark attic above it */}
