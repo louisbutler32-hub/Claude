@@ -62,9 +62,12 @@ a dream" opening over the walk-in, then cut it when the bed refuses him.
 Runner-up: **"Sleep Walk" (Santo & Johnny)**.
 
 To bake a song into a private cut instead, put it in `public/audio/src/` and
-run `python3 scripts/build-sleep-audio.py --song FILE.mp3 --at SECONDS`
-(SECONDS = where in the track frame 0 sits). It plays to the first refusal,
-then picks up where it left off for his second try.
+run `python3 scripts/build-sleep-audio.py --song FILE.mp3 --at SECONDS
+[--resume SECONDS]` (`--at` = where in the track frame 0 sits). It plays to the
+first refusal, then picks up for his second try — where it left off, or at
+`--resume`. For Mr. Sandman, `--at 11.9 --resume 26.8` puts "bring me a dream"
+over the walk-in and "his lonesome nights are over" on the second refusal.
+That cut is `minecraft-sleeping-mr-sandman.mp4` and will be claimed.
 
 ## Upload settings
 

@@ -11,10 +11,16 @@ video reads.
                              the zombie is dealt with, and dies again
   --song FILE --at SECONDS   a real song instead (FILE in public/audio/src/).
                              SECONDS is where in the track frame 0 sits. It
-                             plays until the first refusal, then picks up where
-                             it left off for his second try. A licensed or
-                             claimed song should go on through YouTube's Shorts
-                             sound picker over the --music none render instead
+                             plays until the first refusal, then picks up for
+                             his second try: where it left off, or at
+                             --resume SECONDS if given (so a lyric can land on
+                             the second refusal). A licensed or claimed song
+                             should go on through YouTube's Shorts sound picker
+                             over the --music none render instead. For "Mr.
+                             Sandman" (The Chordettes): --at 11.9 --resume 26.8
+                             puts "bring me a dream" over the walk-in and
+                             "his lonesome nights are over" on the second
+                             refusal
   --music none               every effect, no music, a few dB quieter
 
 The rest is synthesised (scripts/mc_audio_lib.py): the shuffle in, the yawn,
@@ -43,6 +49,7 @@ sec = lambda f: f / FPS
 ARGS = sys.argv[1:]
 SONG = ARGS[ARGS.index("--song") + 1] if "--song" in ARGS else None
 AT = float(ARGS[ARGS.index("--at") + 1]) if "--at" in ARGS else 0.0
+RESUME = float(ARGS[ARGS.index("--resume") + 1]) if "--resume" in ARGS else None
 CHOICE = ARGS[ARGS.index("--music") + 1] if "--music" in ARGS else "lullaby"
 if CHOICE not in ("lullaby", "none"):
     sys.exit("--music must be lullaby or none")
@@ -127,8 +134,8 @@ if __name__ == "__main__":
         song = decode(FF, os.path.join(SRC, SONG))
         M = 0.55
         i0 = int(AT * SR)
-        place(mix, fade(song[i0:i0 + int((seg1[1] - seg1[0]) * SR)] * M, 0.02, 0.02), 0)
-        j0 = int((AT + seg1[1]) * SR)
+        place(mix, fade(song[i0:i0 + int((seg1[1] - seg1[0]) * SR)] * M, 0.12, 0.02), 0)
+        j0 = int((RESUME if RESUME is not None else AT + seg1[1]) * SR)
         place(mix, fade(song[j0:j0 + int((seg2[1] - seg2[0]) * SR)] * M, 0.6, 0.02), seg2[0])
     elif not NO_MUSIC:
         L = 0.5
