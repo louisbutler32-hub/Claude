@@ -101,6 +101,7 @@ import { OofySheet, OofyShortlist, OofyVariants } from "./minecraft/oofy";
 import { OofyStyles } from "./minecraft/oofyStyles";
 import { SneakCompare, SneakShort, SneakThumb, SNEAK_FRAMES } from "./minecraft-sneak/SneakShort";
 import { BridgeShort, BridgeThumb, BRIDGE_FRAMES } from "./minecraft-bridge/BridgeShort";
+import { SleepShort, SleepThumb, SLEEP_FRAMES } from "./minecraft-sleep/SleepShort";
 import { CreeperShort, CreeperThumb, CREEPER_FRAMES } from "./minecraft-creeper/CreeperShort";
 import { NetherShort, NetherThumb, NETHER_FRAMES } from "./minecraft-nether/NetherShort";
 import { BuildShort, BuildThumb, BUILD_FRAMES } from "./minecraft-build/BuildShort";
@@ -240,6 +241,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Sneak-Compare" component={SneakCompare} durationInFrames={SNEAK_FRAMES} fps={30} width={1080} height={1040} defaultProps={{ audio: null }} />
       <Composition id="BridgeShort" component={BridgeShort} durationInFrames={BRIDGE_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Bridge-Thumbnail" component={BridgeThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="SleepShort" component={SleepShort} durationInFrames={SLEEP_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Sleep-Thumbnail" component={SleepThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition
         id="PvpShort"
         component={PvpShort}

@@ -1,0 +1,22 @@
+{
+  "fps": 30,
+  "frames": 510,
+  "_note": "Every number is a frame. Shared by SleepShort.tsx and scripts/build-sleep-audio.py so picture and sound cannot drift.",
+  "walkIn": [0, 70],
+  "yawn": [44, 60],
+  "click1": 96,
+  "msgA": [98, 152],
+  "look": [152, 182],
+  "toDoor": [182, 204],
+  "outdoor": [204, 336],
+  "runEnd": 272,
+  "hits": [282, 294, 306],
+  "poof": 310,
+  "room2": 336,
+  "click2": 366,
+  "msgB": [368, 424],
+  "slump": 396,
+  "tilt": [420, 470],
+  "wave": 484,
+  "groan": 160
+}
