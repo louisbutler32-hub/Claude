@@ -170,53 +170,58 @@ const RespawnShot: React.FC<{ f: number }> = ({ f }) => {
   );
 };
 
-/* -------------------- 3. the map (147–175) -------------------- */
+/* -------------------- 2b. outside, looking for his stuff -------------------- */
 
-const TERRAIN = ["#5f9a4a", "#6aa955", "#4f8a3f", "#d6c48a", "#4a78c8", "#8a8a8a"];
-const MapShot: React.FC<{ f: number }> = ({ f }) => {
-  const l = f - SHOT.aerial[0];
-  const k = ease(f, SHOT.aerial[0] + 2, SHOT.aerial[1] - 2);
-  const start: Pt = [250, 1560], death: Pt = [770, 800];
-  const pos: Pt = [lerp(start[0], death[0], k * 0.62), lerp(start[1], death[1], k * 0.62)];
+const Bubble: React.FC<{ x: number; y: number; text: string; o: number }> = ({ x, y, text, o }) => (
+  <g opacity={o} fontFamily={MONO} fontSize={110} textAnchor="middle">
+    <text x={x + 5} y={y + 5} fill="#141414">{text}</text>
+    <text x={x} y={y} fill="#ffe08a">{text}</text>
+  </g>
+);
+
+/** two trips outside: he scans one way, then the other, then a third look up and down — no stuff anywhere */
+const SearchShot: React.FC<{ f: number; start: number; variant: "A" | "B" }> = ({ f, start, variant }) => {
+  const l = f - start;
+  const A = variant === "A";
+  const walkOn = A ? l < 26 : l < 12;
+  const phase = l / 8;
+  const x = A ? lerp(260, 620, ease(f, start, start + 26)) : lerp(760, 520, ease(f, start, start + 12));
+  const flip = !A;
+  const visor = pose({ armR: limb(112, -20, 66, -122), head: [4, -90] });
+  const hips = pose({ armL: limb(-104, 60, -60, 104), armR: limb(104, 60, 60, 104) });
+  const base = A ? visor : hips;
+  const p = walkOn ? walkPose(phase, 56, base, false) : base;
+  const bob = walkOn ? Math.abs(Math.sin(phase * Math.PI * 2)) * 10 : 0;
+  // the head sweeps: side to side, then up at the sky, then down at his feet
+  const gaze: Pt = A ? [Math.sin(l * 0.34) * 24, -4] : [Math.sin(l * 0.5) * 12, l < 12 ? 0 : l < 20 ? -24 : 26];
+  const face: FaceKind = A ? (l < 30 ? "worried" : "surprised") : l < 20 ? "worried" : "meh";
+  const pan = A ? -l * 5 : 500 - l * 4;
   return (
     <g>
-      <rect x={0} y={PANEL_TOP} width={W} height={H - PANEL_TOP} fill="#3a2a1e" />
-      <rect x={70} y={560} width={940} height={1160} fill="#e7d5a5" stroke={LINE} strokeWidth={12} />
-      <rect x={100} y={590} width={880} height={1100} fill="#d1bd8a" />
-      {Array.from({ length: 11 }, (_, r) => Array.from({ length: 9 }, (_, c) => {
-        const n = noise2D("map", c * 0.45, r * 0.45);
-        const t = n > 0.42 ? 5 : n > 0.18 ? 3 : n < -0.35 ? 4 : Math.floor(random(`mc${r}${c}`) * 3);
-        return <rect key={`${r}-${c}`} x={100 + c * 97.7} y={590 + r * 100} width={98} height={101} fill={TERRAIN[t]} />;
-      }))}
-      <path d={`M${start[0]},${start[1]} L${death[0]},${death[1]}`} stroke="#ffffff" strokeWidth={8} strokeDasharray="4 22" strokeLinecap="round" opacity={0.8} />
-      {/* the X where it all is */}
-      <g stroke="#d3212b" strokeWidth={22} strokeLinecap="round" transform={`translate(${death[0]} ${death[1]}) scale(${1 + 0.12 * Math.sin(l * 0.8)})`}>
-        <path d="M-46,-46 L46,46 M46,-46 L-46,46" />
-      </g>
-      {/* you are here */}
-      <g transform={`translate(${pos[0]} ${pos[1]}) rotate(${(Math.atan2(death[1] - start[1], death[0] - start[0]) * 180) / Math.PI + 90})`}>
-        <path d="M0,-34 L24,26 L0,12 L-24,26 Z" fill="#ffffff" stroke={LINE} strokeWidth={8} strokeLinejoin="round" />
-      </g>
-      <rect x={70} y={PANEL_TOP + 10} width={940} height={110} fill="#00000088" />
-      <text x={540} y={PANEL_TOP + 84} textAnchor="middle" fontFamily={MONO} fontSize={44} fill="#ffffff">Death: X -214  Z 388</text>
+      <Overworld pan={pan} />
+      <OverworldProps pan={pan} />
+      <Guy x={x} y={1620 - bob} s={1.3} p={p} face={face} flip={flip} gaze={gaze} look={[gaze[0] * 0.2, gaze[1] * 0.2]} shadow />
+      <Bubble x={x + (flip ? -20 : 20)} y={1620 - 335 * 1.3 - 210} text={A ? "?" : "??"} o={Math.floor(l / 6) % 2 === 0 ? 1 : 0.35} />
     </g>
   );
 };
 
-/* -------------------- 4. the portal (175–195) -------------------- */
+/* -------------------- 4. the portal (147–195) -------------------- */
 
 const PortalShot: React.FC<{ f: number }> = ({ f }) => {
-  const l = f - SHOT.tunnel[0];
-  const step = ease(f, SHOT.tunnel[0] + 6, SHOT.tunnel[1] - 1);
-  const x = lerp(210, 640, step);
-  const p = l < 6 ? POSE.stand : walkPose(l / 6, 40, POSE.stand, true);
-  const vanish = clamp01((l - 15) / 4);
+  // the map is gone: this shot now starts at frame 147 and he walks the whole way to the portal
+  const a = SHOT.aerial[0], b = SHOT.tunnel[1];
+  const l = f - a;
+  const step = ease(f, a, b - 2);
+  const x = lerp(-60, 640, step);
+  const p = walkPose(l / 7, 44, POSE.stand, true);
+  const vanish = clamp01((f - (b - 5)) / 4);
   return (
     <g>
-      <Overworld pan={0} />
+      <Overworld pan={-l * 3} />
       <NetherPortal x={760} y={GROUND + 60} scale={1.15} lit={1} t={f} />
       {vanish < 1 && (
-        <Guy x={x} y={GROUND + 60} s={0.95 * (1 - vanish * 0.4)} p={p} face={l < 8 ? "worried" : "gritted"} shadow />
+        <Guy x={x} y={GROUND + 60 - Math.abs(Math.sin(l / 7 * Math.PI * 2)) * 8} s={0.95 * (1 - vanish * 0.4)} p={p} face={l < 20 ? "worried" : "gritted"} shadow />
       )}
     </g>
   );
@@ -259,12 +264,19 @@ const StriderShot: React.FC<{ f: number }> = ({ f }) => {
   const l = f - SHOT.lava[0];
   const drift = l * 1.1;
   const bobY = Math.sin(l / 6) * 5;
-  const SIT = pose({ head: [0, -96], legL: limb(-118, 34, -78, 84), legR: limb(118, 34, 78, 84), armL: limb(-136, 54, -122, 36), armR: limb(28, 96, -104, 44) });
+  // no sitting and scheming: he is on his feet on the strider's back and losing it — arms flailing, hopping, screaming
+  const w = Math.sin(l * 0.95), w2 = Math.sin(l * 0.95 + 2.2);
+  const hop = Math.abs(Math.sin(l * 0.62)) * 46;
+  const up = lerpPose(lerpPose(POSE.upR, POSE.upL, 0.5 + 0.5 * w), POSE.headHold, Math.max(0, w2) * 0.55);
+  const legs = pose({ legL: limb(-70 + w * 14, 224, -84 + w * 30, 335 - hop * 0.7), legR: limb(70 + w2 * 14, 224, 84 + w2 * 30, 335 - hop * 0.7) });
+  const faces: FaceKind[] = ["scream", "scream", "shocked", "scream", "gritted", "scream"];
   return (
     <g>
       <LavaLake t={l} />
       <Strider x={620 + drift} y={1440 + bobY} t={l} />
-      <Guy x={600 + drift} y={1480 + bobY + 30} s={1.5} p={SIT} face="scheming" tint={OOFY_TINT.warm} look={[Math.sin(l / 5) * 6, 0]} gaze={[0, -6]} />
+      <Guy x={620 + drift + Math.sin(l * 1.7) * 12} y={1360 + bobY - hop * 1.4} s={1.2}
+        p={{ ...up, legL: legs.legL, legR: legs.legR }} face={faces[Math.floor(l / 3) % faces.length]} tint={OOFY_TINT.warm}
+        tilt={Math.sin(l * 0.8) * 9} look={[Math.sin(l * 1.3) * 8, -4]} />
     </g>
   );
 };
@@ -449,10 +461,14 @@ const FinaleShot: React.FC<{ f: number }> = ({ f }) => {
 
 /* ------------------------------ assembly ------------------------------ */
 
+/** the searches: 0:02 and 0:04, cut into the bedroom scene, whose own beats carry on underneath */
+const SEARCH_A = [60, 100] as const, SEARCH_B = [120, SHOT.overworld[1]] as const;
+
 const shotAt = (f: number) => {
   if (f < SHOT.death[1]) return <GhastShot f={f} />;
+  if (inRange(f, SEARCH_A)) return <SearchShot f={f} start={SEARCH_A[0]} variant="A" />;
+  if (inRange(f, SEARCH_B)) return <SearchShot f={f} start={SEARCH_B[0]} variant="B" />;
   if (f < SHOT.overworld[1]) return <RespawnShot f={f} />;
-  if (f < SHOT.aerial[1]) return <MapShot f={f} />;
   if (f < SHOT.tunnel[1]) return <PortalShot f={f} />;
   if (f < SHOT.darkRoom[1]) return <FortressShot f={f} />;
   if (f < SHOT.lava[1]) return <StriderShot f={f} />;
