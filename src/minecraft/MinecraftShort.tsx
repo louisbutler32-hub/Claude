@@ -84,7 +84,7 @@ export const MinecraftShort: React.FC<{ audio?: string | null; signText?: string
     <AbsoluteFill style={{ backgroundColor: "#ffffff" }}>
       {audio ? <Audio src={staticFile(audio)} /> : null}
       <CastProvider value={cast}>
-      <HandDrawn enabled={drawn} hold={1} boilEvery={2}>
+      <HandDrawn enabled={drawn} hold={1} boilEvery={2} boil={0.75} grain={0}>
       {shots.map(({ name, el }) => (
         <Sequence key={name} from={SHOT[name][0]} durationInFrames={shotLen(name)} name={name}>
           <AbsoluteFill>

@@ -68,16 +68,18 @@ const ITEMS: Record<ItemName, { rows: string[]; colors: Record<string, string> }
     colors: { H: "#fff5b0", G: "#f4c93a", D: "#b0821a", E: "#7f5c0e" },
   },
   ironIngot: {
+    // outlined, so the pale ingot reads against light backgrounds and survives a wobbly line
     rows: [
-      "....HHHHHHH.",
-      "...HGGGGGGHD",
-      "..HGGGGGGGDD",
-      ".HGGGGGGGDDE",
-      ".HGGGGGGDDE.",
-      ".DDDDDDDDE..",
-      "..EEEEEEE...",
+      "...OOOOOOOO.",
+      "..OHHHHHHHGO",
+      ".OHGGGGGGGDO",
+      "OHGGGGGGGDDO",
+      "OGGGGGGGDDEO",
+      "ODDDDDDDDEO.",
+      ".OEEEEEEEO..",
+      "..OOOOOOOO..",
     ],
-    colors: { H: "#ffffff", G: "#dcdcdc", D: "#9a9a9a", E: "#6a6a6a" },
+    colors: { O: "#4a4a55", H: "#f4f4f4", G: "#d2d2d2", D: "#8f8f8f", E: "#5c5c66" },
   },
   bread: {
     rows: [

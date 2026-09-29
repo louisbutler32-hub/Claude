@@ -11,6 +11,7 @@ import { Oofy, OofyTint, OOFY_TINT } from "./oofy";
 export type Cast = "stick" | "oofy";
 const CastContext = React.createContext<Cast>("stick");
 export const CastProvider = CastContext.Provider;
+export const useCast = () => React.useContext(CastContext);
 
 const SHIRT_LUM = (hex: string) => {
   const n = parseInt(hex.slice(1), 16);

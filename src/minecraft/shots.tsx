@@ -1,7 +1,7 @@
 import React from "react";
 import { interpolate, useCurrentFrame } from "remotion";
 import { EV, SHOT } from "./beats";
-import { ActorFigure as Figure } from "./actor";
+import { ActorFigure as Figure, useCast } from "./actor";
 import { ease, FaceKind, lerpPose, limb, Pose, POSE, pose, TINT, walkPose, withLegs } from "./figure";
 import { Creeper, Item, ItemName, Puff, SpiderEyes, Torch } from "./pixels";
 import {
@@ -235,9 +235,9 @@ export const TunnelShot: React.FC = () => {
     <g>
       <Tunnel />
       <Figure
-        x={185 + step * 40}
-        y={1288 + Math.abs(Math.sin(l / 3)) * step * 6}
-        scale={0.76}
+        x={275 + step * 40}
+        y={1235 + Math.abs(Math.sin(l / 3)) * step * 6}
+        scale={0.8}
         pose={step > 0 ? walkPose(l / 10, 50, POSE.stand, false) : POSE.stand}
         face={l < 12 ? "worried" : "plain"}
         tint={TINT.shade}
@@ -282,6 +282,31 @@ export const LavaShot: React.FC = () => {
     armR: limb(28, 96, -104, 44),
   });
   const look: readonly [number, number] = [Math.sin(l / 5) * 6, 0];
+  if (useCast() === "oofy") {
+    // Oofy doesn't sit and scheme: he's on his feet on the slab and losing it — arms flailing, hopping, head shaking, screaming
+    const w = Math.sin(l * 0.95), w2 = Math.sin(l * 0.95 + 2.2);
+    const hop = Math.abs(Math.sin(l * 0.62)) * 46;
+    const p = lerpPose(lerpPose(POSE.upR, POSE.upL, 0.5 + 0.5 * w), POSE.headHold, Math.max(0, w2) * 0.55);
+    const legs = pose({ legL: limb(-70 + w * 14, 224, -84 + w * 30, 335 - hop * 0.7), legR: limb(70 + w2 * 14, 224, 84 + w2 * 30, 335 - hop * 0.7) });
+    const faces: FaceKind[] = ["scream", "scream", "shocked", "scream", "gritted", "scream"];
+    return (
+      <g>
+        <LavaLake t={l} />
+        <ObsidianSlab x={270 + drift} y={1190 + bobY} />
+        <Figure
+          x={640 + drift + Math.sin(l * 1.7) * 12}
+          y={738 + bobY - hop * 1.5}
+          scale={1.5}
+          pose={{ ...p, legL: legs.legL, legR: legs.legR }}
+          face={faces[Math.floor(l / 3) % faces.length]}
+          tint={TINT.lava}
+          look={[Math.sin(l * 1.3) * 8, -4]}
+          tilt={Math.sin(l * 0.8) * 9}
+          shadow={false}
+        />
+      </g>
+    );
+  }
   return (
     <g>
       <LavaLake t={l} />
