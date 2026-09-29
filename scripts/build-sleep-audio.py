@@ -21,6 +21,16 @@ video reads.
                              puts "bring me a dream" over the walk-in and
                              "his lonesome nights are over" on the second
                              refusal
+  --chase FILE --chase-at SECONDS
+                             a second song for the run out and the fight, in
+                             the stretch where the first one is silent.
+                             SECONDS is where in the track frame 0 sits (so
+                             the track's time at any frame is SECONDS + that
+                             frame's time). It fades in as he leaves and stops
+                             dead at the poof. For "Eye of the Tiger"
+                             (Survivor), --chase-at 3.66 puts its three riff
+                             stabs (13.06, 13.48, 13.90 s in the track) on the
+                             three sword hits
   --music none               every effect, no music, a few dB quieter
 
 The rest is synthesised (scripts/mc_audio_lib.py): the shuffle in, the yawn,
@@ -50,6 +60,8 @@ ARGS = sys.argv[1:]
 SONG = ARGS[ARGS.index("--song") + 1] if "--song" in ARGS else None
 AT = float(ARGS[ARGS.index("--at") + 1]) if "--at" in ARGS else 0.0
 RESUME = float(ARGS[ARGS.index("--resume") + 1]) if "--resume" in ARGS else None
+CHASE = ARGS[ARGS.index("--chase") + 1] if "--chase" in ARGS else None
+CHASE_AT = float(ARGS[ARGS.index("--chase-at") + 1]) if "--chase-at" in ARGS else 0.0
 CHOICE = ARGS[ARGS.index("--music") + 1] if "--music" in ARGS else "lullaby"
 if CHOICE not in ("lullaby", "none"):
     sys.exit("--music must be lullaby or none")
@@ -119,7 +131,7 @@ def wind(dur):
 
 
 if __name__ == "__main__":
-    need = ["mc-hit.mp3"] + ([SONG] if SONG else [])
+    need = ["mc-hit.mp3"] + ([SONG] if SONG else []) + ([CHASE] if CHASE else [])
     for name in need:
         if not os.path.exists(os.path.join(SRC, name)):
             sys.exit("missing public/audio/src/" + name)
@@ -141,6 +153,12 @@ if __name__ == "__main__":
         L = 0.5
         place(mix, fade(lullaby(seg1[1] - seg1[0]) * L, 0.02, 0.02), seg1[0])
         place(mix, fade(lullaby(seg2[1] - seg2[0]) * L, 0.6, 0.02), seg2[0])
+
+    if CHASE:
+        c0, c1 = sec(B["outdoor"][0] - 4), sec(B["poof"] + 2)
+        chase = decode(FF, os.path.join(SRC, CHASE))
+        k0 = int((CHASE_AT + c0) * SR)
+        place(mix, fade(chase[k0:k0 + int((c1 - c0) * SR)] * 0.6, 0.15, 0.03), c0)
 
     place(mix, wind(total), 0, 0.05)
     # shuffling in, and the yawn

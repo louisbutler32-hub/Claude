@@ -69,6 +69,11 @@ first refusal, then picks up for his second try — where it left off, or at
 over the walk-in and "his lonesome nights are over" on the second refusal.
 That cut is `minecraft-sleeping-mr-sandman.mp4` and will be claimed.
 
+The run out and the fight can carry a second song. `--chase eye-of-the-tiger.mp3
+--chase-at 3.66` fades it in as he leaves and cuts it at the poof, with the
+riff's three stabs on the three sword hits (`minecraft-sleeping-sandman-tiger.mp4`,
+also claimed).
+
 ## Upload settings
 
 Category **Gaming** (game: Minecraft), language English, uploaded as a Short
