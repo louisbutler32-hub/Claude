@@ -22,7 +22,7 @@ import { useDrawn } from "./handdrawn";
 export type OofyTint = { skin: string; line: string; hoodie: string; pants: string; shoe: string };
 
 export const OOFY_TINT = {
-  normal: { skin: "#fff1e0", line: "#2a1b3d", hoodie: "#8b5cf6", pants: "#2f3654", shoe: "#f7f3ee" },
+  normal: { skin: "#ffffff", line: "#2a1b3d", hoodie: "#8b5cf6", pants: "#2f3654", shoe: "#f7f3ee" },
   hurt: { skin: "#ffb0ae", line: "#5e0000", hoodie: "#e0457b", pants: "#7a2440", shoe: "#ffd0d0" },
   dim: { skin: "#bdb3a8", line: "#1a1026", hoodie: "#5b3fa0", pants: "#232840", shoe: "#b8b4ae" },
   warm: { skin: "#ffe9cf", line: "#2a1b3d", hoodie: "#9a68f7", pants: "#363b5c", shoe: "#fff4e0" },
@@ -57,7 +57,7 @@ export const OOFY_DESIGNS: OofyDesign[] = [
   { key: "A", name: "original", hair: "tuft", ears: false, nose: false, hood: false, face: 1, faceY: 0, legs: 1, torso: 1, bandAid: "forehead" },
   { key: "B", name: "bangs", hair: "bangs", ears: true, nose: false, hood: true, face: 1.12, faceY: 10, legs: 0.84, torso: 1.1, bandAid: "cheek" },
   { key: "C", name: "blocky", hair: "blocky", ears: true, nose: false, hood: true, face: 1.14, faceY: 12, legs: 0.82, torso: 1.12, bandAid: "cheek" },
-  { key: "D", name: "spiky", hair: "spiky", ears: true, nose: true, hood: true, face: 1.14, faceY: 12, legs: 0.84, torso: 1.1, bandAid: "cheek" },
+  { key: "D", name: "spiky", hair: "spiky", ears: true, nose: true, hood: true, face: 0.8, faceY: 16, legs: 0.84, torso: 1.1, bandAid: "cheek" },
   { key: "E", name: "swoop", hair: "swoop", ears: true, nose: true, hood: true, face: 1.16, faceY: 12, legs: 0.8, torso: 1.14, bandAid: "cheek" },
   { key: "F", name: "beanie", hair: "beanie", ears: true, nose: false, hood: true, face: 1.12, faceY: 12, legs: 0.84, torso: 1.1, bandAid: "cheek" },
 ];
