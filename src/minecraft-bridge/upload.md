@@ -103,8 +103,12 @@ bridge's corners and vanishing point. What changed:
 - The stick figures are Oofy. Java wears the purple hoodie and band-aid.
   Bedrock wears a blue hoodie and has no band-aid, because he never gets
   hurt.
-- Everything is drawn on twos with a boiling line and flat pixel textures,
-  with plum outlines like Oofy's.
+- The motion runs on ones, smooth at the full 30 fps like his. The lines
+  still boil every other frame, and the textures are flat pixels with plum
+  outlines like Oofy's.
+- Faces slide across the head toward where the character is looking, the
+  way his do. Bedrock's opening is sped up: a block every 4 frames, with
+  the camera scrolling to keep up.
 - The name tags are set in Monocraft, the open lookalike of the game's own
   lettering.
 - His "GarrettTheCarrot" on the side of the blue bridge reads "Oof Craft".

@@ -21,8 +21,9 @@ import B from "./beats.json";
  * bridge of his own and knocks him off.
  *
  * Every cut and beat is on the reference's frame (beats.json), so the lifted
- * track lines up. The world is drawn on twos with a boiling line; the
- * name tags ride along inside it, as they do in the game.
+ * track lines up. Motion runs on ones — smooth, like his — while the lines
+ * boil every other frame; the name tags ride along inside the drawn world,
+ * as they do in the game.
  */
 
 export const BRIDGE_FRAMES = B.frames;
@@ -43,14 +44,19 @@ const mix = (a: string, b: string, t: number) => {
   return `#${((1 << 24) + (ch(16) << 16) + (ch(8) << 8) + ch(0)).toString(16).slice(1)}`;
 };
 
-/** Oofy standing on (x, y), turned `rot` degrees about his feet, blocks in hand */
+/**
+ * Oofy standing on (x, y), turned `rot` degrees about his feet, blocks in hand.
+ * `gaze` is where he's looking, in head units: the whole face — eyes, brows,
+ * mouth — slides that way across the head, the way Garrett's figures look
+ * down at what they're doing. It reads far more than moving the pupils.
+ */
 const Guy: React.FC<{
-  x: number; y: number; s: number; p: Pose; face: FaceKind; tint: OofyTint; rot?: number; look?: Pt; flip?: boolean;
+  x: number; y: number; s: number; p: Pose; face: FaceKind; tint: OofyTint; rot?: number; look?: Pt; gaze?: Pt; flip?: boolean;
   hold?: { L?: Palette; R?: Palette }; cube?: number; tilt?: number;
-}> = ({ x, y, s, p, face, tint, rot = 0, look, flip, hold, cube = 74, tilt }) => (
+}> = ({ x, y, s, p, face, tint, rot = 0, look, gaze = [0, 0], flip, hold, cube = 74, tilt }) => (
   <g transform={`translate(${x} ${y}) rotate(${rot})`}>
     <Oofy
-      x={0} y={-335 * s} scale={s} pose={p} face={face} tint={tint} look={look} flip={flip} tilt={tilt}
+      x={0} y={-335 * s} scale={s} pose={p} face={face} tint={tint} look={look} faceOffset={gaze} flip={flip} tilt={tilt}
       shadow={false} bandAid={tint === JAVA}
       hands={(h) => (
         <>
@@ -148,12 +154,12 @@ const P = {
   /** Bedrock's forward bridge: bent over the edge, one block up, one going down */
   lean: pose({
     head: [34, -88],
-    armR: limb(96, -16, 128, -86), armL: limb(86, 96, 150, 176),
+    armR: limb(120, -46, 176, -170), armL: limb(86, 96, 150, 176),
     legL: limb(-54, 222, -118, 335), legR: limb(40, 222, 30, 335),
   }),
   leanDip: pose({
     head: [40, -84],
-    armR: limb(96, -10, 132, -76), armL: limb(96, 120, 176, 214),
+    armR: limb(124, -40, 182, -160), armL: limb(96, 120, 176, 214),
     legL: limb(-54, 222, -118, 335), legR: limb(44, 220, 34, 335),
   }),
   blockUp: pose({ armR: limb(96, -10, 118, -96) }),
@@ -191,7 +197,7 @@ const JavaPeek: React.FC<{ f: number }> = ({ f }) => {
     <g>
       <Sky top="#2f7fdc" bottom="#8fc3f3" id="skyPeek" />
       <g transform={`translate(150 1920) scale(${zoom}) translate(-150 -1920)`}>
-        <Guy x={d.neck[0]} y={feetY} s={d.s} p={d.p} face={d.face} tint={JAVA} look={[6, 8]} hold={d.holding ? { R: GRASS } : undefined} cube={70} />
+        <Guy x={d.neck[0]} y={feetY} s={d.s} p={d.p} face={d.face} tint={JAVA} look={[2, 4]} gaze={d.holding ? [20, 14] : [0, 24]} hold={d.holding ? { R: GRASS } : undefined} cube={70} />
         {!placed ? (
           <>
             <TexQuad q={[[250, 1290], [784, 1300], [468, 1990], [61, 1990]]} nu={8} nv={16} pal={GRASS} k={0.7} />
@@ -220,7 +226,7 @@ const JavaTop: React.FC<{ f: number }> = ({ f }) => {
   const sway = f >= w0 && f < w1 + 6 ? 11 * Math.sin((Math.PI * (f - w0)) / 7) * Math.exp(-(f - w0) / 9) : 0;
   const turned = f >= B.top.turn;
   const s = 1.45;
-  const p = turned ? P.brace : P.lookBack;
+  const p = lerpPose(P.lookBack, P.brace, ease(f, B.top.turn - 2, B.top.turn + 1));
   const neck: Pt = [738 + jolt * 0.4, 996];
   const drift = (f - s0) * 3;
   return (
@@ -232,7 +238,7 @@ const JavaTop: React.FC<{ f: number }> = ({ f }) => {
       <g transform={`rotate(13 ${neck[0]} ${neck[1]})`}>
         <Oofy
           x={neck[0]} y={neck[1]} scale={s} pose={p} face={turned ? "worried" : "back"} tint={JAVA} shadow={false}
-          look={[0, 4]} bandAid={turned}
+          look={[0, -2]} faceOffset={turned ? [0, -14] : [0, 0]} bandAid={turned}
           hands={(h) => (!turned && f < 33 ? <MiniCube x={h.R[0]} y={h.R[1]} s={70} pal={GRASS} /> : null)}
         />
       </g>
@@ -245,24 +251,37 @@ const JavaTop: React.FC<{ f: number }> = ({ f }) => {
 
 const BW = { ground: 1110, blk: 130, s: 1.15 };
 
+/** one block per click: the placing hand pumps down on every other drawing (on twos, so 4 frames a block) */
+const PLACE_EVERY = 4;
+const LEAN_SPEED = BW.blk / PLACE_EVERY;
+const WALK_SPEED = 21;
+
 const bedrockWalk = (f: number) => {
   const { standUp, walkFrom } = B.walk;
   const [s0] = B.shots.bedrockWalk;
+  // 0: hand up with the next block, 1: slapping it down — one smooth cycle per block
+  const pump = 0.5 - 0.5 * Math.cos((2 * Math.PI * (f - B.shots.bedrockWalk[0])) / PLACE_EVERY);
+  const hold = { R: BLUE, L: BLUE };
+  const xAt = (g: number) => {
+    if (g < standUp) return 150 + (g - s0) * LEAN_SPEED;
+    const x1 = 150 + (standUp - s0) * LEAN_SPEED;
+    if (g < walkFrom) return x1 + (g - standUp) * lerp(LEAN_SPEED, WALK_SPEED, (g - standUp) / (walkFrom - standUp));
+    return x1 + (walkFrom - standUp) * (LEAN_SPEED + WALK_SPEED) / 2 + (g - walkFrom) * WALK_SPEED;
+  };
+  const x = xAt(f);
+  // the camera keeps him near the left third, easing right as he straightens up to stroll
+  const anchor = lerp(250, 390, ease(f, standUp, B.shots.bedrockWalk[1]));
   if (f < standUp) {
-    const t = f - s0;
-    const x = 150 + t * 2.6;
-    const dip = 0.5 - 0.5 * Math.cos((t / 9) * Math.PI * 2);
-    return { x, lead: 205, p: lerpPose(P.lean, P.leanDip, dip), rot: 22 + dip * 6, face: "sly" as FaceKind, hold: { R: BLUE, L: BLUE } };
+    return { x, cam: x - anchor, lead: 190, p: lerpPose(P.lean, P.leanDip, pump), rot: 24 + pump * 6, face: "sly" as FaceKind, gaze: [26, 26] as Pt, hold };
   }
-  const xStand = 150 + (standUp - s0) * 2.6;
   if (f < walkFrom) {
     const t = ease(f, standUp, walkFrom);
-    return { x: lerp(xStand, 300, t), lead: lerp(205, 300, t), p: lerpPose(P.lean, P.blockUp, t), rot: 22 * (1 - t), face: "sly" as FaceKind, hold: { R: BLUE, L: BLUE } };
+    return { x, cam: x - anchor, lead: lerp(190, 300, t), p: lerpPose(P.lean, P.blockUp, t), rot: 24 * (1 - t), face: "sly" as FaceKind, gaze: [lerp(26, 22, t), lerp(26, 4, t)] as Pt, hold };
   }
-  const x = 300 + (f - walkFrom) * 9.2;
-  const base = walkPose(x / 150, 50, P.blockUp, false);
-  const sw = Math.sin((x / 150) * Math.PI * 2);
-  return { x, lead: 300, p: { ...base, armL: limb(-72 - sw * 26, 110, -70 - sw * 60, 196) }, rot: 0, face: "sly" as FaceKind, hold: { R: BLUE, L: BLUE } };
+  const base = walkPose(x / 170, 56, P.blockUp, false);
+  // still tossing blocks out ahead with the free hand as he strolls
+  const armL = limb(lerp(70, 80, pump), lerp(80, 100, pump), lerp(110, 150, pump), lerp(40, 150, pump));
+  return { x, cam: x - anchor, lead: 330, p: { ...base, armL }, rot: 0, face: "sly" as FaceKind, gaze: [22, 4] as Pt, hold };
 };
 
 const Bird: React.FC<{ x: number; y: number; f: number; flip?: boolean; s?: number }> = ({ x, y, f, flip, s = 1 }) => {
@@ -285,9 +304,12 @@ const BedrockWalk: React.FC<{ f: number }> = ({ f }) => {
   const front = d.x + d.lead;
   const n = Math.ceil(front / blk);
   const cells: P2[] = [];
-  for (let i = -1; i < n; i++) cells.push([i, 0], [i, 1]);
+  for (let i = Math.floor(d.cam / blk) - 1; i < n - 1; i++) cells.push([i, 0], [i, 1]);
+  const pop = 0.55 + 0.45 * clamp01((front / blk - (n - 1)) * 2.5);
+  const nx = (n - 1) * blk - d.cam, ps = blk * pop;
   const t = f - B.shots.bedrockWalk[0];
-  const head = headOf(d.x, ground, s, d.rot, d.p);
+  const sx = d.x - d.cam;
+  const head = headOf(sx, ground, s, d.rot, d.p);
   return (
     <g>
       <Sky top="#4f9eee" bottom="#cfe7ff" id="skyWalk" />
@@ -296,9 +318,10 @@ const BedrockWalk: React.FC<{ f: number }> = ({ f }) => {
       <rect x={430} y={220} width={220} height={220} fill="#ffffff" />
       <Bird x={540 + Math.cos(t * 0.05) * 420} y={200 - Math.sin(t * 0.1) * 40} f={f} flip={Math.sin(t * 0.05) > 0} s={1.9} />
       <Bird x={940 - t * 1.6} y={150 + Math.sin(t * 0.13) * 30} f={f + 5} flip s={1.5} />
-      <FlatClouds y={1500} cell={120} drift={t * 1.5} seed="walkclouds" />
-      <Blocks2D cells={cells} ox={0} oy={ground} s={blk} pal={BLUE} />
-      <Guy x={d.x} y={ground} s={s} p={d.p} face={d.face} tint={BED} rot={d.rot} hold={d.hold} cube={60} />
+      <FlatClouds y={1500} cell={120} drift={t * 1.5 + d.cam * 0.25} seed="walkclouds" />
+      <Blocks2D cells={cells} ox={-d.cam} oy={ground} s={blk} pal={BLUE} />
+      <Blocks2D cells={[[0, 0], [0, 1]]} ox={nx + (blk - ps) / 2} oy={ground + (blk - ps) / 2} s={ps} pal={BLUE} />
+      <Guy x={sx} y={ground} s={s} p={d.p} face={d.face} tint={BED} rot={d.rot} gaze={d.gaze} hold={d.hold} cube={60} />
       <NameTag at={head} text="Bedrock Players" size={40} s={s} />
     </g>
   );
@@ -314,7 +337,7 @@ const JavaWobble: React.FC<{ f: number }> = ({ f }) => {
     p = lerpPose(P.flailA, P.flailB, 0.5 + 0.5 * Math.sin((f - s0) * 1.1));
     rot = 7 * Math.sin((f - s0) * 0.55);
   } else if (f < tip) {
-    p = P.tee;
+    p = lerpPose(lerpPose(P.flailA, P.flailB, 0.5 + 0.5 * Math.sin((freeze - s0) * 1.1)), P.tee, ease(f, freeze, freeze + 2));
     rot = 0;
     face = "shocked";
   } else {
@@ -339,7 +362,7 @@ const JavaWobble: React.FC<{ f: number }> = ({ f }) => {
       <TexQuad q={[[568, 690], [604, 690], [730, 1170], [360, 1170]]} nu={8} nv={40} pal={GRASS} k={1.02} />
       <rect x={540} y={680} width={100} height={260} fill="url(#haze)" />
       <TexQuad q={[[360, 1170], [730, 1170], [690, 1412], [410, 1412]]} nu={8} nv={8} pal={GRASS} k={0.74} />
-      <Guy x={feet[0]} y={feet[1]} s={s} p={p} face={face} tint={JAVA} rot={rot} look={f >= tip ? [8, 14] : [0, 0]} />
+      <Guy x={feet[0]} y={feet[1]} s={s} p={p} face={face} tint={JAVA} rot={rot} look={f >= tip ? [4, 8] : [0, 0]} gaze={f >= tip ? [10, 26] : f >= freeze ? [0, 0] : [-18 * Math.sin((f - s0) * 0.55), 8]} />
       <NameTag at={head} text="Java Players" size={60} tilt={-12 + rot * 1.1} s={s} />
     </g>
   );
@@ -377,7 +400,7 @@ const bedrockStairs = (f: number) => {
   const k0 = Math.floor(kf), t = kf - k0;
   if (f < top) {
     const x = k0 + 0.5 + t, y = -k0 - t - 0.9 * Math.sin(Math.PI * t) * 0.6;
-    return { x, y, k: k0, t, flat: 0, p: t > 0.12 && t < 0.88 ? P.tuck : P.crouch };
+    return { x, y, k: k0, t, flat: 0, p: lerpPose(P.crouch, P.tuck, Math.sin(Math.PI * t)) };
   }
   const k = 2 + (top - s0) / B.stairs.stepFrames;
   const w = (f - top) * 0.16;
@@ -407,7 +430,7 @@ const BedrockStairs: React.FC<{ f: number }> = ({ f }) => {
       <Stars opacity={0.45 * z} below={900} />
       <FlatClouds y={1480 + z * 260} cell={lerp(130, 60, z)} drift={(f - s0) * 2} seed="stairclouds" opacity={0.8} />
       <Blocks2D cells={cells} ox={ox} oy={oy} s={u} pal={BLUE} />
-      <Guy x={gx} y={gy} s={s} p={d.p} face="sly" tint={BED} hold={{ R: BLUE, L: BLUE }} cube={60} />
+      <Guy x={gx} y={gy} s={s} p={d.p} face="sly" tint={BED} gaze={[20, 18]} hold={{ R: BLUE, L: BLUE }} cube={60} />
       <NameTag at={head} text="Bedrock Players" size={Math.max(14, 44 * s / 1.06)} s={s} />
     </g>
   );
@@ -491,7 +514,7 @@ const BedrockLoop: React.FC<{ f: number }> = ({ f }) => {
         </g>
       )}
       <Blocks2D cells={cells} ox={ox} oy={oy} s={u} pal={BLUE} />
-      <Guy x={gx} y={gy} s={s} p={p} face={d.phi >= 0 && d.phi < 6.3 ? "joy" : "sly"} tint={BED} rot={d.rot} hold={{ R: BLUE }} cube={60} />
+      <Guy x={gx} y={gy} s={s} p={p} face={d.phi >= 0 && d.phi < 6.3 ? "joy" : "sly"} tint={BED} rot={d.rot} gaze={[22, 2]} hold={{ R: BLUE }} cube={60} />
       <NameTag at={head} text="Bedrock Players" size={Math.max(9, 44 * s / 1.06)} tilt={d.rot} s={s} />
     </g>
   );
@@ -518,22 +541,26 @@ const JavaEnd: React.FC<{ f: number }> = ({ f }) => {
   let p = P.hug, face: FaceKind = "hurt", rot = 0, dx = 0, dy = 0;
   let hold: { L?: Palette; R?: Palette } | undefined = { R: GRASS };
   let look: Pt = [0, 0];
-  if (f >= phew) face = "calm";
-  if (f >= meh) face = "meh";
+  let gaze: Pt = [0, 16]; // eyes down on the block he's clutching
+  if (f >= phew) (face = "calm"), (gaze = [0, 8]);
+  if (f >= meh) (face = "meh"), (gaze = [0, 4]);
   if (f >= proud) {
     p = lerpPose(P.hug, P.raise, ease(f, proud, proud + 4));
     face = "smile";
+    gaze = [16, -12]; // admiring the block he's holding up
   }
   if (f >= passBy - 1) {
-    p = P.startle;
+    p = lerpPose(P.raise, P.startle, ease(f, passBy - 1, passBy + 1));
     face = "shocked";
-    look = [12, -4];
+    look = [8, -2];
+    gaze = [26, -6]; // at the blur going past
     hold = undefined;
   }
   if (f >= knocked) {
     const t = f - knocked;
     p = lerpPose(P.blown, P.tumble, clamp01(t / 6));
     face = "scream";
+    gaze = [-16, 6];
     rot = -Math.min(100, t * 5);
     dx = -26 * t;
     dy = -14 * t + 1.05 * t * t;
@@ -562,7 +589,7 @@ const JavaEnd: React.FC<{ f: number }> = ({ f }) => {
       <Stars opacity={0.55} below={900} />
       <CloudBand y0={1540} y1={1990} drift={(f - s0) * 3} seed="endclouds" />
       <Boxes cam={CAM8} boxes={boxes} lw={5} />
-      {f < gone && <Guy x={gx} y={gy} s={s} p={p} face={face} tint={JAVA} rot={rot} look={look} hold={hold} cube={78} />}
+      {f < gone && <Guy x={gx} y={gy} s={s} p={p} face={face} tint={JAVA} rot={rot} look={look} gaze={gaze} hold={hold} cube={78} />}
       {f >= passBy - 1 && cubeT < 20 && <MiniCube x={handAt[0] + cubeT * 30} y={handAt[1] - cubeT * 26 + cubeT * cubeT * 2.2} s={78 * s} pal={GRASS} rot={cubeT * 24} />}
       {f < gone && <NameTag at={head} text="Java Players" size={52} tilt={rot * 0.5 + 4} s={s} />}
       {runnerOn && (
@@ -570,7 +597,7 @@ const JavaEnd: React.FC<{ f: number }> = ({ f }) => {
           {f >= passBy - 2 && [0, 1, 2, 3].map((i) => (
             <line key={i} x1={rs[0] - 420 - i * 60} y1={rs[1] - 300 + i * 110} x2={rs[0] - 120 - i * 40} y2={rs[1] - 240 + i * 110} stroke="#ffffff" strokeWidth={10} strokeLinecap="round" opacity={0.75} />
           ))}
-          <Guy x={rs[0]} y={rs[1]} s={runS} p={runP} face="sly" tint={BED} hold={{ R: BLUE }} cube={60} />
+          <Guy x={rs[0]} y={rs[1]} s={runS} p={runP} face="sly" tint={BED} gaze={[24, 4]} hold={{ R: BLUE }} cube={60} />
           <NameTag at={headOf(rs[0], rs[1], runS, 0, runP)} text="Bedrock Players" size={Math.max(8, 52 * runS / 1.06)} s={runS} />
         </>
       )}
@@ -606,7 +633,7 @@ export const BridgeShort: React.FC<{ audio?: string | null; drawn?: boolean }> =
   loadMinecraftFonts();
   return (
     <AbsoluteFill style={{ backgroundColor: "#3a86d8" }}>
-      <HandDrawn enabled={drawn}>
+      <HandDrawn enabled={drawn} hold={1} boilEvery={2}>
         <World />
       </HandDrawn>
       {audio && <Audio src={staticFile(audio)} />}

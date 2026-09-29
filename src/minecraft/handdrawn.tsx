@@ -20,13 +20,19 @@ import { AbsoluteFill, Freeze, useCurrentFrame } from "remotion";
 const DrawnContext = React.createContext(false);
 export const useDrawn = () => React.useContext(DrawnContext);
 
-export const HandDrawn: React.FC<{ children: React.ReactNode; enabled?: boolean; hold?: number; boil?: number }> = ({
-  children, enabled = true, hold = 2, boil = 1,
+/**
+ * `hold` is how many frames each drawing is held (2 = on twos, 1 = smooth
+ * full-rate motion); `boilEvery` is how often the line wobble changes,
+ * independently — so motion can run on ones while the lines still boil at
+ * a drawn pace.
+ */
+export const HandDrawn: React.FC<{ children: React.ReactNode; enabled?: boolean; hold?: number; boil?: number; boilEvery?: number }> = ({
+  children, enabled = true, hold = 2, boil = 1, boilEvery,
 }) => {
   const f = useCurrentFrame();
   if (!enabled) return <>{children}</>;
   const drawing = Math.floor(f / hold);
-  const seed = (drawing % 3) + 1; // three drawings cycling, the classic boil
+  const seed = (Math.floor(f / (boilEvery ?? hold)) % 3) + 1; // three drawings cycling, the classic boil
   const id = "handDrawnBoil";
   return (
     <DrawnContext.Provider value>
