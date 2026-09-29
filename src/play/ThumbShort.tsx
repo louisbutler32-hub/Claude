@@ -75,7 +75,7 @@ const backOut = (x: number) => {
 /* ------------------------------------------------------------------ */
 
 /** white hand-drawn loops, the doodle texture behind every scene */
-const Scribbles: React.FC<{ seed: number; n?: number; colour?: string; opacity?: number; y0?: number; y1?: number }> = ({
+export const Scribbles: React.FC<{ seed: number; n?: number; colour?: string; opacity?: number; y0?: number; y1?: number }> = ({
   seed,
   n = 26,
   colour = "#ffffff",
@@ -102,7 +102,7 @@ const Scribbles: React.FC<{ seed: number; n?: number; colour?: string; opacity?:
   return <g opacity={opacity}>{loops}</g>;
 };
 
-const Shadow: React.FC<{ x: number; y: number; rx: number; o?: number }> = ({ x, y, rx, o = 0.18 }) => (
+export const Shadow: React.FC<{ x: number; y: number; rx: number; o?: number }> = ({ x, y, rx, o = 0.18 }) => (
   <ellipse cx={x} cy={y} rx={rx} ry={rx * 0.16} fill="#2b2530" opacity={o} />
 );
 

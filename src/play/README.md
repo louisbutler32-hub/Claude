@@ -12,6 +12,7 @@ soundtrack follow the references. The characters and every drawing are ours.
 | `Play-Beat` | **"play along with the beat!"** A concert stage with notes falling onto a stomp button and a clap button. Biscuit the puppy sings at the mic, Bruno the bear stomps, Mimi the cat claps. Ends on "BRAVO!!" | 831 frames (27.7 s) |
 | `Play-Race` | **"Choose your champion!"** Four ropes, 3-2-1-GO! Poppy knocks Biscuit off, Mimi tackles Poppy, Biscuit hops ropes, Mimi shouts Poppy off, an eagle takes Bruno, and Mimi alone reaches the top: "WINNER!" and a crown | 826 frames (27.5 s) |
 | `Play-Thumb` | **"Move your thumb to the beat!"** A big cartoon thumb flips up and down on every beat, then six gags cut in on the beat: Poppy pops out of a burrow, Bruno juggles apples, Biscuit bops a ball, Mimi swats a yarn ball, the four pals jump in turn, Biscuit's tongue. | 552 frames at 24 fps (23.0 s) |
+| `Play-Thumb-2` | **"Move your thumb to the beat!" take two**, on the second thumb-dance clip: an outlined thumb, then Bruno's pancake flip, characters dropping in and launching off, fruit sliced on the odd beats and a bomb, Poppy's flop, Mimi's party popper, a hopping line of pals. Every beat has something physical land on it. | 686 frames at 30 fps (22.9 s) |
 | `Play-Sheet` | model sheet of the cast in every pose | still |
 
 ## Making them
@@ -28,6 +29,8 @@ npm run play:beat:thumb    # → out/thumbnail-play-beat.jpg (1080×1920)
 npm run play:race:thumb    # → out/thumbnail-play-race.jpg
 npm run play:thumb         # → out/play-thumb.mp4 (renders, then puts the reference audio on)
 npm run play:thumb:thumb   # → out/thumbnail-play-thumb.jpg
+npm run play:thumb2        # → out/play-thumb-2.mp4 (renders, then puts the second clip's audio on)
+npm run play:thumb2:thumb  # → out/thumbnail-play-thumb-2.jpg
 npm run play:sheet         # → out/play-sheet.png
 ```
 
@@ -71,6 +74,15 @@ flip is centred on each beat, as in the reference. Everything on screen is
 a function of the beat position, and poses hold for two frames ("on twos").
 The licence-free bed is `npm run play:audio` (`play-thumb-mix.mp3`), with a
 kick on every beat.
+
+**Second thumb clip** (30 fps, 686 frames). Same track and same beat grid
+as the first (`thumb2-beat.json`), with the reference's own cut frames. The
+thumb is measured too: it snaps up on each even beat and eases down across
+the odd one, landing flat about 0.1 beat after it. The scenes are built so
+that something whole moves on every beat (thrown, dropped, sliced, landed),
+never just a face. Checked on the render: a visual event lands on every one
+of the 56 beats, at a median 0.8 frames after the beat (the reference's own
+median is 0.4).
 
 The grammar all the references share:
 

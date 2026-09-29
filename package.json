@@ -87,6 +87,8 @@
     "play:beat:thumb": "remotion still Play-Beat out/thumbnail-play-beat.jpg --frame=200 --image-format=jpeg --quality=92 --props='{\"audio\":null,\"thumb\":true}'",
     "play:race": "remotion render Play-Race out/play-race.mp4 && python3 scripts/mux-play-audio.py race",
     "play:thumb": "remotion render Play-Thumb out/play-thumb.mp4 && python3 scripts/mux-play-audio.py thumb",
+    "play:thumb2": "remotion render Play-Thumb-2 out/play-thumb-2.mp4 && python3 scripts/mux-play-audio.py thumb2",
+    "play:thumb2:thumb": "remotion still Play-Thumb-2 out/thumbnail-play-thumb-2.jpg --frame=8 --image-format=jpeg --quality=92 --props='{\"audio\":null}'",
     "play:thumb:thumb": "remotion still Play-Thumb out/thumbnail-play-thumb.jpg --frame=46 --image-format=jpeg --quality=92 --props='{\"audio\":null}'",
     "play:race:thumb": "remotion still Play-Race out/thumbnail-play-race.jpg --frame=12 --image-format=jpeg --quality=92 --props='{\"audio\":null}'",
     "play:brand": "remotion still Boppity-Avatar out/boppity-avatar-800.png && remotion still Boppity-Avatar-Group out/boppity-avatar-group-800.png && remotion still Boppity-Banner out/boppity-banner-2560x1440.png && remotion still Boppity-Banner-Guides out/boppity-banner-guides.png && remotion still Boppity-Watermark out/boppity-watermark-150.png --image-format=png",

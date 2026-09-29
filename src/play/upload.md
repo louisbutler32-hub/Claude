@@ -1,6 +1,6 @@
 # Upload copy — the play-along Shorts
 
-Three Shorts for **Boppity Pals**, the play-along channel (the full channel
+Four Shorts for **Boppity Pals**, the play-along channel (the full channel
 package is in `docs/channel-boppity-pals.md`). Paste-ready. Shorts don't
 take a chapter list, so there isn't one.
 
@@ -166,7 +166,58 @@ same beat, is `out/play-thumb-clean-audio.mp4`. Upload that one, or use
 
 ---
 
-## Upload settings (all three)
+## 4 · Move your thumb to the beat! take two (`Play-Thumb-2`)
+
+Rebuilt on a second thumb-dance clip (by **@crayoncatco**). The first take
+let the characters wiggle their faces; here every beat has something
+physical land on it. A white outlined thumb snaps up on the even beats, then
+six 8-beat scenes: Bruno flips a pancake (launch on the even beat, lands on
+the odd one), the pals drop in and launch off the top, fruit rolls in and is
+sliced on every odd beat and a bomb goes off, Poppy stands / flops /
+springs / lands, Mimi pulls a party popper (pull, BANG, jump), and the four
+pals hop across the field in step. 22.9 seconds, same 147 BPM track.
+
+The thumb is drawn in that clip's style (white fill, black outline, the
+same two poses) but it is our own drawing, not a trace of theirs.
+
+**Title**
+
+```
+Move your thumb to the beat! #interactive #cute #funny #animation #game
+```
+
+Alternates:
+
+```
+Thumb dance challenge! #animation #interactive #cute #funny #game
+```
+```
+Flip your thumb to the beat! #funny #cuteanimals #interactive #animation #game
+```
+
+**Description**
+
+```
+🐾 Subscribe to Boppity Pals:
+https://www.youtube.com/@BoppityPals
+```
+
+**Tags** (optional)
+
+```
+thumb dance challenge, move your thumb to the beat, rhythm game, interactive, cute animation, cute animals, boppity pals
+```
+
+**Thumbnail:** `out/thumbnail-play-thumb-2.jpg` (1080×1920)
+
+**Audio:** `out/play-thumb-2.mp4` carries the reference clip's soundtrack
+(not ours: expect a claim or a mute). `out/play-thumb-2-clean-audio.mp4` has
+our own track on the same beat. Upload that one, or use **Remix → Use this
+sound**.
+
+---
+
+## Upload settings (all four)
 
 | field | value |
 |---|---|
