@@ -5,12 +5,14 @@ play-along Shorts' audio slots:
 
   public/audio/play-beat-ref.{wav,m4a}   <- the "play along with the beat!" clip
   public/audio/play-race-ref.{wav,m4a}   <- the "Choose your champion!" clip
+  public/audio/play-thumb-ref.{wav,m4a}  <- the "Move your thumb to the beat!" clip (optional third)
 
 The .wav is for previewing in Remotion Studio; the .m4a is the original
 stream, copied untouched, which scripts/mux-play-audio.py puts on the
 final render.
 
-Usage:  python3 scripts/extract-play-audio.py <beat-clip.mp4> <race-clip.mp4>
+Usage:  python3 scripts/extract-play-audio.py <beat-clip.mp4> <race-clip.mp4> [thumb-clip.mp4]
+        python3 scripts/extract-play-audio.py thumb <thumb-clip.mp4>      (just the thumb clip)
 
 The Shorts were re-timed frame by frame to these clips (src/play/*.json),
 so their audio lines up without any offset. public/audio is gitignored:
@@ -25,10 +27,16 @@ OUT = os.path.join(ROOT, "public", "audio")
 FFMPEG = os.environ.get("FFMPEG") or shutil.which("ffmpeg") or os.path.join(
     ROOT, "node_modules", "@remotion", "compositor-linux-x64-gnu", "ffmpeg")
 
-if len(sys.argv) != 3:
+if len(sys.argv) == 3 and sys.argv[1] == "thumb":
+    CLIPS = [(sys.argv[2], "play-thumb-ref")]
+elif len(sys.argv) in (3, 4):
+    CLIPS = [(sys.argv[1], "play-beat-ref"), (sys.argv[2], "play-race-ref")]
+    if len(sys.argv) == 4:
+        CLIPS.append((sys.argv[3], "play-thumb-ref"))
+else:
     sys.exit(__doc__)
 os.makedirs(OUT, exist_ok=True)
-for src, name in ((sys.argv[1], "play-beat-ref"), (sys.argv[2], "play-race-ref")):
+for src, name in CLIPS:
     # .wav: what Remotion Studio plays while previewing
     wav = os.path.join(OUT, name + ".wav")
     subprocess.run([FFMPEG, "-hide_banner", "-loglevel", "error", "-y", "-i", src,

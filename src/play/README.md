@@ -11,6 +11,7 @@ soundtrack follow the references. The characters and every drawing are ours.
 |---|---|---|
 | `Play-Beat` | **"play along with the beat!"** A concert stage with notes falling onto a stomp button and a clap button. Biscuit the puppy sings at the mic, Bruno the bear stomps, Mimi the cat claps. Ends on "BRAVO!!" | 831 frames (27.7 s) |
 | `Play-Race` | **"Choose your champion!"** Four ropes, 3-2-1-GO! Poppy knocks Biscuit off, Mimi tackles Poppy, Biscuit hops ropes, Mimi shouts Poppy off, an eagle takes Bruno, and Mimi alone reaches the top: "WINNER!" and a crown | 826 frames (27.5 s) |
+| `Play-Thumb` | **"Move your thumb to the beat!"** A big cartoon thumb flips up and down on every beat, then six gags cut in on the beat: Poppy pops out of a burrow, Bruno juggles apples, Biscuit bops a ball, Mimi swats a yarn ball, the four pals jump in turn, Biscuit's tongue. | 552 frames at 24 fps (23.0 s) |
 | `Play-Sheet` | model sheet of the cast in every pose | still |
 
 ## Making them
@@ -18,11 +19,15 @@ soundtrack follow the references. The characters and every drawing are ours.
 ```bash
 # once, on a fresh clone: pull the soundtrack out of the two reference clips
 npm run play:ref-audio -- path/to/beat-reference.mp4 path/to/race-reference.mp4
+# the thumb clip on its own:
+npm run play:ref-audio -- thumb path/to/thumb-reference.mp4
 
 npm run play:beat          # → out/play-beat.mp4 (renders, then puts the reference audio on)
 npm run play:race          # → out/play-race.mp4
 npm run play:beat:thumb    # → out/thumbnail-play-beat.jpg (1080×1920)
 npm run play:race:thumb    # → out/thumbnail-play-race.jpg
+npm run play:thumb         # → out/play-thumb.mp4 (renders, then puts the reference audio on)
+npm run play:thumb:thumb   # → out/thumbnail-play-thumb.jpg
 npm run play:sheet         # → out/play-sheet.png
 ```
 
@@ -58,7 +63,16 @@ Both references are 720×1280 at 30 fps, about 27.6 s long.
   the eagle at 20.85 s and WINNER at 25.6 s. The camera roll matches too,
   with the sky arriving at 16.7 s and the ledge settling at half height.
 
-The grammar both references share:
+**Thumb clip** (24 fps, 23 s). The audio is a steady 147.1 BPM, quarter
+notes for the first eight beats, then off-beat hats. `thumb-beat.json`
+holds the fitted grid (first beat 0.152 s, period 0.4078 s) and the seven
+cut frames. Each scene is exactly eight beats, cut on the beat. The thumb
+flip is centred on each beat, as in the reference. Everything on screen is
+a function of the beat position, and poses hold for two frames ("on twos").
+The licence-free bed is `npm run play:audio` (`play-thumb-mix.mp3`), with a
+kick on every beat.
+
+The grammar all the references share:
 
 - One handwritten instruction at the top, with a red hand-drawn countdown
   under it.

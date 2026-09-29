@@ -8,13 +8,16 @@ licence-free alternative, timed from the same JSON:
   beat   a 112.5 BPM song — kick on every stomp note, clap on every clap
          note, hats, a bass root and a plucked chord arpeggio — read from
          src/play/beat-pattern.json, the same file the picture uses
+  thumb  a 147 BPM bed for the thumb-dance Short: kick on every beat, clap
+         on the backbeat, hats on the off-beats once the scenes start, a
+         bass root and a plucked arpeggio, from src/play/thumb-beat.json
   race   an upbeat 96 BPM bed, count-in ticks, a GO whistle, and the
          slip / boing / eagle / fall / snore / fanfare effects on the
          frames in src/play/race-schedule.json
 
-Output: public/audio/play-beat-mix.mp3, public/audio/play-race-mix.mp3
+Output: public/audio/play-{beat,race,thumb}-mix.mp3
 
-Usage:  python3 scripts/build-play-audio.py [beat|race|all]
+Usage:  python3 scripts/build-play-audio.py [beat|race|thumb|all]
 Needs:  numpy, and ffmpeg — falls back to the one Remotion ships.
 """
 
@@ -244,6 +247,31 @@ def build_beat():
     write(0.9 * sfx + 0.55 * music, "play-beat-mix", frames / FPS)
 
 
+# ── the thumb short ───────────────────────────────────────────────────
+def build_thumb():
+    """A licence-free bed on the same beat grid the picture uses
+    (src/play/thumb-beat.json): every gag lands on a kick."""
+    T = json.load(open(os.path.join(ROOT, "src", "play", "thumb-beat.json")))
+    sec = T["duration"] / T["fps"]
+    total = int(sec * SR)
+    sfx = np.zeros(total, np.float32)
+    music = np.zeros(total, np.float32)
+    K, C, HH = kick(), clap(), hat()
+    beats = int((sec - T["t0"]) / T["period"])
+    for k in range(beats):
+        fr = (T["t0"] + k * T["period"]) * FPS  # place() counts in FPS units
+        place(sfx, K, fr, 1.0)
+        if k % 2 == 1:
+            place(sfx, C, fr, 0.8)
+        if k >= T["beatsPerScene"]:  # the scenes bring in the off-beat hats
+            place(music, HH, fr + T["period"] * FPS / 2, 0.5)
+        chord = CHORDS[(k // 4) % 4]
+        if k % 4 == 0:
+            place(music, bass(chord[0] / 2, 1.6), fr, 0.7)
+        place(music, pluck(chord[k % 4], 0.5), fr + T["period"] * FPS / 2, 0.35)
+    write(0.9 * sfx + 0.55 * music, "play-thumb-mix", sec)
+
+
 # ── the race short ────────────────────────────────────────────────────
 def build_race():
     """The fallback track, with effects on every story beat."""
@@ -296,3 +324,5 @@ if __name__ == "__main__":
         build_beat()
     if WHICH in ("race", "all"):
         build_race()
+    if WHICH in ("thumb", "all"):
+        build_thumb()

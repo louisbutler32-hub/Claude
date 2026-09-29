@@ -1,6 +1,6 @@
 # Upload copy — the play-along Shorts
 
-Two Shorts for **Boppity Pals**, the play-along channel (the full channel
+Three Shorts for **Boppity Pals**, the play-along channel (the full channel
 package is in `docs/channel-boppity-pals.md`). Paste-ready. Shorts don't
 take a chapter list, so there isn't one.
 
@@ -119,12 +119,59 @@ Use the same title line as the caption, word for word, hashtags and all.
 Instagram wouldn't serve pio's profile to a fetch, so this follows their
 YouTube uploads. It's the same brand and the same videos.
 
-## Upload settings (both)
+## 3 · Move your thumb to the beat! (`Play-Thumb`)
+
+A thumb-dance Short: the viewer flips their own thumb on every beat while
+six little gags land on the beat (Poppy pops out of her burrow, Bruno
+juggles apples, Biscuit bops a ball, Mimi swats a swinging yarn, the four
+pals jump in turn, Biscuit sticks his tongue out). 23 seconds, 147 BPM.
+The format and its soundtrack come from a "Thumb Dance Challenge" Short by
+**@sloaneprimo**, a different creator from pio. Only the format and the
+beat are theirs. The thumb, the gags and the characters are ours.
+
+**Title**
+
+```
+Move your thumb to the beat! #interactive #funny #cute #animation #game
+```
+
+Alternates:
+
+```
+Thumb dance challenge! #animation #interactive #cute #funny #game
+```
+```
+Can you keep up with the beat? #funny #cuteanimals #interactive #animation #game
+```
+
+**Description**
+
+```
+🐾 Subscribe to Boppity Pals:
+https://www.youtube.com/@BoppityPals
+```
+
+**Tags** (optional)
+
+```
+thumb dance challenge, move your thumb to the beat, rhythm game, interactive, cute animation, cute animals, boppity pals
+```
+
+**Thumbnail:** `out/thumbnail-play-thumb.jpg` (1080×1920)
+
+**Audio:** the render carries the reference's soundtrack (`out/play-thumb.mp4`),
+which isn't ours. Expect a claim or a mute. The licence-free version, on the
+same beat, is `out/play-thumb-clean-audio.mp4`. Upload that one, or use
+**Remix → Use this sound** from the original.
+
+---
+
+## Upload settings (all three)
 
 | field | value |
 |---|---|
 | Category | **People & Blogs** (pio's category) |
 | Audience | Decide it honestly, per `docs/channel-boppity-pals.md`. The format is a general-audience one. If the channel is meant for young children, it must be **made for kids**. |
-| Shorts | Vertical 1080×1920, about 27.6 seconds |
-| Playlist | Choose Your Champion 🏆 / Play Along With the Beat 🥁 |
-| Pinned comment | race: "Who did you pick? 🐻🐱🐶🐰" · beat: "How many did you hit? 🥁". This one is our own addition, since pio doesn't pin one. |
+| Shorts | Vertical 1080×1920, 23 to 28 seconds |
+| Playlist | Choose Your Champion 🏆 / Play Along With the Beat 🥁 (the thumb Short goes with the beat ones) |
+| Pinned comment | race: "Who did you pick? 🐻🐱🐶🐰" · beat: "How many did you hit? 🥁" · thumb: "Did your thumb keep up? 👍". This one is our own addition, since pio doesn't pin one. |

@@ -107,9 +107,10 @@ gitignored. Each episode's track is a drop-in slot at
 
 ## Shorts — the play-along line
 
-`src/play/` rebuilds two reference clips frame for frame as interactive
-vertical Shorts: "play along with the beat!" (a rhythm game) and "Choose
-your champion!" (a rope race). The cast is Biscuit the puppy, Poppy the
+`src/play/` rebuilds reference clips frame for frame as interactive
+vertical Shorts: "play along with the beat!" (a rhythm game), "Choose
+your champion!" (a rope race) and "Move your thumb to the beat!" (a thumb
+dance, eight-beat gag scenes). The cast is Biscuit the puppy, Poppy the
 bunny, Bruno the bear and Mimi the cat. **No stone character in this line.**
 **Read `src/play/README.md` first.** The timing in `beat-pattern.json` and
 `race-schedule.json` was measured off the references, so the Shorts run on

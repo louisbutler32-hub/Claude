@@ -94,6 +94,7 @@ import { CastSheet } from "./guess/CastSheet";
 import { PlaySheet } from "./play/PlaySheet";
 import { BeatShort, BEAT_FRAMES } from "./play/BeatShort";
 import { RaceShort, RACE_FRAMES } from "./play/RaceShort";
+import { ThumbShort, THUMB_FRAMES as PLAY_THUMB_FRAMES } from "./play/ThumbShort";
 import { FruitVideo, FRUIT_DURATION_IN_FRAMES } from "./fruit/FruitVideo";
 import { FruitArtSheet } from "./fruit/ArtSheet";
 import { FruitThumbA, FruitThumbB } from "./fruit/Thumbnail";
@@ -308,6 +309,15 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
         defaultProps={{ audio: "audio/play-race-ref.wav" }}
+      />
+      <Composition
+        id="Play-Thumb"
+        component={ThumbShort}
+        durationInFrames={PLAY_THUMB_FRAMES}
+        fps={24}
+        width={1080}
+        height={1920}
+        defaultProps={{ audio: "audio/play-thumb-ref.wav" }}
       />
       <Composition
         id="Play-Sheet"

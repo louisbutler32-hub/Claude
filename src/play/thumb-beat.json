@@ -1,0 +1,9 @@
+{
+  "fps": 24,
+  "duration": 552,
+  "t0": 0.152,
+  "period": 0.4078,
+  "cuts": [0, 81, 159, 237, 316, 394, 472, 552],
+  "beatsPerScene": 8,
+  "thumb": { "fromDeg": 0, "toDeg": 84, "transitionBeats": 0.5 }
+}

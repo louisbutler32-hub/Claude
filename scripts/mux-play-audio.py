@@ -10,8 +10,8 @@ that reads as the stomp landing just after the button flashes. Copying the
 reference's AAC stream keeps its own priming markers, so it plays exactly
 where it did in the reference, which is where every beat was timed.
 
-Usage:  python3 scripts/mux-play-audio.py beat|race
-Needs:  public/audio/play-<beat|race>-ref.m4a (scripts/extract-play-audio.py)
+Usage:  python3 scripts/mux-play-audio.py beat|race|thumb
+Needs:  public/audio/play-<beat|race|thumb>-ref.m4a (scripts/extract-play-audio.py)
 """
 
 import os, shutil, subprocess, sys
@@ -21,7 +21,7 @@ FFMPEG = os.environ.get("FFMPEG") or shutil.which("ffmpeg") or os.path.join(
     ROOT, "node_modules", "@remotion", "compositor-linux-x64-gnu", "ffmpeg")
 
 which = sys.argv[1] if len(sys.argv) > 1 else ""
-if which not in ("beat", "race"):
+if which not in ("beat", "race", "thumb"):
     sys.exit(__doc__)
 video = os.path.join(ROOT, "out", f"play-{which}.mp4")
 audio = os.path.join(ROOT, "public", "audio", f"play-{which}-ref.m4a")

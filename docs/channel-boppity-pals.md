@@ -1,7 +1,8 @@
 # Channel package — Boppity Pals
 
-The play-along Shorts (`src/play/`) get their own channel. The two formats
-are "play along with the beat!" and "Choose your champion!", with Biscuit
+The play-along Shorts (`src/play/`) get their own channel. The formats
+are "play along with the beat!", "Choose your champion!" and "Move your
+thumb to the beat!", with Biscuit
 the puppy, Poppy the bunny, Bruno the bear and Mimi the cat. They're a
 different audience from Pebblo Pebble's toddler learning videos. They also
 live on comments ("who did you pick?"), so mixing them into the Pebblo feed
