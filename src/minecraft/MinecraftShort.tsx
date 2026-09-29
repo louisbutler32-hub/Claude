@@ -1,4 +1,6 @@
 import React from "react";
+import { Cast, CastProvider } from "./actor";
+import { HandDrawn } from "./handdrawn";
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { CAPTION, H, PANEL_TOP, SHOT, shotLen, TOTAL_FRAMES, W } from "./beats";
 import { loadMinecraftFonts } from "./fonts";
@@ -59,9 +61,11 @@ export const CaptionBand: React.FC = () => (
   </div>
 );
 
-export const MinecraftShort: React.FC<{ audio?: string | null; signText?: string }> = ({
+export const MinecraftShort: React.FC<{ audio?: string | null; signText?: string; cast?: Cast; drawn?: boolean }> = ({
   audio = "audio/minecraft-mix.mp3",
   signText = SIGN_TEXT,
+  cast = "stick",
+  drawn = false,
 }) => {
   loadMinecraftFonts();
   const shots: { name: keyof typeof SHOT; el: React.ReactNode }[] = [
@@ -79,6 +83,8 @@ export const MinecraftShort: React.FC<{ audio?: string | null; signText?: string
   return (
     <AbsoluteFill style={{ backgroundColor: "#ffffff" }}>
       {audio ? <Audio src={staticFile(audio)} /> : null}
+      <CastProvider value={cast}>
+      <HandDrawn enabled={drawn} hold={1} boilEvery={2}>
       {shots.map(({ name, el }) => (
         <Sequence key={name} from={SHOT[name][0]} durationInFrames={shotLen(name)} name={name}>
           <AbsoluteFill>
@@ -97,6 +103,8 @@ export const MinecraftShort: React.FC<{ audio?: string | null; signText?: string
           </AbsoluteFill>
         </Sequence>
       ))}
+      </HandDrawn>
+      </CastProvider>
       <CaptionBand />
     </AbsoluteFill>
   );

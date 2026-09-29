@@ -175,6 +175,24 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={{ audio: "audio/minecraft-mix.mp3" }}
       />
       <Composition
+        id="LoseStuffShort"
+        component={MinecraftShort}
+        durationInFrames={MINECRAFT_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{ audio: null, cast: "oofy" as const, drawn: true, signText: "Oof Craft" }}
+      />
+      <Composition
+        id="LoseStuff-Thumbnail"
+        component={MinecraftThumb}
+        durationInFrames={1}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{ cast: "oofy" as const }}
+      />
+      <Composition
         id="DigShort"
         component={DigShort}
         durationInFrames={DIG_FRAMES}

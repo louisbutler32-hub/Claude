@@ -1,7 +1,8 @@
 import React from "react";
 import { interpolate, useCurrentFrame } from "remotion";
 import { EV, SHOT } from "./beats";
-import { ease, FaceKind, Figure, lerpPose, limb, Pose, POSE, pose, TINT, walkPose, withLegs } from "./figure";
+import { ActorFigure as Figure } from "./actor";
+import { ease, FaceKind, lerpPose, limb, Pose, POSE, pose, TINT, walkPose, withLegs } from "./figure";
 import { Creeper, Item, ItemName, Puff, SpiderEyes, Torch } from "./pixels";
 import {
   Aerial,

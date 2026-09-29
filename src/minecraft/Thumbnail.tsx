@@ -1,7 +1,8 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { H, PANEL_TOP, W } from "./beats";
-import { Figure, POSE } from "./figure";
+import { ActorFigure as Figure, Cast, CastProvider } from "./actor";
+import { POSE } from "./figure";
 import { loadMinecraftFonts } from "./fonts";
 import { Item } from "./pixels";
 import { CaveWide } from "./worlds";
@@ -11,9 +12,10 @@ import { CaptionBand } from "./MinecraftShort";
  * 9:16 thumbnail: the caption, and the moment it's all still there —
  * the one frame the whole joke turns on.
  */
-export const MinecraftThumb: React.FC = () => {
+export const MinecraftThumb: React.FC<{ cast?: Cast }> = ({ cast = "stick" }) => {
   loadMinecraftFonts();
   return (
+    <CastProvider value={cast}>
     <AbsoluteFill style={{ backgroundColor: "#ffffff" }}>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
         <defs>
@@ -38,5 +40,6 @@ export const MinecraftThumb: React.FC = () => {
       </svg>
       <CaptionBand />
     </AbsoluteFill>
+    </CastProvider>
   );
 };
