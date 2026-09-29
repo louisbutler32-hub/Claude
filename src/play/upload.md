@@ -170,12 +170,13 @@ same beat, is `out/play-thumb-clean-audio.mp4`. Upload that one, or use
 
 Rebuilt on a second thumb-dance clip (by **@crayoncatco**). The first take
 let the characters wiggle their faces; here every beat has something
-physical land on it. A white outlined thumb snaps up on the even beats, then
-six 8-beat scenes: Bruno flips a pancake (launch on the even beat, lands on
-the odd one), the pals drop in and launch off the top, fruit rolls in and is
-sliced on every odd beat and a bomb goes off, Poppy stands / flops /
-springs / lands, Mimi pulls a party popper (pull, BANG, jump), and the four
-pals hop across the field in step. 22.9 seconds, same 147 BPM track.
+physical land on it. A single white outlined thumb (no hand) snaps up on the
+even beats, then five 8-beat scenes: Bruno flips a pancake (launch on the
+even beat, lands on the odd one), the pals drop in and launch off the top,
+fruit rolls in and is sliced on every odd beat and a bomb goes off, Poppy
+stands / flops / springs / lands, and Mimi pulls a party popper (pull, BANG,
+jump). It ends on her landing. 19.9 seconds, same 147 BPM track. (The
+reference goes on to a hopping line of pals; that part is cut.)
 
 The thumb is drawn in that clip's style (white fill, black outline, the
 same two poses) but it is our own drawing, not a trace of theirs.
@@ -223,6 +224,6 @@ sound**.
 |---|---|
 | Category | **People & Blogs** (pio's category) |
 | Audience | Decide it honestly, per `docs/channel-boppity-pals.md`. The format is a general-audience one. If the channel is meant for young children, it must be **made for kids**. |
-| Shorts | Vertical 1080×1920, 23 to 28 seconds |
+| Shorts | Vertical 1080×1920, 20 to 28 seconds |
 | Playlist | Choose Your Champion 🏆 / Play Along With the Beat 🥁 (the thumb Short goes with the beat ones) |
 | Pinned comment | race: "Who did you pick? 🐻🐱🐶🐰" · beat: "How many did you hit? 🥁" · thumb: "Did your thumb keep up? 👍". This one is our own addition, since pio doesn't pin one. |

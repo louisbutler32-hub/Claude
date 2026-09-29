@@ -14,12 +14,13 @@ import { Scribbles, Shadow } from "./ThumbShort";
  * land on the beat: something is thrown, dropped, sliced, popped or
  * landed on every beat, and the whole body or prop moves with it.
  *
- * Structure, measured off the reference (30 fps, 686 frames):
- *  - a white outlined thumb that snaps up on the even beats and settles
- *    on the odd ones, under a small headline;
- *  - six scenes, each eight beats: a pancake flip, characters dropping in
+ * Structure, measured off the reference (30 fps; the clip is 686, this ends at 598):
+ *  - a single white outlined thumb (no hand) that snaps up on the even beats
+ *    and settles on the odd ones, under a small headline;
+ *  - five scenes, each eight beats: a pancake flip, characters dropping in
  *    and launching off the top, fruit sliced on the odd beats and a bomb,
- *    a bunny flop, a party popper, and a hopping line across the field.
+ *    a bunny flop, and a party popper. It ends just after the popper's
+ *    second BANG, on the landing.
  *
  * The audio is the same 147 BPM track as the first thumb clip: quarter
  * notes for the first eight beats, off-beat hats after. Cuts are the
@@ -108,30 +109,27 @@ const ThumbScene: React.FC<{ c: Clock }> = ({ c }) => {
   return (
     <AbsoluteFill style={{ backgroundColor: "#ff93ae" }}>
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
-        {/* the thumb goes under the fist */}
-        <g transform={`translate(860 1440) rotate(${rot}) scale(0.9 1.32)`}>
+        {/* just the thumb: it pivots on its rounded base, flat then straight up */}
+        <g transform={`translate(880 1600) rotate(${rot}) scale(0.84 1.12)`}>
           <path
-            d="M 40 -98 C -100 -104 -250 -98 -380 -88 C -520 -78 -610 -60 -648 -20 C -672 8 -658 52 -624 70 C -580 94 -480 98 -380 100 C -250 102 -100 106 40 102 Z"
+            d="M 0 -108 C -160 -112 -330 -108 -470 -102 C -590 -96 -690 -74 -724 -22 C -744 12 -730 64 -692 86 C -640 110 -560 108 -470 106 C -330 108 -160 112 0 108 C 62 104 108 62 108 0 C 108 -62 62 -104 0 -108 Z"
             fill="#ffffff"
             stroke={LINE}
-            strokeWidth={9}
+            strokeWidth={10}
             strokeLinejoin="round"
           />
+          {/* nail */}
           <path
-            d="M -622 -28 C -612 -54 -570 -62 -530 -54 C -500 -48 -490 -20 -496 6 C -504 30 -548 42 -588 36 C -620 30 -632 0 -622 -28 Z"
+            d="M -714 -6 C -710 -48 -674 -68 -632 -64 C -590 -60 -574 -30 -578 0 C -582 32 -618 46 -658 42 C -694 38 -718 20 -714 -6 Z"
             fill="#ffffff"
             stroke={LINE}
-            strokeWidth={7}
+            strokeWidth={8}
             strokeLinejoin="round"
           />
-          <path d="M -300 -78 q 10 40 0 80 M -262 -78 q 10 36 0 70" fill="none" stroke={LINE} strokeWidth={6} strokeLinecap="round" />
+          {/* the joint creases, and a wrinkle at the base */}
+          <path d="M -330 -98 q 18 52 0 104 M -286 -96 q 16 46 0 92 M -244 -94 q 14 40 0 80" fill="none" stroke={LINE} strokeWidth={7} strokeLinecap="round" />
+          <path d="M -30 -56 q 34 10 44 56 M -10 -78 q 44 12 54 78" fill="none" stroke={LINE} strokeWidth={7} strokeLinecap="round" />
         </g>
-        {/* the fist */}
-        <path d="M 700 1290 C 700 1200 764 1160 846 1166 L 1120 1166 L 1120 1940 L 810 1940 C 738 1940 696 1866 696 1780 Z" fill="#ffffff" stroke={LINE} strokeWidth={9} strokeLinejoin="round" />
-        {[1560, 1690, 1820].map((y, i) => (
-          <path key={y} d={`M ${930 - i * 10} ${y - 56} C ${800 - i * 12} ${y - 60} ${716 - i * 10} ${y - 34} ${716 - i * 10} ${y} C ${716 - i * 10} ${y + 34} ${800 - i * 12} ${y + 60} ${930 - i * 10} ${y + 56}`} fill="#ffffff" stroke={LINE} strokeWidth={8} strokeLinecap="round" />
-        ))}
-        <path d="M 830 1240 q 44 -14 66 24 M 916 1218 q 34 16 44 62 M 872 1322 q 34 12 40 48 M 986 1240 q 20 20 22 52" fill="none" stroke={LINE} strokeWidth={7} strokeLinecap="round" />
       </svg>
       {["Move your thumb", "to the beat!"].map((t, i) => (
         <div
@@ -529,7 +527,8 @@ const CONFETTI = Array.from({ length: 46 }, (_, i) => ({
 }));
 
 const PopperScene: React.FC<{ c: Clock }> = ({ c }) => {
-  const u = cyc(c.jb, 4);
+  // the video ends on her landing after the second BANG, so the cycle never restarts
+  const u = cyc(Math.min(c.jb, 7.999), 4);
   const ORIGIN_Y = 1700;
   const SC = 3.0;
   // beats: 0 lifts it, 1 pulls the string, 2 BANG, 3 jumps for joy
@@ -591,66 +590,8 @@ const PopperScene: React.FC<{ c: Clock }> = ({ c }) => {
 };
 
 /* ------------------------------------------------------------------ */
-/* scene 6 — the line of pals hops across the field                    */
-/* ------------------------------------------------------------------ */
 
-const HopScene: React.FC<{ c: Clock }> = ({ c }) => {
-  const rows: { Ch: React.FC<Pose>; y: number; dir: 1 | -1; col: string }[] = [
-    { Ch: Bear, y: 560, dir: 1, col: "#b07a4a" },
-    { Ch: Cat, y: 900, dir: -1, col: "#f5a04a" },
-    { Ch: Dog, y: 1240, dir: 1, col: "#e0a45c" },
-    { Ch: Bunny, y: 1580, dir: -1, col: "#f08bb0" },
-  ];
-  const SC = 1.35;
-  const STEP = 190;
-  const k = Math.floor(c.jb);
-  const f = c.jb - k; // 0 right on the beat, 1 the next
-  // each hop takes off just after a beat and lands on the next
-  const AIR = 0.88;
-  const air = f < AIR ? f / AIR : 1;
-  const inAir = f < AIR && c.jb >= 0;
-  const arc = inAir ? 4 * air * (1 - air) : 0;
-  const landSq = f >= AIR ? 1 - 0.18 * Math.sin(((f - AIR) / (1 - AIR)) * Math.PI) : f < 0.16 ? 1 - 0.18 * hitAt(f, 0, 8) : 1;
-  const hitNow = c.jb >= 0 ? hitAt(f, 0, 7) : 0;
-  return (
-    <AbsoluteFill style={{ background: "#a3c874" }}>
-      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
-        <Scribbles seed={41} n={14} colour="#8fb862" opacity={0.7} />
-        {rows.map((r, i) => {
-          const start = r.dir === 1 ? -170 : W + 170;
-          const x = start + r.dir * STEP * (Math.max(0, k) + air);
-          const Ch = r.Ch;
-          const pose: Pose = {
-            eyes: inAir ? "happy" : "open",
-            mouth: inAir ? "open" : "smile",
-            armL: inAir ? [-54, -60] : [-24, 42],
-            armR: inAir ? [54, -60] : [24, 42],
-            squash: inAir ? 1 + 0.12 * arc : landSq,
-            wag: Math.sin(c.t * 24 + i) * 16,
-          };
-          return (
-            <g key={i}>
-              <Shadow x={x} y={r.y + 8} rx={120 - arc * 30} o={0.2 - arc * 0.1} />
-              <g transform={`translate(${x} ${r.y - arc * 210}) scale(${r.dir * SC} ${SC})`}>
-                <Ch {...pose} />
-              </g>
-              {hitNow > 0.3 ? (
-                <g opacity={hitNow}>
-                  <circle cx={x - r.dir * 90} cy={r.y - 10} r={22 + (1 - hitNow) * 30} fill="#eaf6d6" />
-                  <circle cx={x + r.dir * 90} cy={r.y - 6} r={16 + (1 - hitNow) * 24} fill="#eaf6d6" />
-                </g>
-              ) : null}
-            </g>
-          );
-        })}
-      </svg>
-    </AbsoluteFill>
-  );
-};
-
-/* ------------------------------------------------------------------ */
-
-const SCENES: React.FC<{ c: Clock }>[] = [ThumbScene, PanScene, DropScene, FruitScene, FlopScene, PopperScene, HopScene];
+const SCENES: React.FC<{ c: Clock }>[] = [ThumbScene, PanScene, DropScene, FruitScene, FlopScene, PopperScene];
 
 export const ThumbShort2: React.FC<{ audio?: string | null }> = ({ audio = "audio/play-thumb2-ref.wav" }) => {
   loadPlayFonts();

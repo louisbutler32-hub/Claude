@@ -29,8 +29,14 @@ for p in (video, audio):
     if not os.path.exists(p):
         sys.exit(f"missing {p}")
 tmp = video + ".mux.mp4"
+FFPROBE = os.path.join(os.path.dirname(FFMPEG), "ffprobe")
+if not os.path.exists(FFPROBE):
+    FFPROBE = shutil.which("ffprobe") or "ffprobe"
+# the audio is copied whole, so cut it to the picture (a Short trimmed shorter than its clip)
+vlen = subprocess.run([FFPROBE, "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=duration",
+                       "-of", "default=nw=1:nk=1", video], capture_output=True, text=True, check=True).stdout.strip()
 subprocess.run([FFMPEG, "-hide_banner", "-loglevel", "error", "-y",
                 "-i", video, "-i", audio, "-map", "0:v:0", "-map", "1:a:0",
-                "-c", "copy", "-movflags", "+faststart", tmp], check=True)
+                "-c", "copy", "-t", vlen, "-movflags", "+faststart", tmp], check=True)
 os.replace(tmp, video)
 print(f"put the reference audio on {video}")
