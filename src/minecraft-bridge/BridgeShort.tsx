@@ -5,7 +5,7 @@ import { ease, FaceKind, limb, lerpPose, Pose, pose, Pt, walkPose } from "../min
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { HandDrawn } from "../minecraft/handdrawn";
 import { Tag } from "../minecraft/mobs";
-import { Oofy, OofyTint, OOFY_TINT } from "../minecraft/oofy";
+import { Oofy, OofyHead, OofyTint, OOFY_DESIGN, OOFY_TINT, oofyNeckDrop } from "../minecraft/oofy";
 import { BLUE, Blocks2D, Box, Boxes, Cam, GRASS, MiniCube, P2, Palette, project, pxPerUnit, TexQuad } from "./blocks";
 import B from "./beats.json";
 
@@ -69,8 +69,11 @@ const Guy: React.FC<{
 );
 
 /** where a Guy's head centre lands on screen, for pinning his name tag */
+/** his build is shorter than the rig's 335-unit legs: the neck sits this much lower */
+const DROP = oofyNeckDrop(OOFY_DESIGN);
+
 const headOf = (x: number, y: number, s: number, rot: number, p: Pose): Pt => {
-  const hx = p.head[0] * s, hy = -335 * s + p.head[1] * s;
+  const hx = p.head[0] * s, hy = (DROP - 335) * s + p.head[1] * s;
   const r = (rot * Math.PI) / 180;
   return [x + hx * Math.cos(r) - hy * Math.sin(r), y + hx * Math.sin(r) + hy * Math.cos(r)];
 };
@@ -192,7 +195,7 @@ const JavaPeek: React.FC<{ f: number }> = ({ f }) => {
   const d = javaPeek(f);
   const zoom = 0.86 + 0.14 * ease(f, 0, 7);
   const placed = f >= B.peek.place;
-  const feetY = d.neck[1] + 335 * d.s;
+  const feetY = d.neck[1] + (335 - DROP) * d.s; // his head, not his hidden feet, is what's placed
   return (
     <g>
       <Sky top="#2f7fdc" bottom="#8fc3f3" id="skyPeek" />
@@ -381,11 +384,8 @@ const JavaFall: React.FC<{ f: number }> = ({ f }) => {
       <CloudBand y0={640} y1={1150} drift={(f - s0) * 3} seed="fallclouds" />
       <TexQuad q={[[62, 1230 + dy], [950, 1230 + dy], [1150, 2150 + dy], [-140, 2150 + dy]]} nu={8} nv={8} pal={GRASS} k={1} />
       {/* the back of his head, dropping out of frame: quiff, no face */}
-      <g transform={`translate(500 ${hy}) scale(${-k} ${k})`}>
-        {[[-46, -104, 30, 34], [-20, -124, 30, 50], [6, -138, 30, 58], [32, -118, 24, 36]].map(([x, y, w, h], i) => (
-          <rect key={i} x={x} y={y} width={w} height={h} fill="#4a3426" stroke={JAVA.line} strokeWidth={5} strokeLinejoin="round" />
-        ))}
-        <ellipse rx={104} ry={98} fill={JAVA.skin} stroke={JAVA.line} strokeWidth={6} />
+      <g transform={`translate(500 ${hy}) scale(${k})`}>
+        <OofyHead face="back" tint={JAVA} bandAid={false} id="fallHead" />
       </g>
     </g>
   );

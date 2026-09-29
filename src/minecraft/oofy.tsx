@@ -11,12 +11,12 @@ import { useDrawn } from "./handdrawn";
  * a Figure animates him, and callers position him the same way: origin at
  * the neck, feet 335 units below.
  *
- * What makes him him: a big head (chibi proportions), glossy oversized
- * eyes with brows and blush, a purple hoodie with a pocket and drawstrings,
- * chunky sleeves with mitten hands, dark trousers and white sneakers, soft
- * plum outlines instead of black — plus the two signatures: a blocky pixel
- * quiff (the Minecraft nod) and the band-aid (always gets hurt, survives
- * anyway).
+ * What makes him him: a big head (chibi proportions) with spiky brown
+ * hair and ears, glossy dot eyes with brows and blush, a purple hoodie whose
+ * hood sits round his neck, chunky sleeves with mitten hands, a short sturdy
+ * build in dark trousers and white sneakers, soft plum outlines instead of
+ * black — and the band-aid on his cheek (always gets hurt, survives anyway).
+ * OOFY_DESIGNS keeps the other looks that were tried, "A" being the first.
  */
 
 export type OofyTint = { skin: string; line: string; hoodie: string; pants: string; shoe: string };
@@ -29,6 +29,46 @@ export const OOFY_TINT = {
 } as const;
 
 const HAIR = "#4a3426", HAIR_LIT = "#6f4c36", BLUSH = "#ff9fb4";
+
+/**
+ * The knobs a redesign turns. The first version ("A") was a bald head with a
+ * pixel tuft, no ears, the head floating over a small torso on long legs —
+ * it read as a baby or an alien. The others trade that for hair, ears, a
+ * hood that joins head to body, bigger features set lower, and a sturdier,
+ * shorter build.
+ */
+export type OofyDesign = {
+  key: string;
+  name: string;
+  hair: "tuft" | "bangs" | "blocky" | "spiky" | "swoop" | "beanie";
+  ears: boolean;
+  nose: boolean;
+  hood: boolean;
+  /** feature scale, and how far down the head the features sit */
+  face: number;
+  faceY: number;
+  /** leg length and torso width, 1 = the original */
+  legs: number;
+  torso: number;
+  bandAid: "forehead" | "cheek";
+};
+
+export const OOFY_DESIGNS: OofyDesign[] = [
+  { key: "A", name: "original", hair: "tuft", ears: false, nose: false, hood: false, face: 1, faceY: 0, legs: 1, torso: 1, bandAid: "forehead" },
+  { key: "B", name: "bangs", hair: "bangs", ears: true, nose: false, hood: true, face: 1.12, faceY: 10, legs: 0.84, torso: 1.1, bandAid: "cheek" },
+  { key: "C", name: "blocky", hair: "blocky", ears: true, nose: false, hood: true, face: 1.14, faceY: 12, legs: 0.82, torso: 1.12, bandAid: "cheek" },
+  { key: "D", name: "spiky", hair: "spiky", ears: true, nose: true, hood: true, face: 1.14, faceY: 12, legs: 0.84, torso: 1.1, bandAid: "cheek" },
+  { key: "E", name: "swoop", hair: "swoop", ears: true, nose: true, hood: true, face: 1.16, faceY: 12, legs: 0.8, torso: 1.14, bandAid: "cheek" },
+  { key: "F", name: "beanie", hair: "beanie", ears: true, nose: false, hood: true, face: 1.12, faceY: 12, legs: 0.84, torso: 1.1, bandAid: "cheek" },
+];
+/** the look he ships with: D, picked from the ten-style lineup (oofyStyles.tsx) for its silhouette and faces */
+export const OOFY_DESIGN: OofyDesign = OOFY_DESIGNS[3];
+const DesignContext = React.createContext<OofyDesign>(OOFY_DESIGN);
+/** draw every Oofy inside with this design */
+export const OofyDesignProvider = DesignContext.Provider;
+
+/** how much lower his neck sits than the original's, for callers that pin things to his head */
+export const oofyNeckDrop = (d: OofyDesign) => (1 - d.legs) * (335 - 118);
 const HEAD_RX = 104, HEAD_RY = 98;
 const SH = { L: [-46, 18] as Pt, R: [46, 18] as Pt };
 const HP = { L: [-34, 118] as Pt, R: [34, 118] as Pt };
@@ -171,11 +211,65 @@ export const OofyFace: React.FC<{ kind: FaceKind; look?: Pt; line?: string; skin
   }
 };
 
+const hairPath = (style: OofyDesign["hair"]) => {
+  const top = "M-112,-6 A112,106 0 0 1 112,-6";
+  switch (style) {
+    case "bangs": // rounded fringe, scalloped
+      return `${top} L104,-10 Q98,-50 72,-52 Q58,-32 38,-50 Q20,-34 2,-52 Q-16,-32 -34,-50 Q-54,-30 -72,-50 Q-100,-46 -104,-10 Z`;
+    case "blocky": // pixel steps, the Minecraft nod
+      return `${top} L104,-6 L104,-40 L74,-40 L74,-58 L32,-58 L32,-46 L-6,-46 L-6,-62 L-48,-62 L-48,-44 L-78,-44 L-78,-26 L-104,-26 L-104,-6 Z`;
+    case "spiky": // a few bold spikes swept forward: reads as him even when he's tiny on screen
+      return "M-112,-6 L-124,-50 L-100,-60 L-114,-102 L-68,-96 L-62,-140 L-22,-106 L4,-150 L30,-108 L70,-136 L78,-92 L122,-94 L102,-56 L128,-34 L112,-6 " +
+        "L104,-12 L82,-46 L66,-26 L44,-58 L26,-32 L2,-62 L-18,-34 L-42,-58 L-60,-30 L-84,-50 L-104,-12 Z";
+    case "swoop": // side-swept fringe
+      return `${top} L108,-28 C64,-62 34,-74 12,-60 C-22,-38 -70,-40 -108,-4 Z`;
+    default:
+      return "";
+  }
+};
+
+/** hair seen from behind: everything above the ears */
+const BACK_HAIR = "M-113,14 A113,108 0 0 1 113,14 Q0,34 -113,14 Z";
+
+const Hair: React.FC<{ style: OofyDesign["hair"]; line: string; back?: boolean }> = ({ style, line, back }) => {
+  if (style === "tuft") return null;
+  if (style === "beanie") {
+    return (
+      <g stroke={line} strokeWidth={9} strokeLinejoin="round">
+        {!back && <path d="M-86,-30 L-70,-12 L-56,-30 L-40,-14 L-24,-30" fill={HAIR} strokeWidth={6} />}
+        <path d="M-114,-30 A114,116 0 0 1 114,-30 Z" fill="#f2b53a" />
+        <path d="M-118,-20 Q0,-52 118,-20 L114,-56 Q0,-88 -114,-56 Z" fill="#e39a1f" />
+        {[-80, -48, -16, 16, 48, 80].map((x) => <path key={x} d={`M${x},${-26 - (1 - (x / 118) ** 2) * 28} v-28`} strokeWidth={5} stroke="#b8741a" />)}
+        <circle cx={0} cy={-128} r={20} fill="#fff4dc" />
+      </g>
+    );
+  }
+  return (
+    <g>
+      <path d={back ? BACK_HAIR : hairPath(style)} fill={HAIR} stroke={line} strokeWidth={9} strokeLinejoin="round" />
+      {!back && <path d="M-58,-84 Q-24,-102 14,-98" stroke={HAIR_LIT} strokeWidth={9} fill="none" strokeLinecap="round" />}
+      {/* the cowlick he keeps from the old quiff */}
+      {style !== "spiky" && <path d="M8,-104 q6,-34 36,-30 q-14,8 -16,32" fill={HAIR} stroke={line} strokeWidth={7} strokeLinejoin="round" />}
+    </g>
+  );
+};
+
+const BandAid: React.FC<{ line: string; at: OofyDesign["bandAid"] }> = ({ line, at }) => (
+  <g transform={at === "cheek" ? "translate(70 14) rotate(-24) scale(0.62)" : "translate(58 -58) rotate(-34)"}>
+    <rect x={-38} y={-13} width={76} height={26} rx={12} fill="#f2c29b" stroke={line} strokeWidth={5} />
+    <rect x={-13} y={-13} width={26} height={26} fill="#dca07a" stroke={line} strokeWidth={4} />
+    {[-28, -21, 21, 28].map((x) => <circle key={x} cx={x} cy={0} r={2.2} fill="#b98163" />)}
+  </g>
+);
+
 /** the whole head, in head space: skin, blush, face, quiff, band-aid */
-export const OofyHead: React.FC<{ face: FaceKind; look?: Pt; tint?: OofyTint; bandAid?: boolean; faceOffset?: Pt; id?: string }> = ({
-  face, look = [0, 0], tint = OOFY_TINT.normal, bandAid = true, faceOffset = [0, 0], id = "oofyHead",
+export const OofyHead: React.FC<{ face: FaceKind; look?: Pt; tint?: OofyTint; bandAid?: boolean; faceOffset?: Pt; id?: string; design?: OofyDesign }> = ({
+  face, look = [0, 0], tint = OOFY_TINT.normal, bandAid = true, faceOffset = [0, 0], id = "oofyHead", design,
 }) => {
   const drawn = useDrawn(); // hand-drawn: flat skin, no shine
+  const ctx = React.useContext(DesignContext);
+  const d = design ?? ctx;
+  const back = face === "back";
   return (
   <g>
     <defs>
@@ -185,25 +279,39 @@ export const OofyHead: React.FC<{ face: FaceKind; look?: Pt; tint?: OofyTint; ba
         <stop offset="100%" stopColor={shade(tint.skin, -0.08)} />
       </radialGradient>
     </defs>
-    {/* quiff: stepped pixel blocks leaning right, rooted under the outline */}
-    {[[-46, -104, 30, 34], [-20, -124, 30, 50], [6, -138, 30, 58], [32, -118, 24, 36]].map(([x, y, w, h], i) => (
-      <g key={i}>
-        <rect x={x} y={y} width={w} height={h} fill={HAIR} stroke={tint.line} strokeWidth={7} strokeLinejoin="round" />
-        <rect x={x + 5} y={y + 5} width={w * 0.35} height={w * 0.35} fill={HAIR_LIT} />
+    {d.hair === "tuft" && (
+      /* quiff: stepped pixel blocks leaning right, rooted under the outline */
+      [[-46, -104, 30, 34], [-20, -124, 30, 50], [6, -138, 30, 58], [32, -118, 24, 36]].map(([x, y, w, h], i) => (
+        <g key={i}>
+          <rect x={x} y={y} width={w} height={h} fill={HAIR} stroke={tint.line} strokeWidth={7} strokeLinejoin="round" />
+          <rect x={x + 5} y={y + 5} width={w * 0.35} height={w * 0.35} fill={HAIR_LIT} />
+        </g>
+      ))
+    )}
+    {d.ears && [-1, 1].map((sd) => (
+      <g key={sd}>
+        <ellipse cx={sd * 100} cy={10} rx={19} ry={25} fill={tint.skin} stroke={tint.line} strokeWidth={8} />
+        <path d={`M${sd * 104},0 q${sd * 8},10 0,22`} stroke={tint.line} strokeWidth={5} fill="none" strokeLinecap="round" />
       </g>
     ))}
     <ellipse rx={HEAD_RX} ry={HEAD_RY} fill={drawn ? tint.skin : `url(#${id}-skin)`} stroke={tint.line} strokeWidth={12} />
-    <ellipse cx={-56} cy={20} rx={17} ry={10} fill={BLUSH} opacity={0.65} />
-    <ellipse cx={56} cy={20} rx={17} ry={10} fill={BLUSH} opacity={0.65} />
-    <g transform={`translate(${faceOffset[0]} ${faceOffset[1]})`}>
-      <OofyFace kind={face} look={look} line={tint.line} skin={tint.skin} />
-    </g>
-    {bandAid && (
-      <g transform="translate(58 -58) rotate(-34)">
-        <rect x={-38} y={-13} width={76} height={26} rx={12} fill="#f2c29b" stroke={tint.line} strokeWidth={5} />
-        <rect x={-13} y={-13} width={26} height={26} fill="#dca07a" stroke={tint.line} strokeWidth={4} />
-        {[-28, -21, 21, 28].map((x) => <circle key={x} cx={x} cy={0} r={2.2} fill="#b98163" />)}
-      </g>
+    {back ? (
+      <Hair style={d.hair} line={tint.line} back />
+    ) : (
+      <>
+        <Hair style={d.hair} line={tint.line} />
+        {/* blush, features and a cheek band-aid all travel together when he looks somewhere */}
+        <g transform={`translate(${faceOffset[0]} ${faceOffset[1] + d.faceY})`}>
+          <ellipse cx={-56} cy={20} rx={17} ry={10} fill={BLUSH} opacity={0.65} />
+          <ellipse cx={56} cy={20} rx={17} ry={10} fill={BLUSH} opacity={0.65} />
+          <g transform={`scale(${d.face})`}>
+            <OofyFace kind={face} look={look} line={tint.line} skin={tint.skin} />
+            {d.nose && <path d="M-7,16 q7,9 14,0" stroke={tint.line} strokeWidth={6} fill="none" strokeLinecap="round" />}
+          </g>
+          {bandAid && d.bandAid === "cheek" && <BandAid line={tint.line} at="cheek" />}
+        </g>
+        {bandAid && d.bandAid === "forehead" && <BandAid line={tint.line} at="forehead" />}
+      </>
     )}
   </g>
   );
@@ -226,9 +334,18 @@ export const Oofy: React.FC<{
   faceOffset?: Pt;
   shadow?: boolean;
   bandAid?: boolean;
-}> = ({ x, y, scale = 1, pose: p, face, tint = OOFY_TINT.normal, look = [0, 0], tilt = 0, flip = false, armsOverHead = false, hands, faceOffset = [0, 0], shadow = true, bandAid = true }) => {
+  design?: OofyDesign;
+}> = ({ x, y, scale = 1, pose: p0, face, tint = OOFY_TINT.normal, look = [0, 0], tilt = 0, flip = false, armsOverHead = false, hands, faceOffset = [0, 0], shadow = true, bandAid = true, design }) => {
   const id = React.useId().replace(/:/g, "");
   const drawn = useDrawn();
+  const ctx = React.useContext(DesignContext);
+  const d = design ?? ctx;
+  // shorter legs: the leg joints pull up toward the hip, and the whole body drops so his feet stay on the ground
+  const legY = (l: Limb): Limb => [[l[0][0], 118 + (l[0][1] - 118) * d.legs], [l[1][0], 118 + (l[1][1] - 118) * d.legs]];
+  const p = { ...p0, legL: legY(p0.legL), legR: legY(p0.legR) };
+  const drop = oofyNeckDrop(d);
+  const SH = { L: [-46 * d.torso, 18] as Pt, R: [46 * d.torso, 18] as Pt };
+  const HP = { L: [-34 * d.torso, 118] as Pt, R: [34 * d.torso, 118] as Pt };
   const shoe = (foot: Pt) => (
     <g>
       <ellipse cx={foot[0] + 9} cy={foot[1] - 13} rx={31} ry={15} fill={tint.shoe} stroke={tint.line} strokeWidth={7} />
@@ -254,7 +371,7 @@ export const Oofy: React.FC<{
     </>
   );
   const torso = (
-    <g>
+    <g transform={`scale(${d.torso} 1)`}>
       <defs>
         <linearGradient id={`${id}-hood`} x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor={shade(tint.hoodie, 0.18)} />
@@ -275,15 +392,20 @@ export const Oofy: React.FC<{
   );
   const head = (
     <g transform={`translate(${p.head[0]} ${p.head[1]}) rotate(${tilt})`}>
-      <OofyHead face={face} look={look} tint={tint} bandAid={bandAid} faceOffset={faceOffset} id={`${id}h`} />
+      <OofyHead face={face} look={look} tint={tint} bandAid={bandAid} faceOffset={faceOffset} id={`${id}h`} design={d} />
     </g>
   );
   const feetY = Math.max(p.legL[1][1], p.legR[1][1]);
+  // the hood lying round his neck: joins the head to the body
+  const hood = d.hood && (
+    <path d="M-76,10 Q-84,-30 -40,-40 L40,-40 Q84,-30 76,10 Q0,34 -76,10 Z" fill={shade(tint.hoodie, -0.14)} stroke={tint.line} strokeWidth={10} strokeLinejoin="round" />
+  );
   return (
-    <g transform={`translate(${x} ${y}) scale(${flip ? -scale : scale} ${scale})`}>
+    <g transform={`translate(${x} ${y}) scale(${flip ? -scale : scale} ${scale}) translate(0 ${drop})`}>
       {shadow && <ellipse cx={(p.legL[1][0] + p.legR[1][0]) / 2} cy={feetY + 4} rx={92} ry={17} fill="#000000" opacity={0.18} />}
       {legs}
       {torso}
+      {hood}
       {armsOverHead ? <>{head}{arms}</> : <>{arms}{head}</>}
       {hands ? hands({ L: p.armL[1], R: p.armR[1] }) : null}
     </g>
@@ -342,6 +464,61 @@ export const OofySheet: React.FC = () => {
           <Oofy x={1180} y={1010 - 335 * 0.46} scale={0.46} pose={POSE.spread} face="hurt" tint={OOFY_TINT.hurt} shadow={false} />
         </g>
         <Label x={1000} y={1000} size={24}>and, eventually:</Label>
+      </svg>
+    </AbsoluteFill>
+  );
+};
+
+/* --------------------------- design variations --------------------------- */
+
+/** every entry in OOFY_DESIGNS side by side: two expressions and a full body each */
+export const OofyVariants: React.FC = () => {
+  loadMinecraftFonts();
+  const col = 1920 / OOFY_DESIGNS.length;
+  return (
+    <AbsoluteFill style={{ backgroundColor: "#f3efe8" }}>
+      <svg width={1920} height={1080} viewBox="0 0 1920 1080">
+        {OOFY_DESIGNS.map((d, i) => {
+          const cx = col * i + col / 2;
+          return (
+            <g key={d.key}>
+              {i % 2 === 0 && <rect x={col * i} y={0} width={col} height={1080} fill="#ebe5f7" />}
+              <Label x={cx} y={70} size={48}>{d.key}</Label>
+              <Label x={cx} y={112} size={24} fill="#6b6380">{d.name}</Label>
+              <g transform={`translate(${cx - 78} 262) scale(0.56)`}><OofyHead face="joy" design={d} id={`vj${i}`} /></g>
+              <g transform={`translate(${cx + 78} 262) scale(0.56)`}><OofyHead face="shocked" design={d} id={`vs${i}`} /></g>
+              <Oofy x={cx} y={610} scale={0.78} pose={POSE.stand} face="plain" design={d} />
+            </g>
+          );
+        })}
+      </svg>
+    </AbsoluteFill>
+  );
+};
+
+/** two designs at the sizes they play at: a close-up, a medium shot, and the tiny wide-shot figure */
+export const OofyShortlist: React.FC<{ keys?: string[] }> = ({ keys = ["D", "E"] }) => {
+  loadMinecraftFonts();
+  const ds = keys.map((k) => OOFY_DESIGNS.find((d) => d.key === k)!);
+  const faces: FaceKind[] = ["plain", "joy", "sly", "scream", "worried", "calm"];
+  return (
+    <AbsoluteFill style={{ backgroundColor: "#7db9f5" }}>
+      <svg width={1920} height={1080} viewBox="0 0 1920 1080">
+        {ds.map((d, r) => (
+          <g key={d.key} transform={`translate(0 ${r * 540})`}>
+            <rect width={1920} height={540} fill={r ? "#6aaaf0" : "#7db9f5"} />
+            <Label x={70} y={80} size={60} fill="#ffffff">{d.key}</Label>
+            {faces.map((f, i) => (
+              <g key={f} transform={`translate(${230 + i * 190} 150) scale(0.7)`}><OofyHead face={f} design={d} id={`sl${r}${i}`} /></g>
+            ))}
+            <Oofy x={1400} y={250} scale={0.62} pose={POSE.up} face="joy" design={d} shadow={false} />
+            <Oofy x={1640} y={250} scale={0.62} pose={walkPose(0.2, 60)} face="sly" design={d} shadow={false} tint={{ ...OOFY_TINT.normal, hoodie: "#2563eb" }} bandAid={false} />
+            {[0.28, 0.16, 0.09].map((sc, i) => (
+              <Oofy key={sc} x={260 + i * 260} y={420 - 200 * sc} scale={sc} pose={walkPose(0.3, 60)} face="plain" design={d} shadow={false} />
+            ))}
+            <Label x={500} y={520} size={20} fill="#ffffff">the sizes he plays at in the wide shots</Label>
+          </g>
+        ))}
       </svg>
     </AbsoluteFill>
   );

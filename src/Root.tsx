@@ -97,7 +97,8 @@ import { CharacterOptions } from "./minecraft/characters";
 import { PvpShort, PvpThumb, PVP_FRAMES } from "./minecraft-pvp/PvpShort";
 import { ChunkLoadShort, ChunkLoadThumb, CHUNKLOAD_FRAMES } from "./minecraft-chunkload/ChunkLoadShort";
 import { FallShort, FallThumb, FALL_FRAMES } from "./minecraft-fall/FallShort";
-import { OofySheet } from "./minecraft/oofy";
+import { OofySheet, OofyShortlist, OofyVariants } from "./minecraft/oofy";
+import { OofyStyles } from "./minecraft/oofyStyles";
 import { SneakCompare, SneakShort, SneakThumb, SNEAK_FRAMES } from "./minecraft-sneak/SneakShort";
 import { BridgeShort, BridgeThumb, BRIDGE_FRAMES } from "./minecraft-bridge/BridgeShort";
 import { CreeperShort, CreeperThumb, CREEPER_FRAMES } from "./minecraft-creeper/CreeperShort";
@@ -213,6 +214,9 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="FallShort" component={FallShort} durationInFrames={FALL_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Fall-Thumbnail" component={FallThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Oofy-Sheet" component={OofySheet} durationInFrames={1} fps={30} width={1920} height={1080} />
+      <Composition id="Oofy-Variants" component={OofyVariants} durationInFrames={1} fps={30} width={1920} height={1080} />
+      <Composition id="Oofy-Shortlist" component={OofyShortlist} durationInFrames={1} fps={30} width={1920} height={1080} />
+      <Composition id="Oofy-Styles" component={OofyStyles} durationInFrames={1} fps={30} width={1920} height={1080} />
       <Composition id="SneakShort" component={SneakShort} durationInFrames={SNEAK_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Sneak-Thumbnail" component={SneakThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Sneak-Compare" component={SneakCompare} durationInFrames={SNEAK_FRAMES} fps={30} width={1080} height={1040} defaultProps={{ audio: null }} />
