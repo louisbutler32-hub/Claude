@@ -1,0 +1,27 @@
+{
+  "fps": 30,
+  "frames": 536,
+  "_note": "Every number is a frame. Shared by PovShort.tsx and scripts/build-pov-audio.py. Audio: Also sprach Zarathustra (Dudamel, Berliner Philharmoniker). Part A plays the track from 33.0 s, so its six timpani hits (36.36 37.08 37.74 38.48 38.88 39.30 s) land on the pickaxe strikes at frames 101 122 142 164 176 189 and the full-orchestra hit (39.98 s) lands on frame 209, where the last block breaks. Part B (from frame 390) plays from 56.06 s, so its steps (57.54 58.14 58.56 59.02 s) are the creeper's footsteps at frames 434 452 465 479 and the hit at 59.72 s is frame 500, where the picture cuts to black.",
+  "audio": { "aFrom": 33.0, "bAt": 390, "bFrom": 56.06 },
+  "blocks": [
+    { "layer": "stone", "strikes": [20, 44], "break": 44 },
+    { "layer": "stone", "strikes": [66, 84], "break": 84 },
+    { "layer": "dirt", "strikes": [101, 122], "break": 122 },
+    { "layer": "dirt", "strikes": [142, 164], "break": 164 },
+    { "layer": "dirt", "strikes": [176, 189, 209], "break": 209 }
+  ],
+  "riseLen": 8,
+  "leak": 190,
+  "final": 209,
+  "holeRise": [236, 290],
+  "meadow": 290,
+  "lookDown": [296, 330],
+  "lookAround": [330, 362],
+  "lieDown": [362, 392],
+  "creeper": [392, 479],
+  "steps": [434, 452, 465, 479],
+  "hiss": [479, 500],
+  "cut": 500,
+  "birds": [222, 250, 304, 326, 352, 378],
+  "butterfly": 372
+}

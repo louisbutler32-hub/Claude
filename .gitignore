@@ -39,3 +39,7 @@ __pycache__/
 # are derived and a few hundred MB — rebuild with scripts/build-geo-basemap.py
 .geo
 public/assets/geo/tiles
+
+# the owner's own Minecraft art for the POV Short: not ours to redistribute
+public/images/pov-src/
+public/images/pov/
