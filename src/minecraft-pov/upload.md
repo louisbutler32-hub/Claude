@@ -68,19 +68,19 @@ the creeper waiting right at the surface 💀 how many times has that happened t
 
 | file | music | copyright |
 |---|---|---|
-| `pov-reach-grass.mp4` | Also sprach Zarathustra (Dudamel / Berliner Philharmoniker), baked in | **will likely be claimed by Content ID** |
+| `pov-reach-grass.mp4` | Also sprach Zarathustra (Dudamel / Berliner Philharmoniker), baked in | **will likely be claimed by Content ID** (the music; the sound effects are the owner's) |
 | `pov-reach-grass-no-music.mp4` | none — add a song in YouTube's Shorts sound picker | licensed through YouTube |
 
 Through the picker: choose "Also sprach Zarathustra" and start it at the point
 the timpani begin to build (about **0:33** in the Dudamel recording; other
 recordings differ, so scrub to the first drum hits). The video has the pickaxe
-strikes at 0:03.4, 0:04.1, 0:07 and the last block breaking at **0:07.0** —
+strikes building to the last block breaking at **0:07.0** —
 that is where the big orchestral hit should land.
 
 ## Upload settings
 
 Category **Gaming** (game: Minecraft), language English, uploaded as a Short
-(17.9 s, 1080×1920). Audience **not made for kids**.
+(14.7 s, 1080×1920). Audience **not made for kids**.
 
 Thumbnail: `thumbnail-pov-reach-grass.jpg` (`npm run pov:thumb`) — the creeper
 filling the lens.
@@ -96,15 +96,20 @@ filling the lens.
 - **The music lands on the picture.** Zarathustra's six timpani hits land on the
   last strikes; its full-orchestra hit lands on the frame the last block breaks,
   and the sky, sunlight and dirt pour onto the lens.
-- **The meadow.** Up out of the hole: a look at the ground, a look round (sky,
-  cow, birds), and he lies back in the grass.
-- **The creeper.** It walks up from the horizon on the music's second build,
-  its footfalls on the steps. It looms over the lens and starts to swell; the
-  picture cuts to black on the music's second hit, **before** it explodes. No
-  death screen.
-- **Sound effects:** the game's own "hit" sound for every strike (from
-  `public/audio/src/mc-hit.mp3`), plus synthesised block breaks, steps, birds and
-  the hiss.
+- **The meadow.** Up out of the hole into the sky — birds, a butterfly —
+  and then the camera tilts down and **the creeper is already there**, standing
+  a few steps away, the whole time. No walk-in: it is a shock.
+- **The creeper.** It takes four slow steps closer on the music's steps, then
+  starts to swell and hiss; the picture cuts to black on the music's hit,
+  **before** it explodes. No death screen.
+- **Sound effects** are the owner's own files, each cut to the piece it needs and
+  brought to one level: stone-breaking (mining taps on the stone blocks, the
+  break), dirt sounds (dig hits and the break on the dirt blocks), the creeper
+  hiss (lifted, the file is quiet), and from the Top-20 compilation the grass
+  footsteps, the cave-ambience loop under the shaft and the XP ding when the sky
+  appears. Every hit is aligned to its frame by its loudest point (measured: all
+  within one frame). The creeper-explosion file is not used; the picture cuts to
+  black before it goes off.
 
 ## Rebuilding it
 
@@ -115,5 +120,6 @@ npm run pov:thumb
 ```
 
 Needs the owner's own pickaxe and creeper pictures in
-`public/images/pov-src/` and the track at `public/audio/src/zarathustra.mp3`
-(all ignored, never committed).
+`public/images/pov-src/`, the track at `public/audio/src/zarathustra.mp3` and
+the stone, dirt, creeper and sound-effect files in `public/audio/src/` (all
+ignored, never committed).

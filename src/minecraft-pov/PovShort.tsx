@@ -18,9 +18,10 @@ import B from "./beats.json";
  * outward as the camera rises through each hole). The strikes land on the
  * timpani of Also sprach Zarathustra and the last block breaks on its big
  * orchestral hit, dropping sunlight and dirt onto the lens. Up into the
- * meadow, a look round, and he lies back in the grass — and something green
- * walks up to the lens and swells. The picture cuts to black a frame before it
- * goes off, on the music's second hit.
+ * meadow with the sky in view — and when the camera tilts down there is a
+ * creeper standing right there, the whole time, a few steps away. It takes
+ * four slow steps closer on the music's steps, swells, and the picture cuts to
+ * black a beat before it goes off, on the music's hit.
  */
 
 export const POV_FRAMES = B.frames;
@@ -322,35 +323,38 @@ const Meadow: React.FC<{ f: number; horizon: number; yaw: number; blades: number
 };
 
 const meadowParams = (f: number) => {
-  const [d0, d1] = B.lookDown, [a0, a1] = B.lookAround, [l0, l1] = B.lieDown;
-  let horizon = 2050, blades = 140, yaw = 0;
-  if (f >= d0) horizon = lerp(2050, 1040, ease(f, d0, d1));
-  if (f >= a0) yaw = Math.sin(((f - a0) / (a1 - a0)) * Math.PI * 2) * 160 + (f - a0) * 1.4;
-  if (f >= l0) { horizon = lerp(1040, 1380, ease(f, l0, l1)); blades = lerp(140, 520, ease(f, l0, l1)); yaw = lerp(yaw, 0, ease(f, l0, l0 + 10)); }
-  // a first step or two out of the hole, then a breath
-  const bob = f >= d0 && f < a0 ? Math.sin((f - d0) * 0.35) * 10 : 0;
-  return { horizon: horizon + bob, blades, yaw };
+  const [t0, t1] = B.tilt;
+  // out of the hole he is looking at the sky; the camera tilts down and the creeper is standing there
+  const horizon = lerp(2250, 1040, ease(f, t0, t1));
+  const yaw = f >= t0 ? Math.sin((f - t0) * 0.09) * 10 : 0;
+  return { horizon, blades: 140, yaw };
 };
 
 /* ---------------------------- the creeper, from below ---------------------------- */
 
+const creeperDist = (f: number) => {
+  // standing a few steps off, then four slow steps closer, each on a footfall of the music
+  const D = [1.75, 1.55, 1.4, 1.25, 1.1];
+  let d = D[0];
+  B.steps.forEach((st, i) => { d = lerp(d, D[i + 1], ease(f, st, st + 6)); });
+  if (f >= B.hiss[0]) d = lerp(D[4], 0.98, ease(f, B.hiss[0], B.hiss[1]));
+  return d;
+};
+
 const CreeperView: React.FC<{ f: number; horizon: number }> = ({ f, horizon }) => {
-  const [c0, c1] = B.creeper;
-  const walk = clamp01((f - c0) / (c1 - c0));
-  const d = lerp(15, 1, walk);
+  const d = creeperDist(f);
   const sc = 0.85 / d;
-  const footY = horizon + 30 + (1890 - horizon - 30) / d;
+  const footY = horizon + 30 + 820 / d;
   const hissT = clamp01((f - B.hiss[0]) / (B.hiss[1] - B.hiss[0]));
   const swell = f >= B.hiss[0] ? hissT : 0;
   const flick = f >= B.hiss[0] && Math.floor(f / 3) % 2 === 0 ? swell : swell * 0.3;
   const w = CREEP_SIZE[0] * sc * (1 + swell * 0.16), h = CREEP_SIZE[1] * sc * (1 + swell * 0.16);
-  // each footfall: a little squash and a waddle
+  // each footfall: a little squash, then it settles
   let stepBump = 0;
-  for (const s of B.steps) { const t = f - s; if (t >= 0 && t < 8) stepBump = Math.max(stepBump, Math.sin((t / 8) * Math.PI)); }
-  const waddle = f < B.hiss[0] ? Math.sin(f * 0.42) * 2.5 : 0;
+  for (const st of B.steps) { const t = f - st; if (t >= 0 && t < 8) stepBump = Math.max(stepBump, Math.sin((t / 8) * Math.PI)); }
   const sx = f >= B.hiss[0] ? Math.sin(f * 4.3) * (3 + swell * 12) : 0;
   return (
-    <g transform={`translate(${CX + sx} ${footY + stepBump * 6 * sc}) rotate(${waddle})`}>
+    <g transform={`translate(${CX + sx} ${footY + stepBump * 10 * sc})`}>
       <filter id="creeperFlash" x="-10%" y="-10%" width="120%" height="120%">
         <feFlood floodColor="#ffffff" floodOpacity={flick * 0.9} result="w" />
         <feComposite in="w" in2="SourceAlpha" operator="in" result="wa" />
@@ -384,8 +388,8 @@ const Scene: React.FC<{ f: number }> = ({ f }) => {
   return (
     <g>
       <Meadow f={f} horizon={horizon} yaw={yaw} blades={blades} />
-      {f >= B.butterfly && f < B.creeper[0] + 30 && <Butterfly f={f} />}
-      {f >= B.creeper[0] && <CreeperView f={f} horizon={horizon} />}
+      {f >= B.butterfly && f < B.tilt[1] && <Butterfly f={f} />}
+      <CreeperView f={f} horizon={horizon} />
       {/* eyelids opening as he comes up into the light */}
       {f < B.meadow + 12 && <rect x={0} y={PANEL_TOP} width={W} height={(H - PANEL_TOP) * 0.5 * (1 - ease(f, B.meadow, B.meadow + 12))} fill="#fffbe0" />}
     </g>
@@ -394,7 +398,7 @@ const Scene: React.FC<{ f: number }> = ({ f }) => {
 
 const Butterfly: React.FC<{ f: number }> = ({ f }) => {
   const u = ease(f, B.butterfly, B.butterfly + 24);
-  const x = lerp(900, 640, u), y = lerp(780, 980, u) + Math.sin(f * 0.5) * 10;
+  const x = lerp(860, 640, u), y = lerp(PANEL_TOP + 300, PANEL_TOP + 520, u) + Math.sin(f * 0.5) * 10;
   const w = 0.35 + 0.65 * Math.abs(Math.sin(f * 0.7));
   return (
     <g transform={`translate(${x} ${y})`} stroke="#2a1b3d" strokeWidth={4} strokeLinejoin="round">
@@ -463,7 +467,7 @@ export const PovShort: React.FC<{ audio?: string | null; drawn?: boolean }> = ({
 export const PovThumb: React.FC = () => {
   loadMinecraftFonts();
   usePreload([PICK, CREEP]);
-  const f = B.hiss[0] - 2; // the creeper at full size over the lens, just before it swells
+  const f = B.hiss[0] - 2; // the creeper right there, a moment before it swells
   const { horizon, blades, yaw } = meadowParams(f);
   return (
     <AbsoluteFill style={{ backgroundColor: "#000" }}>

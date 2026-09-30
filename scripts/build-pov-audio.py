@@ -8,18 +8,26 @@ Music is Also sprach Zarathustra (Strauss; Dudamel, Berliner Philharmoniker),
 the owner's copy in public/audio/src/zarathustra.mp3 (never committed), in
 two pieces so its own drama lines up with the picture:
 
-  part A, from 33.0 s   six timpani hits (36.36 37.08 37.74 38.48 38.88 39.30 s)
-                        land on the last pickaxe strikes; the full-orchestra hit
-                        (39.98 s) lands on the frame the last block breaks
-  part B, from 56.06 s  the second build: its steps (57.54 58.14 58.56 59.02 s)
-                        are the creeper's footfalls and its hit (59.72 s) is the
-                        frame the picture cuts to black, just before it goes off
+  part A, from 33.0 s   six timpani hits land on the last pickaxe strikes; the
+                        full-orchestra hit lands on the frame the last block breaks
+  part B, from 56.06 s  starting at frame 320: its four steps are the creeper's
+                        steps closer and its last hit is the frame the picture
+                        cuts to black, just before it goes off
 
   --music none          every effect, no music, a few dB quieter
 
-Effects are the game's own "hit" sound (public/audio/src/mc-hit.mp3, used for every
-pickaxe strike) plus the synthesised rest (scripts/mc_audio_lib.py): blocks
-cracking and breaking, the light, birds and wind, the creeper's steps and hiss.
+Sound effects are the owner's own files in public/audio/src/ (never committed),
+each cut to the piece it needs and brought to one common level before it is placed:
+
+  stone-breaking.mp4    mining taps (stone blocks) and the block breaking
+  dirt-sounds.mp4       the dig hits (dirt blocks) and the dirt breaking
+  creeper-hiss.mp3      the hiss under the swell (the file is quiet; it is lifted)
+  mc-sfx-top20.mp4      grass footsteps, the cave ambience loop under the shaft,
+                        the XP ding when the sky appears
+  (creeper-explosion.mp3 is not used: the picture cuts to black before it goes off)
+
+A little synthesis (scripts/mc_audio_lib.py) glues those together: the light
+leaking, the rush of the camera rising, wind and birds in the meadow.
 
 Writes public/audio/pov-mix.mp3 or pov-sfx.mp3.
 """
@@ -30,7 +38,7 @@ import sys
 import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from mc_audio_lib import (SR, N, band, click, decay, decode, env, fade, footstep, place, shimmer, stereo, thump, tone, whoosh, write_mp3)
+from mc_audio_lib import SR, N, band, decode, env, fade, place, shimmer, stereo, thump, tone, whoosh, write_mp3
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "public", "audio", "src")
@@ -42,29 +50,28 @@ NO_MUSIC = "--music" in sys.argv and sys.argv[sys.argv.index("--music") + 1] == 
 OUT = os.path.join(ROOT, "public", "audio", "pov-sfx.mp3" if NO_MUSIC else "pov-mix.mp3")
 
 
+def clip(name, a, b, peak=0.9, hp=None):
+    """cut [a, b] seconds from one of the owner's files and bring its loudest point to `peak`"""
+    c = decode(FF, os.path.join(SRC, name), f"atrim={a}:{b},asetpts=PTS-STARTPTS" + (f",highpass=f={hp}" if hp else ""))
+    m = float(np.max(np.abs(c))) or 1.0
+    return (c * (peak / m)).astype(np.float32)
+
+
+def at_peak(mix, c, frame, gain):
+    """place a clip so its loudest point, not its first sample, lands on `frame`"""
+    lead = int(np.argmax(np.max(np.abs(c), axis=1)))
+    t = sec(frame) - lead / SR
+    if t < 0:
+        c, t = c[int(-t * SR):], 0.0
+    place(mix, c, t, gain)
+
+
 def plus(a, b):
     n = max(len(a), len(b))
     out = np.zeros((n, 2), dtype=np.float32)
     out[: len(a)] += a
     out[: len(b)] += b
     return out
-
-
-def crunch(dur=0.28, center=1100, seed=1):
-    n = N(dur)
-    t = np.arange(n) / SR
-    return stereo((band(n, center, 900, seed) * np.exp(-9 * t) + band(n, 3800, 2400, seed + 7) * np.exp(-60 * t) * 0.8) * env(n, 0.002, 0.08))
-
-
-def pop(freq=420):
-    n = N(0.12)
-    return plus(stereo(tone(np.linspace(freq * 1.8, freq, n), 0.12) * env(n, 0.002, 0.06)), thump(120, 0.1) * 0.5)
-
-
-def crack(dur=0.35, seed=4):
-    n = N(dur)
-    t = np.arange(n) / SR
-    return stereo(band(n, 2600, 2200, seed) * np.exp(-22 * t) * env(n, 0.001, 0.1))
 
 
 def chirp(f0, f1, dur):
@@ -83,70 +90,86 @@ def bird(seed):
 def wind(dur):
     n = N(dur)
     t = np.arange(n) / SR
-    return stereo(band(n, 500, 700, 31) * (0.5 + 0.5 * np.sin(2 * np.pi * 0.3 * t)) * 0.3)
+    return stereo(band(n, 500, 700, 41) * (0.5 + 0.5 * np.sin(2 * np.pi * 0.3 * t)) * 0.3)
 
 
-def thud(seed, size=1.0):
-    """a heavy footfall on grass"""
-    return plus(thump(62, 0.3) * 1.3, stereo(band(N(0.25), 600, 800, seed) * decay(N(0.25), 10) * 0.7)) * size
+def loop(c, dur, xf=0.25):
+    """repeat a clip to `dur` seconds with a crossfade at every join"""
+    out = np.zeros((int(dur * SR) + len(c), 2), dtype=np.float32)
+    step = len(c) - int(xf * SR)
+    f = fade(c, xf, xf)
+    for i in range(0, len(out) - len(c) + 1, step):
+        out[i:i + len(c)] += f
+    return out[: int(dur * SR)]
 
 
 if __name__ == "__main__":
-    need = ["mc-hit.mp3"] + ([] if NO_MUSIC else ["zarathustra.mp3"])
+    need = ["stone-breaking.mp4", "dirt-sounds.mp4", "creeper-hiss.mp3", "mc-sfx-top20.mp4"] + ([] if NO_MUSIC else ["zarathustra.mp3"])
     for name in need:
         if not os.path.exists(os.path.join(SRC, name)):
             sys.exit("missing public/audio/src/" + name)
     total = sec(B["frames"])
     mix = np.zeros((int(total * SR), 2), dtype=np.float32)
-    hit = decode(FF, os.path.join(SRC, "mc-hit.mp3"), "atrim=0.0:0.4,asetpts=PTS-STARTPTS")
 
-    # the music, in two pieces
+    # ---- the owner's clips, each at one level (peak 0.9), cut where the onsets are ----
+    stone_tap = clip("stone-breaking.mp4", 0.875, 1.06)      # a pickaxe tap on stone
+    stone_break = clip("stone-breaking.mp4", 1.37, 1.95)     # the block going
+    dirt_tap = clip("dirt-sounds.mp4", 2.20, 2.55)           # a dig hit in dirt
+    dirt_break = clip("dirt-sounds.mp4", 0.84, 1.3)          # the dirt block going
+    hiss = clip("creeper-hiss.mp3", 0.0, 1.9, peak=0.95)
+    step_a = clip("mc-sfx-top20.mp4", 20.76, 21.0)           # grass footsteps
+    step_b = clip("mc-sfx-top20.mp4", 22.32, 22.56)
+    xp = clip("mc-sfx-top20.mp4", 2.22, 2.7)
+    cave = clip("mc-sfx-top20.mp4", 24.38, 26.38, peak=0.9)
+
+    # ---- the music, in two pieces ----
     if not NO_MUSIC:
         z = decode(FF, os.path.join(SRC, "zarathustra.mp3"))
         a0 = int(B["audio"]["aFrom"] * SR)
         aDur = sec(B["audio"]["bAt"])
-        place(mix, fade(z[a0:a0 + int((aDur + 0.3) * SR)] * 1.7, 0.05, 0.3), 0)
+        place(mix, fade(z[a0:a0 + int((aDur + 0.4) * SR)] * 1.7, 0.05, 0.4), 0)
         b0 = int(B["audio"]["bFrom"] * SR)
-        bDur = total - aDur
-        place(mix, fade(z[b0:b0 + int(bDur * SR)] * 1.7, 0.25, 0.4), aDur - 0.05)
+        place(mix, fade(z[b0:b0 + int((total - aDur) * SR)] * 1.7, 0.3, 0.4), aDur - 0.0)
 
-    # the pickaxe: the game's own hit on every strike, louder as the timpani arrive
-    allStrikes = [s for b in B["blocks"] for s in b["strikes"]]
-    for i, s in enumerate(allStrikes):
-        g = 0.35 + 0.35 * i / (len(allStrikes) - 1)
-        place(mix, hit, sec(s), g)
-        place(mix, crack(0.25, seed=i), sec(s), 0.22)
-    # each block breaking, and the pop of the camera rising to the next one
-    for i, b in enumerate(B["blocks"][:-1]):
-        place(mix, crunch(0.28, 900 if b["layer"] == "stone" else 700, seed=i * 3 + 1), sec(b["break"] + 1), 0.38)
-        place(mix, pop(380 + i * 30), sec(b["break"] + 5), 0.4)
+    # ---- the shaft: the cave ambience, thinning as the light comes ----
+    place(mix, fade(loop(cave, sec(B["final"]) + 0.3), 0.3, 0.6), 0, 0.26)
 
-    # the last block: light leaking, then everything at once
-    place(mix, shimmer(), sec(B["leak"]), 0.22)
-    f = B["final"]
-    place(mix, crunch(0.6, 600, seed=77), sec(f + 1), 0.5)
-    place(mix, crack(0.6, seed=9), sec(f), 0.5)
-    place(mix, fade(whoosh(1.0, seed=3), 0.02, 0.5), sec(f), 0.3)
-    place(mix, shimmer(), sec(f + 3), 0.4)
+    # ---- the pickaxe: a tap on every strike, a break on each block's last ----
+    for bi, blk in enumerate(B["blocks"]):
+        stone = blk["layer"] == "stone"
+        for s in blk["strikes"]:
+            last = s == blk["break"]
+            final = last and bi == len(B["blocks"]) - 1
+            if last:
+                at_peak(mix, stone_break if stone else dirt_break, s, 0.9 if final else 0.6)
+            else:
+                at_peak(mix, stone_tap if stone else dirt_tap, s, 0.5 + 0.12 * bi)
+    # the camera rising through each hole
+    for blk in B["blocks"][:-1]:
+        place(mix, fade(whoosh(0.35, seed=blk["break"]), 0.02, 0.2), sec(blk["break"] + 3), 0.1)
+
+    # ---- the last block: light leaking, then the sky ----
+    place(mix, shimmer(), sec(B["leak"]), 0.2)
+    place(mix, fade(whoosh(1.0, seed=3), 0.02, 0.5), sec(B["final"]), 0.25)
+    place(mix, xp, sec(B["final"] + 4), 0.5)
+    place(mix, shimmer(), sec(B["final"] + 3), 0.25)
     for k, bf in enumerate(B["birds"]):
-        place(mix, bird(k), sec(bf), 0.22 if bf > B["meadow"] else 0.1)
+        place(mix, bird(k), sec(bf), 0.2 if bf > B["meadow"] else 0.09)
 
-    # up into the meadow
-    place(mix, fade(whoosh(1.2, seed=11), 0.3, 0.5), sec(B["holeRise"][0]), 0.3)
+    # ---- up into the meadow ----
+    place(mix, fade(whoosh(1.2, seed=11), 0.3, 0.5), sec(B["holeRise"][0]), 0.25)
     n = N(total - sec(B["meadow"]))
-    place(mix, stereo(band(n, 500, 700, 41) * 0.3 * (0.5 + 0.5 * np.sin(2 * np.pi * 0.3 * (np.arange(n) / SR)))), sec(B["meadow"]), 0.15)
-    place(mix, thud(3, 0.6), sec(B["lieDown"][0] + 8), 0.35)
-    place(mix, thud(5, 0.9), sec(B["lieDown"][1] - 2), 0.55)  # dropping back into the grass
+    place(mix, wind(total - sec(B["meadow"])), sec(B["meadow"]), 0.15)
+    place(mix, step_a, sec(B["meadow"] + 6), 0.35)
+    place(mix, step_b, sec(B["meadow"] + 14), 0.35)
 
-    # the creeper: a long way off, then closing, footfall by footfall, then the hiss
+    # ---- the creeper: four steps closer on the music, then the hiss ----
     for k, st in enumerate(B["steps"]):
-        place(mix, thud(20 + k, 1.0), sec(st), 0.22 + 0.14 * k)
-    c0, c1 = B["creeper"]
-    for k, fr in enumerate(range(c0 + 4, B["steps"][0], 11)):
-        place(mix, footstep(900 + k), sec(fr), 0.08 + 0.12 * (fr - c0) / (c1 - c0))
+        c = step_a if k % 2 == 0 else step_b
+        at_peak(mix, c, st, 0.55 + 0.15 * k)
+        place(mix, thump(70, 0.25) * 1.2, sec(st), 0.22 + 0.08 * k)
     hs, he = B["hiss"]
-    nh = N(sec(he - hs))
-    place(mix, stereo(band(nh, 6500, 5500, 5) * np.linspace(0.5, 1.3, nh) * env(nh, 0.03, 0.01)), sec(hs), 1.4)
+    place(mix, fade(hiss[: int((sec(he - hs) + 0.06) * SR)], 0.02, 0.02), sec(hs), 1.0)
 
     write_mp3(FF, mix, OUT, lufs=-18 if NO_MUSIC else -14)
     print("wrote", os.path.relpath(OUT, ROOT), f"({total:.1f}s)")
