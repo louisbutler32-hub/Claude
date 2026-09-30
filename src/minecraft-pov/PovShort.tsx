@@ -18,10 +18,10 @@ import B from "./beats.json";
  * outward as the camera rises through each hole). The strikes land on the
  * timpani of Also sprach Zarathustra and the last block breaks on its big
  * orchestral hit, dropping sunlight and dirt onto the lens. Up into the
- * meadow with the sky in view — and when the camera tilts down there is a
- * creeper standing right there, the whole time, a few steps away. It takes
- * four slow steps closer on the music's steps, swells, and the picture cuts to
- * black a beat before it goes off, on the music's hit.
+ * meadow with the sky in view — and then the camera snaps down and there is a
+ * creeper right in front of you, close, the whole time. It takes one step
+ * forward on the music, swells, and the picture cuts to black on the music's
+ * hit, with the blast heard over the black.
  */
 
 export const POV_FRAMES = B.frames;
@@ -325,7 +325,7 @@ const Meadow: React.FC<{ f: number; horizon: number; yaw: number; blades: number
 const meadowParams = (f: number) => {
   const [t0, t1] = B.tilt;
   // out of the hole he is looking at the sky; the camera tilts down and the creeper is standing there
-  const horizon = lerp(2250, 1040, ease(f, t0, t1));
+  const horizon = lerp(2250, 1040, ease(f, t0, t1)); // a fast whip down: no slow reveal
   const yaw = f >= t0 ? Math.sin((f - t0) * 0.09) * 10 : 0;
   return { horizon, blades: 140, yaw };
 };
@@ -333,11 +333,11 @@ const meadowParams = (f: number) => {
 /* ---------------------------- the creeper, from below ---------------------------- */
 
 const creeperDist = (f: number) => {
-  // standing a few steps off, then four slow steps closer, each on a footfall of the music
-  const D = [1.75, 1.55, 1.4, 1.25, 1.1];
-  let d = D[0];
-  B.steps.forEach((st, i) => { d = lerp(d, D[i + 1], ease(f, st, st + 6)); });
-  if (f >= B.hiss[0]) d = lerp(D[4], 0.98, ease(f, B.hiss[0], B.hiss[1]));
+  // right there: close from the first frame it is seen, one step forward on the music, then it swells
+  const near = 1.12, stepped = 0.94;
+  let d = near;
+  B.steps.forEach((st) => { d = lerp(near, stepped, ease(f, st, st + 5)); });
+  if (f >= B.hiss[0]) d = lerp(stepped, 0.86, ease(f, B.hiss[0] + 4, B.hiss[1]));
   return d;
 };
 

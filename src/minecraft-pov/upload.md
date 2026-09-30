@@ -80,7 +80,7 @@ that is where the big orchestral hit should land.
 ## Upload settings
 
 Category **Gaming** (game: Minecraft), language English, uploaded as a Short
-(14.7 s, 1080×1920). Audience **not made for kids**.
+(13.3 s, 1080×1920). Audience **not made for kids**.
 
 Thumbnail: `thumbnail-pov-reach-grass.jpg` (`npm run pov:thumb`) — the creeper
 filling the lens.
@@ -96,20 +96,21 @@ filling the lens.
 - **The music lands on the picture.** Zarathustra's six timpani hits land on the
   last strikes; its full-orchestra hit lands on the frame the last block breaks,
   and the sky, sunlight and dirt pour onto the lens.
-- **The meadow.** Up out of the hole into the sky — birds, a butterfly —
-  and then the camera tilts down and **the creeper is already there**, standing
-  a few steps away, the whole time. No walk-in: it is a shock.
-- **The creeper.** It takes four slow steps closer on the music's steps, then
-  starts to swell and hiss; the picture cuts to black on the music's hit,
-  **before** it explodes. No death screen.
+- **The meadow.** Up out of the hole into nothing but sky — birds, a butterfly —
+  for a couple of seconds. Then the camera whips down and **the creeper is
+  right there**, close, in front of you. It was there the whole time. There is
+  no walk-in and no slow reveal, so there is no warning.
+- **The creeper.** It takes one step forward on the music, swells and hisses
+  for under a second, and the picture cuts to black on the music's hit,
+  **before** it explodes. The blast is heard over the black. No death screen.
 - **Sound effects** are the owner's own files, each cut to the piece it needs and
   brought to one level: stone-breaking (mining taps on the stone blocks, the
   break), dirt sounds (dig hits and the break on the dirt blocks), the creeper
-  hiss (lifted, the file is quiet), and from the Top-20 compilation the grass
-  footsteps, the cave-ambience loop under the shaft and the XP ding when the sky
-  appears. Every hit is aligned to its frame by its loudest point (measured: all
-  within one frame). The creeper-explosion file is not used; the picture cuts to
-  black before it goes off.
+  hiss (lifted, the file is quiet), the creeper-explosion file (the blast, heard
+  over the black frame), and from the Top-20 compilation the grass footsteps, the
+  cave ambience (played **once**, at the very start, never again) and the XP ding
+  when the sky appears. Every hit is aligned to its frame by its loudest point (measured: all
+  within one frame).
 
 ## Rebuilding it
 

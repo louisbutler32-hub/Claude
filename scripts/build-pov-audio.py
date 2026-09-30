@@ -10,9 +10,10 @@ two pieces so its own drama lines up with the picture:
 
   part A, from 33.0 s   six timpani hits land on the last pickaxe strikes; the
                         full-orchestra hit lands on the frame the last block breaks
-  part B, from 56.06 s  starting at frame 320: its four steps are the creeper's
-                        steps closer and its last hit is the frame the picture
-                        cuts to black, just before it goes off
+  part B, from 56.06 s  starting at frame 278: its step at 58.56 s is the camera
+                        tilting down onto the creeper, its step at 59.02 s is the
+                        creeper's one step forward, and its last hit is the frame
+                        the picture cuts to black, with the blast over the black
 
   --music none          every effect, no music, a few dB quieter
 
@@ -22,9 +23,9 @@ each cut to the piece it needs and brought to one common level before it is plac
   stone-breaking.mp4    mining taps (stone blocks) and the block breaking
   dirt-sounds.mp4       the dig hits (dirt blocks) and the dirt breaking
   creeper-hiss.mp3      the hiss under the swell (the file is quiet; it is lifted)
-  mc-sfx-top20.mp4      grass footsteps, the cave ambience loop under the shaft,
-                        the XP ding when the sky appears
-  (creeper-explosion.mp3 is not used: the picture cuts to black before it goes off)
+  mc-sfx-top20.mp4      grass footsteps, the cave ambience (played once, at the start, and
+                        never again), the XP ding when the sky appears
+  creeper-explosion.mp3 the blast, heard over the black frame (never shown)
 
 A little synthesis (scripts/mc_audio_lib.py) glues those together: the light
 leaking, the rush of the camera rising, wind and birds in the meadow.
@@ -104,7 +105,7 @@ def loop(c, dur, xf=0.25):
 
 
 if __name__ == "__main__":
-    need = ["stone-breaking.mp4", "dirt-sounds.mp4", "creeper-hiss.mp3", "mc-sfx-top20.mp4"] + ([] if NO_MUSIC else ["zarathustra.mp3"])
+    need = ["stone-breaking.mp4", "dirt-sounds.mp4", "creeper-hiss.mp3", "creeper-explosion.mp3", "mc-sfx-top20.mp4"] + ([] if NO_MUSIC else ["zarathustra.mp3"])
     for name in need:
         if not os.path.exists(os.path.join(SRC, name)):
             sys.exit("missing public/audio/src/" + name)
@@ -121,6 +122,7 @@ if __name__ == "__main__":
     step_b = clip("mc-sfx-top20.mp4", 22.32, 22.56)
     xp = clip("mc-sfx-top20.mp4", 2.22, 2.7)
     cave = clip("mc-sfx-top20.mp4", 24.38, 26.38, peak=0.9)
+    boom = clip("creeper-explosion.mp3", 2.38, 4.0, peak=0.95)   # the blast itself, without the fuse before it
 
     # ---- the music, in two pieces ----
     if not NO_MUSIC:
@@ -131,8 +133,8 @@ if __name__ == "__main__":
         b0 = int(B["audio"]["bFrom"] * SR)
         place(mix, fade(z[b0:b0 + int((total - aDur) * SR)] * 1.7, 0.3, 0.4), aDur - 0.0)
 
-    # ---- the shaft: the cave ambience, thinning as the light comes ----
-    place(mix, fade(loop(cave, sec(B["final"]) + 0.3), 0.3, 0.6), 0, 0.26)
+    # ---- the cave ambience: once, at the very start, and never again ----
+    place(mix, fade(cave, 0.05, 0.5), 0, 0.4)
 
     # ---- the pickaxe: a tap on every strike, a break on each block's last ----
     for bi, blk in enumerate(B["blocks"]):
@@ -163,13 +165,15 @@ if __name__ == "__main__":
     place(mix, step_a, sec(B["meadow"] + 6), 0.35)
     place(mix, step_b, sec(B["meadow"] + 14), 0.35)
 
-    # ---- the creeper: four steps closer on the music, then the hiss ----
-    for k, st in enumerate(B["steps"]):
-        c = step_a if k % 2 == 0 else step_b
-        at_peak(mix, c, st, 0.55 + 0.15 * k)
-        place(mix, thump(70, 0.25) * 1.2, sec(st), 0.22 + 0.08 * k)
+    # ---- the creeper: the camera snaps down onto it, it takes one step, hisses, and goes ----
+    place(mix, thump(60, 0.3) * 1.2, sec(B["reveal"]), 0.4)
+    for st in B["steps"]:
+        at_peak(mix, step_a, st, 0.9)
+        place(mix, thump(70, 0.25) * 1.2, sec(st), 0.4)
     hs, he = B["hiss"]
     place(mix, fade(hiss[: int((sec(he - hs) + 0.06) * SR)], 0.02, 0.02), sec(hs), 1.0)
+    # the picture is black from here; the blast is heard over it
+    at_peak(mix, boom, B["cut"], 0.9)
 
     write_mp3(FF, mix, OUT, lufs=-18 if NO_MUSIC else -14)
     print("wrote", os.path.relpath(OUT, ROOT), f"({total:.1f}s)")

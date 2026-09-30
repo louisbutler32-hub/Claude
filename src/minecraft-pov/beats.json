@@ -1,10 +1,10 @@
 {
   "fps": 30,
-  "frames": 442,
-  "_note": "Every number is a frame. Shared by PovShort.tsx and scripts/build-pov-audio.py. Music: Also sprach Zarathustra (Dudamel, Berliner Philharmoniker). Part A plays from 33.0 s, so its six timpani hits (36.36 37.08 37.74 38.48 38.88 39.30 s) land on the pickaxe strikes at frames 101 122 142 164 176 189 and the full-orchestra hit (39.98 s) on frame 209, where the last block breaks. Part B starts at frame 320 (from 56.06 s in the track), so its four steps (57.54 58.14 58.56 59.02 s) land on frames 364 382 395 409, the creeper's forward steps, and its last hit at 59.72 s is frame 430, where the picture cuts to black. Sound effects are the owner's own stone, dirt, creeper and Minecraft sound files.",
+  "frames": 400,
+  "_note": "Every number is a frame. Shared by PovShort.tsx and scripts/build-pov-audio.py. Music: Also sprach Zarathustra (Dudamel, Berliner Philharmoniker). Part A plays from 33.0 s, so its six timpani hits (36.36 37.08 37.74 38.48 38.88 39.30 s) land on the pickaxe strikes at frames 101 122 142 164 176 189 and the full-orchestra hit (39.98 s) on frame 209, where the last block breaks. Part B starts at frame 278 (from 56.06 s in the track): its step at 58.56 s is frame 353, the moment the camera tilts down onto the creeper; its step at 59.02 s is frame 367, the creeper's one step forward; its last hit at 59.72 s is frame 388, where the picture cuts to black and the explosion is heard over it. Sound effects are the owner's own stone, dirt, creeper and Minecraft sound files.",
   "audio": {
     "aFrom": 33.0,
-    "bAt": 320,
+    "bAt": 278,
     "bFrom": 56.06
   },
   "blocks": [
@@ -59,21 +59,18 @@
   ],
   "meadow": 290,
   "steps": [
-    364,
-    382,
-    395,
-    409
+    367
   ],
   "hiss": [
-    409,
-    430
+    367,
+    388
   ],
-  "cut": 430,
+  "cut": 388,
   "tilt": [
-    304,
-    338
+    341,
+    353
   ],
-  "reveal": 336,
+  "reveal": 353,
   "birds": [
     222,
     250,
