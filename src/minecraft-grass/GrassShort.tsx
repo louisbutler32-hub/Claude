@@ -4,9 +4,10 @@ import { H, PANEL_TOP, W } from "../minecraft/beats";
 import { ease, FaceKind, lerpPose, limb, Pose, pose, POSE, Pt } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { HandDrawn } from "../minecraft/handdrawn";
-import { Cow } from "../minecraft/mobs";
+import { Cow, CreeperMob } from "../minecraft/mobs";
 import { Oofy, OofyTint, OOFY_TINT } from "../minecraft/oofy";
 import { Item, Puff } from "../minecraft/pixels";
+import { DeathScreen } from "../minecraft-fall/hud";
 import { Blocks2D, Palette } from "../minecraft-bridge/blocks";
 import B from "./beats.json";
 
@@ -285,7 +286,7 @@ const Outside: React.FC<{ f: number }> = ({ f }) => {
   const { headPop, look, climb, arms, flop } = B;
   const l = f - B.outside;
   // the camera starts tight, then pulls back and up while he lies in the grass
-  const pull = ease(f, flop + 4, B.frames - 4);
+  const pull = ease(f, flop + 4, B.pov - 2);
   const z = lerp(1, 0.72, pull);
   let rise = 0, p: Pose = POSE.stand, face: FaceKind = "meh", rot = 0, gaze: Pt = [0, 0], over = false, x = 540, y = GROUND;
   // he climbs out of the hole and steps off to the right, so he is never standing in it
@@ -371,6 +372,77 @@ const Outside: React.FC<{ f: number }> = ({ f }) => {
   );
 };
 
+/* ------------------- the ending: lying in the grass, POV ------------------- */
+
+const HORIZON = 1130;
+
+/** first person, flat on his back: sky, a horizon of grass, blades at the edges — and something walking up */
+const PovScene: React.FC<{ f: number }> = ({ f }) => {
+  const l = f - B.pov;
+  const [c0, c1] = B.creeper;
+  const walk = clamp01((f - c0) / (c1 - c0));
+  // the creeper's distance shrinks steadily, so it looms slowly and then all at once
+  const d = lerp(15, 1, walk);
+  const sc = 3.7 / d;
+  const feetY = HORIZON + 40 + (1870 - HORIZON - 40) / d;
+  const hissT = clamp01((f - B.hiss[0]) / (B.hiss[1] - B.hiss[0]));
+  const flicker = f >= B.hiss[0] && Math.floor(f / 3) % 2 === 0 ? hissT : hissT * 0.35;
+  const here = f < B.boom;
+  // the camera shakes harder as it swells
+  const sh = f >= B.hiss[0] && f < B.boom ? Math.sin(f * 4.2) * (2 + hissT * 9) : 0;
+  const eyelid = f < B.eyes[1] ? 1 - ease(f, B.eyes[0], B.eyes[1]) : 0; // eyes opening
+  return (
+    <g transform={`translate(${sh} ${sh * 0.5})`}>
+      <rect x={-40} y={PANEL_TOP - 40} width={W + 80} height={HORIZON - PANEL_TOP + 40} fill="#8fd2ff" />
+      <rect x={-40} y={HORIZON - 420} width={W + 80} height={420} fill="#b8e4ff" />
+      <rect x={770} y={PANEL_TOP + 90} width={150} height={150} fill="#fff6c8" />
+      {[[40, 560, 300], [520, 720, 360], [830, 480, 240]].map(([x, y, w], i) => (
+        <rect key={i} x={x + ((f * (0.5 + i * 0.2)) % 240) - 160} y={y} width={w} height={80} fill="#ffffff" opacity={0.95} />
+      ))}
+      {/* the far grass */}
+      <path d={`M-40,${HORIZON} V${HORIZON - 70} h260 v-50 h300 v40 h280 v-60 h260 V${HORIZON} Z`} fill="#6cbf55" stroke={LINE} strokeWidth={8} strokeLinejoin="round" />
+      <rect x={-40} y={HORIZON} width={W + 80} height={H - HORIZON + 40} fill="#5fb04a" />
+      {Array.from({ length: 16 }, (_, i) => <rect key={i} x={-20 + i * 70 + random(`pg${i}`) * 30} y={HORIZON + 40 + random(`pg${i}y`) * 500} width={10} height={24} fill="#4a9a3a" />)}
+      {f >= B.butterfly && f < B.butterfly + 34 && <Butterfly x={lerp(860, 600, ease(f, B.butterfly, B.butterfly + 30))} y={lerp(PANEL_TOP + 260, PANEL_TOP + 420, ease(f, B.butterfly, B.butterfly + 30)) + Math.sin(f * 0.5) * 10} f={f} />}
+      {here && f >= c0 && (
+        <CreeperMob x={540 + Math.sin(f * 0.11) * 4} y={feetY - 200 * sc} scale={sc} walk={f * 0.5 * (walk < 1 ? 1 : 0)} face="normal" swell={f >= B.hiss[0] ? flicker : 0} />
+      )}
+      {/* grass blades at the edges of the frame, so you know you are lying in it */}
+      {[[-30, 560, 1], [70, 420, 1.2], [180, 300, 1], [960, 480, 1.1], [1050, 360, 1.3], [880, 280, 1]].map(([x, h, k], i) => (
+        <path key={i} d={`M${x - 60},${H} L${x + Math.sin(f * 0.05 + i) * 10},${H - h} L${x + 60},${H} Z`} fill="#3f8a32" stroke={LINE} strokeWidth={8} strokeLinejoin="round" opacity={k > 0 ? 1 : 1} />
+      ))}
+      {/* eyelids opening at the start */}
+      {eyelid > 0 && (
+        <g fill="#15121b">
+          <rect x={-40} y={PANEL_TOP - 40} width={W + 80} height={(H - PANEL_TOP) * 0.5 * eyelid + 40} />
+          <rect x={-40} y={H - (H - PANEL_TOP) * 0.5 * eyelid} width={W + 80} height={(H - PANEL_TOP) * 0.5 * eyelid + 40} />
+        </g>
+      )}
+      {/* the aftermath: dust and smoke where the sky was */}
+      {f >= B.boom && Array.from({ length: 10 }, (_, i) => {
+        const t = f - B.boom;
+        return <Puff key={i} x={200 + i * 75 + Math.sin(i * 3) * 30} y={800 - t * (3 + (i % 3)) + (i % 4) * 90} r={50 + (i % 3) * 18 + t * 0.6} opacity={Math.max(0, 0.8 - t / 40)} />;
+      })}
+    </g>
+  );
+};
+
+/** the blast: a white flash, then a ring of light and flying dirt, fading into the red of the death screen */
+const Boom: React.FC<{ f: number }> = ({ f }) => {
+  const t = f - B.boom;
+  if (t < 0 || t > 16) return null;
+  return (
+    <g>
+      <rect x={0} y={PANEL_TOP} width={W} height={H - PANEL_TOP} fill="#ffffff" opacity={t < 3 ? 1 : Math.max(0, 1 - (t - 3) / 12)} />
+      <circle cx={540} cy={1100} r={60 + t * 70} fill="none" stroke="#ffe08a" strokeWidth={30 - t} opacity={0.9 - t / 18} />
+      {Array.from({ length: 12 }, (_, i) => {
+        const a = (i / 12) * Math.PI * 2;
+        return <rect key={i} x={540 + Math.cos(a) * t * 70 - 16} y={1100 + Math.sin(a) * t * 70 - 16 + t * t * 0.6} width={32} height={32} fill={i % 2 ? "#8b5a34" : "#5fb04a"} stroke={LINE} strokeWidth={4} opacity={1 - t / 17} />;
+      })}
+    </g>
+  );
+};
+
 /* -------------------------------- assembly -------------------------------- */
 
 const Whiteout: React.FC<{ f: number }> = ({ f }) => {
@@ -382,7 +454,7 @@ const Whiteout: React.FC<{ f: number }> = ({ f }) => {
 
 const Scene: React.FC<{ f: number }> = ({ f }) => (
   <g>
-    {f < B.outside ? <ShaftScene f={f} /> : <Outside f={f} />}
+    {f < B.outside ? <ShaftScene f={f} /> : f < B.pov ? <Outside f={f} /> : <PovScene f={f} />}
   </g>
 );
 
@@ -395,6 +467,7 @@ const CaptionBand: React.FC = () => (
 );
 
 const YReadout: React.FC<{ f: number }> = ({ f }) => {
+  if (f >= B.pov) return null;
   const k = f >= B.breakFinal ? ROWS : risen(f);
   const y = f >= B.breakFinal ? 64 : Math.round(lerp(-52, 63, clamp01(k / ROWS)));
   return (
@@ -420,6 +493,8 @@ export const GrassShort: React.FC<{ audio?: string | null; drawn?: boolean }> = 
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
         <Whiteout f={f} />
         <YReadout f={f} />
+        <Boom f={f} />
+        {f >= B.death[0] && <DeathScreen f={f} ev={B.ev} subtitle="Oofy was blown up by Creeper" />}
       </svg>
       <CaptionBand />
     </AbsoluteFill>
@@ -428,7 +503,7 @@ export const GrassShort: React.FC<{ audio?: string | null; drawn?: boolean }> = 
 
 export const GrassThumb: React.FC = () => {
   loadMinecraftFonts();
-  const f = B.leak + 10; // the last block leaking light, with the sky and the cow already showing above him
+  const f = B.hiss[0] + 6; // the creeper standing over the camera, mid-swell: the twist, with the POV caption
   return (
     <AbsoluteFill style={{ backgroundColor: "#8fd2ff" }}>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>

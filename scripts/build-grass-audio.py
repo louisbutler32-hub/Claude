@@ -32,7 +32,7 @@ import sys
 import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from mc_audio_lib import (SR, N, band, boom, click, decay, decode, env, fade, footstep, heartbeat, place, record_scratch, shimmer,
+from mc_audio_lib import (SR, N, band, boom, click, decay, decode, env, fade, footstep, heartbeat, hiss, place, record_scratch, shimmer,
                           stereo, thump, tone, whoosh, write_mp3)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -172,7 +172,7 @@ def melody(dur, beat=0.25):
 
 
 if __name__ == "__main__":
-    need = [SONG] if SONG else []
+    need = ["mc-damage.mp3"] + ([SONG] if SONG else [])
     for name in need:
         if not os.path.exists(os.path.join(SRC, name)):
             sys.exit("missing public/audio/src/" + name)
@@ -223,14 +223,36 @@ if __name__ == "__main__":
     for k in range(3):
         place(mix, chirp(2400, 3600, 0.04), sec(B["butterfly"] + 30 + k * 3), 0.05)
 
-    # the music: a choir on the breakthrough, then the melody over the grass
+    # the ending: he lies in the grass, eyes open, and something walks up
+    n = N(0.5)
+    place(mix, stereo(band(n, 700, 900, 6) * np.linspace(0.2, 1, n) * env(n, 0.3, 0.1)), sec(B["eyes"][0]), 0.2)
+    c0, c1 = B["creeper"]
+    for k, f in enumerate(range(c0 + 2, c1, 8)):
+        u = (f - c0) / (c1 - c0)
+        place(mix, footstep(900 + k), sec(f), 0.25 + 0.7 * u * u)
+    hs, he = B["hiss"]
+    nh = N(sec(he - hs) + 0.05)
+    place(mix, stereo(band(nh, 6500, 5500, 5) * np.linspace(0.5, 1.3, nh) * env(nh, 0.03, 0.02)), sec(hs), 1.3)
+    place(mix, boom(1.6, seed=4), sec(B["boom"]), 0.95)
+    place(mix, crunch(0.7, 500, seed=21), sec(B["boom"] + 1), 0.8)
+    place(mix, fade(whoosh(0.8, seed=15), 0.01, 0.4), sec(B["boom"]), 0.3)
+    nr = N(2.4)
+    tr = np.arange(nr) / SR
+    ring = np.sin(2 * np.pi * 3300 * tr) * np.exp(-1.6 * tr) * 0.18
+    place(mix, stereo(ring * env(nr, 0.01, 0.6)), sec(B["boom"] + 2), 1.0)
+    oof = decode(FF, os.path.join(SRC, "mc-damage.mp3"), "atrim=0.20:0.62,asetpts=PTS-STARTPTS")
+    place(mix, oof, sec(B["ev"]["youDied"]), 1.15)
+    place(mix, click(1600, 0.02), sec(B["ev"]["cursor"][1] + 1), 0.35)
+
+    # the music: a choir on the breakthrough, then the melody over the grass, cut dead when the creeper appears
     if SONG:
         song = decode(FF, os.path.join(SRC, SONG))
         i0 = int(AT * SR)
-        place(mix, fade(song[i0:i0 + int((total - sec(bf)) * SR)] * 0.6, 0.1, 0.8), sec(bf))
+        place(mix, fade(song[i0:i0 + int((sec(B["pov"] + 6) - sec(bf)) * SR)] * 0.6, 0.1, 0.12), sec(bf))
     elif not NO_MUSIC:
-        place(mix, fade(choir(total - sec(bf) - 0.2), 0.05, 1.2), sec(bf), 0.5)
-        place(mix, fade(melody(total - sec(B["outside"] + 14)), 0.4, 1.0), sec(B["outside"] + 14), 0.36)
+        musicEnd = sec(B["pov"] + 6)  # the creeper turns up and the music stops dead
+        place(mix, fade(choir(musicEnd - sec(bf)), 0.05, 0.15), sec(bf), 0.5)
+        place(mix, fade(melody(musicEnd - sec(B["outside"] + 14)), 0.4, 0.12), sec(B["outside"] + 14), 0.36)
 
     write_mp3(FF, mix, OUT, lufs=-18 if NO_MUSIC else -14)
     print("wrote", os.path.relpath(OUT, ROOT), f"({total:.1f}s)")

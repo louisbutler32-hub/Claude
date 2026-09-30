@@ -1,6 +1,6 @@
 {
   "fps": 30,
-  "frames": 360,
+  "frames": 486,
   "_note": "Every number is a frame. Shared by GrassShort.tsx and scripts/build-grass-audio.py so picture and sound cannot drift.",
   "strikes": [
     30,
@@ -57,7 +57,7 @@
     294
   ],
   "flop": 296,
-  "butterfly": 326,
+  "butterfly": 310,
   "birds": [
     236,
     258,
@@ -65,5 +65,34 @@
     308,
     336
   ],
-  "moo": 288
+  "moo": 288,
+  "pov": 344,
+  "eyes": [
+    344,
+    356
+  ],
+  "creeper": [
+    352,
+    398
+  ],
+  "hiss": [
+    398,
+    428
+  ],
+  "boom": 428,
+  "death": [
+    432,
+    486
+  ],
+  "ev": {
+    "youDied": 438,
+    "subtitle": 446,
+    "score": 452,
+    "buttons": 458,
+    "cursor": [
+      480,
+      481
+    ],
+    "click": 500
+  }
 }

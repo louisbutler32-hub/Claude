@@ -13,7 +13,7 @@ POV: You finally reach grass 🥹 #shorts
 **Alternates:**
 
 ```
-Mining up to finally see the sun ☀️ #minecraft #shorts
+Mining up to finally see the sun… then a creeper 💀 #minecraft #shorts
 ```
 ```
 After 50 blocks of stone… #minecraft #shorts
@@ -24,6 +24,7 @@ After 50 blocks of stone… #minecraft #shorts
 ```
 Y: -52 → Y: 64 ⛏️
 Stone. Dirt. More dirt. And then…… the sun ☀️🥹
+…and then a creeper 💥
 
 Every Minecraft player knows this feeling.
 
@@ -56,7 +57,8 @@ the first breath of fresh air after a long mining trip hits different 🥹 how d
 
 Songs that fit the breakthrough, through the sound picker on the no-music cut:
 **"Here Comes the Sun" (The Beatles)** — the obvious one; start it so "Here comes
-the sun" lands as the last block breaks, at **0:07.4**. Runner-up: **"Walking on
+the sun" lands as the last block breaks, at **0:07.4**, and cut it at **0:11.7**
+when the creeper shows up. Runner-up: **"Walking on
 Sunshine" (Katrina and the Waves)**. Or a choir sting like **"Hallelujah Chorus"**
 if you want the joke louder.
 
@@ -68,9 +70,10 @@ the last block breaks). That cut would be claimed.
 ## Upload settings
 
 Category **Gaming** (game: Minecraft), language English, uploaded as a Short
-(12 s, 1080×1920). Audience **not made for kids**.
+(16 s, 1080×1920). Audience **not made for kids**.
 
-Thumbnail: `thumbnail-finally-reach-grass.jpg` (`npm run grass:thumb`).
+Thumbnail: `thumbnail-finally-reach-grass.jpg` (`npm run grass:thumb`) — the
+creeper looming over the camera.
 
 Sound: `npm run grass:mix` (original) or `grass:sfx` (no music), then
 `npm run grass:audio` for the muxed cut.
@@ -89,3 +92,6 @@ is a cutaway of the ground:
   breaks through into a meadow.
 - The payoff: he hauls himself out, squints, takes it in, and lets himself
   fall flat on his back in the grass, with birds, a cow and a butterfly.
+- The twist: the camera cuts to first person, flat on his back. A creeper
+  walks up from the horizon, looms over the lens, hisses, and blows up into
+  the "You died!" screen. The music stops dead when it appears.

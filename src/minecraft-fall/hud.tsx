@@ -162,7 +162,7 @@ const Button: React.FC<{ y: number; label: string; hover: boolean; pressed: bool
   </g>
 );
 
-export const DeathScreen: React.FC<{ f: number; ev: { youDied: number; subtitle: number; score: number; buttons: number; cursor: number[]; click: number } }> = ({ f, ev }) => {
+export const DeathScreen: React.FC<{ f: number; ev: { youDied: number; subtitle: number; score: number; buttons: number; cursor: number[]; click: number }; subtitle?: string }> = ({ f, ev, subtitle = "You hit the ground too hard" }) => {
   const shown = (at: number) => Math.min(1, Math.max(0, (f - at) / 4));
   const pop = (at: number) => 0.7 + 0.3 * Math.min(1, Math.max(0, (f - at) / 6));
   const t = Math.min(1, Math.max(0, (f - ev.cursor[0]) / (ev.cursor[1] - ev.cursor[0])));
@@ -182,7 +182,7 @@ export const DeathScreen: React.FC<{ f: number; ev: { youDied: number; subtitle:
       <g opacity={shown(ev.youDied)} transform={`translate(540 800) scale(${pop(ev.youDied)}) translate(-540 -800)`}>
         <ShadowText x={540} y={800} size={112}>You died!</ShadowText>
       </g>
-      <g opacity={shown(ev.subtitle)}><ShadowText x={540} y={920} size={38}>You hit the ground too hard</ShadowText></g>
+      <g opacity={shown(ev.subtitle)}><ShadowText x={540} y={920} size={38}>{subtitle}</ShadowText></g>
       <g opacity={shown(ev.score)}>
         <ShadowText x={500} y={1010} size={42}>Score:</ShadowText>
         <ShadowText x={655} y={1010} size={42} fill="#ffff55">0</ShadowText>
