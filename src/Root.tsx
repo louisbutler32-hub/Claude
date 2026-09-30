@@ -103,6 +103,7 @@ import { SneakCompare, SneakShort, SneakThumb, SNEAK_FRAMES } from "./minecraft-
 import { BridgeShort, BridgeThumb, BRIDGE_FRAMES } from "./minecraft-bridge/BridgeShort";
 import { SleepShort, SleepThumb, SLEEP_FRAMES } from "./minecraft-sleep/SleepShort";
 import { LoseStuff2Short, LoseStuff2Thumb, LOSE2_FRAMES } from "./minecraft-lose2/LoseStuff2";
+import { GrassShort, GrassThumb, GRASS_FRAMES } from "./minecraft-grass/GrassShort";
 import { CreeperShort, CreeperThumb, CREEPER_FRAMES } from "./minecraft-creeper/CreeperShort";
 import { NetherShort, NetherThumb, NETHER_FRAMES } from "./minecraft-nether/NetherShort";
 import { BuildShort, BuildThumb, BUILD_FRAMES } from "./minecraft-build/BuildShort";
@@ -246,6 +247,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Sleep-Thumbnail" component={SleepThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="LoseStuff2Short" component={LoseStuff2Short} durationInFrames={LOSE2_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="LoseStuff2-Thumbnail" component={LoseStuff2Thumb} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="GrassShort" component={GrassShort} durationInFrames={GRASS_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Grass-Thumbnail" component={GrassThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition
         id="PvpShort"
         component={PvpShort}
