@@ -336,6 +336,6 @@ export const DiamondShort: React.FC<{ audio?: string | null; drawn?: boolean }> 
 
 export const DiamondThumb: React.FC = () => {
   usePreload([IMG.pick, IMG.ore, IMG.stone, ...IMG.breaks]);
-  const f = B.ores[1] + 2;
+  const f = B.ores[1] + 10;
   return <PovFrame drawn={false} caption={DIAMOND_CAPTION} panelId="dmPanelT" scene={<Scene f={f} />} hud={<Hud f={f} />} />;
 };
