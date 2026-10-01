@@ -136,3 +136,10 @@ professional one: flat saturated country fills with white outlines, bold
 names set on the country itself, yellow highlight rings with leader lines,
 big numbers on leaders, scale-comparison silhouettes, icon props, and 3D
 title words. `src/geo/annotate.tsx` holds those pieces.
+
+## AKKI TALKS shorts
+
+`src/akki/` — animated One Piece parody Shorts for https://www.youtube.com/@akkitalkss.
+**No "AKKI TALKS" header or watermark on screen**, in the video or the
+thumbnail — the owner asked for it removed from every short. The opening
+title card (white, first ~2s) stays.

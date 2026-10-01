@@ -2,7 +2,7 @@ import React from "react";
 import { AbsoluteFill, Audio, staticFile, useCurrentFrame } from "remotion";
 import { HandDrawn } from "../../minecraft/handdrawn";
 import { Hand, Part, pose, Pose, SKIN_TAN, smooth, tube, lerpPose } from "../bowling/characters";
-import { AkkiHeader, ease, H, INK, lerp, loadAkkiFonts, TitleText, W } from "../common";
+import { ease, H, INK, lerp, loadAkkiFonts, TitleText, W } from "../common";
 import { BLOOD, BLOOD_D, BOOT, BOOT_S, Clerk, HARA, HARA_S, Katana, LooseArm, PANTS, PANTS_S, SHIRT, SHIRT_S, Spray, ZHAIR, ZHAIR_S, ZoroPre, ZoroPreHead } from "./cast";
 import { BlueVoid, CeilingLow, CeilingUp, DarkVoid, FloorClose, Shop, Spotlight } from "./sets";
 import B from "./beats.json";
@@ -404,7 +404,7 @@ export const ZoroShort: React.FC<{ audio?: string | null }> = ({ audio = null })
       <HandDrawn hold={2} grain={0.4} boil={0.8}>
         <WorldAt />
       </HandDrawn>
-      {f < S.below[0] ? <TitleText text="ZORO VS CURSED SWORD" y={243} size={50} /> : <AkkiHeader y={157} />}
+      {f < S.below[0] && <TitleText text="ZORO VS CURSED SWORD" y={243} size={50} />}
     </AbsoluteFill>
   );
 };
@@ -422,7 +422,6 @@ export const ZoroThumb: React.FC = () => {
           <text key={s as string} x={540} y={y as number} textAnchor="middle" fontFamily="Poppins Black" fontSize={136} fill={c as string} stroke={INK} strokeWidth={26} paintOrder="stroke" strokeLinejoin="round">{s}</text>
         ))}
       </svg>
-      <AkkiHeader y={157} />
     </AbsoluteFill>
   );
 };

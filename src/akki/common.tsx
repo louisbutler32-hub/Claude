@@ -7,7 +7,8 @@ import { continueRender, delayRender, staticFile } from "remotion";
  *
  * House look, measured off the channel's own shorts: flat cel colour with one
  * hard shadow tone, thick near-black outlines (INK, ~6px at 1080 wide), 24fps,
- * and the gold "AKKI TALKS" header pinned near the top for the whole video.
+ * and a white title card for the opening seconds. No "AKKI TALKS" header or
+ * watermark on screen — the owner asked for it gone from every short.
  */
 
 export const W = 1080;
@@ -23,21 +24,6 @@ export const loadAkkiFonts = () => {
   const face = new FontFace("Poppins Black", `url(${staticFile("fonts/Poppins-Black.ttf")}) format("truetype")`, { weight: "400" });
   face.load().then((f) => { document.fonts.add(f); continueRender(handle); }).catch(() => continueRender(handle));
 };
-
-/** The channel header: gold, heavy, a dark drop under it. */
-export const AkkiHeader: React.FC<{ y?: number; opacity?: number }> = ({ y = 140, opacity = 1 }) => (
-  <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0, opacity }}>
-    <defs>
-      <linearGradient id="akkiGold" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stopColor="#ffe27a" />
-        <stop offset="0.55" stopColor="#f2b51c" />
-        <stop offset="1" stopColor="#c98a0c" />
-      </linearGradient>
-    </defs>
-    <text x={W / 2 + 4} y={y + 6} textAnchor="middle" fontFamily="Poppins Black" fontSize={60} fill="#3a2600" opacity={0.75}>AKKI TALKS</text>
-    <text x={W / 2} y={y} textAnchor="middle" fontFamily="Poppins Black" fontSize={60} fill="url(#akkiGold)" stroke="#5a3a00" strokeWidth={2}>AKKI TALKS</text>
-  </svg>
-);
 
 /** A white title in the house caption style (used for the opening title card). */
 export const TitleText: React.FC<{ text: string; y?: number; size?: number; color?: string }> = ({ text, y = 230, size = 54, color = "#ffffff" }) => (

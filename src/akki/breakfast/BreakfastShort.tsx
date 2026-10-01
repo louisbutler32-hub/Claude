@@ -4,7 +4,7 @@ import { HandDrawn } from "../../minecraft/handdrawn";
 import { Hand, Luffy, pose, Pose, Regular, RubberArm } from "../bowling/characters";
 import { RegularWrinkled } from "../bowling/closeups";
 import { BrushBlue } from "../bowling/sets";
-import { AkkiHeader, ease, H, INK, lerp, loadAkkiFonts, TitleText, W } from "../common";
+import { ease, H, INK, lerp, loadAkkiFonts, TitleText, W } from "../common";
 import { Admiral, AkainuHead, KizaruHead, KuzanHead } from "./cast";
 import { Beam, Boom, Frost, FxDefs, IceBlock, IceSpikes, ImpactFlash, Magma, Smoke, Sparkle } from "./fx";
 import { Canteen, HakiStage, Plate, Table, Toast, Toaster } from "./sets";
@@ -346,7 +346,7 @@ export const BreakfastShort: React.FC<{ audio?: string | null }> = ({ audio = nu
       <HandDrawn hold={2} grain={0.4} boil={0.7}>
         <WorldAt />
       </HandDrawn>
-      {f < 48 ? <TitleText text="ADMIRALS MAKE BREAKFAST" y={243} size={50} /> : <AkkiHeader y={157} />}
+      {f < 48 && <TitleText text="ADMIRALS MAKE BREAKFAST" y={243} size={50} />}
     </AbsoluteFill>
   );
 };
@@ -363,7 +363,6 @@ export const BreakfastThumb: React.FC = () => {
           <text key={s as string} x={540} y={y as number} textAnchor="middle" fontFamily="Poppins Black" fontSize={140} fill={c as string} stroke={INK} strokeWidth={26} paintOrder="stroke" strokeLinejoin="round">{s}</text>
         ))}
       </svg>
-      <AkkiHeader y={157} />
     </AbsoluteFill>
   );
 };
