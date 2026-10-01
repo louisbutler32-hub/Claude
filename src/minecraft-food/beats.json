@@ -1,0 +1,9 @@
+{
+  "fps": 30,
+  "frames": 376,
+  "_note": "Every number is a frame. Shared by FoodShort.tsx and scripts/build-food-audio.py. Four meals, each cooked by Minecraft's crafting rules on a kitchen counter and eaten: bread (3 wheat in a row), a golden carrot (a carrot ringed by 8 gold nuggets), a cake (9 ingredients) eaten in seven clicks, and, last, a raw chicken.",
+  "bread": { "place": [10, 15, 20], "craft": 30, "pick": [40, 52], "chomps": [56, 64, 72, 80] },
+  "carrot": { "place": [104, 108, 111, 114, 117, 120, 123, 126, 129], "craft": 138, "pick": [148, 158], "chomps": [162, 170, 178], "nightVision": 182 },
+  "cake": { "place": [196, 200, 204, 208, 212, 216, 220, 224, 228], "craft": 238, "chomps": [252, 258, 264, 270, 276, 282, 288], "burp": 298 },
+  "chicken": { "place": 306, "pick": [314, 322], "chomps": [326, 334], "sick": 336, "hunger": 342, "thumbs": 352 }
+}

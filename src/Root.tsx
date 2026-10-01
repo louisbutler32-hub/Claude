@@ -107,6 +107,7 @@ import { GrassShort, GrassThumb, GRASS_FRAMES } from "./minecraft-grass/GrassSho
 import { PovShort, PovThumb, POV_FRAMES } from "./minecraft-pov/PovShort";
 import { TennisShort, TennisThumb, TENNIS_FRAMES } from "./tennis/TennisShort";
 import { TableTennisShort, TableTennisThumb, TT_FRAMES } from "./tabletennis/TableTennisShort";
+import { FoodShort, FoodThumb, FOOD_FRAMES } from "./minecraft-food/FoodShort";
 import { CreeperShort, CreeperThumb, CREEPER_FRAMES } from "./minecraft-creeper/CreeperShort";
 import { NetherShort, NetherThumb, NETHER_FRAMES } from "./minecraft-nether/NetherShort";
 import { BuildShort, BuildThumb, BUILD_FRAMES } from "./minecraft-build/BuildShort";
@@ -258,6 +259,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Tennis-Thumbnail" component={TennisThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="TableTennisShort" component={TableTennisShort} durationInFrames={TT_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="TableTennis-Thumbnail" component={TableTennisThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="FoodShort" component={FoodShort} durationInFrames={FOOD_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Food-Thumbnail" component={FoodThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition
         id="PvpShort"
         component={PvpShort}
