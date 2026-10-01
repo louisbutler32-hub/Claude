@@ -1,44 +1,23 @@
 {
  "fps": 30,
- "frames": 345,
- "_note": "Every number is a frame. Shared by DiamondShort.tsx and scripts/build-diamond-audio.py. Music: Harder, Better, Faster, Stronger from 30.39 s (a kick), beat = 14.715 frames, so every strike lands on a beat; the drop at 36.27 s (beat 12, frame 177) is the diamonds appearing.",
- "musicFrom": 30.39,
- "tunnel": [
-  {
-   "strikes": [
-    15,
-    29,
-    44,
-    59
-   ],
-   "break": 59
-  },
-  {
-   "strikes": [
-    74,
-    88,
-    103,
-    118
-   ],
-   "break": 118
-  },
-  {
-   "strikes": [
-    132,
-    147,
-    162,
-    177
-   ],
-   "break": 177
-  }
+ "frames": 190,
+ "_note": "Every number is a frame. Shared by DiamondShort.tsx and scripts/build-diamond-audio.py. Music: Harder, Better, Faster, Stronger from 33.357 s (a kick, measured). Its kicks fall on frames 15 28 42 57 74 87(the drop at 36.256 s) 102 117 131 146, so: one hit breaks the stone on 28, three footsteps walk the two blocks of tunnel (42 57 74), the diamond wall is there on the drop (87), the first three diamonds break on kicks 102 117 131, and the pickaxe breaks on the fourth kick (146).",
+ "musicFrom": 33.357,
+ "hit": 28,
+ "walk": [
+  36,
+  87
  ],
- "reveal": 177,
+ "steps": [
+  42,
+  57,
+  74
+ ],
+ "reveal": 87,
  "ores": [
-  191,
-  206,
-  221,
-  235,
-  250
+  102,
+  117,
+  131
  ],
  "oreCells": [
   [
@@ -47,26 +26,17 @@
   ],
   [
    0,
-   0
+   1
   ],
   [
    2,
-   0
-  ],
-  [
-   0,
-   2
-  ],
-  [
-   2,
-   2
+   1
   ]
  ],
- "pickBreak": 280,
+ "pickBreak": 146,
  "failCell": [
   1,
   0
  ],
- "weak": 265,
- "frame": 345
+ "frame": 190
 }

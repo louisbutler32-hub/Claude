@@ -6,10 +6,12 @@ file the video reads.
 
 Music is Harder, Better, Faster, Stronger (the owner's copy,
 public/audio/src/harder-better-faster-stronger.mp3), started on a kick at
-30.39 s so every pickaxe strike falls on a beat; the track's drop at 36.27 s is
-the frame the last stone breaks and the wall of diamonds is there. When the
-pickaxe breaks on the sixth, the music is cut dead under a record scratch and
-a sad trombone, and the last seconds are cave ambience.
+33.357 s. Its kicks (measured) are the picture's beats: one hit breaks the stone
+(frame 28), a footstep on each beat of the two-block walk (42 57 74), the
+track's drop (36.256 s) is the diamond wall appearing (87), the first three
+diamonds break on the next three kicks (102 117 131), and the pickaxe breaks
+on the fourth (146), where the music is cut dead and a single meme hit (a
+vine boom) lands. Nothing after it but the room tone.
 
 Effects are the owner's files (stone-breaking, Top-20 grab bag), plus
 synthesis from scripts/mc_audio_lib.py.
@@ -25,7 +27,7 @@ import sys
 import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from mc_audio_lib import SR, N, band, decay, decode, env, fade, place, record_scratch, sad_trombone, shimmer, stereo, thump, tone, whoosh, write_mp3
+from mc_audio_lib import SR, N, band, decay, decode, env, fade, footstep, place, shimmer, stereo, thump, tone, whoosh, write_mp3
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "public", "audio", "src")
@@ -71,6 +73,16 @@ def riser(dur):
     return stereo(band(n, 3000, 3600, 11) * t ** 2.2 * env(n, 0.05, 0.02)) * 0.7
 
 
+def vine_boom(dur=1.2):
+    """the meme hit: a sub drop with a hard transient and a long tail"""
+    n = N(dur)
+    t = np.arange(n) / SR
+    f = 45 + 95 * np.exp(-t * 9)
+    body = tone(f, dur) * np.exp(-t * 3.2) + 0.5 * tone(f * 2.01, dur) * np.exp(-t * 5)
+    hit = band(n, 900, 700, 4) * np.exp(-t * 60) * 0.9
+    return stereo(np.tanh((body + hit) * 1.8) * env(n, 0.001, 0.3))
+
+
 if __name__ == "__main__":
     need = ["stone-breaking.mp4", "mc-sfx-top20.mp4"] + ([] if NO_MUSIC else ["harder-better-faster-stronger.mp3"])
     for name in need:
@@ -79,40 +91,31 @@ if __name__ == "__main__":
     total = sec(B["frame"])
     mix = np.zeros((int(total * SR), 2), dtype=np.float32)
 
-    stone_tap = clip("stone-breaking.mp4", 0.875, 1.06)
     stone_break = clip("stone-breaking.mp4", 1.37, 1.95)
     xp = clip("mc-sfx-top20.mp4", 2.22, 2.7)
-    cave = clip("mc-sfx-top20.mp4", 24.38, 26.38, peak=0.9)
 
-    music_end = B["pickBreak"]
     if not NO_MUSIC:
         s = decode(FF, os.path.join(SRC, "harder-better-faster-stronger.mp3"))
         a = int(B["musicFrom"] * SR)
-        dur = sec(music_end) + 0.02
+        dur = sec(B["pickBreak"]) + 0.02
         place(mix, fade(s[a:a + int(dur * SR)] * 1.4, 0.05, 0.03), 0)
 
-    # the tunnel: a tap on every beat, the block going on the last
-    for ti, t in enumerate(B["tunnel"]):
-        for st in t["strikes"]:
-            if st == t["break"]:
-                at_peak(mix, stone_break, st, 0.8 if ti < 2 else 1.0)
-            else:
-                at_peak(mix, stone_tap, st, 0.55)
-    # the build to the drop, and the drop
-    place(mix, fade(riser(sec(B["reveal"] - 120) if False else 2.2), 0.1, 0.01), sec(B["reveal"] - 66), 0.35)
+    # one hit breaks the stone
+    at_peak(mix, stone_break, B["hit"], 1.0)
+    # the two-block walk: a step on each beat
+    for i, st in enumerate(B["steps"]):
+        place(mix, footstep(20 + i) * 1.6, sec(st), 0.5)
+    # the drop: the wall of diamonds
     place(mix, thump(50, 0.5) * 2.0, sec(B["reveal"]), 0.5)
     place(mix, shimmer(), sec(B["reveal"] + 1), 0.4)
-    # each diamond: the ore breaks, the XP ding, the pickup pop
+    # each diamond: the ore breaks and the XP ding, both on the kick
     for i, o in enumerate(B["ores"]):
-        at_peak(mix, stone_break, o, 0.55)
+        at_peak(mix, stone_break, o, 0.6)
         at_peak(mix, xp, o, 0.7 + 0.05 * i)
         place(mix, stereo(tone(np.linspace(700, 1500, N(0.08)), 0.08) * decay(N(0.08), 30)), sec(o + 14), 0.3)
-    # the pickaxe: a tap, then it breaks
-    at_peak(mix, stone_tap, B["pickBreak"], 0.6)
+    # the fourth: the pickaxe breaks, and the meme hit
     place(mix, snap(), sec(B["pickBreak"]), 0.9)
-    place(mix, record_scratch(), sec(B["pickBreak"] + 1), 0.6)
-    place(mix, sad_trombone(), sec(B["pickBreak"] + 14), 0.4)
-    place(mix, fade(cave, 0.1, 0.6), sec(B["pickBreak"] + 8), 0.25)
+    place(mix, vine_boom(), sec(B["pickBreak"]), 1.0)
 
     write_mp3(FF, mix, OUT, lufs=-18 if NO_MUSIC else -14)
     print("wrote", os.path.relpath(OUT, ROOT), f"({total:.1f}s)")
