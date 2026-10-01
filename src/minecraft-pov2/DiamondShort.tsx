@@ -2,7 +2,7 @@ import React from "react";
 import { random, staticFile, useCurrentFrame } from "remotion";
 import { H, PANEL_TOP, W } from "../minecraft/beats";
 import { ease } from "../minecraft/figure";
-import { Pixels } from "../minecraft/pixels";
+import { Item, Pixels } from "../minecraft/pixels";
 import { Hearts } from "../minecraft-fall/hud";
 import { LINE, MONO, PovFrame, clamp01, lerp, usePreload } from "./kit";
 import B from "./beats-diamond.json";
@@ -57,9 +57,9 @@ const strikeState = (f: number) => {
 
 const shake = (f: number) => {
   let x = 0, y = 0;
-  for (const s of [...HITS, ...B.steps]) {
+  for (const s of [...HITS, ...B.steps, ...B.funny.bonks, ...B.funny.eat]) {
     const t = f - s;
-    const big = s === B.reveal || s === B.pickBreak ? 2.2 : B.steps.includes(s) ? 0.35 : 1;
+    const big = s === B.reveal || s === B.pickBreak ? 2.2 : (B.steps as number[]).includes(s) ? 0.35 : B.funny.eat.includes(s) ? 0.5 : 1;
     if (t >= 0 && t < 9) {
       x += Math.sin(t * 6.3) * 8 * big * (1 - t / 9);
       y += Math.cos(t * 5.1) * 6 * big * (1 - t / 9);
@@ -238,8 +238,7 @@ const Pickaxe: React.FC<{ f: number }> = ({ f }) => {
   else if (toNext < 3) k = 2;
   if (since >= 0 && since < 10) k = Math.max(k, 2 - ease(since, 0, 10) * 2);
   const tip = pickTarget(f);
-  const walking = f >= B.steps[0] - 6 && f < B.reveal - 14;
-  const sway = walking ? Math.sin((f - B.steps[0]) / B.beat * Math.PI) * 18 : 0;
+  const sway = 0;
   const idle = poseFor([800, 1300 + sway], 12, 2.1);
   const wind = poseFor([tip[0] + 80, tip[1] + 130], 24, 2.2);
   const hit = poseFor(tip, 0, PS);
@@ -289,10 +288,60 @@ const Scene: React.FC<{ f: number }> = ({ f }) => {
       {!wall && <rect x={0} y={PANEL_TOP} width={W} height={H - PANEL_TOP} fill="#ff9a30" opacity={0.05 + 0.03 * Math.sin(f * 0.9)} />}
       <Shards f={f} />
       <Pickaxe f={f} />
-      {f >= B.pickBreak && <BareArm f={f} />}
+      {f >= B.pickBreak && f < B.funny.scroll[1] && <BareArm f={f} />}
+      {f >= B.funny.scroll[1] && <HeldBread f={f} />}
     </g>
   );
 };
+
+const BREAD_PX = 28;
+
+/** the funny bit: the bread, bonked off the ore twice, then eaten in three bites */
+const HeldBread: React.FC<{ f: number }> = ({ f }) => {
+  const { bonks, eat, scroll } = B.funny;
+  const [fx, fy] = cellXY(B.fail.cell[0], B.fail.cell[1]);
+  const target: [number, number] = [fx + CELL / 2 + 20, fy + CELL / 2 + 40];
+  const rise = ease(f, scroll[1], scroll[1] + 8);
+  const idle: [number, number] = [790, 1330 + (1 - rise) * 340];
+  const wind: [number, number] = [target[0] + 120, target[1] + 160];
+  // each bonk: wind up, contact 3 frames before the beat, squash, recoil
+  let k = 0, since = 99;
+  for (const b of bonks) {
+    const toNext = b - f;
+    if (toNext <= 9 && toNext >= 3) k = Math.max(k, clamp01((9 - toNext) / 6));
+    else if (toNext > 0 && toNext < 3) k = 2;
+    if (f >= b) { since = Math.min(since, f - b); k = Math.max(k, 2 - ease(f - b, 0, 10) * 2); }
+  }
+  const mouth: [number, number] = [CX0, 1330];
+  const toMouth = ease(f, bonks[1] + 6, eat[0] - 4);
+  let x = k <= 1 ? lerp(idle[0], wind[0], k) : lerp(wind[0], target[0], k - 1);
+  let y = k <= 1 ? lerp(idle[1], wind[1], k) : lerp(wind[1], target[1], k - 1);
+  x = lerp(x, mouth[0], toMouth);
+  y = lerp(y, mouth[1], toMouth);
+  const bites = eat.filter((e) => f >= e).length;
+  const squash = bonks.some((b) => f >= b - 3 && f < b + 3) ? 0.7 : 1;
+  const eatBob = eat.some((e) => f >= e - 3 && f < e + 4) ? Math.sin((f % 4) * 1.6) * 8 : 0;
+  if (bites >= 3 && f > eat[2] + 6) return null;
+  const w = 12 * BREAD_PX;
+  const keep = 1 - bites / 3;
+  return (
+    <g transform={`translate(${x} ${y + eatBob}) rotate(${lerp(-18, 0, toMouth)}) scale(${lerp(1, 1.25, toMouth)} ${squash * lerp(1, 1.25, toMouth)})`}>
+      <defs><clipPath id="breadClip"><rect x={-w / 2} y={-200} width={w * keep} height={400} /></clipPath></defs>
+      <g clipPath="url(#breadClip)"><Item name="bread" x={0} y={0} px={BREAD_PX} /></g>
+      {/* crumbs on each bite and each bonk */}
+      {[...bonks, ...eat].map((t, ti) => {
+        const d = f - t;
+        if (d < 0 || d > 10) return null;
+        return Array.from({ length: 7 }, (_, i) => {
+          const a = random(`cr${ti}${i}`) * Math.PI * 2, v = 6 + random(`cv${ti}${i}`) * 10;
+          return <rect key={`${ti}${i}`} x={Math.cos(a) * v * d} y={Math.sin(a) * v * d + d * d * 1.2} width={14} height={14} fill={i % 2 ? "#b5773b" : "#5c3413"} stroke={LINE} strokeWidth={3} opacity={1 - d / 11} />;
+        });
+      })}
+    </g>
+  );
+};
+
+const CX0 = 540;
 
 const BareArm: React.FC<{ f: number }> = ({ f }) => {
   const t = f - B.pickBreak;
@@ -311,6 +360,8 @@ const BareArm: React.FC<{ f: number }> = ({ f }) => {
 const Hud: React.FC<{ f: number }> = ({ f }) => {
   const mined = B.ores.filter((o) => f >= BREAK_AT(o.hits) + 12).length;
   const broke = f >= B.pickBreak;
+  const sel = f >= B.funny.scroll[1] ? 2 : f >= B.funny.scroll[0] ? 1 : 0;
+  const showBread = f < B.funny.eat[2] + 6;
   const used = HITS.filter((s) => f >= s).length;
   const dur = Math.max(0.05, 1 - (used / (HITS.length + 1)) * 1.05);
   const [dx, dy] = slotCenter(1);
@@ -331,7 +382,8 @@ const Hud: React.FC<{ f: number }> = ({ f }) => {
           <rect x={px - 38} y={HB_Y + 84} width={76 * dur} height={9} fill={dur > 0.5 ? "#4cd04c" : dur > 0.25 ? "#e0c030" : "#e03030"} />
         </g>
       )}
-      <rect x={HB_X - 6} y={HB_Y - 6} width={SLOT + 12} height={SLOT + 12} fill="none" stroke="#ffffff" strokeWidth={10} />
+      {showBread && <Item name="bread" x={slotCenter(2)[0]} y={slotCenter(2)[1]} px={6} />}
+      <rect x={HB_X + sel * SLOT - 6} y={HB_Y - 6} width={SLOT + 12} height={SLOT + 12} fill="none" stroke="#ffffff" strokeWidth={10} />
       {mined > 0 && (
         <g>
           <Pixels rows={DIAMOND_ROWS} colors={DIAMOND_COL} px={8} x={dx} y={dy - 4} />

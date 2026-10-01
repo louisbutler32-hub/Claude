@@ -6,13 +6,14 @@ file the video reads.
 
 Music is Harder, Better, Faster, Stronger (the owner's copy,
 public/audio/src/harder-better-faster-stronger.mp3), started on a kick at
-29.456 s. Its kicks sit on a grid of 0.4858 s anchored on the drop at 36.256 s,
-which is the beat the picture's frames are built on: six stone blocks dug on
-beats 1-10 and 13-14, two footsteps (11, 12), the drop on beat 14 where the
-diamond wall appears, four diamonds of two hits each (15-22), and the pickaxe
-breaking on beat 24. The video is exactly 27 beats long, so the track loops on a
-kick. When the pickaxe breaks the music is muffled and ducked, then swells back
-to full by the loop point, so the loop has no seam.
+32.370 s. Its kicks sit on a grid of 0.4858 s anchored on the drop at 36.256 s,
+which is the beat the picture's frames are built on: four stone blocks dug on
+beats 1-8, the drop on beat 8 where the diamond wall appears, four diamonds of
+two hits each (9-16), the pickaxe breaking on beat 18, then the funny bit: the
+hotbar scrolls to the bread, two bonks on the ore (20, 21) and three bites
+(22-24). The video is exactly 27 beats long, so the track loops on a kick. When
+the pickaxe breaks the music is muffled and ducked, then swells back to full by
+the loop point, so the loop has no seam.
 
 Effects are the owner's files: stone-breaking (the taps and breaks), the Top-20
 grab bag (the XP ding), and Sword-Armor-Tool-Break (the pickaxe breaking), plus
@@ -29,7 +30,7 @@ import sys
 import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from mc_audio_lib import SR, N, band, decay, decode, env, fade, footstep, place, shimmer, stereo, thump, tone, whoosh, write_mp3
+from mc_audio_lib import SR, N, band, click, decay, decode, env, fade, footstep, place, shimmer, stereo, thump, tone, whoosh, write_mp3
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "public", "audio", "src")
@@ -53,6 +54,14 @@ def at_peak(mix, c, frame, gain):
     if t < 0:
         c, t = c[int(-t * SR):], 0.0
     place(mix, c, t, gain)
+
+
+def bonk(dur=0.18):
+    """bread against diamond ore: a soft, comic bonk"""
+    n = N(dur)
+    t = np.arange(n) / SR
+    f = 160 + 380 * np.exp(-t * 28)
+    return stereo((tone(f, dur) * decay(n, 18) + band(n, 900, 600, 13) * decay(n, 70) * 0.5) * env(n, 0.001, 0.04))
 
 
 def muffled_ducked(x, t0, t1, floor=0.3):
@@ -87,6 +96,9 @@ if __name__ == "__main__":
     stone_break = clip("stone-breaking.mp4", 1.37, 1.95)
     xp = clip("mc-sfx-top20.mp4", 2.22, 2.7)
     tool_break = clip("tool-break.mp3", 0.15, 0.92)
+    # the eating crunches, one per bite, cut where their onsets are in the Top-20 file
+    ons = [3.63, 3.80, 4.01, 4.22]
+    crunch = [clip("mc-sfx-top20.mp4", ons[i], ons[i + 1] - 0.01) for i in range(3)]
 
     if not NO_MUSIC:
         s = decode(FF, os.path.join(SRC, "harder-better-faster-stronger.mp3"))
@@ -114,6 +126,13 @@ if __name__ == "__main__":
     # the fifth: a tap, then the pickaxe breaks (the owner's tool-break sound)
     at_peak(mix, stone_tap, B["fail"]["hits"][0], 0.6)
     at_peak(mix, tool_break, B["pickBreak"], 1.0)
+    # the funny bit: two scroll ticks, two bonks that do nothing, three bites
+    for sc in B["funny"]["scroll"]:
+        place(mix, click(2800, 0.02) * 1.5, sec(sc), 0.6)
+    for b in B["funny"]["bonks"]:
+        at_peak(mix, bonk(), b, 0.9)
+    for i, e in enumerate(B["funny"]["eat"]):
+        at_peak(mix, crunch[i], e, 0.95)
 
     write_mp3(FF, mix, OUT, lufs=-18 if NO_MUSIC else -14)
     print("wrote", os.path.relpath(OUT, ROOT), f"({total:.2f}s)")

@@ -1,12 +1,13 @@
 # Upload copy — POV: You finally find diamonds
 
-First person, in a dark stone tunnel, 13 s, built to loop. You dig through six
-stone blocks on the beat, the drop of Harder, Better, Faster, Stronger is the
-wall of diamond ore, each diamond takes two hits, and the pickaxe breaks on the
-fifth (the sound is the Sword-Armor-Tool-Break file). The music is muffled when
-the pickaxe goes and swells back by the end; the last frames dissolve into the
-first, so the Short loops with no jump. Real Minecraft textures (stone, diamond
-ore, iron pickaxe, the block-breaking cracks), crisp pixels.
+First person, in a dark stone tunnel, 13 s, built to loop. Four stone blocks on the
+beat; the fourth breaks on the drop of Harder, Better, Faster, Stronger and there is
+a wall of diamond ore; four diamonds of two hits each; then the pickaxe breaks (the
+Sword-Armor-Tool-Break file). The funny bit: the hotbar scrolls to the bread, he
+bonks the ore with it twice (nothing happens), then eats it in three bites. The
+music is muffled when the pickaxe goes and swells back by the end, and the last
+frames dissolve into the first, so the Short loops with no jump. Real Minecraft
+textures (stone, diamond ore, iron pickaxe, the cracks), crisp pixels.
 
 ## Before you upload
 
@@ -25,7 +26,7 @@ POV: You finally find diamonds 💎😭 #shorts
 **Alternates:**
 
 ```
-When your pickaxe breaks on the LAST diamond 💀 #minecraft #shorts
+When your pickaxe breaks on the LAST diamond (so you hit it with bread) 💀 #minecraft #shorts
 ```
 ```
 POV: you found a diamond vein (but…) 💎 #shorts
@@ -34,7 +35,7 @@ POV: you found a diamond vein (but…) 💎 #shorts
 ## Description
 
 ```
-You found the vein. You mined it. Then your pickaxe said no. 💎⛏️
+You found the vein. You mined it. Then your pickaxe said no… so you tried bread. 🍞💎
 
 How many diamonds did you get? 👇
 

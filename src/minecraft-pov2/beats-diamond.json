@@ -2,8 +2,8 @@
  "fps": 30,
  "frames": 394,
  "loopBlend": 10,
- "_note": "Every number is a frame. Shared by DiamondShort.tsx and scripts/build-diamond-audio.py. Music: Harder, Better, Faster, Stronger from 29.456 s (a kick). The kicks sit on a grid of 0.4858 s (14.574 frames) anchored on the drop at 36.256 s, so beat j is frame round(14.574 j): the drop is beat 14 (frame 204), the video is exactly 27 beats long, and it loops on a kick. Six stone blocks, two hits each (a tap, then the break) except the last two; two footsteps of walking; the drop reveals the diamond wall; four diamonds of two hits each; the pickaxe breaks on the second hit of the fifth.",
- "musicFrom": 29.456,
+ "_note": "Every number is a frame. Shared by DiamondShort.tsx and scripts/build-diamond-audio.py. Music: Harder, Better, Faster, Stronger from 32.370 s (a kick). The kicks sit on a grid of 0.4858 s (14.574 frames) anchored on the drop at 36.256 s, so beat j is frame round(14.574 j): the drop is beat 8 (frame 117), the video is exactly 27 beats long, and it loops on a kick. Four stone blocks (a tap, then the break); the fourth breaks on the drop to show the diamond wall; four diamonds of two hits each; the pickaxe breaks on the second hit of the fifth (beat 18); then the funny bit: the hotbar scrolls to the bread, he bonks the ore with it twice (beats 20 21), then eats it in three bites (beats 22 23 24) while the music, muffled, swells back for the loop.",
+ "musicFrom": 32.37,
  "beat": 14.574,
  "tunnel": [
   {
@@ -33,27 +33,10 @@
     117
    ],
    "gap": 0
-  },
-  {
-   "hits": [
-    131,
-    146
-   ],
-   "gap": 0
-  },
-  {
-   "hits": [
-    189,
-    204
-   ],
-   "gap": 1
   }
  ],
- "steps": [
-  160,
-  175
- ],
- "reveal": 204,
+ "steps": [],
+ "reveal": 117,
  "ores": [
   {
    "cell": [
@@ -61,8 +44,8 @@
     1
    ],
    "hits": [
-    219,
-    233
+    131,
+    146
    ]
   },
   {
@@ -71,8 +54,8 @@
     1
    ],
    "hits": [
-    248,
-    262
+    160,
+    175
    ]
   },
   {
@@ -81,8 +64,8 @@
     1
    ],
    "hits": [
-    277,
-    291
+    189,
+    204
    ]
   },
   {
@@ -91,8 +74,8 @@
     2
    ],
    "hits": [
-    306,
-    321
+    219,
+    233
    ]
   }
  ],
@@ -102,9 +85,25 @@
    0
   ],
   "hits": [
-   335,
-   350
+   248,
+   262
   ]
  },
- "pickBreak": 350
+ "pickBreak": 262,
+ "funny": {
+  "scroll": [
+   272,
+   277
+  ],
+  "bonks": [
+   291,
+   306
+  ],
+  "eat": [
+   321,
+   335,
+   350
+  ],
+  "breadSlot": 2
+ }
 }
