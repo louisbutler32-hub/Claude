@@ -1,0 +1,72 @@
+{
+ "fps": 30,
+ "frames": 345,
+ "_note": "Every number is a frame. Shared by DiamondShort.tsx and scripts/build-diamond-audio.py. Music: Harder, Better, Faster, Stronger from 30.39 s (a kick), beat = 14.715 frames, so every strike lands on a beat; the drop at 36.27 s (beat 12, frame 177) is the diamonds appearing.",
+ "musicFrom": 30.39,
+ "tunnel": [
+  {
+   "strikes": [
+    15,
+    29,
+    44,
+    59
+   ],
+   "break": 59
+  },
+  {
+   "strikes": [
+    74,
+    88,
+    103,
+    118
+   ],
+   "break": 118
+  },
+  {
+   "strikes": [
+    132,
+    147,
+    162,
+    177
+   ],
+   "break": 177
+  }
+ ],
+ "reveal": 177,
+ "ores": [
+  191,
+  206,
+  221,
+  235,
+  250
+ ],
+ "oreCells": [
+  [
+   1,
+   1
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   0,
+   2
+  ],
+  [
+   2,
+   2
+  ]
+ ],
+ "pickBreak": 280,
+ "failCell": [
+  1,
+  0
+ ],
+ "weak": 265,
+ "frame": 345
+}

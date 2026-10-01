@@ -1,0 +1,18 @@
+{
+  "fps": 30,
+  "frames": 390,
+  "_note": "Every number is a frame. Shared by NightShort.tsx and scripts/build-night-audio.py. Music: Sneaky Snitch from 1.7 s, so its plucks (2.76 3.79 4.83 5.58 6.55 8.28 9.09 9.69 10.34 12.07 13.12 s) land on frames 32 63 94 116 145 197 222 240 259 311 343.",
+  "musicFrom": 1.7,
+  "plug1": 32,
+  "dusk": 63,
+  "night": 94,
+  "zombieA": 94,
+  "zombieB": 116,
+  "arrive": 145,
+  "hurt": [165, 180],
+  "plug": 197,
+  "thumps": [222, 240, 259],
+  "cracks": 311,
+  "dawn": 343,
+  "frame": 390
+}

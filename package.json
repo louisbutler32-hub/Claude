@@ -225,7 +225,19 @@
     "geo:states:vo": "python3 scripts/make-vo.py geo-states",
     "geo:states:thumb": "remotion still Geo-States-Thumb out/thumbnail-geo-states.jpg --frame=45 --image-format=jpeg --quality=92",
     "geo:states:music": "remotion render Geo-States out/geo-states.mp4 --props='{\"music\":\"audio/geo-states-music.mp3\"}'",
-    "geo:states:mute": "remotion render Geo-States out/geo-states-music-only.mp4 --props='{\"music\":\"audio/geo-states-music.mp3\",\"narration\":null}'"
+    "geo:states:mute": "remotion render Geo-States out/geo-states-music-only.mp4 --props='{\"music\":\"audio/geo-states-music.mp3\",\"narration\":null}'",
+    "pov:night:mix": "python3 scripts/build-night-audio.py",
+    "pov:night:sfx": "python3 scripts/build-night-audio.py --music none",
+    "pov:night:audio": "remotion render PovNightShort out/pov-night-silent.mp4 && python3 scripts/lift-reference-audio.py public/audio/night-mix.mp3 night-mix-final.wav out/pov-night-silent.mp4 out/pov-night.mp4",
+    "pov:night:thumb": "remotion still PovNight-Thumbnail out/thumbnail-pov-night.jpg --image-format=jpeg --quality=92",
+    "pov:diamond:mix": "python3 scripts/build-diamond-audio.py",
+    "pov:diamond:sfx": "python3 scripts/build-diamond-audio.py --music none",
+    "pov:diamond:audio": "remotion render PovDiamondShort out/pov-diamond-silent.mp4 && python3 scripts/lift-reference-audio.py public/audio/diamond-mix.mp3 diamond-mix-final.wav out/pov-diamond-silent.mp4 out/pov-diamond.mp4",
+    "pov:diamond:thumb": "remotion still PovDiamond-Thumbnail out/thumbnail-pov-diamond.jpg --image-format=jpeg --quality=92",
+    "pov:ender:mix": "python3 scripts/build-ender-audio.py",
+    "pov:ender:sfx": "python3 scripts/build-ender-audio.py --music none",
+    "pov:ender:audio": "remotion render PovEnderShort out/pov-ender-silent.mp4 && python3 scripts/lift-reference-audio.py public/audio/ender-mix.mp3 ender-mix-final.wav out/pov-ender-silent.mp4 out/pov-ender.mp4",
+    "pov:ender:thumb": "remotion still PovEnder-Thumbnail out/thumbnail-pov-ender.jpg --image-format=jpeg --quality=92"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",
