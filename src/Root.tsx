@@ -1,4 +1,7 @@
 import React from "react";
+import { ZoroShort, ZoroThumb, ZORO_FRAMES } from "./akki/zoro/ZoroShort";
+import { BowlingShort, BowlingThumb, BOWLING_FRAMES } from "./akki/bowling/BowlingShort";
+import { BreakfastShort, BreakfastThumb, BREAKFAST_FRAMES } from "./akki/breakfast/BreakfastShort";
 import { Composition } from "remotion";
 import { BountyVideo, TOTAL_DURATION_IN_FRAMES } from "./BountyVideo";
 import { WhatIfVideo } from "./whatif/WhatIfVideo";
@@ -242,6 +245,12 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Oofy-Variants" component={OofyVariants} durationInFrames={1} fps={30} width={1920} height={1080} />
       <Composition id="Oofy-Shortlist" component={OofyShortlist} durationInFrames={1} fps={30} width={1920} height={1080} />
       <Composition id="Oofy-Styles" component={OofyStyles} durationInFrames={1} fps={30} width={1920} height={1080} />
+      <Composition id="Akki-Zoro" component={ZoroShort} durationInFrames={ZORO_FRAMES} fps={24} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Akki-Bowling" component={BowlingShort} durationInFrames={BOWLING_FRAMES} fps={24} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Akki-Breakfast" component={BreakfastShort} durationInFrames={BREAKFAST_FRAMES} fps={24} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Akki-Breakfast-Thumbnail" component={BreakfastThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
+      <Composition id="Akki-Zoro-Thumbnail" component={ZoroThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
+      <Composition id="Akki-Bowling-Thumbnail" component={BowlingThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="SneakShort" component={SneakShort} durationInFrames={SNEAK_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Sneak-Thumbnail" component={SneakThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Sneak-Compare" component={SneakCompare} durationInFrames={SNEAK_FRAMES} fps={30} width={1080} height={1040} defaultProps={{ audio: null }} />
