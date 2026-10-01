@@ -1,42 +1,110 @@
 {
  "fps": 30,
- "frames": 190,
- "_note": "Every number is a frame. Shared by DiamondShort.tsx and scripts/build-diamond-audio.py. Music: Harder, Better, Faster, Stronger from 33.357 s (a kick, measured). Its kicks fall on frames 15 28 42 57 74 87(the drop at 36.256 s) 102 117 131 146, so: one hit breaks the stone on 28, three footsteps walk the two blocks of tunnel (42 57 74), the diamond wall is there on the drop (87), the first three diamonds break on kicks 102 117 131, and the pickaxe breaks on the fourth kick (146).",
- "musicFrom": 33.357,
- "hit": 28,
- "walk": [
-  36,
-  87
+ "frames": 394,
+ "loopBlend": 10,
+ "_note": "Every number is a frame. Shared by DiamondShort.tsx and scripts/build-diamond-audio.py. Music: Harder, Better, Faster, Stronger from 29.456 s (a kick). The kicks sit on a grid of 0.4858 s (14.574 frames) anchored on the drop at 36.256 s, so beat j is frame round(14.574 j): the drop is beat 14 (frame 204), the video is exactly 27 beats long, and it loops on a kick. Six stone blocks, two hits each (a tap, then the break) except the last two; two footsteps of walking; the drop reveals the diamond wall; four diamonds of two hits each; the pickaxe breaks on the second hit of the fifth.",
+ "musicFrom": 29.456,
+ "beat": 14.574,
+ "tunnel": [
+  {
+   "hits": [
+    15,
+    29
+   ],
+   "gap": 0
+  },
+  {
+   "hits": [
+    44,
+    58
+   ],
+   "gap": 0
+  },
+  {
+   "hits": [
+    73,
+    87
+   ],
+   "gap": 0
+  },
+  {
+   "hits": [
+    102,
+    117
+   ],
+   "gap": 0
+  },
+  {
+   "hits": [
+    131,
+    146
+   ],
+   "gap": 0
+  },
+  {
+   "hits": [
+    189,
+    204
+   ],
+   "gap": 1
+  }
  ],
  "steps": [
-  42,
-  57,
-  74
+  160,
+  175
  ],
- "reveal": 87,
+ "reveal": 204,
  "ores": [
-  102,
-  117,
-  131
+  {
+   "cell": [
+    1,
+    1
+   ],
+   "hits": [
+    219,
+    233
+   ]
+  },
+  {
+   "cell": [
+    0,
+    1
+   ],
+   "hits": [
+    248,
+    262
+   ]
+  },
+  {
+   "cell": [
+    2,
+    1
+   ],
+   "hits": [
+    277,
+    291
+   ]
+  },
+  {
+   "cell": [
+    1,
+    2
+   ],
+   "hits": [
+    306,
+    321
+   ]
+  }
  ],
- "oreCells": [
-  [
+ "fail": {
+  "cell": [
    1,
-   1
+   0
   ],
-  [
-   0,
-   1
-  ],
-  [
-   2,
-   1
+  "hits": [
+   335,
+   350
   ]
- ],
- "pickBreak": 146,
- "failCell": [
-  1,
-  0
- ],
- "frame": 190
+ },
+ "pickBreak": 350
 }

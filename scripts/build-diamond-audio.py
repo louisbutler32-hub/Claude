@@ -6,15 +6,17 @@ file the video reads.
 
 Music is Harder, Better, Faster, Stronger (the owner's copy,
 public/audio/src/harder-better-faster-stronger.mp3), started on a kick at
-33.357 s. Its kicks (measured) are the picture's beats: one hit breaks the stone
-(frame 28), a footstep on each beat of the two-block walk (42 57 74), the
-track's drop (36.256 s) is the diamond wall appearing (87), the first three
-diamonds break on the next three kicks (102 117 131), and the pickaxe breaks
-on the fourth (146), where the music is cut dead and a single meme hit (a
-vine boom) lands. Nothing after it but the room tone.
+29.456 s. Its kicks sit on a grid of 0.4858 s anchored on the drop at 36.256 s,
+which is the beat the picture's frames are built on: six stone blocks dug on
+beats 1-10 and 13-14, two footsteps (11, 12), the drop on beat 14 where the
+diamond wall appears, four diamonds of two hits each (15-22), and the pickaxe
+breaking on beat 24. The video is exactly 27 beats long, so the track loops on a
+kick. When the pickaxe breaks the music is muffled and ducked, then swells back
+to full by the loop point, so the loop has no seam.
 
-Effects are the owner's files (stone-breaking, Top-20 grab bag), plus
-synthesis from scripts/mc_audio_lib.py.
+Effects are the owner's files: stone-breaking (the taps and breaks), the Top-20
+grab bag (the XP ding), and Sword-Armor-Tool-Break (the pickaxe breaking), plus
+a little synthesis (scripts/mc_audio_lib.py) for the footsteps and the drop.
 
   --music none   effects only, a few dB quieter
 
@@ -53,69 +55,65 @@ def at_peak(mix, c, frame, gain):
     place(mix, c, t, gain)
 
 
-def snap(dur=0.35):
-    """the tool breaking: a crack, then a shower of little pieces"""
-    n = N(dur)
-    t = np.arange(n) / SR
-    crack = band(n, 2500, 2500, 31) * decay(n, 40)
-    bits = np.zeros(n)
-    rng = np.random.default_rng(2)
-    for _ in range(10):
-        i = int(rng.uniform(0.03, 0.3) * SR)
-        m = min(N(0.03), n - i)
-        bits[i:i + m] += rng.standard_normal(m) * decay(m, 120)
-    return stereo((crack + 0.5 * bits) * env(n, 0.0005, 0.05))
-
-
-def riser(dur):
-    n = N(dur)
-    t = np.linspace(0, 1, n)
-    return stereo(band(n, 3000, 3600, 11) * t ** 2.2 * env(n, 0.05, 0.02)) * 0.7
-
-
-def vine_boom(dur=1.2):
-    """the meme hit: a sub drop with a hard transient and a long tail"""
-    n = N(dur)
-    t = np.arange(n) / SR
-    f = 45 + 95 * np.exp(-t * 9)
-    body = tone(f, dur) * np.exp(-t * 3.2) + 0.5 * tone(f * 2.01, dur) * np.exp(-t * 5)
-    hit = band(n, 900, 700, 4) * np.exp(-t * 60) * 0.9
-    return stereo(np.tanh((body + hit) * 1.8) * env(n, 0.001, 0.3))
+def muffled_ducked(x, t0, t1, floor=0.3):
+    """from t0 the music goes dull and quiet, and returns to normal by t1 (the loop point)"""
+    n = len(x)
+    i0, i1 = int(t0 * SR), min(n, int(t1 * SR))
+    # one-pole low-pass at ~600 Hz
+    a = 1 - np.exp(-2 * np.pi * 600 / SR)
+    lp = np.zeros_like(x)
+    y = np.zeros(2)
+    for i in range(i0, n):
+        y = y + a * (x[i] - y)
+        lp[i] = y
+    w = np.zeros(n)
+    w[i0:i1] = np.linspace(1, 0, i1 - i0) ** 1.6
+    w[i0:i0 + int(0.02 * SR)] = np.linspace(0, 1, int(0.02 * SR))
+    g = 1 - (1 - floor) * w
+    out = x.copy()
+    out[i0:] = (lp[i0:] * w[i0:, None] + x[i0:] * (1 - w[i0:, None])) * g[i0:, None]
+    return out
 
 
 if __name__ == "__main__":
-    need = ["stone-breaking.mp4", "mc-sfx-top20.mp4"] + ([] if NO_MUSIC else ["harder-better-faster-stronger.mp3"])
+    need = ["stone-breaking.mp4", "mc-sfx-top20.mp4", "tool-break.mp3"] + ([] if NO_MUSIC else ["harder-better-faster-stronger.mp3"])
     for name in need:
         if not os.path.exists(os.path.join(SRC, name)):
             sys.exit("missing public/audio/src/" + name)
-    total = sec(B["frame"])
+    total = sec(B["frames"])
     mix = np.zeros((int(total * SR), 2), dtype=np.float32)
 
+    stone_tap = clip("stone-breaking.mp4", 0.875, 1.06)
     stone_break = clip("stone-breaking.mp4", 1.37, 1.95)
     xp = clip("mc-sfx-top20.mp4", 2.22, 2.7)
+    tool_break = clip("tool-break.mp3", 0.15, 0.92)
 
     if not NO_MUSIC:
         s = decode(FF, os.path.join(SRC, "harder-better-faster-stronger.mp3"))
         a = int(B["musicFrom"] * SR)
-        dur = sec(B["pickBreak"]) + 0.02
-        place(mix, fade(s[a:a + int(dur * SR)] * 1.4, 0.05, 0.03), 0)
+        seg = (s[a:a + len(mix)] * 1.4).astype(np.float32)
+        seg = muffled_ducked(seg, sec(B["pickBreak"]), total)
+        place(mix, fade(seg, 0.0, 0.0), 0)
 
-    # one hit breaks the stone
-    at_peak(mix, stone_break, B["hit"], 1.0)
-    # the two-block walk: a step on each beat
+    # the tunnel: a tap on each early hit, the block going on the last
+    for t in B["tunnel"]:
+        for h in t["hits"][:-1]:
+            at_peak(mix, stone_tap, h, 0.6)
+        at_peak(mix, stone_break, t["hits"][-1], 0.9)
     for i, st in enumerate(B["steps"]):
         place(mix, footstep(20 + i) * 1.6, sec(st), 0.5)
     # the drop: the wall of diamonds
     place(mix, thump(50, 0.5) * 2.0, sec(B["reveal"]), 0.5)
     place(mix, shimmer(), sec(B["reveal"] + 1), 0.4)
-    # each diamond: the ore breaks and the XP ding, both on the kick
+    # each diamond: a tap, then the ore breaks with the XP ding, both on the kick
     for i, o in enumerate(B["ores"]):
-        at_peak(mix, stone_break, o, 0.6)
-        at_peak(mix, xp, o, 0.7 + 0.05 * i)
-        place(mix, stereo(tone(np.linspace(700, 1500, N(0.08)), 0.08) * decay(N(0.08), 30)), sec(o + 14), 0.3)
-    # the fourth: the pickaxe breaks, and the meme hit
-    place(mix, snap(), sec(B["pickBreak"]), 0.9)
-    place(mix, vine_boom(), sec(B["pickBreak"]), 1.0)
+        at_peak(mix, stone_tap, o["hits"][0], 0.6)
+        at_peak(mix, stone_break, o["hits"][-1], 0.65)
+        at_peak(mix, xp, o["hits"][-1], 0.7 + 0.04 * i)
+        place(mix, stereo(tone(np.linspace(700, 1500, N(0.08)), 0.08) * decay(N(0.08), 30)), sec(o["hits"][-1] + 14), 0.3)
+    # the fifth: a tap, then the pickaxe breaks (the owner's tool-break sound)
+    at_peak(mix, stone_tap, B["fail"]["hits"][0], 0.6)
+    at_peak(mix, tool_break, B["pickBreak"], 1.0)
 
     write_mp3(FF, mix, OUT, lufs=-18 if NO_MUSIC else -14)
-    print("wrote", os.path.relpath(OUT, ROOT), f"({total:.1f}s)")
+    print("wrote", os.path.relpath(OUT, ROOT), f"({total:.2f}s)")

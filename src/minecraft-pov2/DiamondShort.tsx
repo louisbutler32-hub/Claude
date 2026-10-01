@@ -9,14 +9,15 @@ import B from "./beats-diamond.json";
 
 /**
  * "POV: You finally find diamonds" — first person, in a dark stone tunnel.
- * One hit breaks the stone; you walk the two blocks of tunnel on the beat;
- * on the drop of Harder, Better, Faster, Stronger there is a wall of diamond
- * ore. The first three break on three kicks, and the fourth breaks the
- * pickaxe. The textures are the real ones (stone, diamond ore, the iron
- * pickaxe, the block-breaking cracks), shown as crisp pixels.
+ * Six stone blocks to dig through, on the beat; the drop of Harder, Better,
+ * Faster, Stronger is the wall of diamond ore; each diamond takes two hits;
+ * the fifth hit-pair breaks the pickaxe. The last frames dissolve into the
+ * first, and the music is built to loop on a kick, so the Short loops clean.
+ * The textures are the real ones (stone, diamond ore, the iron pickaxe, the
+ * block-breaking cracks), shown as crisp pixels.
  */
 
-export const DIAMOND_FRAMES = B.frame;
+export const DIAMOND_FRAMES = B.frames;
 export const DIAMOND_CAPTION = ["POV: You finally", "find diamonds"];
 
 const IMG = {
@@ -31,12 +32,18 @@ const FOCAL = 520;
 const SCX = 540;
 const SCY = 960; // the view is centred high so the HUD sits well above the Shorts buttons
 
-const HITS = [B.hit, ...B.ores, B.pickBreak];
+const OREHITS = B.ores.flatMap((o) => o.hits);
+const FAILHITS = B.fail.hits;
+const HITS = [...B.tunnel.flatMap((t) => t.hits), ...OREHITS, ...FAILHITS].sort((a, b) => a - b);
+const BREAK_AT = (hits: number[]) => hits[hits.length - 1];
 
-/** stage 0-5 of the cracks, during the three frames before a block goes */
-const crackStage = (f: number, hit: number) => {
-  const d = hit - f;
-  return d >= 1 && d <= 3 ? [5, 3, 1][d - 1] : -1;
+/** crack stage (0-5) of a block being mined with `hits`, or -1: persistent after each early hit, then a fast run to the break */
+const crackFor = (f: number, hits: number[]) => {
+  const last = hits[hits.length - 1];
+  const d = last - f;
+  if (d >= 1 && d <= 3) return [5, 4, 3][d - 1];
+  for (let i = hits.length - 2; i >= 0; i--) if (f >= hits[i] - 3 && f < last - 3) return Math.min(2, 1 + i);
+  return -1;
 };
 
 const strikeState = (f: number) => {
@@ -63,32 +70,42 @@ const shake = (f: number) => {
 
 /* ---------------------------------- tunnel ---------------------------------- */
 
+/** which tunnel block is in front, and how far the camera still has to go to it */
+const tunnelState = (f: number) => {
+  let n = 0;
+  B.tunnel.forEach((t, i) => { if (f >= BREAK_AT(t.hits)) n = i + 1; });
+  if (n >= B.tunnel.length) return { n, zc: 2, d: 0 };
+  const blk = B.tunnel[n];
+  const prev = n > 0 ? BREAK_AT(B.tunnel[n - 1].hits) : -99;
+  const from = n === 0 ? 2 + blk.gap : 3 + blk.gap;
+  const t0 = prev + 3, t1 = n === 0 ? t0 : blk.hits[0] - 3;
+  const zc = n === 0 ? 2 : lerp(from, 2, ease(f, t0, Math.max(t1, t0 + 8)));
+  return { n, zc, d: from - zc };
+};
+
 const Tunnel: React.FC<{ f: number }> = ({ f }) => {
-  const broken = f >= B.hit;
-  const d = 2 * ease(f, B.walk[0], B.walk[1]);
-  const hwF = FOCAL / 2;
+  const { n, zc } = tunnelState(f);
+  const hwF = FOCAL / zc;
   const nearZ = 0.5, hwN = FOCAL / nearZ;
-  const farZ = broken ? 9 : 2, hwFar = FOCAL / farZ;
-  const L = SCX - hwFar, R = SCX + hwFar, T = SCY - hwFar, Bo = SCY + hwFar;
+  const L = SCX - hwF, R = SCX + hwF, T = SCY - hwF, Bo = SCY + hwF;
   const quad = (pts: number[][], fill: string, key: string) => <polygon key={key} points={pts.map((p) => p.join(",")).join(" ")} fill={fill} stroke={LINE} strokeWidth={8} strokeLinejoin="round" />;
   const out: React.ReactNode[] = [];
-  if (broken) out.push(<rect key="void" x={SCX - 700} y={SCY - 700} width={1400} height={1400} fill="#06060a" />);
   out.push(quad([[SCX - hwN, SCY - hwN], [L, T], [L, Bo], [SCX - hwN, SCY + hwN]], "#6e6e78", "l"));
   out.push(quad([[SCX + hwN, SCY - hwN], [R, T], [R, Bo], [SCX + hwN, SCY + hwN]], "#777782", "r"));
   out.push(quad([[SCX - hwN, SCY - hwN], [L, T], [R, T], [SCX + hwN, SCY - hwN]], "#55555f", "t"));
   out.push(quad([[SCX - hwN, SCY + hwN], [L, Bo], [R, Bo], [SCX + hwN, SCY + hwN]], "#61616b", "b"));
-  // a seam ring per block, sliding toward you as you walk
-  for (let k = 0; k < 10; k++) {
-    const z = k + 1 - (broken ? d % 1 : 0);
-    if (z <= 0.6 || z >= farZ) continue;
+  // a seam ring per block between you and the front, sliding toward you as you go
+  for (let m = 1; m < 3; m++) {
+    const z = zc - m;
+    if (z <= 0.6) break;
     const hw = FOCAL / z;
-    out.push(<rect key={`ring${k}`} x={SCX - hw} y={SCY - hw} width={hw * 2} height={hw * 2} fill="none" stroke="#2a2a33" strokeWidth={7} />);
+    out.push(<rect key={`ring${m}`} x={SCX - hw} y={SCY - hw} width={hw * 2} height={hw * 2} fill="none" stroke="#2a2a33" strokeWidth={7} />);
   }
-  if (!broken) {
-    out.push(<image key="front" href={IMG.stone} x={SCX - hwF} y={SCY - hwF} width={hwF * 2} height={hwF * 2} style={PX} />);
-    out.push(<rect key="fr" x={SCX - hwF} y={SCY - hwF} width={hwF * 2} height={hwF * 2} fill="none" stroke={LINE} strokeWidth={9} />);
-    const st = crackStage(f, B.hit);
-    if (st >= 0) out.push(<image key="ck" href={IMG.breaks[st]} x={SCX - hwF} y={SCY - hwF} width={hwF * 2} height={hwF * 2} style={PX} />);
+  if (n < B.tunnel.length) {
+    out.push(<image key="front" href={IMG.stone} x={L} y={T} width={hwF * 2} height={hwF * 2} style={PX} />);
+    out.push(<rect key="fr" x={L} y={T} width={hwF * 2} height={hwF * 2} fill="none" stroke={LINE} strokeWidth={9} />);
+    const st = crackFor(f, B.tunnel[n].hits);
+    if (st >= 0) out.push(<image key="ck" href={IMG.breaks[st]} x={L} y={T} width={hwF * 2} height={hwF * 2} style={PX} />);
   }
   return <g>{out}</g>;
 };
@@ -97,34 +114,32 @@ const Tunnel: React.FC<{ f: number }> = ({ f }) => {
 
 const CELL = 270;
 const cellXY = (c: number, r: number): [number, number] => [SCX - CELL * 1.5 + c * CELL, SCY - CELL * 1.5 + r * CELL];
-const oreIndex = (c: number, r: number) => B.oreCells.findIndex((o) => o[0] === c && o[1] === r);
-const isFail = (c: number, r: number) => c === B.failCell[0] && r === B.failCell[1];
-const OREISH: [number, number][] = [[1, 1], [0, 1], [2, 1], [1, 0], [0, 0], [2, 2]];
+const oreAt = (c: number, r: number) => B.ores.findIndex((o) => o.cell[0] === c && o.cell[1] === r);
+const isFail = (c: number, r: number) => c === B.fail.cell[0] && r === B.fail.cell[1];
 
 const Wall: React.FC<{ f: number }> = ({ f }) => {
   const settle = ease(f, B.reveal, B.reveal + 10);
   const z = lerp(0.84, 1, settle);
   const cells: React.ReactNode[] = [];
-  const crack = (x: number, y: number, hit: number, key: string) => {
-    const st = crackStage(f, hit);
+  const crack = (x: number, y: number, hits: number[], key: string) => {
+    const st = crackFor(f, hits);
     return st >= 0 ? <image key={key} href={IMG.breaks[st]} x={x} y={y} width={CELL} height={CELL} style={PX} /> : null;
   };
   for (let r = 0; r < 3; r++) for (let c = 0; c < 3; c++) {
     const [x, y] = cellXY(c, r);
-    const oi = oreIndex(c, r);
-    const mined = oi >= 0 && f >= B.ores[oi];
-    if (mined) {
+    const oi = oreAt(c, r);
+    if (oi >= 0 && f >= BREAK_AT(B.ores[oi].hits)) {
       cells.push(<g key={`${c}${r}`}><rect x={x} y={y} width={CELL} height={CELL} fill="#0b0b10" stroke={LINE} strokeWidth={9} /><rect x={x + 30} y={y + 30} width={CELL - 60} height={CELL - 60} fill="#15151c" /></g>);
       continue;
     }
-    const ore = oi >= 0 || isFail(c, r) || OREISH.slice(0, 6).some((o) => o[0] === c && o[1] === r && (c + r) % 2 === 0 && false);
+    const ore = oi >= 0 || isFail(c, r);
     cells.push(
       <g key={`${c}${r}`}>
         <image href={ore ? IMG.ore : IMG.stone} x={x} y={y} width={CELL} height={CELL} style={PX} />
         {!ore && <rect x={x} y={y} width={CELL} height={CELL} fill="#000" opacity={0.28} />}
         <rect x={x} y={y} width={CELL} height={CELL} fill="none" stroke={LINE} strokeWidth={9} />
-        {oi >= 0 && crack(x, y, B.ores[oi], `ck${c}${r}`)}
-        {isFail(c, r) && crack(x, y, B.pickBreak, `ckf`)}
+        {oi >= 0 && crack(x, y, B.ores[oi].hits, `ck${c}${r}`)}
+        {isFail(c, r) && crack(x, y, B.fail.hits, `ckf`)}
         {isFail(c, r) && f >= B.pickBreak && <image href={IMG.breaks[4]} x={x} y={y} width={CELL} height={CELL} style={PX} />}
       </g>
     );
@@ -146,8 +161,8 @@ const Wall: React.FC<{ f: number }> = ({ f }) => {
 
 const Debris: React.FC<{ f: number }> = ({ f }) => {
   const evs: { t: number; x: number; y: number; c: string[] }[] = [
-    { t: B.hit, x: SCX, y: SCY, c: ["#8d8d96", "#6c6c76", "#9d9da6"] },
-    ...B.ores.map((o, i) => { const [cx, cy] = cellXY(B.oreCells[i][0], B.oreCells[i][1]); return { t: o, x: cx + CELL / 2, y: cy + CELL / 2, c: ["#35e6dc", "#8d8d96", "#6c6c76"] }; }),
+    ...B.tunnel.map((t) => ({ t: BREAK_AT(t.hits), x: SCX, y: SCY, c: ["#8d8d96", "#6c6c76", "#9d9da6"] })),
+    ...B.ores.map((o) => { const [cx, cy] = cellXY(o.cell[0], o.cell[1]); return { t: BREAK_AT(o.hits), x: cx + CELL / 2, y: cy + CELL / 2, c: ["#35e6dc", "#8d8d96", "#6c6c76"] }; }),
   ];
   return (
     <g>
@@ -175,9 +190,9 @@ const slotCenter = (i: number): [number, number] => [HB_X + i * SLOT + SLOT / 2,
 const Flyers: React.FC<{ f: number }> = ({ f }) => (
   <g>
     {B.ores.map((o, i) => {
-      const t = (f - o) / 16;
+      const t = (f - BREAK_AT(o.hits)) / 16;
       if (t < 0 || t > 1) return null;
-      const [cx0, cy0] = cellXY(B.oreCells[i][0], B.oreCells[i][1]);
+      const [cx0, cy0] = cellXY(o.cell[0], o.cell[1]);
       const [sx, sy] = slotCenter(1);
       const u = t * t;
       return <Pixels key={i} rows={DIAMOND_ROWS} colors={DIAMOND_COL} px={13} x={lerp(cx0 + CELL / 2, sx, u)} y={lerp(cy0 + CELL / 2, sy, u) - Math.sin(t * Math.PI) * 160} />;
@@ -208,9 +223,9 @@ const poseFor = (tip: [number, number], deg: number, s: number) => {
 };
 
 const pickTarget = (f: number): [number, number] => {
-  const cur = B.ores.findIndex((o) => f >= o - 9 && f <= o + 10);
-  if (cur >= 0) { const [x, y] = cellXY(B.oreCells[cur][0], B.oreCells[cur][1]); return [x + CELL / 2, y + CELL / 2]; }
-  if (f >= B.pickBreak - 9 && f <= B.pickBreak + 4) { const [x, y] = cellXY(B.failCell[0], B.failCell[1]); return [x + CELL / 2, y + CELL / 2]; }
+  const near = (hits: number[]) => hits.some((h) => f >= h - 9 && f <= h + 10);
+  for (const o of B.ores) if (near(o.hits)) { const [x, y] = cellXY(o.cell[0], o.cell[1]); return [x + CELL / 2, y + CELL / 2]; }
+  if (near(B.fail.hits)) { const [x, y] = cellXY(B.fail.cell[0], B.fail.cell[1]); return [x + CELL / 2, y + CELL / 2]; }
   return [SCX, SCY];
 };
 
@@ -223,8 +238,8 @@ const Pickaxe: React.FC<{ f: number }> = ({ f }) => {
   else if (toNext < 3) k = 2;
   if (since >= 0 && since < 10) k = Math.max(k, 2 - ease(since, 0, 10) * 2);
   const tip = pickTarget(f);
-  const walking = f >= B.walk[0] && f < B.reveal;
-  const sway = walking ? Math.sin((f - B.walk[0]) / 14.6 * Math.PI) * 18 : 0;
+  const walking = f >= B.steps[0] - 6 && f < B.reveal - 14;
+  const sway = walking ? Math.sin((f - B.steps[0]) / B.beat * Math.PI) * 18 : 0;
   const idle = poseFor([800, 1300 + sway], 12, 2.1);
   const wind = poseFor([tip[0] + 80, tip[1] + 130], 24, 2.2);
   const hit = poseFor(tip, 0, PS);
@@ -240,7 +255,7 @@ const Pickaxe: React.FC<{ f: number }> = ({ f }) => {
 const Shards: React.FC<{ f: number }> = ({ f }) => {
   const t = f - B.pickBreak;
   if (t < 0 || t > 22) return null;
-  const [cx, cy] = cellXY(B.failCell[0], B.failCell[1]);
+  const [cx, cy] = cellXY(B.fail.cell[0], B.fail.cell[1]);
   const tx = cx + CELL / 2, ty = cy + CELL / 2;
   return (
     <g>
@@ -294,10 +309,10 @@ const BareArm: React.FC<{ f: number }> = ({ f }) => {
 };
 
 const Hud: React.FC<{ f: number }> = ({ f }) => {
-  const mined = B.ores.filter((o) => f >= o + 12).length;
+  const mined = B.ores.filter((o) => f >= BREAK_AT(o.hits) + 12).length;
   const broke = f >= B.pickBreak;
   const used = HITS.filter((s) => f >= s).length;
-  const dur = Math.max(0.05, 1 - used * 0.22);
+  const dur = Math.max(0.05, 1 - (used / (HITS.length + 1)) * 1.05);
   const [dx, dy] = slotCenter(1);
   const [px, py] = slotCenter(0);
   const heartsX = HB_X;
@@ -310,7 +325,7 @@ const Hud: React.FC<{ f: number }> = ({ f }) => {
       <rect x={HB_X} y={HB_Y} width={SLOT * 9} height={SLOT} fill="#141414" opacity={0.6} />
       {Array.from({ length: 9 }, (_, i) => <rect key={i} x={HB_X + i * SLOT + 4} y={HB_Y + 4} width={SLOT - 8} height={SLOT - 8} fill="none" stroke="#8b8b8b" strokeWidth={5} />)}
       {!broke && <image href={IMG.pick} x={px - 46} y={py - 46} width={92} height={92} style={PX} />}
-      {!broke && f > B.hit - 4 && (
+      {!broke && f > B.tunnel[0].hits[0] - 4 && (
         <g>
           <rect x={px - 38} y={HB_Y + 84} width={76} height={9} fill="#000" />
           <rect x={px - 38} y={HB_Y + 84} width={76 * dur} height={9} fill={dur > 0.5 ? "#4cd04c" : dur > 0.25 ? "#e0c030" : "#e03030"} />
@@ -331,11 +346,22 @@ const Hud: React.FC<{ f: number }> = ({ f }) => {
 export const DiamondShort: React.FC<{ audio?: string | null; drawn?: boolean }> = ({ audio = null, drawn = true }) => {
   usePreload([IMG.pick, IMG.ore, IMG.stone, ...IMG.breaks]);
   const f = useCurrentFrame();
-  return <PovFrame audio={audio} drawn={drawn} caption={DIAMOND_CAPTION} panelId="dmPanel" scene={<Scene f={f} />} hud={<Hud f={f} />} />;
+  // the last frames dissolve into the first, so the Short loops without a jump
+  const lb = clamp01((f - (B.frames - B.loopBlend)) / B.loopBlend);
+  return (
+    <PovFrame
+      audio={audio}
+      drawn={drawn}
+      caption={DIAMOND_CAPTION}
+      panelId="dmPanel"
+      scene={<><Scene f={f} />{lb > 0 && <g opacity={lb}><Scene f={0} /></g>}</>}
+      hud={<><Hud f={f} />{lb > 0 && <g opacity={lb}><Hud f={0} /></g>}</>}
+    />
+  );
 };
 
 export const DiamondThumb: React.FC = () => {
   usePreload([IMG.pick, IMG.ore, IMG.stone, ...IMG.breaks]);
-  const f = B.ores[1] + 10;
+  const f = B.ores[1].hits[1] + 10;
   return <PovFrame drawn={false} caption={DIAMOND_CAPTION} panelId="dmPanelT" scene={<Scene f={f} />} hud={<Hud f={f} />} />;
 };

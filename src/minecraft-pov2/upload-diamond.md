@@ -1,19 +1,19 @@
 # Upload copy — POV: You finally find diamonds
 
-First person, in a dark stone tunnel. One hit breaks the stone, you walk the
-two blocks of tunnel on the beat, and on the drop of Harder, Better, Faster,
-Stronger there is a wall of diamond ore. The first three diamonds break on three
-kicks; on the fourth the pickaxe breaks, the music cuts, and one meme hit (a
-vine boom) lands. Real Minecraft textures (stone, diamond ore, iron pickaxe,
-the block-breaking cracks), crisp pixels.
+First person, in a dark stone tunnel, 13 s, built to loop. You dig through six
+stone blocks on the beat, the drop of Harder, Better, Faster, Stronger is the
+wall of diamond ore, each diamond takes two hits, and the pickaxe breaks on the
+fifth (the sound is the Sword-Armor-Tool-Break file). The music is muffled when
+the pickaxe goes and swells back by the end; the last frames dissolve into the
+first, so the Short loops with no jump. Real Minecraft textures (stone, diamond
+ore, iron pickaxe, the block-breaking cracks), crisp pixels.
 
 ## Before you upload
 
 - The music is Daft Punk's "Harder, Better, Faster, Stronger": a licensed
   track, so Content ID **will** match it. Expect a claim; for a claim-free
   upload use `pov-diamond-nomusic.mp4` with a song from the Shorts sound
-  picker. The effects are your Minecraft sound files plus a synthesised vine boom;
-  swap in your own meme sound by editing `vine_boom` in `scripts/build-diamond-audio.py`.
+  picker. The effects are your Minecraft sound files plus your tool-break file.
 - Audience: **not made for kids**. Category Gaming (Minecraft).
 
 ## Title
@@ -62,7 +62,7 @@ How many diamonds did you get before it broke? 👇
 
 | file | what it is |
 |---|---|
-| `pov-diamond.mp4` | the Short with music, 6.3 s, 1080×1920 |
+| `pov-diamond.mp4` | the Short with music, 13.1 s, 1080×1920, loops clean |
 | `pov-diamond-nomusic.mp4` | effects only, for the sound picker |
 | `thumbnail-pov-diamond.jpg` | 9:16, the wall of ore mid-mining |
 
