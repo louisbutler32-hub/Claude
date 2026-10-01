@@ -43,3 +43,7 @@ public/assets/geo/tiles
 # the owner's own Minecraft art for the POV Short: not ours to redistribute
 public/images/pov-src/
 public/images/pov/
+
+# akki talks re-edits: the original renders are the input, not tracked
+akki/source/*
+!akki/source/.gitkeep

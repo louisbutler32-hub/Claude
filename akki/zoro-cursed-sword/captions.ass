@@ -1,0 +1,19 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Poppins Black,150,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,12,6,5,50,50,0,1
+Style: Tag,Poppins Black,120,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,10,5,5,50,50,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:02.00,Hook,,0,0,0,,{\pos(540,1240)\fscx55\fscy55\t(0,110,\fscx110\fscy110)\t(110,190,\fscx100\fscy100)}THIS SWORD IS CURSED\N{\c&H00D7FF&}WILL IT CUT HIM?
+Dialogue: 0,0:00:04.45,0:00:06.10,Tag,,0,0,0,,{\pos(540,1300)\fscx55\fscy55\t(0,110,\fscx110\fscy110)\t(110,190,\fscx100\fscy100)}LET FATE DECIDE...
+Dialogue: 0,0:00:07.45,0:00:08.45,Tag,,0,0,0,,{\pos(540,1300)\fscx55\fscy55\t(0,110,\fscx110\fscy110)\t(110,190,\fscx100\fscy100)}ARM OUT. {\c&H00D7FF&}NO FLINCH.
+Dialogue: 0,0:00:10.25,0:00:11.20,Hook,,0,0,0,,{\pos(540,1240)\fscx55\fscy55\t(0,110,\fscx110\fscy110)\t(110,190,\fscx100\fscy100)}WAIT...\N{\c&H00D7FF&}WHOSE ARM IS THAT?!
+Dialogue: 0,0:00:12.75,0:00:13.88,Hook,,0,0,0,,{\pos(540,1240)\fscx55\fscy55\t(0,110,\fscx110\fscy110)\t(110,190,\fscx100\fscy100)}WOULD {\c&H00D7FF&}YOU{\c&HFFFFFF&} TRY IT?
