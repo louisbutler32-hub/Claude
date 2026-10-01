@@ -28,5 +28,11 @@ https://www.youtube.com/@akkitalkss
 one piece, zoro, roronoa zoro, cursed sword, kitetsu, zoro cursed sword, one piece animation, one piece funny, anime shorts, anime funny, zoro funny, one piece parody, akki talks, animation, cartoon, shorts, anime, zoro sword, sandai kitetsu, one piece shorts
 ```
 
-## Thumbnail
-`bash akki/build.sh zoro-cursed-sword` → `out/akki/thumbnail-zoro-cursed-sword.jpg` (1080×1920)
+## Build
+Drawn from scratch in code (`src/akki/zoro/`), synthesised audio (`scripts/build-akki-zoro-audio.py`):
+
+```
+npm run akki:zoro:audio   # public/audio/akki-zoro-mix.mp3
+npm run akki:zoro         # out/akki/zoro-cursed-sword.mp4
+npm run akki:zoro:thumb   # out/akki/thumbnail-zoro-cursed-sword.jpg (1080×1920)
+```

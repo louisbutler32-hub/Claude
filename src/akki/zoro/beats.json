@@ -1,0 +1,30 @@
+{
+  "_": "Absolute frames at 24fps. ZoroShort.tsx and scripts/build-akki-zoro-audio.py both read this. Cuts measured off the original by scene detection.",
+  "fps": 24,
+  "frames": 333,
+  "shots": {
+    "shop": [0, 24],
+    "ceiling": [24, 48],
+    "below": [48, 84],
+    "face": [84, 108],
+    "faceBlack": 94,
+    "above": [108, 144],
+    "fist": [144, 180],
+    "armUp": [180, 204],
+    "bootDark": [204, 221],
+    "bootLit": [221, 245],
+    "arm": [245, 268],
+    "wince": [268, 284],
+    "denial": [284, 306],
+    "spot": [306, 333]
+  },
+  "toss": 9,
+  "swordPass": 112,
+  "swordArc": 156,
+  "bladeSweep": 186,
+  "stick": 211,
+  "armLand": 252,
+  "spray": 268,
+  "dance": [284, 306],
+  "spotOn": 308
+}

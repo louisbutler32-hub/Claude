@@ -28,5 +28,11 @@ https://www.youtube.com/@akkitalkss
 one piece, one piece bowling, zoro, luffy, sanji, zoro vs sanji, one piece funny, one piece animation, anime shorts, anime funny, bowling, strike, one piece parody, akki talks, animation, cartoon, shorts, anime, straw hat pirates, zoro three sword style
 ```
 
-## Thumbnail
-`bash akki/build.sh bowling` → `out/akki/thumbnail-bowling.jpg` (1080×1920)
+## Build
+Drawn from scratch in code (`src/akki/bowling/`), synthesised audio (`scripts/build-akki-bowling-audio.py`):
+
+```
+npm run akki:bowling:audio   # public/audio/akki-bowling-mix.mp3
+npm run akki:bowling         # out/akki/bowling.mp4
+npm run akki:bowling:thumb   # out/akki/thumbnail-bowling.jpg (1080×1920)
+```
