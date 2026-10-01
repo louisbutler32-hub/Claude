@@ -1,6 +1,7 @@
 import React from "react";
 import { INK } from "../common";
 import { P, Part, smooth, tube } from "./characters";
+import { Curls, curlyMop, G } from "../guest";
 
 /**
  * The reaction close-ups. The joke of the Regular is that every cut-back to
@@ -10,9 +11,9 @@ import { P, Part, smooth, tube } from "./characters";
  * All coordinates are absolute 1080×1920 frame space unless noted.
  */
 
-const SK = "#f1c99c", SKS = "#c8946a", SKD = "#a8714e";
-const HAIR = "#17151c";
-const TEE = "#8fe6f2", TEES = "#56b6cc";
+const SK = G.skin.base, SKS = G.skin.shade, SKD = "#b87a58";
+const HAIR = G.hair;
+const TEE = G.tee, TEES = G.teeS;
 const ln = (d: string, w = 4, c = INK) => <path d={d} stroke={c} strokeWidth={w} fill="none" strokeLinecap="round" strokeLinejoin="round" />;
 
 /* ------------------------------ the wrinkled deadpan ------------------------------ */
@@ -34,8 +35,7 @@ export const RegularWrinkled: React.FC = () => {
       </Part>
       {ln("M380,1470 Q540,1560 700,1470", lw + 2)}
       {/* bun + hair mass */}
-      <Part d={smooth([[470, 520], [480, 450], [540, 420], [600, 450], [610, 520], [540, 545]])} fill={HAIR} lw={lw} />
-      <Part d={smooth([[215, 960], [212, 760], [290, 590], [540, 515], [790, 590], [862, 760], [858, 960], [780, 720], [300, 720]])} fill={HAIR} lw={lw} />
+
       {/* ears */}
       <Part d={smooth([[245, 900], [205, 880], [185, 960], [200, 1060], [250, 1090]])} fill={SK} shade={SKS} lw={lw} />
       <Part d={smooth([[835, 900], [875, 880], [895, 960], [880, 1060], [830, 1090]])} fill={SK} shade={SKS} lw={lw} sh={[-14, 0]} />
@@ -51,7 +51,7 @@ export const RegularWrinkled: React.FC = () => {
         <path d="M455,1290 Q540,1310 625,1290 Q600,1330 540,1335 Q480,1330 455,1290Z" fill={SKS} />
       </Part>
       {/* hairline fringe */}
-      <Part d={smooth([[230, 860], [232, 700], [330, 610], [540, 580], [750, 610], [848, 700], [850, 860], [815, 735], [700, 690], [540, 700], [380, 690], [265, 735]])} fill={HAIR} lw={lw} />
+      <Curls m={curlyMop(540, 740, 330, 250, 680, 900, 64, 3)} lw={lw} markW={6} />
       {/* forehead wrinkles */}
       {ln("M330,760 Q380,745 430,765 T540,760 T650,765 T750,758", 3.4)}
       {ln("M350,795 Q400,782 450,800 T560,796 T680,800 T740,792", 3)}
@@ -117,8 +117,7 @@ export const RegularChibi: React.FC = () => {
       </Part>
       {ln("M440,1196 Q540,1250 640,1196", lw)}
       {/* big round head */}
-      <Part d={smooth([[505, 215], [540, 170], [578, 215], [540, 235]])} fill={HAIR} lw={lw} />
-      <Part d={smooth([[236, 720], [246, 440], [360, 270], [540, 215], [720, 270], [834, 440], [844, 720], [780, 560], [300, 560]])} fill={HAIR} lw={lw} />
+
       <Part d={smooth([[262, 640], [222, 630], [214, 730], [262, 800]])} fill={SK} shade={SKS} lw={lw} />
       <Part d={smooth([[818, 640], [858, 630], [866, 730], [818, 800]])} fill={SK} shade={SKS} lw={lw} />
       <Part d={smooth([[262, 470], [254, 700], [292, 890], [400, 1030], [540, 1074], [680, 1030], [788, 890], [826, 700], [818, 470], [540, 420]])} fill={SK} shade={SKS} lw={lw} sh={[-24, -10]}>
@@ -126,7 +125,7 @@ export const RegularChibi: React.FC = () => {
         <path d="M240,470 L840,470 L840,780 Q540,750 240,790Z" fill="#cf9b70" />
         <path d="M250,760 Q540,730 830,750 L830,800 Q540,780 250,820Z" fill="#e8a888" opacity={0.5} />
       </Part>
-      <Part d={smooth([[252, 640], [262, 440], [540, 330], [818, 440], [828, 640], [770, 500], [650, 470], [610, 520], [560, 466], [420, 476], [320, 510]])} fill={HAIR} lw={lw} />
+      <Curls m={curlyMop(540, 480, 310, 250, 480, 650, 62, 9)} lw={lw} markW={6} />
       {/* brows */}
       <path d="M350,600 Q420,560 490,590 L486,612 Q420,590 356,622Z" fill={HAIR} />
       <path d="M730,600 Q660,560 590,590 L594,612 Q660,590 724,622Z" fill={HAIR} />
@@ -134,7 +133,7 @@ export const RegularChibi: React.FC = () => {
       {[[420, 686], [660, 686]].map(([x, y], i) => (
         <g key={i}>
           <path d={`M${x - 74},${y - 26} L${x + 74},${y - 26} Q${x + 70},${y + 24} ${x},${y + 26} Q${x - 70},${y + 24} ${x - 74},${y - 26}Z`} fill="#fff" stroke={INK} strokeWidth={4} />
-          <circle cx={x + (i ? -6 : 6)} cy={y + 2} r={12} fill="#6c8a9a" stroke={INK} strokeWidth={2} />
+          <circle cx={x + (i ? -6 : 6)} cy={y + 2} r={12} fill="#6a4228" stroke={INK} strokeWidth={2} />
           <circle cx={x + (i ? -6 : 6)} cy={y + 2} r={5} fill={INK} />
           {ln(`M${x - 84},${y - 28} L${x + 84},${y - 28}`, 9)}
         </g>
@@ -162,8 +161,7 @@ export const RegularGaunt: React.FC = () => {
       </Part>
       {ln("M340,1110 Q440,1190 560,1120", lw + 1)}
       {/* hair: flat black helmet with a tiny knot */}
-      <Part d={smooth([[420, 330], [440, 300], [470, 320], [450, 345]])} fill={HAIR} lw={lw} />
-      <Part d={smooth([[262, 560], [270, 420], [340, 345], [440, 330], [540, 350], [600, 420], [610, 560], [560, 470], [320, 470]])} fill={HAIR} lw={lw} />
+
       <Part d={smooth([[270, 600], [240, 620], [250, 700], [280, 720]])} fill={SK} shade={SKS} lw={lw} />
       <Part d={smooth([[602, 600], [632, 620], [622, 700], [592, 720]])} fill={SK} shade={SKS} lw={lw} />
       {/* long face, hollow cheeks */}
@@ -171,7 +169,7 @@ export const RegularGaunt: React.FC = () => {
         <path d="M290,720 Q320,800 360,840 Q330,760 330,700Z" fill={SKS} />
         <path d="M582,720 Q552,800 512,840 Q542,760 542,700Z" fill={SKS} />
       </Part>
-      <Part d={smooth([[262, 560], [282, 450], [440, 410], [598, 450], [610, 560], [560, 500], [440, 490], [320, 500]])} fill={HAIR} lw={lw} />
+      <Curls m={curlyMop(436, 490, 185, 160, 475, 590, 38, 5)} lw={lw} markW={4} />
       {/* tired half-closed eyes, bags */}
       {[[372, 630, 1], [508, 630, -1]].map(([x, y, k], i) => (
         <g key={i} transform={`translate(${x},${y}) scale(${k},1)`}>

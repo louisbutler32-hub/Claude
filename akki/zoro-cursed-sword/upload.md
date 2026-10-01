@@ -29,10 +29,10 @@ one piece, zoro, roronoa zoro, cursed sword, kitetsu, zoro cursed sword, one pie
 ```
 
 ## Build
-Drawn from scratch in code (`src/akki/zoro/`), synthesised audio (`scripts/build-akki-zoro-audio.py`):
+Drawn from scratch in code (`src/akki/zoro/`) on the original soundtrack; the blue-shirt character is the channel owner (`src/akki/guest.tsx`). A fully synthesised track is still available: `npm run akki:zoro:audio && npm run akki:zoro:synth`.
 
 ```
-npm run akki:zoro:audio   # public/audio/akki-zoro-mix.mp3
+npm run akki:zoro:orig-audio   # your original soundtrack → public/audio/akki-zoro-orig.wav (from akki/source/zoro-cursed-sword.mp4)
 npm run akki:zoro         # out/akki/zoro-cursed-sword.mp4
 npm run akki:zoro:thumb   # out/akki/thumbnail-zoro-cursed-sword.jpg (1080×1920)
 ```

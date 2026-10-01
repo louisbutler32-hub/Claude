@@ -29,10 +29,10 @@ one piece, one piece bowling, zoro, luffy, sanji, zoro vs sanji, one piece funny
 ```
 
 ## Build
-Drawn from scratch in code (`src/akki/bowling/`), synthesised audio (`scripts/build-akki-bowling-audio.py`):
+Drawn from scratch in code (`src/akki/bowling/`) on the original soundtrack; the blue-shirt character is the channel owner (`src/akki/guest.tsx`). A fully synthesised track is still available: `npm run akki:bowling:audio && npm run akki:bowling:synth`.
 
 ```
-npm run akki:bowling:audio   # public/audio/akki-bowling-mix.mp3
+npm run akki:bowling:orig-audio   # your original soundtrack → public/audio/akki-bowling-orig.wav (from akki/source/bowling.mp4)
 npm run akki:bowling         # out/akki/bowling.mp4
 npm run akki:bowling:thumb   # out/akki/thumbnail-bowling.jpg (1080×1920)
 ```

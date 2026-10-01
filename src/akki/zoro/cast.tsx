@@ -3,6 +3,7 @@ import { INK } from "../common";
 import {
   add, ang, armDir, Eye, Face, footShape, Hand, HandKind, HeadBase, mix, mul, nrm, P, Part, Pose, SKIN, SKIN_TAN, smooth, spikyCap, sub, torsoPts, tube, Wrap,
 } from "../bowling/characters";
+import { G, GuestHead } from "../guest";
 
 /**
  * The cast of "Zoro vs the cursed sword", on the shared figure kit from
@@ -256,13 +257,13 @@ export const ZoroPre: React.FC<ZProps> = ({ p, lw = 4, face = "calm", x = 0, y =
 const ang2 = (d: P) => (Math.atan2(d[1], d[0]) * 180) / Math.PI;
 
 export const Clerk: React.FC<{ p: Pose; lw?: number; face?: CFace; x?: number; y?: number; s?: number; flipX?: boolean }> = ({ p, lw = 4, face = "yell", x = 0, y = 0, s = 1, flipX }) => {
-  const skin = SKIN;
+  const skin = G.skin;
   const T = torsoPts(p, 0.04, 16);
   const midH = mix(p.hipL, p.hipR, 0.5);
-  const shirt = "#8ed8f2", shirtS = "#56a8cc";
+  const shirt = G.tee, shirtS = G.teeS;
   const leg = (hip: P, kn: P, ft: P, fd = 0, key: string) => (
     <g key={key}>
-      <Part d={tube([hip, kn, ft], [27, 25, 23])} fill="#16161c" shade="#08080c" lw={lw} />
+      <Part d={tube([hip, kn, ft], [27, 25, 23])} fill={G.jeans} shade={G.jeansS} lw={lw} />
       <g transform={`translate(${ft[0]},${ft[1] + 4})`}><Part d={footShape(fd, 1.05)} fill="#1a1a1e" lw={lw} /></g>
     </g>
   );
@@ -277,17 +278,15 @@ export const Clerk: React.FC<{ p: Pose; lw?: number; face?: CFace; x?: number; y
     <Wrap x={x} y={y} s={s} flipX={flipX}>
       {leg(p.hipL, p.knL, p.ftL, p.fdL, "lL")}
       {leg(p.hipR, p.knR, p.ftR, p.fdR, "lR")}
-      <Part d={smooth([add(T[8], [-6, 0]), add(T[5], [6, 0]), add(p.hipR, [18, 14]), add(midH, [0, 30]), add(p.hipL, [-18, 14])])} fill="#16161c" shade="#08080c" lw={lw} />
+      <Part d={smooth([add(T[8], [-6, 0]), add(T[5], [6, 0]), add(p.hipR, [18, 14]), add(midH, [0, 30]), add(p.hipL, [-18, 14])])} fill={G.jeans} shade={G.jeansS} lw={lw} />
       <Part d={smooth([...T.slice(0, 6), add(p.hipR, [22, 0]), add(p.hipL, [-22, 0]), ...T.slice(8)])} fill={shirt} shade={shirtS} lw={lw}>
-        {/* collar + button line */}
-        <path d={`M${fx(add(p.neck, [-34, 8]))}L${fx(add(p.neck, [-4, 40]))}L${fx(add(p.neck, [-20, 4]))}Z`} fill={shirt} stroke={INK} strokeWidth={2.6} strokeLinejoin="round" />
-        <path d={`M${fx(add(p.neck, [34, 8]))}L${fx(add(p.neck, [4, 40]))}L${fx(add(p.neck, [20, 4]))}Z`} fill={shirt} stroke={INK} strokeWidth={2.6} strokeLinejoin="round" />
-        <path d={`M${fx(add(p.neck, [0, 40]))}L${fx(add(midH, [0, 0]))}`} stroke={INK} strokeWidth={2.2} />
-        {[0.25, 0.45, 0.65, 0.85].map((t) => { const c = mix(add(p.neck, [6, 40]), add(midH, [6, 0]), t); return <circle key={t} cx={c[0]} cy={c[1]} r={3} fill="#dfe8f0" stroke={INK} strokeWidth={1} />; })}
+        {/* crew neck */}
+        <path d={smooth([add(p.neck, [-34, 6]), add(p.neck, [0, 26]), add(p.neck, [34, 6])], false)} stroke={INK} strokeWidth={2.6} fill="none" />
+        <path d={smooth([add(p.neck, [-26, 12]), add(p.neck, [0, 30]), add(p.neck, [26, 12])], false)} stroke={shirtS} strokeWidth={4} fill="none" />
       </Part>
       {arm(p.shL, p.elL, p.haL, p.hL ?? "relax", -1, "aL")}
       {arm(p.shR, p.elR, p.haR, p.hR ?? "relax", 1, "aR")}
-      <g transform={`translate(${p.head[0]},${p.head[1]}) rotate(${p.tilt}) scale(1.1)`}><ClerkHead face={face} turn={p.turn} lw={lw} /></g>
+      <g transform={`translate(${p.head[0]},${p.head[1]}) rotate(${p.tilt}) scale(1.1)`}><GuestHead face={face === "glare" ? "blank" : face} turn={p.turn} lw={lw} /></g>
     </Wrap>
   );
 };
