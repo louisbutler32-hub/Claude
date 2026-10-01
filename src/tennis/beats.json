@@ -1,0 +1,13 @@
+{
+  "fps": 30,
+  "frames": 238,
+  "_note": "Measured off GarrettTheCarrot's 'tennis time' (7.96 s): the opponent hits at frames 16, 76, 136, 196; the viewer's invisible return lands at 46, 106, 166. The audio's pocks sit on those beats. The last time he dives, misses, and lies on the court.",
+  "fHits": [16, 76, 136, 196],
+  "oHits": [46, 106, 166],
+  "xb": [184, 305, 205, 183],
+  "ballNearX": [189, 70, 280],
+  "ballStartX": [134, 241, 150, 190],
+  "dive": [196, 208],
+  "racketFly": [197, 218],
+  "ballRoll": [200, 238]
+}

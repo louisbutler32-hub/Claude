@@ -105,6 +105,7 @@ import { SleepShort, SleepThumb, SLEEP_FRAMES } from "./minecraft-sleep/SleepSho
 import { LoseStuff2Short, LoseStuff2Thumb, LOSE2_FRAMES } from "./minecraft-lose2/LoseStuff2";
 import { GrassShort, GrassThumb, GRASS_FRAMES } from "./minecraft-grass/GrassShort";
 import { PovShort, PovThumb, POV_FRAMES } from "./minecraft-pov/PovShort";
+import { TennisShort, TennisThumb, TENNIS_FRAMES } from "./tennis/TennisShort";
 import { CreeperShort, CreeperThumb, CREEPER_FRAMES } from "./minecraft-creeper/CreeperShort";
 import { NetherShort, NetherThumb, NETHER_FRAMES } from "./minecraft-nether/NetherShort";
 import { BuildShort, BuildThumb, BUILD_FRAMES } from "./minecraft-build/BuildShort";
@@ -252,6 +253,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Grass-Thumbnail" component={GrassThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="PovShort" component={PovShort} durationInFrames={POV_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Pov-Thumbnail" component={PovThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="TennisShort" component={TennisShort} durationInFrames={TENNIS_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Tennis-Thumbnail" component={TennisThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition
         id="PvpShort"
         component={PvpShort}
