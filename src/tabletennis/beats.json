@@ -1,0 +1,81 @@
+{
+ "fps": 30,
+ "frames": 346,
+ "_note": "Every number is a frame. The rally: the opponent serves at the first hit, then it alternates opp/you with the gap between hits shrinking by 7% each time (22 frames down to 4). Your last hit is never returned: the ball bounces on his half and hits him in the face at `bonk`. After that it bounces itself out. Shared by TableTennisShort.tsx and scripts/build-tabletennis-audio.py.",
+ "hits": [
+  {
+   "f": 20,
+   "who": "opp"
+  },
+  {
+   "f": 42,
+   "who": "you"
+  },
+  {
+   "f": 62,
+   "who": "opp"
+  },
+  {
+   "f": 81,
+   "who": "you"
+  },
+  {
+   "f": 99,
+   "who": "opp"
+  },
+  {
+   "f": 115,
+   "who": "you"
+  },
+  {
+   "f": 130,
+   "who": "opp"
+  },
+  {
+   "f": 144,
+   "who": "you"
+  },
+  {
+   "f": 157,
+   "who": "opp"
+  },
+  {
+   "f": 169,
+   "who": "you"
+  },
+  {
+   "f": 180,
+   "who": "opp"
+  },
+  {
+   "f": 191,
+   "who": "you"
+  },
+  {
+   "f": 201,
+   "who": "opp"
+  },
+  {
+   "f": 210,
+   "who": "you"
+  },
+  {
+   "f": 219,
+   "who": "opp"
+  },
+  {
+   "f": 227,
+   "who": "you"
+  }
+ ],
+ "bonk": 234,
+ "dtLast": 7,
+ "afterBounces": [
+  247,
+  260,
+  270,
+  278,
+  284,
+  289
+ ]
+}
