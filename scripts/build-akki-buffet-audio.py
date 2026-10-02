@@ -288,7 +288,7 @@ if __name__ == "__main__":
     # 3g: the empty counter
     syn(clink(2800, 0.5), B["olive"], 0.5)
     if OP100:
-        hit("037_humiliate_sting", B["signSad"] - 1, 0.9, 0.3, 1.6)
+        hit("037_humiliate_sting", B["signSad"] - 1, 1.9, 0.2, 1.6)
     else:
         syn(slide_whistle_down(0.7), B["signSad"] - 1, 0.7, 0.6, 0.7)
 
@@ -355,7 +355,7 @@ if __name__ == "__main__":
     if CUT:  # the cut ends on the thumbs-up: a rim-shot-ish hit on the last beat, then a short tail
         n = N(0.35)
         hit_ = stereo((band(n, 3500, 2200, 77) * decay(n, 18) * 0.6 + tone(180, 0.35) * decay(n, 14) * 0.5) * env(n, 0.001, 0.05))
-        add(mix, op("037_humiliate_sting") if OP100 else hit_, (CUT - 0.30) * FPS, 0.9 if OP100 else 0.7)
+        add(mix, op("037_humiliate_sting") if OP100 else hit_, (CUT - 0.30) * FPS, 1.9 if OP100 else 0.7)
     # a short fade on the very last frames so the tail doesn't click
     fa = N(0.05)
     mix[-fa:] *= np.linspace(1, 0, fa)[:, None]
