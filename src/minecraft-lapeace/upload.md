@@ -1,6 +1,6 @@
 # Upload copy — "That's La Peace" (IShowSpeed × Kai Cenat remake)
 
-A shot-for-shot remake, in our hand-drawn look with cartoon IShowSpeed (purple hoodie, the hero) and Kai Cenat (green hoodie, the one crowned in laurel), of a viral Minecraft
+A shot-for-shot remake, in our hand-drawn look with the owner's own cartoon IShowSpeed (purple hoodie, the hero) and Kai Cenat (green hoodie, the one crowned in laurel), used exactly as drawn on the character sheets, of a viral Minecraft
 animation: two friends in a lava cave shout DIAMOND at a wall of ore, a miner
 breaks through into a sunbeam over an impossible meadow, a glowing treasure hangs
 in the light, a Greek temple stands in the flowers, and the last close-up finds the
@@ -73,6 +73,7 @@ What do you think La Peace is? 👇
 ## Rebuilding it
 
 ```bash
+python3 scripts/cut-characters.py   # cuts the sprites out of the owner's character sheets (public/images/chars-src/)
 npm run lapeace:audio    # renders the silent picture, then ffmpeg lays the original's track under it
 npm run lapeace:thumb
 ```
