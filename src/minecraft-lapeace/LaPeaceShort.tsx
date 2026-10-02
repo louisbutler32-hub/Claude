@@ -29,7 +29,7 @@ const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 const clamp01 = (t: number) => Math.min(1, Math.max(0, t));
 const sm = (f: number, a: number, b: number) => ease(f, a, b);
 
-const ORE = staticFile("images/pov2/diamond-ore.png");
+const ORE = staticFile("images/pov2/lapis-ore.png"); // "La Peace" is lapis
 const STONE = staticFile("images/pov2/stone.png");
 const PICK = staticFile("images/pov2/iron-pickaxe.png");
 const DIAMOND_ROWS = ["..DDDDD..", ".DwwCCCD.", "DwCCCCCCD", "DCCCCCCCD", ".DCCCCCD.", "..DCCCD..", "...DCD...", "....D...."];
@@ -156,7 +156,7 @@ const Cave: React.FC<{ f: number }> = ({ f }) => {
   const ox = lerp(660, 800, walk), oy = lerp(1210, 1330, walk), os = lerp(0.6, 0.78, walk);
   const step = Math.sin(t * 0.7) * 22 * (walk > 0 && walk < 1 ? 1 : 0);
   const op: Pose = { ...POSE.stand, legL: limb(-40, 190 + step * 0.2, -46 - step, 335), legR: limb(40, 190 - step * 0.2, 46 + step, 335), armR: limb(80, 70, 118 + step * 0.4, 150), armL: limb(-80, 70, -116, 150) };
-  const shout = (t >= 4 && t < 12) || (t >= 30 && t < 38);
+  const shout = (t >= 0 && t < 9) || (t >= 34 && t < 43);
   return (
     <Cam z={lerp(1, 1.1, t / 56)} cx={540} cy={1200}>
       <rect x={-100} y={-100} width={W + 200} height={H + 200} fill="#1b1124" />
@@ -203,7 +203,7 @@ const Mine: React.FC<{ f: number }> = ({ f }) => {
         <image key={`${r}${c}`} href={ORE} x={-110 + c * 330 + (r % 2) * 90} y={1000 + r * 250} width={330} height={330} style={PX} opacity={0.9} />
       )))}
       <rect x={-100} y={900} width={W + 200} height={1100} fill="#0a0a30" opacity={0.35} />
-      <O x={430} y={1480} s={1.05} p={pose} face={swing > 0.8 ? "gritted" : "grin"} tilt={swing * 4 - 2} gaze={[8, 10]} hands={(h) => pickInHand(h.R, -20 - swing * 10, 1.1)} />
+      <O x={430} y={1480} s={1.05} p={pose} face={(t >= 0 && t < 9) || (t >= 19 && t < 28) ? "joy" : swing > 0.8 ? "gritted" : "grin"} tilt={swing * 4 - 2} gaze={[8, 10]} hands={(h) => pickInHand(h.R, -20 - swing * 10, 1.1)} />
     </Cam>
   );
 };

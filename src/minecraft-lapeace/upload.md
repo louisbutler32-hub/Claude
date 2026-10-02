@@ -78,5 +78,5 @@ npm run lapeace:thumb
 ```
 
 The original's video sits at `public/audio/src/lapeace.mp4` (gitignored, never
-committed). The textures (ore, pickaxe) are your own pictures in
+committed). The textures (lapis ore — "La Peace" is lapis — and the pickaxe) are your own pictures in
 `public/images/pov2/` (also gitignored).
