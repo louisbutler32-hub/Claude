@@ -1,0 +1,15 @@
+{
+  "fps": 30,
+  "frames": 300,
+  "_note": "Every number is a frame. Shared by EnderShort.tsx and scripts/build-ender-audio.py. Music: The Pink Panther theme from 9.5 s, so its beats (0.52 s, 15.6 frames) carry the footsteps, its sax hits (14.54 15.06 16.08 17.14 17.66 18.18 s) land on frames 151 167 198 230 245 261: eye contact on the first, the look-away, the teleport on the loud one (16.08 s), the scream on 17.66 s.",
+  "musicFrom": 9.5,
+  "beat": 15.6,
+  "stepFrom": 11,
+  "lock": 151,
+  "away": [172, 192],
+  "teleport": 198,
+  "near": [214, 230],
+  "scream": 245,
+  "cut": 276,
+  "frame": 300
+}
