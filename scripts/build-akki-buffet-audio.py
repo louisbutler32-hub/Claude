@@ -28,7 +28,14 @@ FPS = B["fps"]
 S = B["shots"]
 sec = lambda f: f / FPS
 DUR = sec(B["frames"])
-OUT = os.path.join(ROOT, "public", "audio", "akki-buffet-mix.wav")
+ARGS = sys.argv[1:]
+MUSIC = ARGS[ARGS.index("--music") + 1] if "--music" in ARGS else None  # "yakety": the owner's Yakety Sax in public/audio/src/
+CUT = float(ARGS[ARGS.index("--cut") + 1]) if "--cut" in ARGS else None  # seconds: end the track here
+OUT = os.path.join(ROOT, "public", "audio", "akki-buffet-mix.wav" if not (MUSIC or CUT) else f"akki-buffet-{MUSIC or 'bed'}{'-%gs' % CUT if CUT else ''}.wav")
+# Yakety Sax: 123 bpm, riff onsets measured at 2.07s + n*0.4878s. X seconds in puts a beat on the
+# burp-blast frame (B["boom"]) so the drop and the music's accents land together.
+YAK_BEAT = 60 / 123.05
+YAK_X = next(2.07 + k * YAK_BEAT - sec(B["boom"]) for k in range(200) if 2.07 + k * YAK_BEAT - sec(B["boom"]) >= 1.9)
 
 
 def op(name):
@@ -305,12 +312,23 @@ if __name__ == "__main__":
     hit("punch_01", B["thump"], 0.6, 0.0, 0.3)
     syn(thump(60, 0.3), B["thump"], 1.0)
 
-    b = bed(DUR + 0.5)[: len(mix)]
     k = N(0.08)
     sm = np.convolve(duck, np.ones(k) / k, mode="same")
-    mix += stereo(b * sm * 0.9)[: len(mix)]
+    if MUSIC == "yakety":
+        song = decode(FF, os.path.join(ROOT, "public", "audio", "src", "yakety-sax.mp3"))
+        i0 = int(YAK_X * SR)
+        seg = song[i0:i0 + len(mix)]
+        # the sax is dense and loud: sit it under the effects, and drop it further on every hit
+        mix[: len(seg)] += seg * np.clip(sm, 0.2, 1.0)[: len(seg), None] * 1.0
+    else:
+        b = bed(DUR + 0.5)[: len(mix)]
+        mix += stereo(b * sm * 0.9)[: len(mix)]
 
-    mix = mix[: N(DUR)]
+    mix = mix[: N(CUT if CUT else DUR)]
+    if CUT:  # the cut ends on the thumbs-up: a rim-shot-ish hit on the last beat, then a short tail
+        n = N(0.35)
+        hit_ = stereo((band(n, 3500, 2200, 77) * decay(n, 18) * 0.6 + tone(180, 0.35) * decay(n, 14) * 0.5) * env(n, 0.001, 0.05))
+        add(mix, hit_, (CUT - 0.30) * FPS, 0.7)
     # a short fade on the very last frames so the tail doesn't click
     fa = N(0.05)
     mix[-fa:] *= np.linspace(1, 0, fa)[:, None]
@@ -328,4 +346,4 @@ if __name__ == "__main__":
                     "-ar", "48000", "-c:a", "pcm_s16le", OUT], check=True)
     print(f"measured {li:.1f} LUFS, applied {gain:+.1f} dB")
     os.remove(tmp)
-    print("wrote", os.path.relpath(OUT, ROOT), f"({DUR:.2f}s)")
+    print("wrote", os.path.relpath(OUT, ROOT), f"({(CUT or DUR):.2f}s)")
