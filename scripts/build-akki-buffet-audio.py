@@ -31,7 +31,11 @@ DUR = sec(B["frames"])
 ARGS = sys.argv[1:]
 MUSIC = ARGS[ARGS.index("--music") + 1] if "--music" in ARGS else None  # "yakety": the owner's Yakety Sax in public/audio/src/
 CUT = float(ARGS[ARGS.index("--cut") + 1]) if "--cut" in ARGS else None  # seconds: end the track here
-OUT = os.path.join(ROOT, "public", "audio", "akki-buffet-mix.wav" if not (MUSIC or CUT) else f"akki-buffet-{MUSIC or 'bed'}{'-%gs' % CUT if CUT else ''}.wav")
+# Under a real song most of the effects are clutter: keep only the gags that sell a joke.
+SPARSE = MUSIC is not None or "--sparse" in ARGS
+KEEP = [(53, 54), (77, 84), (150, 151), (206, 207), (252, 258), (317, 326), (328, 331)]  # coin, arm stretch, inflate, sad slide-whistle, burp blast, raspberry, ending hit
+allowed = lambda f: (not SPARSE) or any(a <= f <= b for a, b in KEEP)
+OUT = os.path.join(ROOT, "public", "audio", "akki-buffet-mix.wav" if not (MUSIC or CUT or "--sparse" in ARGS) else f"akki-buffet-{MUSIC or 'bed'}{'-%gs' % CUT if CUT else ''}.wav")
 # Yakety Sax: 123 bpm, riff onsets measured at 2.07s + n*0.4878s. X seconds in puts a beat on the
 # burp-blast frame (B["boom"]) so the drop and the music's accents land together.
 YAK_BEAT = 60 / 123.05
@@ -46,7 +50,8 @@ def op(name):
 
 
 def add(mix, clip, f, gain=1.0):
-    place(mix, clip, sec(f), gain)
+    if allowed(f):
+        place(mix, clip, sec(f), gain)
 
 
 # ------------------------------------------------------------ synthesised effects
@@ -209,6 +214,8 @@ if __name__ == "__main__":
     duck = np.ones(len(mix))
 
     def dk(f, gain, hold, lvl):
+        if not allowed(f):
+            return
         i = int(sec(f) * SR)
         j = min(len(duck), i + int(hold * SR))
         duck[i:j] = np.minimum(duck[i:j], lvl)
@@ -286,7 +293,8 @@ if __name__ == "__main__":
     syn(burp(0.95), B["boom"], 1.0)
     for i in range(6):
         syn(crash(30 + i, 0.9 + 0.1 * i), B["boom"] + 3 + i, 0.4)
-    duck[int(sec(S["gaunt"][0]) * SR):int(sec(S["gaunt"][1]) * SR)] = 0.12
+    if not SPARSE:
+        duck[int(sec(S["gaunt"][0]) * SR):int(sec(S["gaunt"][1]) * SR)] = 0.12
 
     # 5: the asterisk, the deflate
     for i in range(3):
