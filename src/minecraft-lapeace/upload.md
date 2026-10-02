@@ -4,7 +4,7 @@ A shot-for-shot remake, in our hand-drawn look with the owner's two characters r
 animation: two friends in a lava cave shout DIAMOND at a wall of ore, a miner
 breaks through into a sunbeam over an impossible meadow, a glowing treasure hangs
 in the light, a Greek temple stands in the flowers, and the last close-up finds the
-hero crowned with laurel. There are no on-screen captions. The third shot (0:03) is an original scene: the hero smashes through the tunnel wall and daylight floods in. Every cut and every subtitle is on the original's own
+hero crowned with laurel. Two versions: `la-peace.mp4` has the game-style subtitle bar like the original (DIAMOND, "That's La Peace", ...), and `la-peace-nocaptions.mp4` has none. The third shot (0:03) is an original scene: the hero smashes through the tunnel wall and daylight floods in. Every cut and every subtitle is on the original's own
 time (cuts measured with a scene-change detector, voice lines timed with Whisper).
 
 ## Before you upload
@@ -67,6 +67,7 @@ What do you think La Peace is? 👇
 | file | what it is |
 |---|---|
 | `la-peace.mp4` | the Short on the original's soundtrack, 13.4 s, 1080×1920 |
+| `la-peace-nocaptions.mp4` | the same Short with no subtitle bar |
 | `la-peace-silent.mp4` | the same picture with no sound, for the sound picker |
 | `thumbnail-la-peace.jpg` | 9:16, the treasure in the beam |
 

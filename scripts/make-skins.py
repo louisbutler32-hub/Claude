@@ -119,6 +119,12 @@ for y in range(40, 46):
     for x in range(64):
         toga.putpixel((x, y), (216, 178, 74, 255))
 toga.save(os.path.join(OUT, "toga.png"))
+marble = Image.new("RGBA", (64, 64), (240, 234, 220, 255))
+for y in range(64):
+    for x in range(64):
+        k = 1 + (random.Random(x * 131 + y * 7).random() - 0.5) * 0.05 - (0.05 if x % 16 in (0, 1) else 0)
+        marble.putpixel((x, y), mix((240, 234, 220), k))
+marble.save(os.path.join(OUT, "marble.png"))
 leaf = Image.new("RGBA", (16, 16), (90, 168, 58, 255))
 noise(leaf, (0, 0, 16, 16), (90, 168, 58, 255), 0.35, 8)
 for i in range(16):

@@ -39,6 +39,8 @@ export type Part = {
   tint?: string;
   /** every face shows the whole atlas picture (a textured cube) */
   full?: boolean;
+  /** lighter shading (marble, cloth) */
+  soft?: boolean;
 };
 
 type Quad = { pts: [number, number][]; z: number; shade: number; name: FaceName; part: Part; p0: [number, number]; e1: [number, number]; e2: [number, number]; rect: [number, number, number, number] };
@@ -114,7 +116,7 @@ export const renderParts = (parts: Part[], view: View, key = "b"): React.ReactNo
         const [u, v, w, h] = q.rect;
         const m = [q.e1[0] / w, q.e1[1] / w, q.e2[0] / h, q.e2[1] / h, q.p0[0], q.p0[1]];
         const size = q.part.atlasSize ?? 64;
-        const dark = Math.max(0, 0.46 - q.shade * 0.46);
+        const dark = Math.max(0, 0.46 - q.shade * 0.46) * (q.part.soft ? 0.4 : 1);
         const lit = Math.max(0, q.shade - 0.8) * 0.5;
         const pts = q.pts.map((p) => p.join(",")).join(" ");
         return (
@@ -281,3 +283,14 @@ export const Cube: React.FC<{ atlas: string; atlasSize: number; x: number; y: nu
   const part: Part = { box: [-h, 0, -h, h, size, h], atlas, uv: [0, 0], atlasSize, full: true };
   return <g>{renderParts([part], { yaw, pitch, s, x, y }, "cube")}</g>;
 };
+
+/** where a model-space point lands on screen for a view */
+export const project = (view: View, v: V3): [number, number] => {
+  let w = rz(v, (view.roll ?? 0) * D2R);
+  w = ry(w, view.yaw * D2R);
+  w = rx(w, view.pitch * D2R);
+  return [view.x + w[0] * view.s, view.y - w[1] * view.s];
+};
+
+/** a solid marble box (a column, a step) */
+export const marbleBox = (box: Part["box"], tint?: string): Part => ({ box, atlas: "marble", uv: [0, 0], atlasSize: 64, full: true, tint, soft: true });

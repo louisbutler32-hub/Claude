@@ -250,7 +250,8 @@
     "pick:mix": "python3 scripts/build-pick-audio.py",
     "pick:sfx": "python3 scripts/build-pick-audio.py --music none",
     "pick:audio": "remotion render PickShort out/pick-silent.mp4 && python3 scripts/lift-reference-audio.py public/audio/pick-mix.mp3 pick-mix-final.wav out/pick-silent.mp4 out/pick.mp4",
-    "pick:thumb": "remotion still Pick-Thumbnail out/thumbnail-pick.jpg --image-format=jpeg --quality=92"
+    "pick:thumb": "remotion still Pick-Thumbnail out/thumbnail-pick.jpg --image-format=jpeg --quality=92",
+    "lapeace:nocaptions": "remotion render LaPeaceShort out/la-peace-nocaptions-silent.mp4 --props='{\"captions\":false}' && python3 scripts/lift-reference-audio.py public/audio/src/lapeace.mp4 lapeace-mix.wav out/la-peace-nocaptions-silent.mp4 out/la-peace-nocaptions.mp4"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",
