@@ -32,10 +32,11 @@ ARGS = sys.argv[1:]
 MUSIC = ARGS[ARGS.index("--music") + 1] if "--music" in ARGS else None  # "yakety": the owner's Yakety Sax in public/audio/src/
 CUT = float(ARGS[ARGS.index("--cut") + 1]) if "--cut" in ARGS else None  # seconds: end the track here
 # Under a real song most of the effects are clutter: keep only the gags that sell a joke.
+OP100 = "--op100" in ARGS  # use the owner's "100 One Piece Sound Effects" cuts in .sfx/op100/ where one fits
 SPARSE = MUSIC is not None or "--sparse" in ARGS
 KEEP = [(53, 54), (77, 84), (150, 151), (206, 207), (252, 258), (317, 326), (328, 331)]  # coin, arm stretch, inflate, sad slide-whistle, burp blast, raspberry, ending hit
 allowed = lambda f: (not SPARSE) or any(a <= f <= b for a, b in KEEP)
-OUT = os.path.join(ROOT, "public", "audio", "akki-buffet-mix.wav" if not (MUSIC or CUT or "--sparse" in ARGS) else f"akki-buffet-{MUSIC or 'bed'}{'-%gs' % CUT if CUT else ''}.wav")
+OUT = os.path.join(ROOT, "public", "audio", "akki-buffet-mix.wav" if not (MUSIC or CUT or "--sparse" in ARGS) else f"akki-buffet-{MUSIC or 'bed'}{'-op100' if OP100 else ''}{'-%gs' % CUT if CUT else ''}.wav")
 # Yakety Sax: 123 bpm, riff onsets measured at 2.07s + n*0.4878s. X seconds in puts a beat on the
 # burp-blast frame (B["boom"]) so the drop and the music's accents land together.
 YAK_BEAT = 60 / 123.05
@@ -43,6 +44,12 @@ YAK_X = next(2.07 + k * YAK_BEAT - sec(B["boom"]) for k in range(200) if 2.07 + 
 
 
 def op(name):
+    if name[:1].isdigit():  # a cut from the 100-effects compilation: name or numeric prefix
+        import glob
+        hits = sorted(glob.glob(os.path.join(ROOT, ".sfx", "op100", name + "*.wav")))
+        if not hits:
+            sys.exit(f"missing .sfx/op100/{name}*.wav")
+        return decode(FF, hits[0])
     path = os.path.join(OP, name + ".wav")
     if not os.path.exists(path):
         sys.exit(f"missing .sfx/op/{name}.wav - cut the One Piece effects first (see .sfx/op/catalog.json)")
@@ -239,18 +246,24 @@ if __name__ == "__main__":
     syn(coin(2637), B["berries"], 0.9)
     for i in range(5):
         syn(coin(2200 + 300 * (i % 3)), B["berries"] + 2 + i * 2, 0.5)
-    hit("punch_01", B["berries"], 0.7, 0.4, 0.3)
+    hit("095_mug_fist" if OP100 else "punch_01", B["berries"], 0.9 if OP100 else 0.7, 0.4, 0.3)
     syn(chomp(3), B["grabTray"] - 1, 0.8)
     syn(clink(1300), B["grabTray"], 0.7)
     syn(ting(), B["grabTray"] + 2, 0.5)
 
     # 3a: the rubber arm
-    add(mix, op("whoosh_01"), B["armFire"] - 1, 0.9)
-    syn(boing(170, 520, 0.55, 0.8), B["armFire"], 0.5, 0.5, 0.5)
+    if OP100:
+        hit("001_luffy_arm_stretch", B["armFire"], 0.95, 0.35, 0.9)
+    else:
+        add(mix, op("whoosh_01"), B["armFire"] - 1, 0.9)
+        syn(boing(170, 520, 0.55, 0.8), B["armFire"], 0.5, 0.5, 0.5)
     for i, f in enumerate((78, 79, 80, 81, 82)):
         syn(crash(i + 1, 1.1 + 0.1 * i), f, 0.55)
-    add(mix, op("whoosh_01"), B["armBack"], 0.8)
-    syn(boing(520, 160, 0.4, 0.6), B["armBack"] + 1, 0.4)
+    if OP100:
+        hit("002_luffy_arm_retract", B["armBack"], 0.8, 0.35, 0.6)
+    else:
+        add(mix, op("whoosh_01"), B["armBack"], 0.8)
+        syn(boing(520, 160, 0.4, 0.6), B["armBack"] + 1, 0.4)
     syn(gulp(), B["gulp"], 0.9)
 
     # 3b: the vacuum
@@ -274,7 +287,10 @@ if __name__ == "__main__":
         syn(belly_bom(), f, 1.0)
     # 3g: the empty counter
     syn(clink(2800, 0.5), B["olive"], 0.5)
-    syn(slide_whistle_down(0.7), B["signSad"] - 1, 0.7, 0.6, 0.7)
+    if OP100:
+        hit("037_humiliate_sting", B["signSad"] - 1, 0.9, 0.3, 1.6)
+    else:
+        syn(slide_whistle_down(0.7), B["signSad"] - 1, 0.7, 0.6, 0.7)
 
     # 4: the ball, the dominoes, the burp
     for f in B["bounces"]:
@@ -288,8 +304,11 @@ if __name__ == "__main__":
     syn(gurgle(0.28), B["burpCharge"], 0.9, 0.4, 0.4)
     # the shock-wave: silence for the 3-frame flash, then everything at once
     duck[int(sec(S["flash"][0]) * SR):int(sec(S["flash"][0]) * SR) + int(0.9 * SR)] = 0.0
-    hit("explosion_03", B["boom"], 0.9, 0.0, 0.0)
-    hit("impact_heavy_01", B["boom"], 0.85, 0.0, 0.0)
+    if OP100:
+        hit("008_explosion", B["boom"], 1.0, 0.0, 0.0)
+    else:
+        hit("explosion_03", B["boom"], 0.9, 0.0, 0.0)
+        hit("impact_heavy_01", B["boom"], 0.85, 0.0, 0.0)
     syn(burp(0.95), B["boom"], 1.0)
     for i in range(6):
         syn(crash(30 + i, 0.9 + 0.1 * i), B["boom"] + 3 + i, 0.4)
@@ -336,7 +355,7 @@ if __name__ == "__main__":
     if CUT:  # the cut ends on the thumbs-up: a rim-shot-ish hit on the last beat, then a short tail
         n = N(0.35)
         hit_ = stereo((band(n, 3500, 2200, 77) * decay(n, 18) * 0.6 + tone(180, 0.35) * decay(n, 14) * 0.5) * env(n, 0.001, 0.05))
-        add(mix, hit_, (CUT - 0.30) * FPS, 0.7)
+        add(mix, op("037_humiliate_sting") if OP100 else hit_, (CUT - 0.30) * FPS, 0.9 if OP100 else 0.7)
     # a short fade on the very last frames so the tail doesn't click
     fa = N(0.05)
     mix[-fa:] *= np.linspace(1, 0, fa)[:, None]
