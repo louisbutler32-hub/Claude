@@ -683,7 +683,7 @@ const ShotZoro: React.FC<{ t: number; f: number }> = ({ t, f }) => {
             <ZoroPre p={pose({ ...Z_FOLD, turn, head: [turn * -10, -905] })} x={420} y={1640} s={1.0} face={ask ? "smirk" : "calm"} />
             {ask && (
               <g>
-                <g transform={`translate(${700},${560}) scale(${back(clamp((f - B.qmark) / 3), 2)})`}>
+                <g transform={`translate(${520},${690}) scale(${0.8 * back(clamp((f - B.qmark) / 3), 2)})`}>
                   <path d="M-160,-110 Q-170,-170 -90,-176 L90,-176 Q170,-170 160,-110 Q170,-30 90,-30 L10,-30 L-40,40 L-60,-30 L-90,-30 Q-170,-30 -160,-110Z" fill="#fff" stroke={INK} strokeWidth={7} strokeLinejoin="round" />
                   {/* WC sign */}
                   <rect x={-130} y={-156} width={110} height={110} rx={14} fill="#2a6fd0" stroke={INK} strokeWidth={5} />
@@ -691,7 +691,7 @@ const ShotZoro: React.FC<{ t: number; f: number }> = ({ t, f }) => {
                   <circle cx={-52} cy={-130} r={10} fill="#fff" /><path d="M-52,-118 l-14,40 h28Z M-52,-78 v16" stroke="#fff" strokeWidth={6} strokeLinejoin="round" fill="#fff" />
                   <text x={86} y={-72} textAnchor="middle" fontFamily="Poppins Black" fontSize={68} fill={INK}>WC?</text>
                 </g>
-                <QMark x={880} y={400} s={0.9} t={clamp((f - B.qmark) / 4)} />
+                <QMark x={680} y={640} s={0.7} t={clamp((f - B.qmark) / 4)} />
               </g>
             )}
           </>
@@ -747,7 +747,7 @@ const ShotHold: React.FC<{ t: number; f: number }> = ({ t, f }) => {
   const sh: P = [94, -806];
   const p = pose({ ...G_DOWN, elR: [sh[0] - Math.sin(th) * 190, sh[1] - Math.cos(th) * 190], haR: [sh[0] - Math.sin(th) * 380, sh[1] - Math.cos(th) * 380], hR: "point", elL: [-170, -640], haL: [-150, -500], tilt: -8 });
   return (
-    <Cam at={[560, 1330]} to={[540, 1060]} z={1.18 + t * 0.004} rot={0} f={f}>
+    <Cam at={[540, 1300]} to={[540, 1040]} z={1.02 + t * 0.003} rot={0} f={f}>
       <Room
         f={f}
         trays={KINDS.map(() => "empty")}
