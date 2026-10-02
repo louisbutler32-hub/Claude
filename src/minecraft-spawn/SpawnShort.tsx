@@ -529,17 +529,17 @@ export const SpawnShort: React.FC<{ audio?: string | null; captions?: boolean }>
   );
 };
 
-/** the 9:16 thumbnail: the skeleton happy in the water, the title in the caption's lettering */
+/** the 9:16 thumbnail: the skeleton happy in the water, the title in the caption's lettering over the water */
 export const SpawnThumb: React.FC = () => {
   loadMinecraftFonts();
   return (
     <AbsoluteFill style={{ backgroundColor: "#000" }}>
-      <Svg><Channel t={34} /></Svg>
+      <Svg><Channel t={12} /></Svg>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
         <g fontFamily="ComicRelief, 'Comic Sans MS', sans-serif" fontWeight={700} textAnchor="middle" fill="#fff" stroke={INK} strokeLinejoin="round" paintOrder="stroke">
-          <text x={540} y={300} fontSize={120} strokeWidth={16}>I SPAWNED</text>
-          <text x={540} y={440} fontSize={120} strokeWidth={16}>IN A CAVE!!</text>
-          <text x={540} y={1760} fontSize={96} strokeWidth={14} fill="#ffe14a">WEE!! 💀</text>
+          <text x={540} y={1440} fontSize={132} strokeWidth={18}>I SPAWNED</text>
+          <text x={540} y={1590} fontSize={132} strokeWidth={18}>IN A CAVE!!</text>
+          <text x={540} y={1780} fontSize={100} strokeWidth={14} fill="#ffe14a">(it was not a cave)</text>
         </g>
       </svg>
     </AbsoluteFill>
