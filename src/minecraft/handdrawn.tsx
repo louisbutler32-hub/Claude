@@ -17,7 +17,7 @@ import { AbsoluteFill, Freeze, useCurrentFrame } from "remotion";
  * frame rate, like the game's real interface on top of a drawn world.
  */
 
-const DrawnContext = React.createContext(false);
+export const DrawnContext = React.createContext(false);
 export const useDrawn = () => React.useContext(DrawnContext);
 
 /**

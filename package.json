@@ -249,17 +249,29 @@
     "pov:ender:thumb": "remotion still PovEnder-Thumbnail out/thumbnail-pov-ender.jpg --image-format=jpeg --quality=92",
     "lapeace": "remotion render LaPeaceShort out/la-peace-silent.mp4",
     "lapeace:audio": "remotion render LaPeaceShort out/la-peace-silent.mp4 && python3 scripts/lift-reference-audio.py public/audio/src/lapeace.mp4 lapeace-mix.wav out/la-peace-silent.mp4 out/la-peace.mp4",
-    "lapeace:thumb": "remotion still LaPeace-Thumbnail out/thumbnail-la-peace.jpg --image-format=jpeg --quality=92"
+    "lapeace:thumb": "remotion still LaPeace-Thumbnail out/thumbnail-la-peace.jpg --image-format=jpeg --quality=92",
+    "pick:mix": "python3 scripts/build-pick-audio.py",
+    "pick:sfx": "python3 scripts/build-pick-audio.py --music none",
+    "pick:audio": "remotion render PickShort out/pick-silent.mp4 && python3 scripts/lift-reference-audio.py public/audio/pick-mix.mp3 pick-mix-final.wav out/pick-silent.mp4 out/pick.mp4",
+    "pick:thumb": "remotion still Pick-Thumbnail out/thumbnail-pick.jpg --image-format=jpeg --quality=92",
+    "lapeace:nocaptions": "remotion render LaPeaceShort out/la-peace-nocaptions-silent.mp4 --props='{\"captions\":false}' && python3 scripts/lift-reference-audio.py public/audio/src/lapeace.mp4 lapeace-mix.wav out/la-peace-nocaptions-silent.mp4 out/la-peace-nocaptions.mp4",
+    "lapeace3d:audio": "remotion render LaPeace3D out/la-peace-3d-silent.mp4 --gl=swangle --concurrency=3 && python3 scripts/lift-reference-audio.py public/audio/src/lapeace.mp4 lapeace-mix.wav out/la-peace-3d-silent.mp4 out/la-peace-3d.mp4",
+    "lapeace3d:nocaptions": "remotion render LaPeace3D out/la-peace-3d-nocaptions-silent.mp4 --gl=swangle --concurrency=3 --props='{\"captions\":false}' && python3 scripts/lift-reference-audio.py public/audio/src/lapeace.mp4 lapeace-mix.wav out/la-peace-3d-nocaptions-silent.mp4 out/la-peace-3d-nocaptions.mp4",
+    "lapeace3d:thumb": "remotion still LaPeace3D out/thumbnail-la-peace-3d.jpg --frame=165 --gl=swangle --image-format=jpeg --quality=92"
   },
   "dependencies": {
+    "@react-three/fiber": "8.17.10",
     "@remotion/cli": "4.0.499",
     "@remotion/motion-blur": "4.0.499",
     "@remotion/noise": "4.0.499",
     "@remotion/paths": "4.0.499",
+    "@remotion/three": "4.0.499",
     "@remotion/transitions": "4.0.499",
+    "@types/three": "0.160.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "remotion": "4.0.499"
+    "remotion": "4.0.499",
+    "three": "0.160.1"
   },
   "devDependencies": {
     "@types/react": "18.3.1",

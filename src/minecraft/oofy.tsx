@@ -68,6 +68,8 @@ export const OOFY_DESIGNS: OofyDesign[] = [
 ];
 /** the look he ships with: D, picked from the ten-style lineup (oofyStyles.tsx) for its silhouette and faces */
 export const OOFY_DESIGN: OofyDesign = OOFY_DESIGNS[3];
+/** the same build, but in a shirt: no hood round the neck */
+export const SHIRT_DESIGN: OofyDesign = { ...OOFY_DESIGNS[3], key: "SHIRT", name: "shirt", hood: false };
 export const SPEED_DESIGN: OofyDesign = OOFY_DESIGNS[6];
 export const KAI_DESIGN: OofyDesign = OOFY_DESIGNS[7];
 export const SPEED_TINT: OofyTint = { skin: "#b8764a", line: "#2a1b3d", hoodie: "#7a52d6", pants: "#2a3150", shoe: "#f7f3ee", hair: "#1b1520", hairLit: "#3a3045", blush: "#d9604a" };
@@ -389,7 +391,13 @@ export const Oofy: React.FC<{
   shadow?: boolean;
   bandAid?: boolean;
   design?: OofyDesign;
-}> = ({ x, y, scale = 1, pose: p0, face, tint = OOFY_TINT.normal, look = [0, 0], tilt = 0, flip = false, armsOverHead = false, hands, faceOffset = [0, 0], shadow = true, bandAid = true, design }) => {
+  /** drawn in head space after the head: hats, a laurel crown */
+  headExtras?: React.ReactNode;
+  /** drawn on the torso after the shirt: an open vest, a sash, a toga's drape */
+  torsoExtras?: React.ReactNode;
+  /** a plain shirt: no hoodie pocket or drawstrings */
+  plain?: boolean;
+}> = ({ x, y, scale = 1, pose: p0, face, tint = OOFY_TINT.normal, look = [0, 0], tilt = 0, flip = false, armsOverHead = false, hands, faceOffset = [0, 0], shadow = true, bandAid = true, design, headExtras, torsoExtras, plain = false }) => {
   const id = React.useId().replace(/:/g, "");
   const drawn = useDrawn();
   const ctx = React.useContext(DesignContext);
@@ -434,19 +442,21 @@ export const Oofy: React.FC<{
         </linearGradient>
       </defs>
       <path d="M-56,6 Q-70,64 -66,118 Q-66,136 -48,136 L48,136 Q66,136 66,118 Q70,64 56,6 Q0,-12 -56,6 Z" fill={drawn ? tint.hoodie : `url(#${id}-hood)`} stroke={tint.line} strokeWidth={11} strokeLinejoin="round" />
-      <path d="M-34,86 L34,86 L30,120 L-30,120 Z" fill={shade(tint.hoodie, -0.12)} stroke={shade(tint.hoodie, -0.4)} strokeWidth={5} strokeLinejoin="round" />
+      {!plain && <path d="M-34,86 L34,86 L30,120 L-30,120 Z" fill={shade(tint.hoodie, -0.12)} stroke={shade(tint.hoodie, -0.4)} strokeWidth={5} strokeLinejoin="round" />}
       <path d="M-44,6 Q0,26 44,6" fill="none" stroke={shade(tint.hoodie, -0.35)} strokeWidth={9} strokeLinecap="round" />
-      {[-14, 14].map((dx) => (
+      {!plain && [-14, 14].map((dx) => (
         <g key={dx}>
           <path d={`M${dx},14 q${dx > 0 ? 3 : -3},16 ${dx > 0 ? 1 : -1},34`} stroke="#f7f3ee" strokeWidth={5} fill="none" strokeLinecap="round" />
           <circle cx={dx + (dx > 0 ? 1 : -1)} cy={50} r={4} fill="#f7f3ee" />
         </g>
       ))}
+      {torsoExtras}
     </g>
   );
   const head = (
     <g transform={`translate(${p.head[0]} ${p.head[1]}) rotate(${tilt})`}>
       <OofyHead face={face} look={look} tint={tint} bandAid={bandAid} faceOffset={faceOffset} id={`${id}h`} design={d} />
+      {headExtras}
     </g>
   );
   const feetY = Math.max(p.legL[1][1], p.legR[1][1]);
