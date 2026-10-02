@@ -355,7 +355,7 @@ if __name__ == "__main__":
     if CUT:  # the cut ends on the thumbs-up: a rim-shot-ish hit on the last beat, then a short tail
         n = N(0.35)
         hit_ = stereo((band(n, 3500, 2200, 77) * decay(n, 18) * 0.6 + tone(180, 0.35) * decay(n, 14) * 0.5) * env(n, 0.001, 0.05))
-        add(mix, op("037_humiliate_sting") if OP100 else hit_, (CUT - 0.30) * FPS, 1.9 if OP100 else 0.7)
+        add(mix, op("042_stupid_wtf_spring") if OP100 else hit_, (CUT - 0.30) * FPS, 1.9 if OP100 else 0.7)
     # a short fade on the very last frames so the tail doesn't click
     fa = N(0.05)
     mix[-fa:] *= np.linspace(1, 0, fa)[:, None]
@@ -369,7 +369,7 @@ if __name__ == "__main__":
     meas = subprocess.run([FF, "-hide_banner", *raw, "-af", "ebur128", "-f", "null", "-"], capture_output=True, text=True).stderr
     li = float([l for l in meas.splitlines() if l.strip().startswith("I:")][-1].split()[1])
     gain = -14.0 - li
-    subprocess.run([FF, "-v", "error", "-y", *raw, "-af", f"volume={gain:.2f}dB,alimiter=limit=0.85:attack=2:release=60:level=false",
+    subprocess.run([FF, "-v", "error", "-y", *raw, "-af", f"volume={gain:.2f}dB,alimiter=limit=0.7:attack=2:release=60:level=false",
                     "-ar", "48000", "-c:a", "pcm_s16le", OUT], check=True)
     print(f"measured {li:.1f} LUFS, applied {gain:+.1f} dB")
     os.remove(tmp)
