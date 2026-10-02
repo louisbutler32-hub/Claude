@@ -5,15 +5,15 @@ Format: Short, 1080×1920, 14s (cut at 0:14: ends on Luffy's thumbs-up; the full
 Audience: **made for kids: NO** (anime parody).
 
 ## Title
-Luffy Ate the Entire All-You-Can-Eat Buffet 💀 #shorts
+Luffy Eating Moments 😂 He Ate the Whole Buffet #onepiece #shorts
 
 Alternates:
+- Luffy Ate the Entire All-You-Can-Eat Buffet 💀 #shorts
 - All You Can Eat* (*Not Luffy) 😭 #shorts
-- The Buffet Owner Never Recovered #shorts
 
 ## Description
 ```
-"All you can eat — 20 berries!" Luffy ate every tray, every plate and the whole counter… then rolled around the restaurant like a ball 🍖💀
+One Piece funny moments: Luffy eating moments at an all-you-can-eat buffet 🍖 He ate every tray, every plate and the whole counter… then rolled around the restaurant like a ball 💀
 
 The owner added one new line of fine print: *NOT LUFFY 😭
 
@@ -27,7 +27,7 @@ https://www.youtube.com/@akkitalkss
 
 ## Tags
 ```
-one piece, luffy, monkey d luffy, luffy eating, luffy buffet, all you can eat, one piece funny, one piece parody, one piece animation, anime shorts, anime funny, anime comedy, luffy food, gomu gomu no mi, akki talks, animation, cartoon, shorts, anime
+luffy eating moments, luffy eating, one piece funny moments, one piece funny, luffy buffet, luffy eating meat, all you can eat, monkey d luffy, luffy, one piece, one piece parody, one piece animation, anime shorts, anime funny, anime comedy, gomu gomu no mi, animation, cartoon, shorts
 ```
 
 ## Build
