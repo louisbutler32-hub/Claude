@@ -7,6 +7,15 @@ in the light, a Greek temple stands in the flowers, and the last close-up finds 
 hero crowned with laurel. Two versions: `la-peace.mp4` has the game-style subtitle bar like the original (DIAMOND, "That's La Peace", ...), and `la-peace-nocaptions.mp4` has none. The third shot (0:03) is an original scene: the hero smashes through the tunnel wall and daylight floods in. Every cut and every subtitle is on the original's own
 time (cuts measured with a scene-change detector, voice lines timed with Whisper).
 
+## Version 2: rebuilt in real 3D
+
+`src/lapeace3d/` rebuilds the whole Short as a real 3D scene (three.js through Remotion):
+voxel terrain, lit materials, fog, a sunbeam and glowing items, and the owner's two
+characters as Minecraft-skin models (skins painted by `scripts/make-skins.py`) seen through
+a moving camera, the way the original is made. Same cuts, voice lines and subtitles.
+Render with `npm run lapeace3d:audio` (needs `--gl=swangle`, software WebGL; about 4 minutes).
+Files: `la-peace-3d.mp4` (with subtitles), `la-peace-3d-nocaptions.mp4`, `la-peace-3d-silent.mp4`.
+
 ## Before you upload
 
 - **The voice track is the original's**, lifted straight off the video, and the
