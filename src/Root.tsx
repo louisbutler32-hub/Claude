@@ -116,6 +116,8 @@ import { DiamondShort, DiamondThumb, DIAMOND_FRAMES } from "./minecraft-pov2/Dia
 import { EnderShort, EnderThumb, ENDER_FRAMES } from "./minecraft-pov2/EnderShort";
 import { LaPeaceShort, LaPeaceThumb, LAPEACE_FRAMES } from "./minecraft-lapeace/LaPeaceShort";
 import { ToonSheet } from "./minecraft-lapeace/toon";
+import { SpawnCastSheet } from "./minecraft-spawn/cast";
+import { SpawnShort, SpawnThumb, SPAWN_FRAMES } from "./minecraft-spawn/SpawnShort";
 import { PickShort, PickThumb, PICK_FRAMES } from "./minecraft-pick/PickShort";
 import { LaPeace3D, LAPEACE3D_FRAMES } from "./lapeace3d/LaPeace3D";
 import { TennisShort, TennisThumb, TENNIS_FRAMES } from "./tennis/TennisShort";
@@ -288,6 +290,9 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="PovEnder-Thumbnail" component={EnderThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="LaPeaceShort" component={LaPeaceShort} durationInFrames={LAPEACE_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="LaPeaceCast" component={ToonSheet} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="SpawnShort" component={SpawnShort} durationInFrames={SPAWN_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Spawn-Thumbnail" component={SpawnThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="SpawnCast" component={SpawnCastSheet} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="LaPeace-Thumbnail" component={LaPeaceThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="PickShort" component={PickShort} durationInFrames={PICK_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Pick-Thumbnail" component={PickThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
