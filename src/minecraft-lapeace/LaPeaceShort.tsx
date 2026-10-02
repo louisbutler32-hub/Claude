@@ -4,6 +4,7 @@ import { AbsoluteFill, Audio, continueRender, delayRender, random, Sequence, sta
 import { H, W } from "../minecraft/beats";
 import { ease } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
+import { DrawnContext } from "../minecraft/handdrawn";
 import { limb, lerpPose, Pose, POSE, Pt } from "../minecraft/figure";
 import { Cap, Monk, Straw, Wise } from "./cast";
 import { Poppy } from "../minecraft/pixels";
@@ -21,7 +22,7 @@ import B from "./beats.json";
 
 export const LAPEACE_FRAMES = B.frames;
 
-const LINE = "#2a1b3d";
+const LINE = "#2b1d14";
 const MONO = "Monocraft, monospace";
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
@@ -66,10 +67,10 @@ const Haze: React.FC<{ y: number }> = ({ y }) => (
 
 /** the finish over every shot: soft focus defs, a sun grade from the top right, and a vignette */
 const Svg: React.FC<{ children: React.ReactNode; sun?: number }> = ({ children, sun = 0.3 }) => (
-  <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
+  <DrawnContext.Provider value><svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
     <defs>
       <filter id="lpDof" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation={2.6} /></filter>
-      <radialGradient id="lpVig" cx="50%" cy="46%" r="75%"><stop offset="0.55" stopColor="#000" stopOpacity={0} /><stop offset="1" stopColor="#0a0518" stopOpacity={0.5} /></radialGradient>
+      <radialGradient id="lpVig" cx="50%" cy="46%" r="75%"><stop offset="0.55" stopColor="#000" stopOpacity={0} /><stop offset="1" stopColor="#0a0518" stopOpacity={0.38} /></radialGradient>
       <radialGradient id="lpSun" cx="82%" cy="6%" r="70%"><stop offset="0" stopColor="#fff2b0" stopOpacity={sun} /><stop offset="1" stopColor="#fff2b0" stopOpacity={0} /></radialGradient>
       <linearGradient id="lpFloor" x1="0" y1="0" x2="0" y2="1"><stop offset="0.6" stopColor="#10081c" stopOpacity={0} /><stop offset="1" stopColor="#10081c" stopOpacity={0.3} /></linearGradient>
       <clipPath id="lpAll"><rect x={0} y={0} width={W} height={H} /></clipPath>
@@ -78,57 +79,69 @@ const Svg: React.FC<{ children: React.ReactNode; sun?: number }> = ({ children, 
     <rect x={0} y={0} width={W} height={H} fill="url(#lpSun)" style={{ mixBlendMode: "screen" }} />
     <rect x={0} y={0} width={W} height={H} fill="url(#lpFloor)" />
     <rect x={0} y={0} width={W} height={H} fill="url(#lpVig)" />
-  </svg>
+  </svg></DrawnContext.Provider>
 );
 
-const cloudRects = Array.from({ length: 16 }, (_, i) => ({ x: random(`cx${i}`) * 1500 - 200, y: 40 + random(`cy${i}`) * 700, w: 160 + random(`cw${i}`) * 260, h: 40 + random(`ch${i}`) * 40, v: 0.3 + random(`cv${i}`) * 0.8 }));
+const INK = "#2b1d14";
+const tri = (x: number) => Math.abs((((x % 2) + 2) % 2) - 1);
 
-const SLABS = Array.from({ length: 26 }, (_, i) => ({ u: random(`cu${i}`), v: random(`cv${i}`), w: 0.6 + random(`cw${i}`) * 0.9, o: 0.55 + random(`co${i}`) * 0.4 }));
-const Sky: React.FC<{ f: number; horizon: number; top?: string; bottom?: string }> = ({ f, horizon, top = "#1f78f0", bottom = "#bfe4ff" }) => (
+const SLABS = Array.from({ length: 22 }, (_, i) => ({ u: random(`cu${i}`), v: random(`cv${i}`), w: 0.6 + random(`cw${i}`) * 0.9, o: 0.6 + random(`co${i}`) * 0.4 }));
+/** flat sky, with chunky white clouds: one merged outline round each, drifting at different speeds by depth */
+const Sky: React.FC<{ f: number; horizon: number; top?: string; bottom?: string }> = ({ f, horizon, top = "#4aa8f2", bottom = "#cdeaff" }) => (
   <g>
     <defs>
-      <linearGradient id={`sky${top}`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={top} /><stop offset="0.7" stopColor="#5aa9ff" /><stop offset="1" stopColor={bottom} /></linearGradient>
+      <linearGradient id={`sky${top}`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={top} /><stop offset="1" stopColor={bottom} /></linearGradient>
     </defs>
     <rect x={-100} y={-100} width={W + 200} height={horizon + 100} fill={`url(#sky${top})`} />
-    {/* translucent cloud slabs: big and tilted overhead, small and flat toward the horizon */}
     {SLABS.map((c, i) => {
-      const y = c.v * horizon * 0.92;
-      const near = 1 - y / horizon; // 1 overhead, 0 at the horizon
-      const w = (180 + 520 * near) * c.w, h = (26 + 70 * near) * c.w;
-      const x = ((c.u * 1500 + f * (0.4 + near) * 0.9) % 1500) - 260;
-      return <rect key={i} x={x} y={y} width={w} height={h} fill="#ffffff" opacity={c.o * (0.5 + 0.5 * near)} transform={`translate(${x} ${y}) skewX(${-38 * near - 8}) translate(${-x} ${-y})`} />;
+      const y = c.v * horizon * 0.88;
+      const near = 1 - y / horizon;
+      const w = (170 + 460 * near) * c.w, h = (46 + 80 * near) * c.w;
+      const x = ((c.u * 1500 + f * (0.3 + near * 0.8)) % 1500) - 260;
+      const shapes = (fill: string, stroke?: string) => (
+        <>
+          <rect x={x} y={y} width={w} height={h} rx={h * 0.32} fill={fill} stroke={stroke} strokeWidth={stroke ? 12 : 0} />
+          <rect x={x + w * 0.16} y={y - h * 0.5} width={w * 0.46} height={h * 0.7} rx={h * 0.32} fill={fill} stroke={stroke} strokeWidth={stroke ? 12 : 0} />
+        </>
+      );
+      return <g key={i} opacity={c.o}>{shapes("#7da6d8", "#7da6d8")}{shapes("#ffffff")}</g>;
     })}
   </g>
 );
 
-/** stepped, voxel-style mountain ranges: columns of rock with snow caps, a bluer far range behind */
+/** jagged inked mountains with snow caps, a pale far range and a darker near one, and green foothills in front */
 const Mountains: React.FC<{ y: number; k?: number }> = ({ y, k = 1 }) => {
-  const range = (seed: string, base: number, amp: number, rock: string, rockLo: string, snow: string, shade: string, snowLine: number, off: number) => {
-    const cols: React.ReactNode[] = [];
-    const cw = 26;
-    for (let i = -1; i < 44; i++) {
-      const n = 0.5 + 0.5 * (0.55 * Math.sin(i * 0.23 + off) + 0.3 * Math.sin(i * 0.61 + off * 2.1) + 0.15 * Math.sin(i * 1.7 + off * 3.3));
-      const h = Math.max(24, (base + amp * Math.abs(n)) * k);
-      const x = i * cw;
-      const topY = y - h;
-      const snowH = Math.max(0, h - snowLine * k);
-      cols.push(
-        <g key={i}>
-          <rect x={x} y={topY} width={cw + 1} height={h + 60} fill={rock} />
-          <rect x={x} y={y - h * 0.45} width={cw + 1} height={h * 0.45 + 60} fill={rockLo} />
-          <rect x={x + cw * 0.55} y={topY} width={cw * 0.45 + 1} height={h + 60} fill={shade} opacity={0.3} />
-          {snowH > 0 && <rect x={x} y={topY} width={cw + 1} height={snowH} fill={snow} />}
-          {snowH > 0 && <rect x={x + cw * 0.55} y={topY} width={cw * 0.45 + 1} height={snowH} fill="#c4d6f2" opacity={0.75} />}
-        </g>
+  const range = (base: number, amp: number, step: number, off: number, rock: string, shade: string, snowAt: number, snowDepth: number) => {
+    const pts: [number, number][] = [];
+    for (let x = -step, i = 0; x <= W + step * 2; x += step, i++) {
+      const h = (base + amp * (0.55 * tri(i * 0.37 + off) + 0.3 * tri(i * 0.91 + off * 1.7) + 0.15 * tri(i * 1.9 + off * 2.3))) * k;
+      pts.push([x, y - h]);
+    }
+    const bottom = y + 120;
+    const ridge = pts.map((p) => p.join(",")).join(" L");
+    const out: React.ReactNode[] = [
+      <path key="r" d={`M${pts[0][0]},${bottom} L${ridge} L${pts[pts.length - 1][0]},${bottom} Z`} fill={rock} stroke={INK} strokeWidth={8} strokeLinejoin="round" />,
+    ];
+    for (let i = 1; i < pts.length - 1; i++) {
+      const [px, py] = pts[i], [lx, ly] = pts[i - 1], [rx, ry] = pts[i + 1];
+      if (!(py < pts[i - 1][1] && py < pts[i + 1][1])) continue;
+      out.push(<polygon key={`sh${i}`} points={`${px},${py} ${rx},${ry} ${px + (rx - px) * 0.35},${bottom} ${px},${bottom}`} fill={shade} opacity={0.22} />);
+      if (y - py < snowAt * k) continue;
+      const cap = Math.min(snowDepth * k, (y - py) * 0.5);
+      const sl = (ly - py) / (px - lx), sr = (ry - py) / (rx - px);
+      const xl = Math.max(lx, px - cap / sl), xr = Math.min(rx, px + cap / sr);
+      out.push(
+        <polygon key={`sn${i}`} fill="#ffffff" stroke={INK} strokeWidth={6} strokeLinejoin="round"
+          points={`${xl},${py + cap} ${px},${py} ${xr},${py + cap} ${px + (xr - px) * 0.55},${py + cap * 0.62} ${px},${py + cap * 0.95} ${px - (px - xl) * 0.55},${py + cap * 0.62}`} />
       );
     }
-    return cols;
+    return out;
   };
   return (
     <g>
-      <g opacity={0.95}>{range("mfar", 140, 200, "#8ea3c4", "#9fb4d0", "#ffffff", "#5a6f94", 230, 0.7)}</g>
-      <g>{range("mnear", 70, 150, "#7b8798", "#667362", "#fbfdff", "#3b4656", 150, 2.6)}</g>
-      <rect x={-100} y={y - 6} width={W + 200} height={80} fill="#4f7d3c" />
+      {range(150, 230, 120, 0.7, "#9db3d6", "#3a4f86", 190, 120)}
+      {range(70, 170, 90, 2.6, "#7d8aa6", "#1d2a55", 120, 90)}
+      <path d={`M-100,${y - 20} C150,${y - 70} 380,${y - 10} 600,${y - 40} S950,${y - 80} 1180,${y - 20} L1180,${y + 200} L-100,${y + 200} Z`} fill="#5aa04a" stroke={INK} strokeWidth={8} strokeLinejoin="round" />
     </g>
   );
 };
@@ -143,30 +156,35 @@ const Flowers: React.FC<{ y0: number; y1: number; n?: number; seed?: string; big
       const x = random(`${seed}x${i}`) * 1100 - 20;
       return (
         <g key={i} transform={`translate(${x} ${y}) scale(${sc})`}>
-          <rect x={-4} y={0} width={8} height={26} fill="#3f8a32" />
-          <rect x={-16} y={-16} width={32} height={20} fill={c} stroke={LINE} strokeWidth={4} />
+          <rect x={-5} y={0} width={10} height={28} fill="#3f8a32" stroke={INK} strokeWidth={4} />
+          <rect x={-17} y={-17} width={34} height={22} fill={c} stroke={INK} strokeWidth={5} strokeLinejoin="round" />
         </g>
       );
     })}
   </g>
 );
 
-const GREENS = ["#4f9a3a", "#5fb04a", "#6cc152", "#3f8a32", "#7ccf5c"];
+const GREENS = ["#63ad4f", "#6cb957", "#74c25d", "#5ba648", "#7ccb64"];
 const Meadow: React.FC<{ y: number; riverX?: number }> = ({ y, riverX = 380 }) => {
   const rows: React.ReactNode[] = [];
   let yy = y;
   let r = 0;
   while (yy < H + 60) {
-    const h = 12 + r * 8.5;
+    const h = 14 + r * 9;
     const w = h * 1.35;
     for (let x = -w; x < W + w; x += w) {
-      const g = GREENS[Math.floor(random(`mg${r}${Math.round(x)}`) * GREENS.length)];
-      rows.push(<rect key={`${r}${x}`} x={x} y={yy} width={w + 1} height={h + 1} fill={g} />);
-      // every so often a flower sits on a block
-      const fr = random(`mf${r}${Math.round(x)}`);
-      if (fr > 0.78) {
-        const c = ["#e8483a", "#ff6b81", "#ffd84a", "#9a6bd6", "#ffffff"][Math.floor(random(`mc${r}${Math.round(x)}`) * 5)];
-        rows.push(<rect key={`f${r}${x}`} x={x + w * 0.3} y={yy + h * 0.1} width={Math.max(4, h * 0.34)} height={Math.max(4, h * 0.34)} fill={c} />);
+      const key = `${r}${Math.round(x)}`;
+      const g = GREENS[Math.floor(random(`mg${key}`) * GREENS.length)];
+      rows.push(<rect key={`${key}`} x={x} y={yy} width={w + 1} height={h + 1} fill={g} stroke="#3f8a36" strokeWidth={Math.max(2, h * 0.07)} />);
+      const fr = random(`mf${key}`);
+      if (fr > 0.84) {
+        const c = ["#e8483a", "#ff6b81", "#ffd84a", "#9a6bd6", "#ffffff"][Math.floor(random(`mc${key}`) * 5)];
+        const s = Math.max(5, h * 0.36);
+        rows.push(<rect key={`f${key}`} x={x + w * 0.3} y={yy + h * 0.15} width={s} height={s} fill={c} stroke={INK} strokeWidth={Math.max(2, h * 0.08)} />);
+      } else if (fr < 0.16) {
+        // a little inked tuft, like the tick marks the best cartoons scatter over a ground
+        const tx = x + w * 0.5, ty = yy + h * 0.6, u = h * 0.28;
+        rows.push(<path key={`t${key}`} d={`M${tx - u},${ty} l${u * 0.5},${-u * 1.3} M${tx},${ty} l0,${-u * 1.6} M${tx + u},${ty} l${-u * 0.5},${-u * 1.3}`} stroke={INK} strokeWidth={Math.max(2, h * 0.07)} strokeLinecap="round" fill="none" opacity={0.6} />);
       }
     }
     yy += h;
@@ -176,15 +194,15 @@ const Meadow: React.FC<{ y: number; riverX?: number }> = ({ y, riverX = 380 }) =
   return (
     <g>
       {rows}
-      <path d={rv} fill="none" stroke="#2f63c4" strokeWidth={80} strokeLinecap="round" />
-      <path d={rv} fill="none" stroke="#4f8bf0" strokeWidth={56} strokeLinecap="round" />
-      <path d={rv} fill="none" stroke="#bcd8ff" strokeWidth={10} strokeLinecap="round" opacity={0.7} />
-      {/* a few blocky trees */}
+      <path d={rv} fill="none" stroke={INK} strokeWidth={98} strokeLinecap="round" />
+      <path d={rv} fill="none" stroke="#3d78d6" strokeWidth={80} strokeLinecap="round" />
+      <path d={rv} fill="none" stroke="#5f9cf2" strokeWidth={52} strokeLinecap="round" />
+      <path d={rv} fill="none" stroke="#d5e8ff" strokeWidth={10} strokeLinecap="round" opacity={0.8} />
       {[[860, y + 60, 0.5], [120, y + 90, 0.6], [700, y + 40, 0.35], [980, y + 140, 0.8]].map(([tx, ty, ts], i) => (
-        <g key={i} transform={`translate(${tx} ${ty}) scale(${ts})`}>
-          <rect x={-12} y={-20} width={24} height={90} fill="#5e3f1c" />
-          <rect x={-80} y={-110} width={160} height={100} fill="#2f7a2a" />
-          <rect x={-50} y={-170} width={100} height={70} fill="#3f8f33" />
+        <g key={i} transform={`translate(${tx} ${ty}) scale(${ts})`} strokeLinejoin="round" stroke={INK} strokeWidth={9}>
+          <rect x={-14} y={-20} width={28} height={90} fill="#6b4724" />
+          <rect x={-80} y={-110} width={160} height={100} fill="#3a8f33" />
+          <rect x={-50} y={-172} width={100} height={70} fill="#4aa63c" />
         </g>
       ))}
     </g>
@@ -223,6 +241,33 @@ const Cam: React.FC<{ z?: number; cx?: number; cy?: number; r?: number; dx?: num
 
 /* ------------------------------- shot 1: the cave ------------------------------- */
 
+/** the inked furniture of a cave wall: pale pebbles with a thick outline, moss patches, scratch ticks */
+const CaveDetail: React.FC = () => (
+  <g strokeLinejoin="round" strokeLinecap="round">
+    {Array.from({ length: 16 }, (_, i) => {
+      const pil = [[340, 100], [580, 130], [840, 170]][i % 3];
+      const w = 30 + random(`pbw${i}`) * 40, h = w * (0.6 + random(`pbh${i}`) * 0.4);
+      const x = pil[0] + 8 + random(`pbx${i}`) * (pil[1] - w - 16), y = 200 + random(`pby${i}`) * 900;
+      return <rect key={i} x={x} y={y} width={w} height={h} rx={w * 0.35} fill="#8a8497" stroke={LINE} strokeWidth={7} opacity={0.9} />;
+    })}
+    {Array.from({ length: 3 }, (_, i) => {
+      const pil = [[340, 100], [580, 130], [840, 170]][i];
+      const s = 26 + random(`mss${i}`) * 14, x = pil[0] + 6, y = 60 + random(`msy${i}`) * 500;
+      return (
+        <g key={i} transform={`translate(${x} ${y})`}>
+          <path d={`M0,0 h${s * 2} v${s} h${-s} v${s} h${-s * 1.4} v${-s} h${-s * 0.6} Z`} fill="#5f8a34" stroke={LINE} strokeWidth={6} />
+          <path d={`M${s * 0.5},${s * 0.4} l6,-10 M${s * 1.2},${s * 0.5} l5,-9`} stroke={LINE} strokeWidth={4} fill="none" />
+        </g>
+      );
+    })}
+    {Array.from({ length: 24 }, (_, i) => {
+      const pil = [[340, 100], [580, 130], [840, 170]][i % 3];
+      const x = pil[0] + 10 + random(`tkx${i}`) * (pil[1] - 40), y = 120 + random(`tky${i}`) * 1060;
+      return <path key={i} d={`M${x},${y} l8,-12 M${x + 14},${y + 2} l4,-10`} stroke={LINE} strokeWidth={4} fill="none" opacity={0.7} />;
+    })}
+  </g>
+);
+
 const LAVA = ["#6a1c14", "#8a2418", "#4d130e", "#7a1e14", "#c0381a"];
 const Cave: React.FC<{ f: number }> = ({ f }) => {
   const t = f;
@@ -231,7 +276,7 @@ const Cave: React.FC<{ f: number }> = ({ f }) => {
     const rr = random(`lv${r}${c}`);
     const x = c * 60 + (r % 2) * 20, y = r * 60;
     if (x > 560 - r * 6) continue;
-    lava.push(<rect key={`${r}${c}`} x={x} y={y} width={62} height={62} fill={LAVA[Math.floor(rr * 4)]} opacity={0.85 + 0.15 * Math.sin(t * 0.2 + r + c)} />);
+    lava.push(<rect key={`${r}${c}`} x={x} y={y} width={62} height={62} fill={LAVA[Math.floor(rr * 4)]} stroke="#2a0a08" strokeWidth={3} opacity={0.9 + 0.1 * Math.sin(t * 0.2 + r + c)} />);
   }
   // the voice: DIAMOND on frames 0 and 34 (then 55, 75 in the next shot): arms up and a bounce on each
   const hits = [0, 34];
@@ -263,6 +308,7 @@ const Cave: React.FC<{ f: number }> = ({ f }) => {
       <rect x={-100} y={1190} width={W + 200} height={90} fill="#3a2c4a" stroke={LINE} strokeWidth={7} />
       <rect x={-100} y={1190} width={W + 200} height={18} fill="#5a4a72" />
       <rect x={-100} y={1280} width={W + 200} height={700} fill="#241830" />
+      <CaveDetail />
       {Array.from({ length: 16 }, (_, i) => {
         const u = ((t * 0.02 + random(`em${i}`)) % 1);
         return <rect key={i} x={60 + random(`ex${i}`) * 500 + Math.sin(u * 8 + i) * 20} y={1180 - u * 900} width={10} height={10} fill="#ffb347" opacity={1 - u} />;
@@ -364,9 +410,9 @@ const Breakthrough: React.FC<{ f: number }> = ({ f }) => {
 
 const SunMeadow: React.FC<{ f: number; k: number; drift: number }> = ({ f, k, drift }) => (
   <Cam z={k} cx={540} cy={920} dx={drift}>
-    <g filter="url(#lpDof)"><Sky f={f} horizon={1300} /></g>
+    <g><Sky f={f} horizon={1300} /></g>
     <Beam x0={500} x1={1020} tx={540} ty={960} />
-    <g filter="url(#lpDof)"><Mountains y={1180} k={2} /><Haze y={1180} /></g>
+    <g><Mountains y={1180} k={2} /></g>
     <Meadow y={1170} />
     <Treasure x={540} y={960} k={1} f={f} />
   </Cam>
@@ -374,8 +420,8 @@ const SunMeadow: React.FC<{ f: number; k: number; drift: number }> = ({ f, k, dr
 
 const MeadowBack: React.FC<{ f: number; z?: number; dx?: number }> = ({ f, z = 1, dx = 0 }) => (
   <Cam z={z} cx={540} cy={1000} dx={dx}>
-    <g filter="url(#lpDof)"><Sky f={f} horizon={1100} /></g>
-    <g filter="url(#lpDof)"><Mountains y={1060} k={1.7} /><Haze y={1060} /></g>
+    <g><Sky f={f} horizon={1100} /></g>
+    <g><Mountains y={1060} k={1.7} /></g>
     <Meadow y={1050} riverX={230} />
   </Cam>
 );
@@ -410,8 +456,8 @@ const Temple: React.FC<{ f: number }> = ({ f }) => {
   const cols = Array.from({ length: 11 }, (_, i) => 90 + i * 90);
   return (
     <Cam z={lerp(1, 1.1, t / 32)} cx={540} cy={1000}>
-      <g filter="url(#lpDof)"><Sky f={f} horizon={1150} /></g>
-      <g filter="url(#lpDof)"><Mountains y={900} k={0.7} /><Haze y={900} /></g>
+      <g><Sky f={f} horizon={1150} /></g>
+      <g><Mountains y={900} k={0.7} /></g>
       <rect x={-100} y={950} width={W + 200} height={1100} fill="#5fb04a" stroke={LINE} strokeWidth={6} />
       <g stroke={LINE} strokeWidth={6} strokeLinejoin="round">
         <polygon points="60,830 540,640 1020,830" fill="#f4efe6" />

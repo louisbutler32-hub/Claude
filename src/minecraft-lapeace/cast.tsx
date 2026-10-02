@@ -9,7 +9,7 @@ import { Oofy, OofyDesign, OofyTint, SHIRT_DESIGN } from "../minecraft/oofy";
  * who floats in the sunbeam.
  */
 
-const LINE = "#2a1b3d";
+const LINE = "#2b1d14";
 const sk = { stroke: LINE, strokeLinejoin: "round" as const };
 
 /* ------------------------------ the cap guy ------------------------------ */
