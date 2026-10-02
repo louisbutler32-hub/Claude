@@ -1,11 +1,11 @@
 import React from "react";
-import { AbsoluteFill, Audio, continueRender, delayRender, random, staticFile, useCurrentFrame } from "remotion";
+import { CameraMotionBlur } from "@remotion/motion-blur";
+import { AbsoluteFill, Audio, continueRender, delayRender, random, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { H, W } from "../minecraft/beats";
 import { ease } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { limb, lerpPose, Pose, POSE, Pt } from "../minecraft/figure";
 import { Cap, Monk, Straw, Wise } from "./cast";
-import { HandDrawn } from "../minecraft/handdrawn";
 import { Poppy } from "../minecraft/pixels";
 import B from "./beats.json";
 
@@ -55,6 +55,31 @@ const Ore: React.FC<{ x: number; y: number; s: number }> = ({ x, y, s }) => (
 );
 
 /* ----------------------------- shared scenery ----------------------------- */
+
+/** the air between you and the far mountains: a pale gradient that lifts off the foot of the range */
+const Haze: React.FC<{ y: number }> = ({ y }) => (
+  <g>
+    <defs><linearGradient id="lpHaze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#dfeeff" stopOpacity={0} /><stop offset="1" stopColor="#dfeeff" stopOpacity={0.7} /></linearGradient></defs>
+    <rect x={-100} y={y - 380} width={W + 200} height={400} fill="url(#lpHaze)" />
+  </g>
+);
+
+/** the finish over every shot: soft focus defs, a sun grade from the top right, and a vignette */
+const Svg: React.FC<{ children: React.ReactNode; sun?: number }> = ({ children, sun = 0.3 }) => (
+  <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
+    <defs>
+      <filter id="lpDof" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation={2.6} /></filter>
+      <radialGradient id="lpVig" cx="50%" cy="46%" r="75%"><stop offset="0.55" stopColor="#000" stopOpacity={0} /><stop offset="1" stopColor="#0a0518" stopOpacity={0.5} /></radialGradient>
+      <radialGradient id="lpSun" cx="82%" cy="6%" r="70%"><stop offset="0" stopColor="#fff2b0" stopOpacity={sun} /><stop offset="1" stopColor="#fff2b0" stopOpacity={0} /></radialGradient>
+      <linearGradient id="lpFloor" x1="0" y1="0" x2="0" y2="1"><stop offset="0.6" stopColor="#10081c" stopOpacity={0} /><stop offset="1" stopColor="#10081c" stopOpacity={0.3} /></linearGradient>
+      <clipPath id="lpAll"><rect x={0} y={0} width={W} height={H} /></clipPath>
+    </defs>
+    <g clipPath="url(#lpAll)">{children}</g>
+    <rect x={0} y={0} width={W} height={H} fill="url(#lpSun)" style={{ mixBlendMode: "screen" }} />
+    <rect x={0} y={0} width={W} height={H} fill="url(#lpFloor)" />
+    <rect x={0} y={0} width={W} height={H} fill="url(#lpVig)" />
+  </svg>
+);
 
 const cloudRects = Array.from({ length: 16 }, (_, i) => ({ x: random(`cx${i}`) * 1500 - 200, y: 40 + random(`cy${i}`) * 700, w: 160 + random(`cw${i}`) * 260, h: 40 + random(`ch${i}`) * 40, v: 0.3 + random(`cv${i}`) * 0.8 }));
 
@@ -212,13 +237,17 @@ const Cave: React.FC<{ f: number }> = ({ f }) => {
   const hits = [0, 34];
   const bounce = Math.max(...hits.map((h) => (t >= h && t < h + 10 ? Math.sin(((t - h) / 10) * Math.PI) : 0)));
   const shout = hits.some((h) => t >= h && t < h + 14);
+  // the arms rise and fall on a curve instead of snapping between two poses
+  const shoutK = Math.max(...hits.map((h) => ease(t, h - 2, h + 3) * (1 - ease(t, h + 9, h + 17))));
   // the straw-hat guy walks up to the camera
   const walk = sm(t, 22, 54);
-  const ox = lerp(690, 800, walk), oy = lerp(1214, 1380, walk) - bounce * 10, os = lerp(0.68, 1.05, walk);
+  const ox = lerp(690, 800, walk), oy = lerp(1214, 1380, walk) - shoutK * 12, os = lerp(0.68, 1.05, walk);
   const step = walk > 0 && walk < 1 ? Math.sin(t * 0.8) * 24 : 0;
   const up = { ...POSE.stand, armR: limb(90, 40, 150, 20), armL: limb(-90, 40, -150, 20) };
   const down = stand({ legL: limb(-40, 190 + step * 0.2, -46 - step, 335), legR: limb(40, 190 - step * 0.2, 46 + step, 335), armR: limb(80, 70, 118 + step * 0.4, 150), armL: limb(-80, 70, -116, 150) });
-  const capPose = shout ? { ...POSE.stand, armR: limb(80, 40, 120, -60), armL: limb(-80, 40, -120, -60) } : stand({ armL: limb(-60, 60, -100, 138), armR: limb(60, 60, 110, 130) });
+  const capDown = stand({ armL: limb(-60, 60, -100, 138), armR: limb(60, 60, 110, 130) });
+  const capUp = { ...POSE.stand, armR: limb(80, 40, 120, -60), armL: limb(-80, 40, -120, -60) };
+  const capPose = lerpPose(capDown, capUp, shoutK);
   return (
     <Cam z={lerp(1, 1.1, t / 56)} cx={540} cy={1200}>
       <rect x={-100} y={-100} width={W + 200} height={H + 200} fill="#1b1124" />
@@ -238,8 +267,8 @@ const Cave: React.FC<{ f: number }> = ({ f }) => {
         const u = ((t * 0.02 + random(`em${i}`)) % 1);
         return <rect key={i} x={60 + random(`ex${i}`) * 500 + Math.sin(u * 8 + i) * 20} y={1180 - u * 900} width={10} height={10} fill="#ffb347" opacity={1 - u} />;
       })}
-      <Cap x={290} y={1216 - bounce * 8} s={0.68} p={capPose} face={shout ? "joy" : "grin"} gaze={[10, 2]} />
-      <Straw x={ox} y={oy} s={os} p={shout ? up : down} face={shout ? "joy" : "grin"} gaze={[-14, 4]} />
+      <Cap x={290} y={1216 - bounce * 8} s={0.68} p={capPose} face={shout ? "joy" : "grin"} gaze={[10, 2]} idle={t} />
+      <Straw x={ox} y={oy} s={os} p={lerpPose(down, up, shoutK)} face={shout ? "joy" : "grin"} gaze={[-14, 4]} idle={t} />
       {/* the ore in front: a tall pillar and a big block */}
       {[0, 1].map((i) => <Ore key={i} x={-70} y={880 + i * 290} s={300} />)}
       <polygon points="-120,1500 1200,1500 1260,1620 -180,1620" fill="#4a52a8" stroke={LINE} strokeWidth={8} />
@@ -272,7 +301,7 @@ const Mine: React.FC<{ f: number }> = ({ f }) => {
       )))}
       <rect x={-100} y={900} width={W + 200} height={1100} fill="#0a0a30" opacity={0.35} />
       {/* the straw-hat guy from behind, swinging */}
-      <Straw back x={430} y={1560} s={1.05} p={pose} face="back" tilt={swing * 4 - 2} hands={(h) => pickInHand(h.R, -20 - swing * 10, 1.1)} />
+      <Straw back x={430} y={1560} s={1.05} p={pose} face="back" tilt={swing * 4 - 2} idle={t} hands={(h) => pickInHand(h.R, -20 - swing * 10, 1.1)} />
       {shout && <rect x={-100} y={-100} width={W + 200} height={H + 200} fill="#1a2cff" opacity={0.08} />}
     </Cam>
   );
@@ -335,9 +364,9 @@ const Breakthrough: React.FC<{ f: number }> = ({ f }) => {
 
 const SunMeadow: React.FC<{ f: number; k: number; drift: number }> = ({ f, k, drift }) => (
   <Cam z={k} cx={540} cy={920} dx={drift}>
-    <Sky f={f} horizon={1300} />
+    <g filter="url(#lpDof)"><Sky f={f} horizon={1300} /></g>
     <Beam x0={500} x1={1020} tx={540} ty={960} />
-    <Mountains y={1180} k={2} />
+    <g filter="url(#lpDof)"><Mountains y={1180} k={2} /><Haze y={1180} /></g>
     <Meadow y={1170} />
     <Treasure x={540} y={960} k={1} f={f} />
   </Cam>
@@ -345,8 +374,8 @@ const SunMeadow: React.FC<{ f: number; k: number; drift: number }> = ({ f, k, dr
 
 const MeadowBack: React.FC<{ f: number; z?: number; dx?: number }> = ({ f, z = 1, dx = 0 }) => (
   <Cam z={z} cx={540} cy={1000} dx={dx}>
-    <Sky f={f} horizon={1100} />
-    <Mountains y={1060} k={1.7} />
+    <g filter="url(#lpDof)"><Sky f={f} horizon={1100} /></g>
+    <g filter="url(#lpDof)"><Mountains y={1060} k={1.7} /><Haze y={1060} /></g>
     <Meadow y={1050} riverX={230} />
   </Cam>
 );
@@ -364,7 +393,7 @@ const Hero: React.FC<{ f: number }> = ({ f }) => {
         {[[120, 1560], [60, 1700], [240, 1830]].map(([x, y], i) => <Poppy key={i} x={x} y={y} px={26} />)}
       </g>
       <Cam z={1} dx={lerp(0, -20, turn)}>
-        <Straw x={700} y={2250} s={2.1} p={p} face={t < 28 ? "surprised" : "shocked"} gaze={[lerp(-22, 12, turn), 0]} hands={(h) => (
+        <Straw x={700} y={2250} s={2.1} p={p} face={t < 28 ? "surprised" : "shocked"} gaze={[lerp(-22, 12, turn), 0]} idle={t} hands={(h) => (
           <g transform={`translate(${h.L[0]} ${h.L[1]}) rotate(-12)`}>
             <image href={ORE} x={-40} y={-90} width={90} height={90} style={PX} />
             <rect x={-40} y={-90} width={90} height={90} fill="none" stroke={LINE} strokeWidth={7} />
@@ -381,8 +410,8 @@ const Temple: React.FC<{ f: number }> = ({ f }) => {
   const cols = Array.from({ length: 11 }, (_, i) => 90 + i * 90);
   return (
     <Cam z={lerp(1, 1.1, t / 32)} cx={540} cy={1000}>
-      <Sky f={f} horizon={1150} />
-      <Mountains y={900} k={0.7} />
+      <g filter="url(#lpDof)"><Sky f={f} horizon={1150} /></g>
+      <g filter="url(#lpDof)"><Mountains y={900} k={0.7} /><Haze y={900} /></g>
       <rect x={-100} y={950} width={W + 200} height={1100} fill="#5fb04a" stroke={LINE} strokeWidth={6} />
       <g stroke={LINE} strokeWidth={6} strokeLinejoin="round">
         <polygon points="60,830 540,640 1020,830" fill="#f4efe6" />
@@ -397,8 +426,8 @@ const Temple: React.FC<{ f: number }> = ({ f }) => {
       </g>
       <Flowers y0={1260} y1={1880} n={110} seed="tp" big={1.3} />
       {/* the two of them, small, in the flowers, looking up at it */}
-      <Cap back x={200} y={1830} s={0.4} p={stand({ armL: limb(-60, 60, -80, 140), armR: limb(60, 60, 80, 140) })} face="back" />
-      <Straw back x={320} y={1850} s={0.4} p={stand({ armL: limb(-60, 60, -80, 140), armR: limb(60, 60, 80, 140) })} face="back" />
+      <Cap back x={200} y={1830} s={0.4} p={stand({ armL: limb(-60, 60, -80, 140), armR: limb(60, 60, 80, 140) })} face="back" idle={t} />
+      <Straw back x={320} y={1850} s={0.4} p={stand({ armL: limb(-60, 60, -80, 140), armR: limb(60, 60, 80, 140) })} face="back" idle={t + 9} />
     </Cam>
   );
 };
@@ -413,7 +442,7 @@ const Shock: React.FC<{ f: number }> = ({ f }) => {
     <g>
       <MeadowBack f={f} z={1.1} />
       <Cam dx={jx} dy={jy}>
-        <Straw x={560} y={2300} s={2.3} p={p} face="scream" gaze={[0, -6]} tilt={Math.sin(t * 0.9) * 3} />
+        <Straw x={560} y={2300} s={2.3} p={p} face="scream" gaze={[0, -6]} tilt={Math.sin(t * 0.9) * 3} idle={t} />
       </Cam>
     </g>
   );
@@ -432,7 +461,7 @@ const Crowned: React.FC<{ f: number }> = ({ f }) => {
         <rect x={-100} y={1110} width={W + 200} height={140} fill="#e6c870" />
       </Cam>
       <Cam r={sway} cx={460} cy={1500} z={lerp(1, 1.04, t / 61)}>
-        <Wise x={460} y={2640} s={3.1} p={POSE.stand} face={t < 25 ? "calm" : "content"} gaze={[0, -4]} tilt={-4} />
+        <Wise x={460} y={2640} s={3.1} p={POSE.stand} face={t < 25 ? "calm" : "content"} gaze={[0, -4]} tilt={-4} idle={t} />
       </Cam>
     </g>
   );
@@ -462,8 +491,7 @@ const shotAt = (f: number) => {
   return { i: 8, t: 0, len: 1 };
 };
 
-const Scene: React.FC<{ f: number }> = ({ f }) => {
-  const { i, t, len } = shotAt(f);
+const ShotBody: React.FC<{ i: number; t: number; len: number; f: number }> = ({ i, t, len, f }) => {
   switch (i) {
     case 0: return <Cave f={t} />;
     case 1: return <Mine f={t} />;
@@ -477,6 +505,13 @@ const Scene: React.FC<{ f: number }> = ({ f }) => {
   }
 };
 
+/** one shot, on its own clock, with motion blur: the shutter never straddles a cut */
+const Shot: React.FC<{ i: number }> = ({ i }) => {
+  const t = Math.max(0, useCurrentFrame());
+  const len = B.cuts[i + 1] - B.cuts[i];
+  return <Svg sun={i >= 3 ? 0.35 : 0.1}><ShotBody i={i} t={t} len={len} f={t + B.cuts[i]} /></Svg>;
+};
+
 /** hold the render until every picture is cached, so no frame is missing a sprite */
 const usePreload = () => {
   const [handle] = React.useState(() => delayRender("loading the textures"));
@@ -486,19 +521,19 @@ const usePreload = () => {
   }, [handle]);
 };
 
-export const LaPeaceShort: React.FC<{ audio?: string | null; drawn?: boolean; captions?: boolean }> = ({ audio = null, drawn = true, captions = true }) => {
+export const LaPeaceShort: React.FC<{ audio?: string | null; captions?: boolean; blur?: boolean }> = ({ audio = null, captions = true, blur = true }) => {
   loadMinecraftFonts();
   usePreload();
   const f = useCurrentFrame();
+  const shots = B.cuts.slice(0, -1).map((c, i) => (
+    <Sequence key={i} from={c} durationInFrames={B.cuts[i + 1] - c} layout="none">
+      {blur ? <CameraMotionBlur shutterAngle={180} samples={5}><Shot i={i} /></CameraMotionBlur> : <Shot i={i} />}
+    </Sequence>
+  ));
   return (
     <AbsoluteFill style={{ backgroundColor: "#000" }}>
       {audio && <Audio src={staticFile(audio)} />}
-      <HandDrawn enabled={drawn} hold={1} boilEvery={2} boil={0.75} grain={0}>
-        <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
-          <defs><clipPath id="lpAll"><rect x={0} y={0} width={W} height={H} /></clipPath></defs>
-          <g clipPath="url(#lpAll)"><Scene f={f} /></g>
-        </svg>
-      </HandDrawn>
+      {shots}
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
         {captions && <SubBar f={f} />}
       </svg>
@@ -509,10 +544,8 @@ export const LaPeaceShort: React.FC<{ audio?: string | null; drawn?: boolean; ca
 export const LaPeaceThumb: React.FC = () => {
   usePreload();
   return (
-  <AbsoluteFill style={{ backgroundColor: "#000" }}>
-    <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
-      <Scene f={150} />
-    </svg>
-  </AbsoluteFill>
-);
+    <AbsoluteFill style={{ backgroundColor: "#000" }}>
+      <Svg sun={0.35}><ShotBody i={3} t={30} len={45} f={170} /></Svg>
+    </AbsoluteFill>
+  );
 };

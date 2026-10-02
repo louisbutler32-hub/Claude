@@ -81,12 +81,20 @@ const Toga: React.FC = () => (
 
 /* ------------------------------ placing them ------------------------------ */
 
-export type Who = { x: number; y: number; s: number; p: Pose; face: FaceKind; gaze?: Pt; look?: Pt; flip?: boolean; tilt?: number; back?: boolean; hands?: (h: { L: Pt; R: Pt }) => React.ReactNode };
-const Person: React.FC<Who & { tint: OofyTint; design: OofyDesign; head: React.ReactNode; torso?: React.ReactNode }> = ({ x, y, s, p, face, tint, design, head, torso, gaze = [0, 0], look, flip, tilt, back, hands }) => (
+export type Who = { x: number; y: number; s: number; p: Pose; face: FaceKind; gaze?: Pt; look?: Pt; flip?: boolean; tilt?: number; back?: boolean; idle?: number; hands?: (h: { L: Pt; R: Pt }) => React.ReactNode };
+const Person: React.FC<Who & { tint: OofyTint; design: OofyDesign; head: React.ReactNode; torso?: React.ReactNode }> = ({ x, y, s, p, face, tint, design, head, torso, gaze = [0, 0], look, flip, tilt, back, idle, hands }) => {
+  // alive between the keyframes: breathing (a squash at the feet) and a slow sway of the head
+  const br = idle === undefined ? 0 : Math.sin(idle * 0.2 + x * 0.01);
+  const sw = idle === undefined ? 0 : Math.sin(idle * 0.11 + x * 0.02);
+  return (
   <g transform={`translate(${x} ${y})`}>
-    <Oofy x={0} y={-335 * s} scale={s} pose={p} face={back ? "back" : face} tint={tint} design={design} look={look} faceOffset={gaze} flip={flip} tilt={tilt} shadow={false} bandAid={false} plain headExtras={head} torsoExtras={torso} hands={hands} />
+    <ellipse cx={0} cy={4 * s} rx={88 * s} ry={15 * s} fill="#10081c" opacity={0.28} />
+    <g transform={`scale(${1 + br * 0.014} ${1 - br * 0.014})`}>
+    <Oofy x={0} y={-335 * s} scale={s} pose={p} face={back ? "back" : face} tint={tint} design={design} look={look} faceOffset={gaze} flip={flip} tilt={(tilt ?? 0) + sw * 1.6} shadow={false} bandAid={false} plain headExtras={head} torsoExtras={torso} hands={hands} />
+    </g>
   </g>
-);
+  );
+};
 export const Cap: React.FC<Who> = (w) => <Person {...w} tint={CAP_TINT} design={CAP_DESIGN} head={<CapHat back={w.back} />} torso={<Chain />} />;
 export const Straw: React.FC<Who> = (w) => <Person {...w} tint={STRAW_TINT} design={STRAW_DESIGN} head={<StrawHat back={w.back} />} torso={w.back ? null : <StrawVest />} />;
 export const Wise: React.FC<Who> = (w) => <Person {...w} tint={WISE_TINT} design={WISE_DESIGN} head={<Laurel />} torso={<Toga />} />;
