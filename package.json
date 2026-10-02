@@ -237,7 +237,10 @@
     "pov:ender:mix": "python3 scripts/build-ender-audio.py",
     "pov:ender:sfx": "python3 scripts/build-ender-audio.py --music none",
     "pov:ender:audio": "remotion render PovEnderShort out/pov-ender-silent.mp4 && python3 scripts/lift-reference-audio.py public/audio/ender-mix.mp3 ender-mix-final.wav out/pov-ender-silent.mp4 out/pov-ender.mp4",
-    "pov:ender:thumb": "remotion still PovEnder-Thumbnail out/thumbnail-pov-ender.jpg --image-format=jpeg --quality=92"
+    "pov:ender:thumb": "remotion still PovEnder-Thumbnail out/thumbnail-pov-ender.jpg --image-format=jpeg --quality=92",
+    "lapeace": "remotion render LaPeaceShort out/la-peace-silent.mp4",
+    "lapeace:audio": "remotion render LaPeaceShort out/la-peace-silent.mp4 && python3 scripts/lift-reference-audio.py public/audio/src/lapeace.mp4 lapeace-mix.wav out/la-peace-silent.mp4 out/la-peace.mp4",
+    "lapeace:thumb": "remotion still LaPeace-Thumbnail out/thumbnail-la-peace.jpg --image-format=jpeg --quality=92"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",
