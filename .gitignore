@@ -48,3 +48,5 @@ public/images/pov/
 akki/source/*
 !akki/source/.gitkeep
 public/images/pov2/
+public/images/chars/
+public/images/chars-src/

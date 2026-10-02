@@ -4,7 +4,7 @@
   "_note": "Every number is a frame at 30 fps. The reference runs 336 frames at 25 fps (13.44 s) and so does this (403 at 30). Its cuts were measured with a scene-change detector, at 1.88 3.32 4.68 6.16 8.32 9.40 10.16 11.40 s; its voice lines were timed with Whisper: DIAMOND at 0.00 1.12 1.84 2.50 s, 'It's not peace' at 3.38 and 4.82, 'What the fuck is that' at 5.68, 'What is this, some green shit' at 7.16, 'What the fuck is not peace' at 9.10, 'It's not peace' at 10.82, 12.14, 12.86. The subtitles read 'That's La Peace'.",
   "cuts": [0, 56, 100, 140, 185, 250, 282, 305, 342, 403],
   "subs": [
-    [6, 33, "DIAMOND"],
+    [0, 33, "DIAMOND"],
     [33, 55, "DIAMOND DIAMOND"],
     [55, 75, "DIAMOND"],
     [75, 101, "DIAMOND DIAMOND"],
