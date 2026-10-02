@@ -246,7 +246,11 @@
     "pov:ender:thumb": "remotion still PovEnder-Thumbnail out/thumbnail-pov-ender.jpg --image-format=jpeg --quality=92",
     "lapeace": "remotion render LaPeaceShort out/la-peace-silent.mp4",
     "lapeace:audio": "remotion render LaPeaceShort out/la-peace-silent.mp4 && python3 scripts/lift-reference-audio.py public/audio/src/lapeace.mp4 lapeace-mix.wav out/la-peace-silent.mp4 out/la-peace.mp4",
-    "lapeace:thumb": "remotion still LaPeace-Thumbnail out/thumbnail-la-peace.jpg --image-format=jpeg --quality=92"
+    "lapeace:thumb": "remotion still LaPeace-Thumbnail out/thumbnail-la-peace.jpg --image-format=jpeg --quality=92",
+    "pick:mix": "python3 scripts/build-pick-audio.py",
+    "pick:sfx": "python3 scripts/build-pick-audio.py --music none",
+    "pick:audio": "remotion render PickShort out/pick-silent.mp4 && python3 scripts/lift-reference-audio.py public/audio/pick-mix.mp3 pick-mix-final.wav out/pick-silent.mp4 out/pick.mp4",
+    "pick:thumb": "remotion still Pick-Thumbnail out/thumbnail-pick.jpg --image-format=jpeg --quality=92"
   },
   "dependencies": {
     "@remotion/cli": "4.0.499",

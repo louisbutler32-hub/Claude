@@ -1,0 +1,22 @@
+{
+  "fps": 30,
+  "frames": 660,
+  "loopBlend": 12,
+  "_note": "Every number is a frame at 30 fps; the music is 90 bpm, a beat every 20 frames, so every event is on a multiple of 20 (the beat number is frame / 20). The story: an old wooden pickaxe wakes up excited when its player comes in (60 wake, 100 enter, 140 point), his hand reaches for it and goes past it (180 reach, 220 pass) to the shiny diamond pickaxe (260 lift, the music drops), the wooden one cries while he mines with the diamond one (340 360 380 hits), its durability runs out and it cracks and breaks (400 cutaway, 500 break), the diamond one jumps out of his hand into lava (540 fly, 560 splash), and the last shot is the player mourning the two halves while the wooden pickaxe's ghost floats up smiling (580 table, 600 ghost).",
+  "wake": 60,
+  "enter": 100,
+  "point": 140,
+  "reach": 180,
+  "pass": 220,
+  "lift": 260,
+  "mine": [340, 360, 380],
+  "cutaway": 400,
+  "cracks": [420, 450, 480],
+  "break": 500,
+  "lava": 520,
+  "fly": 540,
+  "splash": 560,
+  "table": 580,
+  "ghost": 600,
+  "cuts": [0, 100, 180, 260, 330, 400, 520, 580, 660]
+}

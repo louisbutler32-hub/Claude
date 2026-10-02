@@ -114,6 +114,7 @@ import { NightShort, NightThumb, NIGHT_FRAMES } from "./minecraft-pov2/NightShor
 import { DiamondShort, DiamondThumb, DIAMOND_FRAMES } from "./minecraft-pov2/DiamondShort";
 import { EnderShort, EnderThumb, ENDER_FRAMES } from "./minecraft-pov2/EnderShort";
 import { LaPeaceShort, LaPeaceThumb, LAPEACE_FRAMES } from "./minecraft-lapeace/LaPeaceShort";
+import { PickShort, PickThumb, PICK_FRAMES } from "./minecraft-pick/PickShort";
 import { TennisShort, TennisThumb, TENNIS_FRAMES } from "./tennis/TennisShort";
 import { TableTennisShort, TableTennisThumb, TT_FRAMES } from "./tabletennis/TableTennisShort";
 import { FoodShort, FoodThumb, FOOD_FRAMES } from "./minecraft-food/FoodShort";
@@ -282,6 +283,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="PovEnder-Thumbnail" component={EnderThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="LaPeaceShort" component={LaPeaceShort} durationInFrames={LAPEACE_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="LaPeace-Thumbnail" component={LaPeaceThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="PickShort" component={PickShort} durationInFrames={PICK_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Pick-Thumbnail" component={PickThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="TennisShort" component={TennisShort} durationInFrames={TENNIS_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Tennis-Thumbnail" component={TennisThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="TableTennisShort" component={TableTennisShort} durationInFrames={TT_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
