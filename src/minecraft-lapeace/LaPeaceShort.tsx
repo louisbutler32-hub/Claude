@@ -5,8 +5,7 @@ import { H, W } from "../minecraft/beats";
 import { ease } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { DrawnContext } from "../minecraft/handdrawn";
-import { limb, lerpPose, Pose, POSE, Pt } from "../minecraft/figure";
-import { Cap, Monk, Straw, Wise } from "./cast";
+import { Cap, Monk, Straw, Wise, T0, TPose, lerpT, tp } from "./toon";
 import { Poppy } from "../minecraft/pixels";
 import B from "./beats.json";
 
@@ -37,15 +36,28 @@ const PX: React.CSSProperties = { imageRendering: "pixelated" };
 
 /* ----------------------------- the cast ----------------------------- */
 
-/** the cast (./cast.tsx): the cap guy, the straw-hat guy, the wise one in laurel: the reference's three, drawn as Oofy */
-const stand = (extra?: Partial<Pose>): Pose => ({ ...POSE.stand, ...extra });
+/** the cast (./toon.tsx): cube-headed cartoon Minecraft characters, posed with angles and animated with overshoot */
+const over = (f: number, a: number, b: number) => { const t = clamp01((f - a) / (b - a)), c1 = 1.7, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); };
+const bell = (f: number, a: number, b: number) => Math.sin(Math.PI * clamp01((f - a) / (b - a)));
 
-/** the iron pickaxe in a hand, head up and forward */
-const pickInHand = (h: Pt, rot = -25, sc = 0.9) => (
-  <g transform={`translate(${h[0]} ${h[1]}) rotate(${rot}) scale(${sc}) translate(-70 -310)`}>
-    <image href={PICK} x={0} y={0} width={360} height={360} style={PX} />
-  </g>
-);
+const ARMS_UP = tp({ aL: [-158, -14], aR: [158, 14] });
+const CROUCH = tp({ sq: 0.07, aL: [-12, -34], aR: [12, 34], lean: 4 });
+/** a shout: wind up, spring up with the arms flung high, hang there, settle: on each hit frame */
+const cheer = (t: number, hits: number[], base: TPose, up: TPose = ARMS_UP): TPose => {
+  let k = 0, anti = 0, bob = 0, sq = 0;
+  for (const h of hits) {
+    const u = t - h;
+    if (u >= -5 && u < 0) anti = Math.max(anti, ease(u, -5, 0));
+    if (u >= 0 && u < 26) { k = Math.max(k, 1 - ease(u, 8, 26)); bob = Math.max(bob, bell(u, 0, 14) * 20); sq = Math.min(sq, -0.06 * bell(u, 0, 8)); }
+  }
+  const p = lerpT(lerpT(base, CROUCH, anti), up, k);
+  return { ...p, bob: p.bob + bob, sq: p.sq + sq };
+};
+/** a walk: legs scissor, arms swing the other way, a little bounce */
+const walk = (t: number, amt: number): TPose => {
+  const s = Math.sin(t * 0.8) * amt;
+  return tp({ lL: [s * 28, -Math.max(0, s) * 20], lR: [-s * 28, -Math.max(0, -s) * 20], aL: [-6 + s * 22, -8], aR: [6 - s * 22, 8], bob: Math.abs(Math.sin(t * 0.8)) * 10 * amt });
+};
 
 /** a lapis ore block, outlined like everything else */
 const Ore: React.FC<{ x: number; y: number; s: number }> = ({ x, y, s }) => (
@@ -66,11 +78,11 @@ const Haze: React.FC<{ y: number }> = ({ y }) => (
 );
 
 /** the finish over every shot: soft focus defs, a sun grade from the top right, and a vignette */
-const Svg: React.FC<{ children: React.ReactNode; sun?: number }> = ({ children, sun = 0.3 }) => (
+const Svg: React.FC<{ children: React.ReactNode; sun?: number; vig?: number }> = ({ children, sun = 0.3, vig = 0.38 }) => (
   <DrawnContext.Provider value><svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
     <defs>
       <filter id="lpDof" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation={2.6} /></filter>
-      <radialGradient id="lpVig" cx="50%" cy="46%" r="75%"><stop offset="0.55" stopColor="#000" stopOpacity={0} /><stop offset="1" stopColor="#0a0518" stopOpacity={0.38} /></radialGradient>
+      <radialGradient id="lpVig" cx="50%" cy="46%" r="75%"><stop offset="0.55" stopColor="#000" stopOpacity={0} /><stop offset="1" stopColor="#0a0518" stopOpacity={vig} /></radialGradient>
       <radialGradient id="lpSun" cx="82%" cy="6%" r="70%"><stop offset="0" stopColor="#fff2b0" stopOpacity={sun} /><stop offset="1" stopColor="#fff2b0" stopOpacity={0} /></radialGradient>
       <linearGradient id="lpFloor" x1="0" y1="0" x2="0" y2="1"><stop offset="0.6" stopColor="#10081c" stopOpacity={0} /><stop offset="1" stopColor="#10081c" stopOpacity={0.3} /></linearGradient>
       <clipPath id="lpAll"><rect x={0} y={0} width={W} height={H} /></clipPath>
@@ -231,7 +243,7 @@ const Treasure: React.FC<{ x: number; y: number; k: number; f: number }> = ({ x,
     {Array.from({ length: 8 }, (_, i) => (
       <rect key={i} x={-5} y={-230} width={10} height={80} fill="#fff6b0" opacity={0.6} transform={`rotate(${i * 45 + f * 3})`} />
     ))}
-    <g transform="scale(1.15)"><Monk f={f} /></g>
+    <g transform="scale(1.15)"><Monk /></g>
   </g>
 );
 
@@ -278,23 +290,16 @@ const Cave: React.FC<{ f: number }> = ({ f }) => {
     if (x > 560 - r * 6) continue;
     lava.push(<rect key={`${r}${c}`} x={x} y={y} width={62} height={62} fill={LAVA[Math.floor(rr * 4)]} stroke="#2a0a08" strokeWidth={3} opacity={0.9 + 0.1 * Math.sin(t * 0.2 + r + c)} />);
   }
-  // the voice: DIAMOND on frames 0 and 34 (then 55, 75 in the next shot): arms up and a bounce on each
+  // DIAMOND on frames 0 and 34 (55 and 75 fall in the next shot): both throw their arms up on each
   const hits = [0, 34];
-  const bounce = Math.max(...hits.map((h) => (t >= h && t < h + 10 ? Math.sin(((t - h) / 10) * Math.PI) : 0)));
   const shout = hits.some((h) => t >= h && t < h + 14);
-  // the arms rise and fall on a curve instead of snapping between two poses
-  const shoutK = Math.max(...hits.map((h) => ease(t, h - 2, h + 3) * (1 - ease(t, h + 9, h + 17))));
-  // the straw-hat guy walks up to the camera
-  const walk = sm(t, 22, 54);
-  const ox = lerp(690, 800, walk), oy = lerp(1214, 1380, walk) - shoutK * 12, os = lerp(0.68, 1.05, walk);
-  const step = walk > 0 && walk < 1 ? Math.sin(t * 0.8) * 24 : 0;
-  const up = { ...POSE.stand, armR: limb(90, 40, 150, 20), armL: limb(-90, 40, -150, 20) };
-  const down = stand({ legL: limb(-40, 190 + step * 0.2, -46 - step, 335), legR: limb(40, 190 - step * 0.2, 46 + step, 335), armR: limb(80, 70, 118 + step * 0.4, 150), armL: limb(-80, 70, -116, 150) });
-  const capDown = stand({ armL: limb(-60, 60, -100, 138), armR: limb(60, 60, 110, 130) });
-  const capUp = { ...POSE.stand, armR: limb(80, 40, 120, -60), armL: limb(-80, 40, -120, -60) };
-  const capPose = lerpPose(capDown, capUp, shoutK);
+  const wk = ease(t, 22, 54);
+  const walking = t > 22 && t < 54 ? 1 : 0;
+  const ox = lerp(700, 790, wk), oy = lerp(1214, 1500, wk), os = lerp(0.8, 1.5, wk);
+  const strawPose = cheer(t, hits, lerpT(T0, walk(t, 1), walking));
+  const capPose = cheer(t - 2, hits, T0);
   return (
-    <Cam z={lerp(1, 1.1, t / 56)} cx={540} cy={1200}>
+    <Cam z={lerp(1, 1.08, t / 56)} cx={540} cy={1200}>
       <rect x={-100} y={-100} width={W + 200} height={H + 200} fill="#1b1124" />
       <rect x={-100} y={-100} width={560} height={1500} fill="#7a1c14" />
       {lava}
@@ -313,10 +318,10 @@ const Cave: React.FC<{ f: number }> = ({ f }) => {
         const u = ((t * 0.02 + random(`em${i}`)) % 1);
         return <rect key={i} x={60 + random(`ex${i}`) * 500 + Math.sin(u * 8 + i) * 20} y={1180 - u * 900} width={10} height={10} fill="#ffb347" opacity={1 - u} />;
       })}
-      <Cap x={290} y={1216 - bounce * 8} s={0.68} p={capPose} face={shout ? "joy" : "grin"} gaze={[10, 2]} idle={t} />
-      <Straw x={ox} y={oy} s={os} p={lerpPose(down, up, shoutK)} face={shout ? "joy" : "grin"} gaze={[-14, 4]} idle={t} />
-      {/* the ore in front: a tall pillar and a big block */}
-      {[0, 1].map((i) => <Ore key={i} x={-70} y={880 + i * 290} s={300} />)}
+      <Cap x={290} y={1230} s={0.85} pose={capPose} face={shout ? "joy" : "smile"} t={t} />
+      <Straw x={ox} y={oy} s={os} pose={strawPose} face={shout ? "joy" : "grin"} t={t} flip />
+      <Ore x={-70} y={880} s={300} />
+      <Ore x={-70} y={1170} s={300} />
       <polygon points="-120,1500 1200,1500 1260,1620 -180,1620" fill="#4a52a8" stroke={LINE} strokeWidth={8} />
       {[0, 1, 2, 3].map((i) => <Ore key={i} x={-120 + i * 330} y={1620} s={330} />)}
       <ellipse cx={540} cy={1840} rx={760} ry={230} fill="#2a5bd6" opacity={0.13} />
@@ -326,29 +331,34 @@ const Cave: React.FC<{ f: number }> = ({ f }) => {
 
 /* ------------------------------- shot 2: mining ------------------------------- */
 
+/** the iron pickaxe, its handle running along the forearm and the head out past the fist */
+const Pick: React.FC = () => (
+  <g transform="rotate(135) scale(1.25) translate(-70 -310)">
+    <image href={PICK} x={0} y={0} width={360} height={360} style={PX} />
+  </g>
+);
+
 const Mine: React.FC<{ f: number }> = ({ f }) => {
   const t = f;
-  const swing = (Math.sin(t * 0.46 - 1.2) + 1) / 2;
-  const pose: Pose = lerpPose(POSE.holdPick, POSE.mine, swing);
-  const shout = (t >= 0 && t < 9) || (t >= 19 && t < 28);
+  // swing on the beat: wind up high, then slam down; two strikes in the shot
+  const cyc = (t % 22) / 22;
+  const raise = cyc < 0.55 ? ease(cyc, 0, 0.5) : 1 - ease(cyc, 0.55, 0.68);
+  const aR: [number, number] = [lerp(58, 165, raise), lerp(-38, 10, raise)];
+  const pose = tp({ aR, aL: [-18, -10], lean: lerp(-5, 6, raise), bob: bell(cyc, 0.55, 0.75) * 8, sq: 0.03 * bell(cyc, 0.55, 0.72) });
   return (
     <Cam z={lerp(1.04, 1, t / 44)} dx={Math.sin(t * 0.8) * 4}>
       <rect x={-100} y={-100} width={W + 200} height={H + 200} fill="#0c0c2a" />
-      {/* steps of ore up the back wall */}
       {[0, 1, 2].map((i) => (
         <g key={i}>
           <Ore x={640 + i * 140} y={520 + i * 200} s={340} />
           <rect x={640 + i * 140} y={520 + i * 200} width={340} height={340} fill="#000" opacity={0.25 + i * 0.1} />
         </g>
       ))}
-      {/* the floor of ore */}
       {Array.from({ length: 4 }, (_, r) => Array.from({ length: 4 }, (_, c) => (
         <g key={`${r}${c}`} opacity={0.9}><Ore x={-110 + c * 330 + (r % 2) * 90} y={1000 + r * 250} s={330} /></g>
       )))}
       <rect x={-100} y={900} width={W + 200} height={1100} fill="#0a0a30" opacity={0.35} />
-      {/* the straw-hat guy from behind, swinging */}
-      <Straw back x={430} y={1560} s={1.05} p={pose} face="back" tilt={swing * 4 - 2} idle={t} hands={(h) => pickInHand(h.R, -20 - swing * 10, 1.1)} />
-      {shout && <rect x={-100} y={-100} width={W + 200} height={H + 200} fill="#1a2cff" opacity={0.08} />}
+      <Straw back x={400} y={2060} s={1.6} pose={pose} face="plain" t={t} holdR={<Pick />} />
     </Cam>
   );
 };
@@ -429,9 +439,16 @@ const MeadowBack: React.FC<{ f: number; z?: number; dx?: number }> = ({ f, z = 1
 /* shot 5: he meets the meadow, a lapis in his raised fist */
 const Hero: React.FC<{ f: number }> = ({ f }) => {
   const t = f;
-  const turn = sm(t, 28, 40);
-  const arms = sm(t, 36, 50);
-  const p = lerpPose({ ...POSE.stand, armL: limb(-110, 60, -190, 40), armR: limb(90, 90, 70, 190) }, { ...POSE.out, armL: limb(-132, 32, -240, -10), armR: limb(132, 32, 250, -10) }, arms);
+  const turn = ease(t, 28, 44);
+  const wow = over(t, 0, 10); // the jaw-drop lands with a bounce
+  const hype = Math.max(bell(t, 22, 34), bell(t, 36, 48));
+  const lapis = (
+    <g transform="rotate(-20)">
+      <rect x={-46} y={-8} width={92} height={92} fill="#2f3a8a" stroke={LINE} strokeWidth={8} />
+      <image href={ORE} x={-42} y={-4} width={84} height={84} style={PX} />
+    </g>
+  );
+  const pose = tp({ aL: [lerp(-96, -150, hype), lerp(-40, -20, hype)], aR: [lerp(10, 40, turn), 8], tilt: lerp(-2, 5, turn) + hype * -4, lean: lerp(0, -3, turn), bob: hype * 16 + (1 - wow) * 10, sq: -0.03 * hype });
   return (
     <g>
       <MeadowBack f={f} z={lerp(1, 1.06, t / 65)} />
@@ -439,12 +456,7 @@ const Hero: React.FC<{ f: number }> = ({ f }) => {
         {[[120, 1560], [60, 1700], [240, 1830]].map(([x, y], i) => <Poppy key={i} x={x} y={y} px={26} />)}
       </g>
       <Cam z={1} dx={lerp(0, -20, turn)}>
-        <Straw x={700} y={2250} s={2.1} p={p} face={t < 28 ? "surprised" : "shocked"} gaze={[lerp(-22, 12, turn), 0]} idle={t} hands={(h) => (
-          <g transform={`translate(${h.L[0]} ${h.L[1]}) rotate(-12)`}>
-            <image href={ORE} x={-40} y={-90} width={90} height={90} style={PX} />
-            <rect x={-40} y={-90} width={90} height={90} fill="none" stroke={LINE} strokeWidth={7} />
-          </g>
-        )} />
+        <Straw x={lerp(730, 700, turn)} y={2300} s={2.4} pose={pose} face={t < 24 ? "shock" : "scream"} t={t} holdL={lapis} />
       </Cam>
     </g>
   );
@@ -456,8 +468,8 @@ const Temple: React.FC<{ f: number }> = ({ f }) => {
   const cols = Array.from({ length: 11 }, (_, i) => 90 + i * 90);
   return (
     <Cam z={lerp(1, 1.1, t / 32)} cx={540} cy={1000}>
-      <g><Sky f={f} horizon={1150} /></g>
-      <g><Mountains y={900} k={0.7} /></g>
+      <Sky f={f} horizon={1150} />
+      <Mountains y={900} k={0.7} />
       <rect x={-100} y={950} width={W + 200} height={1100} fill="#5fb04a" stroke={LINE} strokeWidth={6} />
       <g stroke={LINE} strokeWidth={6} strokeLinejoin="round">
         <polygon points="60,830 540,640 1020,830" fill="#f4efe6" />
@@ -471,43 +483,43 @@ const Temple: React.FC<{ f: number }> = ({ f }) => {
         <rect x={-10} y={1214} width={1100} height={42} fill="#e4ddcc" />
       </g>
       <Flowers y0={1260} y1={1880} n={110} seed="tp" big={1.3} />
-      {/* the two of them, small, in the flowers, looking up at it */}
-      <Cap back x={200} y={1830} s={0.4} p={stand({ armL: limb(-60, 60, -80, 140), armR: limb(60, 60, 80, 140) })} face="back" idle={t} />
-      <Straw back x={320} y={1850} s={0.4} p={stand({ armL: limb(-60, 60, -80, 140), armR: limb(60, 60, 80, 140) })} face="back" idle={t + 9} />
+      {/* the two of them, small, in the flowers, gawping at it */}
+      <Cap back flip x={200} y={1840} s={0.34} pose={tp({ aL: [-10, -6], aR: [10, 6], tilt: 4 })} face="plain" t={t} />
+      <Straw back flip x={320} y={1860} s={0.34} pose={tp({ aL: [-10, -6], aR: [10, 6], tilt: -4 })} face="plain" t={t + 9} />
     </Cam>
   );
 };
 
-/* shot 7: the shock */
+/* shot 7: the shock: the scream lands on a snap-zoom and he shakes */
 const Shock: React.FC<{ f: number }> = ({ f }) => {
   const t = f;
-  const jx = Math.sin(t * 5.2) * 10, jy = Math.cos(t * 4.4) * 8;
-  const arms = sm(t, 0, 8);
-  const p = lerpPose({ ...POSE.stand }, { ...POSE.out, armL: limb(-132, 32, -240, 30), armR: limb(132, 32, 250, 30) }, arms);
+  const jx = Math.sin(t * 5.2) * 9, jy = Math.cos(t * 4.4) * 7;
+  const hit = over(t, 0, 8);
+  const pose = tp({ aL: [lerp(-30, -104, hit), lerp(-10, -16, hit)], aR: [lerp(30, 104, hit), lerp(10, 16, hit)], tilt: Math.sin(t * 0.9) * 4, bob: (1 - hit) * -10, sq: -0.035 * bell(t, 0, 7) });
   return (
     <g>
       <MeadowBack f={f} z={1.1} />
-      <Cam dx={jx} dy={jy}>
-        <Straw x={560} y={2300} s={2.3} p={p} face="scream" gaze={[0, -6]} tilt={Math.sin(t * 0.9) * 3} idle={t} />
+      <Cam dx={jx} dy={jy} z={lerp(1.08, 1, hit)} cx={540} cy={1500}>
+        <Straw x={560} y={2400} s={2.7} pose={pose} face="scream" t={t} />
       </Cam>
     </g>
   );
 };
 
-/* shot 9: crowned in laurel: the wise one, thinking it over, in a toga */
+/* shot 9: crowned in laurel: the wise one, thinking it over */
 const Crowned: React.FC<{ f: number }> = ({ f }) => {
   const t = f;
-  const sway = Math.sin(t * 0.05) * 3;
+  const pose = tp({ aL: [-12, -6], aR: [lerp(10, 36, ease(t, 20, 36)), 10], tilt: -3 + Math.sin(t * 0.06) * 2, lean: -1 });
   return (
     <g>
       <Cam z={1.18} cx={540} cy={1000}>
         <Sky f={f} horizon={1100} />
         <Mountains y={1110} k={1.1} />
-        <rect x={-100} y={1110} width={W + 200} height={900} fill="#c9a24a" />
+        <rect x={-100} y={1110} width={W + 200} height={900} fill="#c9a24a" stroke={LINE} strokeWidth={7} />
         <rect x={-100} y={1110} width={W + 200} height={140} fill="#e6c870" />
       </Cam>
-      <Cam r={sway} cx={460} cy={1500} z={lerp(1, 1.04, t / 61)}>
-        <Wise x={460} y={2640} s={3.1} p={POSE.stand} face={t < 25 ? "calm" : "content"} gaze={[0, -4]} tilt={-4} idle={t} />
+      <Cam r={Math.sin(t * 0.05) * 1.5} cx={460} cy={1500} z={lerp(1, 1.05, t / 61)}>
+        <Wise x={500} y={2800} s={3.6} pose={pose} face={t < 25 ? "calm" : "smile"} t={t} />
       </Cam>
     </g>
   );
@@ -518,13 +530,19 @@ const Crowned: React.FC<{ f: number }> = ({ f }) => {
 const SubBar: React.FC<{ f: number }> = ({ f }) => {
   const s = B.subs.find(([a, b]) => f >= (a as number) && f < (b as number));
   if (!s) return null;
-  const text = s[2] as string;
-  const size = 46;
-  const w = text.length * size * 0.62 + 70;
+  const text = (s[2] as string).toUpperCase();
+  // one line if it fits, else split at the space nearest the middle
+  let lines = [text];
+  if (text.length > 17) {
+    const mid = text.length / 2;
+    const sp = [...text].map((c, k) => (c === " " ? k : -1)).filter((k) => k >= 0).sort((a, b) => Math.abs(a - mid) - Math.abs(b - mid))[0];
+    if (sp !== undefined) lines = [text.slice(0, sp), text.slice(sp + 1)];
+  }
   return (
-    <g>
-      <rect x={540 - w / 2} y={1380} width={w} height={84} fill="#000000" opacity={0.55} />
-      <text x={540} y={1380 + 56} textAnchor="middle" fontFamily={MONO} fontSize={size} fill="#ffffff">{text}</text>
+    <g fontFamily="ComicRelief, Comic Sans MS, sans-serif" fontSize={82} textAnchor="middle" fontWeight={700}>
+      {lines.map((l, k) => (
+        <text key={k} x={540} y={250 + k * 92} fill="#ffffff" stroke={INK} strokeWidth={16} strokeLinejoin="round" paintOrder="stroke">{l}</text>
+      ))}
     </g>
   );
 };
@@ -555,7 +573,7 @@ const ShotBody: React.FC<{ i: number; t: number; len: number; f: number }> = ({ 
 const Shot: React.FC<{ i: number }> = ({ i }) => {
   const t = Math.max(0, useCurrentFrame());
   const len = B.cuts[i + 1] - B.cuts[i];
-  return <Svg sun={i >= 3 ? 0.35 : 0.1}><ShotBody i={i} t={t} len={len} f={t + B.cuts[i]} /></Svg>;
+  return <Svg sun={i >= 3 ? 0.35 : 0.1} vig={i < 3 ? 0.6 : 0.4}><ShotBody i={i} t={t} len={len} f={t + B.cuts[i]} /></Svg>;
 };
 
 /** hold the render until every picture is cached, so no frame is missing a sprite */
