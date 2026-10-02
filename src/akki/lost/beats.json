@@ -1,0 +1,168 @@
+{
+  "_": "Absolute frames at 24fps. LostShort.tsx and scripts/build-akki-lost-audio.py both read this.",
+  "fps": 24,
+  "frames": 360,
+  "shots": {
+    "hall": [
+      0,
+      30
+    ],
+    "nod": [
+      30,
+      48
+    ],
+    "boots": [
+      48,
+      60
+    ],
+    "deadpan": [
+      60,
+      72
+    ],
+    "desert": [
+      72,
+      96
+    ],
+    "snow": [
+      96,
+      120
+    ],
+    "jungle": [
+      120,
+      144
+    ],
+    "ocean": [
+      144,
+      168
+    ],
+    "volcano": [
+      168,
+      192
+    ],
+    "night": [
+      192,
+      216
+    ],
+    "aged": [
+      216,
+      240
+    ],
+    "listen": [
+      240,
+      252
+    ],
+    "enter": [
+      252,
+      264
+    ],
+    "sob": [
+      264,
+      288
+    ],
+    "toDoor": [
+      288,
+      304
+    ],
+    "closet": [
+      304,
+      316
+    ],
+    "nodBack": [
+      316,
+      330
+    ],
+    "walkOff": [
+      330,
+      336
+    ],
+    "fall": [
+      336,
+      347
+    ],
+    "door": [
+      347,
+      360
+    ]
+  },
+  "point": 4,
+  "nodAt": [
+    34,
+    40
+  ],
+  "sting": 60,
+  "rumble": 48,
+  "walks": [
+    {
+      "from": 48,
+      "to": 60,
+      "period": 12
+    },
+    {
+      "from": 72,
+      "to": 216,
+      "period": 12
+    },
+    {
+      "from": 252,
+      "to": 264,
+      "period": 12
+    },
+    {
+      "from": 288,
+      "to": 304,
+      "period": 12
+    },
+    {
+      "from": 330,
+      "to": 336,
+      "period": 12
+    }
+  ],
+  "montage": [
+    72,
+    96,
+    120,
+    144,
+    168,
+    192,
+    216
+  ],
+  "drink": 85,
+  "shake": 91,
+  "freeze": 98,
+  "roar": 123,
+  "trip": 134,
+  "gull": 150,
+  "land": 156,
+  "step": 176,
+  "flash": [
+    181,
+    184
+  ],
+  "boom": 181,
+  "flip": [
+    197,
+    202,
+    207
+  ],
+  "tumble": 218,
+  "stepThud": 241,
+  "sobStart": 264,
+  "doorOpen": 304,
+  "doorShut": 315,
+  "collapse": 344,
+  "nodBackAt": [
+    320,
+    325
+  ],
+  "sobNods": [
+    279,
+    284
+  ],
+  "chirps": [
+    225,
+    226,
+    232
+  ],
+  "fallStart": 337
+}
