@@ -11,9 +11,13 @@ eye contact (14.54 s), the look-away, the teleport (the loud one, 16.08 s),
 the Enderman closing in, and the scream (17.66 s). The picture goes black on
 frame 276, the scream still going over it.
 
-Effects: the owner's grass footsteps (Top-20 grab bag), plus synthesis from
-scripts/mc_audio_lib.py for the Enderman's stare sting, the teleport, the
-idle burbling and the scream (all original).
+Effects: the owner's grass footsteps (Top-20 grab bag) and the owner's real
+Enderman sounds (public/audio/src/enderman.mp3, the "All Minecraft Enderman
+Sounds" compilation), cut by analysis into the idle mumbles (distant, while you
+walk), the stare (eye contact), the portal whoosh (the teleport) and two
+screams chained (the scream, running on over the black). Their times are the
+ENDER table below, so a clip that turns out to be the wrong one is a one-line
+swap. A little synthesis (scripts/mc_audio_lib.py) adds the low thumps.
 
   --music none   effects only, a few dB quieter
 
@@ -52,6 +56,17 @@ def at_peak(mix, c, frame, gain):
     place(mix, c, t, gain)
 
 
+# (start, end) seconds in enderman.mp3
+ENDER = {
+    "idle1": (2.76, 3.18),
+    "idle2": (6.10, 6.86),
+    "stare": (9.38, 10.70),
+    "portal": (4.30, 5.24),
+    "scream1": (35.04, 35.84),
+    "scream2": (36.66, 37.42),
+}
+
+
 def burble(dur=1.6, seed=1):
     """the Enderman's idle: a low, wet, wobbling mumble"""
     n = N(dur)
@@ -88,7 +103,7 @@ def scream(dur=1.5):
 
 
 if __name__ == "__main__":
-    need = ["mc-sfx-top20.mp4"] + ([] if NO_MUSIC else ["pink-panther.mp3"])
+    need = ["mc-sfx-top20.mp4", "enderman.mp3"] + ([] if NO_MUSIC else ["pink-panther.mp3"])
     for name in need:
         if not os.path.exists(os.path.join(SRC, name)):
             sys.exit("missing public/audio/src/" + name)
@@ -110,21 +125,22 @@ if __name__ == "__main__":
         at_peak(mix, step_a if k % 2 == 0 else step_b, round(f), 0.55)
         k += 1
         f += B["beat"]
+    en = {k: clip("enderman.mp3", a, b, peak=0.95) for k, (a, b) in ENDER.items()}
     # a distant Enderman mumble while you walk
-    place(mix, burble(1.8, 1), sec(60), 0.1)
-    place(mix, burble(1.4, 2), sec(110), 0.14)
-    # eye contact: the sting on the first sax hit, then it shakes
-    place(mix, stare(), sec(B["lock"]), 0.55)
+    place(mix, en["idle1"], sec(60), 0.25)
+    place(mix, en["idle2"], sec(112), 0.35)
+    # eye contact: the stare on the first sax hit, then it shakes
+    place(mix, en["stare"], sec(B["lock"]), 0.8)
     place(mix, thump(50, 0.4) * 1.6, sec(B["lock"]), 0.45)
-    place(mix, burble(0.9, 5), sec(B["lock"] + 10), 0.3)
     # you whip away
     place(mix, fade(whoosh(0.35, seed=3), 0.02, 0.2), sec(B["away"][0]), 0.3)
     # the teleport on the loud hit, then it closes in
-    place(mix, teleport(), sec(B["teleport"] - 3), 0.7)
+    place(mix, en["portal"], sec(B["teleport"] - 4), 0.9)
     place(mix, thump(45, 0.5) * 2.0, sec(B["teleport"]), 0.6)
-    place(mix, burble(1.0, 8), sec(B["near"][0]), 0.3)
-    # the scream, on the last hit, running on over the black
-    place(mix, scream(1.7), sec(B["scream"] - 2), 0.85)
+    place(mix, en["idle2"], sec(B["near"][0]), 0.4)
+    # the scream, on the last hit, two chained, running on over the black
+    place(mix, en["scream1"], sec(B["scream"] - 2), 1.0)
+    place(mix, en["scream2"], sec(B["scream"] - 2) + 0.62, 1.0)
     place(mix, thump(40, 0.6) * 2.0, sec(B["scream"]), 0.6)
 
     write_mp3(FF, mix, OUT, lufs=-18 if NO_MUSIC else -14)

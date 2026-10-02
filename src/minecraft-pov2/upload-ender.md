@@ -10,8 +10,8 @@ It screams on the last hit and the picture cuts to black.
 - The music is Henry Mancini's "The Pink Panther Theme": a licensed
   track, so Content ID **will** match it. For a claim-free upload use
   `pov-ender-nomusic.mp4` with a song from the Shorts sound picker. The
-  effects are your Minecraft footsteps plus original synthesised Enderman
-  sounds.
+  effects are your Minecraft footsteps and your real Enderman sounds
+  (`enderman.mp3`: idle mumbles, the stare, the teleport, two screams chained).
 - Audience: **not made for kids**. Category Gaming (Minecraft).
 
 ## Title
@@ -67,7 +67,7 @@ Be honest: did you look? 👇
 ## Rebuilding it
 
 ```bash
-npm run pov:ender:mix && npm run pov:ender:sfx   # needs pink-panther.mp3, mc-sfx-top20.mp4
+npm run pov:ender:mix && npm run pov:ender:sfx   # needs pink-panther.mp3, mc-sfx-top20.mp4, enderman.mp3
 npm run pov:ender:audio
 npm run pov:ender:thumb
 ```
