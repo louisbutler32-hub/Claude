@@ -3,6 +3,7 @@ import { AbsoluteFill, Audio, continueRender, delayRender, random, staticFile, u
 import { H, W } from "../minecraft/beats";
 import { ease } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
+import { Blocky, Cube, Mood, Pose } from "./blocky";
 import { HandDrawn } from "../minecraft/handdrawn";
 import { Item, Pixels, Poppy } from "../minecraft/pixels";
 import B from "./beats.json";
@@ -37,27 +38,12 @@ const PX: React.CSSProperties = { imageRendering: "pixelated" };
 /* ----------------------------- the cast ----------------------------- */
 
 /**
- * The cast, exactly as drawn: the owner's own character sheets, cut out
- * (scripts/cut-characters.py) and moved around as sprites. `h` is the drawn
- * height in px, (x, y) is the middle of the feet; `rot` pivots about the feet.
+ * The cast: Minecraft-skin versions of the owner's two characters, built by
+ * scripts/make-skins.py and drawn by ./blocky.tsx (a small 3D engine), the way the
+ * reference's blocky characters are. IShowSpeed: dark locs, stubble, purple hoodie.
+ * Kai Cenat: afro, full beard, green hoodie.
  */
-const SPRITES: Record<string, [number, number]> = {
-  "speed-hero": [891, 1443], "speed-fallen": [957, 507],
-  "kai-think": [726, 1431], "kai-walk": [375, 702], "kai-stand": [363, 714], "kai-shrug": [505, 714], "kai-thumbs": [396, 714], "kai-fall": [657, 282],
-};
-const Spr: React.FC<{ name: string; x: number; y: number; h: number; rot?: number; flip?: boolean; sx?: number; sy?: number; children?: React.ReactNode }> = ({ name, x, y, h, rot = 0, flip, sx = 1, sy = 1, children }) => {
-  const [iw, ih] = SPRITES[name];
-  const k = h / ih;
-  return (
-    <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${(flip ? -1 : 1) * sx} ${sy})`}>
-      <image href={staticFile(`images/chars/${name}.png`)} x={(-iw * k) / 2} y={-h} width={iw * k} height={h} />
-      {/* children are drawn in sprite pixel space (origin at the sprite's top-left), scaled with it */}
-      {children && <g transform={`translate(${(-iw * k) / 2} ${-h}) scale(${k})`}>{children}</g>}
-    </g>
-  );
-};
-const HERO_FISTS = { L: [75, 255] as [number, number], R: [830, 245] as [number, number] };
-
+const LAPIS = (x: number, y: number, s: number, yaw = 25, pitch = 22, size = 16) => <Cube atlas="lapis" atlasSize={640} x={x} y={y} s={s} size={size} yaw={yaw} pitch={pitch} />;
 
 /* ----------------------------- shared scenery ----------------------------- */
 
@@ -154,31 +140,41 @@ const Cave: React.FC<{ f: number }> = ({ f }) => {
     if (x > 560 - r * 6) continue;
     lava.push(<rect key={`${r}${c}`} x={x} y={y} width={62} height={62} fill={LAVA[Math.floor(rr * 4)]} opacity={0.85 + 0.15 * Math.sin(t * 0.2 + r + c)} />);
   }
-  // the voice: DIAMOND on frames 0, 34, 55, 75 — he bounces on each, then walks to the ore
+  // the voice: DIAMOND on frames 0 and 34 (then 55, 75 in the next shot): he throws his arms up and bounces on each
   const hits = [0, 34];
   const bounce = Math.max(...hits.map((h) => (t >= h && t < h + 10 ? Math.sin(((t - h) / 10) * Math.PI) : 0)));
   const walk = sm(t, 22, 54);
-  const ox = lerp(680, 820, walk), oy = lerp(1214, 1334, walk) - bounce * 40, oh = lerp(470, 640, walk);
-  const kaiShout = hits.some((h) => t >= h && t < h + 14);
+  const ox = lerp(690, 820, walk), oy = lerp(1214, 1334, walk), os = lerp(12.5, 17, walk);
+  const shouting = hits.some((h) => t >= h && t < h + 14);
+  const stride = walk > 0 && walk < 1 ? Math.sin(t * 0.8) * 30 : 0;
+  const speedPose: Pose = { armL: [0, shouting ? 155 : 40], armR: [0, shouting ? 155 : 40], bounce: bounce * 3, legL: stride, legR: -stride };
+  const kaiPose: Pose = { armR: [shouting ? 20 : 95, shouting ? 40 : 8], armL: [0, shouting ? 150 : 6], bounce: shouting ? bounce * 1.5 : 0 };
   return (
     <Cam z={lerp(1, 1.1, t / 56)} cx={540} cy={1200}>
       <rect x={-100} y={-100} width={W + 200} height={H + 200} fill="#1b1124" />
       <rect x={-100} y={-100} width={560} height={1500} fill="#7a1c14" />
       {lava}
+      <rect x={-100} y={-100} width={760} height={1500} fill="#ff6a1a" opacity={0.12 + 0.05 * Math.sin(t * 0.3)} />
       {[[330, 120, 1260], [560, 160, 1260], [820, 200, 1260]].map(([x, w, h], i) => (
-        <rect key={i} x={x} y={1260 - h} width={w} height={h} fill={i % 2 ? "#241830" : "#2d2038"} stroke={LINE} strokeWidth={7} />
+        <g key={i}>
+          <rect x={x} y={1260 - h} width={w} height={h} fill={i % 2 ? "#241830" : "#2d2038"} stroke={LINE} strokeWidth={7} />
+          <rect x={x} y={1260 - h} width={14} height={h} fill="#ff8a24" opacity={0.25} />
+        </g>
       ))}
       <rect x={-100} y={1190} width={W + 200} height={90} fill="#3a2c4a" stroke={LINE} strokeWidth={7} />
+      <rect x={-100} y={1190} width={W + 200} height={18} fill="#5a4a72" />
       <rect x={-100} y={1280} width={W + 200} height={700} fill="#241830" />
-      {/* the two of them on the ledge */}
-      <Spr name={kaiShout ? "kai-thumbs" : "kai-stand"} x={300} y={1216 - (kaiShout ? bounce * 16 : 0)} h={400} />
-      <Spr name="speed-hero" x={ox} y={oy} h={oh} rot={Math.sin(t * 0.5) * 2} />
-      {[0, 1].map((i) => <image key={i} href={ORE} x={-70} y={880 + i * 290} width={300} height={300} style={PX} />)}
-      <g>
-        <polygon points="-120,1500 1200,1500 1260,1620 -180,1620" fill="#4a52a8" stroke={LINE} strokeWidth={8} />
-        {[0, 1, 2, 3].map((i) => <image key={i} href={ORE} x={-120 + i * 330} y={1620} width={330} height={330} style={PX} />)}
-        <rect x={-120} y={1620} width={1400} height={330} fill="none" stroke={LINE} strokeWidth={8} />
-      </g>
+      {Array.from({ length: 16 }, (_, i) => {
+        const u = ((t * 0.02 + random(`em${i}`)) % 1);
+        return <rect key={i} x={60 + random(`ex${i}`) * 500 + Math.sin(u * 8 + i) * 20} y={1180 - u * 900} width={10} height={10} fill="#ffb347" opacity={1 - u} />;
+      })}
+      <Blocky who="kai" mood={shouting ? "grin" : "smile"} pose={kaiPose} x={300} y={1216} s={12.5} yaw={24} pitch={6} />
+      <Blocky who="speed" mood={shouting ? "shout" : "grin"} pose={speedPose} x={ox} y={oy} s={os} yaw={-22} pitch={6} />
+      {LAPIS(-20, 1520, 20, 22, 20)}
+      {LAPIS(-20, 1190, 20, 22, 20)}
+      <ellipse cx={540} cy={1840} rx={760} ry={230} fill="#2a5bd6" opacity={0.13} />
+      {LAPIS(150, 1930, 26, 22, 24)}
+      {LAPIS(610, 2010, 26, 22, 24)}
     </Cam>
   );
 };
@@ -187,29 +183,21 @@ const Cave: React.FC<{ f: number }> = ({ f }) => {
 
 const Mine: React.FC<{ f: number }> = ({ f }) => {
   const t = f;
-  // the voice: DIAMOND on frames 55 (t = -1) and 75 (t = 19); he swings the pickaxe on each beat of it
   const beat = (Math.sin(t * 0.46 - 1.2) + 1) / 2;
-  const swing = lerp(-25, 55, beat);
-  const squash = 1 - beat * 0.04;
+  const shout = (t >= 0 && t < 9) || (t >= 19 && t < 28);
+  const pose: Pose = { armR: [lerp(60, 150, beat), 6], armL: [20, 14], bounce: beat * 1.2, legL: beat * 6, legR: -beat * 6 };
   return (
     <Cam z={lerp(1.04, 1, t / 44)} dx={Math.sin(t * 0.8) * 4}>
       <rect x={-100} y={-100} width={W + 200} height={H + 200} fill="#15153a" />
-      {[0, 1, 2].map((i) => (
-        <g key={i}>
-          <image href={ORE} x={640 + i * 140} y={520 + i * 200} width={340} height={340} style={PX} />
-          <rect x={640 + i * 140} y={520 + i * 200} width={340} height={340} fill="#000" opacity={0.25 + i * 0.1} />
-        </g>
-      ))}
-      {Array.from({ length: 4 }, (_, r) => Array.from({ length: 4 }, (_, c) => (
-        <image key={`${r}${c}`} href={ORE} x={-110 + c * 330 + (r % 2) * 90} y={1000 + r * 250} width={330} height={330} style={PX} opacity={0.9} />
-      )))}
-      <rect x={-100} y={900} width={W + 200} height={1100} fill="#0a0a30" opacity={0.35} />
-      {/* he swings the pickaxe in his right fist; the pick pivots on the fist */}
-      <Spr name="speed-hero" x={420} y={1600 + beat * 10} h={1050} sy={squash} rot={beat * -3}>
-        <g transform={`translate(${HERO_FISTS.R[0]} ${HERO_FISTS.R[1]}) rotate(${swing}) scale(1.5) translate(-70 -310)`}>
-          <image href={PICK} x={0} y={0} width={360} height={360} style={PX} />
-        </g>
-      </Spr>
+      {[[840, 1010, 12], [900, 1300, 15], [760, 1560, 17], [980, 1800, 19]].map(([x, y, sc], i) => <g key={i} opacity={0.9}>{LAPIS(x, y, sc, 168, 30)}</g>)}
+      {[0, 1, 2, 3, 4].map((i) => <g key={i}>{LAPIS(-50 + i * 270, 1960 + (i % 2) * 40, 17, 168, 30)}</g>)}
+      <rect x={-100} y={900} width={W + 200} height={1100} fill="#0a0a30" opacity={0.3} />
+      <Blocky who="speed" mood={shout ? "shout" : "grin"} pose={pose} x={400} y={1760} s={23} yaw={172} pitch={30}
+        extra={(h) => (
+          <g transform={`translate(${h.R[0]} ${h.R[1]}) rotate(${lerp(-35, 40, beat)}) scale(1.9) translate(-70 -310)`}>
+            <image href={PICK} x={0} y={0} width={360} height={360} style={PX} />
+          </g>
+        )} />
     </Cam>
   );
 };
@@ -292,6 +280,8 @@ const Hero: React.FC<{ f: number }> = ({ f }) => {
   const t = f;
   const turn = sm(t, 28, 40);
   const hype = [t - 22, t - 5].map((d) => (d >= 0 && d < 12 ? Math.sin((d / 12) * Math.PI) : 0));
+  const mood: Mood = t < 24 ? "shock" : "shout";
+  const pose: Pose = { armL: [30, lerp(110, 150, turn)], armR: [0, lerp(40, 150, turn)], head: [0, lerp(8, -4, turn), 0], bounce: Math.max(...hype) * 2 };
   return (
     <g>
       <MeadowBack f={f} z={lerp(1, 1.06, t / 65)} />
@@ -299,9 +289,8 @@ const Hero: React.FC<{ f: number }> = ({ f }) => {
         {[[120, 1560], [60, 1700], [240, 1830]].map(([x, y], i) => <Poppy key={i} x={x} y={y} px={26} />)}
       </g>
       <Cam z={1} dx={lerp(0, -20, turn)}>
-        <Spr name="speed-hero" x={560} y={2180 - Math.max(...hype) * 40} h={1650} rot={Math.sin(t * 0.12) * 2.5 + turn * 2}>
-          <Pixels rows={DIAMOND_ROWS} colors={DIAMOND_COL} px={22} x={HERO_FISTS.L[0] + 10} y={HERO_FISTS.L[1] - 40} rotate={-14} />
-        </Spr>
+        <Blocky who="speed" mood={mood} pose={pose} x={650} y={2330} s={31} yaw={lerp(-30, -12, turn)} pitch={-6} roll={Math.sin(t * 0.12) * 2}
+          extra={(h) => <g transform={`translate(${h.L[0]} ${h.L[1] - 30})`}>{LAPIS(0, 50, 7, 20, 20, 16)}</g>} />
       </Cam>
     </g>
   );
@@ -329,6 +318,8 @@ const Temple: React.FC<{ f: number }> = ({ f }) => {
         <rect x={-10} y={1214} width={1100} height={42} fill="#e4ddcc" />
       </g>
       <Flowers y0={1260} y1={1880} n={110} seed="tp" big={1.3} />
+      <Blocky who="speed" mood="plain" pose={{ armL: [0, 20], armR: [0, 20] }} x={170} y={1830} s={7.5} yaw={186} pitch={14} />
+      <Blocky who="kai" mood="plain" pose={{ armL: [0, 12], armR: [0, 12] }} x={262} y={1846} s={7.5} yaw={176} pitch={14} />
       {[[140, 1560], [880, 1700]].map(([x, y], i) => (
         <g key={i} transform={`translate(${x} ${y})`} stroke={LINE} strokeWidth={5}>
           <rect x={-40} y={-80} width={80} height={90} fill="#3a2f5a" />
@@ -347,7 +338,7 @@ const Shock: React.FC<{ f: number }> = ({ f }) => {
     <g>
       <MeadowBack f={f} z={1.1} />
       <Cam dx={jx} dy={jy}>
-        <Spr name="speed-hero" x={560} y={2500} h={2500} rot={Math.sin(t * 0.9) * 3} />
+        <Blocky who="speed" mood="shock" pose={{ armL: [0, 120 + Math.sin(t * 0.9) * 14], armR: [0, 120 - Math.sin(t * 0.9) * 14], head: [0, 0, Math.sin(t * 0.9) * 4] }} x={560} y={2520} s={44} yaw={-8} pitch={-4} />
       </Cam>
     </g>
   );
@@ -356,7 +347,6 @@ const Shock: React.FC<{ f: number }> = ({ f }) => {
 /* shot 9: crowned in laurel — Kai, thinking it over, in a toga */
 const Crowned: React.FC<{ f: number }> = ({ f }) => {
   const t = f;
-  const sway = Math.sin(t * 0.05) * 2;
   return (
     <g>
       <Cam z={1.18} cx={540} cy={1000}>
@@ -365,22 +355,8 @@ const Crowned: React.FC<{ f: number }> = ({ f }) => {
         <rect x={-100} y={1110} width={W + 200} height={900} fill="#c9a24a" />
         <rect x={-100} y={1110} width={W + 200} height={140} fill="#e6c870" />
       </Cam>
-      <Cam r={sway} cx={440} cy={1500} z={lerp(1, 1.04, t / 61)}>
-        <Spr name="kai-think" x={500} y={2420} h={2150}>
-          {/* the white toga over the green hoodie */}
-          <polygon points="-40,700 150,640 330,690 560,620 780,700 780,1200 -40,1200" fill="#fbf8f0" stroke={LINE} strokeWidth={14} strokeLinejoin="round" />
-          <polygon points="-40,700 150,640 250,900 -40,1000" fill="#e9e2d2" />
-          <rect x={-40} y={1010} width={820} height={50} fill="#d8b24a" stroke={LINE} strokeWidth={10} />
-          {/* the laurel crown, around the afro */}
-          <g stroke={LINE} strokeWidth={9} strokeLinejoin="round">
-            {Array.from({ length: 15 }, (_, i) => {
-              const a = Math.PI * (0.05 + 0.9 * (i / 14));
-              const cx0 = 290 - Math.cos(a) * 262, cy0 = 300 - Math.sin(a) * 250;
-              const rot = (a * 180) / Math.PI - 90 + (i % 2 ? 24 : -24);
-              return <ellipse key={i} cx={cx0} cy={cy0} rx={64} ry={26} fill={i % 2 ? "#5aa83a" : "#7bc45a"} transform={`rotate(${rot} ${cx0} ${cy0})`} />;
-            })}
-          </g>
-        </Spr>
+      <Cam r={Math.sin(t * 0.05) * 1.5} cx={440} cy={1500} z={lerp(1, 1.04, t / 61)}>
+        <Blocky who="kai" mood={t < 25 ? "calm" : "smile"} outfit={{ toga: true, laurel: true }} pose={{ armR: [30, 10], armL: [0, 8], head: [0, 0, 0] }} x={480} y={2640} s={46} yaw={26} pitch={-12} />
       </Cam>
     </g>
   );
@@ -429,7 +405,7 @@ const Scene: React.FC<{ f: number }> = ({ f }) => {
 const usePreload = () => {
   const [handle] = React.useState(() => delayRender("loading the characters"));
   React.useEffect(() => {
-    const urls = [ORE, STONE, PICK, ...BREAKS, ...Object.keys(SPRITES).map((n) => staticFile(`images/chars/${n}.png`))];
+    const urls = [ORE, STONE, PICK, ...BREAKS, ...["speed", "kai", "speed-hair", "kai-hair", "lapis", "toga", "leaf"].map((n) => staticFile(`images/skins/${n}.png`))];
     Promise.all(urls.map((u) => new Promise<void>((r) => { const im = new window.Image(); im.onload = () => r(); im.onerror = () => r(); im.src = u; }))).then(() => continueRender(handle));
   }, [handle]);
 };
