@@ -4,6 +4,7 @@ import { BowlingShort, BowlingThumb, BOWLING_FRAMES } from "./akki/bowling/Bowli
 import { BreakfastShort, BreakfastThumb, BREAKFAST_FRAMES } from "./akki/breakfast/BreakfastShort";
 import { LostShort, LostThumb, LOST_FRAMES } from "./akki/lost/LostShort";
 import { BuffetShort, BuffetThumb, BUFFET_FRAMES } from "./akki/buffet/BuffetShort";
+import { FearShort, FearThumb, FEAR_FRAMES } from "./akki/fear/FearShort";
 import { Composition } from "remotion";
 import { BountyVideo, TOTAL_DURATION_IN_FRAMES } from "./BountyVideo";
 import { WhatIfVideo } from "./whatif/WhatIfVideo";
@@ -259,6 +260,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Akki-Lost-Thumbnail" component={LostThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="Akki-Buffet" component={BuffetShort} durationInFrames={BUFFET_FRAMES} fps={24} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Akki-Buffet-Thumbnail" component={BuffetThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
+      <Composition id="Akki-Fear" component={FearShort} durationInFrames={FEAR_FRAMES} fps={24} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Akki-Fear-Thumbnail" component={FearThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="Akki-Zoro-Thumbnail" component={ZoroThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="Akki-Bowling-Thumbnail" component={BowlingThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="SneakShort" component={SneakShort} durationInFrames={SNEAK_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
