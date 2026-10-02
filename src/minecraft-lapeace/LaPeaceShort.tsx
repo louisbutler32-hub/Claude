@@ -4,7 +4,7 @@ import { H, W } from "../minecraft/beats";
 import { ease, FaceKind, limb, lerpPose, Pose, POSE, Pt } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
 import { HandDrawn } from "../minecraft/handdrawn";
-import { Oofy, OofyTint, OOFY_TINT } from "../minecraft/oofy";
+import { KAI_DESIGN, KAI_TINT, Oofy, OofyDesign, OofyTint, SPEED_DESIGN, SPEED_TINT } from "../minecraft/oofy";
 import { Item, Pixels, Poppy } from "../minecraft/pixels";
 import B from "./beats.json";
 
@@ -22,8 +22,6 @@ export const LAPEACE_FRAMES = B.frames;
 
 const LINE = "#2a1b3d";
 const MONO = "Monocraft, monospace";
-const JAVA: OofyTint = OOFY_TINT.normal;
-const BLUE: OofyTint = { skin: "#fff1e0", line: "#2a1b3d", hoodie: "#2563eb", pants: "#2f3654", shoe: "#f7f3ee" };
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 const clamp01 = (t: number) => Math.min(1, Math.max(0, t));
@@ -32,20 +30,23 @@ const sm = (f: number, a: number, b: number) => ease(f, a, b);
 const ORE = staticFile("images/pov2/lapis-ore.png"); // "La Peace" is lapis
 const STONE = staticFile("images/pov2/stone.png");
 const PICK = staticFile("images/pov2/iron-pickaxe.png");
+const BREAKS = [0, 1, 2, 3, 4, 5].map((i) => staticFile(`images/pov2/break-${i}.png`));
 const DIAMOND_ROWS = ["..DDDDD..", ".DwwCCCD.", "DwCCCCCCD", "DCCCCCCCD", ".DCCCCCD.", "..DCCCD..", "...DCD...", "....D...."];
 const DIAMOND_COL = { D: "#0e6f7a", w: "#e8fffd", C: "#3df0e6" };
 const PX: React.CSSProperties = { imageRendering: "pixelated" };
 
 /* ----------------------------- the cast ----------------------------- */
 
-const O: React.FC<{
-  x: number; y: number; s: number; p: Pose; face: FaceKind; tint?: OofyTint; gaze?: Pt; look?: Pt; flip?: boolean; tilt?: number;
-  hands?: (h: { L: Pt; R: Pt }) => React.ReactNode; bandAid?: boolean;
-}> = ({ x, y, s, p, face, tint = JAVA, gaze = [0, 0], look, flip, tilt, hands, bandAid = true }) => (
+type Who = { x: number; y: number; s: number; p: Pose; face: FaceKind; gaze?: Pt; look?: Pt; flip?: boolean; tilt?: number; hands?: (h: { L: Pt; R: Pt }) => React.ReactNode };
+const Person: React.FC<Who & { tint: OofyTint; design: OofyDesign }> = ({ x, y, s, p, face, tint, design, gaze = [0, 0], look, flip, tilt, hands }) => (
   <g transform={`translate(${x} ${y})`}>
-    <Oofy x={0} y={-335 * s} scale={s} pose={p} face={face} tint={tint} look={look} faceOffset={gaze} flip={flip} tilt={tilt} shadow={false} bandAid={bandAid} hands={hands} />
+    <Oofy x={0} y={-335 * s} scale={s} pose={p} face={face} tint={tint} design={design} look={look} faceOffset={gaze} flip={flip} tilt={tilt} shadow={false} bandAid hands={hands} />
   </g>
 );
+/** IShowSpeed: purple hoodie, wild locs. The hero. */
+const Speed: React.FC<Who> = (w) => <Person {...w} tint={SPEED_TINT} design={SPEED_DESIGN} />;
+/** Kai Cenat: green hoodie, afro, beard. The wise one. */
+const Kai: React.FC<Who> = (w) => <Person {...w} tint={KAI_TINT} design={KAI_DESIGN} />;
 
 const stand = (extra?: Partial<Pose>): Pose => ({ ...POSE.stand, ...extra });
 
@@ -153,7 +154,7 @@ const Cave: React.FC<{ f: number }> = ({ f }) => {
   }
   // Oofy walks toward the ore
   const walk = sm(t, 22, 54);
-  const ox = lerp(660, 800, walk), oy = lerp(1210, 1330, walk), os = lerp(0.6, 0.78, walk);
+  const ox = lerp(660, 800, walk), oy = lerp(1214, 1334, walk), os = lerp(0.68, 0.84, walk);
   const step = Math.sin(t * 0.7) * 22 * (walk > 0 && walk < 1 ? 1 : 0);
   const op: Pose = { ...POSE.stand, legL: limb(-40, 190 + step * 0.2, -46 - step, 335), legR: limb(40, 190 - step * 0.2, 46 + step, 335), armR: limb(80, 70, 118 + step * 0.4, 150), armL: limb(-80, 70, -116, 150) };
   const shout = (t >= 0 && t < 9) || (t >= 34 && t < 43);
@@ -169,8 +170,8 @@ const Cave: React.FC<{ f: number }> = ({ f }) => {
       <rect x={-100} y={1190} width={W + 200} height={90} fill="#3a2c4a" stroke={LINE} strokeWidth={7} />
       <rect x={-100} y={1280} width={W + 200} height={700} fill="#241830" />
       {/* the two of them on the ledge */}
-      <O x={300} y={1214} s={0.6} p={stand({ armL: limb(-60, 60, -100, 138), armR: limb(60, 60, 110, 130) })} face={shout ? "joy" : "grin"} tint={BLUE} bandAid={false} gaze={[10, 2]} />
-      <O x={ox} y={oy} s={os} p={t >= 14 && t < 30 ? { ...POSE.stand, armR: limb(90, 40, 150, 20), armL: limb(-90, 40, -150, 20) } : op} face={shout ? "joy" : "grin"} gaze={[-14, 4]} />
+      <Kai x={290} y={1216} s={0.68} p={stand({ armL: limb(-60, 60, -100, 138), armR: limb(60, 60, 110, 130) })} face={shout ? "joy" : "grin"} gaze={[10, 2]} />
+      <Speed x={ox} y={oy} s={os} p={t >= 14 && t < 30 ? { ...POSE.stand, armR: limb(90, 40, 150, 20), armL: limb(-90, 40, -150, 20) } : op} face={shout ? "joy" : "grin"} gaze={[-14, 4]} />
       {/* the ore in front: a tall pillar and a big block */}
       {[0, 1].map((i) => <image key={i} href={ORE} x={-70} y={880 + i * 290} width={300} height={300} style={PX} />)}
       <g>
@@ -203,31 +204,61 @@ const Mine: React.FC<{ f: number }> = ({ f }) => {
         <image key={`${r}${c}`} href={ORE} x={-110 + c * 330 + (r % 2) * 90} y={1000 + r * 250} width={330} height={330} style={PX} opacity={0.9} />
       )))}
       <rect x={-100} y={900} width={W + 200} height={1100} fill="#0a0a30" opacity={0.35} />
-      <O x={430} y={1480} s={1.05} p={pose} face={(t >= 0 && t < 9) || (t >= 19 && t < 28) ? "joy" : swing > 0.8 ? "gritted" : "grin"} tilt={swing * 4 - 2} gaze={[8, 10]} hands={(h) => pickInHand(h.R, -20 - swing * 10, 1.1)} />
+      <Speed x={430} y={1480} s={1.05} p={pose} face={(t >= 0 && t < 9) || (t >= 19 && t < 28) ? "joy" : swing > 0.8 ? "gritted" : "grin"} tilt={swing * 4 - 2} gaze={[8, 10]} hands={(h) => pickInHand(h.R, -20 - swing * 10, 1.1)} />
     </Cam>
   );
 };
 
-/* ------------------------------- shot 3: the dark ------------------------------- */
+/* ------------------------------- shot 3: breaking through ------------------------------- */
 
-const Dark: React.FC<{ f: number }> = ({ f }) => {
+/** Speed swings at the tunnel wall: a crack on the first hit, the wall bursts on the second and daylight floods in */
+const HIT1 = 4, HIT2 = 24;
+const Breakthrough: React.FC<{ f: number }> = ({ f }) => {
   const t = f;
-  const pulse = 0.75 + 0.25 * Math.sin(t * 0.3);
+  const hitOf = (h: number) => {
+    const k = ease(t, h - 9, h - 3) * (1 - ease(t, h - 3, h)) + ease(t, h - 3, h) * (1 - ease(t, h, h + 9));
+    return k; // 0 away, 1 wound up, then struck and recoiling
+  };
+  const wind = Math.max(hitOf(HIT1) * (t < HIT1 + 9 ? 1 : 0), hitOf(HIT2));
+  const striking = (t >= HIT1 - 3 && t < HIT1 + 6) || (t >= HIT2 - 3 && t < HIT2 + 6);
+  const sx = Math.sin(t * 7) * (t >= HIT1 && t < HIT1 + 8 ? 14 : t >= HIT2 && t < HIT2 + 10 ? 26 : 0);
+  const sy = Math.cos(t * 6) * (t >= HIT1 && t < HIT1 + 8 ? 10 : t >= HIT2 && t < HIT2 + 10 ? 20 : 0);
+  const stage = t < HIT1 ? -1 : t < HIT2 - 6 ? 2 : t < HIT2 - 3 ? 4 : t < HIT2 ? 5 : -1;
+  const hole = ease(t, HIT2, HIT2 + 14);
+  const pickPose = striking ? { x: 1090, y: 1510, r: 0 } : { x: lerp(1300, 1200, wind), y: lerp(2000, 1720, wind), r: lerp(25, 15, wind) };
   return (
-    <Cam z={lerp(1, 1.14, t / 40)} cy={900} dx={Math.sin(t * 1.3) * 5} dy={Math.cos(t * 1.1) * 5}>
-      <rect x={-100} y={-100} width={W + 200} height={H + 200} fill="#1b0a0c" />
-      <rect x={-100} y={-100} width={W + 200} height={H + 200} fill="#2a1013" opacity={0.6} />
-      {/* a square of light on the wall */}
-      <g transform="rotate(4 540 700)">
-        <rect x={400} y={430} width={260} height={470} fill="#a8574f" opacity={pulse} stroke="#3a1a1a" strokeWidth={8} />
-        <rect x={420} y={450} width={220} height={430} fill="#e08a6a" opacity={0.55 * pulse} />
+    <g>
+      <Cam z={lerp(1, 1.06, t / 40)} dx={sx} dy={sy}>
+        <rect x={-100} y={-100} width={W + 200} height={H + 200} fill="#2b2b33" />
+        {Array.from({ length: 5 }, (_, r) => Array.from({ length: 3 }, (_, c) => (
+          <g key={`${r}${c}`}>
+            <image href={STONE} x={-130 + c * 400 + (r % 2) * 130} y={-60 + r * 400} width={400} height={400} style={PX} />
+            <rect x={-130 + c * 400 + (r % 2) * 130} y={-60 + r * 400} width={400} height={400} fill="none" stroke={LINE} strokeWidth={8} />
+          </g>
+        )))}
+        <rect x={-100} y={-100} width={W + 200} height={H + 200} fill="#000" opacity={0.35} />
+        {stage >= 0 && <image href={BREAKS[stage]} x={90} y={420} width={900} height={900} style={PX} />}
+        {/* the hole: daylight pouring through */}
+        {hole > 0 && (
+          <g>
+            <circle cx={540} cy={960} r={hole * 1100} fill="#fff7c8" />
+            <circle cx={540} cy={960} r={hole * 900} fill="#bfe4ff" />
+            <circle cx={540} cy={960} r={hole * 560} fill="#eaf6ff" />
+            {Array.from({ length: 12 }, (_, i) => (
+              <rect key={i} x={540 - 14} y={960 - hole * 1000} width={28} height={hole * 700} fill="#ffffff" opacity={0.35} transform={`rotate(${i * 30} 540 960)`} />
+            ))}
+          </g>
+        )}
+        {/* chips of stone flying out of the break */}
+        {t >= HIT2 && t < HIT2 + 16 && Array.from({ length: 22 }, (_, i) => {
+          const a = random(`bt${i}`) * Math.PI * 2, v = 18 + random(`bv${i}`) * 34, d = t - HIT2;
+          return <rect key={i} x={540 + Math.cos(a) * v * d} y={960 + Math.sin(a) * v * d + d * d * 2} width={46} height={46} fill={i % 2 ? "#8d8d96" : "#6c6c76"} stroke={LINE} strokeWidth={5} />;
+        })}
+      </Cam>
+      <g transform={`translate(${pickPose.x} ${pickPose.y}) rotate(${pickPose.r}) scale(2.5) translate(-295 -325)`}>
+        <image href={PICK} x={0} y={0} width={360} height={360} style={PX} transform="translate(360 0) scale(-1 1)" />
       </g>
-      {/* a black shape and a pale slab climbing in from the bottom right */}
-      <polygon points="320,1180 760,1120 980,1340 980,1700 480,1700 300,1500" fill="#080406" />
-      <polygon points="780,1250 1180,1000 1180,1920 640,1920" fill="#c8c0e0" stroke={LINE} strokeWidth={8} />
-      <polygon points="780,1250 1180,1000 1180,1100 840,1340" fill="#f0eaff" opacity={0.7} />
-      <rect x={-100} y={1700} width={500} height={300} fill="#c9812c" />
-    </Cam>
+    </g>
   );
 };
 
@@ -264,7 +295,7 @@ const Hero: React.FC<{ f: number }> = ({ f }) => {
         {[[120, 1560], [60, 1700], [240, 1830]].map(([x, y], i) => <Poppy key={i} x={x} y={y} px={26} />)}
       </g>
       <Cam z={1} dx={lerp(0, -20, turn)}>
-        <O x={700} y={2250} s={2.1} p={p} face={t < 28 ? "surprised" : "shocked"} gaze={[lerp(-22, 12, turn), 0]} hands={(h) => (
+        <Speed x={700} y={2250} s={2.1} p={p} face={t < 28 ? "surprised" : "shocked"} gaze={[lerp(-22, 12, turn), 0]} hands={(h) => (
           <g transform={`translate(${h.L[0]} ${h.L[1]})`}><Pixels rows={DIAMOND_ROWS} colors={DIAMOND_COL} px={16} x={0} y={0} rotate={-12} /></g>
         )} />
       </Cam>
@@ -314,7 +345,7 @@ const Shock: React.FC<{ f: number }> = ({ f }) => {
     <g>
       <MeadowBack f={f} z={1.1} />
       <Cam dx={jx} dy={jy}>
-        <O x={560} y={2300} s={2.3} p={p} face="scream" gaze={[0, -6]} tilt={Math.sin(t * 0.9) * 3} />
+        <Speed x={560} y={2300} s={2.3} p={p} face="scream" gaze={[0, -6]} tilt={Math.sin(t * 0.9) * 3} />
       </Cam>
     </g>
   );
@@ -333,7 +364,7 @@ const Crowned: React.FC<{ f: number }> = ({ f }) => {
         <rect x={-100} y={1110} width={W + 200} height={140} fill="#e6c870" />
       </Cam>
       <Cam r={sway} cx={460} cy={1500} z={lerp(1, 1.04, t / 61)}>
-        <O x={460} y={2640} s={3.1} p={POSE.stand} face="content" gaze={[0, -4]} tilt={-4} bandAid={false} />
+        <Kai x={460} y={2640} s={3.1} p={POSE.stand} face="content" gaze={[0, -4]} tilt={-4} />
         {/* the white toga over the hoodie */}
         <polygon points="40,1760 420,1560 880,1700 1100,1920 1100,2050 40,2050" fill="#fbf8f0" stroke={LINE} strokeWidth={10} strokeLinejoin="round" />
         <polygon points="40,1760 420,1600 560,1860 40,1990" fill="#e9e2d2" />
@@ -381,7 +412,7 @@ const Scene: React.FC<{ f: number }> = ({ f }) => {
   switch (i) {
     case 0: return <Cave f={t} />;
     case 1: return <Mine f={t} />;
-    case 2: return <Dark f={t} />;
+    case 2: return <Breakthrough f={t} />;
     case 3: return <SunMeadow f={f} k={lerp(1, 1.12, t / len)} drift={0} />;
     case 4: return <Hero f={t} />;
     case 5: return <Temple f={t} />;
@@ -404,7 +435,6 @@ export const LaPeaceShort: React.FC<{ audio?: string | null; drawn?: boolean }> 
         </svg>
       </HandDrawn>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
-        <SubBar f={f} />
       </svg>
     </AbsoluteFill>
   );
@@ -414,7 +444,6 @@ export const LaPeaceThumb: React.FC = () => (
   <AbsoluteFill style={{ backgroundColor: "#000" }}>
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
       <Scene f={150} />
-      <SubBar f={150} />
     </svg>
   </AbsoluteFill>
 );

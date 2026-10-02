@@ -19,7 +19,7 @@ import { useDrawn } from "./handdrawn";
  * OOFY_DESIGNS keeps the other looks that were tried, "A" being the first.
  */
 
-export type OofyTint = { skin: string; line: string; hoodie: string; pants: string; shoe: string };
+export type OofyTint = { skin: string; line: string; hoodie: string; pants: string; shoe: string; hair?: string; hairLit?: string; blush?: string };
 
 export const OOFY_TINT = {
   normal: { skin: "#ffffff", line: "#2a1b3d", hoodie: "#8b5cf6", pants: "#2f3654", shoe: "#f7f3ee" },
@@ -40,7 +40,9 @@ const HAIR = "#4a3426", HAIR_LIT = "#6f4c36", BLUSH = "#ff9fb4";
 export type OofyDesign = {
   key: string;
   name: string;
-  hair: "tuft" | "bangs" | "blocky" | "spiky" | "swoop" | "beanie";
+  hair: "tuft" | "bangs" | "blocky" | "spiky" | "swoop" | "beanie" | "locs" | "afro";
+  /** a beard along the jaw: light stubble or a full one */
+  beard?: "stubble" | "full";
   ears: boolean;
   nose: boolean;
   hood: boolean;
@@ -60,9 +62,16 @@ export const OOFY_DESIGNS: OofyDesign[] = [
   { key: "D", name: "spiky", hair: "spiky", ears: true, nose: true, hood: true, face: 0.8, faceY: 16, legs: 0.84, torso: 1.1, bandAid: "cheek" },
   { key: "E", name: "swoop", hair: "swoop", ears: true, nose: true, hood: true, face: 1.16, faceY: 12, legs: 0.8, torso: 1.14, bandAid: "cheek" },
   { key: "F", name: "beanie", hair: "beanie", ears: true, nose: false, hood: true, face: 1.12, faceY: 12, legs: 0.84, torso: 1.1, bandAid: "cheek" },
+  // the streamer cast, same build as D: IShowSpeed's wild dark locs and stubble, Kai's afro and full beard
+  { key: "SPEED", name: "speed", hair: "locs", beard: "stubble", ears: true, nose: true, hood: true, face: 0.8, faceY: 16, legs: 0.84, torso: 1.1, bandAid: "cheek" },
+  { key: "KAI", name: "kai", hair: "afro", beard: "full", ears: true, nose: true, hood: true, face: 0.84, faceY: 18, legs: 0.84, torso: 1.12, bandAid: "cheek" },
 ];
 /** the look he ships with: D, picked from the ten-style lineup (oofyStyles.tsx) for its silhouette and faces */
 export const OOFY_DESIGN: OofyDesign = OOFY_DESIGNS[3];
+export const SPEED_DESIGN: OofyDesign = OOFY_DESIGNS[6];
+export const KAI_DESIGN: OofyDesign = OOFY_DESIGNS[7];
+export const SPEED_TINT: OofyTint = { skin: "#b8764a", line: "#2a1b3d", hoodie: "#7a52d6", pants: "#2a3150", shoe: "#f7f3ee", hair: "#1b1520", hairLit: "#3a3045", blush: "#d9604a" };
+export const KAI_TINT: OofyTint = { skin: "#8f5a35", line: "#2a1b3d", hoodie: "#1f6b3b", pants: "#27324f", shoe: "#ffffff", hair: "#1a1218", hairLit: "#34282f", blush: "#b0513a" };
 const DesignContext = React.createContext<OofyDesign>(OOFY_DESIGN);
 /** draw every Oofy inside with this design */
 export const OofyDesignProvider = DesignContext.Provider;
@@ -231,7 +240,48 @@ const hairPath = (style: OofyDesign["hair"]) => {
 /** hair seen from behind: everything above the ears */
 const BACK_HAIR = "M-113,14 A113,108 0 0 1 113,14 Q0,34 -113,14 Z";
 
-const Hair: React.FC<{ style: OofyDesign["hair"]; line: string; back?: boolean }> = ({ style, line, back }) => {
+/** the afro: a big scalloped puff behind the head */
+const AFRO_PUFF = (() => {
+  const n = 16;
+  let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = Math.PI + (Math.PI * i) / n;
+    const r = 158 + (i % 2 ? 0 : 10);
+    d += `${i ? "L" : "M"}${(Math.cos(a) * r).toFixed(1)},${(Math.sin(a) * (r - 8) - 20).toFixed(1)} `;
+  }
+  return d + "L128,70 Q0,40 -128,70 Z";
+})();
+
+/** wild locs: a cap with strands thrown out in every direction */
+const LOC_STRANDS: [number, number, number, number, number, number][] = [
+  [-90, -50, -140, -76, -150, -128], [-66, -84, -104, -134, -92, -170], [-36, -98, -60, -158, -30, -190],
+  [-4, -104, -8, -164, 26, -196], [30, -100, 66, -154, 100, -176], [62, -84, 118, -118, 150, -112],
+  [92, -50, 146, -60, 168, -20], [-100, -20, -150, -20, -168, 16], [10, -100, 40, -128, 64, -138],
+];
+
+const Hair: React.FC<{ style: OofyDesign["hair"]; line: string; back?: boolean; color?: string; lit?: string }> = ({ style, line, back, color = HAIR, lit = HAIR_LIT }) => {
+  if (style === "locs") {
+    return (
+      <g strokeLinecap="round" strokeLinejoin="round" fill="none">
+        {LOC_STRANDS.map(([x0, y0, cx, cy, x1, y1], i) => (
+          <g key={i}>
+            <path d={`M${x0},${y0} Q${cx},${cy} ${x1},${y1}`} stroke={line} strokeWidth={36} />
+            <path d={`M${x0},${y0} Q${cx},${cy} ${x1},${y1}`} stroke={color} strokeWidth={22} />
+          </g>
+        ))}
+        <path d={back ? BACK_HAIR : "M-112,-6 A112,106 0 0 1 112,-6 Q70,-56 0,-50 Q-70,-56 -112,-6 Z"} fill={color} stroke={line} strokeWidth={9} />
+        {!back && <path d="M-58,-84 Q-24,-102 14,-98" stroke={lit} strokeWidth={9} />}
+      </g>
+    );
+  }
+  if (style === "afro") {
+    return (
+      <g>
+        <path d={back ? BACK_HAIR : "M-112,-6 A112,106 0 0 1 112,-6 Q74,-62 0,-58 Q-74,-62 -112,-6 Z"} fill={color} stroke={line} strokeWidth={9} strokeLinejoin="round" />
+        {!back && [[-60, -80], [-16, -92], [30, -86], [68, -70]].map(([x, y], i) => <path key={i} d={`M${x},${y} q10,-8 20,0`} stroke={lit} strokeWidth={7} fill="none" strokeLinecap="round" />)}
+      </g>
+    );
+  }
   if (style === "tuft") return null;
   if (style === "beanie") {
     return (
@@ -246,8 +296,8 @@ const Hair: React.FC<{ style: OofyDesign["hair"]; line: string; back?: boolean }
   }
   return (
     <g>
-      <path d={back ? BACK_HAIR : hairPath(style)} fill={HAIR} stroke={line} strokeWidth={9} strokeLinejoin="round" />
-      {!back && <path d="M-58,-84 Q-24,-102 14,-98" stroke={HAIR_LIT} strokeWidth={9} fill="none" strokeLinecap="round" />}
+      <path d={back ? BACK_HAIR : hairPath(style)} fill={color} stroke={line} strokeWidth={9} strokeLinejoin="round" />
+      {!back && <path d="M-58,-84 Q-24,-102 14,-98" stroke={lit} strokeWidth={9} fill="none" strokeLinecap="round" />}
       {/* the cowlick he keeps from the old quiff */}
       {style !== "spiky" && <path d="M8,-104 q6,-34 36,-30 q-14,8 -16,32" fill={HAIR} stroke={line} strokeWidth={7} strokeLinejoin="round" />}
     </g>
@@ -264,7 +314,7 @@ const BandAid: React.FC<{ line: string; at: OofyDesign["bandAid"] }> = ({ line, 
 
 /** the whole head, in head space: skin, blush, face, quiff, band-aid */
 export const OofyHead: React.FC<{ face: FaceKind; look?: Pt; tint?: OofyTint; bandAid?: boolean; faceOffset?: Pt; id?: string; design?: OofyDesign }> = ({
-  face, look = [0, 0], tint = OOFY_TINT.normal, bandAid = true, faceOffset = [0, 0], id = "oofyHead", design,
+  face, look = [0, 0], tint = OOFY_TINT.normal as OofyTint, bandAid = true, faceOffset = [0, 0], id = "oofyHead", design,
 }) => {
   const drawn = useDrawn(); // hand-drawn: flat skin, no shine
   const ctx = React.useContext(DesignContext);
@@ -279,6 +329,9 @@ export const OofyHead: React.FC<{ face: FaceKind; look?: Pt; tint?: OofyTint; ba
         <stop offset="100%" stopColor={shade(tint.skin, -0.08)} />
       </radialGradient>
     </defs>
+    {d.hair === "afro" && (
+      <path d={AFRO_PUFF} fill={tint.hair ?? HAIR} stroke={tint.line} strokeWidth={10} strokeLinejoin="round" />
+    )}
     {d.hair === "tuft" && (
       /* quiff: stepped pixel blocks leaning right, rooted under the outline */
       [[-46, -104, 30, 34], [-20, -124, 30, 50], [6, -138, 30, 58], [32, -118, 24, 36]].map(([x, y, w, h], i) => (
@@ -296,14 +349,15 @@ export const OofyHead: React.FC<{ face: FaceKind; look?: Pt; tint?: OofyTint; ba
     ))}
     <ellipse rx={HEAD_RX} ry={HEAD_RY} fill={drawn ? tint.skin : `url(#${id}-skin)`} stroke={tint.line} strokeWidth={12} />
     {back ? (
-      <Hair style={d.hair} line={tint.line} back />
+      <Hair style={d.hair} line={tint.line} color={tint.hair} lit={tint.hairLit} back />
     ) : (
       <>
-        <Hair style={d.hair} line={tint.line} />
+        <Hair style={d.hair} line={tint.line} color={tint.hair} lit={tint.hairLit} />
         {/* blush, features and a cheek band-aid all travel together when he looks somewhere */}
         <g transform={`translate(${faceOffset[0]} ${faceOffset[1] + d.faceY})`}>
-          <ellipse cx={-56} cy={20} rx={17} ry={10} fill={BLUSH} opacity={0.65} />
-          <ellipse cx={56} cy={20} rx={17} ry={10} fill={BLUSH} opacity={0.65} />
+          <ellipse cx={-56} cy={20} rx={17} ry={10} fill={tint.blush ?? BLUSH} opacity={0.65} />
+          <ellipse cx={56} cy={20} rx={17} ry={10} fill={tint.blush ?? BLUSH} opacity={0.65} />
+          {d.beard && <path d="M-100,6 Q-98,94 0,108 Q98,94 100,6 Q76,72 0,70 Q-76,72 -100,6 Z" fill={tint.hair ?? HAIR} opacity={d.beard === "full" ? 0.92 : 0.5} />}
           <g transform={`scale(${d.face})`}>
             <OofyFace kind={face} look={look} line={tint.line} skin={tint.skin} />
             {d.nose && <path d="M-7,16 q7,9 14,0" stroke={tint.line} strokeWidth={6} fill="none" strokeLinecap="round" />}

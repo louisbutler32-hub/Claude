@@ -1,10 +1,10 @@
-# Upload copy — "That's La Peace" (Oofy remake)
+# Upload copy — "That's La Peace" (IShowSpeed × Kai Cenat remake)
 
-A shot-for-shot remake, in our hand-drawn look with Oofy, of a viral Minecraft
+A shot-for-shot remake, in our hand-drawn look with cartoon IShowSpeed (purple hoodie, the hero) and Kai Cenat (green hoodie, the one crowned in laurel), of a viral Minecraft
 animation: two friends in a lava cave shout DIAMOND at a wall of ore, a miner
 breaks through into a sunbeam over an impossible meadow, a glowing treasure hangs
 in the light, a Greek temple stands in the flowers, and the last close-up finds the
-hero crowned with laurel. Every cut and every subtitle is on the original's own
+hero crowned with laurel. There are no on-screen captions. The third shot (0:03) is an original scene: the hero smashes through the tunnel wall and daylight floods in. Every cut and every subtitle is on the original's own
 time (cuts measured with a scene-change detector, voice lines timed with Whisper).
 
 ## Before you upload
@@ -32,7 +32,7 @@ That's La Peace 🏛️💎 #shorts
 Minecraft: Oofy finds La Peace (Greek temple?!) #minecraft #shorts
 ```
 ```
-DIAMOND DIAMOND → "What is this some Greek…" 😭 #shorts
+IShowSpeed and Kai Cenat find La Peace 💎🏛️ #shorts
 ```
 
 ## Description
@@ -40,7 +40,7 @@ DIAMOND DIAMOND → "What is this some Greek…" 😭 #shorts
 ```
 DIAMOND! DIAMOND! Then… what is this? Some Greek temple? 🏛️💎
 
-Remade with Oofy after the original Minecraft animation: [ADD THE ORIGINAL CREATOR'S NAME / LINK HERE]
+Remade with cartoon IShowSpeed and Kai Cenat after the original Minecraft animation: [ADD THE ORIGINAL CREATOR'S NAME / LINK HERE]
 
 Oofy always gets hurt. New Minecraft animation every week.
 
@@ -53,7 +53,7 @@ https://www.youtube.com/@LaughQuakees
 ## Tags
 
 ```
-minecraft, minecraft animation, minecraft shorts, minecraft memes, minecraft funny, diamond diamond, la peace, minecraft temple, greek minecraft, minecraft remake, reanimated, oofy, oof craft, gaming animation, shorts
+minecraft, minecraft animation, minecraft shorts, minecraft memes, minecraft funny, diamond diamond, la peace, ishowspeed, kai cenat, minecraft temple, greek minecraft, minecraft remake, reanimated, oofy, oof craft, gaming animation, shorts
 ```
 
 ## Pinned comment
