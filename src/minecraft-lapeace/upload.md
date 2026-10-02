@@ -1,20 +1,18 @@
-# Upload copy — "That's La Peace" (IShowSpeed × Kai Cenat remake)
+# Upload copy — "That's La Peace" (Oof Craft remake)
 
-A shot-for-shot remake, in our hand-drawn look with the owner's two characters rebuilt as Minecraft-skin models like the original's (IShowSpeed: locs, stubble, purple hoodie, the hero; Kai Cenat: afro, beard, green hoodie, the one crowned in laurel), of a viral Minecraft
-animation: two friends in a lava cave shout DIAMOND at a wall of ore, a miner
-breaks through into a sunbeam over an impossible meadow, a glowing treasure hangs
-in the light, a Greek temple stands in the flowers, and the last close-up finds the
-hero crowned with laurel. Two versions: `la-peace.mp4` has the game-style subtitle bar like the original (DIAMOND, "That's La Peace", ...), and `la-peace-nocaptions.mp4` has none. The third shot (0:03) is an original scene: the hero smashes through the tunnel wall and daylight floods in. Every cut and every subtitle is on the original's own
-time (cuts measured with a scene-change detector, voice lines timed with Whisper).
+A shot-for-shot remake, fully in the Oof Craft hand-drawn look, of a viral Minecraft
+animation. The three characters keep the original's costumes, redrawn as Oofy: the cap
+guy (red cap, white tee, chain), the straw-hat guy (red band, open red vest, yellow sash,
+scar under the eye) and the wise one (white toga, laurel crown). Two friends in a lava
+cave shout DIAMOND at a wall of lapis, the straw-hat guy mines through into a sunbeam over
+an impossible meadow, a glowing little monk floats in the light, a Greek temple stands
+in the flowers, and the last close-up finds the wise one crowned in laurel. Every cut and
+every subtitle is on the original's own time (cuts measured with a scene-change detector,
+voice lines timed with Whisper). The third shot (0:03) is an original scene: the
+pickaxe cracks the tunnel wall and daylight floods in.
 
-## Version 2: rebuilt in real 3D
-
-`src/lapeace3d/` rebuilds the whole Short as a real 3D scene (three.js through Remotion):
-voxel terrain, lit materials, fog, a sunbeam and glowing items, and the owner's two
-characters as Minecraft-skin models (skins painted by `scripts/make-skins.py`) seen through
-a moving camera, the way the original is made. Same cuts, voice lines and subtitles.
-Render with `npm run lapeace3d:audio` (needs `--gl=swangle`, software WebGL; about 4 minutes).
-Files: `la-peace-3d.mp4` (with subtitles), `la-peace-3d-nocaptions.mp4`, `la-peace-3d-silent.mp4`.
+Two versions: `la-peace.mp4` has the game-style subtitle bar like the original
+(DIAMOND, "That's La Peace", ...), and `la-peace-nocaptions.mp4` has none.
 
 ## Before you upload
 
@@ -38,10 +36,10 @@ That's La Peace 🏛️💎 #shorts
 **Alternates:**
 
 ```
-Minecraft: Oofy finds La Peace (Greek temple?!) #minecraft #shorts
+DIAMOND DIAMOND… what is this Greek temple?! #minecraft #shorts
 ```
 ```
-IShowSpeed and Kai Cenat find La Peace 💎🏛️ #shorts
+Minecraft: The La Peace meadow, redrawn 💎🏛️ #shorts
 ```
 
 ## Description
@@ -49,7 +47,7 @@ IShowSpeed and Kai Cenat find La Peace 💎🏛️ #shorts
 ```
 DIAMOND! DIAMOND! Then… what is this? Some Greek temple? 🏛️💎
 
-Remade with cartoon IShowSpeed and Kai Cenat after the original Minecraft animation: [ADD THE ORIGINAL CREATOR'S NAME / LINK HERE]
+Redrawn in the Oof Craft style after the original Minecraft animation: [ADD THE ORIGINAL CREATOR'S NAME / LINK HERE]
 
 Oofy always gets hurt. New Minecraft animation every week.
 
@@ -62,7 +60,7 @@ https://www.youtube.com/@LaughQuakees
 ## Tags
 
 ```
-minecraft, minecraft animation, minecraft shorts, minecraft memes, minecraft funny, diamond diamond, la peace, ishowspeed, kai cenat, minecraft temple, greek minecraft, minecraft remake, reanimated, oofy, oof craft, gaming animation, shorts
+minecraft, minecraft animation, minecraft shorts, minecraft memes, minecraft funny, diamond diamond, la peace, lapis, minecraft temple, greek minecraft, minecraft remake, redrawn, oofy, oof craft, gaming animation, shorts
 ```
 
 ## Pinned comment
@@ -78,16 +76,17 @@ What do you think La Peace is? 👇
 | `la-peace.mp4` | the Short on the original's soundtrack, 13.4 s, 1080×1920 |
 | `la-peace-nocaptions.mp4` | the same Short with no subtitle bar |
 | `la-peace-silent.mp4` | the same picture with no sound, for the sound picker |
-| `thumbnail-la-peace.jpg` | 9:16, the treasure in the beam |
+| `thumbnail-la-peace.jpg` | 9:16, the monk in the beam |
 
 ## Rebuilding it
 
 ```bash
-python3 scripts/make-skins.py   # paints the two Minecraft skins (public/images/skins/)
 npm run lapeace:audio    # renders the silent picture, then ffmpeg lays the original's track under it
+npm run lapeace:nocaptions
 npm run lapeace:thumb
 ```
 
 The original's video sits at `public/audio/src/lapeace.mp4` (gitignored, never
 committed). The textures (lapis ore — "La Peace" is lapis — and the pickaxe) are your own pictures in
-`public/images/pov2/` (also gitignored).
+`public/images/pov2/` (also gitignored). The characters are drawn in code
+(`src/minecraft-lapeace/cast.tsx`, on top of `src/minecraft/oofy.tsx`).

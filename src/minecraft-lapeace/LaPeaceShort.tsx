@@ -3,9 +3,10 @@ import { AbsoluteFill, Audio, continueRender, delayRender, random, staticFile, u
 import { H, W } from "../minecraft/beats";
 import { ease } from "../minecraft/figure";
 import { loadMinecraftFonts } from "../minecraft/fonts";
-import { Blocky, Cube, Mood, Part, Pose, marbleBox, project, renderParts } from "./blocky";
+import { limb, lerpPose, Pose, POSE, Pt } from "../minecraft/figure";
+import { Cap, Monk, Straw, Wise } from "./cast";
 import { HandDrawn } from "../minecraft/handdrawn";
-import { Item, Pixels, Poppy } from "../minecraft/pixels";
+import { Poppy } from "../minecraft/pixels";
 import B from "./beats.json";
 
 /**
@@ -31,19 +32,27 @@ const ORE = staticFile("images/pov2/lapis-ore.png"); // "La Peace" is lapis
 const STONE = staticFile("images/pov2/stone.png");
 const PICK = staticFile("images/pov2/iron-pickaxe.png");
 const BREAKS = [0, 1, 2, 3, 4, 5].map((i) => staticFile(`images/pov2/break-${i}.png`));
-const DIAMOND_ROWS = ["..DDDDD..", ".DwwCCCD.", "DwCCCCCCD", "DCCCCCCCD", ".DCCCCCD.", "..DCCCD..", "...DCD...", "....D...."];
-const DIAMOND_COL = { D: "#0e6f7a", w: "#e8fffd", C: "#3df0e6" };
 const PX: React.CSSProperties = { imageRendering: "pixelated" };
 
 /* ----------------------------- the cast ----------------------------- */
 
-/**
- * The cast: Minecraft-skin versions of the owner's two characters, built by
- * scripts/make-skins.py and drawn by ./blocky.tsx (a small 3D engine), the way the
- * reference's blocky characters are. IShowSpeed: dark locs, stubble, purple hoodie.
- * Kai Cenat: afro, full beard, green hoodie.
- */
-const LAPIS = (x: number, y: number, s: number, yaw = 25, pitch = 22, size = 16) => <Cube atlas="lapis" atlasSize={640} x={x} y={y} s={s} size={size} yaw={yaw} pitch={pitch} />;
+/** the cast (./cast.tsx): the cap guy, the straw-hat guy, the wise one in laurel: the reference's three, drawn as Oofy */
+const stand = (extra?: Partial<Pose>): Pose => ({ ...POSE.stand, ...extra });
+
+/** the iron pickaxe in a hand, head up and forward */
+const pickInHand = (h: Pt, rot = -25, sc = 0.9) => (
+  <g transform={`translate(${h[0]} ${h[1]}) rotate(${rot}) scale(${sc}) translate(-70 -310)`}>
+    <image href={PICK} x={0} y={0} width={360} height={360} style={PX} />
+  </g>
+);
+
+/** a lapis ore block, outlined like everything else */
+const Ore: React.FC<{ x: number; y: number; s: number }> = ({ x, y, s }) => (
+  <g>
+    <image href={ORE} x={x} y={y} width={s} height={s} style={PX} />
+    <rect x={x} y={y} width={s} height={s} fill="none" stroke={LINE} strokeWidth={8} />
+  </g>
+);
 
 /* ----------------------------- shared scenery ----------------------------- */
 
@@ -171,15 +180,15 @@ const Beam: React.FC<{ x0: number; x1: number; tx: number; ty: number; o?: numbe
   </g>
 );
 
-/** the glowing treasure in the beam: a golden apple, spinning and bobbing */
+/** the glowing treasure in the beam: a little monk (the wise one, cross-legged and calm), bobbing in the light */
 const Treasure: React.FC<{ x: number; y: number; k: number; f: number }> = ({ x, y, k, f }) => (
   <g transform={`translate(${x} ${y + Math.sin(f * 0.12) * 12 * k}) scale(${k})`}>
-    <circle r={150} fill="#fff6b0" opacity={0.35} />
-    <circle r={95} fill="#fff6b0" opacity={0.55} />
+    <circle r={190} fill="#fff6b0" opacity={0.35} />
+    <circle r={125} fill="#fff6b0" opacity={0.55} />
     {Array.from({ length: 8 }, (_, i) => (
-      <rect key={i} x={-5} y={-190} width={10} height={70} fill="#fff6b0" opacity={0.6} transform={`rotate(${i * 45 + f * 3})`} />
+      <rect key={i} x={-5} y={-230} width={10} height={80} fill="#fff6b0" opacity={0.6} transform={`rotate(${i * 45 + f * 3})`} />
     ))}
-    <Item name="goldApple" x={0} y={0} px={18} rotate={Math.sin(f * 0.08) * 10} />
+    <g transform="scale(1.15)"><Monk f={f} /></g>
   </g>
 );
 
@@ -199,15 +208,17 @@ const Cave: React.FC<{ f: number }> = ({ f }) => {
     if (x > 560 - r * 6) continue;
     lava.push(<rect key={`${r}${c}`} x={x} y={y} width={62} height={62} fill={LAVA[Math.floor(rr * 4)]} opacity={0.85 + 0.15 * Math.sin(t * 0.2 + r + c)} />);
   }
-  // the voice: DIAMOND on frames 0 and 34 (then 55, 75 in the next shot): he throws his arms up and bounces on each
+  // the voice: DIAMOND on frames 0 and 34 (then 55, 75 in the next shot): arms up and a bounce on each
   const hits = [0, 34];
   const bounce = Math.max(...hits.map((h) => (t >= h && t < h + 10 ? Math.sin(((t - h) / 10) * Math.PI) : 0)));
+  const shout = hits.some((h) => t >= h && t < h + 14);
+  // the straw-hat guy walks up to the camera
   const walk = sm(t, 22, 54);
-  const ox = lerp(690, 820, walk), oy = lerp(1214, 1334, walk), os = lerp(12.5, 17, walk);
-  const shouting = hits.some((h) => t >= h && t < h + 14);
-  const stride = walk > 0 && walk < 1 ? Math.sin(t * 0.8) * 30 : 0;
-  const speedPose: Pose = { armL: [0, shouting ? 155 : 40], armR: [0, shouting ? 155 : 40], bounce: bounce * 3, legL: stride, legR: -stride };
-  const kaiPose: Pose = { armR: [shouting ? 20 : 95, shouting ? 40 : 8], armL: [0, shouting ? 150 : 6], bounce: shouting ? bounce * 1.5 : 0 };
+  const ox = lerp(690, 800, walk), oy = lerp(1214, 1380, walk) - bounce * 10, os = lerp(0.68, 1.05, walk);
+  const step = walk > 0 && walk < 1 ? Math.sin(t * 0.8) * 24 : 0;
+  const up = { ...POSE.stand, armR: limb(90, 40, 150, 20), armL: limb(-90, 40, -150, 20) };
+  const down = stand({ legL: limb(-40, 190 + step * 0.2, -46 - step, 335), legR: limb(40, 190 - step * 0.2, 46 + step, 335), armR: limb(80, 70, 118 + step * 0.4, 150), armL: limb(-80, 70, -116, 150) });
+  const capPose = shout ? { ...POSE.stand, armR: limb(80, 40, 120, -60), armL: limb(-80, 40, -120, -60) } : stand({ armL: limb(-60, 60, -100, 138), armR: limb(60, 60, 110, 130) });
   return (
     <Cam z={lerp(1, 1.1, t / 56)} cx={540} cy={1200}>
       <rect x={-100} y={-100} width={W + 200} height={H + 200} fill="#1b1124" />
@@ -227,13 +238,13 @@ const Cave: React.FC<{ f: number }> = ({ f }) => {
         const u = ((t * 0.02 + random(`em${i}`)) % 1);
         return <rect key={i} x={60 + random(`ex${i}`) * 500 + Math.sin(u * 8 + i) * 20} y={1180 - u * 900} width={10} height={10} fill="#ffb347" opacity={1 - u} />;
       })}
-      <Blocky who="kai" mood={shouting ? "grin" : "smile"} pose={kaiPose} x={300} y={1216} s={12.5} yaw={24} pitch={6} />
-      <Blocky who="speed" mood={shouting ? "shout" : "grin"} pose={speedPose} x={ox} y={oy} s={os} yaw={-22} pitch={6} />
-      {LAPIS(-20, 1520, 20, 22, 20)}
-      {LAPIS(-20, 1190, 20, 22, 20)}
+      <Cap x={290} y={1216 - bounce * 8} s={0.68} p={capPose} face={shout ? "joy" : "grin"} gaze={[10, 2]} />
+      <Straw x={ox} y={oy} s={os} p={shout ? up : down} face={shout ? "joy" : "grin"} gaze={[-14, 4]} />
+      {/* the ore in front: a tall pillar and a big block */}
+      {[0, 1].map((i) => <Ore key={i} x={-70} y={880 + i * 290} s={300} />)}
+      <polygon points="-120,1500 1200,1500 1260,1620 -180,1620" fill="#4a52a8" stroke={LINE} strokeWidth={8} />
+      {[0, 1, 2, 3].map((i) => <Ore key={i} x={-120 + i * 330} y={1620} s={330} />)}
       <ellipse cx={540} cy={1840} rx={760} ry={230} fill="#2a5bd6" opacity={0.13} />
-      {LAPIS(150, 1930, 26, 22, 24)}
-      {LAPIS(610, 2010, 26, 22, 24)}
     </Cam>
   );
 };
@@ -242,30 +253,27 @@ const Cave: React.FC<{ f: number }> = ({ f }) => {
 
 const Mine: React.FC<{ f: number }> = ({ f }) => {
   const t = f;
-  const beat = (Math.sin(t * 0.46 - 1.2) + 1) / 2;
+  const swing = (Math.sin(t * 0.46 - 1.2) + 1) / 2;
+  const pose: Pose = lerpPose(POSE.holdPick, POSE.mine, swing);
   const shout = (t >= 0 && t < 9) || (t >= 19 && t < 28);
-  const pose: Pose = { armR: [lerp(60, 150, beat), 6], armL: [20, 14], bounce: beat * 1.2, legL: beat * 6, legR: -beat * 6 };
-  // the floor and stair of lapis, laid out in the same camera as the character
-  const view = { yaw: 168, pitch: 42, s: 15, x: 560, y: 1500 };
-  const cubes: { z: number; node: React.ReactNode }[] = [];
-  for (let gz = -4; gz <= 5; gz++) for (let gx = -5; gx <= 5; gx++) {
-    const stairH = gx >= 1 && gz >= 0 ? Math.min(gx, gz + 1, 3) * 16 : 0;
-    const [px, py] = project(view, [gx * 16, stairH, gz * 16]);
-    const depth = -gz * 10 + gx;
-    cubes.push({ z: depth - stairH * 0.001, node: <Cube key={`${gx}_${gz}`} atlas="lapis" atlasSize={640} x={px} y={py} s={view.s} size={16} yaw={view.yaw} pitch={view.pitch} /> });
-  }
-  cubes.sort((a, b) => b.z - a.z);
   return (
     <Cam z={lerp(1.04, 1, t / 44)} dx={Math.sin(t * 0.8) * 4}>
       <rect x={-100} y={-100} width={W + 200} height={H + 200} fill="#0c0c2a" />
-      {cubes.map((c) => c.node)}
-      <rect x={-100} y={-100} width={W + 200} height={H + 200} fill="#1a2cff" opacity={0.18} />
-      <Blocky who="speed" mood={shout ? "shout" : "grin"} pose={pose} x={330} y={1760} s={26} yaw={172} pitch={34}
-        extra={(h) => (
-          <g transform={`translate(${h.R[0]} ${h.R[1]}) rotate(${lerp(-35, 40, beat)}) scale(2.1) translate(-70 -310)`}>
-            <image href={PICK} x={0} y={0} width={360} height={360} style={PX} />
-          </g>
-        )} />
+      {/* steps of ore up the back wall */}
+      {[0, 1, 2].map((i) => (
+        <g key={i}>
+          <Ore x={640 + i * 140} y={520 + i * 200} s={340} />
+          <rect x={640 + i * 140} y={520 + i * 200} width={340} height={340} fill="#000" opacity={0.25 + i * 0.1} />
+        </g>
+      ))}
+      {/* the floor of ore */}
+      {Array.from({ length: 4 }, (_, r) => Array.from({ length: 4 }, (_, c) => (
+        <g key={`${r}${c}`} opacity={0.9}><Ore x={-110 + c * 330 + (r % 2) * 90} y={1000 + r * 250} s={330} /></g>
+      )))}
+      <rect x={-100} y={900} width={W + 200} height={1100} fill="#0a0a30" opacity={0.35} />
+      {/* the straw-hat guy from behind, swinging */}
+      <Straw back x={430} y={1560} s={1.05} p={pose} face="back" tilt={swing * 4 - 2} hands={(h) => pickInHand(h.R, -20 - swing * 10, 1.1)} />
+      {shout && <rect x={-100} y={-100} width={W + 200} height={H + 200} fill="#1a2cff" opacity={0.08} />}
     </Cam>
   );
 };
@@ -343,13 +351,12 @@ const MeadowBack: React.FC<{ f: number; z?: number; dx?: number }> = ({ f, z = 1
   </Cam>
 );
 
-/* shot 5: he meets the meadow, a diamond in his raised fist */
+/* shot 5: he meets the meadow, a lapis in his raised fist */
 const Hero: React.FC<{ f: number }> = ({ f }) => {
   const t = f;
   const turn = sm(t, 28, 40);
-  const hype = [t - 22, t - 5].map((d) => (d >= 0 && d < 12 ? Math.sin((d / 12) * Math.PI) : 0));
-  const mood: Mood = t < 24 ? "shock" : "shout";
-  const pose: Pose = { armL: [30, lerp(110, 150, turn)], armR: [0, lerp(40, 150, turn)], head: [0, lerp(8, -4, turn), 0], bounce: Math.max(...hype) * 2 };
+  const arms = sm(t, 36, 50);
+  const p = lerpPose({ ...POSE.stand, armL: limb(-110, 60, -190, 40), armR: limb(90, 90, 70, 190) }, { ...POSE.out, armL: limb(-132, 32, -240, -10), armR: limb(132, 32, 250, -10) }, arms);
   return (
     <g>
       <MeadowBack f={f} z={lerp(1, 1.06, t / 65)} />
@@ -357,40 +364,41 @@ const Hero: React.FC<{ f: number }> = ({ f }) => {
         {[[120, 1560], [60, 1700], [240, 1830]].map(([x, y], i) => <Poppy key={i} x={x} y={y} px={26} />)}
       </g>
       <Cam z={1} dx={lerp(0, -20, turn)}>
-        <Blocky who="speed" mood={mood} pose={pose} x={650} y={2330} s={31} yaw={lerp(-30, -12, turn)} pitch={-6} roll={Math.sin(t * 0.12) * 2}
-          extra={(h) => <g transform={`translate(${h.L[0]} ${h.L[1] - 30})`}>{LAPIS(0, 50, 7, 20, 20, 16)}</g>} />
+        <Straw x={700} y={2250} s={2.1} p={p} face={t < 28 ? "surprised" : "shocked"} gaze={[lerp(-22, 12, turn), 0]} hands={(h) => (
+          <g transform={`translate(${h.L[0]} ${h.L[1]}) rotate(-12)`}>
+            <image href={ORE} x={-40} y={-90} width={90} height={90} style={PX} />
+            <rect x={-40} y={-90} width={90} height={90} fill="none" stroke={LINE} strokeWidth={7} />
+          </g>
+        )} />
       </Cam>
     </g>
   );
 };
 
-/* shot 6: the temple, built from marble boxes and seen at three-quarters like the reference */
+/* shot 6: the temple */
 const Temple: React.FC<{ f: number }> = ({ f }) => {
   const t = f;
-  const view = { yaw: -30, pitch: 8, s: lerp(11, 12.2, t / 32), x: 560, y: 1380 };
-  const parts: Part[] = [
-    marbleBox([-36, 0, -16, 36, 2, 16]),
-    marbleBox([-34, 2, -14, 34, 4, 14]),
-    marbleBox([-32, 4, -12, 32, 6, 12]),
-  ];
-  // the colonnade: eight along the front, nine down the long side, with the cella wall behind
-  for (let i = 0; i < 8; i++) parts.push(marbleBox([-30 + i * 8.4 - 1.5, 6, 10 - 1.5, -30 + i * 8.4 + 1.5, 28, 10 + 1.5]));
-  for (let j = 0; j < 9; j++) parts.push(marbleBox([28.8 - 1.5, 6, -10 + j * 2.5 * 1.0 + 0 - 1.5, 28.8 + 1.5, 28, -10 + j * 2.5 + 1.5]));
-  parts.push(marbleBox([-24, 6, -8, 24, 26, 8]));
-  parts.push(marbleBox([-32, 28, -12.5, 32, 31, 12.5]));
-  parts.push(marbleBox([-33, 31, -13, 33, 32.4, 13]));
-  const pedi = [project(view, [-32, 32.4, 13]), project(view, [32, 32.4, 13]), project(view, [0, 40.5, 13])];
+  const cols = Array.from({ length: 11 }, (_, i) => 90 + i * 90);
   return (
     <Cam z={lerp(1, 1.1, t / 32)} cx={540} cy={1000}>
       <Sky f={f} horizon={1150} />
-      <Mountains y={1000} k={0.9} />
-      <Meadow y={980} riverX={800} />
-      {renderParts(parts, view, "temple")}
-      <polygon points={pedi.map((p) => p.join(",")).join(" ")} fill="#efe8d8" stroke="#8a8272" strokeWidth={4} />
-      {[0.25, 0.5, 0.75].map((u, i) => <rect key={i} x={lerp(pedi[0][0], pedi[1][0], u) - 8} y={lerp(pedi[0][1], pedi[1][1], u) - 36 - Math.sin(u * Math.PI) * 20} width={16} height={26} fill="#d8b24a" />)}
-      <Flowers y0={1300} y1={1900} n={90} seed="tp" big={1.8} />
-      <Blocky who="speed" mood="plain" pose={{ armL: [0, 20], armR: [0, 20] }} x={170} y={1830} s={7.5} yaw={186} pitch={14} />
-      <Blocky who="kai" mood="plain" pose={{ armL: [0, 12], armR: [0, 12] }} x={262} y={1846} s={7.5} yaw={176} pitch={14} />
+      <Mountains y={900} k={0.7} />
+      <rect x={-100} y={950} width={W + 200} height={1100} fill="#5fb04a" stroke={LINE} strokeWidth={6} />
+      <g stroke={LINE} strokeWidth={6} strokeLinejoin="round">
+        <polygon points="60,830 540,640 1020,830" fill="#f4efe6" />
+        <polygon points="130,825 540,670 950,825" fill="#e6dfd0" />
+        {[[360, 770], [540, 730], [720, 770]].map(([x, y], i) => <rect key={i} x={x - 14} y={y - 20} width={28} height={36} fill="#d8b24a" />)}
+        <rect x={70} y={830} width={940} height={60} fill="#f4efe6" />
+        {cols.map((x, i) => <rect key={i} x={x - 22} y={890} width={44} height={240} fill="#fbf8f0" />)}
+        {cols.map((x, i) => <path key={`s${i}`} d={`M${x + 4},895 V1125`} stroke="#d9d2c2" strokeWidth={8} fill="none" />)}
+        <rect x={50} y={1130} width={980} height={42} fill="#f4efe6" />
+        <rect x={20} y={1172} width={1040} height={42} fill="#ece6d8" />
+        <rect x={-10} y={1214} width={1100} height={42} fill="#e4ddcc" />
+      </g>
+      <Flowers y0={1260} y1={1880} n={110} seed="tp" big={1.3} />
+      {/* the two of them, small, in the flowers, looking up at it */}
+      <Cap back x={200} y={1830} s={0.4} p={stand({ armL: limb(-60, 60, -80, 140), armR: limb(60, 60, 80, 140) })} face="back" />
+      <Straw back x={320} y={1850} s={0.4} p={stand({ armL: limb(-60, 60, -80, 140), armR: limb(60, 60, 80, 140) })} face="back" />
     </Cam>
   );
 };
@@ -399,19 +407,22 @@ const Temple: React.FC<{ f: number }> = ({ f }) => {
 const Shock: React.FC<{ f: number }> = ({ f }) => {
   const t = f;
   const jx = Math.sin(t * 5.2) * 10, jy = Math.cos(t * 4.4) * 8;
+  const arms = sm(t, 0, 8);
+  const p = lerpPose({ ...POSE.stand }, { ...POSE.out, armL: limb(-132, 32, -240, 30), armR: limb(132, 32, 250, 30) }, arms);
   return (
     <g>
       <MeadowBack f={f} z={1.1} />
       <Cam dx={jx} dy={jy}>
-        <Blocky who="speed" mood="shock" pose={{ armL: [0, 120 + Math.sin(t * 0.9) * 14], armR: [0, 120 - Math.sin(t * 0.9) * 14], head: [0, 0, Math.sin(t * 0.9) * 4] }} x={560} y={2520} s={44} yaw={-8} pitch={-4} />
+        <Straw x={560} y={2300} s={2.3} p={p} face="scream" gaze={[0, -6]} tilt={Math.sin(t * 0.9) * 3} />
       </Cam>
     </g>
   );
 };
 
-/* shot 9: crowned in laurel — Kai, thinking it over, in a toga */
+/* shot 9: crowned in laurel: the wise one, thinking it over, in a toga */
 const Crowned: React.FC<{ f: number }> = ({ f }) => {
   const t = f;
+  const sway = Math.sin(t * 0.05) * 3;
   return (
     <g>
       <Cam z={1.18} cx={540} cy={1000}>
@@ -420,8 +431,8 @@ const Crowned: React.FC<{ f: number }> = ({ f }) => {
         <rect x={-100} y={1110} width={W + 200} height={900} fill="#c9a24a" />
         <rect x={-100} y={1110} width={W + 200} height={140} fill="#e6c870" />
       </Cam>
-      <Cam r={Math.sin(t * 0.05) * 1.5} cx={440} cy={1500} z={lerp(1, 1.04, t / 61)}>
-        <Blocky who="kai" mood={t < 25 ? "calm" : "smile"} outfit={{ toga: true, laurel: true }} pose={{ armR: [30, 10], armL: [0, 8], head: [0, 0, 0] }} x={480} y={2640} s={46} yaw={26} pitch={-12} />
+      <Cam r={sway} cx={460} cy={1500} z={lerp(1, 1.04, t / 61)}>
+        <Wise x={460} y={2640} s={3.1} p={POSE.stand} face={t < 25 ? "calm" : "content"} gaze={[0, -4]} tilt={-4} />
       </Cam>
     </g>
   );
@@ -468,9 +479,9 @@ const Scene: React.FC<{ f: number }> = ({ f }) => {
 
 /** hold the render until every picture is cached, so no frame is missing a sprite */
 const usePreload = () => {
-  const [handle] = React.useState(() => delayRender("loading the characters"));
+  const [handle] = React.useState(() => delayRender("loading the textures"));
   React.useEffect(() => {
-    const urls = [ORE, STONE, PICK, ...BREAKS, ...["speed", "kai", "speed-hair", "kai-hair", "lapis", "toga", "leaf", "marble"].map((n) => staticFile(`images/skins/${n}.png`))];
+    const urls = [ORE, STONE, PICK, ...BREAKS];
     Promise.all(urls.map((u) => new Promise<void>((r) => { const im = new window.Image(); im.onload = () => r(); im.onerror = () => r(); im.src = u; }))).then(() => continueRender(handle));
   }, [handle]);
 };
