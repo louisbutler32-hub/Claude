@@ -490,19 +490,21 @@ export const FriendShort: React.FC<{ audio?: string | null; captions?: boolean; 
 
 export const FriendThumb: React.FC = () => {
   loadMinecraftFonts();
-  const f = 168;
+  const f = 206; // the zombie, tear on his cheek, the flower's petals still falling
   return (
     <AbsoluteFill style={{ backgroundColor: "#000" }}>
       <DrawnContext.Provider value>
         <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
           <defs>
-            <radialGradient id="fVig" cx="50%" cy="48%" r="75%"><stop offset="0.5" stopColor="#000" stopOpacity={0} /><stop offset="1" stopColor="#05030f" stopOpacity={0.6} /></radialGradient>
+            <radialGradient id="fVig" cx="50%" cy="55%" r="75%"><stop offset="0.5" stopColor="#000" stopOpacity={0} /><stop offset="1" stopColor="#05030f" stopOpacity={0.6} /></radialGradient>
+            <linearGradient id="fTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#05030f" stopOpacity={0.55} /><stop offset="1" stopColor="#05030f" stopOpacity={0} /></linearGradient>
           </defs>
-          <g transform="translate(540 1000) scale(2.1) translate(-470 -1310)"><Scene f={f} /></g>
+          <Scene f={f} />
           <rect width={W} height={H} fill="url(#fVig)" />
-          <g transform="translate(540 330)" fontFamily="ComicRelief, Comic Sans MS, sans-serif" fontWeight={700} textAnchor="middle">
-            <text fill="#ffffff" fontSize={170} stroke={INK} strokeWidth={26} strokeLinejoin="round" paintOrder="stroke">JUST WANTED</text>
-            <text y={190} fill="#ffe14a" fontSize={200} stroke={INK} strokeWidth={28} strokeLinejoin="round" paintOrder="stroke">A FRIEND</text>
+          <rect width={W} height={560} fill="url(#fTop)" />
+          <g transform="translate(540 0)" fontFamily="ComicRelief, Comic Sans MS, sans-serif" fontWeight={700} textAnchor="middle">
+            <text y={190} fill="#ffffff" fontSize={102} stroke={INK} strokeWidth={21} strokeLinejoin="round" paintOrder="stroke">HE JUST WANTED</text>
+            <text y={390} fill="#ffe14a" fontSize={206} stroke={INK} strokeWidth={30} strokeLinejoin="round" paintOrder="stroke">A FRIEND</text>
           </g>
         </svg>
       </DrawnContext.Provider>
