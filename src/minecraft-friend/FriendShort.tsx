@@ -504,7 +504,7 @@ export const FriendThumb: React.FC = () => {
           <rect width={W} height={560} fill="url(#fTop)" />
           <g transform="translate(540 0)" fontFamily="ComicRelief, Comic Sans MS, sans-serif" fontWeight={700} textAnchor="middle">
             <text y={190} fill="#ffffff" fontSize={102} stroke={INK} strokeWidth={21} strokeLinejoin="round" paintOrder="stroke">HE JUST WANTED</text>
-            <text y={390} fill="#ffe14a" fontSize={206} stroke={INK} strokeWidth={30} strokeLinejoin="round" paintOrder="stroke">A FRIEND</text>
+            <text y={390} fill="#ffe14a" fontSize={176} stroke={INK} strokeWidth={27} strokeLinejoin="round" paintOrder="stroke">A FRIEND</text>
           </g>
         </svg>
       </DrawnContext.Provider>
