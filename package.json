@@ -257,7 +257,10 @@
     "lapeace:nocaptions": "remotion render LaPeaceShort out/la-peace-nocaptions-silent.mp4 --props='{\"captions\":false}' && python3 scripts/lift-reference-audio.py public/audio/src/lapeace.mp4 lapeace-mix.wav out/la-peace-nocaptions-silent.mp4 out/la-peace-nocaptions.mp4",
     "lapeace3d:audio": "remotion render LaPeace3D out/la-peace-3d-silent.mp4 --gl=swangle --concurrency=3 && python3 scripts/lift-reference-audio.py public/audio/src/lapeace.mp4 lapeace-mix.wav out/la-peace-3d-silent.mp4 out/la-peace-3d.mp4",
     "lapeace3d:nocaptions": "remotion render LaPeace3D out/la-peace-3d-nocaptions-silent.mp4 --gl=swangle --concurrency=3 --props='{\"captions\":false}' && python3 scripts/lift-reference-audio.py public/audio/src/lapeace.mp4 lapeace-mix.wav out/la-peace-3d-nocaptions-silent.mp4 out/la-peace-3d-nocaptions.mp4",
-    "lapeace3d:thumb": "remotion still LaPeace3D out/thumbnail-la-peace-3d.jpg --frame=165 --gl=swangle --image-format=jpeg --quality=92"
+    "lapeace3d:thumb": "remotion still LaPeace3D out/thumbnail-la-peace-3d.jpg --frame=165 --gl=swangle --image-format=jpeg --quality=92",
+    "friend:mix": "python3 scripts/build-friend-audio.py",
+    "friend:audio": "remotion render FriendShort out/friend-silent.mp4 && python3 scripts/lift-reference-audio.py public/audio/friend-mix.mp3 friend-mix-final.wav out/friend-silent.mp4 out/friend.mp4",
+    "friend:thumb": "remotion still Friend-Thumbnail out/thumbnail-friend.jpg --image-format=jpeg --quality=92"
   },
   "dependencies": {
     "@react-three/fiber": "8.17.10",

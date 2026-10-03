@@ -35,7 +35,7 @@ export const lerpT = (a: TPose, b: TPose, t: number): TPose => ({
   tilt: mix(a.tilt, b.tilt, t), lean: mix(a.lean, b.lean, t), bob: mix(a.bob, b.bob, t), sq: mix(a.sq, b.sq, t),
 });
 
-export type FaceKind = "plain" | "smile" | "grin" | "joy" | "shout" | "shock" | "calm" | "grit" | "worry" | "scream";
+export type FaceKind = "plain" | "smile" | "grin" | "joy" | "shout" | "shock" | "calm" | "grit" | "worry" | "scream" | "sleep" | "cry";
 
 /* --------------------------------- parts --------------------------------- */
 
@@ -91,13 +91,15 @@ const Face: React.FC<{ kind: FaceKind; blink: boolean; look: Look }> = ({ kind, 
         <g key={x}><ellipse cx={x} cy={ey} rx={13} ry={19} fill={INK} /><circle cx={x + 4} cy={ey - 7} r={5} fill="#fff" /></g>
       ))}
       {happyEyes && ex.map((x) => <path key={x} d={`M${x - 15},${ey + 6} Q${x},${ey - 16} ${x + 15},${ey + 6}`} fill="none" stroke={INK} strokeWidth={8} strokeLinecap="round" />)}
-      {blink && !happyEyes && ex.map((x) => <path key={x} d={`M${x - 14},${ey + 2} L${x + 14},${ey + 2}`} stroke={INK} strokeWidth={8} strokeLinecap="round" />)}
+      {(blink || kind === "sleep") && !happyEyes && ex.map((x) => <path key={x} d={`M${x - 14},${ey + 2} L${x + 14},${ey + 2}`} stroke={INK} strokeWidth={8} strokeLinecap="round" />)}
       {/* brows: cross when shouting or gritting, high when shocked, slanted up when worried */}
       {(kind === "shout" || kind === "grit") && <>{brow(42, 40, 14)}{brow(108, 40, -14)}</>}
       {shock && <>{brow(42, 28, -6)}{brow(108, 28, 6)}</>}
       {kind === "worry" && <>{brow(42, 38, -16)}{brow(108, 38, 16)}</>}
       {(kind === "plain" || kind === "calm") && <>{brow(42, 40, 0, 30)}{brow(108, 40, 0, 30)}</>}
       {kind === "scream" && <path d="M26,14 q10,-6 20,0 M104,14 q10,-6 20,0" stroke={INK} strokeWidth={5} fill="none" strokeLinecap="round" />}
+      {kind === "cry" && ex.map((x) => <path key={x} d={`M${x - 15},${ey - 2} Q${x},${ey + 16} ${x + 15},${ey - 2}`} fill="none" stroke={INK} strokeWidth={8} strokeLinecap="round" />)}
+      {kind === "cry" && <>{brow(42, 38, -16)}{brow(108, 38, 16)}</>}
       {/* nose */}
       <path d="M70,84 q5,7 10,0" fill="none" stroke={INK} strokeWidth={5} strokeLinecap="round" opacity={0.7} />
       {/* mouth */}
@@ -125,6 +127,8 @@ const Face: React.FC<{ kind: FaceKind; blink: boolean; look: Look }> = ({ kind, 
           </g>
         )}
         {kind === "worry" && <path d="M-20,14 Q0,-6 20,14" fill="none" stroke={INK} strokeWidth={7} strokeLinecap="round" />}
+        {kind === "cry" && <path d="M-22,16 Q-11,-2 0,16 Q11,-2 22,16" fill="none" stroke={INK} strokeWidth={7} strokeLinecap="round" />}
+        {kind === "sleep" && <path d="M-10,6 Q0,14 10,6" fill="none" stroke={INK} strokeWidth={6} strokeLinecap="round" />}
         {kind === "plain" && <path d="M-14,6 H14" stroke={INK} strokeWidth={7} strokeLinecap="round" />}
       </g>
       {/* wrinkle lines: the little curved strokes on a brow */}
