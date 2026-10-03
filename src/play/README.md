@@ -13,6 +13,12 @@ soundtrack follow the references. The characters and every drawing are ours.
 | `Play-Race` | **"Choose your champion!"** Four ropes, 3-2-1-GO! Poppy knocks Biscuit off, Mimi tackles Poppy, Biscuit hops ropes, Mimi shouts Poppy off, an eagle takes Bruno, and Mimi alone reaches the top: "WINNER!" and a crown | 826 frames (27.5 s) |
 | `Play-Thumb` | **"Move your thumb to the beat!"** A big cartoon thumb flips up and down on every beat, then six gags cut in on the beat: Poppy pops out of a burrow, Bruno juggles apples, Biscuit bops a ball, Mimi swats a yarn ball, the four pals jump in turn, Biscuit's tongue. | 552 frames at 24 fps (23.0 s) |
 | `Play-Thumb-2` | **"Move your thumb to the beat!" take two**, on the second thumb-dance clip: a lone outlined thumb, then Bruno's pancake flip, characters dropping in and launching off, fruit sliced on the odd beats and a bomb, Poppy's flop, Mimi's party popper. Ends on her landing. Every beat has something physical land on it. | 598 frames at 30 fps (19.9 s) |
+| `Play-Rain` | **"Protect Biscuit from the rain!"**: hold a finger over the dashed oval, lightning hits it anyway, friends patch him up | 570 frames (19 s) |
+| `Play-Friend` | **"Will you be Biscuit's friend?"**: the viewer's finger ends up as a fingerprint in the NO box; weeping, a bin, a bed | 480 frames (16 s) |
+| `Play-School` | **"Send this to your friend who's starting school"**: a beam of blessings lands on the finger spot | 510 frames (17 s) |
+| `Play-Work` | **"Send this to a friend at work"**: the same beam, in an office | 510 frames (17 s) |
+| `Play-Birthday` | **"Send this to a birthday friend"**: Mimi sings Happy Birthday over a cake, captions on every syllable | 555 frames (18.5 s) |
+| `Play-Swim` | **"Swimming race!"**: four lanes in a pool, a tracking camera, a shark-fin chomp, a pile-up, a crowned winner | 840 frames (28 s) |
 | `Play-Sheet` | model sheet of the cast in every pose | still |
 
 ## Making them
@@ -92,6 +98,30 @@ The grammar all the references share:
   under it.
 - Pastel characters, one continuous scene, no cuts.
 - One payoff word at the end.
+
+## The finger Shorts
+
+Rain, Friend, School, Work, Birthday and Swim are the most-viewed formats on
+the channel the references came from. The clips could not be downloaded, so
+they are not frame-for-frame rebuilds. Each follows a scene-by-scene
+breakdown of the original (story times, on-screen words, the trick on the
+viewer) with our own cast and our own drawing. Because there is no reference
+audio, the soundtracks are synthesised from scratch by
+`scripts/build-finger-audio.py` and nothing needs licensing:
+
+```bash
+npm run play:finger-audio          # → public/audio/play-{rain,friend,school,work,swim,birthday}-mix.mp3
+npm run play:rain                  # → out/play-rain.mp4   (likewise friend, school, work, swim, birthday)
+npm run play:rain:thumb            # → out/thumbnail-play-rain.jpg
+```
+
+Shared pieces (`finger-kit.tsx`): the dashed finger ring, the fingerprint,
+the black caption pill, sparkles, hearts, the clover. Each Short keeps one
+finger spot and builds its scenes around it. `birthday-song.json` is the one
+source for the melody and timings: the captions and the singing voice both
+read it. The audio builder starts every sound 40 ms early, because Remotion's
+AAC encoder delays the track by about that much. Measured: the lightning
+flash in `Play-Rain` is at 5.00 s and the thunder crack at 5.01 s.
 
 ## The cast
 

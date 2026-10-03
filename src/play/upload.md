@@ -1,6 +1,6 @@
 # Upload copy — the play-along Shorts
 
-Four Shorts for **Boppity Pals**, the play-along channel (the full channel
+Ten Shorts for **Boppity Pals**, the play-along channel (the full channel
 package is in `docs/channel-boppity-pals.md`). Paste-ready. Shorts don't
 take a chapter list, so there isn't one.
 
@@ -218,12 +218,266 @@ sound**.
 
 ---
 
-## Upload settings (all four)
+## The finger Shorts (5 to 10)
+
+Six Shorts built from the most-viewed uploads on pio the platypus (checked
+3 Oct 2026). They all use the same trick: the viewer is told to put a finger
+on the screen, and the video does something at exactly that spot. The cast is
+ours, with **Biscuit** in the "poor little main character" role. They aren't
+rebuilt frame for frame, because those clips couldn't be downloaded. Each was
+written from a scene-by-scene breakdown of the original, and the story times
+follow it. **The soundtracks are our own**, synthesised by
+`scripts/build-finger-audio.py` (`npm run play:finger-audio`), so there is
+nothing to claim and no reference audio to swap out.
+
+| their Short | views | ours |
+|---|---|---|
+| Protect Otti from the rain! | 13M | `Play-Rain` |
+| Send this to your friend who's started school | 3.3M | `Play-School` |
+| Will you be Otti's friend? | 3.1M | `Play-Friend` |
+| Send this to a birthday friend | 3.1M | `Play-Birthday` |
+| Send this to a friend at work | 2.8M | `Play-Work` |
+| Swimming race! | 2.4M | `Play-Swim` |
+
+The "Send this to…" and "Swimming race!" lines are generic phrases, so the
+titles below use them as is. The rest are ours.
+
+---
+
+## 5 · Keep Biscuit dry! (`Play-Rain`)
+
+Dusk, a storm, and a dashed oval above Biscuit: "hover your finger to protect Biscuit!" The rain really does stop short of the oval. At 4 s the rain stops, at 5 s lightning hits straight through where the finger is, and Biscuit is fried and wails. Poppy floats down under an umbrella with ointment and good-luck sparkles, Bruno slaps on a giant band-aid, and Biscuit is all better. 19 s, loops.
+
+**Title**
+
+```
+Keep Biscuit dry! #cute #animation #interactive #funny #meme
+```
+
+Alternates:
+
+```
+Protect Biscuit from the rain! #funny #cute #animation #interactive #meme
+```
+```
+Hover your finger over Biscuit #animation #interactive #cute #funny #game
+```
+
+**Description**
+
+```
+🐾 Subscribe to Boppity Pals:
+https://www.youtube.com/@BoppityPals
+```
+
+**Tags** (optional)
+
+```
+protect biscuit from the rain, hover your finger, interactive, cute animation, cute animals, puppy, boppity pals
+```
+
+**Thumbnail:** `out/thumbnail-play-rain.jpg` (1080×1920)
+
+**Pinned comment:** "Did your finger get struck? ⚡"
+
+---
+
+## 6 · Will you be Biscuit's friend? (`Play-Friend`)
+
+A 3-2-1 count and a ring: "put your finger on the screen". Then a record scratch and a sign, "Will you be my friend? YES / NO", with a red fingerprint in the NO box where the finger was. Biscuit sobs into a tissue while Poppy and Bruno glare at the viewer, bins the note, and cries under his blanket while the camera creeps in. 16 s.
+
+**Title**
+
+```
+Will you be Biscuit's friend? #funny #interactive #animation #cute #meme
+```
+
+Alternates:
+
+```
+Put your finger on the screen #interactive #funny #animation #cute #relatable
+```
+```
+Say yes to Biscuit! #cute #animation #interactive #funny #meme
+```
+
+**Description**
+
+```
+🐾 Subscribe to Boppity Pals:
+https://www.youtube.com/@BoppityPals
+```
+
+**Tags** (optional)
+
+```
+will you be my friend, put your finger on the screen, interactive, cute animation, cute animals, boppity pals
+```
+
+**Thumbnail:** `out/thumbnail-play-friend.jpg` (1080×1920)
+
+**Pinned comment:** "Did you say no? 😭"
+
+---
+
+## 7 · Send this to your friend who's starting school (`Play-School`)
+
+A desk, a ring and a test paper. Poppy coughs up a four-leaf-clover wand and a beam of blessings pours onto the viewer's finger, one word at a time: Big brain, Focus, Knowledge, Easy homework, and finally "Good grades", stamped on the spot. Bruno, in his backpack, watches. Ends on "feel smarter?". 17 s, loops.
+
+**Title**
+
+```
+Send this to your friend who's starting school #animation #cute #funny #interactive #relatable
+```
+
+Alternates:
+
+```
+Send this to a friend who needs good grades #cute #animation #funny #relatable #interactive
+```
+```
+Feel smarter? #animation #cute #interactive #funny #meme
+```
+
+**Description**
+
+```
+🐾 Subscribe to Boppity Pals:
+https://www.youtube.com/@BoppityPals
+```
+
+**Tags** (optional)
+
+```
+send this to your friend, starting school, back to school, interactive, cute animation, cute animals, boppity pals
+```
+
+**Thumbnail:** `out/thumbnail-play-school.jpg` (1080×1920)
+
+**Pinned comment:** "Who are you sending this to? 🎒"
+
+---
+
+## 8 · Send this to a friend at work (`Play-Work`)
+
+The same beam as the school one, in an office: Mimi types at her laptop while Biscuit casts a pink heart-wand blessing on the viewer's finger: Happiness, More weekends, Fewer meetings, A big raise, Free snacks. Ends on "feel better?". 17 s, loops.
+
+**Title**
+
+```
+Send this to a friend at work #cute #animation #interactive #funny #relatable
+```
+
+Alternates:
+
+```
+Send this to a friend who needs a weekend #animation #funny #relatable #cute #meme
+```
+```
+Feel better? #cute #animation #funny #interactive #relatable
+```
+
+**Description**
+
+```
+🐾 Subscribe to Boppity Pals:
+https://www.youtube.com/@BoppityPals
+```
+
+**Tags** (optional)
+
+```
+send this to a friend at work, work friend, monday, interactive, cute animation, cute animals, boppity pals
+```
+
+**Thumbnail:** `out/thumbnail-play-work.jpg` (1080×1920)
+
+**Pinned comment:** "Tag your work bestie 💼"
+
+---
+
+## 9 · Send this to a birthday friend (`Play-Birthday`)
+
+Mimi, in a party hat behind a cake with one candle, sings the whole of Happy Birthday in a goofy wobbly voice. A huge caption pops up on every word ("youuuuuu" stretches on the long note) and the camera cuts between a wide shot and an enormous close-up of her mouth. On the last note she blows the candle out and the room explodes in confetti. 18.5 s. The tune is public domain, and the voice is synthesised.
+
+**Title**
+
+```
+Send this to a birthday friend #animation #cute #meme #interactive #funny
+```
+
+Alternates:
+
+```
+Mimi sings happy birthday #cute #animation #funny #interactive #meme
+```
+```
+Happy birthday song! #animation #cute #music #funny #meme
+```
+
+**Description**
+
+```
+🐾 Subscribe to Boppity Pals:
+https://www.youtube.com/@BoppityPals
+```
+
+**Tags** (optional)
+
+```
+send this to a birthday friend, happy birthday, birthday song, interactive, cute animation, cute animals, boppity pals
+```
+
+**Thumbnail:** `out/thumbnail-play-birthday.jpg` (1080×1920)
+
+**Pinned comment:** "Tag the birthday friend 🎂"
+
+---
+
+## 10 · Who swims the fastest? (`Play-Swim`)
+
+Our rope race in a pool: "choose your champion!", 3-2-1-GO, four lanes with a tracking camera. Mimi reaches over the rope and hauls Bruno back, Poppy grows a shark fin and chomps Mimi clear off the screen, Mimi comes back for revenge, and in the last stretch everybody crashes into Bruno in a cloud of limbs. Bruno is launched onto the deck, crowned, and WINNER pops up. 28 s.
+
+**Title**
+
+```
+Who swims the fastest? #animation #game #interactive #funny #cute
+```
+
+Alternates:
+
+```
+Swimming race! #funny #game #interactive #animation #cute
+```
+```
+Pick your swimmer! #cute #game #interactive #animation #meme
+```
+
+**Description**
+
+```
+🐾 Subscribe to Boppity Pals:
+https://www.youtube.com/@BoppityPals
+```
+
+**Tags** (optional)
+
+```
+swimming race, choose your champion, who will win, pick one, interactive, cute animation, cute animals, boppity pals
+```
+
+**Thumbnail:** `out/thumbnail-play-swim.jpg` (1080×1920)
+
+**Pinned comment:** "Who did you pick? 🐰🐱🐻🐶"
+
+---
+
+## Upload settings (all ten)
 
 | field | value |
 |---|---|
 | Category | **People & Blogs** (pio's category) |
 | Audience | Decide it honestly, per `docs/channel-boppity-pals.md`. The format is a general-audience one. If the channel is meant for young children, it must be **made for kids**. |
-| Shorts | Vertical 1080×1920, 20 to 28 seconds |
+| Shorts | Vertical 1080×1920, 16 to 28 seconds |
 | Playlist | Choose Your Champion 🏆 / Play Along With the Beat 🥁 (the thumb Short goes with the beat ones) |
-| Pinned comment | race: "Who did you pick? 🐻🐱🐶🐰" · beat: "How many did you hit? 🥁" · thumb: "Did your thumb keep up? 👍". This one is our own addition, since pio doesn't pin one. |
+| Pinned comment | race: "Who did you pick? 🐻🐱🐶🐰" · beat: "How many did you hit? 🥁" · thumb: "Did your thumb keep up? 👍" · the finger Shorts have their own, above. This one is our own addition, since pio doesn't pin one. |

@@ -96,6 +96,11 @@ import { BeatShort, BEAT_FRAMES } from "./play/BeatShort";
 import { RaceShort, RACE_FRAMES } from "./play/RaceShort";
 import { ThumbShort, THUMB_FRAMES as PLAY_THUMB_FRAMES } from "./play/ThumbShort";
 import { ThumbShort2, THUMB2_FRAMES } from "./play/ThumbShort2";
+import { RainShort, RAIN_FRAMES } from "./play/RainShort";
+import { FriendShort, FRIEND_FRAMES } from "./play/FriendShort";
+import { SchoolShort, WorkShort, BLESS_FRAMES } from "./play/BlessShort";
+import { SwimShort, SWIM_FRAMES } from "./play/SwimShort";
+import { BirthdayShort, BIRTHDAY_FRAMES } from "./play/BirthdayShort";
 import { FruitVideo, FRUIT_DURATION_IN_FRAMES } from "./fruit/FruitVideo";
 import { FruitArtSheet } from "./fruit/ArtSheet";
 import { FruitThumbA, FruitThumbB } from "./fruit/Thumbnail";
@@ -328,6 +333,60 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
         defaultProps={{ audio: "audio/play-thumb2-ref.wav" }}
+      />
+      <Composition
+        id="Play-Rain"
+        component={RainShort}
+        durationInFrames={RAIN_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{ audio: "audio/play-rain-mix.mp3" }}
+      />
+      <Composition
+        id="Play-Friend"
+        component={FriendShort}
+        durationInFrames={FRIEND_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{ audio: "audio/play-friend-mix.mp3" }}
+      />
+      <Composition
+        id="Play-School"
+        component={SchoolShort}
+        durationInFrames={BLESS_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{ audio: "audio/play-school-mix.mp3" }}
+      />
+      <Composition
+        id="Play-Work"
+        component={WorkShort}
+        durationInFrames={BLESS_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{ audio: "audio/play-work-mix.mp3" }}
+      />
+      <Composition
+        id="Play-Swim"
+        component={SwimShort}
+        durationInFrames={SWIM_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{ audio: "audio/play-swim-mix.mp3" }}
+      />
+      <Composition
+        id="Play-Birthday"
+        component={BirthdayShort}
+        durationInFrames={BIRTHDAY_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{ audio: "audio/play-birthday-mix.mp3" }}
       />
       <Composition
         id="Play-Sheet"
