@@ -116,6 +116,7 @@ import { DiamondShort, DiamondThumb, DIAMOND_FRAMES } from "./minecraft-pov2/Dia
 import { EnderShort, EnderThumb, ENDER_FRAMES } from "./minecraft-pov2/EnderShort";
 import { LaPeaceShort, LaPeaceThumb, LAPEACE_FRAMES } from "./minecraft-lapeace/LaPeaceShort";
 import { FaceSheet, ToonSheet } from "./minecraft-lapeace/toon";
+import { FaceStyleSheet } from "./minecraft-lapeace/faces";
 import { FriendShort, FriendThumb, FRIEND_FRAMES } from "./minecraft-friend/FriendShort";
 import { PickShort, PickThumb, PICK_FRAMES } from "./minecraft-pick/PickShort";
 import { LaPeace3D, LAPEACE3D_FRAMES } from "./lapeace3d/LaPeace3D";
@@ -290,6 +291,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="LaPeaceShort" component={LaPeaceShort} durationInFrames={LAPEACE_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="FriendShort" component={FriendShort} durationInFrames={FRIEND_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Friend-Thumbnail" component={FriendThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="FaceStyles" component={FaceStyleSheet} durationInFrames={1} fps={30} width={1080} height={1920} defaultProps={{ page: 0 }} />
       <Composition id="FaceSheet" component={FaceSheet} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="LaPeaceCast" component={ToonSheet} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="LaPeace-Thumbnail" component={LaPeaceThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
