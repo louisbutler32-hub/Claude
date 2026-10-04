@@ -43,10 +43,15 @@ export const torsoPts = (p: Pose, waistIn = 0.18, hipOut = 14): P[] => {
   return [p.shL, nl, nr, p.shR, pitR, wr, add(p.hipR, mul(across, hipOut)), add(p.hipL, mul(across, -hipOut)), wl, pitL];
 };
 
+/** unit vectors across the hips and down the body for a pose */
+export const frameOf = (p: Pose): { across: P; down: P } => {
+  const across = nrm(sub(p.hipR, p.hipL));
+  return { across, down: [-across[1], across[0]] };
+};
+
 /** the seat/crotch between the two leg tops, so trousers read as one garment */
 export const seatPts = (p: Pose, out = 20, drop = 70): P[] => {
-  const across = nrm(sub(p.hipR, p.hipL));
-  const down: P = [across[1], -across[0]];
+  const { across, down } = frameOf(p);
   const mid = mix(p.hipL, p.hipR, 0.5);
   return [add(p.hipL, mul(across, -out)), add(p.hipR, mul(across, out)), add(add(p.hipR, mul(across, out * 0.6)), mul(down, drop * 0.8)), add(mid, mul(down, drop)), add(add(p.hipL, mul(across, -out * 0.6)), mul(down, drop * 0.8))];
 };
@@ -114,6 +119,8 @@ export const Arm: React.FC<{ sh: P; el: P; ha: P; hk: HandKind; side: -1 | 1; c:
 export type FigureProps = {
   pose: Pose; face?: string; x?: number; y?: number; s?: number; flipX?: boolean; lw?: number;
   shadow?: boolean; shadowW?: number; drained?: boolean; children?: React.ReactNode;
+  /** z-order inside a <Characters> layer (lower = further back) */
+  z?: number;
 };
 
 export const Figure: React.FC<FigureProps & { costume: Costume }> = ({ costume: K, pose: p, face = "", x = 0, y = 0, s = 1, flipX, lw = 4.5, shadow = true, shadowW, drained = false, children }) => {
@@ -131,7 +138,7 @@ export const Figure: React.FC<FigureProps & { costume: Costume }> = ({ costume: 
       {p.backR && K.arm(p.shR, p.elR, p.haR, hR, 1, c)}
       {p.legRBack ? <>{legR}{legL}</> : <>{legL}{legR}</>}
       {K.torso(c, T)}
-      <g transform={`translate(${p.head[0]},${p.head[1]}) rotate(${p.tilt}) scale(${K.headScale ?? 1.22})`}>{K.head(c)}</g>
+      <g transform={`translate(${p.head[0]},${p.head[1]}) rotate(${p.tilt}) scale(${K.headScale ?? 1.28})`}>{K.head(c)}</g>
       {!p.backL && K.arm(p.shL, p.elL, p.haL, hL, -1, c)}
       {!p.backR && K.arm(p.shR, p.elR, p.haR, hR, 1, c)}
       {K.front?.(c)}

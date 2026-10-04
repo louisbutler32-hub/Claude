@@ -77,22 +77,22 @@ const FACE_R = { turn: 0.9 };
 
 /** walk cycle, 4 drawings for one step (contact, down, pass, up) — the figure faces +x; mirror with swapLimbs for the other step */
 export const WALK: Pose[] = [
-  pose({ ...FACE_R, head: [14, -890], neck: [10, -808], shL: [-70, -786], shR: [86, -786],
-    hipL: [-20, -478], knL: [60, -262], ftL: [96, -14], fdL: 1,
-    hipR: [20, -478], knR: [-40, -270], ftR: [-90, -6], fdR: 1, legRBack: true,
-    elL: [-110, -630], haL: [-110, -470], elR: [150, -640], haR: [150, -520], hL: "relax", hR: "fist", backL: true }),
-  pose({ ...FACE_R, head: [18, -878], neck: [12, -796], shL: [-70, -774], shR: [86, -774],
-    hipL: [-18, -466], knL: [30, -250], ftL: [52, -14], fdL: 1,
-    hipR: [18, -466], knR: [-26, -248], ftR: [-50, -24], fdR: 1, legRBack: true,
-    elL: [-96, -620], haL: [-70, -470], elR: [140, -630], haR: [128, -500], hL: "relax", hR: "fist", backL: true }),
-  pose({ ...FACE_R, head: [20, -900], neck: [14, -816], shL: [-70, -792], shR: [86, -792],
-    hipL: [-14, -484], knL: [0, -258], ftL: [8, -14], fdL: 1,
-    hipR: [14, -484], knR: [40, -300], ftR: [0, -80], fdR: 1, legRBack: true,
-    elL: [-100, -624], haL: [-40, -500], elR: [122, -624], haR: [90, -480], hL: "relax", hR: "fist", backL: true }),
-  pose({ ...FACE_R, head: [16, -894], neck: [12, -810], shL: [-70, -788], shR: [86, -788],
-    hipL: [-14, -480], knL: [-20, -254], ftL: [-50, -10], fdL: 1,
-    hipR: [14, -480], knR: [80, -300], ftR: [70, -56], fdR: 1, legRBack: true,
-    elL: [-120, -640], haL: [-96, -520], elR: [116, -612], haR: [60, -470], hL: "fist", hR: "relax", backL: true }),
+  pose({ ...FACE_R, head: [16, -888], neck: [12, -806], shL: [-70, -784], shR: [86, -784],
+    hipL: [-20, -476], knL: [90, -270], ftL: [150, -14], fdL: 1,
+    hipR: [20, -476], knR: [-60, -280], ftR: [-140, -4], fdR: 1, legRBack: true,
+    elL: [-120, -640], haL: [-150, -500], elR: [160, -650], haR: [190, -540], hL: "relax", hR: "fist", backL: true }),
+  pose({ ...FACE_R, head: [20, -872], neck: [14, -790], shL: [-70, -768], shR: [86, -768],
+    hipL: [-18, -460], knL: [40, -246], ftL: [70, -14], fdL: 1,
+    hipR: [18, -460], knR: [-40, -250], ftR: [-80, -36], fdR: 1, legRBack: true,
+    elL: [-100, -620], haL: [-80, -480], elR: [146, -640], haR: [150, -520], hL: "relax", hR: "fist", backL: true }),
+  pose({ ...FACE_R, head: [22, -902], neck: [16, -818], shL: [-70, -794], shR: [86, -794],
+    hipL: [-14, -486], knL: [0, -258], ftL: [6, -14], fdL: 1,
+    hipR: [14, -486], knR: [60, -330], ftR: [10, -120], fdR: 1, legRBack: true,
+    elL: [-110, -630], haL: [-30, -520], elR: [120, -630], haR: [80, -490], hL: "relax", hR: "fist", backL: true }),
+  pose({ ...FACE_R, head: [18, -890], neck: [14, -808], shL: [-70, -786], shR: [86, -786],
+    hipL: [-14, -478], knL: [-40, -256], ftL: [-80, -10], fdL: 1,
+    hipR: [14, -478], knR: [110, -320], ftR: [120, -70], fdR: 1, legRBack: true,
+    elL: [-130, -650], haL: [-140, -530], elR: [110, -610], haR: [40, -480], hL: "fist", hR: "relax", backL: true }),
 ];
 
 /** run cycle, 4 drawings — bigger stride, lean, a flight frame */
