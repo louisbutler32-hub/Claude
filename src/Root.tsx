@@ -5,6 +5,10 @@ import { BreakfastShort, BreakfastThumb, BREAKFAST_FRAMES } from "./akki/breakfa
 import { LostShort, LostThumb, LOST_FRAMES } from "./akki/lost/LostShort";
 import { BuffetShort, BuffetThumb, BUFFET_FRAMES } from "./akki/buffet/BuffetShort";
 import { FearShort, FearThumb, FEAR_FRAMES } from "./akki/fear/FearShort";
+import { Act1, Act1Thumb, ACT1_FRAMES } from "./akki/saga/act1/Act1";
+import { Act2, Act2Thumb, ACT2_FRAMES } from "./akki/saga/act2/Act2";
+import { Act3, Act3Thumb, ACT3_FRAMES } from "./akki/saga/act3/Act3";
+import { Act4, Act4Thumb, ACT4_FRAMES } from "./akki/saga/act4/Act4";
 import { Composition } from "remotion";
 import { BountyVideo, TOTAL_DURATION_IN_FRAMES } from "./BountyVideo";
 import { WhatIfVideo } from "./whatif/WhatIfVideo";
@@ -265,6 +269,14 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Akki-Buffet-Thumbnail" component={BuffetThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="Akki-Fear" component={FearShort} durationInFrames={FEAR_FRAMES} fps={24} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Akki-Fear-Thumbnail" component={FearThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
+      <Composition id="Akki-Saga1" component={Act1} durationInFrames={ACT1_FRAMES} fps={24} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Akki-Saga1-Thumbnail" component={Act1Thumb} durationInFrames={1} fps={24} width={1080} height={1920} />
+      <Composition id="Akki-Saga2" component={Act2} durationInFrames={ACT2_FRAMES} fps={24} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Akki-Saga2-Thumbnail" component={Act2Thumb} durationInFrames={1} fps={24} width={1080} height={1920} />
+      <Composition id="Akki-Saga3" component={Act3} durationInFrames={ACT3_FRAMES} fps={24} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Akki-Saga3-Thumbnail" component={Act3Thumb} durationInFrames={1} fps={24} width={1080} height={1920} />
+      <Composition id="Akki-Saga4" component={Act4} durationInFrames={ACT4_FRAMES} fps={24} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Akki-Saga4-Thumbnail" component={Act4Thumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="Akki-Zoro-Thumbnail" component={ZoroThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="Akki-Bowling-Thumbnail" component={BowlingThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="SneakShort" component={SneakShort} durationInFrames={SNEAK_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
