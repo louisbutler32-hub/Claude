@@ -51,3 +51,6 @@ public/images/pov2/
 public/images/chars/
 public/images/chars-src/
 public/images/skins/
+
+# saga background plates: Pexels stock, rebuilt by scripts/akki-plates.py
+public/plates

@@ -1,13 +1,20 @@
 # "Zoro Has 24 Hours to Pay Nami 300,000,000 Berries" — story bible
 
-A 2:24 vertical story (YouTube Shorts allow up to 3 min), built as four acts of
-36 s (864 frames @24fps, 1080×1920) that are rendered separately and stitched
+A ~4:40 HORIZONTAL long-form video (1920×1080, 24fps), built as four acts of
+70 s (1680 frames each) that are rendered separately and stitched
 with `scripts/akki-saga-stitch.sh`. House style as the other AKKI shorts: flat cel
 colour + one hard shadow, thick near-black outlines, characters on twos with line
 boil (HandDrawn), cut every ~1–1.5 s, white-on-black impact flash on the biggest
 gags, reaction cut-aways, **no "AKKI TALKS" header/watermark**, sparse sound effects.
 
-## Cast (all drawn in src/akki/*, reuse — do not redesign)
+## Production upgrade (this is the "better quality" pass — read before drawing)
+- **Backgrounds are photo plates, not vector sets.** `public/plates/<key>-paint.jpg` (softened, saturated, vignetted stills) and `public/plates/<key>.mp4` (8 s loops) — built by `scripts/akki-plates.py` from `akki/saga/plates.json`. Keys: tavern2 (the Harbour Tavern bar), harbour, harbour2 (wide marina), market2, canteen (Marine canteen), stormsea, nightsea, sunsetdock, sunsetpier, desert, desert2, jungle, jungle2. Use `<Img src={staticFile("plates/x-paint.jpg")}>` or `<OffthreadVideo src={staticFile("plates/x.mp4")} loop muted>` through the kit-v2 `Scene` helper, which adds depth blur, light colour, vignette and a blurred foreground layer. Credits for the description are in `public/plates/CREDITS.md`.
+- **Characters come from the kit v2** (`src/akki/kit2/`): proper proportions, thick clean outlines, real hands, on-model faces and costumes, expression sets, a `SpeechBubble`. Acts must use kit v2, not the old thin figures.
+- **Dialogue = speech bubbles** (short, punchy, ≤ 6 words a bubble, Poppins Black, white bubble with a tail, pop-in). No narration.
+- **Lettering**: our own (TitleText); no official One Piece logo.
+- **Music**: Act 1 light tavern bed (numpy); Acts 2 & 4 chases on Yakety Sax (`public/audio/src/yakety-sax.mp3`); the finale treasure run on **"Overtaken"** (`public/audio/src/overtaken.mp3`, ~108 bpm, its biggest section starts ~1:35 — land that on the sun touching the horizon). Effects from `.sfx/op100/`, sparse.
+
+## Cast (drawn in kit v2 — src/akki/kit2/; the older folders are reference only)
 - **Zoro** (pre-timeskip, `ZoroPre` in src/akki/zoro/cast.tsx): white shirt, green haramaki, three swords, no sense of direction, fears nothing but Nami.
 - **Nami**: original drawing in src/akki/fear/cast.tsx (orange hair, striped top, blue skirt, calculator, receipt). Cold, cheerful, relentless.
 - **The Owner / "Boss"** (the channel owner — `Regular` + `GuestHead`, src/akki/guest.tsx, curly dark hair): runs the Harbour Tavern in a red apron (red apron from src/akki/buffet/cast.tsx); chirpy, takes 10% of everything.
@@ -18,7 +25,7 @@ gags, reaction cut-aways, **no "AKKI TALKS" header/watermark**, sparse sound eff
 ## The debt counter (a running visual gag; shown on a receipt / clock in each act)
 Starts **300,000,000 B**. Deadline: **sunset** — a clock/sun position in every act's background shows time passing (Act 1 = dawn, Act 2 = morning, Act 3 = noon/afternoon, Act 4 = sunset). Miss it and Nami **doubles** it.
 
-## Acts (each exactly 864 frames; hard cut between acts; **each act's first and last frames are specified so they join up**)
+## Acts (each exactly 1680 frames = 70 s; hard cut between acts; **each act's first and last frames are specified so they join up**)
 **ACT 1 — "THE DEAL"** (Harbour Tavern, dawn). Opens on a question: white title card "CAN ZORO PAY 300,000,000 BERRIES BY SUNSET?" over a dramatic shot of the debt receipt (counter spinning). Nami drags a grey-faced Zoro by the ear into the tavern; the Boss behind the bar, delighted ("business!"). Nami slams the receipt, sets a big sand-clock/sun timer on the wall: "sunset, or it doubles". The Boss unrolls the JOB BOARD with three jobs (stamped prices): 1) DELIVERY — 100,000,000 B (a big sealed crate), 2) BOUNTY — 150,000,000 B (a wanted poster of a scary pirate "BIG PIG BEN"), 3) "ANYTHING ELSE" — 50,000,000. Zoro, determined, takes the crate and the poster, sweeps out, Nami + Boss watching; Boss whispers "10% commission" and slides a contract that Zoro signs without reading. LAST FRAME of Act 1: Zoro walking out the tavern door into morning light, crate on his shoulder, the Boss waving, door sign flips to "BACK IN 10 MIN".
 **ACT 2 — "JOB 1: THE DELIVERY"** (morning). FIRST FRAME: Zoro with the crate walking down a street (continuity with the end of Act 1). The delivery address (a tiny paper "Marineford Cake Shop, 5 min left") — Zoro walks confidently the opposite way. Montage of him lost (desert, snow, a dinosaur jungle, the sea on a plank, a volcano — vary the staging from the "Zoro Gets Lost" short: now the crate is the prop; it gets kicked, dropped, sat on, used as a boat). A Yakety-Sax-driven sequence: Zoro and a runaway crate sliding down a hill, chased by the dino. He arrives at the shop at last — at the Buffet restaurant by mistake — Luffy opens the crate (a giant cake), eats it, burps; the cake's owner (Boss's cousin, original clerk) cries; Zoro is billed for the cake: debt goes UP by 5,000,000 → **305,000,000 B** shown on the receipt. LAST FRAME: Zoro, crumbs on his face, slowly turning to read the bill, Luffy waving with cream on his nose.
 **ACT 3 — "JOB 2: THE BOUNTY"** (noon). FIRST FRAME: Zoro with the BIG PIG BEN poster at a crossroads. He tracks the target by walking in circles and arrives (of course) at the Marine canteen (breakfast set) where Ben is a tiny cowardly pig-faced pirate hiding behind the admirals' toaster. The admirals Akainu/Kuzan/Kizaru are mid-breakfast and annoyed. Escalating fight: Zoro lunges for Ben; Kizaru's light beam, Kuzan freezes the floor, Akainu's magma melts the table; Zoro slices through the lot (big impact flash), grabs Ben — who drops a coin purse. The bounty on Ben turns out to be 50 berries (the poster had extra zeros drawn on by the Boss; Boss's pen visible). Zoro stares. Debt now **305,000,000 B** + canteen damages 100,000,000 = **405,000,000 B**. LAST FRAME: Zoro sitting in the rubble, Ben on his head pooping a coin, the sun low behind him — afternoon.
