@@ -7,6 +7,7 @@ import { BuffetShort, BuffetThumb, BUFFET_FRAMES } from "./akki/buffet/BuffetSho
 import { FearShort, FearThumb, FEAR_FRAMES } from "./akki/fear/FearShort";
 import { Kit2ArtSheet } from "./akki/kit2/ArtSheet";
 import { Kit3ArtSheet } from "./akki/kit3/ArtSheet";
+import { DebtShort, DebtThumb, DEBT_FRAMES } from "./akki/debt/DebtShort";
 import { Act1, Act1Thumb, ACT1_FRAMES } from "./akki/saga/act1/Act1";
 import { Act2, Act2Thumb, ACT2_FRAMES } from "./akki/saga/act2/Act2";
 import { Act3, Act3Thumb, ACT3_FRAMES } from "./akki/saga/act3/Act3";
@@ -273,6 +274,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Akki-Buffet-Thumbnail" component={BuffetThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="Akki-Fear" component={FearShort} durationInFrames={FEAR_FRAMES} fps={24} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Akki-Fear-Thumbnail" component={FearThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
+      <Composition id="Akki-Debt" component={DebtShort} durationInFrames={DEBT_FRAMES} fps={24} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Akki-Debt-Thumbnail" component={DebtThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="Akki-Kit3-Sheet" component={Kit3ArtSheet} durationInFrames={1} fps={24} width={1920} height={1080} />
       <Composition id="Akki-Kit2-Sheet" component={Kit2ArtSheet} durationInFrames={1} fps={24} width={1920} height={1080} />
       <Composition id="Akki-Saga1" component={Act1} durationInFrames={ACT1_FRAMES} fps={24} width={1920} height={1080} defaultProps={{ audio: null }} />
