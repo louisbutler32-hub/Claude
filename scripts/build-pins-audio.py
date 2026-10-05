@@ -1,12 +1,19 @@
 #!/usr/bin/env python3
 """Narration, music bed and SFX for a Pins-format Short (src/pins/<episode>/).
 
-    python3 scripts/build-pins-audio.py sleep
+    python3 scripts/build-pins-audio.py sleep                      # placeholder voice (edge-tts)
+    python3 scripts/build-pins-audio.py sleep --vo take1.mp3 [take2.mp3 ...]   # a real recording
+    python3 scripts/build-pins-audio.py sleep --vo take1.mp3 --check            # just report coverage
 
-Reads src/pins/<episode>/script.json, voices every line with edge-tts (word
-boundaries on, so captions land on the exact word), lays the lines end to
-end with a short gap, puts a light plucked bed under it and the cartoon SFX
-cues on top, and writes:
+With --vo, the recording(s) are joined in order into
+public/audio/pins-<episode>-vo.wav (gitignored: the read is licensed to the
+channel, not the repo) and every later build uses it until --tts is passed.
+faster-whisper hears the words, they're lined up against script.json, and the
+captions and every shot get the recording's real timing; words the model
+missed are interpolated between their timed neighbours. Without a recording,
+every line is voiced with edge-tts (word boundaries on), laid end to end with
+a short gap. Either way it puts a light plucked bed under the voice and the
+cartoon SFX cues on top, and writes:
 
     public/audio/pins-<episode>-mix.mp3     the drop-in track (gitignored —
                                             edge-tts output is for timing the
@@ -172,6 +179,65 @@ def place(mix, clip, t, gain):
         mix[i:i + n] += clip[:n] * gain
 
 
+# ---------------------------------------------------------------- a real recording
+
+def norm(w):
+    import re
+    return re.sub(r"[^a-z0-9]", "", w.lower())
+
+
+def join_takes(paths, out, gap=0.25):
+    clips = [decode(p) for p in paths]
+    pad = np.zeros(N(gap), np.float32)
+    joined = np.concatenate([x for c in clips for x in (c, pad)][:-1]) if clips else np.zeros(0, np.float32)
+    tmp = out + ".f32"
+    joined.astype(np.float32).tofile(tmp)
+    subprocess.run([FF, "-v", "error", "-y", "-f", "f32le", "-ac", "1", "-ar", str(SR), "-i", tmp, out], check=True)
+    os.remove(tmp)
+
+
+def align_recording(path, lines):
+    """word times for every script line, from what faster-whisper hears in the recording"""
+    from faster_whisper import WhisperModel
+    model = WhisperModel("small", device="cpu", compute_type="int8")
+    segs, _ = model.transcribe(path, word_timestamps=True, language="en", beam_size=3)
+    heard = [(norm(w.word), float(w.start), float(w.end)) for sg in segs for w in sg.words if norm(w.word)]
+    script = [(li, w) for li, l in enumerate(lines) for w in l["text"].split()]
+    sm = __import__("difflib").SequenceMatcher(a=[norm(w) for _, w in script], b=[h[0] for h in heard], autojunk=False)
+    times = [None] * len(script)
+    for tag, i1, i2, j1, j2 in sm.get_opcodes():
+        if tag == "equal" or (tag == "replace" and i2 - i1 == j2 - j1):
+            for k in range(i2 - i1):
+                times[i1 + k] = [heard[j1 + k][1], heard[j1 + k][2]]
+    matched = sum(1 for x in times if x)
+    # the recording may stop early: everything after the last heard word is "not covered"
+    last = max((i for i, x in enumerate(times) if x), default=-1)
+    covered = last + 1
+    i = 0
+    while i < covered:
+        if times[i]:
+            i += 1
+            continue
+        j = i
+        while not times[j]:
+            j += 1
+        t0 = times[i - 1][1] if i else 0.0
+        t1 = times[j][0]
+        weights = [max(2, len(norm(w))) for _, w in script[i:j]]
+        span = max(t1 - t0, 0.05 * len(weights))
+        acc = t0
+        for k, wt in enumerate(weights):
+            d = span * wt / sum(weights)
+            times[i + k] = [acc, acc + d]
+            acc += d
+        i = j
+    out = [[] for _ in lines]
+    for k in range(covered):
+        li, w = script[k]
+        out[li].append([w, times[k][0], times[k][1]])
+    return out, matched, len(script), covered
+
+
 # ---------------------------------------------------------------- main
 
 def main():
@@ -186,9 +252,40 @@ def main():
 
     lead_in = spec.get("lead_in", 0.15)
     gap = spec.get("gap", 0.12)
+    args = sys.argv[2:]
+    vo_path = os.path.join(ROOT, "public", "audio", f"pins-{ep}-vo.wav")
+    if "--vo" in args:
+        takes = [a for a in args[args.index("--vo") + 1:] if not a.startswith("--")]
+        os.makedirs(os.path.dirname(vo_path), exist_ok=True)
+        join_takes(takes, vo_path)
+    recorded = os.path.exists(vo_path) and "--tts" not in args
+
     t = lead_in
     voice_parts, lines_out, cues = [], [], []
-    for line in spec["lines"]:
+    if recorded:
+        words_by_line, matched, total_words, covered = align_recording(vo_path, spec["lines"])
+        print(f"recording: {matched}/{total_words} script words heard, {covered}/{total_words} covered")
+        missing = [l["id"] for l, ws in zip(spec["lines"], words_by_line) if len(ws) < len(l["text"].split())]
+        if missing:
+            print("  not in the recording yet: " + ", ".join(missing))
+            for l, ws in zip(spec["lines"], words_by_line):
+                if l["id"] in missing:
+                    print(f"    {l['id']}: {l['text']}")
+        if "--check" in args:
+            return
+        if missing:
+            sys.exit("the recording doesn't cover the whole script; add the missing takes with --vo a.mp3 b.mp3 ...")
+        clip = decode(vo_path)
+        voice_parts.append((lead_in, clip))
+        for line, ws in zip(spec["lines"], words_by_line):
+            abs_words = [[w, round(lead_in + s, 3), round(lead_in + e, 3)] for w, s, e in ws]
+            lines_out.append({"id": line["id"], "text": line["text"], "start": abs_words[0][1], "end": abs_words[-1][2], "words": abs_words})
+            if abs_words[0][0].lower().strip(",.") in SECTION_WORDS:
+                cues.append(("whoosh", abs_words[0][1] - 0.12, 0.35))
+            for name, wi in line.get("sfx", []):
+                cues.append((name, abs_words[min(wi, len(abs_words) - 1)][1], 0.45))
+        t = lead_in + len(clip) / SR + gap
+    for line in ([] if recorded else spec["lines"]):
         mp3, words = voice_line(line, spec, cache)
         clip, cut = trim(decode(mp3), words)
         abs_words = [[w, round(t + s - cut, 3), round(t + e - cut, 3)] for w, s, e in words]

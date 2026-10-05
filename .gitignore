@@ -54,3 +54,6 @@ public/images/skins/
 
 # saga background plates: Pexels stock, rebuilt by scripts/akki-plates.py
 public/plates
+
+# real voice-over takes for the pins shorts: licensed to the channel, not the repo
+.vo-takes
