@@ -150,6 +150,7 @@ import { BeringThumb, DarienThumb, LouisianaThumb, StatesThumb, TexasThumb, Wate
 import { Ww1Short, WW1_FPS, WW1_FRAMES } from "./geo/ww1/Ww1Short";
 import { WaterlooShort, WATERLOO_FPS, WATERLOO_FRAMES } from "./geo/waterloo/WaterlooShort";
 import { TexasShort, TEXAS_FPS, TEXAS_FRAMES } from "./geo/texas/TexasShort";
+import { PenguinDadShort, PENGUIN_FPS, PENGUIN_FRAMES } from "./penguin/PenguinDadShort";
 import { StatesShort, STATES_FPS, STATES_FRAMES } from "./geo/states/StatesShort";
 
 export const RemotionRoot: React.FC = () => {
@@ -183,6 +184,7 @@ export const RemotionRoot: React.FC = () => {
       />
       <Composition id="Geo-Ww1" component={Ww1Short} durationInFrames={WW1_FRAMES} fps={WW1_FPS} width={1080} height={1920} defaultProps={{ music: null, narration: "assets/vo/geo-ww1.mp3" }} />
       <Composition id="Geo-Waterloo" component={WaterlooShort} durationInFrames={WATERLOO_FRAMES} fps={WATERLOO_FPS} width={1080} height={1920} defaultProps={{ music: null, narration: "assets/vo/geo-waterloo.mp3" }} />
+      <Composition id="Penguin-Dad" component={PenguinDadShort} durationInFrames={PENGUIN_FRAMES} fps={PENGUIN_FPS} width={1080} height={1920} defaultProps={{ music: "assets/vo/geo-bed.mp3", narration: "assets/vo/penguin-dad.mp3" }} />
       <Composition id="Geo-Texas" component={TexasShort} durationInFrames={TEXAS_FRAMES} fps={TEXAS_FPS} width={1080} height={1920} defaultProps={{ music: null, narration: "assets/vo/geo-texas.mp3", sfx: "audio/geo-texas-sfx.mp3" }} />
       <Composition id="Geo-States" component={StatesShort} durationInFrames={STATES_FRAMES} fps={STATES_FPS} width={1080} height={1920} defaultProps={{ music: null, narration: "assets/vo/geo-states.mp3" }} />
       <Composition id="Geo-Ww1-Thumb" component={Ww1Thumb} durationInFrames={THUMB_FRAMES} fps={30} width={1080} height={1920} />

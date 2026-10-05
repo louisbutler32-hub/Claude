@@ -1,0 +1,222 @@
+[
+  {
+    "id": "dad",
+    "file": "dad.png",
+    "width": 240,
+    "height": 615,
+    "title": "Aptenodytes forsteri (iNaturalist observation 247411461)",
+    "license": "cc0",
+    "creator": "no rights reserved",
+    "page": "https://www.inaturalist.org/photos/441878776"
+  },
+  {
+    "id": "pair",
+    "file": "pair.png",
+    "width": 557,
+    "height": 1011,
+    "title": "Aptenodytes forsteri (iNaturalist observation 203033037)",
+    "license": "cc-by",
+    "creator": "(c) Julien Renoult, some rights reserved (CC BY)",
+    "page": "https://www.inaturalist.org/photos/358659548"
+  },
+  {
+    "id": "huddle",
+    "file": "huddle.png",
+    "width": 1451,
+    "height": 1269,
+    "title": "Aptenodytes forsteri (iNaturalist observation 2606935)",
+    "license": "cc-by",
+    "creator": "(c) John Barkla, some rights reserved (CC BY)",
+    "page": "https://www.inaturalist.org/photos/2912286"
+  },
+  {
+    "id": "group",
+    "file": "group.png",
+    "width": 1241,
+    "height": 578,
+    "title": "Aptenodytes forsteri (iNaturalist observation 247554295)",
+    "license": "cc0",
+    "creator": "no rights reserved",
+    "page": "https://www.inaturalist.org/photos/442155504"
+  },
+  {
+    "id": "petrel",
+    "file": "petrel.png",
+    "width": 1565,
+    "height": 1137,
+    "title": "Macronectes giganteus (iNaturalist observation 44134)",
+    "license": "cc-by-sa",
+    "creator": "(c) Liam Quinn, some rights reserved (CC BY-SA)",
+    "page": "https://www.inaturalist.org/photos/71375"
+  },
+  {
+    "id": "petrel2",
+    "file": "petrel2.png",
+    "width": 570,
+    "height": 378,
+    "title": "Macronectes giganteus (iNaturalist observation 212434217)",
+    "license": "cc-by",
+    "creator": "(c) avocat, some rights reserved (CC BY)",
+    "page": "https://www.inaturalist.org/photos/375412055"
+  },
+  {
+    "id": "seal",
+    "file": "seal.png",
+    "width": 1025,
+    "height": 744,
+    "title": "Hydrurga leptonyx (iNaturalist observation 211960154)",
+    "license": "cc-by",
+    "creator": "(c) Sebasti\u00e1n Saiter V., some rights reserved (CC BY)",
+    "page": "https://www.inaturalist.org/photos/374624340"
+  },
+  {
+    "id": "wave",
+    "file": "wave.png",
+    "width": 335,
+    "height": 456,
+    "title": "Aptenodytes forsteri (iNaturalist observation 203019130)",
+    "license": "cc-by",
+    "creator": "(c) Julien Renoult, some rights reserved (CC BY)",
+    "page": "https://www.inaturalist.org/photos/358635647"
+  },
+  {
+    "id": "edge",
+    "file": "edge.png",
+    "width": 468,
+    "height": 612,
+    "title": "Aptenodytes forsteri (iNaturalist observation 334139827)",
+    "license": "cc-by",
+    "creator": "(c) Alex Brown, some rights reserved (CC BY)",
+    "page": "https://www.inaturalist.org/photos/606729452"
+  },
+  {
+    "id": "front",
+    "file": "front.png",
+    "width": 387,
+    "height": 669,
+    "title": "Aptenodytes forsteri (iNaturalist observation 31447159)",
+    "license": "cc-by",
+    "creator": "(c) Seig, some rights reserved (CC BY)",
+    "page": "https://www.inaturalist.org/photos/49216706"
+  },
+  {
+    "id": "bg-edge",
+    "file": "bg-edge.jpg",
+    "width": 1920,
+    "height": 1080,
+    "title": "Aptenodytes forsteri (iNaturalist observation 242522329)",
+    "license": "cc-by",
+    "creator": "(c) Mike Burnett, some rights reserved (CC BY)",
+    "page": "https://www.inaturalist.org/photos/432342029"
+  },
+  {
+    "id": "bg-floe",
+    "file": "bg-floe.jpg",
+    "width": 2048,
+    "height": 1399,
+    "title": "Aptenodytes forsteri (iNaturalist observation 247554295)",
+    "license": "cc0",
+    "creator": "no rights reserved",
+    "page": "https://www.inaturalist.org/photos/442156520"
+  },
+  {
+    "id": "bg-colony",
+    "file": "bg-colony.jpg",
+    "width": 2048,
+    "height": 1365,
+    "title": "Aptenodytes forsteri (iNaturalist observation 39345777)",
+    "license": "cc-by",
+    "creator": "(c) Christopher Stephens, some rights reserved (CC BY)",
+    "page": "https://www.inaturalist.org/photos/62408212"
+  },
+  {
+    "id": "bg-reflect",
+    "file": "bg-reflect.jpg",
+    "width": 2048,
+    "height": 1365,
+    "title": "Aptenodytes forsteri (iNaturalist observation 200576184)",
+    "license": "cc0",
+    "creator": "no rights reserved",
+    "page": "https://www.inaturalist.org/photos/353908011"
+  },
+  {
+    "id": "bg-storm",
+    "file": "bg-storm.jpg",
+    "width": 2048,
+    "height": 1705,
+    "title": "Aptenodytes forsteri (iNaturalist observation 31447164)",
+    "license": "cc-by",
+    "creator": "(c) Seig, some rights reserved (CC BY)",
+    "page": "https://www.inaturalist.org/photos/49216721"
+  },
+  {
+    "id": "bg-swim",
+    "file": "bg-swim.jpg",
+    "width": 2048,
+    "height": 1536,
+    "title": "Aptenodytes forsteri (iNaturalist observation 250877923)",
+    "license": "cc0",
+    "creator": "no rights reserved",
+    "page": "https://www.inaturalist.org/photos/448781371"
+  },
+  {
+    "id": "bg-sealface",
+    "file": "bg-sealface.jpg",
+    "width": 1370,
+    "height": 2048,
+    "title": "Hydrurga leptonyx (iNaturalist observation 200867312)",
+    "license": "cc0",
+    "creator": "no rights reserved",
+    "page": "https://www.inaturalist.org/photos/354472609"
+  },
+  {
+    "id": "bg-iceberg",
+    "file": "bg-iceberg.jpg",
+    "width": 1536,
+    "height": 2048,
+    "title": "Aptenodytes forsteri (iNaturalist observation 334140904)",
+    "license": "cc-by",
+    "creator": "(c) Ingvild Riska, some rights reserved (CC BY)",
+    "page": "https://www.inaturalist.org/photos/606731481"
+  },
+  {
+    "id": "bg-plain",
+    "file": "bg-plain.jpg",
+    "width": 2048,
+    "height": 1365,
+    "title": "Aptenodytes forsteri (iNaturalist observation 200575498)",
+    "license": "cc0",
+    "creator": "no rights reserved",
+    "page": "https://www.inaturalist.org/photos/353906634"
+  },
+  {
+    "id": "bg-sea",
+    "file": "bg-sea.jpg",
+    "width": 2048,
+    "height": 1365,
+    "title": "Aptenodytes forsteri (iNaturalist observation 203019153)",
+    "license": "cc-by",
+    "creator": "(c) Julien Renoult, some rights reserved (CC BY)",
+    "page": "https://www.inaturalist.org/photos/358636556"
+  },
+  {
+    "id": "juv",
+    "file": "juv.png",
+    "width": 169,
+    "height": 411,
+    "title": "Aptenodytes forsteri (iNaturalist observation 196385501)",
+    "license": "cc-by",
+    "creator": "(c) Charlotte Kirchner, some rights reserved (CC BY)",
+    "page": "https://www.inaturalist.org/photos/345758073"
+  },
+  {
+    "id": "juvsad",
+    "file": "juvsad.png",
+    "width": 287,
+    "height": 312,
+    "title": "Aptenodytes forsteri (iNaturalist observation 196385501)",
+    "license": "cc-by",
+    "creator": "(c) Charlotte Kirchner, some rights reserved (CC BY)",
+    "page": "https://www.inaturalist.org/photos/345758048"
+  }
+]

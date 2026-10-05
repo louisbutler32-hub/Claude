@@ -1,0 +1,20 @@
+{
+ "voice": "am_michael", "speed": 1.08, "duration": "auto", "out": "src/penguin",
+ "lines": [
+  {"id": "h0", "scene": "hook", "gap": 0.2, "text": "Why you couldn't survive being an emperor penguin dad."},
+  {"id": "a0", "scene": "walk", "gap": 0.15, "text": "First, you walk up to seventy miles across the ice just to reach the colony."},
+  {"id": "a1", "scene": "egg", "gap": 0.15, "text": "Your partner lays one egg, hands it to you, and leaves for two months."},
+  {"id": "a2", "scene": "feet", "gap": 0.2, "text": "You balance it on your feet. If it touches the ice for a few minutes, it freezes."},
+  {"id": "b0", "scene": "storm", "gap": 0.15, "text": "It's minus forty out here, with winds up to a hundred miles an hour."},
+  {"id": "b1", "scene": "huddle", "gap": 0.15, "text": "So you huddle with thousands of other dads, taking turns on the freezing edge."},
+  {"id": "b2", "scene": "starve", "gap": 0.15, "text": "And you don't eat. For four months. You lose almost half your body weight."},
+  {"id": "b3", "scene": "milk", "gap": 0.2, "text": "When the chick hatches, you feed it milk from your own throat."},
+  {"id": "c0", "scene": "worst", "gap": 0.1, "text": "But that's not even the worst part."},
+  {"id": "c1", "scene": "petrel", "gap": 0.15, "text": "Giant petrels circle the colony, waiting for the weak ones."},
+  {"id": "c2", "scene": "seal", "gap": 0.2, "text": "And when you finally reach the water to eat, a leopard seal is waiting."},
+  {"id": "d0", "scene": "nightmare", "gap": 0.15, "text": "But this is your absolute worst nightmare."},
+  {"id": "d1", "scene": "ice", "gap": 0.15, "text": "If the sea ice breaks up too early, your chick falls into the ocean before its waterproof feathers grow in."},
+  {"id": "d2", "scene": "lost", "gap": 0.0, "text": "In 2022, that happened at four colonies. Almost every chick was lost.",
+   "say": "In twenty twenty-two, that happened at four colonies. Almost every chick was lost."}
+ ]
+}
