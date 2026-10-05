@@ -5,6 +5,13 @@ import { BreakfastShort, BreakfastThumb, BREAKFAST_FRAMES } from "./akki/breakfa
 import { LostShort, LostThumb, LOST_FRAMES } from "./akki/lost/LostShort";
 import { BuffetShort, BuffetThumb, BUFFET_FRAMES } from "./akki/buffet/BuffetShort";
 import { FearShort, FearThumb, FEAR_FRAMES } from "./akki/fear/FearShort";
+import { Kit2ArtSheet } from "./akki/kit2/ArtSheet";
+import { Kit3ArtSheet } from "./akki/kit3/ArtSheet";
+import { DebtShort, DebtThumb, DEBT_FRAMES } from "./akki/debt/DebtShort";
+import { Act1, Act1Thumb, ACT1_FRAMES } from "./akki/saga/act1/Act1";
+import { Act2, Act2Thumb, ACT2_FRAMES } from "./akki/saga/act2/Act2";
+import { Act3, Act3Thumb, ACT3_FRAMES } from "./akki/saga/act3/Act3";
+import { Act4, Act4Thumb, ACT4_FRAMES } from "./akki/saga/act4/Act4";
 import { Composition } from "remotion";
 import { BountyVideo, TOTAL_DURATION_IN_FRAMES } from "./BountyVideo";
 import { WhatIfVideo } from "./whatif/WhatIfVideo";
@@ -115,7 +122,9 @@ import { NightShort, NightThumb, NIGHT_FRAMES } from "./minecraft-pov2/NightShor
 import { DiamondShort, DiamondThumb, DIAMOND_FRAMES } from "./minecraft-pov2/DiamondShort";
 import { EnderShort, EnderThumb, ENDER_FRAMES } from "./minecraft-pov2/EnderShort";
 import { LaPeaceShort, LaPeaceThumb, LAPEACE_FRAMES } from "./minecraft-lapeace/LaPeaceShort";
-import { ToonSheet } from "./minecraft-lapeace/toon";
+import { FaceSheet, ToonSheet } from "./minecraft-lapeace/toon";
+import { FaceStyleSheet } from "./minecraft-lapeace/faces";
+import { FriendShort, FriendThumb, FRIEND_FRAMES } from "./minecraft-friend/FriendShort";
 import { PickShort, PickThumb, PICK_FRAMES } from "./minecraft-pick/PickShort";
 import { LaPeace3D, LAPEACE3D_FRAMES } from "./lapeace3d/LaPeace3D";
 import { TennisShort, TennisThumb, TENNIS_FRAMES } from "./tennis/TennisShort";
@@ -268,6 +277,18 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Akki-Fear-Thumbnail" component={FearThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="Pins-Sleep" component={SleepShort} durationInFrames={SLEEP_FRAMES} fps={SLEEP_FPS} width={1080} height={1920} defaultProps={{ audio: "audio/pins-sleep-mix.mp3", captions: true }} />
       <Composition id="Pins-Sleep-Thumbnail" component={SleepThumb} durationInFrames={1} fps={SLEEP_FPS} width={1080} height={1920} />
+      <Composition id="Akki-Debt" component={DebtShort} durationInFrames={DEBT_FRAMES} fps={24} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Akki-Debt-Thumbnail" component={DebtThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
+      <Composition id="Akki-Kit3-Sheet" component={Kit3ArtSheet} durationInFrames={1} fps={24} width={1920} height={1080} />
+      <Composition id="Akki-Kit2-Sheet" component={Kit2ArtSheet} durationInFrames={1} fps={24} width={1920} height={1080} />
+      <Composition id="Akki-Saga1" component={Act1} durationInFrames={ACT1_FRAMES} fps={24} width={1920} height={1080} defaultProps={{ audio: null }} />
+      <Composition id="Akki-Saga1-Thumbnail" component={Act1Thumb} durationInFrames={1} fps={24} width={1920} height={1080} />
+      <Composition id="Akki-Saga2" component={Act2} durationInFrames={ACT2_FRAMES} fps={24} width={1920} height={1080} defaultProps={{ audio: null }} />
+      <Composition id="Akki-Saga2-Thumbnail" component={Act2Thumb} durationInFrames={1} fps={24} width={1920} height={1080} />
+      <Composition id="Akki-Saga3" component={Act3} durationInFrames={ACT3_FRAMES} fps={24} width={1920} height={1080} defaultProps={{ audio: null }} />
+      <Composition id="Akki-Saga3-Thumbnail" component={Act3Thumb} durationInFrames={1} fps={24} width={1920} height={1080} />
+      <Composition id="Akki-Saga4" component={Act4} durationInFrames={ACT4_FRAMES} fps={24} width={1920} height={1080} defaultProps={{ audio: null }} />
+      <Composition id="Akki-Saga4-Thumbnail" component={Act4Thumb} durationInFrames={1} fps={24} width={1920} height={1080} />
       <Composition id="Akki-Zoro-Thumbnail" component={ZoroThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="Akki-Bowling-Thumbnail" component={BowlingThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="SneakShort" component={SneakShort} durationInFrames={SNEAK_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
@@ -290,6 +311,10 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="PovEnderShort" component={EnderShort} durationInFrames={ENDER_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="PovEnder-Thumbnail" component={EnderThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="LaPeaceShort" component={LaPeaceShort} durationInFrames={LAPEACE_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="FriendShort" component={FriendShort} durationInFrames={FRIEND_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
+      <Composition id="Friend-Thumbnail" component={FriendThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="FaceStyles" component={FaceStyleSheet} durationInFrames={1} fps={30} width={1080} height={1920} defaultProps={{ page: 0 }} />
+      <Composition id="FaceSheet" component={FaceSheet} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="LaPeaceCast" component={ToonSheet} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="LaPeace-Thumbnail" component={LaPeaceThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="PickShort" component={PickShort} durationInFrames={PICK_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />

@@ -35,7 +35,7 @@ export const lerpT = (a: TPose, b: TPose, t: number): TPose => ({
   tilt: mix(a.tilt, b.tilt, t), lean: mix(a.lean, b.lean, t), bob: mix(a.bob, b.bob, t), sq: mix(a.sq, b.sq, t),
 });
 
-export type FaceKind = "plain" | "smile" | "grin" | "joy" | "shout" | "shock" | "calm" | "grit" | "worry" | "scream";
+export type FaceKind = "plain" | "smile" | "grin" | "joy" | "shout" | "shock" | "calm" | "grit" | "worry" | "scream" | "sleep" | "cry";
 
 /* --------------------------------- parts --------------------------------- */
 
@@ -73,62 +73,86 @@ const Leg: React.FC<{ x: number; a: [number, number]; look: Look }> = ({ x, a, l
   </Seg>
 );
 
-/** forehead lines and the heavy bar brows the reference draws on every face */
-const Face: React.FC<{ kind: FaceKind; blink: boolean; look: Look }> = ({ kind, blink, look }) => {
-  const ex = [42, 108], ey = 66;
-  const eyesOpen = !blink && ["plain", "smile", "shock", "scream", "worry", "calm", "shout", "grit"].includes(kind);
-  const happyEyes = kind === "grin" || kind === "joy";
-  const brow = (x: number, dy: number, rot: number, w = 34) => <path d={`M${x - w / 2},${dy} L${x + w / 2},${dy}`} stroke={INK} strokeWidth={9} strokeLinecap="round" transform={`rotate(${rot} ${x} ${dy})`} />;
-  const shock = kind === "shock" || kind === "scream";
+/* ------------------------------ the faces ------------------------------ */
+/* Drawn like the reference's: features are big and heavy and fill the face. Eyes are thick
+   slanted bars or large black ovals, brows are thin curved strokes above them, a few
+   wrinkle lines sit on the forehead, and the mouth is a wide open shape with grey teeth. */
+
+const MOUTH = "#2a1520";
+const TEETH = "#d9d9e2";
+const LX = 40, RX_ = 112, EY0 = 64;
+
+const EyeBar: React.FC<{ cx: number; cy?: number; w?: number; h?: number; rot?: number }> = ({ cx, cy = EY0, w = 48, h = 26, rot = 0 }) => (
+  <rect x={cx - w / 2} y={cy - h / 2} width={w} height={h} rx={h * 0.46} fill={INK} transform={`rotate(${rot} ${cx} ${cy})`} />
+);
+const EyeOval: React.FC<{ cx: number; cy?: number; rx?: number; ry?: number; rot?: number }> = ({ cx, cy = EY0, rx = 19, ry = 27, rot = 0 }) => (
+  <g transform={`rotate(${rot} ${cx} ${cy})`}>
+    <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill={INK} />
+    <ellipse cx={cx + rx * 0.3} cy={cy - ry * 0.38} rx={rx * 0.34} ry={ry * 0.26} fill="#fff" />
+  </g>
+);
+const EyeWide: React.FC<{ cx: number; cy?: number; r?: number; px?: number; py?: number }> = ({ cx, cy = EY0, r = 27, px = 0, py = 0 }) => (
+  <g>
+    <circle cx={cx} cy={cy} r={r} fill="#fff" stroke={INK} strokeWidth={7} />
+    <circle cx={cx + px} cy={cy + py} r={r * 0.36} fill={INK} />
+  </g>
+);
+const Arc: React.FC<{ cx: number; cy?: number; w?: number; up?: boolean; sw?: number }> = ({ cx, cy = EY0, w = 24, up = true, sw = 9 }) => (
+  <path d={`M${cx - w},${cy + (up ? 8 : -8)} Q${cx},${cy + (up ? -26 : 26)} ${cx + w},${cy + (up ? 8 : -8)}`} fill="none" stroke={INK} strokeWidth={sw} strokeLinecap="round" />
+);
+/** a thin curved brow: rot > 0 tilts the right end down */
+const Brow: React.FC<{ cx: number; cy: number; w?: number; rot?: number; bow?: number }> = ({ cx, cy, w = 34, rot = 0, bow = -6 }) => (
+  <path d={`M${cx - w / 2},${cy} Q${cx},${cy + bow} ${cx + w / 2},${cy}`} fill="none" stroke={INK} strokeWidth={6} strokeLinecap="round" transform={`rotate(${rot} ${cx} ${cy})`} />
+);
+const Wrinkles: React.FC<{ y?: number; n?: number }> = ({ y: y0 = 22, n = 2 }) => {
+  const y = y0 + 9;
   return (
-    <g>
-      {/* blush */}
-      {/* eyes */}
-      {shock && ex.map((x) => (
-        <g key={x}><circle cx={x} cy={ey} r={20} fill="#fff" {...ink} strokeWidth={7} /><circle cx={x + 2} cy={ey + 1} r={7} fill={INK} /></g>
-      ))}
-      {eyesOpen && !shock && ex.map((x) => (
-        <g key={x}><ellipse cx={x} cy={ey} rx={13} ry={19} fill={INK} /><circle cx={x + 4} cy={ey - 7} r={5} fill="#fff" /></g>
-      ))}
-      {happyEyes && ex.map((x) => <path key={x} d={`M${x - 15},${ey + 6} Q${x},${ey - 16} ${x + 15},${ey + 6}`} fill="none" stroke={INK} strokeWidth={8} strokeLinecap="round" />)}
-      {blink && !happyEyes && ex.map((x) => <path key={x} d={`M${x - 14},${ey + 2} L${x + 14},${ey + 2}`} stroke={INK} strokeWidth={8} strokeLinecap="round" />)}
-      {/* brows: cross when shouting or gritting, high when shocked, slanted up when worried */}
-      {(kind === "shout" || kind === "grit") && <>{brow(42, 40, 14)}{brow(108, 40, -14)}</>}
-      {shock && <>{brow(42, 28, -6)}{brow(108, 28, 6)}</>}
-      {kind === "worry" && <>{brow(42, 38, -16)}{brow(108, 38, 16)}</>}
-      {(kind === "plain" || kind === "calm") && <>{brow(42, 40, 0, 30)}{brow(108, 40, 0, 30)}</>}
-      {kind === "scream" && <path d="M26,14 q10,-6 20,0 M104,14 q10,-6 20,0" stroke={INK} strokeWidth={5} fill="none" strokeLinecap="round" />}
-      {/* nose */}
-      <path d="M70,84 q5,7 10,0" fill="none" stroke={INK} strokeWidth={5} strokeLinecap="round" opacity={0.7} />
-      {/* mouth */}
-      <g transform="translate(75 108)">
-        {(kind === "grin" || kind === "joy") && (
-          <g>
-            <path d="M-30,-2 Q0,50 30,-2 Z" fill="#4a1020" {...ink} strokeWidth={7} />
-            <path d="M-18,22 Q0,12 18,22 Q0,36 -18,22 Z" fill="#ff7d93" />
-            <path d="M-26,0 H26" stroke="#fff" strokeWidth={9} />
-          </g>
-        )}
-        {(kind === "shout" || kind === "scream") && (
-          <g>
-            <ellipse cx={0} cy={10} rx={kind === "scream" ? 28 : 22} ry={kind === "scream" ? 34 : 26} fill="#4a1020" {...ink} strokeWidth={7} />
-            <rect x={-18} y={-14} width={36} height={10} rx={3} fill="#fff" />
-            <ellipse cx={0} cy={26} rx={13} ry={9} fill="#ff7d93" />
-          </g>
-        )}
-        {kind === "shock" && <ellipse cx={0} cy={8} rx={13} ry={19} fill="#4a1020" {...ink} strokeWidth={6} />}
-        {(kind === "smile" || kind === "calm") && <path d={kind === "calm" ? "M-16,4 Q0,14 16,4" : "M-24,0 Q0,24 24,0"} fill="none" stroke={INK} strokeWidth={7} strokeLinecap="round" />}
-        {kind === "grit" && (
-          <g>
-            <rect x={-28} y={-4} width={56} height={24} rx={6} fill="#fff" {...ink} strokeWidth={6} />
-            <path d="M-14,-4 V20 M0,-4 V20 M14,-4 V20" stroke={INK} strokeWidth={4} />
-          </g>
-        )}
-        {kind === "worry" && <path d="M-20,14 Q0,-6 20,14" fill="none" stroke={INK} strokeWidth={7} strokeLinecap="round" />}
-        {kind === "plain" && <path d="M-14,6 H14" stroke={INK} strokeWidth={7} strokeLinecap="round" />}
+  <g fill="none" stroke={INK} strokeWidth={4} strokeLinecap="round" opacity={0.75}>
+    {Array.from({ length: n }, (_, k) => <path key={k} d={`M${52 + k * 4},${y + k * 9} q23,${k % 2 ? 5 : -7} 46,0`} />)}
+  </g>
+  );
+};
+const Trap: React.FC<{ w: number; h: number; teeth?: boolean; round?: number }> = ({ w, h, teeth = true, round = 0.6 }) => (
+  <g>
+    <path d={`M${-w},0 L${w},0 L${w * round},${h} Q0,${h * 1.18} ${-w * round},${h} Z`} fill={MOUTH} stroke={INK} strokeWidth={7} strokeLinejoin="round" />
+    {teeth && <path d={`M${-w + 5},3 L${w - 5},3 L${w * round + 3},${h * 0.42} Q0,${h * 0.55} ${-w * round - 3},${h * 0.42} Z`} fill={TEETH} />}
+  </g>
+);
+
+const Face: React.FC<{ kind: FaceKind; blink: boolean; look: Look }> = ({ kind, blink }) => {
+  const closed = blink && !["grin", "joy", "sleep", "cry", "grit", "shout"].includes(kind);
+  return (
+    <g transform="translate(3 0)">
+      {/* ---- eyes and brows ---- */}
+      {kind === "plain" && !closed && <><EyeOval cx={LX} rx={15} ry={22} /><EyeOval cx={RX_} rx={15} ry={22} /><Brow cx={LX} cy={32} /><Brow cx={RX_} cy={32} /></>}
+      {kind === "smile" && !closed && <><EyeOval cx={LX} rx={16} ry={23} /><EyeOval cx={RX_} rx={16} ry={23} /><Brow cx={LX} cy={29} rot={-4} /><Brow cx={RX_} cy={29} rot={4} /></>}
+      {kind === "calm" && !closed && <><EyeBar cx={LX} h={20} w={46} /><EyeBar cx={RX_} h={20} w={46} /><Brow cx={LX} cy={40} w={40} /><Brow cx={RX_} cy={40} w={40} /></>}
+      {kind === "grin" && <><Arc cx={LX} w={22} /><Arc cx={RX_} w={22} /><Brow cx={LX} cy={26} rot={-6} /><Brow cx={RX_} cy={26} rot={6} /></>}
+      {kind === "joy" && <><Arc cx={LX} w={24} sw={10} /><Arc cx={RX_} w={24} sw={10} /><Brow cx={LX} cy={22} rot={-8} bow={-8} /><Brow cx={RX_} cy={22} rot={8} bow={-8} /></>}
+      {(kind === "shout" || kind === "grit") && <><EyeBar cx={LX} rot={15} w={50} h={26} /><EyeBar cx={RX_} rot={-15} w={50} h={26} /><Brow cx={LX} cy={36} rot={18} w={42} bow={-3} /><Brow cx={RX_} cy={36} rot={-18} w={42} bow={-3} /></>}
+      {kind === "worry" && !closed && <><EyeBar cx={LX} rot={-13} w={50} h={25} /><EyeBar cx={RX_} rot={13} w={50} h={25} /><Brow cx={LX} cy={34} rot={-14} w={40} /><Brow cx={RX_} cy={34} rot={14} w={40} /><Wrinkles y={14} n={2} /></>}
+      {kind === "shock" && <><EyeWide cx={LX} r={25} /><EyeWide cx={RX_} r={25} /><Brow cx={LX} cy={26} w={36} bow={-12} rot={-4} /><Brow cx={RX_} cy={26} w={36} bow={-12} rot={4} /><Wrinkles y={8} n={2} /></>}
+      {kind === "scream" && <><EyeOval cx={LX} rx={21} ry={31} /><EyeOval cx={RX_} rx={21} ry={31} /><Brow cx={LX} cy={22} w={40} bow={-14} rot={-6} /><Brow cx={RX_} cy={22} w={40} bow={-14} rot={6} /><Wrinkles y={6} n={2} /></>}
+      {(kind === "sleep") && <><Arc cx={LX} up={false} w={22} sw={8} cy={60} /><Arc cx={RX_} up={false} w={22} sw={8} cy={60} /></>}
+      {kind === "cry" && <><Arc cx={LX} up={false} w={22} sw={9} cy={62} /><Arc cx={RX_} up={false} w={22} sw={9} cy={62} /><Brow cx={LX} cy={34} rot={-16} w={40} /><Brow cx={RX_} cy={34} rot={16} w={40} /><Wrinkles y={12} n={2} /></>}
+      {closed && <><path d={`M${LX - 20},${EY0 + 2} Q${LX},${EY0 + 14} ${LX + 20},${EY0 + 2}`} fill="none" stroke={INK} strokeWidth={9} strokeLinecap="round" /><path d={`M${RX_ - 20},${EY0 + 2} Q${RX_},${EY0 + 14} ${RX_ + 20},${EY0 + 2}`} fill="none" stroke={INK} strokeWidth={9} strokeLinecap="round" /></>}
+      {/* ---- nose ---- */}
+      {kind !== "scream" && <path d="M71,86 q5,6 10,0" fill="none" stroke={INK} strokeWidth={5} strokeLinecap="round" opacity={0.6} />}
+      {/* ---- mouth ---- */}
+      <g transform="translate(77 106)">
+        {kind === "plain" && <path d="M-18,6 Q0,10 18,4" fill="none" stroke={INK} strokeWidth={8} strokeLinecap="round" />}
+        {kind === "calm" && <path d="M-14,8 H14" stroke={INK} strokeWidth={8} strokeLinecap="round" />}
+        {kind === "smile" && <path d="M-26,0 Q0,28 26,0" fill="none" stroke={INK} strokeWidth={8} strokeLinecap="round" />}
+        {kind === "grin" && <g><path d="M-34,0 Q0,58 34,0 Z" fill={MOUTH} stroke={INK} strokeWidth={7} strokeLinejoin="round" /><path d="M-22,22 Q0,12 22,22 Q0,40 -22,22 Z" fill="#ff7d93" /><path d="M-30,3 H30" stroke={TEETH} strokeWidth={8} /></g>}
+        {kind === "joy" && <g><path d="M-38,-4 Q0,70 38,-4 Z" fill={MOUTH} stroke={INK} strokeWidth={7} strokeLinejoin="round" /><path d="M-24,28 Q0,16 24,28 Q0,48 -24,28 Z" fill="#ff7d93" /><path d="M-33,0 H33" stroke={TEETH} strokeWidth={9} /></g>}
+        {(kind === "shout") && <Trap w={32} h={42} />}
+        {(kind === "scream") && <g><ellipse cx={0} cy={14} rx={30} ry={38} fill={MOUTH} stroke={INK} strokeWidth={7} /><path d="M-24,-14 Q0,-6 24,-14 L22,-2 Q0,6 -22,-2 Z" fill={TEETH} /><ellipse cx={0} cy={34} rx={16} ry={10} fill="#ff7d93" /></g>}
+        {kind === "shock" && <ellipse cx={0} cy={10} rx={15} ry={22} fill={MOUTH} stroke={INK} strokeWidth={7} />}
+        {kind === "grit" && <g><rect x={-32} y={-2} width={64} height={30} rx={8} fill={TEETH} stroke={INK} strokeWidth={7} /><path d="M-16,-2 V28 M0,-2 V28 M16,-2 V28" stroke={INK} strokeWidth={4} /></g>}
+        {kind === "worry" && <g transform="translate(0 4)"><Trap w={26} h={30} round={0.55} /></g>}
+        {kind === "cry" && <path d="M-26,18 Q-13,-6 0,18 Q13,-6 26,18" fill="none" stroke={INK} strokeWidth={8} strokeLinecap="round" />}
+        {kind === "sleep" && <path d="M-10,6 Q0,18 10,6" fill={MOUTH} stroke={INK} strokeWidth={6} strokeLinecap="round" />}
       </g>
-      {/* wrinkle lines: the little curved strokes on a brow */}
-      {(kind === "shock" || kind === "worry" || kind === "scream") && <path d="M52,20 q22,-8 46,0" fill="none" stroke={INK} strokeWidth={4} strokeLinecap="round" opacity={0.6} />}
     </g>
   );
 };
@@ -144,7 +168,7 @@ const Head: React.FC<{ look: Look; face: FaceKind; blink: boolean; back: boolean
       <rect x={0} y={0} width={S} height={S} rx={8} fill={front} {...ink} />
       {!back && <rect x={10} y={10} width={40} height={30} rx={8} fill="#ffffff" opacity={0.14} />}
       {!back && hair && <path d={`M4,3 H${S - 4} V26 L122,26 L122,38 L98,28 L74,40 L50,28 L26,38 L4,26 Z`} fill={look.hair} stroke={INK} strokeWidth={6} strokeLinejoin="round" />}
-      {!back && <g transform="translate(75 75) scale(0.92) translate(-75 -75)"><Face kind={face} blink={blink} look={look} /></g>}
+      {!back && <Face kind={face} blink={blink} look={look} />}
       {hat}
     </g>
   );
@@ -290,6 +314,28 @@ export const ToonSheet: React.FC = () => {
       <Cap back x={200} y={1820} s={0.55} pose={tp({ aR: [160, 20] })} face="plain" flip />
       <Straw back x={540} y={1820} s={0.55} pose={tp({ aR: [160, 20] })} face="plain" flip />
       <Wise x={880} y={1820} s={0.55} pose={tp({ aR: [40, 40], aL: [-30, -10] })} face="smile" flip />
+    </svg>
+  );
+};
+
+/* ---------------------------------- face test sheet ---------------------------------- */
+
+const SHEET_FACES: FaceKind[] = ["plain", "smile", "grin", "joy", "shout", "grit", "worry", "cry", "shock", "scream", "calm", "sleep"];
+export const FaceSheet: React.FC = () => {
+  const zombie: Look = { ...STRAW_LOOK, skin: "#4f8f4a", skinD: "#3b6e38", hair: "#3b6e38", hairStyle: "none" };
+  const steve: Look = { ...STRAW_LOOK, skin: "#c68a5b", skinD: "#a8714a", hair: "#4a2f1b" };
+  return (
+    <svg width={1080} height={1920} viewBox="0 0 1080 1920" style={{ background: "#585a63" }}>
+      {SHEET_FACES.map((f, i) => (
+        <g key={f} transform={`translate(${60 + (i % 3) * 340} ${150 + Math.floor(i / 3) * 235}) scale(1.4)`}>
+          <Head look={zombie} face={f} blink={false} back={false} />
+        </g>
+      ))}
+      {SHEET_FACES.slice(0, 6).map((f, i) => (
+        <g key={`s${f}`} transform={`translate(${60 + (i % 3) * 340} ${1130 + Math.floor(i / 3) * 235}) scale(1.4)`}>
+          <Head look={steve} face={f} blink={false} back={false} />
+        </g>
+      ))}
     </svg>
   );
 };
