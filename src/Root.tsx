@@ -142,6 +142,7 @@ import { Ww1Short, WW1_FPS, WW1_FRAMES } from "./geo/ww1/Ww1Short";
 import { WaterlooShort, WATERLOO_FPS, WATERLOO_FRAMES } from "./geo/waterloo/WaterlooShort";
 import { TexasShort, TEXAS_FPS, TEXAS_FRAMES } from "./geo/texas/TexasShort";
 import { StatesShort, STATES_FPS, STATES_FRAMES } from "./geo/states/StatesShort";
+import { SleepShort, SleepThumb, SLEEP_FPS, SLEEP_FRAMES } from "./pins/sleep/SleepShort";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -265,6 +266,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Akki-Buffet-Thumbnail" component={BuffetThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="Akki-Fear" component={FearShort} durationInFrames={FEAR_FRAMES} fps={24} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Akki-Fear-Thumbnail" component={FearThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
+      <Composition id="Pins-Sleep" component={SleepShort} durationInFrames={SLEEP_FRAMES} fps={SLEEP_FPS} width={1080} height={1920} defaultProps={{ audio: "audio/pins-sleep-mix.mp3", captions: true }} />
+      <Composition id="Pins-Sleep-Thumbnail" component={SleepThumb} durationInFrames={1} fps={SLEEP_FPS} width={1080} height={1920} />
       <Composition id="Akki-Zoro-Thumbnail" component={ZoroThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="Akki-Bowling-Thumbnail" component={BowlingThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="SneakShort" component={SneakShort} durationInFrames={SNEAK_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />

@@ -1,0 +1,102 @@
+[
+  {
+    "id": "otter",
+    "file": "otter.png",
+    "width": 818,
+    "height": 598,
+    "title": "Sea otter",
+    "license": "by 2.0",
+    "creator": "jkbrooks85",
+    "page": "https://www.flickr.com/photos/68679992@N00/11215277206"
+  },
+  {
+    "id": "otterface",
+    "file": "otterface.png",
+    "width": 976,
+    "height": 920,
+    "title": "Sea otter",
+    "license": "by 2.0",
+    "creator": "jkbrooks85",
+    "page": "https://www.flickr.com/photos/68679992@N00/11215232584"
+  },
+  {
+    "id": "hold",
+    "file": "hold.png",
+    "width": 627,
+    "height": 310,
+    "title": "Sea Otters holding hands at the Vancouver Aquarium",
+    "license": "by-sa 2.0",
+    "creator": "pburka",
+    "page": "https://www.flickr.com/photos/30047235@N03/14039998648"
+  },
+  {
+    "id": "drifter",
+    "file": "drifter.png",
+    "width": 748,
+    "height": 165,
+    "title": "Two Wild Sea Otters",
+    "license": "by 2.0",
+    "creator": "Rennett Stowe",
+    "page": "https://www.flickr.com/photos/10393601@N08/17390907448"
+  },
+  {
+    "id": "frigate",
+    "file": "frigate.png",
+    "width": 578,
+    "height": 486,
+    "title": "Magnificent Frigatebird Juvenile",
+    "license": "by-sa 2.0",
+    "creator": "Kurayba",
+    "page": "https://www.flickr.com/photos/48503330@N08/5662605084"
+  },
+  {
+    "id": "whale",
+    "file": "whale.png",
+    "width": 764,
+    "height": 397,
+    "title": "2009.04.05 sperm whale",
+    "license": "by-sa 2.0",
+    "creator": "denn",
+    "page": "https://www.flickr.com/photos/42902413@N00/3413879795"
+  },
+  {
+    "id": "boat",
+    "file": "boat.png",
+    "width": 247,
+    "height": 161,
+    "title": "White empty boat floating on turquoise sea waters",
+    "license": "by 2.0",
+    "creator": "Horia Varlan",
+    "page": "https://www.flickr.com/photos/10361931@N06/4777131568"
+  },
+  {
+    "id": "bg-sea",
+    "file": "bg-sea.jpg",
+    "width": 679,
+    "height": 1023,
+    "title": "coeficiente de reflexi\u00f3n",
+    "license": "by 2.0",
+    "creator": "bachmont",
+    "page": "https://www.flickr.com/photos/8845870@N07/2850001033"
+  },
+  {
+    "id": "bg-kelp",
+    "file": "bg-kelp.jpg",
+    "width": 681,
+    "height": 1024,
+    "title": "Kelp of Cat Rock, Anacapa Island",
+    "license": "by 2.0",
+    "creator": "NOAA's National Ocean Service",
+    "page": "https://www.flickr.com/photos/40322276@N04/4115872878"
+  },
+  {
+    "id": "bg-sky",
+    "file": "bg-sky.jpg",
+    "width": 1024,
+    "height": 768,
+    "title": "Blue Sky & White Cloud",
+    "license": "by 2.0",
+    "creator": "Honou",
+    "page": "https://www.flickr.com/photos/9186550@N08/2703888962"
+  }
+]

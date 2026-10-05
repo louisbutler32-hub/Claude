@@ -1,0 +1,231 @@
+#!/usr/bin/env python3
+"""Narration, music bed and SFX for a Pins-format Short (src/pins/<episode>/).
+
+    python3 scripts/build-pins-audio.py sleep
+
+Reads src/pins/<episode>/script.json, voices every line with edge-tts (word
+boundaries on, so captions land on the exact word), lays the lines end to
+end with a short gap, puts a light plucked bed under it and the cartoon SFX
+cues on top, and writes:
+
+    public/audio/pins-<episode>-mix.mp3     the drop-in track (gitignored —
+                                            edge-tts output is for timing the
+                                            edit, not for shipping)
+    src/pins/<episode>/timing.json          line + word times; tracked, since
+                                            the video's shots key off it
+
+A line may carry "sfx": [[name, word_index], ...] to drop an effect on the
+start of that word (sfx.py's names, plus "zzz" and "tick" built here). Every
+line also gets a soft whoosh on its first word if it opens a new section
+("First", "Next", "Finally") — the reference cuts hard on exactly those.
+
+The bed is synthesised (numpy, nothing to license): a plucked I–V–vi–IV at
+112 bpm with a soft kick, sitting ~16 dB under the voice.
+"""
+import asyncio
+import hashlib
+import json
+import os
+import subprocess
+import sys
+
+import numpy as np
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(ROOT, "scripts"))
+import sfx as sfxlib  # noqa: E402
+
+SR = 44100
+FF = "ffmpeg"
+SECTION_WORDS = ("first", "next", "finally")
+
+
+# ---------------------------------------------------------------- narration
+
+async def _tts(text, voice, rate, pitch):
+    import edge_tts
+    # edge-tts pins certifi's bundle; on a box behind a TLS-terminating proxy
+    # the trusted bundle is whatever SSL_CERT_FILE names, so hand it that.
+    if os.environ.get("SSL_CERT_FILE"):
+        import ssl
+        import edge_tts.communicate as etc
+        etc._SSL_CTX = ssl.create_default_context(cafile=os.environ["SSL_CERT_FILE"])
+    com = edge_tts.Communicate(text, voice, rate=rate, pitch=pitch, boundary="WordBoundary")
+    audio, words = bytearray(), []
+    async for chunk in com.stream():
+        if chunk["type"] == "audio":
+            audio.extend(chunk["data"])
+        elif chunk["type"] == "WordBoundary":
+            s = chunk["offset"] / 1e7
+            words.append([chunk["text"], round(s, 3), round(s + chunk["duration"] / 1e7, 3)])
+    return bytes(audio), words
+
+
+def voice_line(line, spec, cache):
+    key = hashlib.sha1(json.dumps([line["text"], spec["voice"], spec["rate"], spec["pitch"]]).encode()).hexdigest()[:12]
+    mp3 = os.path.join(cache, f"{line['id']}-{key}.mp3")
+    meta = mp3[:-4] + ".json"
+    if not (os.path.exists(mp3) and os.path.exists(meta)):
+        audio, words = asyncio.run(_tts(line.get("say", line["text"]), spec["voice"], spec["rate"], spec["pitch"]))
+        open(mp3, "wb").write(audio)
+        json.dump(words, open(meta, "w"))
+    return mp3, json.load(open(meta))
+
+
+def decode(path):
+    raw = subprocess.run([FF, "-v", "error", "-i", path, "-f", "f32le", "-ac", "1", "-ar", str(SR), "-"],
+                         check=True, capture_output=True).stdout
+    return np.frombuffer(raw, dtype=np.float32).copy()
+
+
+def trim(clip, words):
+    """Cut edge-tts's lead-in/tail silence, keeping a hair either side of the words."""
+    lead = max(0.0, words[0][1] - 0.04) if words else 0.0
+    tail = (words[-1][2] + 0.18) if words else len(clip) / SR
+    a, b = int(lead * SR), min(len(clip), int(tail * SR))
+    return clip[a:b], lead
+
+
+# ---------------------------------------------------------------- synthesis
+
+def N(d):
+    return int(round(d * SR))
+
+
+def pluck(freq, dur, bright=0.5, seed=0):
+    """Karplus-Strong string."""
+    n, p = N(dur), max(2, int(SR / freq))
+    buf = np.random.default_rng(seed).uniform(-1, 1, p).astype(np.float32)
+    out = np.zeros(n, np.float32)
+    for i in range(n):
+        out[i] = buf[i % p]
+        buf[i % p] = 0.5 * (buf[i % p] + buf[(i + 1) % p]) * (0.994 + 0.004 * bright)
+    return out
+
+
+def kick(dur=0.22):
+    t = np.arange(N(dur)) / SR
+    f = 110 * np.exp(-t * 22) + 45
+    return (np.sin(np.cumsum(2 * np.pi * f / SR)) * np.exp(-t * 14)).astype(np.float32)
+
+
+def music(total):
+    bpm = 112
+    eighth = 60 / bpm / 2
+    # I–V–vi–IV in C, one bar each, arpeggio root-5th-octave-3rd
+    chords = [(261.63, 392.0, 523.25, 329.63), (196.0, 293.66, 392.0, 246.94),
+              (220.0, 329.63, 440.0, 261.63), (174.61, 261.63, 349.23, 220.0)]
+    bed = np.zeros(N(total) + SR, np.float32)
+    cache = {}
+    step = 0
+    t = 0.0
+    while t < total:
+        bar, beat8 = divmod(step, 8)
+        ch = chords[bar % 4]
+        f = ch[[0, 1, 2, 3, 2, 1, 2, 3][beat8]]
+        if f not in cache:
+            cache[f] = pluck(f, eighth * 3, seed=int(f))
+        c = cache[f]
+        i = N(t)
+        bed[i:i + len(c)] += c[:len(bed) - i] * (0.55 if beat8 % 2 else 0.7)
+        if beat8 == 0:  # bass on the downbeat
+            b = pluck(ch[0] / 2, eighth * 8, bright=0.1, seed=7)
+            bed[i:i + len(b)] += b[:len(bed) - i] * 0.6
+        if beat8 in (0, 4):
+            k = kick()
+            bed[i:i + len(k)] += k[:len(bed) - i] * 0.5
+        step += 1
+        t += eighth
+    bed = bed[:N(total)]
+    bed /= np.max(np.abs(bed)) + 1e-9
+    fade = N(0.4)
+    bed[:fade] *= np.linspace(0, 1, fade)
+    bed[-fade:] *= np.linspace(1, 0, fade)
+    return bed
+
+
+def fx(name):
+    if name == "zzz":
+        t = np.arange(N(0.9)) / SR
+        f = 180 + 30 * np.sin(2 * np.pi * 3 * t)
+        s = np.sign(np.sin(np.cumsum(2 * np.pi * f / SR))) * 0.3
+        env = np.sin(np.pi * t / t[-1]) ** 2
+        return (s * env).astype(np.float32)
+    if name == "tick":
+        out = np.zeros(N(1.0), np.float32)
+        for k in range(4):
+            i = N(k * 0.25)
+            c = (np.random.default_rng(k).standard_normal(N(0.012)) * np.exp(-np.arange(N(0.012)) / 60)).astype(np.float32)
+            out[i:i + len(c)] += c * (0.9 if k % 2 == 0 else 0.6)
+        return out
+    clip = sfxlib.render(name).astype(np.float32)
+    # sfx.py renders at its own rate; bring it up to ours
+    x_old = np.linspace(0, 1, len(clip))
+    x_new = np.linspace(0, 1, int(len(clip) * SR / sfxlib.SR))
+    return np.interp(x_new, x_old, clip).astype(np.float32)
+
+
+def place(mix, clip, t, gain):
+    i = N(t)
+    n = min(len(clip), len(mix) - i)
+    if n > 0:
+        mix[i:i + n] += clip[:n] * gain
+
+
+# ---------------------------------------------------------------- main
+
+def main():
+    if len(sys.argv) < 2:
+        sys.exit(__doc__)
+    ep = sys.argv[1]
+    ep_dir = os.path.join(ROOT, "src", "pins", ep)
+    spec = json.load(open(os.path.join(ep_dir, "script.json")))
+    spec.setdefault("pitch", "+0Hz")
+    cache = os.path.join(ROOT, ".tts", f"pins-{ep}")
+    os.makedirs(cache, exist_ok=True)
+
+    lead_in = spec.get("lead_in", 0.15)
+    gap = spec.get("gap", 0.12)
+    t = lead_in
+    voice_parts, lines_out, cues = [], [], []
+    for line in spec["lines"]:
+        mp3, words = voice_line(line, spec, cache)
+        clip, cut = trim(decode(mp3), words)
+        abs_words = [[w, round(t + s - cut, 3), round(t + e - cut, 3)] for w, s, e in words]
+        voice_parts.append((t, clip))
+        lines_out.append({"id": line["id"], "text": line["text"], "start": round(t, 3),
+                          "end": round(t + len(clip) / SR, 3), "words": abs_words})
+        if abs_words and abs_words[0][0].lower().strip(",.") in SECTION_WORDS:
+            cues.append(("whoosh", abs_words[0][1] - 0.12, 0.35))
+        for name, wi in line.get("sfx", []):
+            cues.append((name, abs_words[min(wi, len(abs_words) - 1)][1], 0.45))
+        t += len(clip) / SR + gap
+    total = round(t - gap + spec.get("tail", 0.35), 3)
+
+    mix = np.zeros(N(total) + SR, np.float32)
+    voice = np.zeros_like(mix)
+    for start, clip in voice_parts:
+        place(voice, clip, start, 1.0)
+    voice /= np.max(np.abs(voice)) + 1e-9
+    mix += voice
+    mix += np.pad(music(total), (0, len(mix) - N(total))) * 0.13
+    for name, at, gain in cues:
+        place(mix, fx(name), max(0.0, at), gain)
+    mix = mix[:N(total)]
+
+    out_dir = os.path.join(ROOT, "public", "audio")
+    os.makedirs(out_dir, exist_ok=True)
+    out = os.path.join(out_dir, f"pins-{ep}-mix.mp3")
+    tmp = out + ".f32"
+    (mix / max(1.0, float(np.max(np.abs(mix))) / 0.98)).astype(np.float32).tofile(tmp)
+    subprocess.run([FF, "-v", "error", "-y", "-f", "f32le", "-ac", "1", "-ar", str(SR), "-i", tmp,
+                    "-af", "loudnorm=I=-14:TP=-1.5:LRA=9", "-ac", "2", "-c:a", "libmp3lame", "-b:a", "192k", out],
+                   check=True)
+    os.remove(tmp)
+
+    json.dump({"duration": total, "lines": lines_out}, open(os.path.join(ep_dir, "timing.json"), "w"), indent=1)
+    print(f"{out}  ({total:.2f}s, {len(lines_out)} lines, {len(cues)} sfx cues)")
+
+
+if __name__ == "__main__":
+    main()

@@ -137,6 +137,17 @@ names set on the country itself, yellow highlight rings with leader lines,
 big numbers on leaders, scale-comparison silhouettes, icon props, and 3D
 title words. `src/geo/annotate.tsx` holds those pieces.
 
+## Pins-format animal shorts
+
+`src/pins/` copies the @PinsGuy Shorts format: "Three animals that…"
+listicles, ~50s, built from real photo cutouts with cartoon googly eyes over
+photo backdrops. Captions run 2–3 words at a time with the spoken word in
+yellow, and there's no outro, so the Short loops. **Read `src/pins/README.md`
+first.** It has the measured format and the episode recipe (script.json →
+`scripts/build-pins-audio.py` → cutouts → shots keyed to timing.json).
+Unlike the geo line, cartoon eyes are the point here. The channel isn't
+decided yet, so ask before writing a footer block.
+
 ## AKKI TALKS shorts
 
 `src/akki/` — animated One Piece parody Shorts for https://www.youtube.com/@akkitalkss.

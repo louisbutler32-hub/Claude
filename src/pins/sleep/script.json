@@ -1,0 +1,130 @@
+{
+  "voice": "en-US-AndrewNeural",
+  "rate": "+12%",
+  "pitch": "+0Hz",
+  "gap": 0.12,
+  "lines": [
+    {
+      "id": "hook",
+      "text": "Three animals that sleep in the craziest ways.",
+      "sfx": [
+        [
+          "zzz",
+          3
+        ]
+      ]
+    },
+    {
+      "id": "otter1",
+      "text": "First, sea otters. If one falls asleep alone, the current can carry it far out to sea."
+    },
+    {
+      "id": "otter2",
+      "text": "So they hold hands while they sleep, so nobody drifts away.",
+      "sfx": [
+        [
+          "pop",
+          2
+        ]
+      ]
+    },
+    {
+      "id": "otter3",
+      "text": "Some even wrap themselves in kelp, like a blanket tied to the ocean floor.",
+      "sfx": [
+        [
+          "blip",
+          2
+        ]
+      ]
+    },
+    {
+      "id": "otter4",
+      "text": "And the babies? They just nap on mom's belly.",
+      "sfx": [
+        [
+          "pop",
+          5
+        ]
+      ]
+    },
+    {
+      "id": "frigate1",
+      "text": "Next, the frigatebird. It can stay in the air for two whole months without landing."
+    },
+    {
+      "id": "frigate2",
+      "text": "So it sleeps while flying, in naps that last about twelve seconds,",
+      "sfx": [
+        [
+          "zzz",
+          2
+        ]
+      ]
+    },
+    {
+      "id": "frigate3",
+      "text": "often with half of its brain still awake to watch where it's going.",
+      "sfx": [
+        [
+          "ding",
+          5
+        ]
+      ]
+    },
+    {
+      "id": "frigate4",
+      "text": "Add it all up, and that's less than forty-five minutes of sleep a day.",
+      "sfx": [
+        [
+          "tick",
+          8
+        ]
+      ]
+    },
+    {
+      "id": "whale1",
+      "text": "Finally, sperm whales. They sleep standing straight up, hanging just below the surface like giant tree trunks.",
+      "sfx": [
+        [
+          "bubble",
+          5
+        ]
+      ]
+    },
+    {
+      "id": "whale2",
+      "text": "The whole group goes completely still for up to fifteen minutes.",
+      "sfx": [
+        [
+          "zzz",
+          5
+        ]
+      ]
+    },
+    {
+      "id": "whale3",
+      "text": "When scientists drifted their boat right into a sleeping pod, the whales didn't even notice.",
+      "sfx": [
+        [
+          "blip",
+          4
+        ]
+      ]
+    },
+    {
+      "id": "whale4",
+      "text": "Until the boat bumped one, and the whole group woke up at once.",
+      "sfx": [
+        [
+          "bonk",
+          3
+        ],
+        [
+          "boing",
+          9
+        ]
+      ]
+    }
+  ]
+}
