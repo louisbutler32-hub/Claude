@@ -30,8 +30,14 @@ start of that word (sfx.py's names, plus "zzz" and "tick" built here). Every
 line also gets a soft whoosh on its first word if it opens a new section
 ("First", "Next", "Finally") — the reference cuts hard on exactly those.
 
-The bed is synthesised (numpy, nothing to license): a plucked I–V–vi–IV at
-112 bpm with a soft kick, sitting ~16 dB under the voice.
+Music: script.json "music" names a track (a local, gitignored file such as
+.music/<name>.wav); it plays from "music_start" seconds into the track, sits
+"music_db" below the voice (default 17 dB) and dips a further "duck_db"
+(default 4 dB) while the voice is speaking (slow release, so the bed doesn't
+pump up in the short pauses between sentences), then fades out at the end.
+Without one, the bed is synthesised (numpy, nothing to license): a plucked
+I–V–vi–IV at 112 bpm with a soft kick. "sfx": false in script.json drops
+every effect, the section whooshes included.
 """
 import asyncio
 import hashlib
@@ -174,6 +180,35 @@ def fx(name):
     x_old = np.linspace(0, 1, len(clip))
     x_new = np.linspace(0, 1, int(len(clip) * SR / sfxlib.SR))
     return np.interp(x_new, x_old, clip).astype(np.float32)
+
+
+def track_bed(path, start, total):
+    """the named music track from `start` seconds in, cut to the short's length, peak-normalised"""
+    raw = subprocess.run([FF, "-v", "error", "-ss", str(start), "-t", str(total + 0.5), "-i", path,
+                          "-f", "f32le", "-ac", "1", "-ar", str(SR), "-"], check=True, capture_output=True).stdout
+    bed = np.frombuffer(raw, dtype=np.float32).copy()[:N(total)]
+    if len(bed) < N(total):
+        bed = np.pad(bed, (0, N(total) - len(bed)))
+    return bed
+
+
+def rms_db(x):
+    return 20 * np.log10(np.sqrt(np.mean(x.astype(np.float64) ** 2)) + 1e-12)
+
+
+def duck_env(voice, hop=0.01, attack=0.06, release=1.2):
+    """0..1, how much the voice is speaking: frame RMS gated, then smoothed (fast in, slow out)"""
+    n = int(hop * SR)
+    frames = len(voice) // n
+    r = np.sqrt(np.mean(voice[:frames * n].reshape(frames, n) ** 2, axis=1))
+    on = (20 * np.log10(r + 1e-12) > -40).astype(np.float32)
+    env = np.zeros_like(on)
+    a, b = np.exp(-hop / attack), np.exp(-hop / release)
+    v = 0.0
+    for i, x in enumerate(on):
+        v = (a * v + (1 - a) * x) if x > v else (b * v + (1 - b) * x)
+        env[i] = v
+    return np.repeat(env, n)[:len(voice)] if len(env) else np.zeros(len(voice), np.float32)
 
 
 def place(mix, clip, t, gain):
@@ -341,7 +376,25 @@ def main():
         place(voice, clip, start, 1.0)
     voice /= np.max(np.abs(voice)) + 1e-9
     mix += voice
-    mix += np.pad(music(total), (0, len(mix) - N(total))) * 0.13
+    if spec.get("music"):
+        bed = track_bed(os.path.join(ROOT, spec["music"]), spec.get("music_start", 0), total)
+        # level the bed against the voice where it's speaking, then duck it a little more under the words
+        env = duck_env(voice[:N(total)])
+        env = np.pad(env, (0, N(total) - len(env)))
+        speaking = voice[:N(total)][env > 0.5]
+        target = (rms_db(speaking) if len(speaking) else -20) - spec.get("music_db", 17)
+        gain_db = target - rms_db(bed) - spec.get("duck_db", 4) * env
+        bed = bed * (10 ** (gain_db / 20))
+        under, free = bed[env > 0.5], bed[env < 0.2]
+        print(f"  voice {rms_db(speaking):.1f} dB RMS while speaking; music {rms_db(under):.1f} under it "
+              f"({rms_db(speaking) - rms_db(under):.1f} dB down)" + (f", {rms_db(free):.1f} in the clear" if len(free) else ""))
+        fo = N(spec.get("music_fade", 0.6))
+        bed[-fo:] *= np.linspace(1, 0, fo)
+        mix[:N(total)] += bed.astype(np.float32)
+    else:
+        mix += np.pad(music(total), (0, len(mix) - N(total))) * 0.13
+    if spec.get("sfx", True) is False:
+        cues = []
     for name, at, gain in cues:
         place(mix, fx(name), max(0.0, at), gain)
     mix = mix[:N(total)]
@@ -351,8 +404,16 @@ def main():
     out = os.path.join(out_dir, f"pins-{ep}-mix.mp3")
     tmp = out + ".f32"
     (mix / max(1.0, float(np.max(np.abs(mix))) / 0.98)).astype(np.float32).tofile(tmp)
+    # two-pass loudnorm, linear: one fixed gain for the whole mix. (Single-pass loudnorm rides the
+    # level like an AGC and pulls the music back up in every pause, undoing the voice/music balance.)
+    probe = subprocess.run([FF, "-hide_banner", "-f", "f32le", "-ac", "1", "-ar", str(SR), "-i", tmp,
+                            "-af", "loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"],
+                           capture_output=True, text=True).stderr
+    m = json.loads(probe[probe.rindex("{"):probe.rindex("}") + 1])
+    ln = (f"loudnorm=I=-14:TP=-1.5:LRA=11:linear=true:measured_I={m['input_i']}:measured_TP={m['input_tp']}"
+          f":measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}")
     subprocess.run([FF, "-v", "error", "-y", "-f", "f32le", "-ac", "1", "-ar", str(SR), "-i", tmp,
-                    "-af", "loudnorm=I=-14:TP=-1.5:LRA=9", "-ac", "2", "-c:a", "libmp3lame", "-b:a", "192k", out],
+                    "-af", ln, "-ar", str(SR), "-ac", "2", "-c:a", "libmp3lame", "-b:a", "192k", out],
                    check=True)
     os.remove(tmp)
 

@@ -3,6 +3,12 @@
   "rate": "+12%",
   "pitch": "+0Hz",
   "gap": 0.12,
+  "max_pause": 0.3,
+  "music": ".music/pins-sleep-track.wav",
+  "music_start": 0,
+  "music_db": 15,
+  "duck_db": 3,
+  "sfx": false,
   "lines": [
     {
       "id": "hook",

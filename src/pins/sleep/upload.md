@@ -80,5 +80,11 @@ rebuild:
     python3 scripts/build-pins-audio.py sleep --vo .vo-takes/sleep-2-frigate-whales.mp3
     npm run pins:sleep
 
-The music bed and SFX are synthesised in `scripts/build-pins-audio.py`, so
-there's nothing to license there.
+Music: the track the channel supplied (`.music/pins-sleep-track.wav`, cut
+from the video it came in; gitignored), played from its first second, sitting
+18 dB under the voice while it speaks and ~15 dB under in the gaps, faded out
+over the last 0.6 s. **Credit the track in the description if its licence
+asks for it**; the name and licence weren't given with the file.
+
+No sound effects: `"sfx": false` in `script.json` until the channel's own
+SFX are dropped in.

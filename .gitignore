@@ -57,3 +57,6 @@ public/plates
 
 # real voice-over takes for the pins shorts: licensed to the channel, not the repo
 .vo-takes
+
+# music tracks for the pins shorts: licensed to the channel, not the repo
+.music
