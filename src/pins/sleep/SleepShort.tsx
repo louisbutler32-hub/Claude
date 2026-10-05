@@ -4,6 +4,7 @@ import {
   Actor, Arrow, Asset, Backdrop, Bonk, Brand, Calendar, Cam, Chip, Clock, Current, Heart, H, Mark, Mood, PaintedDeep, Pop, RedX, Shot, ShotPlayer,
   SplitBrain, Timing, W, WordCaption, Zzz, bell, clamp01, cue, ease, lerp, loadPinsFonts, useT,
 } from "../engine";
+import { AboveLine, Face, Person, PersonLook } from "../people";
 import TIMING from "./timing.json";
 
 /**
@@ -33,6 +34,40 @@ const A: Record<string, Asset> = {
 const FRIGATE_HALF: Asset = { ...A.frigate, eyes: [{ ...A.frigate.eyes![0], mood: "open" }, { ...A.frigate.eyes![1], mood: "closed" }] };
 
 const c = (id: string, i = 0) => cue(T, id, i);
+
+/** a sperm whale hanging upright, only its head out of the water, a ripple ring at the waterline */
+const WhaleHead: React.FC<{ t: number; x: number; water: number; w: number; out?: number; moods: [number, Mood][]; rock?: number }> = ({ t, x, water, w, out = 0.42, moods, rock = 0 }) => {
+  const cy = water - w * out + w / 2;
+  const ring = (t * 0.5 + x * 0.001) % 1;
+  return (
+    <>
+      <AboveLine y={water}>
+        <Actor a={A.whale} t={t} x={x} y={cy} w={w} rot={90 + rock} bob={5} bobRate={0.35} moods={moods} />
+      </AboveLine>
+      <div style={{ position: "absolute", left: x - w * 0.22 * (1 + ring), top: water - w * 0.05 * (1 + ring), width: w * 0.44 * (1 + ring), height: w * 0.1 * (1 + ring),
+        borderRadius: "50%", border: `${Math.max(3, w * 0.008)}px solid rgba(255,255,255,${0.75 * (1 - ring)})` }} />
+      <div style={{ position: "absolute", left: x - w * 0.2, top: water - w * 0.035, width: w * 0.4, height: w * 0.07, borderRadius: "50%", border: `${Math.max(3, w * 0.01)}px solid rgba(255,255,255,0.8)` }} />
+    </>
+  );
+};
+
+/** the research boat, two cartoon-headed scientists aboard (cut off at the gunwale, so they sit in it) */
+const SCI_A: PersonLook = { hair: "cap", hat: "#2f6d9a", jacket: "#5b6b3a", beard: true, prop: "point" };
+const SCI_B: PersonLook = { hair: "beanie", hat: "#c0392b", jacket: "#2f4f6f", skin: "#c68a63", glasses: true, prop: "clipboard" };
+const ResearchBoat: React.FC<{ t: number; x: number; y: number; w: number; rot?: number; facesA: [number, Face][]; facesB: [number, Face][]; talkA?: [number, number][]; gaze?: [number, number] }> = ({ t, x, y, w, rot = 0, facesA, facesB, talkA = [], gaze = [0.6, 0.3] }) => {
+  const h = (w * A.boat.h) / A.boat.w;
+  const gunwale = y - h / 2 + h * 0.5;
+  const bob = Math.sin(t * 1.1 * Math.PI) * 6;
+  return (
+    <div style={{ position: "absolute", left: 0, top: bob, width: 0, height: 0, transform: `rotate(${rot}deg)`, transformOrigin: `${x}px ${y}px` }}>
+      <AboveLine y={gunwale}>
+        <Person id="sciB" t={t} x={x - w * 0.2} y={gunwale + h * 0.12} h={w * 0.66} look={SCI_B} faces={facesB} gaze={gaze} />
+        <Person id="sciA" t={t} x={x + w * 0.16} y={gunwale + h * 0.16} h={w * 0.72} look={SCI_A} faces={facesA} gaze={gaze} talk={talkA} />
+      </AboveLine>
+      <Actor a={A.boat} t={t} x={x} y={y} w={w} bob={0} />
+    </div>
+  );
+};
 const SLEEP: [number, Mood][] = [[-99, "closed"]];
 
 /* ------------------------------------------------------------ the shots */
@@ -330,19 +365,22 @@ const shots: Shot[] = [
       </Cam>
     ),
   },
-  /* "When scientists drifted their boat right into a sleeping pod, the whales didn't even notice." */
+  /* "When scientists drifted their boat right into a sleeping pod," — above the surface, the
+     pod's heads bobbing upright, the research boat drifting in among them */
   {
     at: c("whale3", 0),
     render: ({ t, u }) => {
-      const drift = ease(u, 0, 3.6);
+      const drift = ease(u, 0, 2.6);
       return (
-        <Cam t={t} z={1}>
-          <PaintedDeep t={t} />
-          {[[220, 1160, 520, 88], [560, 1080, 700, 90], [900, 1180, 540, 92]].map(([x, y, w, r], i) => (
-            <Actor key={i} a={A.whale} t={t} x={x} y={y} w={w} rot={r} bob={4} bobRate={0.3} moods={SLEEP} />
-          ))}
-          {/* the boat on the surface, seen from just under it */}
-          <Actor a={A.boat} t={t} x={lerp(-200, 620, drift)} y={150} w={460} bob={6} bobRate={1.1} rot={Math.sin(t * 2) * 2} />
+        <Cam t={t} z={1.35 + 0.05 * ease(u, 0, 4)} x={480} y={1060}>
+          <Backdrop src={IMG + "bg-sea.jpg"} t={t} />
+          <WhaleHead t={t} x={820} water={1000} w={300} moods={SLEEP} />
+          <WhaleHead t={t} x={660} water={1040} w={340} moods={SLEEP} />
+          <Zzz t={t} x={700} y={830} size={50} />
+          <WhaleHead t={t} x={720} water={1200} w={480} moods={SLEEP} />
+          <ResearchBoat t={t} x={lerp(90, 300, drift)} y={1260} w={560} rot={Math.sin(t * 1.6) * 2}
+            facesA={[[-99, "curious"], [c("whale3", 8), "smirk"]]} facesB={[[-99, "neutral"], [c("whale3", 6), "curious"]]}
+            talkA={[[c("whale3", 5), c("whale3", 9) + 0.2]]} />
         </Cam>
       );
     },
@@ -377,23 +415,25 @@ const shots: Shot[] = [
       );
     },
   },
-  /* "and the whole group woke up at once." — everyone, eyes wide, scattering */
+  /* "and the whole group woke up at once." — above the surface: every head's eyes snap open,
+     the boat rocks, the scientists' faces drop */
   {
     at: c("whale4", 5),
     render: ({ t }) => {
       const wake = c("whale4", 9);
-      const scatter = ease(t, wake + 0.25, wake + 1.3);
+      const jolt = bell(t, wake, wake + 0.7);
+      const WAKE: [number, Mood][] = [[-99, "closed"], [wake, "wide"]];
       return (
-        <Cam t={t} z={1.05} shake={16 * bell(t, wake, wake + 0.6)}>
-          <PaintedDeep t={t} />
-          {[[220, 1160, 520, 88, -1], [560, 1080, 700, 90, 0], [900, 1180, 540, 92, 1]].map(([x, y, w, r, d], i) => (
-            <Actor key={i} a={A.whale} t={t} x={x + d * 500 * scatter} y={y + 260 * scatter} w={w} rot={r - d * 40 * scatter} bob={4} bobRate={0.3}
-              moods={[[-99, i === 1 ? "wide" : "closed"], [wake, "wide"]]} />
-          ))}
-          <Actor a={A.boat} t={t} x={600} y={150} w={460} bob={6} bobRate={1.1} rot={Math.sin(t * 2) * 2} />
-          <Pop t={t} at={wake} x={220} y={560}><Mark text="!" size={170} /></Pop>
-          <Pop t={t} at={wake + 0.08} x={560} y={480}><Mark text="!" size={190} /></Pop>
-          <Pop t={t} at={wake + 0.16} x={900} y={580}><Mark text="!" size={170} /></Pop>
+        <Cam t={t} z={1.4} x={480} y={1060} shake={18 * jolt}>
+          <Backdrop src={IMG + "bg-sea.jpg"} t={t} />
+          <WhaleHead t={t} x={820} water={1000} w={300} moods={WAKE} rock={-14 * jolt} />
+          <WhaleHead t={t} x={660} water={1040} w={340} moods={[[-99, "wide"]]} rock={10 * jolt} />
+          <WhaleHead t={t} x={720} water={1200} w={480} moods={WAKE} rock={8 * jolt} />
+          <ResearchBoat t={t} x={300} y={1260} w={560} rot={Math.sin(t * 9) * 5 * jolt + Math.sin(t * 1.6) * 2}
+            facesA={[[-99, "worried"], [wake, "shocked"]]} facesB={[[-99, "worried"], [wake + 0.1, "shocked"]]} gaze={[0.7, 0.1]} />
+          <Pop t={t} at={wake} x={830} y={800}><Mark text="!" size={110} /></Pop>
+          <Pop t={t} at={wake + 0.08} x={680} y={840}><Mark text="!" size={120} /></Pop>
+          <Pop t={t} at={wake + 0.16} x={300} y={780}><Mark text="!" size={110} color="#fff" /></Pop>
         </Cam>
       );
     },

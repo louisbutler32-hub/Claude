@@ -151,6 +151,7 @@ import { Ww1Short, WW1_FPS, WW1_FRAMES } from "./geo/ww1/Ww1Short";
 import { WaterlooShort, WATERLOO_FPS, WATERLOO_FRAMES } from "./geo/waterloo/WaterlooShort";
 import { TexasShort, TEXAS_FPS, TEXAS_FRAMES } from "./geo/texas/TexasShort";
 import { StatesShort, STATES_FPS, STATES_FRAMES } from "./geo/states/StatesShort";
+import { PeopleSheet as PinsPeopleSheet } from "./pins/people";
 import { SleepShort as PinsSleepShort, SleepThumb as PinsSleepThumb, SLEEP_FPS as PINS_SLEEP_FPS, SLEEP_FRAMES as PINS_SLEEP_FRAMES } from "./pins/sleep/SleepShort";
 
 export const RemotionRoot: React.FC = () => {
@@ -276,6 +277,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Akki-Fear" component={FearShort} durationInFrames={FEAR_FRAMES} fps={24} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Akki-Fear-Thumbnail" component={FearThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="Pins-Sleep" component={PinsSleepShort} durationInFrames={PINS_SLEEP_FRAMES} fps={PINS_SLEEP_FPS} width={1080} height={1920} defaultProps={{ audio: "audio/pins-sleep-mix.mp3", captions: true }} />
+      <Composition id="Pins-People-Sheet" component={PinsPeopleSheet} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Pins-Sleep-Thumbnail" component={PinsSleepThumb} durationInFrames={1} fps={PINS_SLEEP_FPS} width={1080} height={1920} />
       <Composition id="Akki-Debt" component={DebtShort} durationInFrames={DEBT_FRAMES} fps={24} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Akki-Debt-Thumbnail" component={DebtThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
