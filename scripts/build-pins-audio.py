@@ -4,6 +4,10 @@
     python3 scripts/build-pins-audio.py sleep                      # placeholder voice (edge-tts)
     python3 scripts/build-pins-audio.py sleep --vo take1.mp3 [take2.mp3 ...]   # a real recording
     python3 scripts/build-pins-audio.py sleep --vo take1.mp3 --check            # just report coverage
+    python3 scripts/build-pins-audio.py sleep --vo take1.mp3 --max-pause 0      # keep the read's own pauses
+
+Pauses in a recording longer than max_pause (script.json, default 0.3 s) are
+cut down to it: the reference runs with no dead air.
 
 With --vo, the recording(s) are joined in order into
 public/audio/pins-<episode>-vo.wav (gitignored: the read is licensed to the
@@ -186,10 +190,37 @@ def norm(w):
     return re.sub(r"[^a-z0-9]", "", w.lower())
 
 
-def join_takes(paths, out, gap=0.25):
+def tighten(x, max_pause, floor_db=-45.0, hop=0.01):
+    """cut every silence longer than max_pause down to max_pause, half kept at each edge
+    so word tails and breaths in are never clipped"""
+    n = int(hop * SR)
+    frames = len(x) // n
+    rms = np.sqrt(np.mean(x[:frames * n].reshape(frames, n) ** 2, axis=1) + 1e-12)
+    quiet = 20 * np.log10(rms) < floor_db
+    keep = np.ones(len(x), bool)
+    i = 0
+    while i < frames:
+        if not quiet[i]:
+            i += 1
+            continue
+        j = i
+        while j < frames and quiet[j]:
+            j += 1
+        if (j - i) * hop > max_pause and i > 0 and j < frames:
+            half = int(max_pause / 2 / hop)
+            keep[(i + half) * n:(j - half) * n] = False
+        i = j
+    return x[keep]
+
+
+def join_takes(paths, out, gap=0.25, max_pause=None):
+    """join the takes in order; with max_pause, every pause longer than that is cut down to it
+    (the reference runs with no dead air: a breath between sentences, never a full second)"""
     clips = [decode(p) for p in paths]
     pad = np.zeros(N(gap), np.float32)
     joined = np.concatenate([x for c in clips for x in (c, pad)][:-1]) if clips else np.zeros(0, np.float32)
+    if max_pause:
+        joined = tighten(joined, max_pause)
     tmp = out + ".f32"
     joined.astype(np.float32).tofile(tmp)
     subprocess.run([FF, "-v", "error", "-y", "-f", "f32le", "-ac", "1", "-ar", str(SR), "-i", tmp, out], check=True)
@@ -255,9 +286,14 @@ def main():
     args = sys.argv[2:]
     vo_path = os.path.join(ROOT, "public", "audio", f"pins-{ep}-vo.wav")
     if "--vo" in args:
-        takes = [a for a in args[args.index("--vo") + 1:] if not a.startswith("--")]
+        takes = []
+        for a in args[args.index("--vo") + 1:]:
+            if a.startswith("--"):
+                break
+            takes.append(a)
+        max_pause = float(args[args.index("--max-pause") + 1]) if "--max-pause" in args else spec.get("max_pause", 0.3)
         os.makedirs(os.path.dirname(vo_path), exist_ok=True)
-        join_takes(takes, vo_path)
+        join_takes(takes, vo_path, max_pause=max_pause or None)
     recorded = os.path.exists(vo_path) and "--tts" not in args
 
     t = lead_in

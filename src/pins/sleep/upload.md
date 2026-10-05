@@ -41,7 +41,7 @@ under the hook) is what most people see.
 
 | field | value |
 |---|---|
-| Aspect | 9:16, 1080×1920, ~50 s, 30 fps (a Short) |
+| Aspect | 9:16, 1080×1920, 58.4 s, 30 fps (a Short) |
 | Category | Pets & Animals |
 | Audience | **not made for kids**. The format is general-audience animal facts (the reference channel covers death and mating too). This episode alone would be fine for kids, so flip it if it ships on a kids channel. |
 | Chapters | none, because Shorts don't show them |
@@ -68,10 +68,17 @@ comment that carries it.
 
 ## Audio
 
-The narration is `edge-tts` (en-US-AndrewNeural, +12%). It's for timing
-the edit only and isn't licensed for shipping. Drop the real voice track in
-at `public/audio/pins-sleep-mix.mp3`. If the new read runs at a different
-speed, re-time `timing.json` to it: run `scripts/align-words.py`, or record
-to the same script and rebuild with `npm run pins:sleep:audio`. The music
-bed and SFX are synthesised in `scripts/build-pins-audio.py`, so there's
-nothing to license.
+The narration is the channel's ElevenLabs read ("Revenant – Young Epic
+Narrator", Multilingual v2), licensed to the channel, not the repo. It's
+kept out of git: the take lives in `.vo-takes/sleep-2-frigate-whales.mp3`
+(the full script in one read), and the mix is at
+`public/audio/pins-sleep-mix.mp3`. Pauses longer than 0.3 s were trimmed to
+0.3 s (67.6 s read → 58.4 s Short); the delivery and pitch are untouched.
+The captions and every cut are timed to this read by faster-whisper. To
+rebuild:
+
+    python3 scripts/build-pins-audio.py sleep --vo .vo-takes/sleep-2-frigate-whales.mp3
+    npm run pins:sleep
+
+The music bed and SFX are synthesised in `scripts/build-pins-audio.py`, so
+there's nothing to license there.
