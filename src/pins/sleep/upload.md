@@ -60,7 +60,7 @@ under the hook) is what most people see.
 | boat | White empty boat floating on turquoise sea waters | Horia Varlan | CC BY 2.0 | https://www.flickr.com/photos/10361931@N06/4777131568 |
 | bg-sea | coeficiente de reflexión | bachmont | CC BY 2.0 | https://www.flickr.com/photos/8845870@N07/2850001033 |
 | bg-kelp | Kelp of Cat Rock, Anacapa Island | NOAA's National Ocean Service | CC BY 2.0 | https://www.flickr.com/photos/40322276@N04/4115872878 |
-| bg-sky | Blue Sky & White Cloud | Honou | CC BY 2.0 | https://www.flickr.com/photos/9186550@N08/2703888962 |
+| bg-sky | Blue sky, white clouds | o b s k u r a | CC BY 2.0 | https://www.flickr.com/photos/88575173@N00/2743129961 |
 
 BY-SA photos were cut out and composited, so the video is an adaptation
 under BY-SA. Keep this credit block in the description, or link a pinned

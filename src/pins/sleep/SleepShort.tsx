@@ -1,8 +1,8 @@
 import React from "react";
 import { AbsoluteFill, Audio, staticFile } from "remotion";
 import {
-  Actor, Asset, Backdrop, Bonk, Calendar, Cam, Captions, Chip, Clock, Current, Heart, H, Mark, Mood, PaintedDeep, Pop, Shot, ShotPlayer,
-  SplitBrain, Timing, W, Zzz, bell, clamp01, cue, ease, lerp, loadPinsFonts, useT,
+  Actor, Arrow, Asset, Backdrop, Bonk, Brand, Calendar, Cam, Chip, Clock, Current, Heart, H, Mark, Mood, PaintedDeep, Pop, RedX, Shot, ShotPlayer,
+  SplitBrain, Timing, W, WordCaption, Zzz, bell, clamp01, cue, ease, lerp, loadPinsFonts, useT,
 } from "../engine";
 import TIMING from "./timing.json";
 
@@ -102,6 +102,20 @@ const shots: Shot[] = [
     ),
   },
 
+  /* "so nobody drifts away." — the pair stays put while a lone one drifts off, struck out */
+  {
+    at: c("otter2", 7),
+    render: ({ t, u }) => (
+      <Cam t={t} z={1.0 + 0.05 * ease(u, 0, 2)}>
+        <Backdrop src={IMG + "bg-sea.jpg"} t={t} flip />
+        <Current t={t} x={60} y={1080} w={960} dir={1} />
+        <Actor a={A.drifter} t={t} x={lerp(700, 900, ease(u, 0, 2))} y={560} w={420} rot={-4} bob={6} moods={SLEEP} opacity={0.85} />
+        <Pop t={t} at={c("otter2", 9)} x={800} y={560}><RedX t={t} at={c("otter2", 9)} size={300} /></Pop>
+        <Actor a={A.hold} t={t} x={480} y={880} w={760} rot={-4} bob={8} bobRate={0.7} moods={SLEEP} />
+      </Cam>
+    ),
+  },
+
   /* "Some even wrap themselves in kelp, like a blanket" */
   {
     at: c("otter3", 0),
@@ -113,9 +127,13 @@ const shots: Shot[] = [
           <Actor a={A.otter} t={t} x={540} y={940} w={880} rot={-8} bob={10} bobRate={0.8} moods={SLEEP}>
             <svg viewBox="0 0 100 70" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", overflow: "visible" }}>
               <path d="M 38 46 C 30 70, 52 90, 40 130" fill="none" stroke="#5f8a1e" strokeWidth={4} strokeLinecap="round" strokeDasharray={120} strokeDashoffset={120 * (1 - wrap)} />
-              {[[28, 56], [48, 43], [66, 31]].map(([cx, cy], i) => (
-                <path key={i} d={`M ${cx - 13} ${cy - 15} C ${cx - 2} ${cy - 10}, ${cx + 6} ${cy + 2}, ${cx + 12} ${cy + 15}`} fill="none" stroke="#5f8a1e" strokeWidth={6.5} strokeLinecap="round"
-                  strokeDasharray={60} strokeDashoffset={60 * (1 - clamp01(wrap * 3 - i))} style={{ filter: "drop-shadow(0 1px 0 #2d4a0a)" }} />
+              {[[34, 52], [56, 38]].map(([cx, cy], i) => (
+                <g key={i} style={{ filter: "drop-shadow(0 2px 1px rgba(0,0,0,0.45))" }}>
+                  <path d={`M ${cx - 16} ${cy - 18} C ${cx - 4} ${cy - 8}, ${cx + 4} ${cy + 6}, ${cx + 14} ${cy + 18}`} fill="none" stroke="#4f6f17" strokeWidth={13} strokeLinecap="round"
+                    strokeDasharray={60} strokeDashoffset={60 * (1 - clamp01(wrap * 2 - i))} />
+                  <path d={`M ${cx - 16} ${cy - 18} C ${cx - 4} ${cy - 8}, ${cx + 4} ${cy + 6}, ${cx + 14} ${cy + 18}`} fill="none" stroke="#8fb33a" strokeWidth={5} strokeLinecap="round"
+                    strokeDasharray={60} strokeDashoffset={60 * (1 - clamp01(wrap * 2 - i))} opacity={0.8} />
+                </g>
               ))}
             </svg>
           </Actor>
@@ -168,24 +186,59 @@ const shots: Shot[] = [
         <Cam t={t} z={1.05}>
           <Backdrop src={IMG + "bg-sky.jpg"} t={t} blur={1} />
           <Actor a={A.frigate} t={t} x={lerp(1300, 560, fly)} y={lerp(700, 880, fly)} w={860} rot={-4 + Math.sin(t * 2) * 3} bob={20} bobRate={0.9} />
-          <Pop t={t} at={c("frigate1", 10)} x={800} y={430}><Calendar n={Math.round(lerp(1, 60, ease(t, c("frigate1", 10), c("frigate1", 12) + 0.4)))} /></Pop>
-          <Pop t={t} at={c("frigate1", 13)} x={300} y={1150}><Chip text="NO LANDING" size={52} bg="#ff4d4d" color="#fff" /></Pop>
         </Cam>
       );
     },
+  },
+  /* "It can stay in the air for two whole months" — wide, the days ticking over */
+  {
+    at: c("frigate1", 3),
+    render: ({ t, u }) => (
+      <Cam t={t} z={1.02}>
+        <Backdrop src={IMG + "bg-sky.jpg"} t={t} blur={0.8} flip />
+        <Actor a={A.frigate} t={t} x={lerp(860, 330, ease(u, 0, 2.6))} y={860} w={560} rot={-3 + Math.sin(t * 2) * 3} bob={18} bobRate={0.9} />
+        <Pop t={t} at={c("frigate1", 9)} x={790} y={430}><Calendar n={Math.round(lerp(1, 60, ease(t, c("frigate1", 10), c("frigate1", 12) + 0.4)))} /></Pop>
+      </Cam>
+    ),
+  },
+  /* "without landing." — high over open sea, the land struck out */
+  {
+    at: c("frigate1", 13),
+    render: ({ t, u }) => (
+      <Cam t={t} z={1.05 + 0.05 * ease(u, 0, 1)}>
+        <Backdrop src={IMG + "bg-sea.jpg"} t={t} />
+        <Actor a={A.frigate} t={t} x={lerp(700, 420, ease(u, 0, 1.4))} y={420} w={440} rot={Math.sin(t * 2) * 3} bob={12} bobRate={0.9} />
+        <Pop t={t} at={c("frigate1", 13) + 0.1} x={560} y={760}><Arrow t={t} at={c("frigate1", 13) + 0.1} rot={90} size={180} /></Pop>
+        <Pop t={t} at={c("frigate1", 14)} x={560} y={1010}><RedX t={t} at={c("frigate1", 14)} size={320} /></Pop>
+      </Cam>
+    ),
   },
   /* "So it sleeps while flying, in naps that last about twelve seconds," */
   {
     at: c("frigate2", 0),
     render: ({ t, u }) => {
       const nap = c("frigate2", 2);
-      const secs = Math.min(12, Math.max(0, Math.round((t - c("frigate2", 9)) * 9)));
       return (
         <Cam t={t} z={1.15 + 0.1 * ease(u, 0, 3.5)} x={560 + u * 8}>
           <Backdrop src={IMG + "bg-sky.jpg"} t={t} blur={1.5} flip />
           <Actor a={A.frigate} t={t} x={560} y={860} w={820} rot={Math.sin(t * 1.6) * 4} bob={22} bobRate={0.8} moods={[[-99, "open"], [nap, "closed"]]} />
           <Zzz t={t} x={430} y={620} size={70} from={nap} />
-          <Pop t={t} at={c("frigate2", 9)} x={760} y={1170}><Chip text={`⏱ ${secs} SEC`} size={66} /></Pop>
+        </Cam>
+      );
+    },
+  },
+  /* "in naps that last about twelve seconds," — the stopwatch runs to 12 */
+  {
+    at: c("frigate2", 5),
+    render: ({ t, u }) => {
+      const secs = Math.min(12, Math.max(0, Math.round((t - c("frigate2", 9)) * 9)));
+      return (
+        <Cam t={t} z={1.05} x={540 - u * 10}>
+          <Backdrop src={IMG + "bg-sky.jpg"} t={t} blur={0.8} />
+          <Actor a={A.frigate} t={t} x={560} y={560} w={600} rot={Math.sin(t * 1.6) * 4} bob={16} bobRate={0.8} moods={[[-99, "closed"], [c("frigate2", 11) + 0.3, "open"]]} />
+          <Zzz t={t} x={400} y={400} size={56} until={c("frigate2", 11) + 0.3} />
+          <Pop t={t} at={c("frigate2", 5) + 0.1} x={540} y={1000}><Clock t={t} size={300} spin={1} fill={clamp01(secs / 60)} color="#ff7a14" /></Pop>
+          <Pop t={t} at={c("frigate2", 9)} x={540} y={1180}><Chip text={`${secs} SEC`} size={62} /></Pop>
         </Cam>
       );
     },
@@ -216,25 +269,51 @@ const shots: Shot[] = [
     },
   },
 
-  /* #3 SPERM WHALES — "Finally, sperm whales." swims in, then tips upright */
+  /* #3 SPERM WHALES — "Finally, sperm whales." swims in */
   {
     at: c("whale1", 0),
+    render: ({ t, u }) => (
+      <Cam t={t} z={1.05}>
+        <PaintedDeep t={t} />
+        <Actor a={A.whale} t={t} x={lerp(1400, 540, ease(u, 0, 1.1))} y={960} w={1000} rot={-4} bob={14} bobRate={0.5} />
+      </Cam>
+    ),
+  },
+  /* "They sleep standing straight up, hanging just below the surface" — it tips upright */
+  {
+    at: c("whale1", 3),
     render: ({ t, u }) => {
       const tip = ease(t, c("whale1", 4), c("whale1", 7) + 0.2);
-      const crowd = c("whale1", 13);
       return (
-        <Cam t={t} z={1.05 - 0.1 * ease(t, crowd, crowd + 1.2)}>
+        <Cam t={t} z={1.18 - 0.08 * ease(u, 0, 3)} y={900}>
           <PaintedDeep t={t} />
-          {[[220, 1220, 520, 86], [860, 1180, 560, 92], [120, 760, 380, 89], [930, 700, 400, 87]].map(([x, y, w, r], i) => (
-            <Actor key={i} a={A.whale} t={t} x={x} y={y} w={w} rot={r} enter={crowd + i * 0.18} bob={10} bobRate={0.5 + i * 0.07} moods={SLEEP}
-              tint={i > 1 ? "brightness(0.8) blur(1.5px)" : undefined} opacity={i > 1 ? 0.8 : 1} />
-          ))}
-          <Actor a={A.whale} t={t} x={lerp(1400, 560, ease(u, 0, 1.1))} y={960} w={lerp(980, 900, tip)} rot={90 * tip} bob={12} bobRate={0.5}
+          <Actor a={A.whale} t={t} x={540} y={lerp(960, 900, tip)} w={940} rot={-4 + 94 * tip} bob={12} bobRate={0.5}
             moods={[[-99, "open"], [c("whale1", 5), "closed"]]} />
-          <Zzz t={t} x={620} y={420} size={80} from={c("whale1", 6)} />
+          <Zzz t={t} x={600} y={330} size={80} from={c("whale1", 6)} />
+          <Pop t={t} at={c("whale1", 9)} x={300} y={260}><Arrow t={t} at={c("whale1", 9)} rot={-90} size={150} color="#fff" /></Pop>
         </Cam>
       );
     },
+  },
+  /* "like giant tree trunks." — the whole pod, upright, a trunk beside them for scale */
+  {
+    at: c("whale1", 13),
+    render: ({ t, u }) => (
+      <Cam t={t} z={1.04 - 0.04 * ease(u, 0, 1.5)}>
+        <PaintedDeep t={t} />
+        {[[200, 1180, 520, 88], [880, 1160, 560, 92], [140, 720, 360, 89], [940, 700, 380, 87]].map(([x, y, w, r], i) => (
+          <Actor key={i} a={A.whale} t={t} x={x} y={y} w={w} rot={r} enter={c("whale1", 13) + i * 0.15} bob={10} bobRate={0.5 + i * 0.07} moods={SLEEP}
+            tint={i > 1 ? "brightness(0.8) blur(1.5px)" : undefined} opacity={i > 1 ? 0.8 : 1} />
+        ))}
+        <Actor a={A.whale} t={t} x={540} y={960} w={880} rot={90} bob={12} bobRate={0.5} moods={SLEEP} />
+        <Pop t={t} at={c("whale1", 15)} x={760} y={760}>
+          <svg viewBox="-30 -120 60 240" style={{ position: "absolute", left: -60, top: -240, width: 120, height: 480, overflow: "visible" }}>
+            <path d="M -18 120 L -14 -110 Q 0 -122 14 -110 L 18 120 Z" fill="#7a5132" stroke="#111" strokeWidth={4} />
+            <path d="M -6 100 L -4 40 M 6 60 L 5 -20 M -5 0 L -3 -70 M 4 -50 L 3 -100" stroke="#4a2f1c" strokeWidth={3} strokeLinecap="round" />
+          </svg>
+        </Pop>
+      </Cam>
+    ),
   },
   /* "The whole group goes completely still for up to fifteen minutes." */
   {
@@ -264,29 +343,54 @@ const shots: Shot[] = [
           ))}
           {/* the boat on the surface, seen from just under it */}
           <Actor a={A.boat} t={t} x={lerp(-200, 620, drift)} y={150} w={460} bob={6} bobRate={1.1} rot={Math.sin(t * 2) * 2} />
-          <Pop t={t} at={c("whale3", 10)} x={560} y={460}><Mark text="Zzz" size={110} color="#bfe3ff" /></Pop>
-          <Pop t={t} at={c("whale3", 12)} x={820} y={330}><Mark text="?" size={150} /></Pop>
         </Cam>
       );
     },
   },
-  /* "Until the boat bumped one, and the whole group woke up at once." */
+  /* "the whales didn't even notice." — tight on a sleeping face, the boat's shadow overhead */
+  {
+    at: c("whale3", 10),
+    render: ({ t, u }) => (
+      <>
+        <Cam t={t} z={2.0 + 0.15 * ease(u, 0, 2)} x={575} y={880}>
+          <PaintedDeep t={t} />
+          <Actor a={A.whale} t={t} x={560} y={1080} w={700} rot={90} bob={4} bobRate={0.3} moods={SLEEP} />
+          <Zzz t={t} x={600} y={640} size={40} />
+        </Cam>
+        <Pop t={t} at={c("whale3", 12)} x={820} y={520}><Mark text="?" size={170} /></Pop>
+      </>
+    ),
+  },
+  /* "Until the boat bumped one," — close on the bump */
   {
     at: c("whale4", 0),
     render: ({ t }) => {
       const bump = c("whale4", 3);
-      const wake = c("whale4", 9);
-      const shake = 26 * bell(t, bump, bump + 0.5) + 14 * bell(t, wake, wake + 0.6);
-      const scatter = ease(t, wake + 0.25, wake + 1.4);
       return (
-        <Cam t={t} z={1.1} shake={shake}>
+        <Cam t={t} z={1.5} y={720} shake={28 * bell(t, bump, bump + 0.5)}>
+          <PaintedDeep t={t} />
+          <Actor a={A.whale} t={t} x={560} y={1080} w={700} rot={90} bob={4} bobRate={0.3} moods={[[-99, "closed"], [bump + 0.08, "wide"]]} />
+          <Actor a={A.boat} t={t} x={lerp(420, 600, ease(t, c("whale4", 0), bump))} y={190 + 30 * bell(t, bump, bump + 0.3)} w={460} bob={6} bobRate={1.1}
+            rot={Math.sin(t * 2) * 2 + 10 * bell(t, bump, bump + 0.4)} />
+          <Pop t={t} at={bump} until={bump + 0.8} x={590} y={420}><Bonk size={240} /></Pop>
+        </Cam>
+      );
+    },
+  },
+  /* "and the whole group woke up at once." — everyone, eyes wide, scattering */
+  {
+    at: c("whale4", 5),
+    render: ({ t }) => {
+      const wake = c("whale4", 9);
+      const scatter = ease(t, wake + 0.25, wake + 1.3);
+      return (
+        <Cam t={t} z={1.05} shake={16 * bell(t, wake, wake + 0.6)}>
           <PaintedDeep t={t} />
           {[[220, 1160, 520, 88, -1], [560, 1080, 700, 90, 0], [900, 1180, 540, 92, 1]].map(([x, y, w, r, d], i) => (
             <Actor key={i} a={A.whale} t={t} x={x + d * 500 * scatter} y={y + 260 * scatter} w={w} rot={r - d * 40 * scatter} bob={4} bobRate={0.3}
-              moods={[[-99, "closed"], [i === 1 ? bump + 0.1 : wake, "wide"]]} />
+              moods={[[-99, i === 1 ? "wide" : "closed"], [wake, "wide"]]} />
           ))}
-          <Actor a={A.boat} t={t} x={600} y={150 + 30 * bell(t, bump, bump + 0.3)} w={460} bob={6} bobRate={1.1} rot={Math.sin(t * 2) * 2 + 10 * bell(t, bump, bump + 0.4)} />
-          <Pop t={t} at={bump} until={bump + 0.7} x={600} y={330}><Bonk size={240} /></Pop>
+          <Actor a={A.boat} t={t} x={600} y={150} w={460} bob={6} bobRate={1.1} rot={Math.sin(t * 2) * 2} />
           <Pop t={t} at={wake} x={220} y={560}><Mark text="!" size={170} /></Pop>
           <Pop t={t} at={wake + 0.08} x={560} y={480}><Mark text="!" size={190} /></Pop>
           <Pop t={t} at={wake + 0.16} x={900} y={580}><Mark text="!" size={170} /></Pop>
@@ -298,13 +402,14 @@ const shots: Shot[] = [
 
 /* ------------------------------------------------------------ the short */
 
-export const SleepShort: React.FC<{ audio?: string | null; captions?: boolean }> = ({ audio = "audio/pins-sleep-mix.mp3", captions = true }) => {
+export const SleepShort: React.FC<{ audio?: string | null; captions?: boolean; logo?: string; brand?: string }> = ({ audio = "audio/pins-sleep-mix.mp3", captions = true, logo, brand }) => {
   loadPinsFonts();
   const t = useT();
   return (
     <AbsoluteFill style={{ background: "#0b2a4d" }}>
       <ShotPlayer shots={shots} t={t} total={T.duration} />
-      {captions && <Captions T={T} t={t} />}
+      <Brand logo={logo} name={brand} />
+      {captions && <WordCaption T={T} t={t} />}
       {audio && <Audio src={staticFile(audio)} />}
     </AbsoluteFill>
   );
@@ -328,8 +433,8 @@ export const SleepThumb: React.FC = () => {
         <Actor a={A.whale} t={t} x={760} y={1420} w={760} rot={91} bob={0} moods={SLEEP} />
       </AbsoluteFill>
       <div style={{ position: "absolute", left: 0, right: 0, top: H / 2 - 8, height: 16, background: "#fff" }} />
-      <div style={{ position: "absolute", left: 50, right: 50, top: H / 2 - 150, textAlign: "center", fontFamily: "PoppinsBlack", fontSize: 128, lineHeight: 1,
-        color: "#ffd400", WebkitTextStroke: "16px #000", paintOrder: "stroke fill", textTransform: "uppercase", filter: "drop-shadow(0 8px 0 rgba(0,0,0,0.5))" }}>
+      <div style={{ position: "absolute", left: 50, right: 50, top: H / 2 - 170, textAlign: "center", fontFamily: "Anton", fontSize: 170, lineHeight: 1,
+        color: "#ff7a14", WebkitTextStroke: "16px #1b0f05", paintOrder: "stroke fill", textTransform: "uppercase", filter: "drop-shadow(0 8px 2px rgba(0,0,0,0.55))" }}>
         They sleep<br /><span style={{ color: "#fff" }}>like this?!</span>
       </div>
     </AbsoluteFill>

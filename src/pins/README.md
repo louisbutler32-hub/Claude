@@ -3,8 +3,9 @@
 The reference is https://www.youtube.com/@PinsGuy/shorts (388K subs, 62
 Shorts, ~8.9M average views, top Short 50M). Every number below was measured
 off its top Shorts ("Three love stories", "Animals that mourn like Us",
-"When humans like something way too much!"), so treat them as findings,
-not preferences.
+"When humans like something way too much!") and off 48 of its own frames
+(YouTube's auto-thumbnails at 25/50/75% of 16 Shorts), so treat them as
+findings, not preferences.
 
 ## The format
 
@@ -13,12 +14,13 @@ not preferences.
 | length | 34–62 s, mostly 44–57 s | `script.json`. Aim for ~130–150 words at +12% rate ≈ 50 s |
 | structure | **"Three animals that …"** hook (≤3 s), then three items, each opened by *First / Next / Finally* (or "And what about…"), ~15 s each | `script.json` lines |
 | ending | no outro, no CTA. It stops on the third item's punchline so the Short loops | last line of the script |
-| art | **real photo cutouts** of the animals over photo backdrops (2.5D collage), puppeted with scale/rotate/float | `Actor` + `Backdrop` in `engine.tsx` |
-| faces | big cartoon googly eyes over the real eyes; tears, X-eyes, halos, sweat, "!" / "?" marks | `Eye` moods: open, closed, wide, sad, dead, angry |
-| props | flat cartoon overlays: clocks spinning, calendars, thought bubbles, brain/DNA diagrams, crossed-out icons, hearts | `Clock`, `Calendar`, `SplitBrain`, `Heart`, `Chip`, `Mark`, `Bonk`, `Current`, `Zzz` |
+| art | photoreal animals (theirs look AI-rendered: clean, full-body, centred, often facing camera) composited over **sharp, bright daylight photo backdrops**, puppeted with scale/rotate/float. Underwater sets are a painted teal→navy gradient | `Actor` + `Backdrop` (blur 0.5, slight lift) + `PaintedDeep` |
+| faces | cartoon eyes over the real eyes, white with a **thin** outline and a big pupil, and above all **thick black eyebrows**: worried for sad (inner ends up), a V for angry, raised for shock. Blue tears on sad, sweat drops on shock, X-eyes for dead | `Eye` moods: open, closed, wide, sad, dead, angry. Brows on by default (`Asset.brows`) |
+| props | big **red X** struck over what's ruled out, red pointer arrows, little white hand-lettered notes ("food →"), clocks, calendars, brain/DNA diagrams, hearts, signs | `RedX`, `Arrow`, `Note`, `Clock`, `Calendar`, `SplitBrain`, `Heart`, `Chip`, `Mark`, `Bonk`, `Current`, `Zzz` |
+| branding | a round orange channel logo top-right (~11% of width), the channel name set faint and vertical down one edge | `Brand` (`logo`, `name` props; off until the channel is picked) |
 | camera | constant slow push-ins, pans down/up between sets, a shake on impacts | `Cam` (`z`, `x`, `y`, `shake`) |
 | cuts | hard cuts on the narration beats, one new picture every ~1.5–2.5 s (≈25 shots in 52 s) | `ShotPlayer`: one `Shot` per beat, keyed to a word |
-| captions | bold rounded sans, uppercase, heavy black outline + drop shadow, lower-centre; 2–3 words at a time with the **spoken word in yellow**, the rest white | `Captions` (Poppins Black, `#ffd400`) |
+| captions | **one word at a time**, **orange** (`#ff7a14`), condensed heavy caps with a dark outline and a small drop shadow, centred at **~69% down** the frame. Cap height ~3.6% of the frame; an 8-letter word spans about a third of the width | `WordCaption` (Anton, 100 px). `Captions` (2–3 words, spoken one yellow) is kept for other looks |
 | voice | male, standard American, energetic but warm, fast with no dead air | `edge-tts` `en-US-AndrewNeural` at `+12%` (timing only, swap in a real VO) |
 | music | low plucky/upbeat bed (or soft piano on the sad ones) | synthesised in `build-pins-audio.py` |
 | sfx | cartoon pops, whooshes on each section cut, boings, ticks, animal sounds | cues per line in `script.json` (`"sfx": [[name, word_index]]`) |

@@ -55,10 +55,15 @@ export const loadPinsFonts = () => {
   if (fontsStarted || typeof document === "undefined") return;
   fontsStarted = true;
   const h = delayRender("pins fonts");
-  const face = new FontFace("PoppinsBlack", `url(${staticFile("fonts/Poppins-Black.ttf")}) format("truetype")`, { weight: "900" });
-  face.load().then((f) => { document.fonts.add(f); continueRender(h); }).catch(() => continueRender(h));
+  const faces = [
+    new FontFace("PoppinsBlack", `url(${staticFile("fonts/Poppins-Black.ttf")}) format("truetype")`, { weight: "900" }),
+    new FontFace("Anton", `url(${staticFile("fonts/Anton-Regular.ttf")}) format("truetype")`),
+  ];
+  Promise.all(faces.map((f) => f.load().then((ff) => document.fonts.add(ff)))).then(() => continueRender(h)).catch(() => continueRender(h));
 };
 export const FONT = "PoppinsBlack, Poppins, sans-serif";
+/** the caption face: condensed heavy caps, like the reference's */
+export const CAPTION_FONT = "Anton, Impact, sans-serif";
 
 /* ------------------------------------------------------------ camera */
 
@@ -83,12 +88,12 @@ export const Cam: React.FC<{ t: number; x?: number; y?: number; z?: number; rot?
 /* ------------------------------------------------------------ backdrops */
 
 /** a photo filling a world rect (default: the frame), with a gentle drift of its own */
-export const Backdrop: React.FC<{ src: string; t: number; x?: number; y?: number; w?: number; h?: number; drift?: number; blur?: number; tone?: string; flip?: boolean }> = ({ src, t, x = -W * 0.2, y = -H * 0.2, w = W * 1.4, h = H * 1.4, drift = 0.02, blur = 1.5, tone, flip }) => {
+export const Backdrop: React.FC<{ src: string; t: number; x?: number; y?: number; w?: number; h?: number; drift?: number; blur?: number; tone?: string; flip?: boolean }> = ({ src, t, x = -W * 0.2, y = -H * 0.2, w = W * 1.4, h = H * 1.4, drift = 0.02, blur = 0.5, tone, flip }) => {
   const s = 1.04 + drift * Math.sin(t * 0.25);
   return (
     <div style={{ position: "absolute", left: x, top: y, width: w, height: h, overflow: "hidden" }}>
       <Img src={staticFile(src)} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover",
-        transform: `scale(${s}) ${flip ? "scaleX(-1)" : ""}`, filter: `blur(${blur}px) saturate(1.15)` }} />
+        transform: `scale(${s}) ${flip ? "scaleX(-1)" : ""}`, filter: `blur(${blur}px) saturate(1.18) contrast(1.06) brightness(1.04)` }} />
       {tone && <div style={{ position: "absolute", inset: 0, background: tone }} />}
     </div>
   );
@@ -128,42 +133,66 @@ export const moodAt = (tl: [number, Mood][], t: number): { mood: Mood; since: nu
 
 const INK = "#111";
 
-/** one cartoon eye centred on (0,0), radius r */
-export const Eye: React.FC<{ r: number; mood: Mood; t: number; since: number; look?: [number, number]; seed?: number }> = ({ r, mood, t, since, look = [0, 0], seed = 0 }) => {
+/**
+ * One cartoon eye centred on (0,0), radius r. `side` is -1 for the eye on
+ * the left of the face and 1 for the right, so brows tilt the right way.
+ * The reference leans on brows more than on the eyes themselves: worried
+ * (inner ends up) for sad, a V for angry, raised for shock. Sad cries,
+ * shock sweats.
+ */
+export const Eye: React.FC<{ r: number; mood: Mood; t: number; since: number; look?: [number, number]; seed?: number; side?: number; brows?: boolean }> = ({ r, mood, t, since, look = [0, 0], seed = 0, side = 1, brows = true }) => {
   const pop = 0.75 + 0.25 * over(t, since, since + 0.25);
-  const sw = Math.max(3, r * 0.14);
+  const sw = Math.max(2.5, r * 0.1);
   // blink every few seconds, staggered by seed
   const period = 2.6 + (seed % 3) * 0.7;
   const ph = (t + seed * 0.37) % period;
   const blink = mood === "open" || mood === "sad" || mood === "angry" ? (ph < 0.12 ? 0.12 : 1) : 1;
   const wobble = mood === "wide" ? Math.sin(t * 40) * r * 0.05 : 0;
-  const box = r * 2.6;
+  const box = r * 4;
   const common: React.CSSProperties = { position: "absolute", left: -box / 2, top: -box / 2, width: box, height: box, overflow: "visible", transform: `scale(${pop})` };
+  const vb = `${-box / 2} ${-box / 2} ${box} ${box}`;
+  // brow: inner end (towards the nose) and outer end heights, in r
+  const browY: Partial<Record<Mood, [number, number]>> = { open: [-1.45, -1.45], sad: [-1.75, -1.2], angry: [-1.1, -1.65], wide: [-1.95, -1.8] };
+  const by = browY[mood];
+  const brow = brows && by ? (
+    <path d={`M ${-side * r * 0.95} ${by[0] * r} Q 0 ${((by[0] + by[1]) / 2 - 0.25) * r} ${side * r * 0.95} ${by[1] * r}`} fill="none" stroke={INK} strokeWidth={r * 0.34} strokeLinecap="round" />
+  ) : null;
   if (mood === "closed") {
     return (
-      <svg viewBox={`${-box / 2} ${-box / 2} ${box} ${box}`} style={common}>
-        <path d={`M ${-r} ${-r * 0.1} Q 0 ${r * 0.75} ${r} ${-r * 0.1}`} fill="none" stroke={INK} strokeWidth={sw * 1.5} strokeLinecap="round" />
-        <path d={`M ${-r * 0.55} ${r * 0.28} l ${-r * 0.18} ${r * 0.3} M 0 ${r * 0.33} l 0 ${r * 0.34} M ${r * 0.55} ${r * 0.28} l ${r * 0.18} ${r * 0.3}`} stroke={INK} strokeWidth={sw * 0.8} strokeLinecap="round" />
+      <svg viewBox={vb} style={common}>
+        <path d={`M ${-r} ${-r * 0.1} Q 0 ${r * 0.75} ${r} ${-r * 0.1}`} fill="none" stroke={INK} strokeWidth={sw * 2} strokeLinecap="round" />
+        <path d={`M ${-r * 0.55} ${r * 0.28} l ${-r * 0.18} ${r * 0.3} M 0 ${r * 0.33} l 0 ${r * 0.34} M ${r * 0.55} ${r * 0.28} l ${r * 0.18} ${r * 0.3}`} stroke={INK} strokeWidth={sw * 1.1} strokeLinecap="round" />
       </svg>
     );
   }
   if (mood === "dead") {
     return (
-      <svg viewBox={`${-box / 2} ${-box / 2} ${box} ${box}`} style={common}>
-        <path d={`M ${-r * 0.7} ${-r * 0.7} L ${r * 0.7} ${r * 0.7} M ${r * 0.7} ${-r * 0.7} L ${-r * 0.7} ${r * 0.7}`} stroke={INK} strokeWidth={sw * 1.8} strokeLinecap="round" />
+      <svg viewBox={vb} style={common}>
+        <path d={`M ${-r * 0.7} ${-r * 0.7} L ${r * 0.7} ${r * 0.7} M ${r * 0.7} ${-r * 0.7} L ${-r * 0.7} ${r * 0.7}`} stroke={INK} strokeWidth={sw * 2.6} strokeLinecap="round" />
       </svg>
     );
   }
   const rr = mood === "wide" ? r * 1.22 : r;
-  const pr = mood === "wide" ? r * 0.28 : r * 0.5;
-  const px = look[0] * r * 0.38 + wobble, py = look[1] * r * 0.38;
+  const pr = mood === "wide" ? r * 0.3 : r * 0.58;
+  const px = look[0] * r * 0.34 + wobble, py = look[1] * r * 0.34;
+  const tearK = (t * 0.9 + seed * 0.3) % 1;
   return (
-    <svg viewBox={`${-box / 2} ${-box / 2} ${box} ${box}`} style={{ ...common, transform: `scale(${pop}) scaleY(${blink})` }}>
-      <ellipse cx={0} cy={0} rx={rr} ry={rr * 1.08} fill="#fff" stroke={INK} strokeWidth={sw} />
-      <circle cx={px} cy={py} r={pr} fill={INK} />
-      <circle cx={px - pr * 0.35} cy={py - pr * 0.4} r={pr * 0.32} fill="#fff" />
-      {mood === "sad" && <path d={`M ${-rr * 1.1} ${-rr * 0.2} Q 0 ${-rr * 0.85} ${rr * 1.1} ${-rr * 0.75} L ${rr * 1.1} ${-rr * 1.3} L ${-rr * 1.1} ${-rr * 1.3} Z`} fill="#6b5a4a" stroke={INK} strokeWidth={sw * 0.8} />}
-      {mood === "angry" && <path d={`M ${-rr * 1.1} ${-rr * 0.95} L ${rr * 1.1} ${-rr * 0.15} L ${rr * 1.1} ${-rr * 1.3} L ${-rr * 1.1} ${-rr * 1.3} Z`} fill="#5a4636" stroke={INK} strokeWidth={sw * 0.8} />}
+    <svg viewBox={vb} style={common}>
+      <g transform={`scale(1 ${blink})`}>
+        <ellipse cx={0} cy={0} rx={rr} ry={rr * 1.08} fill="#fff" stroke={INK} strokeWidth={sw} />
+        <circle cx={px} cy={py} r={pr} fill={INK} />
+        <circle cx={px - pr * 0.35} cy={py - pr * 0.4} r={pr * 0.3} fill="#fff" />
+        {mood === "sad" && <path d={`M ${-rr * 1.05} ${-rr * 0.05} Q 0 ${-rr * 0.55} ${rr * 1.05} ${-rr * 0.05} L ${rr * 1.05} ${-rr * 1.2} L ${-rr * 1.05} ${-rr * 1.2} Z`} fill="#fff" stroke={INK} strokeWidth={sw} />}
+      </g>
+      {brow}
+      {mood === "sad" && (
+        <path d={`M ${side * rr * 0.3} ${rr * 0.95 + tearK * rr * 2.2} q ${-rr * 0.25} ${rr * 0.4} 0 ${rr * 0.55} q ${rr * 0.25} ${-rr * 0.15} 0 ${-rr * 0.55} Z`}
+          fill="#5fb8ff" stroke="#1d5f9c" strokeWidth={sw * 0.6} opacity={1 - tearK * 0.6} />
+      )}
+      {mood === "wide" && side > 0 && (
+        <path d={`M ${rr * 1.6} ${-rr * 1.3} q ${-rr * 0.35} ${rr * 0.55} 0 ${rr * 0.75} q ${rr * 0.35} ${-rr * 0.2} 0 ${-rr * 0.75} Z`} fill="#8fd3ff" stroke="#1d5f9c" strokeWidth={sw * 0.7}
+          transform={`translate(0 ${((t * 1.4) % 1) * rr * 0.6})`} />
+      )}
     </svg>
   );
 };
@@ -171,7 +200,7 @@ export const Eye: React.FC<{ r: number; mood: Mood; t: number; since: number; lo
 /* ------------------------------------------------------------ cutouts */
 
 /** a cutout's natural size (from public/images/<ep>/credits.json) and where its eyes sit, in 0–1 of the image */
-export type Asset = { src: string; w: number; h: number; eyes?: EyeSpec[] };
+export type Asset = { src: string; w: number; h: number; eyes?: EyeSpec[]; brows?: boolean };
 
 export type ActorProps = {
   a: Asset;
@@ -210,11 +239,15 @@ export const Actor: React.FC<ActorProps> = ({ a, t, x, y, w, rot = 0, flip, ente
      <div style={{ position: "absolute", inset: 0, transform: `scale(${s * (1 + sq)}, ${s * (1 - sq)})`, transformOrigin: "50% 80%" }}>
       <div style={{ position: "absolute", inset: 0, transform: flip ? "scaleX(-1)" : undefined }}>
         <Img src={staticFile(a.src)} style={{ width: "100%", height: "100%", filter: `drop-shadow(0 10px 14px rgba(0,0,0,0.35)) ${tint ?? ""}` }} />
-        {(a.eyes ?? []).map((e, i) => (
-          <div key={i} style={{ position: "absolute", left: e.x * w, top: e.y * h, width: 0, height: 0, transform: flip ? "scaleX(-1)" : undefined }}>
-            <Eye r={e.r * w} mood={e.mood ?? mood} since={since} t={t} look={look ?? [flip ? -0.4 : 0.4, 0]} seed={i + Math.round(a.w)} />
-          </div>
-        ))}
+        {(a.eyes ?? []).map((e, i, all) => {
+          const mid = all.reduce((m, q) => m + q.x, 0) / all.length;
+          const side = (all.length < 2 ? 1 : e.x < mid ? -1 : 1) * (flip ? -1 : 1);
+          return (
+            <div key={i} style={{ position: "absolute", left: e.x * w, top: e.y * h, width: 0, height: 0, transform: flip ? "scaleX(-1)" : undefined }}>
+              <Eye r={e.r * w} mood={e.mood ?? mood} since={since} t={t} look={look ?? [flip ? -0.4 : 0.4, 0]} seed={i + Math.round(a.w)} side={side} brows={a.brows ?? true} />
+            </div>
+          );
+        })}
       </div>
       {children}
      </div>
@@ -334,7 +367,83 @@ export const Current: React.FC<{ t: number; x: number; y: number; w?: number; di
   </div>
 );
 
+/** the reference's big red X, struck over whatever is being ruled out */
+export const RedX: React.FC<{ t: number; at: number; size?: number }> = ({ t, at, size = 300 }) => {
+  const a = clamp01((t - at) / 0.12), b = clamp01((t - at - 0.12) / 0.12);
+  const L = 80;
+  return (
+    <Svg size={size}>
+      <line x1={-L / 2} y1={-L / 2} x2={-L / 2 + L * a} y2={-L / 2 + L * a} stroke="#e8171b" strokeWidth={13} strokeLinecap="round" style={{ filter: "drop-shadow(0 2px 2px rgba(0,0,0,0.4))" }} />
+      {b > 0 && <line x1={L / 2} y1={-L / 2} x2={L / 2 - L * b} y2={-L / 2 + L * b} stroke="#e8171b" strokeWidth={13} strokeLinecap="round" style={{ filter: "drop-shadow(0 2px 2px rgba(0,0,0,0.4))" }} />}
+    </Svg>
+  );
+};
+
+/** a red pointer arrow (rot: degrees, 0 = pointing right), drawn on with a little nudge */
+export const Arrow: React.FC<{ t: number; at: number; size?: number; rot?: number; color?: string }> = ({ t, at, size = 160, rot = 0, color = "#e8171b" }) => {
+  const k = ease(t, at, at + 0.2);
+  const nudge = Math.sin((t - at) * 9) * 4 * (t > at + 0.2 ? 1 : 0);
+  return (
+    <Svg size={size}>
+      <g transform={`rotate(${rot}) translate(${nudge} 0)`} opacity={k}>
+        <line x1={-40} y1={0} x2={-40 + 70 * k} y2={0} stroke={color} strokeWidth={10} strokeLinecap="round" />
+        {k > 0.9 && <path d="M 14 -18 L 36 0 L 14 18" fill="none" stroke={color} strokeWidth={10} strokeLinecap="round" strokeLinejoin="round" />}
+      </g>
+    </Svg>
+  );
+};
+
+/** a small hand-lettered note with an arrow, like the reference's "food →" labels */
+export const Note: React.FC<{ text: string; size?: number; color?: string; rot?: number }> = ({ text, size = 54, color = "#fff", rot = -8 }) => (
+  <div style={{ position: "absolute", transform: `translate(-50%, -50%) rotate(${rot}deg)`, whiteSpace: "nowrap", fontFamily: FONT, fontSize: size, color,
+    textShadow: "0 3px 0 rgba(0,0,0,0.55), 0 0 12px rgba(0,0,0,0.5)" }}>{text}</div>
+);
+
+/**
+ * Channel branding, as the reference carries it: a round logo top-right and
+ * the channel name set faint and vertical down one edge. Both optional;
+ * the line has no channel yet, so a short passes nothing and this draws nothing.
+ */
+export const Brand: React.FC<{ logo?: string; name?: string }> = ({ logo, name }) => (
+  <>
+    {logo && <Img src={staticFile(logo)} style={{ position: "absolute", right: 40, top: 150, width: 120, height: 120, borderRadius: 999, boxShadow: "0 4px 12px rgba(0,0,0,0.35)" }} />}
+    {name && (
+      <div style={{ position: "absolute", left: 18, top: H * 0.3, writingMode: "vertical-rl", fontFamily: FONT, fontSize: 30, letterSpacing: "0.55em", color: "rgba(255,255,255,0.28)" }}>
+        {name.toUpperCase()}
+      </div>
+    )}
+  </>
+);
+
 /* ------------------------------------------------------------ captions */
+
+/**
+ * The reference's caption: ONE word at a time, orange, condensed heavy caps
+ * with a dark outline, a third of the way up from the bottom (~69% down),
+ * popping on as it's spoken. Measured off its frames: cap height ~3.6% of
+ * the frame, an 8-letter word spans ~a third of the width.
+ */
+export const WordCaption: React.FC<{ T: Timing; t: number; y?: number; size?: number }> = ({ T, t, y = H * 0.69, size = 100 }) => {
+  let hit: Word | null = null;
+  for (const l of T.lines) {
+    for (let i = 0; i < l.words.length; i++) {
+      const w = l.words[i], next = l.words[i + 1];
+      const end = next ? next[1] : w[2] + 0.25;
+      if (t >= w[1] - 0.03 && t < end) hit = w;
+    }
+  }
+  if (!hit) return null;
+  const pop = 0.7 + 0.3 * over(t, hit[1] - 0.03, hit[1] + 0.12);
+  return (
+    <div style={{ position: "absolute", left: 0, right: 0, top: y, transform: `translateY(-50%) scale(${pop})`, textAlign: "center", fontFamily: CAPTION_FONT, fontSize: size,
+      lineHeight: 1, textTransform: "uppercase", letterSpacing: "0.01em", color: "#ff7a14",
+      WebkitTextStroke: `${size * 0.1}px #1b0f05`, paintOrder: "stroke fill", filter: "drop-shadow(0 4px 2px rgba(0,0,0,0.55))" }}>
+      {hit[0].replace(/[,.?!;:]+$/, "")}
+    </div>
+  );
+};
+
+/** the phrase style (2–3 words, spoken one yellow): kept for shorts that want it */
 
 const YELLOW = "#ffd400";
 
