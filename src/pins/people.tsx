@@ -26,6 +26,7 @@ export type PersonLook = {
   beard?: boolean;
   glasses?: boolean;
   prop?: "binoculars" | "clipboard" | "point" | "none";
+  mask?: boolean;       // a diving mask pushed up on the forehead (wetsuit: pass a black jacket and shirt)
 };
 
 const LINE = "#2a1a10";
@@ -57,7 +58,7 @@ export const Person: React.FC<{
 }> = ({ t, x, y, h, look = {}, faces = [[-99, "neutral"]], gaze = [0, 0], talk = [], flip, bob = 0, rot = 0, id = "p" }) => {
   const {
     skin = "#e7b48f", hair = "cap", hat = "#3d6b8f", hairColor = "#3b2516", jacket = "#5b6b3a", shirt = "#d9d2c0",
-    beard = false, glasses = false, prop = "none",
+    beard = false, glasses = false, prop = "none", mask = false,
   } = look;
   const w = (h * 200) / 300;
   const { face, since } = faceAt(faces, t);
@@ -172,6 +173,14 @@ export const Person: React.FC<{
           </g>
         )}
         {hair === "short" && <path d="M 58 60 Q 54 12 100 12 Q 146 12 142 60 Q 136 34 100 32 Q 64 34 58 60 Z" fill={hairColor} stroke={LINE} strokeWidth={3} />}
+        {mask && (
+          <g>
+            <path d="M 56 34 Q 100 26 144 34" fill="none" stroke="#1b1b1b" strokeWidth={7} />
+            <rect x={70} y={14} width={60} height={28} rx={11} fill="#9fd8f5" stroke="#1b1b1b" strokeWidth={5} />
+            <path d="M 78 20 L 88 20" stroke="#fff" strokeWidth={3} strokeLinecap="round" opacity={0.8} />
+            <path d="M 100 14 L 100 42" stroke="#1b1b1b" strokeWidth={4} />
+          </g>
+        )}
 
         {/* eyes */}
         <g transform={`translate(0 ${66}) scale(1 ${blink}) translate(0 ${-66})`}>

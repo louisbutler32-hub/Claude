@@ -415,6 +415,33 @@ export const Brand: React.FC<{ logo?: string; name?: string }> = ({ logo, name }
   </>
 );
 
+/**
+ * A comic speech bubble with its tail pointing at the speaker (tail: the
+ * point, relative to the bubble's centre). `sub` is a small second line
+ * (a translation). `jitter` shakes it, for garbled overheard talk.
+ */
+export const Bubble: React.FC<{ text: string; sub?: string; size?: number; tail?: [number, number]; t?: number; jitter?: number; color?: string }> = ({ text, sub, size = 62, tail = [-80, 120], t = 0, jitter = 0, color = INK }) => {
+  const jx = jitter ? Math.sin(t * 37) * jitter : 0, jy = jitter ? Math.cos(t * 29) * jitter : 0;
+  const w = Math.max(text.length * size * 0.62, (sub?.length ?? 0) * size * 0.34) + size * 1.1;
+  const h = size * (sub ? 2.05 : 1.55);
+  const tx = tail[0], ty = tail[1];
+  const bx = Math.max(-w / 2 + 30, Math.min(w / 2 - 30, tx * 0.4));
+  return (
+    <div style={{ position: "absolute", left: jx, top: jy, width: 0, height: 0 }}>
+      <svg style={{ position: "absolute", left: -w, top: -h, width: w * 2, height: h * 2 + Math.abs(ty), overflow: "visible" }} viewBox={`${-w} ${-h} ${w * 2} ${h * 2 + Math.abs(ty)}`}>
+        <path d={`M ${bx - 22} ${ty > 0 ? h / 2 - 6 : -h / 2 + 6} L ${tx} ${ty} L ${bx + 22} ${ty > 0 ? h / 2 - 6 : -h / 2 + 6} Z`} fill="#fff" stroke={INK} strokeWidth={6} strokeLinejoin="round" />
+        <rect x={-w / 2} y={-h / 2} width={w} height={h} rx={h * 0.45} fill="#fff" stroke={INK} strokeWidth={6} />
+        <path d={`M ${bx - 19} ${ty > 0 ? h / 2 - 4 : -h / 2 + 4} L ${bx + 19} ${ty > 0 ? h / 2 - 4 : -h / 2 + 4}`} stroke="#fff" strokeWidth={9} />
+      </svg>
+      <div style={{ position: "absolute", left: -w / 2, top: -h / 2, width: w, height: h, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+        fontFamily: FONT, color, lineHeight: 1.05, textAlign: "center" }}>
+        <div style={{ fontSize: size }}>{text}</div>
+        {sub && <div style={{ fontSize: size * 0.48, color: "#666", marginTop: size * 0.08 }}>{sub}</div>}
+      </div>
+    </div>
+  );
+};
+
 /* ------------------------------------------------------------ captions */
 
 /**
