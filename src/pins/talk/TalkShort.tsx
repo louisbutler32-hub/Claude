@@ -2,12 +2,13 @@ import React from "react";
 import { AbsoluteFill, Audio, staticFile } from "remotion";
 import {
   Actor, Arrow, H, Backdrop, Brand, Bubble, Cam, Chip, Heart, Mark, Mood, PaintedDeep, Pop, RedX, Shot, ShotPlayer, Timing,
-  WordCaption, cue, ease, lerp, loadPinsFonts, useT,
+  Punch, WordCaption, cue, ease, hitsFromScript, lerp, loadPinsFonts, useT,
 } from "../engine";
 import { AboveLine, HeadLook, PhotoPerson } from "../people";
 import { BODY } from "../bodies";
 import { ASSETS } from "./assets";
 import TIMING from "./timing.json";
+import SCRIPT from "./script.json";
 
 /**
  * "3 animals that can actually talk to humans": Koshik the elephant who
@@ -25,6 +26,9 @@ const IMG = "images/pins-talk/";
 const A = ASSETS;
 const c = (id: string, i = 0) => cue(T, id, i);
 const OPEN: [number, Mood][] = [[-99, "open"]];
+
+/** snap zooms: every SFX cue, plus the beats the line leans on */
+const HITS = hitsFromScript(T, SCRIPT as never, [["hook", 5], ["koshik1", 7], ["koshik3", 10], ["noc1", 6], ["noc2", 11], ["noc3", 4]]);
 
 
 const KEEPER_HEAD: HeadLook = { hair: "cap", hat: "#2e6b45", skin: "#e2b08a", hairColor: "#2b1a10", beard: "stubble" };
@@ -61,6 +65,7 @@ const shots: Shot[] = [
   /* #1 KOSHIK: "First, Koshik the elephant." */
   {
     at: c("koshik1", 0),
+    transition: "whip",
     render: ({ t, u }) => (
       <Cam t={t} z={1 + 0.08 * ease(u, 0, 1.6)}>
         <Backdrop src={IMG + "bg-zoo.jpg"} t={t} flip blur={7} tone="rgba(20,30,10,0.12)" />
@@ -87,7 +92,7 @@ const shots: Shot[] = [
       <Cam t={t} z={1.04}>
         <Backdrop src={IMG + "bg-zoo.jpg"} t={t} flip blur={7} tone="rgba(20,30,10,0.12)" />
         <Actor a={A.elephant} t={t} x={580} y={1040} w={760} bob={5} bobRate={0.6} moods={[[-99, "open"]]} look={[-0.6, 0.1]} />
-        <PhotoPerson id="keeper" t={t} poses={[[-99, BODY["keeper-stand"]]]} x={250} y={1830} h={1080} look={KEEPER_HEAD} faces={[[-99, "happy"]]} gaze={[0.6, 0]} />
+        <PhotoPerson id="keeper" t={t} poses={[[-99, BODY["keeper-stand"]]]} enter={c("koshik1", 14)} enterFrom={[-560, 0]} x={250} y={1830} h={1080} look={KEEPER_HEAD} faces={[[-99, "happy"]]} gaze={[0.6, 0]} />
         <Pop t={t} at={c("koshik1", 15)} x={470} y={560}><Heart size={150} /></Pop>
       </Cam>
     ),
@@ -144,10 +149,11 @@ const shots: Shot[] = [
   /* #2 THE HONEYGUIDE: "Next, the honeyguide." */
   {
     at: c("guide1", 0),
+    transition: "whip",
     render: ({ t, u }) => (
       <Cam t={t} z={1.1 + 0.06 * ease(u, 0, 1.6)}>
         <Backdrop src={IMG + "bg-savanna.jpg"} y={-260} h={H * 1.95} t={t} />
-        <Actor a={A.honeyguide} t={t} x={540} y={980} w={760} enter={c("guide1", 0)} bob={6} bobRate={1.4} moods={OPEN} />
+        <Actor a={A.honeyguide} t={t} x={540} y={980} w={760} enter={c("guide1", 0) + 0.05} enterFrom={[760, -420]} bob={6} bobRate={1.4} moods={OPEN} />
         <Pop t={t} at={c("guide1", 2)} x={540} y={420}><Chip text="HONEYGUIDE" size={70} bg="#ffd400" /></Pop>
       </Cam>
     ),
@@ -158,8 +164,8 @@ const shots: Shot[] = [
     render: ({ t }) => (
       <Cam t={t} z={1.04}>
         <Backdrop src={IMG + "bg-savanna.jpg"} y={-260} h={H * 1.95} t={t} flip />
-        <PhotoPerson id="hunter" t={t} poses={[[-99, BODY["hunter-stand"]]]} x={300} y={1840} h={1100} look={HUNTER_HEAD} faces={[[-99, "happy"]]} gaze={[0.6, -0.3]} />
-        <Actor a={A.honeyguide} t={t} x={760} y={760} w={420} bob={10} bobRate={1.6} moods={OPEN} look={[-0.6, 0.2]} />
+        <PhotoPerson id="hunter" t={t} poses={[[-99, BODY["hunter-stand"]]]} enter={c("guide1", 3)} enterFrom={[-560, 0]} x={300} y={1840} h={1100} look={HUNTER_HEAD} faces={[[-99, "happy"]]} gaze={[0.6, -0.3]} />
+        <Actor a={A.honeyguide} t={t} x={760} y={760} w={420} enter={c("guide1", 4)} enterFrom={[520, -300]} bob={10} bobRate={1.6} moods={OPEN} look={[-0.6, 0.2]} />
         <Pop t={t} at={c("guide1", 5)} x={560} y={560}><Heart size={120} /></Pop>
         <Pop t={t} at={c("guide1", 11)} x={760} y={1110}><Actor a={A.honeycomb} t={t} x={0} y={0} w={300} bob={0} /></Pop>
       </Cam>
@@ -195,6 +201,7 @@ const shots: Shot[] = [
   /* "straight to a wild beehive." */
   {
     at: c("guide2", 15),
+    transition: "zoom",
     render: ({ t, u }) => (
       <Cam t={t} z={1.05 + 0.12 * ease(u, 0, 2)} y={900}>
         <Backdrop src={IMG + "bg-tree.jpg"} t={t} />
@@ -257,10 +264,11 @@ const shots: Shot[] = [
   /* #3 NOC: "Finally, Noc the beluga whale." */
   {
     at: c("noc1", 0),
+    transition: "whip",
     render: ({ t, u }) => (
       <Cam t={t} z={1.05 + 0.06 * ease(u, 0, 1.8)}>
         <PaintedDeep t={t} />
-        <Actor a={A.beluga} t={t} x={540} y={960} w={1000} enter={c("noc1", 0)} bob={14} bobRate={0.6} moods={OPEN} />
+        <Actor a={A.beluga} t={t} x={540} y={960} w={1000} enter={c("noc1", 0) + 0.05} enterFrom={[1100, 60]} bob={14} bobRate={0.6} moods={OPEN} />
         <Pop t={t} at={c("noc1", 1) + 0.1} x={540} y={430}><Chip text="NOC" size={76} bg="#ffd400" /></Pop>
       </Cam>
     ),
@@ -313,6 +321,7 @@ const shots: Shot[] = [
   /* "It was Noc, copying human voices." — the culprit surfaces */
   {
     at: c("noc3", 2),
+    transition: "zoom",
     render: ({ t }) => (
       <Cam t={t} z={1.1} y={1000}>
         <Backdrop src={IMG + "bg-bay.jpg"} t={t} />
@@ -350,7 +359,7 @@ export const TalkShort: React.FC<{ audio?: string | null; captions?: boolean; lo
   const t = useT();
   return (
     <AbsoluteFill style={{ background: "#0b2a4d" }}>
-      <ShotPlayer shots={shots} t={t} total={T.duration} />
+      <Punch t={t} hits={HITS}><ShotPlayer shots={shots} t={t} total={T.duration} /></Punch>
       <Brand logo={logo} name={brand} />
       {captions && <WordCaption T={T} t={t} />}
       {audio && <Audio src={staticFile(audio)} />}

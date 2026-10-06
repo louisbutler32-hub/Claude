@@ -386,9 +386,16 @@ export const PhotoPerson: React.FC<{
   bob?: number;                  // px of idle bob
   walk?: number;                 // > 0: a walking bounce at this many steps / s
   nod?: number;                  // degrees of idle head nod
+  enter?: number;                // slide in at this time…
+  enterFrom?: [number, number];  // …from this offset (px), with a little overshoot
   headScale?: number;            // the comic head runs bigger than the real one, as the reference does (default 1.45)
   shadow?: boolean;
-}> = ({ t, id, poses, x, y, h, look, faces = [[-99, "neutral"]], gaze = [0, 0], talk = [], flip, sway = 1.2, bob = 0, walk = 0, nod = 2, headScale = 1.45, shadow = true }) => {
+}> = ({ t, id, poses, x, y, h, look, faces = [[-99, "neutral"]], gaze = [0, 0], talk = [], flip, sway = 1.2, bob = 0, walk = 0, nod = 2, enter, enterFrom, headScale = 1.45, shadow = true }) => {
+  if (enter !== undefined && enterFrom) {
+    if (t < enter) return null;
+    const k = over(t, enter, enter + 0.45);
+    x += enterFrom[0] * (1 - k); y += enterFrom[1] * (1 - k);
+  }
   let pose = poses[0][1], since = -99;
   for (const [at, p] of poses) if (t >= at) { pose = p; since = at; }
   const w = (h * pose.w) / pose.h;

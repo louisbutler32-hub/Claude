@@ -210,6 +210,7 @@ export type ActorProps = {
   rot?: number;
   flip?: boolean;
   enter?: number;                // pop-in time (squash & stretch)
+  enterFrom?: [number, number];  // with enter: slide in from this offset (px) with overshoot
   exit?: number;                 // pop-out time
   bob?: number;                  // px of idle float
   bobRate?: number;
@@ -220,13 +221,19 @@ export type ActorProps = {
   children?: React.ReactNode;    // overlays in the cutout's own box (0..w, 0..h)
 };
 
-export const Actor: React.FC<ActorProps> = ({ a, t, x, y, w, rot = 0, flip, enter, exit, bob = 8, bobRate = 1.4, moods = [[-99, "open"]], look, opacity = 1, tint, children }) => {
+export const Actor: React.FC<ActorProps> = ({ a, t, x, y, w, rot = 0, flip, enter, enterFrom, exit, bob = 8, bobRate = 1.4, moods = [[-99, "open"]], look, opacity = 1, tint, children }) => {
   const h = (w * a.h) / a.w;
   let s = 1, sq = 0;
   if (enter !== undefined) {
     if (t < enter) return null;
-    s = over(t, enter, enter + 0.4);
-    sq = 0.12 * bell(t, enter + 0.15, enter + 0.5);
+    if (enterFrom) {
+      const k = over(t, enter, enter + 0.42);
+      x += enterFrom[0] * (1 - k); y += enterFrom[1] * (1 - k);
+      sq = 0.08 * bell(t, enter + 0.25, enter + 0.55);
+    } else {
+      s = over(t, enter, enter + 0.4);
+      sq = 0.12 * bell(t, enter + 0.15, enter + 0.5);
+    }
   }
   if (exit !== undefined && t > exit) {
     s *= 1 - ease(t, exit, exit + 0.25);
@@ -516,14 +523,72 @@ export const Captions: React.FC<{ T: Timing; t: number; y?: number; size?: numbe
 /* ------------------------------------------------------------ shots */
 
 export type ShotCtx = { t: number; u: number; start: number; end: number };
-export type Shot = { at: number; render: (s: ShotCtx) => React.ReactNode };
+/**
+ * transition: how this shot comes in.
+ *   "cut"  (default) a hard cut that lands with a small zoom settle, never a dead cut
+ *   "whip" a fast horizontal whip-pan with motion blur (section changes)
+ *   "zoom" a zoom-through: the new shot rushes in from big and blurred (reveals)
+ */
+export type Shot = { at: number; render: (s: ShotCtx) => React.ReactNode; transition?: "cut" | "whip" | "zoom" };
 
-/** plays the shot whose `at` is the latest one not after t — hard cuts, like the reference */
+const WHIP = 0.2, ZOOM = 0.28, SETTLE = 0.28;
+
+/** plays the shot whose `at` is the latest one not after t, with its transition in */
 export const ShotPlayer: React.FC<{ shots: Shot[]; t: number; total: number }> = ({ shots, t, total }) => {
   const sorted = [...shots].sort((a, b) => a.at - b.at);
   let i = 0;
   for (let k = 0; k < sorted.length; k++) if (t >= sorted[k].at) i = k;
-  const s = sorted[i];
+  const s = sorted[i], prev = sorted[i - 1];
   const end = sorted[i + 1]?.at ?? total;
-  return <AbsoluteFill>{s.render({ t, u: t - s.at, start: s.at, end })}</AbsoluteFill>;
+  const u = t - s.at;
+  const draw = (sh: Shot, e: number) => sh.render({ t, u: t - sh.at, start: sh.at, end: e });
+  const tr = s.transition ?? "cut";
+  if (tr === "whip" && prev && u < WHIP) {
+    const k = ease(u, 0, WHIP);
+    const blur = 26 * Math.sin(Math.PI * k);
+    return (
+      <AbsoluteFill style={{ overflow: "hidden" }}>
+        <AbsoluteFill style={{ transform: `translateX(${-W * k}px)`, filter: `blur(${blur}px)` }}>{draw(prev, s.at)}</AbsoluteFill>
+        <AbsoluteFill style={{ transform: `translateX(${W * (1 - k)}px)`, filter: `blur(${blur}px)` }}>{draw(s, end)}</AbsoluteFill>
+      </AbsoluteFill>
+    );
+  }
+  if (tr === "zoom" && u < ZOOM) {
+    const k = ease(u, 0, ZOOM);
+    return <AbsoluteFill style={{ transform: `scale(${1.35 - 0.35 * k})`, filter: `blur(${14 * (1 - k)}px)` }}>{draw(s, end)}</AbsoluteFill>;
+  }
+  // every hard cut lands with a small zoom settle
+  const settle = u < SETTLE ? 0.06 * (1 - ease(u, 0, SETTLE)) : 0;
+  return <AbsoluteFill style={{ transform: `scale(${1 + settle})` }}>{draw(s, end)}</AbsoluteFill>;
+};
+
+/**
+ * Snap zooms on the stressed words: a quick punch-in (≈7%) that settles,
+ * like the reference's editor-keyframed hits (≈10%). Wrap the picture (not the
+ * captions) in it; `hits` are the times to punch on.
+ */
+export const Punch: React.FC<{ t: number; hits: number[]; amount?: number; children: React.ReactNode }> = ({ t, hits, amount = 0.1, children }) => {
+  let k = 0, rot = 0;
+  for (const h of hits) {
+    const v = t < h ? 0 : t < h + 0.07 ? (t - h) / 0.07 : Math.max(0, 1 - (t - h - 0.07) / 0.38);
+    if (v > k) { k = v; rot = (Math.round(h * 10) % 2 ? 1 : -1) * 0.6 * v; }
+  }
+  const e = k * k * (3 - 2 * k);
+  return <AbsoluteFill style={{ transform: `scale(${1 + amount * e}) rotate(${rot}deg)` }}>{children}</AbsoluteFill>;
+};
+
+/** the times to punch on: every SFX cue in script.json (word index, optional offset) plus any extra words */
+export const hitsFromScript = (
+  T: Timing,
+  script: { lines: { id: string; sfx?: (string | number)[][] }[] },
+  extra: [string, number][] = [],
+  skip: string[] = ["whoosh"],
+) => {
+  const out: number[] = [];
+  for (const l of script.lines) for (const c of l.sfx ?? []) {
+    if (skip.includes(String(c[0]))) continue;
+    out.push(cue(T, l.id, Number(c[1])) + Number(c[2] ?? 0));
+  }
+  for (const [id, i] of extra) out.push(cue(T, id, i));
+  return out.sort((a, b) => a - b);
 };
