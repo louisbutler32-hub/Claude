@@ -50,9 +50,9 @@ const shots: Shot[] = [
     at: 0,
     render: ({ t, u }) => (
       <Cam t={t} z={1.12 - 0.08 * ease(u, 0, 2.6)}>
-        <Backdrop src={IMG + "bg-zoo.jpg"} t={t} />
-        <Actor a={A.elephant} t={t} x={540} y={1040} w={1100} bob={6} bobRate={0.6} moods={OPEN} look={[0.2, 0.2]} />
-        <Pop t={t} at={c("hook", 4)} x={700} y={430}><Bubble text="HELLO!" size={84} tail={[-120, 150]} /></Pop>
+        <Backdrop src={IMG + "bg-zoo.jpg"} t={t} blur={7} tone="rgba(20,30,10,0.12)" />
+        <Actor a={A.elephant} t={t} x={340} y={1040} w={1100} bob={6} bobRate={0.6} moods={OPEN} look={[0.2, 0.2]} />
+        <Pop t={t} at={c("hook", 4)} x={640} y={400}><Bubble text="HELLO!" size={84} tail={[60, 170]} /></Pop>
       </Cam>
     ),
   },
@@ -62,8 +62,8 @@ const shots: Shot[] = [
     at: c("koshik1", 0),
     render: ({ t, u }) => (
       <Cam t={t} z={1 + 0.08 * ease(u, 0, 1.6)}>
-        <Backdrop src={IMG + "bg-zoo.jpg"} t={t} flip />
-        <Actor a={A.elephant} t={t} x={540} y={1060} w={1040} enter={c("koshik1", 0)} bob={6} bobRate={0.6} moods={OPEN} />
+        <Backdrop src={IMG + "bg-zoo.jpg"} t={t} flip blur={7} tone="rgba(20,30,10,0.12)" />
+        <Actor a={A.elephant} t={t} x={360} y={1060} w={1040} enter={c("koshik1", 0)} bob={6} bobRate={0.6} moods={OPEN} />
         <Pop t={t} at={c("koshik1", 1) + 0.1} x={540} y={420}><Chip text="KOSHIK" size={72} bg="#ffd400" /></Pop>
       </Cam>
     ),
@@ -73,7 +73,7 @@ const shots: Shot[] = [
     at: c("koshik1", 4),
     render: ({ t, u }) => (
       <Cam t={t} z={1.05 - 0.05 * ease(u, 0, 2.5)}>
-        <Backdrop src={IMG + "bg-zoo.jpg"} t={t} />
+        <Backdrop src={IMG + "bg-zoo-lonely.jpg"} t={t} />
         <Actor a={A.elephant} t={t} x={560} y={1120} w={640} bob={4} bobRate={0.4} moods={[[-99, "sad"]]} look={[-0.3, 0.3]} />
         <Pop t={t} at={c("koshik1", 11)} x={540} y={430}><Chip text="SOUTH KOREA" size={64} /></Pop>
       </Cam>
@@ -84,8 +84,8 @@ const shots: Shot[] = [
     at: c("koshik1", 14),
     render: ({ t, u }) => (
       <Cam t={t} z={1.04}>
-        <Backdrop src={IMG + "bg-zoo.jpg"} t={t} flip />
-        <Actor a={A.elephant} t={t} x={680} y={1040} w={820} bob={5} bobRate={0.6} moods={[[-99, "open"]]} look={[-0.6, 0.1]} />
+        <Backdrop src={IMG + "bg-zoo.jpg"} t={t} flip blur={7} tone="rgba(20,30,10,0.12)" />
+        <Actor a={A.elephant} t={t} x={580} y={1040} w={760} bob={5} bobRate={0.6} moods={[[-99, "open"]]} look={[-0.6, 0.1]} />
         <Person id="keeper" t={t} x={260} y={1500} h={760} look={KEEPER} faces={[[-99, "happy"]]} gaze={[0.6, 0]} />
         <Pop t={t} at={c("koshik1", 15)} x={470} y={560}><Heart size={150} /></Pop>
       </Cam>
@@ -96,9 +96,9 @@ const shots: Shot[] = [
     at: c("koshik2", 0),
     render: ({ t }) => (
       <Cam t={t} z={1.12} x={500}>
-        <Backdrop src={IMG + "bg-zoo.jpg"} t={t} />
+        <Backdrop src={IMG + "bg-zoo.jpg"} t={t} blur={7} tone="rgba(20,30,10,0.12)" />
         <Person id="keeper" t={t} x={250} y={1500} h={800} look={KEEPER} faces={[[-99, "happy"]]} gaze={[0.7, -0.1]} talk={[[c("koshik2", 0), c("koshik2", 6) + 0.3]]} />
-        <Actor a={A.elephant} t={t} x={740} y={1030} w={860} bob={5} bobRate={0.6} moods={OPEN} look={[-0.7, 0]} />
+        <Actor a={A.elephant} t={t} x={600} y={1030} w={780} bob={5} bobRate={0.6} moods={OPEN} look={[-0.7, 0]} />
         <Pop t={t} at={c("koshik2", 3)} x={330} y={520}><Bubble text="ANJA!" sub="sit down" size={70} tail={[-40, 150]} /></Pop>
       </Cam>
     ),
@@ -108,7 +108,7 @@ const shots: Shot[] = [
     at: c("koshik3", 0),
     render: ({ t, u }) => (
       <Cam t={t} z={1.55 + 0.1 * ease(u, 0, 2.5)} x={A.elephantMouth[0]} y={A.elephantMouth[1]}>
-        <Backdrop src={IMG + "bg-zoo.jpg"} t={t} />
+        <Backdrop src={IMG + "bg-zoo.jpg"} t={t} blur={7} tone="rgba(20,30,10,0.12)" />
         <Actor a={A.elephant} t={t} x={540} y={1060} w={1040} bob={3} bobRate={0.6} moods={OPEN} look={[0, 0.3]} />
         <Pop t={t} at={c("koshik3", 3)} x={A.elephantMouth[0] + 230} y={A.elephantMouth[1] - 40}><Arrow t={t} at={c("koshik3", 3)} rot={180} size={170} /></Pop>
       </Cam>
@@ -119,8 +119,8 @@ const shots: Shot[] = [
     at: c("koshik3", 7),
     render: ({ t }) => (
       <Cam t={t} z={1.06}>
-        <Backdrop src={IMG + "bg-zoo.jpg"} t={t} flip />
-        <Actor a={A.elephant} t={t} x={540} y={1080} w={980} bob={5} bobRate={0.6} moods={[[-99, "open"]]} look={[0.1, 0.2]} />
+        <Backdrop src={IMG + "bg-zoo.jpg"} t={t} flip blur={7} tone="rgba(20,30,10,0.12)" />
+        <Actor a={A.elephant} t={t} x={380} y={1080} w={980} bob={5} bobRate={0.6} moods={[[-99, "open"]]} look={[0.1, 0.2]} />
         <Pop t={t} at={c("koshik3", 10)} x={540} y={420}><Chip text="5 KOREAN WORDS" size={66} bg="#ffd400" /></Pop>
       </Cam>
     ),
@@ -130,8 +130,8 @@ const shots: Shot[] = [
     at: c("koshik3", 13),
     render: ({ t }) => (
       <Cam t={t} z={1.04}>
-        <Backdrop src={IMG + "bg-zoo.jpg"} t={t} />
-        <Actor a={A.elephant} t={t} x={690} y={1060} w={820} bob={5} bobRate={0.6} moods={OPEN} look={[-0.4, 0.1]} />
+        <Backdrop src={IMG + "bg-zoo.jpg"} t={t} blur={7} tone="rgba(20,30,10,0.12)" />
+        <Actor a={A.elephant} t={t} x={590} y={1060} w={760} bob={5} bobRate={0.6} moods={OPEN} look={[-0.4, 0.1]} />
         <Person id="keeper" t={t} x={230} y={1500} h={720} look={KEEPER} faces={[[-99, "happy"], [c("koshik3", 15), "shocked"]]} gaze={[0.7, -0.2]} />
         <Pop t={t} at={c("koshik3", 14)} x={700} y={360}><Bubble text="ANNYEONG!" sub="hello" size={62} tail={[60, 170]} /></Pop>
         <Pop t={t} at={c("koshik3", 15)} x={320} y={560}><Bubble text="ANJA!" sub="sit down" size={62} tail={[260, 120]} /></Pop>
@@ -197,8 +197,8 @@ const shots: Shot[] = [
     at: c("guide2", 15),
     render: ({ t, u }) => (
       <Cam t={t} z={1.05 + 0.12 * ease(u, 0, 2)} y={900}>
-        <Backdrop src={IMG + "bg-savanna.jpg"} t={t} />
-        <Actor a={A.beehive} t={t} x={540} y={920} w={900} bob={0} enter={c("guide2", 15)} />
+        <Backdrop src={IMG + "bg-tree.jpg"} t={t} />
+        <Actor a={A.beehive} t={t} x={540} y={920} w={760} bob={0} enter={c("guide2", 15)} />
         <Bees t={t} x={540} y={820} />
         <Actor a={A.honeyguide} t={t} x={860} y={560} w={300} bob={8} bobRate={1.8} moods={OPEN} look={[-0.6, 0.4]} />
       </Cam>
@@ -320,7 +320,7 @@ const shots: Shot[] = [
         <Backdrop src={IMG + "bg-bay.jpg"} t={t} />
         <AboveLine y={1250}>
           <Person id="divA" t={t} x={300} y={1430} h={680} look={DIVER_A} faces={[[-99, "worried"], [c("noc3", 4), "shocked"]]} gaze={[0.7, 0]} bob={8} />
-          <Actor a={A.beluga} t={t} x={760} y={lerp(1500, 1230, ease(t, c("noc3", 3), c("noc3", 4) + 0.2))} w={720} rot={-62} bob={6} bobRate={0.7} moods={OPEN} look={[-0.6, 0]} />
+          <Actor a={A.belugahead} t={t} x={770} y={lerp(1480, 1150, ease(t, c("noc3", 3), c("noc3", 4) + 0.2))} w={600} flip bob={6} bobRate={0.7} moods={OPEN} look={[-0.6, 0]} />
         </AboveLine>
         <div style={{ position: "absolute", left: 600, top: 1230, width: 360, height: 40, borderRadius: "50%", border: "6px solid rgba(255,255,255,0.8)" }} />
         <Pop t={t} at={c("noc3", 4) + 0.15} x={800} y={600}><Bubble text="GET OUT!" size={80} tail={[-20, 220]} /></Pop>
