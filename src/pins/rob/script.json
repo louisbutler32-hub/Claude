@@ -1,0 +1,82 @@
+{
+  "voice": "en-US-AndrewNeural",
+  "rate": "+12%",
+  "pitch": "+0Hz",
+  "gap": 0.12,
+  "max_pause": 0.3,
+  "music": ".music/pins-sleep-track.wav",
+  "music_start": 0,
+  "music_db": 15,
+  "duck_db": 3,
+  "sfx": true,
+  "sfx_files": {
+    "ding": ".sfx/pins/ding.mp3",
+    "pop": ".sfx/pins/pop.mp3",
+    "whoosh": ".sfx/pins/whoosh.mp3",
+    "wrong": ".sfx/pins/wrong.mp3",
+    "counter": {
+      "path": ".sfx/pins/counter.mp3",
+      "start": 0.25,
+      "dur": 1.24
+    }
+  },
+  "sfx_gain": {
+    "ding": 0.5,
+    "pop": 0.3,
+    "whoosh": 0.32,
+    "wrong": 0.4,
+    "counter": 0.3
+  },
+  "start_sfx": [
+    [
+      "ding",
+      0.0
+    ]
+  ],
+  "lines": [
+    {
+      "id": "hook",
+      "text": "Three animals that actually rob humans."
+    },
+    {
+      "id": "gull1",
+      "text": "First, seagulls. They don't just grab any food."
+    },
+    {
+      "id": "gull2",
+      "text": "In one experiment, gulls watched a person pick up one of two snacks, and they went straight for the one the human had touched."
+    },
+    {
+      "id": "gull3",
+      "text": "They watch what you eat, and they want that."
+    },
+    {
+      "id": "kea1",
+      "text": "Next, the kea, a parrot from New Zealand."
+    },
+    {
+      "id": "kea2",
+      "text": "It rips the rubber off car windows, pulls off windshield wipers, and unzips backpacks to see what's inside."
+    },
+    {
+      "id": "kea3",
+      "text": "It got so bad that people built them a playground, just to keep them away from the cars."
+    },
+    {
+      "id": "monkey1",
+      "text": "Finally, the monkeys at Uluwatu Temple in Bali."
+    },
+    {
+      "id": "monkey2",
+      "text": "They snatch tourists' phones, glasses and hats, and then they wait."
+    },
+    {
+      "id": "monkey3",
+      "text": "Because they'll only give it back for food."
+    },
+    {
+      "id": "monkey4",
+      "text": "And scientists found the more valuable the thing they steal, the more food they hold out for."
+    }
+  ]
+}
