@@ -18,6 +18,8 @@ export const ASSETS = {
   monkey: a("monkey", [{ x: 0.661, y: 0.116, r: 0.03 }, { x: 0.745, y: 0.128, r: 0.03 }]),
   /** wearing the stolen sunglasses: the shades are the joke, so no cartoon eyes */
   monkeyGlasses: a("monkey-glasses"),
+  /** the same, one arm thrown up in a fist: the hook's payoff, censored */
+  monkeyArm: a("monkey-arm"),
   chips: a("chips"),
   backpack: a("backpack"),
   car: a("car"),

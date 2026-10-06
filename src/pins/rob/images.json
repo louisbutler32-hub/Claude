@@ -122,5 +122,12 @@
     "prompt": "a young woman tourist wearing a yellow sundress, brown sandals and a small brown crossbody bag, dark hair in a ponytail reaching one arm forward to grab something, leaning forward, whole body visible from head to shoes, standing, facing the camera, plain pure white background, soft studio lighting, photorealistic",
     "w": 768,
     "h": 1344
+  },
+  {
+    "id": "monkey-arm",
+    "prompt": "photorealistic long-tailed macaque monkey wearing black sunglasses, sitting, raising one arm straight up high above its head with its hand clenched in a fist, smug cheeky expression, facing the camera, whole body visible, plain pure white background, soft studio lighting",
+    "w": 1024,
+    "h": 1024,
+    "cutout": true
   }
 ]

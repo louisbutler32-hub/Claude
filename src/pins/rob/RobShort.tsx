@@ -2,7 +2,7 @@ import React from "react";
 import { AbsoluteFill, Audio, staticFile } from "remotion";
 import {
   Actor, Arrow, Backdrop, Brand, Bubble, Cam, Chip, Clock, Heart, Mark, Mood, Pop, Punch, RedX, Shot, ShotPlayer, Timing,
-  WordCaption, bell, cue, ease, hitsFromScript, lerp, loadPinsFonts, over, useT,
+  WordCaption, bell, cue, ease, hitsFromScript, lerp, loadPinsFonts, useT,
 } from "../engine";
 import { HeadLook, PhotoPerson } from "../people";
 import { BODY } from "../bodies";
@@ -40,27 +40,30 @@ const WOMAN: HeadLook = { hair: "ponytail", skin: "#d9a07a", hairColor: "#1e1410
 const SCI_A: HeadLook = { hair: "cap", hat: "#2f6d9a", skin: "#e2b08a", hairColor: "#3a2414", beard: "full" };
 const SCI_B: HeadLook = { hair: "ponytail", skin: "#c68a63", hairColor: "#2a1a10", glasses: true };
 
-/** a cartoon monkey hand flipping the bird, the finger pixelated like a TV censor */
-const CensoredFinger: React.FC<{ t: number; at: number; x: number; y: number; size?: number }> = ({ t, at, x, y, size = 260 }) => {
-  if (t < at - 0.12) return null;
-  const k = over(t, at - 0.12, at + 0.2);
+/**
+ * The payoff: the monkey snaps from sitting to its own arm thrown up, and its
+ * fist is pixelated like a TV censor, the box running on up past the knuckles
+ * where the finger would be. Flipped, so the arm rises on the right.
+ */
+const FIST = { x: 0.168, y: 0.058, w: 0.21 };   // fist centre and censor width, 0–1 of monkey-arm.png
+const FlipOff: React.FC<{ t: number; at: number; x: number; y: number; w: number; sit?: { x: number; y: number; w: number } }> = ({ t, at, x, y, w, sit }) => {
+  if (t < at) return sit ? <Actor a={A.monkeyGlasses} t={t} x={sit.x} y={sit.y} w={sit.w} flip bob={4} bobRate={0.8} /> : null;
+  const a = A.monkeyArm, h = (w * a.h) / a.w;
+  const by = Math.sin(t * 0.8 * Math.PI) * 4;
+  const cw = FIST.w * w, ch = cw * 1.75;
+  const fx = x + (0.5 - FIST.x) * w, fy = y + (FIST.y - 0.5) * h + by;
   const jig = Math.floor(t * 15);
   const cells = [];
-  for (let gy = 0; gy < 5; gy++) for (let gx = 0; gx < 3; gx++) {
+  for (let gy = 0; gy < 7; gy++) for (let gx = 0; gx < 4; gx++) {
     const n = Math.abs(Math.sin((gx * 7 + gy * 13 + jig) * 12.9898) * 43758.5453) % 1;
-    cells.push(<rect key={`${gx}-${gy}`} x={32 + gx * 12} y={2 + gy * 14} width={12.5} height={14.5} fill={["#b98a5e", "#d6ad84", "#8f6542", "#e2c29c", "#a37650"][Math.floor(n * 5)]} />);
+    cells.push(<div key={`${gx}-${gy}`} style={{ position: "absolute", left: `${gx * 25}%`, top: `${(gy * 100) / 7}%`, width: "25.5%", height: `${100 / 7 + 0.5}%`,
+      background: ["#c99a7a", "#b07e62", "#e0b8a0", "#8f5f48", "#d8a98c", "#a8846c"][Math.floor(n * 6)] }} />);
   }
   return (
-    <div style={{ position: "absolute", left: x - size / 2, top: y - size * 0.8 + (1 - k) * size * 1.2, width: size, height: size * 1.6 }}>
-      <svg viewBox="0 0 100 160" style={{ width: "100%", height: "100%", overflow: "visible", filter: "drop-shadow(0 6px 4px rgba(0,0,0,0.35))" }}>
-        <rect x={20} y={150} width={60} height={30} rx={10} fill="#b98a5e" stroke="#2a1a10" strokeWidth={3} />
-        <rect x={40} y={8} width={20} height={90} rx={10} fill="#d6ad84" stroke="#2a1a10" strokeWidth={3} />
-        <rect x={14} y={70} width={72} height={84} rx={22} fill="#d6ad84" stroke="#2a1a10" strokeWidth={3} />
-        <path d="M 26 92 q 6 -8 12 0 M 62 92 q 6 -8 12 0" fill="none" stroke="#2a1a10" strokeWidth={3} strokeLinecap="round" />
-        <path d="M 14 118 q 18 -6 36 6" fill="none" stroke="#2a1a10" strokeWidth={3} strokeLinecap="round" />
-        {cells}
-      </svg>
-    </div>
+    <>
+      <Actor a={a} t={t} x={x} y={y} w={w} flip bob={4} bobRate={0.8} />
+      <div style={{ position: "absolute", left: fx - cw / 2, top: fy + cw * 0.42 - ch, width: cw, height: ch, borderRadius: cw * 0.08, overflow: "hidden" }}>{cells}</div>
+    </>
   );
 };
 
@@ -156,8 +159,7 @@ const shots: Shot[] = [
     render: ({ t, u }) => (
       <Cam t={t} z={1.1 + 0.04 * ease(u, 0, 1.2)} y={980}>
         <Backdrop src={BG.temple} t={t} />
-        <Actor a={A.monkeyGlasses} t={t} x={660} y={1100} w={860} bob={4} bobRate={0.8} />
-        <CensoredFinger t={t} at={FINGER} x={820} y={980} size={290} />
+        <FlipOff t={t} at={FINGER - 0.1} x={520} y={1100} w={900} sit={{ x: 560, y: 1110, w: 860 }} />
         <PhotoPerson id="woman" t={t} poses={[[-99, BODY["woman-shock"]]]} x={150} y={2080} h={1150} look={WOMAN} faces={[[-99, "shocked"]]} gaze={[0.6, -0.3]} />
         <Pop t={t} at={PAYOFF + 0.08} x={270} y={620}><Bubble text="HEY!" size={80} tail={[-30, 160]} /></Pop>
       </Cam>
@@ -461,8 +463,7 @@ export const RobThumb: React.FC = () => {
   return (
     <AbsoluteFill style={{ background: "#0b2a4d" }}>
       <Backdrop src={BG.temple} t={0} />
-      <Actor a={A.monkeyGlasses} t={t} x={600} y={1250} w={1000} bob={0} />
-      <CensoredFinger t={9} at={0} x={880} y={1060} size={260} />
+      <FlipOff t={t} at={0} x={460} y={1250} w={1000} />
       <div style={{ position: "absolute", left: 50, right: 50, top: 170, textAlign: "center", fontFamily: "Anton", fontSize: 150, lineHeight: 1,
         color: "#ff7a14", WebkitTextStroke: "16px #1b0f05", paintOrder: "stroke fill", textTransform: "uppercase", filter: "drop-shadow(0 8px 2px rgba(0,0,0,0.55))" }}>
         They rob<br /><span style={{ color: "#fff" }}>humans?!</span>
