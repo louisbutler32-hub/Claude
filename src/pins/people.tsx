@@ -246,7 +246,7 @@ export const PeopleSheet: React.FC = () => {
 
 export type HeadLook = {
   skin?: string;
-  hair?: "short" | "cap" | "beanie" | "bald" | "side";
+  hair?: "short" | "cap" | "beanie" | "bald" | "side" | "ponytail";
   hairColor?: string;
   hat?: string;
   beard?: "none" | "stubble" | "full";
@@ -315,6 +315,12 @@ export const CartoonHead: React.FC<{ t: number; look?: HeadLook; face?: Face; si
       {beard === "full" && <path d="M 22 88 Q 26 132 60 136 Q 94 132 98 88 Q 92 104 80 102 Q 70 99 60 100 Q 50 99 40 102 Q 28 104 22 88 Z" fill={hairColor} stroke={L} strokeWidth={2} />}
       {/* hair / hats */}
       {hair === "short" && <path d="M 19 64 Q 14 14 60 12 Q 106 14 101 64 Q 98 40 84 34 Q 62 40 36 34 Q 22 42 19 64 Z" fill={hairColor} stroke={L} strokeWidth={2.4} />}
+      {hair === "ponytail" && (
+        <g>
+          <path d={`M ${96 - fx * 0.5} 46 Q ${118 - fx * 0.5} 64 ${110 - fx * 0.5} 104 Q ${104 - fx * 0.5} 80 ${92 - fx * 0.5} 62 Z`} fill={hairColor} stroke={L} strokeWidth={2.2} />
+          <path d="M 19 66 Q 14 10 60 10 Q 106 10 101 66 Q 98 38 78 30 Q 60 26 42 30 Q 22 38 19 66 Z" fill={hairColor} stroke={L} strokeWidth={2.4} />
+        </g>
+      )}
       {hair === "side" && <path d="M 19 66 Q 12 12 62 10 Q 108 14 101 62 Q 96 36 70 30 Q 48 44 30 40 Q 22 48 19 66 Z" fill={hairColor} stroke={L} strokeWidth={2.4} />}
       {hair === "cap" && (
         <g>
@@ -419,7 +425,7 @@ export const PhotoPerson: React.FC<{
       <Img src={staticFile(pose.src)} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", filter: "drop-shadow(0 6px 8px rgba(0,0,0,0.25))" }} />
       {/* the head: chin (60,132 of 120×150) on the neck point */}
       <div style={{ position: "absolute", left: nx - hw / 2, top: ny - hh * (132 / 150), width: hw, height: hh, transform: `rotate(${headRot}deg) ${flip ? "scaleX(-1)" : ""}`, transformOrigin: "50% 88%" }}>
-        <CartoonHead t={t} id={id} look={look} face={face} since={fs} turn={pose.turn ?? 0} gaze={gaze} talking={talking} neck={false} />
+        <CartoonHead t={t} id={id} look={look} face={face} since={fs} turn={(pose.turn ?? 0) * (flip ? -1 : 1)} gaze={flip ? [-gaze[0], gaze[1]] : gaze} talking={talking} neck={false} />
       </div>
     </div>
   );

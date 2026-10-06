@@ -72,7 +72,17 @@
     {
       "id": "hunter-walk",
       "src": ".photo-review/people-ai/hunter-walk.jpg",
-      "turn": 0.55
+      "turn": 0.8,
+      "neck": [
+        620,
+        118
+      ],
+      "head": [
+        632,
+        64,
+        40,
+        52
+      ]
     },
     {
       "id": "hunter-gesture",
@@ -187,6 +197,17 @@
         34,
         42
       ]
+    },
+    {
+      "id": "sci-point",
+      "src": ".photo-review/people-ai/sci-a.jpg",
+      "turn": 0.1
+    },
+    {
+      "id": "sci-clipboard",
+      "src": ".photo-review/people-ai/sci-b.jpg",
+      "turn": 0,
+      "model": "u2net"
     }
   ]
 }

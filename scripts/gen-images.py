@@ -11,7 +11,7 @@ removed when "cutout" is true). Every image generated is counted in
 channel's limit) it stops. Cached ids are never re-generated; delete the jpg to
 re-roll one. The key is read from the environment, never from the repo.
 """
-import json, os, sys, uuid, urllib.request
+import json, os, sys, uuid, urllib.error, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODEL = "runware:100@1"   # FLUX.1 [schnell]
@@ -33,7 +33,10 @@ def generate(prompt, w, h, seed=None):
         task["seed"] = seed
     req = urllib.request.Request("https://api.runware.ai/v1", data=json.dumps([task]).encode(),
                                  headers={"Content-Type": "application/json", "Authorization": "Bearer " + key()})
-    d = json.loads(urllib.request.urlopen(req, timeout=120).read())
+    try:
+        d = json.loads(urllib.request.urlopen(req, timeout=120).read())
+    except urllib.error.HTTPError as e:
+        raise RuntimeError(f"Runware {e.code}: {e.read().decode()[:400]}")
     if d.get("errors"):
         raise RuntimeError(d["errors"])
     r = d["data"][0]

@@ -76,11 +76,11 @@
   "w": 335,
   "h": 664,
   "neck": [
-   0.5507,
-   0.119
+   0.5104,
+   0.1642
   ],
-  "headW": 0.2687,
-  "turn": 0.55,
+  "headW": 0.2388,
+  "turn": 0.8,
   "tilt": 0
  },
  "hunter-gesture": {
@@ -165,6 +165,30 @@
   ],
   "headW": 0.1863,
   "turn": 0.35,
+  "tilt": 0
+ },
+ "sci-point": {
+  "file": "sci-point.png",
+  "w": 248,
+  "h": 680,
+  "neck": [
+   0.4839,
+   0.1147
+  ],
+  "headW": 0.3468,
+  "turn": 0.1,
+  "tilt": 0
+ },
+ "sci-clipboard": {
+  "file": "sci-clipboard.png",
+  "w": 234,
+  "h": 688,
+  "neck": [
+   0.4957,
+   0.1134
+  ],
+  "headW": 0.359,
+  "turn": 0,
   "tilt": 0
  }
 }
