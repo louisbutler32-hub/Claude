@@ -1,10 +1,11 @@
 import React from "react";
 import { AbsoluteFill, Audio, staticFile } from "remotion";
 import {
-  Actor, Arrow, Backdrop, Brand, Bubble, Cam, Chip, Heart, Mark, Mood, PaintedDeep, Pop, RedX, Shot, ShotPlayer, Timing,
+  Actor, Arrow, H, Backdrop, Brand, Bubble, Cam, Chip, Heart, Mark, Mood, PaintedDeep, Pop, RedX, Shot, ShotPlayer, Timing,
   WordCaption, cue, ease, lerp, loadPinsFonts, useT,
 } from "../engine";
-import { AboveLine, Person, PersonLook } from "../people";
+import { AboveLine, HeadLook, PhotoPerson } from "../people";
+import { BODY } from "../bodies";
 import { ASSETS } from "./assets";
 import TIMING from "./timing.json";
 
@@ -25,11 +26,11 @@ const A = ASSETS;
 const c = (id: string, i = 0) => cue(T, id, i);
 const OPEN: [number, Mood][] = [[-99, "open"]];
 
-/* the cast */
-const KEEPER: PersonLook = { hair: "cap", hat: "#2e7d4f", jacket: "#3f6e4a", shirt: "#e9e2cf", skin: "#e2b08a", hairColor: "#2b1a10", prop: "none" };
-const HUNTER: PersonLook = { hair: "short", jacket: "#9a6b3c", shirt: "#e9dcc0", skin: "#7a4a2c", hairColor: "#16100b", prop: "point" };
-const DIVER_A: PersonLook = { hair: "short", jacket: "#1d2228", shirt: "#1d2228", skin: "#e8b694", hairColor: "#5a3a1e", mask: true };
-const DIVER_B: PersonLook = { hair: "bald", jacket: "#1d2228", shirt: "#1d2228", skin: "#a8714b", hairColor: "#1a120c", mask: true, beard: true };
+
+const KEEPER_HEAD: HeadLook = { hair: "cap", hat: "#2e6b45", skin: "#e2b08a", hairColor: "#2b1a10", beard: "stubble" };
+const HUNTER_HEAD: HeadLook = { hair: "short", skin: "#6e4329", hairColor: "#16100b", beard: "stubble" };
+const DIVER_A_HEAD: HeadLook = { hair: "short", skin: "#e8b694", hairColor: "#5a3a1e", beard: "none", mask: true };
+const DIVER_B_HEAD: HeadLook = { hair: "side", skin: "#e0a885", hairColor: "#2a1a10", beard: "full", mask: true };
 
 /** gibberish talk drifting through the water: what the divers kept hearing */
 const Murmur: React.FC<{ t: number; at: number }> = ({ t, at }) => (
@@ -86,7 +87,7 @@ const shots: Shot[] = [
       <Cam t={t} z={1.04}>
         <Backdrop src={IMG + "bg-zoo.jpg"} t={t} flip blur={7} tone="rgba(20,30,10,0.12)" />
         <Actor a={A.elephant} t={t} x={580} y={1040} w={760} bob={5} bobRate={0.6} moods={[[-99, "open"]]} look={[-0.6, 0.1]} />
-        <Person id="keeper" t={t} x={260} y={1500} h={760} look={KEEPER} faces={[[-99, "happy"]]} gaze={[0.6, 0]} />
+        <PhotoPerson id="keeper" t={t} poses={[[-99, BODY["keeper-stand"]]]} x={250} y={1830} h={1080} look={KEEPER_HEAD} faces={[[-99, "happy"]]} gaze={[0.6, 0]} />
         <Pop t={t} at={c("koshik1", 15)} x={470} y={560}><Heart size={150} /></Pop>
       </Cam>
     ),
@@ -97,8 +98,8 @@ const shots: Shot[] = [
     render: ({ t }) => (
       <Cam t={t} z={1.12} x={500}>
         <Backdrop src={IMG + "bg-zoo.jpg"} t={t} blur={7} tone="rgba(20,30,10,0.12)" />
-        <Person id="keeper" t={t} x={250} y={1500} h={800} look={KEEPER} faces={[[-99, "happy"]]} gaze={[0.7, -0.1]} talk={[[c("koshik2", 0), c("koshik2", 6) + 0.3]]} />
         <Actor a={A.elephant} t={t} x={600} y={1030} w={780} bob={5} bobRate={0.6} moods={OPEN} look={[-0.7, 0]} />
+        <PhotoPerson id="keeper" t={t} poses={[[-99, BODY["keeper-talk"]]]} x={270} y={1840} h={1100} look={KEEPER_HEAD} faces={[[-99, "happy"]]} gaze={[0.7, -0.1]} talk={[[c("koshik2", 0), c("koshik2", 6) + 0.3]]} />
         <Pop t={t} at={c("koshik2", 3)} x={330} y={520}><Bubble text="ANJA!" sub="sit down" size={70} tail={[-40, 150]} /></Pop>
       </Cam>
     ),
@@ -132,7 +133,7 @@ const shots: Shot[] = [
       <Cam t={t} z={1.04}>
         <Backdrop src={IMG + "bg-zoo.jpg"} t={t} blur={7} tone="rgba(20,30,10,0.12)" />
         <Actor a={A.elephant} t={t} x={590} y={1060} w={760} bob={5} bobRate={0.6} moods={OPEN} look={[-0.4, 0.1]} />
-        <Person id="keeper" t={t} x={230} y={1500} h={720} look={KEEPER} faces={[[-99, "happy"], [c("koshik3", 15), "shocked"]]} gaze={[0.7, -0.2]} />
+        <PhotoPerson id="keeper" t={t} poses={[[-99, BODY["keeper-stand"]], [c("koshik3", 15), BODY["keeper-shock"]]]} x={240} y={1830} h={1060} look={KEEPER_HEAD} faces={[[-99, "happy"], [c("koshik3", 15), "shocked"]]} gaze={[0.7, -0.2]} />
         <Pop t={t} at={c("koshik3", 14)} x={700} y={360}><Bubble text="ANNYEONG!" sub="hello" size={62} tail={[60, 170]} /></Pop>
         <Pop t={t} at={c("koshik3", 15)} x={320} y={560}><Bubble text="ANJA!" sub="sit down" size={62} tail={[260, 120]} /></Pop>
         <Pop t={t} at={c("koshik3", 18)} x={760} y={650}><Bubble text="ANIYA!" sub="no" size={62} tail={[-40, 140]} /></Pop>
@@ -145,7 +146,7 @@ const shots: Shot[] = [
     at: c("guide1", 0),
     render: ({ t, u }) => (
       <Cam t={t} z={1.1 + 0.06 * ease(u, 0, 1.6)}>
-        <Backdrop src={IMG + "bg-savanna.jpg"} t={t} />
+        <Backdrop src={IMG + "bg-savanna.jpg"} y={-260} h={H * 1.95} t={t} />
         <Actor a={A.honeyguide} t={t} x={540} y={980} w={760} enter={c("guide1", 0)} bob={6} bobRate={1.4} moods={OPEN} />
         <Pop t={t} at={c("guide1", 2)} x={540} y={420}><Chip text="HONEYGUIDE" size={70} bg="#ffd400" /></Pop>
       </Cam>
@@ -156,8 +157,8 @@ const shots: Shot[] = [
     at: c("guide1", 3),
     render: ({ t }) => (
       <Cam t={t} z={1.04}>
-        <Backdrop src={IMG + "bg-savanna.jpg"} t={t} flip />
-        <Person id="hunter" t={t} x={300} y={1500} h={800} look={{ ...HUNTER, prop: "none" }} faces={[[-99, "happy"]]} gaze={[0.6, -0.3]} />
+        <Backdrop src={IMG + "bg-savanna.jpg"} y={-260} h={H * 1.95} t={t} flip />
+        <PhotoPerson id="hunter" t={t} poses={[[-99, BODY["hunter-stand"]]]} x={300} y={1840} h={1100} look={HUNTER_HEAD} faces={[[-99, "happy"]]} gaze={[0.6, -0.3]} />
         <Actor a={A.honeyguide} t={t} x={760} y={760} w={420} bob={10} bobRate={1.6} moods={OPEN} look={[-0.6, 0.2]} />
         <Pop t={t} at={c("guide1", 5)} x={560} y={560}><Heart size={120} /></Pop>
         <Pop t={t} at={c("guide1", 11)} x={760} y={1110}><Actor a={A.honeycomb} t={t} x={0} y={0} w={300} bob={0} /></Pop>
@@ -169,11 +170,10 @@ const shots: Shot[] = [
     at: c("guide2", 0),
     render: ({ t, u }) => (
       <Cam t={t} z={1.18 + 0.06 * ease(u, 0, 2.5)} x={430} y={980}>
-        <Backdrop src={IMG + "bg-savanna.jpg"} t={t} />
-        <Person id="hunter" t={t} x={420} y={1520} h={900} look={{ ...HUNTER, prop: "none" }} faces={[[-99, "neutral"], [c("guide2", 7), "happy"]]} gaze={[0.4, -0.5]}
-          talk={[[c("guide2", 7), c("guide2", 7) + 0.6]]} />
-        <Pop t={t} at={c("guide2", 4)} x={420} y={430}><Chip text="AFRICA" size={60} /></Pop>
-        <Pop t={t} at={c("guide2", 7)} x={680} y={560}><Bubble text="BRRR-HM!" size={78} tail={[-170, 150]} /></Pop>
+        <Backdrop src={IMG + "bg-savanna.jpg"} y={-260} h={H * 1.95} t={t} />
+        <PhotoPerson id="hunter" t={t} poses={[[-99, BODY["hunter-stand"]], [c("guide2", 6), BODY["hunter-call"]]]} x={430} y={1860} h={1150} look={HUNTER_HEAD} faces={[[-99, "neutral"], [c("guide2", 7), "shocked"]]} gaze={[0.4, -0.5]} talk={[[c("guide2", 7), c("guide2", 7) + 0.6]]} />
+        <Pop t={t} at={c("guide2", 4)} until={c("guide2", 7) - 0.1} x={420} y={430}><Chip text="AFRICA" size={60} /></Pop>
+        <Pop t={t} at={c("guide2", 7)} x={560} y={500}><Bubble text="BRRR-HM!" size={66} tail={[-80, 170]} /></Pop>
       </Cam>
     ),
   },
@@ -184,9 +184,9 @@ const shots: Shot[] = [
       const k = ease(u, 0.1, 2.0);
       return (
         <Cam t={t} z={1.0}>
-          <Backdrop src={IMG + "bg-savanna.jpg"} t={t} flip />
+          <Backdrop src={IMG + "bg-savanna.jpg"} y={-260} h={H * 1.95} t={t} flip />
           <Actor a={A.honeyguide} t={t} x={lerp(980, 380, k)} y={lerp(520, 640, k)} w={360} bob={18} bobRate={2.2} moods={OPEN} rot={Math.sin(t * 6) * 6} />
-          <Person id="hunter" t={t} x={lerp(860, 640, k)} y={1560} h={720} look={HUNTER} faces={[[-99, "happy"]]} gaze={[-0.6, -0.4]} bob={6} flip />
+          <PhotoPerson id="hunter" t={t} poses={[[-99, BODY["hunter-walk"]]]} x={lerp(900, 600, k)} y={1800} h={980} look={HUNTER_HEAD} faces={[[-99, "happy"]]} gaze={[0.6, -0.4]} walk={1.6} flip />
           <Pop t={t} at={c("guide2", 12)} x={230} y={760}><Arrow t={t} at={c("guide2", 12)} rot={180} size={170} /></Pop>
         </Cam>
       );
@@ -211,7 +211,7 @@ const shots: Shot[] = [
       const k = ease(t, c("guide3", 4), c("guide3", 4) + 1.2);
       return (
         <Cam t={t} z={1.0}>
-          <Backdrop src={IMG + "bg-savanna.jpg"} t={t} flip blur={3} />
+          <Backdrop src={IMG + "bg-savanna.jpg"} y={-260} h={H * 1.95} t={t} flip blur={3} />
           <Pop t={t} at={c("guide3", 0) + 0.05} x={540} y={760}>
             <div style={{ position: "absolute", transform: "translate(-50%, -50%)", width: 760, padding: "34px 40px", background: "rgba(255,255,255,0.94)", border: "8px solid #111", borderRadius: 40,
               boxShadow: "0 12px 30px rgba(0,0,0,0.4)", fontFamily: "PoppinsBlack", color: "#111" }}>
@@ -236,9 +236,8 @@ const shots: Shot[] = [
     at: c("guide4", 0),
     render: ({ t }) => (
       <Cam t={t} z={1.06}>
-        <Backdrop src={IMG + "bg-savanna.jpg"} t={t} />
-        <Person id="hunter" t={t} x={420} y={1520} h={860} look={{ ...HUNTER, prop: "none" }} faces={[[-99, "happy"]]} gaze={[0.5, 0.3]} />
-        <Pop t={t} at={c("guide4", 2)} x={700} y={1060}><Actor a={A.honeycomb} t={t} x={0} y={0} w={420} bob={4} /></Pop>
+        <Backdrop src={IMG + "bg-savanna.jpg"} y={-260} h={H * 1.95} t={t} />
+        <PhotoPerson id="hunter" t={t} poses={[[-99, BODY["hunter-honey"]]]} x={540} y={1850} h={1150} look={HUNTER_HEAD} faces={[[-99, "happy"]]} gaze={[-0.5, -0.4]} />
       </Cam>
     ),
   },
@@ -247,7 +246,7 @@ const shots: Shot[] = [
     at: c("guide4", 5),
     render: ({ t }) => (
       <Cam t={t} z={1.1}>
-        <Backdrop src={IMG + "bg-savanna.jpg"} t={t} flip />
+        <Backdrop src={IMG + "bg-savanna.jpg"} y={-260} h={H * 1.95} t={t} flip />
         <Actor a={A.honeycomb} t={t} x={540} y={1120} w={520} bob={0} />
         <Actor a={A.honeyguide} t={t} x={560} y={820} w={520} bob={10} bobRate={2.5} moods={[[-99, "open"]]} look={[0, 0.8]} rot={Math.sin(t * 9) * 4} />
         <Pop t={t} at={c("guide4", 10)} x={820} y={560}><Heart size={140} /></Pop>
@@ -273,8 +272,8 @@ const shots: Shot[] = [
       <Cam t={t} z={1.02 + 0.05 * ease(u, 0, 4)}>
         <PaintedDeep t={t} />
         <Actor a={A.beluga} t={t} x={820} y={1260} w={520} bob={10} bobRate={0.5} moods={OPEN} look={[-0.6, -0.2]} tint="brightness(0.85) blur(1px)" />
-        <Person id="divA" t={t} x={330} y={1250} h={620} look={DIVER_A} faces={[[-99, "neutral"], [c("noc1", 10), "curious"]]} gaze={[0.5, -0.3]} bob={10} rot={-6} />
-        <Person id="divB" t={t} x={700} y={980} h={520} look={DIVER_B} faces={[[-99, "neutral"], [c("noc1", 12), "worried"]]} gaze={[-0.5, -0.2]} bob={12} rot={8} />
+        <PhotoPerson id="divA" t={t} poses={[[-99, BODY["diver-swim"]]]} x={lerp(380, 440, ease(u, 0, 4))} y={1180} h={300} look={DIVER_A_HEAD} faces={[[-99, "neutral"], [c("noc1", 10), "curious"]]} gaze={[0.5, -0.2]} bob={10} sway={2} shadow={false} />
+        <PhotoPerson id="divB" t={t} poses={[[-99, BODY["diver-swim"]]]} x={lerp(760, 700, ease(u, 0, 4))} y={880} h={250} look={DIVER_B_HEAD} faces={[[-99, "neutral"], [c("noc1", 12), "worried"]]} gaze={[0.5, -0.2]} bob={12} sway={2} flip shadow={false} />
         <Pop t={t} at={c("noc1", 6)} x={540} y={300}><Chip text="1984 · US NAVY" size={58} /></Pop>
         <Murmur t={t} at={c("noc1", 13)} />
       </Cam>
@@ -289,8 +288,7 @@ const shots: Shot[] = [
         <Cam t={t} z={1.15} y={1000}>
           <Backdrop src={IMG + "bg-bay.jpg"} t={t} />
           <AboveLine y={1250}>
-            <Person id="divA" t={t} x={520} y={lerp(1700, 1420, rise)} h={760} look={DIVER_A} faces={[[-99, "curious"], [c("noc2", 7), "worried"]]} gaze={[0.4, -0.2]}
-              talk={[[c("noc2", 7), c("noc2", 12) + 0.3]]} bob={8} />
+            <PhotoPerson id="divA" t={t} poses={[[-99, BODY["diver-stand"]]]} x={520} y={lerp(2300, 1980, rise)} h={1150} look={DIVER_A_HEAD} faces={[[-99, "curious"], [c("noc2", 7), "worried"]]} gaze={[0.4, -0.2]} talk={[[c("noc2", 7), c("noc2", 12) + 0.3]]} bob={8} shadow={false} />
           </AboveLine>
           <div style={{ position: "absolute", left: 300, top: 1232, width: 440, height: 40, borderRadius: "50%", border: "6px solid rgba(255,255,255,0.8)" }} />
           <Pop t={t} at={c("noc2", 7)} x={560} y={420}><Bubble text="WHO TOLD ME" sub="TO GET OUT?" size={66} tail={[-60, 200]} /></Pop>
@@ -305,8 +303,8 @@ const shots: Shot[] = [
       <Cam t={t} z={1.1} y={1000}>
         <Backdrop src={IMG + "bg-bay.jpg"} t={t} flip />
         <AboveLine y={1250}>
-          <Person id="divB" t={t} x={330} y={1420} h={660} look={DIVER_B} faces={[[-99, "worried"]]} gaze={[0.5, 0]} bob={8} />
-          <Person id="divA" t={t} x={730} y={1430} h={700} look={DIVER_A} faces={[[-99, "worried"]]} gaze={[-0.5, 0]} bob={8} />
+          <PhotoPerson id="divB" t={t} poses={[[-99, BODY["diver-shrug"]]]} x={320} y={1960} h={1050} look={DIVER_B_HEAD} faces={[[-99, "worried"]]} gaze={[0.5, 0]} bob={8} shadow={false} />
+          <PhotoPerson id="divA" t={t} poses={[[-99, BODY["diver-shrug"]]]} x={760} y={1990} h={1100} look={DIVER_A_HEAD} faces={[[-99, "worried"]]} gaze={[-0.5, 0]} bob={8} flip shadow={false} />
         </AboveLine>
         <Pop t={t} at={c("noc3", 0)} x={540} y={760}><RedX t={t} at={c("noc3", 0)} size={420} /></Pop>
       </Cam>
@@ -319,7 +317,7 @@ const shots: Shot[] = [
       <Cam t={t} z={1.1} y={1000}>
         <Backdrop src={IMG + "bg-bay.jpg"} t={t} />
         <AboveLine y={1250}>
-          <Person id="divA" t={t} x={300} y={1430} h={680} look={DIVER_A} faces={[[-99, "worried"], [c("noc3", 4), "shocked"]]} gaze={[0.7, 0]} bob={8} />
+          <PhotoPerson id="divA" t={t} poses={[[-99, BODY["diver-stand"]], [c("noc3", 4), BODY["diver-shock"]]]} x={300} y={1990} h={1100} look={DIVER_A_HEAD} faces={[[-99, "worried"], [c("noc3", 4), "shocked"]]} gaze={[0.7, 0]} bob={8} shadow={false} />
           <Actor a={A.belugahead} t={t} x={770} y={lerp(1480, 1150, ease(t, c("noc3", 3), c("noc3", 4) + 0.2))} w={600} flip bob={6} bobRate={0.7} moods={OPEN} look={[-0.6, 0]} />
         </AboveLine>
         <div style={{ position: "absolute", left: 600, top: 1230, width: 360, height: 40, borderRadius: "50%", border: "6px solid rgba(255,255,255,0.8)" }} />

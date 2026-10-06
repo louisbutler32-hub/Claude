@@ -1,0 +1,170 @@
+{
+ "keeper-stand": {
+  "file": "keeper-stand.png",
+  "w": 243,
+  "h": 689,
+  "neck": [
+   0.4918,
+   0.1306
+  ],
+  "headW": 0.3292,
+  "turn": 0,
+  "tilt": 0
+ },
+ "keeper-walk": {
+  "file": "keeper-walk.png",
+  "w": 274,
+  "h": 664,
+  "neck": [
+   0.5237,
+   0.1325
+  ],
+  "headW": 0.292,
+  "turn": 0.5,
+  "tilt": 0
+ },
+ "keeper-talk": {
+  "file": "keeper-talk.png",
+  "w": 293,
+  "h": 680,
+  "neck": [
+   0.6348,
+   0.1309
+  ],
+  "headW": 0.3038,
+  "turn": 0.45,
+  "tilt": 0
+ },
+ "keeper-shock": {
+  "file": "keeper-shock.png",
+  "w": 223,
+  "h": 672,
+  "neck": [
+   0.5022,
+   0.1592
+  ],
+  "headW": 0.2691,
+  "turn": 0,
+  "tilt": 0
+ },
+ "keeper-point": {
+  "file": "keeper-point.png",
+  "w": 133,
+  "h": 352,
+  "neck": [
+   0.4361,
+   0.1761
+  ],
+  "headW": 0.3158,
+  "turn": 0.1,
+  "tilt": 0
+ },
+ "hunter-stand": {
+  "file": "hunter-stand.png",
+  "w": 242,
+  "h": 689,
+  "neck": [
+   0.4959,
+   0.1335
+  ],
+  "headW": 0.3264,
+  "turn": 0,
+  "tilt": 0
+ },
+ "hunter-walk": {
+  "file": "hunter-walk.png",
+  "w": 335,
+  "h": 664,
+  "neck": [
+   0.5507,
+   0.119
+  ],
+  "headW": 0.2687,
+  "turn": 0.55,
+  "tilt": 0
+ },
+ "hunter-gesture": {
+  "file": "hunter-gesture.png",
+  "w": 386,
+  "h": 672,
+  "neck": [
+   0.4443,
+   0.1161
+  ],
+  "headW": 0.2332,
+  "turn": 0.35,
+  "tilt": 0
+ },
+ "diver-stand": {
+  "file": "diver-stand.png",
+  "w": 212,
+  "h": 561,
+  "neck": [
+   0.4811,
+   0.1497
+  ],
+  "headW": 0.3443,
+  "turn": 0,
+  "tilt": 0
+ },
+ "diver-shrug": {
+  "file": "diver-shrug.png",
+  "w": 356,
+  "h": 559,
+  "neck": [
+   0.5112,
+   0.1431
+  ],
+  "headW": 0.2079,
+  "turn": 0,
+  "tilt": 0
+ },
+ "diver-shock": {
+  "file": "diver-shock.png",
+  "w": 223,
+  "h": 551,
+  "neck": [
+   0.4978,
+   0.1833
+  ],
+  "headW": 0.2511,
+  "turn": 0,
+  "tilt": 0
+ },
+ "diver-swim": {
+  "file": "diver-swim.png",
+  "w": 485,
+  "h": 197,
+  "neck": [
+   0.833,
+   0.4416
+  ],
+  "headW": 0.1485,
+  "turn": 0.8,
+  "tilt": 10
+ },
+ "hunter-call": {
+  "file": "hunter-call.png",
+  "w": 322,
+  "h": 665,
+  "neck": [
+   0.5745,
+   0.1504
+  ],
+  "headW": 0.2236,
+  "turn": 0.55,
+  "tilt": -6
+ },
+ "hunter-honey": {
+  "file": "hunter-honey.png",
+  "w": 365,
+  "h": 679,
+  "neck": [
+   0.6603,
+   0.1311
+  ],
+  "headW": 0.1863,
+  "turn": 0.35,
+  "tilt": 0
+ }
+}

@@ -17,7 +17,7 @@ findings, not preferences.
 | art | photoreal animals (theirs look AI-rendered: clean, full-body, centred, often facing camera) composited over **sharp, bright daylight photo backdrops**, puppeted with scale/rotate/float. Underwater sets are a painted teal→navy gradient | `Actor` + `Backdrop` (blur 0.5, slight lift) + `PaintedDeep` |
 | faces | cartoon eyes over the real eyes, white with a **thin** outline and a big pupil, and above all **thick black eyebrows**: worried for sad (inner ends up), a V for angry, raised for shock. Blue tears on sad, sweat drops on shock, X-eyes for dead | `Eye` moods: open, closed, wide, sad, dead, angry. Brows on by default (`Asset.brows`) |
 | props | big **red X** struck over what's ruled out, red pointer arrows, little white hand-lettered notes ("food →"), clocks, calendars, brain/DNA diagrams, hearts, signs | `RedX`, `Arrow`, `Note`, `Clock`, `Calendar`, `SplitBrain`, `Heart`, `Chip`, `Mark`, `Bonk`, `Current`, `Zzz` |
-| people | whenever the narration mentions humans (scientists, owners, hunters), **cartoon-headed people**: a believable body in real clothes under a flat comic head (outlined face, big whites with small pupils, heavy brows, the mouth doing the acting) | `Person` in `people.tsx`: faces neutral, happy, curious, shocked, worried, smirk; caps, beanies, beards, glasses; a binoculars, clipboard or pointing prop; `talk` windows flap the mouth. `AboveLine` cuts them off at a gunwale or waterline. Check the look with the `Pins-People-Sheet` still |
+| people | whenever the narration mentions humans: **a real photo body under a flat comic head**, in an action pose (hand on head, pushing, holding a prop), full body standing in the scene. Their bodies look AI-rendered: clean, full length, posed to the line | `PhotoPerson` in `people.tsx` with bodies from `bodies.ts`: the real head is erased, a `CartoonHead` (realistic size, oval face, small pupils, heavy brows, stubble, three-quarter turn) mounts at the neck, the neck sits *behind* the photo so the collar hides the seam; poses swap on cue words, the body sways/steps, the head nods and talks. (`Person`, the older all-drawn figure, is still there for quick gags) |
 | branding | a round orange channel logo top-right (~11% of width), the channel name set faint and vertical down one edge | `Brand` (`logo`, `name` props; off until the channel is picked) |
 | camera | constant slow push-ins, pans down/up between sets, a shake on impacts | `Cam` (`z`, `x`, `y`, `shake`) |
 | cuts | hard cuts on the narration beats, one new picture every ~1.5–2.5 s (≈25 shots in 52 s) | `ShotPlayer`: one `Shot` per beat, keyed to a word |
@@ -52,6 +52,23 @@ findings, not preferences.
 7. **Package.** Write `upload.md` (title + 2 alternates, description with
    sources and photo credits, tags under 500 characters) and build the
    9:16 thumbnail (`<Ep>Thumb`).
+
+## Making people
+
+1. **Generate the bodies.** Use any image AI (TubeAI's thumbnail generator
+   works on the free plan): "photorealistic full-body studio photograph of
+   [character], [pose], entire body visible from head to feet, plain white
+   background, no text". Ask for the same outfit across all of a
+   character's poses. A sheet of 2–4 poses in one image is fine.
+2. **Cut them.** List each pose in `scripts/people.json` (with a `crop` for
+   a figure on a sheet) and run `python3 scripts/prep-people.py
+   scripts/people.json`: it removes the background, finds the neck, erases
+   the real head and writes `public/images/pins-people/` + `poses.json`.
+   Poses with hands at the head (shock, calling out) need a manual `neck`
+   and `head` ellipse; poses holding a prop want `"model": "u2net"`.
+3. **Place them.** `<PhotoPerson poses={[[-99, BODY["keeper-stand"]],
+   [cue, BODY["keeper-shock"]]]} look={HEAD} faces={...} talk={...} />`,
+   feet at `y`, height `h` (about 55–60% of the frame for a full figure).
 
 ## Episodes
 

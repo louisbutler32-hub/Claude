@@ -260,8 +260,8 @@ export type HeadLook = {
  * the photo's neck. `turn` (-1..1) slides the features for a three-quarter
  * view (the far ear hides).
  */
-export const CartoonHead: React.FC<{ t: number; look?: HeadLook; face?: Face; since?: number; turn?: number; gaze?: [number, number]; talking?: boolean; id: string }> = ({
-  t, look = {}, face = "neutral", since = -99, turn = 0, gaze = [0, 0], talking = false, id,
+export const CartoonHead: React.FC<{ t: number; look?: HeadLook; face?: Face; since?: number; turn?: number; gaze?: [number, number]; talking?: boolean; id: string; neck?: boolean }> = ({
+  t, look = {}, face = "neutral", since = -99, turn = 0, gaze = [0, 0], talking = false, id, neck = true,
 }) => {
   const { skin = "#e3b38f", hair = "short", hairColor = "#3a2414", hat = "#3d6b8f", beard = "stubble", glasses = false, mask = false } = look;
   const L = "#2a1a10";
@@ -305,7 +305,7 @@ export const CartoonHead: React.FC<{ t: number; look?: HeadLook; face?: Face; si
         </radialGradient>
       </defs>
       {/* neck stub: runs under the photo collar */}
-      <path d="M 44 112 L 42 150 L 78 150 L 76 112 Z" fill={shade(skin, 0.82)} stroke={L} strokeWidth={2.2} />
+      {neck && <path d="M 44 112 L 42 150 L 78 150 L 76 112 Z" fill={shade(skin, 0.82)} stroke={L} strokeWidth={2.2} />}
       {/* ears (the far one hides as the head turns) */}
       {turn < 0.55 && <ellipse cx={17 + fx * 0.4} cy={78} rx={6} ry={10} fill={shade(skin, 0.9)} stroke={L} strokeWidth={2.4} />}
       {turn > -0.55 && <ellipse cx={103 + fx * 0.4} cy={78} rx={6} ry={10} fill={shade(skin, 0.9)} stroke={L} strokeWidth={2.4} />}
@@ -386,9 +386,9 @@ export const PhotoPerson: React.FC<{
   bob?: number;                  // px of idle bob
   walk?: number;                 // > 0: a walking bounce at this many steps / s
   nod?: number;                  // degrees of idle head nod
-  headScale?: number;            // the comic head runs a touch bigger than the real one (default 1.25)
+  headScale?: number;            // the comic head runs bigger than the real one, as the reference does (default 1.45)
   shadow?: boolean;
-}> = ({ t, id, poses, x, y, h, look, faces = [[-99, "neutral"]], gaze = [0, 0], talk = [], flip, sway = 1.2, bob = 0, walk = 0, nod = 2, headScale = 1.25, shadow = true }) => {
+}> = ({ t, id, poses, x, y, h, look, faces = [[-99, "neutral"]], gaze = [0, 0], talk = [], flip, sway = 1.2, bob = 0, walk = 0, nod = 2, headScale = 1.45, shadow = true }) => {
   let pose = poses[0][1], since = -99;
   for (const [at, p] of poses) if (t >= at) { pose = p; since = at; }
   const w = (h * pose.w) / pose.h;
@@ -401,14 +401,18 @@ export const PhotoPerson: React.FC<{
   const hw = pose.headW * w * headScale;     // head box width
   const hh = hw * 150 / 120;
   const nx = pose.neck[0] * w, ny = pose.neck[1] * h;
+  const neckShade = (() => { const n = parseInt((look?.skin ?? "#e3b38f").slice(1), 16); const f = (v: number) => Math.round(v * 0.72); return `rgb(${f(n >> 16)}, ${f((n >> 8) & 255)}, ${f(n & 255)})`; })();
   const headRot = (pose.tilt ?? 0) + Math.sin(t * 1.9 + id.length * 0.5) * nod + (talking ? Math.sin(t * 7) * 2 : 0);
   return (
     <div style={{ position: "absolute", left: x - w / 2, top: y - h + by, width: w, height: h, transform: `rotate(${sw}deg) ${flip ? "scaleX(-1)" : ""} scale(${0.94 + 0.06 * swap})`, transformOrigin: "50% 100%" }}>
       {shadow && <div style={{ position: "absolute", left: w * 0.12, top: h * 0.975, width: w * 0.76, height: h * 0.045, borderRadius: "50%", background: "radial-gradient(rgba(0,0,0,0.38), rgba(0,0,0,0))" }} />}
+      {/* the neck sits behind the photo: the real collar overlaps it, so there's no seam */}
+      <div style={{ position: "absolute", left: nx - hw * 0.17, top: ny - hh * 0.22, width: hw * 0.34, height: hh * 0.4, borderRadius: hw * 0.08,
+        background: `linear-gradient(90deg, ${neckShade}, ${look?.skin ?? "#e3b38f"} 45%, ${neckShade})`, transform: `rotate(${(pose.tilt ?? 0) * 0.5}deg)`, transformOrigin: "50% 0%" }} />
       <Img src={staticFile(pose.src)} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", filter: "drop-shadow(0 6px 8px rgba(0,0,0,0.25))" }} />
       {/* the head: chin (60,132 of 120×150) on the neck point */}
       <div style={{ position: "absolute", left: nx - hw / 2, top: ny - hh * (132 / 150), width: hw, height: hh, transform: `rotate(${headRot}deg) ${flip ? "scaleX(-1)" : ""}`, transformOrigin: "50% 88%" }}>
-        <CartoonHead t={t} id={id} look={look} face={face} since={fs} turn={(pose.turn ?? 0) * (flip ? -1 : 1) * (flip ? -1 : 1)} gaze={gaze} talking={talking} />
+        <CartoonHead t={t} id={id} look={look} face={face} since={fs} turn={pose.turn ?? 0} gaze={gaze} talking={talking} neck={false} />
       </div>
     </div>
   );

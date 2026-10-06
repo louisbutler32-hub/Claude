@@ -1,0 +1,192 @@
+{
+  "out": "public/images/pins-people",
+  "poses": [
+    {
+      "id": "keeper-stand",
+      "src": ".photo-review/people-ai/keeper-stand-c.jpg",
+      "turn": 0
+    },
+    {
+      "id": "keeper-walk",
+      "src": ".photo-review/people-ai/keeper-walk.jpg",
+      "turn": 0.5
+    },
+    {
+      "id": "keeper-talk",
+      "src": ".photo-review/people-ai/keeper-shock-talk.jpg",
+      "crop": [
+        640,
+        0,
+        1280,
+        720
+      ],
+      "turn": 0.45
+    },
+    {
+      "id": "keeper-shock",
+      "src": ".photo-review/people-ai/keeper-shock-talk.jpg",
+      "crop": [
+        0,
+        0,
+        640,
+        720
+      ],
+      "turn": 0,
+      "neck": [
+        347,
+        112
+      ],
+      "head": [
+        347,
+        62,
+        30,
+        50
+      ]
+    },
+    {
+      "id": "keeper-point",
+      "src": ".photo-review/people-ai/keeper-sheet4.jpg",
+      "crop": [
+        640,
+        0,
+        1280,
+        360
+      ],
+      "turn": 0.1,
+      "neck": [
+        897,
+        62
+      ],
+      "head": [
+        897,
+        32,
+        21,
+        30
+      ]
+    },
+    {
+      "id": "hunter-stand",
+      "src": ".photo-review/people-ai/hunter-stand.jpg",
+      "turn": 0
+    },
+    {
+      "id": "hunter-walk",
+      "src": ".photo-review/people-ai/hunter-walk.jpg",
+      "turn": 0.55
+    },
+    {
+      "id": "hunter-gesture",
+      "src": ".photo-review/people-ai/hunter-gesture.jpg",
+      "turn": 0.35
+    },
+    {
+      "id": "diver-stand",
+      "src": ".photo-review/people-ai/diver-sheet4.jpg",
+      "crop": [
+        0,
+        30,
+        235,
+        620
+      ],
+      "turn": 0
+    },
+    {
+      "id": "diver-shrug",
+      "src": ".photo-review/people-ai/diver-sheet4.jpg",
+      "crop": [
+        225,
+        30,
+        585,
+        620
+      ],
+      "turn": 0
+    },
+    {
+      "id": "diver-shock",
+      "src": ".photo-review/people-ai/diver-sheet4.jpg",
+      "crop": [
+        585,
+        30,
+        815,
+        620
+      ],
+      "turn": 0,
+      "neck": [
+        700,
+        158
+      ],
+      "head": [
+        700,
+        108,
+        28,
+        47
+      ]
+    },
+    {
+      "id": "diver-swim",
+      "src": ".photo-review/people-ai/diver-sheet4.jpg",
+      "crop": [
+        780,
+        260,
+        1280,
+        480
+      ],
+      "neck": [
+        1190,
+        360
+      ],
+      "head": [
+        1218,
+        322,
+        36,
+        46
+      ],
+      "turn": 0.8,
+      "tilt": 10
+    },
+    {
+      "id": "hunter-call",
+      "src": ".photo-review/people-ai/hunter-call-honey.jpg",
+      "crop": [
+        0,
+        0,
+        640,
+        720
+      ],
+      "neck": [
+        372,
+        114
+      ],
+      "head": [
+        376,
+        64,
+        36,
+        47
+      ],
+      "turn": 0.55,
+      "tilt": -6
+    },
+    {
+      "id": "hunter-honey",
+      "src": ".photo-review/people-ai/hunter-call-honey.jpg",
+      "crop": [
+        640,
+        0,
+        1280,
+        720
+      ],
+      "turn": 0.35,
+      "model": "u2net",
+      "neck": [
+        926,
+        100
+      ],
+      "head": [
+        930,
+        57,
+        34,
+        42
+      ]
+    }
+  ]
+}
