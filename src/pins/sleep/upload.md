@@ -22,7 +22,7 @@ Three animals that sleep in the craziest ways. Sea otters hold hands while they 
 
 Sources: Rattenborg et al. 2016, *Nature Communications*: "Evidence that birds sleep in mid-flight" (frigatebirds: ~0.7 h/day of sleep in flight, mean bout ~12 s, often unihemispheric). Weimerskirch et al. 2016, *Science* (frigatebirds aloft for up to two months). Miller et al. 2008, *Current Biology*: "Stereotypical resting behavior of the sperm whale" (vertical drift-dives, unresponsive to a drifting vessel until it touched one). Monterey Bay Aquarium (sea otters rafting, holding paws, wrapping in kelp).
 
-Photos: see Credits below (CC BY / CC BY-SA, via Openverse).
+Frigatebird photo: "Magnificent Frigatebird Juvenile" by Kurayba, CC BY-SA 2.0 (https://www.flickr.com/photos/48503330@N08/5662605084). All other images are AI-generated.
 
 #shorts #animals #animalfacts #seaotter #spermwhale #frigatebird #nature #wildlife #sleep #didyouknow #ocean #facts #learning #cuteanimals
 
@@ -47,24 +47,25 @@ under the hook) is what most people see.
 | Chapters | none, because Shorts don't show them |
 | `#shorts` | in the description |
 
-## Credits (photos)
+## Credits (images)
+
+Everything but one image is AI-generated for the channel, so no credit is owed
+for it:
+
+- animals, the boat and every background: FLUX.1 [schnell] on Runware, from
+  the prompts in `src/pins/sleep/images.json` (14 images; the boat's
+  garbled AI lettering painted out), built with `scripts/gen-images.py`
+- the scientists' bodies: TubeAI's image generator, cut by
+  `scripts/prep-people.py`; the comic heads are drawn in code
+
+The one real photo is the flying frigatebird (the generated one came out as a
+stork). It needs its credit in the description, as above:
 
 | id | title | creator | licence | source |
 |---|---|---|---|---|
-| otter | Sea otter | jkbrooks85 | CC BY 2.0 | https://www.flickr.com/photos/68679992@N00/11215277206 |
-| otterface | Sea otter | jkbrooks85 | CC BY 2.0 | https://www.flickr.com/photos/68679992@N00/11215232584 |
-| hold | Sea Otters holding hands at the Vancouver Aquarium | pburka | CC BY-SA 2.0 | https://www.flickr.com/photos/30047235@N03/14039998648 |
-| drifter | Two Wild Sea Otters | Rennett Stowe | CC BY 2.0 | https://www.flickr.com/photos/10393601@N08/17390907448 |
 | frigate | Magnificent Frigatebird Juvenile | Kurayba | CC BY-SA 2.0 | https://www.flickr.com/photos/48503330@N08/5662605084 |
-| whale | 2009.04.05 sperm whale | denn | CC BY-SA 2.0 | https://www.flickr.com/photos/42902413@N00/3413879795 |
-| boat | White empty boat floating on turquoise sea waters | Horia Varlan | CC BY 2.0 | https://www.flickr.com/photos/10361931@N06/4777131568 |
-| bg-sea | coeficiente de reflexión | bachmont | CC BY 2.0 | https://www.flickr.com/photos/8845870@N07/2850001033 |
-| bg-kelp | Kelp of Cat Rock, Anacapa Island | NOAA's National Ocean Service | CC BY 2.0 | https://www.flickr.com/photos/40322276@N04/4115872878 |
-| bg-sky | Blue sky, white clouds | o b s k u r a | CC BY 2.0 | https://www.flickr.com/photos/88575173@N00/2743129961 |
 
-BY-SA photos were cut out and composited, so the video is an adaptation
-under BY-SA. Keep this credit block in the description, or link a pinned
-comment that carries it.
+It's cut out and composited, so the video is an adaptation under BY-SA.
 
 ## Audio
 
@@ -86,5 +87,6 @@ from the video it came in; gitignored), played from its first second, sitting
 over the last 0.6 s. **Credit the track in the description if its licence
 asks for it**; the name and licence weren't given with the file.
 
-No sound effects: `"sfx": false` in `script.json` until the channel's own
-SFX are dropped in.
+SFX: the channel's own files under `.sfx/pins/` (ding at 0:00, whoosh on
+every section and hook cut, pop, wrong, counter, wing flaps, whale call,
+splash), cued by word in `script.json`.

@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Audio, staticFile } from "remotion";
 import {
-  Actor, Arrow, Backdrop, Brand, Bubble, Cam, Chip, Heart, Mark, Mood, Pop, RedX, Shot, ShotPlayer, Timing,
+  Actor, Arrow, Backdrop, Brand, Bubble, Cam, Chip, Heart, Mark, Mood, Pop, RedX, Shot, ShotPlayer, Timing, W, H,
   Punch, WordCaption, cue, ease, hitsFromScript, lerp, loadPinsFonts, useT,
 } from "../engine";
 import { AboveLine, HeadLook, PhotoPerson } from "../people";
@@ -27,7 +27,7 @@ const c = (id: string, i = 0) => cue(T, id, i);
 const OPEN: [number, Mood][] = [[-99, "open"]];
 
 /** snap zooms: every SFX cue, plus the beats the line leans on */
-const HITS = hitsFromScript(T, SCRIPT as never, [["hook", 5], ["koshik1", 7], ["koshik3", 10], ["noc1", 6], ["noc2", 11], ["noc3", 4]]);
+const HITS = hitsFromScript(T, SCRIPT as never, [["hook", 0], ["hook", 2], ["hook", 3], ["hook", 4], ["hook", 5], ["hook", 6], ["koshik1", 7], ["koshik3", 10], ["noc1", 6], ["noc2", 11], ["noc3", 4]]);
 
 
 const KEEPER_HEAD: HeadLook = { hair: "cap", hat: "#2e6b45", skin: "#e2b08a", hairColor: "#2b1a10", beard: "stubble" };
@@ -49,16 +49,82 @@ const Murmur: React.FC<{ t: number; at: number }> = ({ t, at }) => (
 /* ------------------------------------------------------------ the shots */
 
 const shots: Shot[] = [
-  /* HOOK: the elephant, saying hello */
+  /* HOOK: a rapid montage, each animal talking to a person. The elephant says hello… */
   {
     at: 0,
     render: ({ t, u }) => (
-      <Cam t={t} z={1.12 - 0.08 * ease(u, 0, 2.6)}>
+      <Cam t={t} z={1.45 - 0.3 * ease(u, 0, 0.6)} x={560} y={1000}>
         <Backdrop src={BG.zoo} t={t} blur={2} />
-        <Actor a={A.elephant} t={t} x={540} y={1080} w={860} bob={6} bobRate={0.6} moods={OPEN} look={[0.2, 0.2]} />
-        <Pop t={t} at={c("hook", 4)} x={640} y={400}><Bubble text="HELLO!" size={84} tail={[60, 170]} /></Pop>
+        <Actor a={A.elephant} t={t} x={700} y={1090} w={700} bob={6} bobRate={0.6} moods={OPEN} look={[-0.6, 0.1]} />
+        <PhotoPerson id="keeper" t={t} poses={[[-99, BODY["keeper-shock"]]]} x={230} y={1830} h={1060} look={KEEPER_HEAD} faces={[[-99, "shocked"]]} gaze={[0.7, -0.2]} />
+        <Pop t={t} at={0.12} x={720} y={560}><Bubble text="ANNYEONG!" sub="hello" size={74} tail={[0, 170]} /></Pop>
       </Cam>
     ),
+  },
+  /* …the honey hunter calls and the bird calls back… */
+  {
+    at: c("hook", 2),
+    transition: "whip",
+    reframes: false,
+    render: ({ t, u }) => (
+      <Cam t={t} z={1.2 + 0.1 * ease(u, 0, 0.7)} x={540} y={900}>
+        <Backdrop src={BG.village} t={t} />
+        <PhotoPerson id="hunter" t={t} poses={[[-99, BODY["hunter-call"]]]} x={360} y={1860} h={1150} look={HUNTER_HEAD} faces={[[-99, "happy"]]} gaze={[0.5, -0.5]} talk={[[c("hook", 2), c("hook", 3)]]} />
+        <Actor a={A.honeyguide} t={t} x={740} y={700} w={300} bob={10} bobRate={1.6} moods={OPEN} look={[-0.7, 0.2]} />
+        <Pop t={t} at={c("hook", 2) + 0.05} x={420} y={420}><Bubble text="BRRR-HM!" size={60} tail={[-40, 150]} /></Pop>
+        <Pop t={t} at={c("hook", 3)} x={740} y={470}><Bubble text="CHIRP!" size={56} tail={[0, 130]} /></Pop>
+      </Cam>
+    ),
+  },
+  /* …the beluga tells a diver to get out… */
+  {
+    at: c("hook", 4),
+    transition: "zoom",
+    reframes: false,
+    render: ({ t, u }) => (
+      <Cam t={t} z={1.2 + 0.1 * ease(u, 0, 0.6)} y={1000}>
+        <Backdrop src={BG.bay} t={t} />
+        <AboveLine y={1250}>
+          <PhotoPerson id="divA" t={t} poses={[[-99, BODY["diver-shock"]]]} x={300} y={1990} h={1100} look={DIVER_A_HEAD} faces={[[-99, "shocked"]]} gaze={[0.7, 0]} bob={8} shadow={false} />
+          <Actor a={A.belugaUp} t={t} x={780} y={lerp(1600, 1200, ease(u, 0, 0.25))} w={420} bob={6} bobRate={0.7} moods={OPEN} look={[-0.6, 0]} />
+        </AboveLine>
+        <div style={{ position: "absolute", left: 600, top: 1230, width: 360, height: 40, borderRadius: "50%", border: "6px solid rgba(255,255,255,0.8)" }} />
+        <Pop t={t} at={c("hook", 4) + 0.1} x={660} y={660}><Bubble text="GET OUT!" size={70} tail={[60, 190]} /></Pop>
+      </Cam>
+    ),
+  },
+  /* …all three at once: "talk to humans." */
+  {
+    at: c("hook", 6),
+    reframes: false,
+    render: ({ t }) => {
+      const band = (i: number, child: React.ReactNode) => (
+        <div style={{ position: "absolute", left: 0, top: (H / 3) * i, width: W, height: H / 3, overflow: "hidden",
+          transform: `translateX(${(i % 2 ? 1 : -1) * W * (1 - ease(t, c("hook", 6) + i * 0.08, c("hook", 6) + i * 0.08 + 0.18))}px)` }}>
+          <div style={{ position: "absolute", left: 0, top: -(H / 3) * i, width: W, height: H }}>{child}</div>
+        </div>
+      );
+      return (
+        <AbsoluteFill style={{ background: "#111" }}>
+          {band(0, <>
+            <Backdrop src={BG.zoo} t={t} blur={2} />
+            <Actor a={A.elephant} t={t} x={540} y={380} w={640} bob={4} moods={OPEN} look={[0, 0.2]} />
+            <Pop t={t} at={c("hook", 6) + 0.2} x={860} y={170}><Bubble text="HELLO!" size={50} tail={[-60, 90]} /></Pop>
+          </>)}
+          {band(1, <>
+            <Backdrop src={BG.village} t={t} />
+            <Actor a={A.honeyguide} t={t} x={560} y={1000} w={340} bob={8} bobRate={1.6} moods={OPEN} look={[0.5, 0.2]} />
+            <Pop t={t} at={c("hook", 6) + 0.3} x={250} y={840}><Bubble text="CHIRP!" size={50} tail={[60, 90]} /></Pop>
+          </>)}
+          {band(2, <>
+            <Backdrop src={BG.bay} t={t} />
+            <Actor a={A.belugaUp} t={t} x={540} y={1640} w={380} bob={6} bobRate={0.7} moods={OPEN} look={[0, 0.2]} />
+            <Pop t={t} at={c("hook", 6) + 0.4} x={830} y={1440}><Bubble text="GET OUT!" size={50} tail={[-70, 90]} /></Pop>
+          </>)}
+          {[1, 2].map((i) => <div key={i} style={{ position: "absolute", left: 0, top: (H / 3) * i - 6, width: W, height: 12, background: "#fff" }} />)}
+        </AbsoluteFill>
+      );
+    },
   },
 
   /* #1 KOSHIK: "First, Koshik the elephant." */

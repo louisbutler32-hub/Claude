@@ -7,7 +7,33 @@
   "lines": [
     {
       "id": "hook",
-      "text": "Three animals that can actually talk to humans."
+      "text": "Three animals that can actually talk to humans.",
+      "sfx": [
+        [
+          "whoosh",
+          2,
+          -0.08
+        ],
+        [
+          "pop",
+          3
+        ],
+        [
+          "whoosh",
+          4,
+          -0.08
+        ],
+        [
+          "pop",
+          4,
+          0.1
+        ],
+        [
+          "whoosh",
+          6,
+          -0.08
+        ]
+      ]
     },
     {
       "id": "koshik1",

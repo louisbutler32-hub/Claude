@@ -12,7 +12,28 @@
   "lines": [
     {
       "id": "hook",
-      "text": "Three animals that sleep in the craziest ways."
+      "text": "Three animals that sleep in the craziest ways.",
+      "sfx": [
+        [
+          "whoosh",
+          2,
+          -0.08
+        ],
+        [
+          "pop",
+          3
+        ],
+        [
+          "whoosh",
+          6,
+          -0.08
+        ],
+        [
+          "pop",
+          7,
+          0.25
+        ]
+      ]
     },
     {
       "id": "otter1",
@@ -34,7 +55,22 @@
     },
     {
       "id": "otter3",
-      "text": "Some even wrap themselves in kelp, like a blanket tied to the ocean floor."
+      "text": "Some even wrap themselves in kelp, like a blanket tied to the ocean floor.",
+      "sfx": [
+        [
+          "whoosh",
+          0,
+          -0.1
+        ],
+        [
+          "pop",
+          5
+        ],
+        [
+          "pop",
+          12
+        ]
+      ]
     },
     {
       "id": "otter4",
@@ -54,6 +90,10 @@
       "id": "frigate1",
       "text": "Next, the frigatebird. It can stay in the air for two whole months without landing.",
       "sfx": [
+        [
+          "wings",
+          0
+        ],
         [
           "pop",
           9
@@ -88,6 +128,11 @@
       "text": "often with half of its brain still awake to watch where it's going.",
       "sfx": [
         [
+          "whoosh",
+          0,
+          -0.1
+        ],
+        [
           "pop",
           2
         ]
@@ -112,6 +157,11 @@
       "id": "whale1",
       "text": "Finally, sperm whales. They sleep standing straight up, hanging just below the surface like giant tree trunks.",
       "sfx": [
+        [
+          "whale",
+          0,
+          0.2
+        ],
         [
           "pop",
           15
@@ -148,6 +198,11 @@
       "text": "Until the boat bumped one, and the whole group woke up at once.",
       "sfx": [
         [
+          "whoosh",
+          5,
+          -0.1
+        ],
+        [
           "splash",
           3
         ],
@@ -168,7 +223,14 @@
       "path": ".sfx/pins/counter.mp3",
       "start": 0.25,
       "dur": 1.24
-    }
+    },
+    "wings": {
+      "path": ".sfx/pins/wings.mp3",
+      "start": 0,
+      "dur": 1.6,
+      "fade_out": 0.5
+    },
+    "whale": ".sfx/pins/whale.mp3"
   },
   "sfx_gain": {
     "ding": 0.5,
@@ -176,7 +238,9 @@
     "whoosh": 0.32,
     "splash": 0.4,
     "wrong": 0.4,
-    "counter": 0.3
+    "counter": 0.3,
+    "wings": 0.3,
+    "whale": 0.3
   },
   "start_sfx": [
     [

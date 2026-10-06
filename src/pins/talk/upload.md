@@ -18,7 +18,7 @@ Three animals that can actually talk to humans. Koshik, an Asian elephant at a z
 
 Sources: Stoeger et al. 2012, *Current Biology*: "An Asian Elephant Imitates Human Speech" (Koshik, five words). Spottiswoode, Begg & Begg 2016, *Science*: "Reciprocal signaling in honeyguide-human mutualism" (the brrr-hm call; 17% → 54%). Ridgway et al. 2012, *Current Biology*: "Spontaneous human speech mimicry by a cetacean" (Noc, "Who told me to get out?").
 
-Photos: see Credits below (CC BY / CC BY-SA, via Openverse).
+Images: AI-generated for the channel.
 
 #shorts #animals #animalfacts #elephant #beluga #honeyguide #talkinganimals #nature #wildlife #didyouknow #facts #learning #science
 

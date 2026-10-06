@@ -122,7 +122,7 @@ export const PaintedDeep: React.FC<{ t: number; x?: number; y?: number; w?: numb
 /* ------------------------------------------------------------ eyes */
 
 export type Mood = "open" | "closed" | "wide" | "sad" | "dead" | "angry";
-export type EyeSpec = { x: number; y: number; r: number; mood?: Mood };
+export type EyeSpec = { x: number; y: number; r: number; mood?: Mood; rot?: number }; // rot: degrees, to lay the lids along a tilted head
 
 /** mood at time t from a timeline [[t0, mood], [t1, mood], ...] */
 export const moodAt = (tl: [number, Mood][], t: number): { mood: Mood; since: number } => {
@@ -250,7 +250,7 @@ export const Actor: React.FC<ActorProps> = ({ a, t, x, y, w, rot = 0, flip, ente
           const mid = all.reduce((m, q) => m + q.x, 0) / all.length;
           const side = (all.length < 2 ? 1 : e.x < mid ? -1 : 1) * (flip ? -1 : 1);
           return (
-            <div key={i} style={{ position: "absolute", left: e.x * w, top: e.y * h, width: 0, height: 0, transform: flip ? "scaleX(-1)" : undefined }}>
+            <div key={i} style={{ position: "absolute", left: e.x * w, top: e.y * h, width: 0, height: 0, transform: `${flip ? "scaleX(-1)" : ""} rotate(${e.rot ?? 0}deg)` }}>
               <Eye r={e.r * w} mood={e.mood ?? mood} since={since} t={t} look={look ?? [flip ? -0.4 : 0.4, 0]} seed={i + Math.round(a.w)} side={side} brows={a.brows ?? true} />
             </div>
           );
@@ -529,9 +529,34 @@ export type ShotCtx = { t: number; u: number; start: number; end: number };
  *   "whip" a fast horizontal whip-pan with motion blur (section changes)
  *   "zoom" a zoom-through: the new shot rushes in from big and blurred (reveals)
  */
-export type Shot = { at: number; render: (s: ShotCtx) => React.ReactNode; transition?: "cut" | "whip" | "zoom" };
+export type Shot = {
+  at: number;
+  render: (s: ShotCtx) => React.ReactNode;
+  transition?: "cut" | "whip" | "zoom";
+  /**
+   * jump cuts inside the shot: [time, zoom, focusX?, focusY?] hard-cut reframes
+   * (tight, wide, tight…), so a long line never sits on one framing. Left out,
+   * any shot over ~2 s gets them automatically every ~1.4 s; `false` turns them
+   * off (for a shot whose camera move is the point).
+   */
+  reframes?: [number, number, number?, number?][] | false;
+};
 
-const WHIP = 0.2, ZOOM = 0.28, SETTLE = 0.28;
+const WHIP = 0.2, ZOOM = 0.28, SETTLE = 0.28, JUMP = 1.4;
+
+/** the framing in force at t: the latest reframe, or an automatic tight/wide alternation */
+const frameAt = (s: Shot, t: number, end: number) => {
+  let f = { z: 1, fx: W / 2, fy: H * 0.45, since: s.at };
+  if (s.reframes === false) return f;
+  let list = s.reframes;
+  if (!list) {
+    const n = Math.round((end - s.at) / JUMP);
+    list = [];
+    for (let k = 1; k < n; k++) list.push([s.at + ((end - s.at) * k) / n, k % 2 ? 1.16 : 1]);
+  }
+  for (const [at, z, fx = W / 2, fy = H * 0.45] of list) if (t >= at) f = { z, fx, fy, since: at };
+  return f;
+};
 
 /** plays the shot whose `at` is the latest one not after t, with its transition in */
 export const ShotPlayer: React.FC<{ shots: Shot[]; t: number; total: number }> = ({ shots, t, total }) => {
@@ -541,7 +566,11 @@ export const ShotPlayer: React.FC<{ shots: Shot[]; t: number; total: number }> =
   const s = sorted[i], prev = sorted[i - 1];
   const end = sorted[i + 1]?.at ?? total;
   const u = t - s.at;
-  const draw = (sh: Shot, e: number) => sh.render({ t, u: t - sh.at, start: sh.at, end: e });
+  const draw = (sh: Shot, e: number) => {
+    const f = frameAt(sh, t, e);
+    const body = sh.render({ t, u: t - sh.at, start: sh.at, end: e });
+    return f.z === 1 ? body : <AbsoluteFill style={{ transform: `scale(${f.z})`, transformOrigin: `${f.fx}px ${f.fy}px` }}>{body}</AbsoluteFill>;
+  };
   const tr = s.transition ?? "cut";
   if (tr === "whip" && prev && u < WHIP) {
     const k = ease(u, 0, WHIP);
@@ -557,8 +586,9 @@ export const ShotPlayer: React.FC<{ shots: Shot[]; t: number; total: number }> =
     const k = ease(u, 0, ZOOM);
     return <AbsoluteFill style={{ transform: `scale(${1.35 - 0.35 * k})`, filter: `blur(${14 * (1 - k)}px)` }}>{draw(s, end)}</AbsoluteFill>;
   }
-  // every hard cut lands with a small zoom settle
-  const settle = u < SETTLE ? 0.06 * (1 - ease(u, 0, SETTLE)) : 0;
+  // every hard cut (and every jump cut) lands with a small zoom settle
+  const v = t - frameAt(s, t, end).since;
+  const settle = v < SETTLE ? 0.06 * (1 - ease(v, 0, SETTLE)) : 0;
   return <AbsoluteFill style={{ transform: `scale(${1 + settle})` }}>{draw(s, end)}</AbsoluteFill>;
 };
 
