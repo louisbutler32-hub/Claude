@@ -41,8 +41,8 @@ every effect, the section whooshes included.
 
 SFX: a line's "sfx": [[name, word_index, offset_s], ...] drops an effect on
 that word (offset optional). "sfx_files" maps names to the channel's own
-files (gitignored under .sfx/), or to {"path", "start", "dur"} to cut one
-sound out of a pack, each peak-normalised then scaled by
+files (gitignored under .sfx/), or to {"path", "start", "dur", "fade_out"} to
+cut one sound out of a pack (or shorten a long one with a fade), each peak-normalised then scaled by
 "sfx_gain"[name] (voice peak = 1); names without a file fall back to the
 synthesised ones. "start_sfx": [[name, seconds]] places effects at absolute
 times (the opening ding).
@@ -180,7 +180,7 @@ def fx(name):
         clip = decode(os.path.join(ROOT, f["path"]))
         a = N(f.get("start", 0))
         clip = clip[a:a + N(f["dur"])] if "dur" in f else clip[a:]
-        fade = min(len(clip) // 4, N(0.02))
+        fade = min(len(clip) // 2, N(f.get("fade_out", 0.02)))
         if fade:
             clip[-fade:] *= np.linspace(1, 0, fade)
         return clip / (np.max(np.abs(clip)) + 1e-9)

@@ -60,6 +60,10 @@
           8
         ],
         [
+          "wings",
+          9
+        ],
+        [
           "bees",
           17
         ]
@@ -87,11 +91,28 @@
     },
     {
       "id": "noc1",
-      "text": "Finally, Noc the beluga whale. In 1984, Navy divers kept hearing what sounded like people talking underwater."
+      "text": "Finally, Noc the beluga whale. In 1984, Navy divers kept hearing what sounded like people talking underwater.",
+      "sfx": [
+        [
+          "whale",
+          4
+        ],
+        [
+          "eerie",
+          9
+        ]
+      ]
     },
     {
       "id": "noc2",
-      "text": "Then one diver came up and asked, who told me to get out?"
+      "text": "Then one diver came up and asked, who told me to get out?",
+      "sfx": [
+        [
+          "huh",
+          12,
+          0.3
+        ]
+      ]
     },
     {
       "id": "noc3",
@@ -127,7 +148,21 @@
     "elephant": ".sfx/pins/elephant.mp3",
     "bird": ".sfx/pins/bird.mp3",
     "chirp": ".sfx/pins/bird-chirp.mp3",
-    "bees": ".sfx/pins/bees.mp3"
+    "bees": ".sfx/pins/bees.mp3",
+    "wings": {
+      "path": ".sfx/pins/wings.mp3",
+      "start": 0,
+      "dur": 1.6,
+      "fade_out": 0.5
+    },
+    "whale": ".sfx/pins/whale.mp3",
+    "eerie": {
+      "path": ".sfx/pins/whale-creepy.mp3",
+      "start": 0,
+      "dur": 5.5,
+      "fade_out": 1.5
+    },
+    "huh": ".sfx/pins/huh.mp3"
   },
   "sfx_gain": {
     "ding": 0.5,
@@ -139,7 +174,11 @@
     "elephant": 0.45,
     "bird": 0.35,
     "chirp": 0.3,
-    "bees": 0.3
+    "bees": 0.3,
+    "wings": 0.3,
+    "whale": 0.35,
+    "eerie": 0.22,
+    "huh": 0.5
   },
   "start_sfx": [
     [
