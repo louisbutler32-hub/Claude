@@ -38,6 +38,13 @@ pump up in the short pauses between sentences), then fades out at the end.
 Without one, the bed is synthesised (numpy, nothing to license): a plucked
 I–V–vi–IV at 112 bpm with a soft kick. "sfx": false in script.json drops
 every effect, the section whooshes included.
+
+SFX: a line's "sfx": [[name, word_index, offset_s], ...] drops an effect on
+that word (offset optional). "sfx_files" maps names to the channel's own
+files (gitignored under .sfx/), each peak-normalised then scaled by
+"sfx_gain"[name] (voice peak = 1); names without a file fall back to the
+synthesised ones. "start_sfx": [[name, seconds]] places effects at absolute
+times (the opening ding).
 """
 import asyncio
 import hashlib
@@ -161,7 +168,13 @@ def music(total):
     return bed
 
 
+SFX_FILES = {}   # name -> path, from script.json "sfx_files" (the channel's own effects, gitignored)
+
+
 def fx(name):
+    if name in SFX_FILES:
+        clip = decode(os.path.join(ROOT, SFX_FILES[name]))
+        return clip / (np.max(np.abs(clip)) + 1e-9)
     if name == "zzz":
         t = np.arange(N(0.9)) / SR
         f = 180 + 30 * np.sin(2 * np.pi * 3 * t)
@@ -313,6 +326,7 @@ def main():
     ep_dir = os.path.join(ROOT, "src", "pins", ep)
     spec = json.load(open(os.path.join(ep_dir, "script.json")))
     spec.setdefault("pitch", "+0Hz")
+    SFX_FILES.update(spec.get("sfx_files", {}))
     cache = os.path.join(ROOT, ".tts", f"pins-{ep}")
     os.makedirs(cache, exist_ok=True)
 
@@ -353,8 +367,9 @@ def main():
             lines_out.append({"id": line["id"], "text": line["text"], "start": abs_words[0][1], "end": abs_words[-1][2], "words": abs_words})
             if abs_words[0][0].lower().strip(",.") in SECTION_WORDS:
                 cues.append(("whoosh", abs_words[0][1] - 0.12, 0.35))
-            for name, wi in line.get("sfx", []):
-                cues.append((name, abs_words[min(wi, len(abs_words) - 1)][1], 0.45))
+            for cue_ in line.get("sfx", []):
+                name, wi, off = (list(cue_) + [0.0])[:3]
+                cues.append((name, abs_words[min(wi, len(abs_words) - 1)][1] + off, None))
         t = lead_in + len(clip) / SR + gap
     for line in ([] if recorded else spec["lines"]):
         mp3, words = voice_line(line, spec, cache)
@@ -365,8 +380,9 @@ def main():
                           "end": round(t + len(clip) / SR, 3), "words": abs_words})
         if abs_words and abs_words[0][0].lower().strip(",.") in SECTION_WORDS:
             cues.append(("whoosh", abs_words[0][1] - 0.12, 0.35))
-        for name, wi in line.get("sfx", []):
-            cues.append((name, abs_words[min(wi, len(abs_words) - 1)][1], 0.45))
+        for cue_ in line.get("sfx", []):
+            name, wi, off = (list(cue_) + [0.0])[:3]
+            cues.append((name, abs_words[min(wi, len(abs_words) - 1)][1] + off, None))
         t += len(clip) / SR + gap
     total = round(t - gap + spec.get("tail", 0.35), 3)
 
@@ -395,8 +411,11 @@ def main():
         mix += np.pad(music(total), (0, len(mix) - N(total))) * 0.13
     if spec.get("sfx", True) is False:
         cues = []
+    for name, at in spec.get("start_sfx", []):
+        cues.append((name, at, None))
+    gains = {"whoosh": 0.35, **spec.get("sfx_gain", {})}
     for name, at, gain in cues:
-        place(mix, fx(name), max(0.0, at), gain)
+        place(mix, fx(name), max(0.0, at), gains.get(name, 0.45) if gain is None else gain)
     mix = mix[:N(total)]
 
     out_dir = os.path.join(ROOT, "public", "audio")

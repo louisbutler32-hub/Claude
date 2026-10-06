@@ -1,0 +1,53 @@
+{
+  "voice": "en-US-AndrewNeural",
+  "rate": "+12%",
+  "pitch": "+0Hz",
+  "gap": 0.12,
+  "max_pause": 0.3,
+  "lines": [
+    {
+      "id": "hook",
+      "text": "Three animals that can actually talk to humans."
+    },
+    {
+      "id": "koshik1",
+      "text": "First, Koshik the elephant. For years, his only friends at a South Korean zoo were humans."
+    },
+    {
+      "id": "koshik2",
+      "text": "So he learned to speak their language."
+    },
+    {
+      "id": "koshik3",
+      "text": "By sticking his trunk in his mouth, he can say five Korean words, like hello, sit down, and no."
+    },
+    {
+      "id": "guide1",
+      "text": "Next, the honeyguide. This bird teams up with humans to find honey."
+    },
+    {
+      "id": "guide2",
+      "text": "When honey hunters in Africa call out brrr-hm, it flies over and leads them straight to a wild beehive."
+    },
+    {
+      "id": "guide3",
+      "text": "That call more than triples their chances of finding one."
+    },
+    {
+      "id": "guide4",
+      "text": "The humans take the honey, and the bird gets the wax."
+    },
+    {
+      "id": "noc1",
+      "text": "Finally, Noc the beluga whale. In 1984, Navy divers kept hearing what sounded like people talking underwater."
+    },
+    {
+      "id": "noc2",
+      "text": "Then one diver came up and asked, who told me to get out?"
+    },
+    {
+      "id": "noc3",
+      "text": "Nobody had. It was Noc, copying human voices."
+    }
+  ]
+}

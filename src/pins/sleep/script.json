@@ -8,17 +8,11 @@
   "music_start": 0,
   "music_db": 15,
   "duck_db": 3,
-  "sfx": false,
+  "sfx": true,
   "lines": [
     {
       "id": "hook",
-      "text": "Three animals that sleep in the craziest ways.",
-      "sfx": [
-        [
-          "zzz",
-          3
-        ]
-      ]
+      "text": "Three animals that sleep in the craziest ways."
     },
     {
       "id": "otter1",
@@ -31,18 +25,16 @@
         [
           "pop",
           2
+        ],
+        [
+          "wrong",
+          9
         ]
       ]
     },
     {
       "id": "otter3",
-      "text": "Some even wrap themselves in kelp, like a blanket tied to the ocean floor.",
-      "sfx": [
-        [
-          "blip",
-          2
-        ]
-      ]
+      "text": "Some even wrap themselves in kelp, like a blanket tied to the ocean floor."
     },
     {
       "id": "otter4",
@@ -50,21 +42,40 @@
       "sfx": [
         [
           "pop",
-          5
+          2
+        ],
+        [
+          "pop",
+          7
         ]
       ]
     },
     {
       "id": "frigate1",
-      "text": "Next, the frigatebird. It can stay in the air for two whole months without landing."
+      "text": "Next, the frigatebird. It can stay in the air for two whole months without landing.",
+      "sfx": [
+        [
+          "pop",
+          9
+        ],
+        [
+          "wrong",
+          14
+        ]
+      ]
     },
     {
       "id": "frigate2",
       "text": "So it sleeps while flying, in naps that last about twelve seconds,",
       "sfx": [
         [
-          "zzz",
-          2
+          "pop",
+          5,
+          0.1
+        ],
+        [
+          "pop",
+          9
         ]
       ]
     },
@@ -73,8 +84,8 @@
       "text": "often with half of its brain still awake to watch where it's going.",
       "sfx": [
         [
-          "ding",
-          5
+          "pop",
+          2
         ]
       ]
     },
@@ -83,8 +94,13 @@
       "text": "Add it all up, and that's less than forty-five minutes of sleep a day.",
       "sfx": [
         [
-          "tick",
-          8
+          "pop",
+          0,
+          0.1
+        ],
+        [
+          "pop",
+          6
         ]
       ]
     },
@@ -93,8 +109,8 @@
       "text": "Finally, sperm whales. They sleep standing straight up, hanging just below the surface like giant tree trunks.",
       "sfx": [
         [
-          "bubble",
-          5
+          "pop",
+          15
         ]
       ]
     },
@@ -103,8 +119,8 @@
       "text": "The whole group goes completely still for up to fifteen minutes.",
       "sfx": [
         [
-          "zzz",
-          5
+          "pop",
+          9
         ]
       ]
     },
@@ -113,8 +129,13 @@
       "text": "When scientists drifted their boat right into a sleeping pod, the whales didn't even notice.",
       "sfx": [
         [
-          "blip",
-          4
+          "whoosh",
+          0,
+          -0.1
+        ],
+        [
+          "pop",
+          12
         ]
       ]
     },
@@ -123,14 +144,34 @@
       "text": "Until the boat bumped one, and the whole group woke up at once.",
       "sfx": [
         [
-          "bonk",
+          "splash",
           3
         ],
         [
-          "boing",
+          "splash",
           9
         ]
       ]
     }
+  ],
+  "sfx_files": {
+    "ding": ".sfx/pins/ding.mp3",
+    "pop": ".sfx/pins/pop.mp3",
+    "whoosh": ".sfx/pins/whoosh.mp3",
+    "splash": ".sfx/pins/splash.mp3",
+    "wrong": ".sfx/pins/wrong.mp3"
+  },
+  "sfx_gain": {
+    "ding": 0.5,
+    "pop": 0.3,
+    "whoosh": 0.32,
+    "splash": 0.4,
+    "wrong": 0.4
+  },
+  "start_sfx": [
+    [
+      "ding",
+      0.0
+    ]
   ]
 }
