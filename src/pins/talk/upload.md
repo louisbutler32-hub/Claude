@@ -56,6 +56,11 @@ animals that can talk, talking animals, animals that talk to humans, koshik elep
 | bg-tree | Acacia tree | Nagarjun | CC BY 2.0 | https://www.flickr.com/photos/64924693@N00/29164586908 |
 | bg-bay | Coronado Bridge & Seaport Village | Prayitno / Thank you for (12 millions +) view | CC BY 2.0 | https://www.flickr.com/photos/34128007@N04/9522456494 |
 
+The people's bodies (zookeeper, honey hunter, Navy divers) are AI-generated
+for this channel with TubeAI's image generator, cut out by
+`scripts/prep-people.py`, with comic heads drawn in code. No photo credit is
+owed for them.
+
 BY-SA photos were cut out and composited, so the video is an adaptation
 under BY-SA. Keep this credit block in the description, or link a pinned
 comment that carries it.
