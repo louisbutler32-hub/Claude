@@ -84,7 +84,8 @@ def search(query, want, source=None):
     url = ("https://api.openverse.org/v1/images/?"
            + urllib.parse.urlencode({
                "q": query, "license_type": "commercial,modification",
-               "page_size": str(want * 4), "mature": "false",
+               # anonymous requests are capped at 20 per page (a 401 above that)
+               "page_size": str(want * 4 if OPENVERSE_TOKEN else min(20, want * 4)), "mature": "false",
                **({"source": source} if source else {}),
            }))
     data = json.loads(get(url, api=True))
