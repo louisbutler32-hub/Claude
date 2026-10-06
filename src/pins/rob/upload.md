@@ -14,7 +14,7 @@ Alternates:
 
 ## Description
 
-Three animals that actually rob humans. Herring gulls don't just grab any food: in an experiment, gulls watched a person pick up one of two identical snacks and went for the one the human had handled. The kea, New Zealand's mountain parrot, tears the rubber off car windows, pulls off windscreen wipers and unzips backpacks, so much that conservationists built "kea gyms" near the Homer Tunnel to keep them busy and away from the cars. And the long-tailed macaques at Uluwatu Temple in Bali snatch tourists' phones, glasses and hats and only give them back for food. Researchers found they hold out for more food when the thing they've stolen is worth more.
+Three animals that actually rob humans. First, the kea, New Zealand's mountain parrot: it tears the rubber off car windows, pulls off windscreen wipers and unzips backpacks, so much that conservationists built "kea gyms" near the Homer Tunnel to keep them busy and away from the cars. Next, herring gulls don't just grab any food: in an experiment, gulls watched a person pick up one of two identical snacks and went for the one the human had handled. And the long-tailed macaques at Uluwatu Temple in Bali snatch tourists' phones, glasses and hats and only give them back for food. Researchers found they hold out for more food when the thing they've stolen is worth more.
 
 Sources: Goumas, Boogert & Kelley 2020, *Biology Letters*: "Urban herring gulls use human behavioural cues to locate food" (gulls preferred the food a person had handled). Kea Conservation Trust: kea gyms at the Homer Tunnel, Fiordland. Leca, Gunst, Gardiner & Wandia 2021, *Philosophical Transactions of the Royal Society B*: "Acquisition of object-robbing and object/food-bartering behaviours" (Uluwatu macaques; higher-value items, more food before they're returned).
 
@@ -34,7 +34,7 @@ animals that rob humans, thieving animals, monkey steals phone, bali monkeys, ul
 
 | field | value |
 |---|---|
-| Aspect | 9:16, 1080×1920, 43.1 s, 30 fps (a Short) |
+| Aspect | 9:16, 1080×1920, 43.0 s, 30 fps (a Short) |
 | Category | Pets & Animals |
 | Audience | not made for kids (the hook's payoff is a censored middle finger) |
 | Chapters | none, because Shorts don't show them |
@@ -53,11 +53,14 @@ Every image is AI-generated for the channel, so no photo credit is owed:
 ## Audio
 
 Narration: the channel's ElevenLabs read, `.vo-takes/rob-1.mp3` (gitignored),
-pauses trimmed to 0.3 s, with a 1.0 s hold after the hook for the payoff.
+re-cut so the kea comes first: the "First," and "Next," words and the two
+sections were swapped at silent gaps between words, giving
+`.vo-takes/rob-2-kea-first.wav`. Pauses trimmed to 0.3 s, with a 1.0 s hold
+after the hook for the payoff.
 Music: the channel's track, 18 dB under the voice. SFX: the channel's files
 under `.sfx/pins/` (ding at 0:00, then the riser, timed to peak as the hook
 line ends; seagull, parrot, monkey, rubber rip, zipper, tiptoe, ka-ching,
 whoosh, pop, counter) and a 1 kHz censor beep synthesised for the gag. Rebuild:
 
-    python3 scripts/build-pins-audio.py rob
+    python3 scripts/build-pins-audio.py rob --vo .vo-takes/rob-2-kea-first.wav
     npm run pins:rob

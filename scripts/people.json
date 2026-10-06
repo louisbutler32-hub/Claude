@@ -201,13 +201,37 @@
     {
       "id": "sci-point",
       "src": ".photo-review/people-ai/sci-a.jpg",
-      "turn": 0.1
+      "turn": 0.1,
+      "neck": [
+        618,
+        118
+      ],
+      "head": [
+        617,
+        64,
+        40,
+        54
+      ],
+      "head_w": 74,
+      "collar": 128
     },
     {
       "id": "sci-clipboard",
       "src": ".photo-review/people-ai/sci-b.jpg",
       "turn": 0,
-      "model": "u2net"
+      "model": "u2net",
+      "neck": [
+        636,
+        100
+      ],
+      "head": [
+        634,
+        56,
+        42,
+        52
+      ],
+      "head_w": 74,
+      "collar": 110
     },
     {
       "id": "man-chips",
@@ -254,7 +278,16 @@
         105,
         100
       ],
-      "head_w": 125
+      "head_w": 125,
+      "erase_dark": [
+        [
+          150,
+          140,
+          280,
+          460
+        ]
+      ],
+      "model": "u2net"
     },
     {
       "id": "woman-shock",
@@ -269,6 +302,14 @@
         280,
         72,
         92
+      ],
+      "erase_dark": [
+        [
+          300,
+          180,
+          490,
+          430
+        ]
       ]
     },
     {
@@ -285,7 +326,22 @@
         76,
         96
       ],
-      "head_w": 135
+      "head_w": 135,
+      "erase_dark": [
+        [
+          555,
+          120,
+          720,
+          560
+        ],
+        [
+          600,
+          120,
+          720,
+          560,
+          175
+        ]
+      ]
     }
   ]
 }

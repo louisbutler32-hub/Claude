@@ -8,7 +8,9 @@ people.json: {"out": "public/images/pins-people", "poses": [
      "crop": [x0, y0, x1, y1],          # optional: one figure out of a sheet (px)
      "neck": [x, y],                     # optional override, px in the source image
      "head": [cx, cy, rx, ry],           # optional override of the head ellipse, px in the source
-     "head_w": 110,                      # optional: the real head's width (px, source) when the erase
+     "head_w": 110,
+     "collar": 360,
+     "erase_dark": [[x0, y0, x1, y1]],   # optional: boxes (px, source) where dark pixels (hair) are erased                      # optional: the collar line (y px, source) if detection misses it                      # optional: the real head's width (px, source) when the erase
                                          #   ellipse is wider than the head (a ponytail, raised hands)
      "turn": 0.3, "tilt": 0,             # which way the body faces; its head angle
      "model": "u2net"}                   # optional: rembg model for poses holding a prop
@@ -97,6 +99,58 @@ def main():
         m = m.filter(ImageFilter.GaussianBlur(1.5))
         alpha = np.array(cut)[..., 3].astype(np.float32) * (1 - np.array(m, np.float32) / 255)
         cut.putalpha(Image.fromarray(alpha.astype(np.uint8)))
+        # "erase_dark": boxes (px, source) where only dark pixels go: a real ponytail or
+        # loose hair hanging past the comic head, without touching skin or clothes
+        if "erase_dark" in p:
+            rgba = np.array(cut)
+            lum = rgba[..., :3].max(-1)
+            for box in p["erase_dark"]:
+                x0, y0, x1, y1 = box[:4]
+                lim = box[4] if len(box) > 4 else 95   # optional 5th value: how light "dark" goes
+                x0, x1 = max(0, x0 - ox - bbox[0]), min(W, x1 - ox - bbox[0])
+                y0, y1 = max(0, y0 - oy - bbox[1]), min(H, y1 - oy - bbox[1])
+                blk = rgba[y0:y1, x0:x1]
+                blk[..., 3] = np.where(lum[y0:y1, x0:x1] < lim, 0, blk[..., 3])
+            cut = Image.fromarray(rgba)
+        # the collar: walk down from the neck line until the run of figure through the
+        # neck widens into the shoulders, erase the real neck down to it, and mount the
+        # comic chin there, so none of the real neck (or a beard) shows under the head
+        al = np.array(cut)[..., 3]
+
+        def run(y):
+            row = al[min(H - 1, max(0, y))] > 60
+            x = int(round(nx))
+            if not (0 <= x < W and row[x]):
+                xs = np.where(row)[0]
+                if len(xs) == 0:
+                    return 0, x, x
+                x = int(xs[np.argmin(np.abs(xs - x))])
+            l = r = x
+            while l > 0 and row[l - 1]:
+                l -= 1
+            while r < W - 1 and row[r + 1]:
+                r += 1
+            return r - l, l, r
+
+        y0 = int(ny) + 1
+        base = max(4.0, float(np.median([run(y0 + i)[0] for i in range(3)])))
+        limit = min(H - 1, y0 + int((p.get("head_w") or rx * 2) * 0.8))
+        collar = y0
+        if "collar" in p:
+            collar = int(p["collar"] - oy - bbox[1])
+        else:
+            for y in range(y0, limit):
+                collar = y
+                if run(y)[0] > base * 1.7:
+                    break
+        half = min(base * 0.75, (p.get("head_w") or rx * 2) * 0.42)   # never wider than a neck: spare a hand by the chin
+        for y in range(int(ny) - 2, collar + 1):
+            _, l, r = run(y)
+            l, r = max(l, int(nx - half)), min(r, int(nx + half))
+            if r > l:
+                al[y, l:r + 1] = 0
+        cut.putalpha(Image.fromarray(al))
+        ny = collar
         # drop stray islands (a cap brim, a hand-off scrap): keep blobs over 2% of the figure
         from scipy import ndimage
         al = np.array(cut)[..., 3]

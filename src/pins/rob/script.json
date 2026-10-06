@@ -129,46 +129,8 @@
       "hold_after": 1.0
     },
     {
-      "id": "gull1",
-      "text": "First, seagulls. They don't just grab any food.",
-      "sfx": [
-        [
-          "seagull",
-          1
-        ]
-      ]
-    },
-    {
-      "id": "gull2",
-      "text": "In one experiment, gulls watched a person pick up one of two snacks, and they went straight for the one the human had touched.",
-      "sfx": [
-        [
-          "tiptoe",
-          4
-        ],
-        [
-          "pop",
-          12
-        ],
-        [
-          "pop",
-          23
-        ]
-      ]
-    },
-    {
-      "id": "gull3",
-      "text": "They watch what you eat, and they want that.",
-      "sfx": [
-        [
-          "pop",
-          8
-        ]
-      ]
-    },
-    {
       "id": "kea1",
-      "text": "Next, the kea, a parrot from New Zealand.",
+      "text": "First, the kea, a parrot from New Zealand.",
       "sfx": [
         [
           "parrot",
@@ -203,6 +165,44 @@
         [
           "pop",
           9
+        ]
+      ]
+    },
+    {
+      "id": "gull1",
+      "text": "Next, seagulls. They don't just grab any food.",
+      "sfx": [
+        [
+          "seagull",
+          1
+        ]
+      ]
+    },
+    {
+      "id": "gull2",
+      "text": "In one experiment, gulls watched a person pick up one of two snacks, and they went straight for the one the human had touched.",
+      "sfx": [
+        [
+          "tiptoe",
+          4
+        ],
+        [
+          "pop",
+          12
+        ],
+        [
+          "pop",
+          23
+        ]
+      ]
+    },
+    {
+      "id": "gull3",
+      "text": "They watch what you eat, and they want that.",
+      "sfx": [
+        [
+          "pop",
+          8
         ]
       ]
     },

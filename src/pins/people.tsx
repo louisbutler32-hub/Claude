@@ -414,17 +414,13 @@ export const PhotoPerson: React.FC<{
   const hw = pose.headW * w * headScale;     // head box width
   const hh = hw * 150 / 120;
   const nx = pose.neck[0] * w, ny = pose.neck[1] * h;
-  const neckShade = (() => { const n = parseInt((look?.skin ?? "#e3b38f").slice(1), 16); const f = (v: number) => Math.round(v * 0.72); return `rgb(${f(n >> 16)}, ${f((n >> 8) & 255)}, ${f(n & 255)})`; })();
   const headRot = (pose.tilt ?? 0) + Math.sin(t * 1.9 + id.length * 0.5) * nod + (talking ? Math.sin(t * 7) * 2 : 0);
   return (
     <div style={{ position: "absolute", left: x - w / 2, top: y - h + by, width: w, height: h, transform: `rotate(${sw}deg) ${flip ? "scaleX(-1)" : ""} scale(${0.94 + 0.06 * swap})`, transformOrigin: "50% 100%" }}>
       {shadow && <div style={{ position: "absolute", left: w * 0.12, top: h * 0.975, width: w * 0.76, height: h * 0.045, borderRadius: "50%", background: "radial-gradient(rgba(0,0,0,0.38), rgba(0,0,0,0))" }} />}
-      {/* the neck sits behind the photo: the real collar overlaps it, so there's no seam */}
-      <div style={{ position: "absolute", left: nx - hw * 0.17, top: ny - hh * 0.22, width: hw * 0.34, height: hh * 0.4, borderRadius: hw * 0.08,
-        background: `linear-gradient(90deg, ${neckShade}, ${look?.skin ?? "#e3b38f"} 45%, ${neckShade})`, transform: `rotate(${(pose.tilt ?? 0) * 0.5}deg)`, transformOrigin: "50% 0%" }} />
       <Img src={staticFile(pose.src)} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", filter: "drop-shadow(0 6px 8px rgba(0,0,0,0.25))" }} />
-      {/* the head: chin (60,132 of 120×150) on the neck point */}
-      <div style={{ position: "absolute", left: nx - hw / 2, top: ny - hh * (132 / 150), width: hw, height: hh, transform: `rotate(${headRot}deg) ${flip ? "scaleX(-1)" : ""}`, transformOrigin: "50% 88%" }}>
+      {/* the head: chin (60,132 of 120×150) just over the collar, so no real neck shows */}
+      <div style={{ position: "absolute", left: nx - hw / 2, top: ny + hh * 0.03 - hh * (132 / 150), width: hw, height: hh, transform: `rotate(${headRot}deg) ${flip ? "scaleX(-1)" : ""}`, transformOrigin: "50% 88%" }}>
         <CartoonHead t={t} id={id} look={look} face={face} since={fs} turn={(pose.turn ?? 0) * (flip ? -1 : 1)} gaze={flip ? [-gaze[0], gaze[1]] : gaze} talking={talking} neck={false} />
       </div>
     </div>
