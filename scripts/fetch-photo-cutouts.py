@@ -21,7 +21,7 @@ Nothing is licensed silently: every accepted candidate's title, licence,
 credit line and source page are written to credits.json next to the image.
 
 Usage:
-    python3 scripts/fetch-photo-cutouts.py <episode> <queries.json> [--want N]
+    python3 scripts/fetch-photo-cutouts.py <episode> <queries.json> [--want N] [--model u2net_human_seg] [--source rawpixel]
 
 queries.json: {"cow": "cow standing side view", "lion": "lion male", ...}
 Writes:
@@ -74,7 +74,7 @@ def get(url, gap=0.3, tries=5, api=False):
             time.sleep(2 ** i)
 
 
-def search(query, want):
+def search(query, want, source=None):
     # "commercial" alone only excludes non-commercial (nc) licenses — it lets
     # by-nd through, and ND (No Derivatives) forbids exactly what this
     # pipeline does to every photo (crop, background-removal, compositing).
@@ -85,6 +85,7 @@ def search(query, want):
            + urllib.parse.urlencode({
                "q": query, "license_type": "commercial,modification",
                "page_size": str(want * 4), "mature": "false",
+               **({"source": source} if source else {}),
            }))
     data = json.loads(get(url, api=True))
     out = []
@@ -118,7 +119,12 @@ def main():
     if "--want" in sys.argv:
         want = int(sys.argv[sys.argv.index("--want") + 1])
 
-    from rembg import remove
+    from rembg import new_session, remove
+    # --model picks the rembg network: the default (bria) is best on animals
+    # but slow on CPU; u2net_human_seg is fast and made for people
+    # --source limits the search to one Openverse provider (rawpixel and stocksnap are CC0 studio shots)
+    source = sys.argv[sys.argv.index("--source") + 1] if "--source" in sys.argv else None
+    session = new_session(sys.argv[sys.argv.index("--model") + 1]) if "--model" in sys.argv else None
     from PIL import Image
 
     out_dir = os.path.join(ROOT, ".photo-review", episode)
@@ -127,7 +133,7 @@ def main():
     for aid, query in queries.items():
         print(f"== {aid}: {query!r} ==")
         try:
-            candidates = search(query, want)
+            candidates = search(query, want, source)
         except Exception as e:
             print(f"  search failed: {e}")
             continue
@@ -143,7 +149,7 @@ def main():
             try:
                 raw = get(c["url"], gap=0.3)
                 src = Image.open(io.BytesIO(raw)).convert("RGB")
-                cut = remove(src)
+                cut = remove(src, session=session) if session else remove(src)
                 cut.save(dst_png)
                 json.dump(c, open(dst_credit, "w"), indent=2)
                 print(f"  [{n}] {c['title'][:60]!r} ({c['license']}) "

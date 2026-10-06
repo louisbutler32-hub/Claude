@@ -1,4 +1,5 @@
 import React from "react";
+import { Img, staticFile } from "remotion";
 import { over } from "./engine";
 
 /**
@@ -231,6 +232,184 @@ export const PeopleSheet: React.FC = () => {
       {looks.map((l, r) => faces.map((f, i) => (
         <Person key={`${r}-${i}`} id={`s${r}${i}`} t={1} x={100 + i * 175} y={420 + r * 560} h={420} look={l} faces={[[-99, f]]} gaze={[0.3, 0.2]} />
       )))}
+    </div>
+  );
+};
+
+/* ======================================================================
+ * Photo-bodied people: the reference's real look. A real photo of a body
+ * (CC0 / CC BY cutout, its own head cut away) with a comic head mounted at
+ * the neck. The head is proportioned like a real one (about a seventh of the
+ * height), turns three-quarters to match the body, nods and tilts on its own;
+ * the body sways, steps, and swaps poses on cue words.
+ * ==================================================================== */
+
+export type HeadLook = {
+  skin?: string;
+  hair?: "short" | "cap" | "beanie" | "bald" | "side";
+  hairColor?: string;
+  hat?: string;
+  beard?: "none" | "stubble" | "full";
+  glasses?: boolean;
+  mask?: boolean;
+};
+
+/**
+ * The comic head alone, in a 120 × 150 box; the chin sits at (60, 132) and a
+ * neck stub runs on below it to the box's bottom edge, to hide the seam with
+ * the photo's neck. `turn` (-1..1) slides the features for a three-quarter
+ * view (the far ear hides).
+ */
+export const CartoonHead: React.FC<{ t: number; look?: HeadLook; face?: Face; since?: number; turn?: number; gaze?: [number, number]; talking?: boolean; id: string }> = ({
+  t, look = {}, face = "neutral", since = -99, turn = 0, gaze = [0, 0], talking = false, id,
+}) => {
+  const { skin = "#e3b38f", hair = "short", hairColor = "#3a2414", hat = "#3d6b8f", beard = "stubble", glasses = false, mask = false } = look;
+  const L = "#2a1a10";
+  const fx = turn * 9;                 // features slide
+  const ph = (t + id.length * 0.7) % 3.3;
+  const blink = face !== "shocked" && ph < 0.1 ? 0.12 : 1;
+  const shocked = face === "shocked";
+  const pop = over(t, since, since + 0.2);
+  const flap = talking ? (Math.sin(t * 26) > 0 ? 1 : 0.2) : 0;
+  // brow heights [inner, outer] per face, left brow; the right mirrors
+  const B: Record<Face, [number, number, number, number]> = {
+    neutral: [58, 57, 58, 57], happy: [56, 57, 56, 57], curious: [53, 58, 58, 55], shocked: [49, 51, 49, 51], worried: [52, 60, 52, 60], smirk: [59, 56, 52, 50],
+  };
+  const [li, lo, ri, ro] = B[face];
+  const eyeY = 70;
+  const ew = shocked ? 10 : 9, eh = shocked ? 9 : 6.2;
+  const pr = shocked ? 2.4 : 3.2;
+  const gx = gaze[0] * 3 + turn * 2.5, gy = gaze[1] * 2;
+  const SK = `${id}-sk`;
+  const mouth = (() => {
+    const mx = 60 + fx;
+    if (shocked) return <ellipse cx={mx} cy={112} rx={6 + 2 * pop} ry={8 + 3 * pop} fill="#4a1c14" stroke={L} strokeWidth={2.4} />;
+    if (flap > 0) return <ellipse cx={mx} cy={111} rx={8} ry={2 + 6 * flap} fill="#4a1c14" stroke={L} strokeWidth={2.4} />;
+    if (face === "happy") return <path d={`M ${mx - 11} 108 Q ${mx} 118 ${mx + 11} 108`} fill="none" stroke={L} strokeWidth={2.8} strokeLinecap="round" />;
+    if (face === "worried") return <path d={`M ${mx - 10} 113 q 3.3 -3 6.6 0 t 6.6 0 t 6.6 0`} fill="none" stroke={L} strokeWidth={2.6} strokeLinecap="round" />;
+    if (face === "smirk") return <path d={`M ${mx - 9} 112 Q ${mx + 2} 114 ${mx + 11} 106`} fill="none" stroke={L} strokeWidth={2.8} strokeLinecap="round" />;
+    if (face === "curious") return <ellipse cx={mx + 1} cy={112} rx={3.5} ry={3} fill="#4a1c14" stroke={L} strokeWidth={2} />;
+    return <path d={`M ${mx - 8} 111 Q ${mx} 112.5 ${mx + 8} 111`} fill="none" stroke={L} strokeWidth={2.8} strokeLinecap="round" />;
+  })();
+  const shade = (hex: string, k: number) => {
+    const n = parseInt(hex.slice(1), 16);
+    const f = (v: number) => Math.max(0, Math.min(255, Math.round(v * k)));
+    return `rgb(${f(n >> 16)}, ${f((n >> 8) & 255)}, ${f(n & 255)})`;
+  };
+  return (
+    <svg viewBox="0 0 120 150" style={{ width: "100%", height: "100%", overflow: "visible" }}>
+      <defs>
+        <radialGradient id={SK} cx={0.45 + turn * 0.12} cy="0.38" r="0.75">
+          <stop offset="0.55" stopColor={skin} />
+          <stop offset="1" stopColor={shade(skin, 0.8)} />
+        </radialGradient>
+      </defs>
+      {/* neck stub: runs under the photo collar */}
+      <path d="M 44 112 L 42 150 L 78 150 L 76 112 Z" fill={shade(skin, 0.82)} stroke={L} strokeWidth={2.2} />
+      {/* ears (the far one hides as the head turns) */}
+      {turn < 0.55 && <ellipse cx={17 + fx * 0.4} cy={78} rx={6} ry={10} fill={shade(skin, 0.9)} stroke={L} strokeWidth={2.4} />}
+      {turn > -0.55 && <ellipse cx={103 + fx * 0.4} cy={78} rx={6} ry={10} fill={shade(skin, 0.9)} stroke={L} strokeWidth={2.4} />}
+      {/* face */}
+      <path d={`M 20 60 Q 20 18 60 16 Q 100 18 100 60 L 99 92 Q 96 128 60 134 Q 24 128 21 92 Z`} fill={`url(#${SK})`} stroke={L} strokeWidth={2.8} />
+      {beard === "stubble" && <path d="M 23 94 Q 28 128 60 133 Q 92 128 97 94 Q 90 104 82 103 Q 70 100 60 101 Q 50 100 38 103 Q 30 104 23 94 Z" fill={shade(skin, 0.62)} opacity={0.45} />}
+      {beard === "full" && <path d="M 22 88 Q 26 132 60 136 Q 94 132 98 88 Q 92 104 80 102 Q 70 99 60 100 Q 50 99 40 102 Q 28 104 22 88 Z" fill={hairColor} stroke={L} strokeWidth={2} />}
+      {/* hair / hats */}
+      {hair === "short" && <path d="M 19 64 Q 14 14 60 12 Q 106 14 101 64 Q 98 40 84 34 Q 62 40 36 34 Q 22 42 19 64 Z" fill={hairColor} stroke={L} strokeWidth={2.4} />}
+      {hair === "side" && <path d="M 19 66 Q 12 12 62 10 Q 108 14 101 62 Q 96 36 70 30 Q 48 44 30 40 Q 22 48 19 66 Z" fill={hairColor} stroke={L} strokeWidth={2.4} />}
+      {hair === "cap" && (
+        <g>
+          <path d="M 18 50 Q 18 8 60 6 Q 102 8 102 50 Q 60 40 18 50 Z" fill={hat} stroke={L} strokeWidth={2.6} />
+          <path d={`M ${70 + fx} 44 Q ${104 + fx} 40 ${118 + fx} 50 Q ${96 + fx} 55 ${76 + fx} 51 Z`} fill={shade(hat, 0.8)} stroke={L} strokeWidth={2.6} />
+        </g>
+      )}
+      {hair === "beanie" && (
+        <g>
+          <path d="M 17 52 Q 17 0 60 0 Q 103 0 103 52 Z" fill={hat} stroke={L} strokeWidth={2.6} />
+          <path d="M 15 40 L 105 40 L 105 53 L 15 53 Z" fill={shade(hat, 0.85)} stroke={L} strokeWidth={2.6} />
+        </g>
+      )}
+      {mask && (
+        <g>
+          <path d="M 18 42 Q 60 34 102 42" fill="none" stroke="#1b1b1b" strokeWidth={6} />
+          <rect x={34} y={24} width={52} height={24} rx={9} fill="#9fd8f5" stroke="#1b1b1b" strokeWidth={4} />
+          <path d="M 60 24 L 60 48" stroke="#1b1b1b" strokeWidth={3} />
+        </g>
+      )}
+      {/* eyes: almond whites, small pupils, a heavy upper lid line */}
+      <g transform={`translate(0 ${eyeY}) scale(1 ${blink}) translate(0 ${-eyeY})`}>
+        {[-1, 1].map((sd) => {
+          const cx = 60 + sd * 19 + fx;
+          const squash = turn * sd > 0.3 ? 0.8 : 1;
+          return (
+            <g key={sd}>
+              <ellipse cx={cx} cy={eyeY} rx={ew * squash} ry={eh} fill="#fff" stroke={L} strokeWidth={2} />
+              <circle cx={cx + gx} cy={eyeY + gy} r={pr} fill={L} />
+              <path d={`M ${cx - ew * squash - 1} ${eyeY - 1} Q ${cx} ${eyeY - eh - 3} ${cx + ew * squash + 1} ${eyeY - 1}`} fill="none" stroke={L} strokeWidth={3} strokeLinecap="round" />
+            </g>
+          );
+        })}
+      </g>
+      {glasses && <g fill="none" stroke={L} strokeWidth={2.4}><circle cx={41 + fx} cy={eyeY} r={13} /><circle cx={79 + fx} cy={eyeY} r={13} /><path d={`M ${54 + fx} ${eyeY - 1} L ${66 + fx} ${eyeY - 1}`} /></g>}
+      {/* brows */}
+      <path d={`M ${52 + fx} ${li} L ${30 + fx} ${lo}`} stroke={hairColor} strokeWidth={5} strokeLinecap="round" />
+      <path d={`M ${68 + fx} ${ri} L ${90 + fx} ${ro}`} stroke={hairColor} strokeWidth={5} strokeLinecap="round" />
+      {/* nose: a side line and a nostril */}
+      <path d={`M ${62 + fx * 1.3} 74 Q ${55 + fx * 1.3} 92 ${60 + fx * 1.3} 96 Q ${65 + fx * 1.3} 98 ${68 + fx * 1.3} 94`} fill="none" stroke={L} strokeWidth={2.4} strokeLinecap="round" />
+      {mouth}
+      {shocked && <path d={`M 104 ${40 + ((t * 1.3) % 1) * 12} q -6 9 0 13 q 6 -4 0 -13 Z`} fill="#8fd3ff" stroke="#1d5f9c" strokeWidth={1.6} />}
+    </svg>
+  );
+};
+
+/** one photo of a body, its head already cut away; where its neck is (0–1 of the image) and how wide its head was */
+export type BodyPose = {
+  src: string;
+  w: number; h: number;
+  neck: [number, number];   // the top of the neck, where the chin goes
+  headW: number;            // the real head's width, 0–1 of the image width
+  tilt?: number;            // the body's own head angle, degrees
+  turn?: number;            // which way the body faces, -1..1 (for the face's three-quarter view)
+};
+
+export const PhotoPerson: React.FC<{
+  t: number;
+  id: string;
+  poses: [number, BodyPose][];   // pose timeline (global seconds)
+  x: number; y: number;          // world point of the feet (bottom centre of the photo)
+  h: number;                     // drawn height
+  look?: HeadLook;
+  faces?: [number, Face][];
+  gaze?: [number, number];
+  talk?: [number, number][];
+  flip?: boolean;
+  sway?: number;                 // degrees of idle sway
+  bob?: number;                  // px of idle bob
+  walk?: number;                 // > 0: a walking bounce at this many steps / s
+  nod?: number;                  // degrees of idle head nod
+  headScale?: number;            // the comic head runs a touch bigger than the real one (default 1.25)
+  shadow?: boolean;
+}> = ({ t, id, poses, x, y, h, look, faces = [[-99, "neutral"]], gaze = [0, 0], talk = [], flip, sway = 1.2, bob = 0, walk = 0, nod = 2, headScale = 1.25, shadow = true }) => {
+  let pose = poses[0][1], since = -99;
+  for (const [at, p] of poses) if (t >= at) { pose = p; since = at; }
+  const w = (h * pose.w) / pose.h;
+  const swap = over(t, since, since + 0.25);
+  const step = walk ? Math.abs(Math.sin(t * Math.PI * walk)) : 0;
+  const by = -step * h * 0.02 + Math.sin(t * 1.7 + id.length) * bob;
+  const sw = Math.sin(t * 1.3 + id.length) * sway + (walk ? Math.sin(t * Math.PI * walk) * 2 : 0);
+  const { face, since: fs } = faceAt(faces, t);
+  const talking = talk.some(([a, b]) => t >= a && t <= b);
+  const hw = pose.headW * w * headScale;     // head box width
+  const hh = hw * 150 / 120;
+  const nx = pose.neck[0] * w, ny = pose.neck[1] * h;
+  const headRot = (pose.tilt ?? 0) + Math.sin(t * 1.9 + id.length * 0.5) * nod + (talking ? Math.sin(t * 7) * 2 : 0);
+  return (
+    <div style={{ position: "absolute", left: x - w / 2, top: y - h + by, width: w, height: h, transform: `rotate(${sw}deg) ${flip ? "scaleX(-1)" : ""} scale(${0.94 + 0.06 * swap})`, transformOrigin: "50% 100%" }}>
+      {shadow && <div style={{ position: "absolute", left: w * 0.12, top: h * 0.975, width: w * 0.76, height: h * 0.045, borderRadius: "50%", background: "radial-gradient(rgba(0,0,0,0.38), rgba(0,0,0,0))" }} />}
+      <Img src={staticFile(pose.src)} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", filter: "drop-shadow(0 6px 8px rgba(0,0,0,0.25))" }} />
+      {/* the head: chin (60,132 of 120×150) on the neck point */}
+      <div style={{ position: "absolute", left: nx - hw / 2, top: ny - hh * (132 / 150), width: hw, height: hh, transform: `rotate(${headRot}deg) ${flip ? "scaleX(-1)" : ""}`, transformOrigin: "50% 88%" }}>
+        <CartoonHead t={t} id={id} look={look} face={face} since={fs} turn={(pose.turn ?? 0) * (flip ? -1 : 1) * (flip ? -1 : 1)} gaze={gaze} talking={talking} />
+      </div>
     </div>
   );
 };
