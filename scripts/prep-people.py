@@ -8,6 +8,8 @@ people.json: {"out": "public/images/pins-people", "poses": [
      "crop": [x0, y0, x1, y1],          # optional: one figure out of a sheet (px)
      "neck": [x, y],                     # optional override, px in the source image
      "head": [cx, cy, rx, ry],           # optional override of the head ellipse, px in the source
+     "head_w": 110,                      # optional: the real head's width (px, source) when the erase
+                                         #   ellipse is wider than the head (a ponytail, raised hands)
      "turn": 0.3, "tilt": 0,             # which way the body faces; its head angle
      "model": "u2net"}                   # optional: rembg model for poses holding a prop
 ]}
@@ -107,7 +109,7 @@ def main():
         cut.save(os.path.join(out, p["id"] + ".png"))
         index[p["id"]] = {"file": p["id"] + ".png", "w": W, "h": H,
                           "neck": [round(nx / W, 4), round(ny / H, 4)],
-                          "headW": round(rx * 2 / W, 4),
+                          "headW": round((p["head_w"] if "head_w" in p else rx * 2) / W, 4),
                           "turn": p.get("turn", 0), "tilt": p.get("tilt", 0)}
         print(f"{p['id']:16s} {W}x{H} neck=({nx:.0f},{ny:.0f}) head w={rx*2:.0f}")
     json.dump(index, open(os.path.join(out, "poses.json"), "w"), indent=1)

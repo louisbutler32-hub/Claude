@@ -253,7 +253,8 @@
         245,
         105,
         100
-      ]
+      ],
+      "head_w": 125
     },
     {
       "id": "woman-shock",
@@ -273,7 +274,18 @@
     {
       "id": "woman-reach",
       "src": ".photo-review/pins-rob-ai/woman-reach.jpg",
-      "turn": -0.8
+      "turn": -0.8,
+      "neck": [
+        515,
+        305
+      ],
+      "head": [
+        495,
+        208,
+        76,
+        96
+      ],
+      "head_w": 135
     }
   ]
 }

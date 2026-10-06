@@ -95,36 +95,37 @@ const Meter: React.FC<{ k: number }> = ({ k }) => (
 /* ------------------------------------------------------------ the shots */
 
 const shots: Shot[] = [
-  /* HOOK, under the riser. A gull swipes a man's chips… */
+  /* HOOK, under the riser. A kea strips a car… */
   {
     at: 0,
     reframes: false,
-    render: ({ t, u }) => {
-      const swoop = ease(u, 0.25, 0.7);
-      const grabbed = u > 0.62;
-      return (
-        <Cam t={t} z={1.25 - 0.12 * ease(u, 0, 0.9)} y={980}>
-          <Backdrop src={BG.beach} t={t} />
-          <PhotoPerson id="man" t={t} poses={[[-99, BODY["man-chips"]], [0.62, BODY["man-shock"]]]} x={380} y={1880} h={1250} look={MAN}
-            faces={[[-99, "happy"], [0.62, "shocked"]]} gaze={[0.6, -0.3]} />
-          <Actor a={A.gullFly} t={t} x={lerp(1500, 520, swoop) - (grabbed ? (u - 0.62) * 1400 : 0)} y={lerp(250, 1000, swoop) - (grabbed ? (u - 0.62) * 900 : 0)} w={980}
-            rot={-10} bob={0} moods={[[-99, "angry"]]} look={[-0.6, 0.4]} />
-          {grabbed && <Actor a={A.chips} t={t} x={520 - (u - 0.62) * 1400} y={1080 - (u - 0.62) * 900} w={170} rot={-20} bob={0} />}
-        </Cam>
-      );
-    },
-  },
-  /* …a kea strips a car… */
-  {
-    at: c("hook", 2),
-    transition: "whip",
-    reframes: false,
     render: ({ t, u }) => (
-      <Cam t={t} z={1.3 + 0.1 * ease(u, 0, 0.8)} x={560} y={900} shake={10 * bell(u, 0.15, 0.6)}>
+      <Cam t={t} z={1.4 - 0.1 * ease(u, 0, 0.8)} x={560} y={900} shake={10 * bell(u, 0.2, 0.7)}>
         <Backdrop src={BG.carClose} t={t} />
         <Actor a={A.keaTug} t={t} x={540} y={1050} w={1250} rot={-4 + 6 * Math.sin(t * 14)} bob={0} moods={[[-99, "angry"]]} look={[0.3, 0.2]} />
       </Cam>
     ),
+  },
+  /* …a gull swipes a man's chips… */
+  {
+    at: c("hook", 2),
+    transition: "whip",
+    reframes: false,
+    render: ({ t, u }) => {
+      const grab = c("hook", 2) + 0.45;
+      const swoop = ease(u, 0.08, 0.45);
+      const g = Math.max(0, t - grab);
+      return (
+        <Cam t={t} z={1.25 - 0.1 * ease(u, 0, 0.9)} y={980}>
+          <Backdrop src={BG.beach} t={t} />
+          <PhotoPerson id="man" t={t} poses={[[-99, BODY["man-chips"]], [grab, BODY["man-shock"]]]} x={380} y={1880} h={1250} look={MAN}
+            faces={[[-99, "happy"], [grab, "shocked"]]} gaze={[0.6, -0.3]} />
+          <Actor a={A.gullFly} t={t} x={lerp(1500, 520, swoop) - g * 1400} y={lerp(250, 1000, swoop) - g * 900} w={980}
+            rot={-10} bob={0} moods={[[-99, "angry"]]} look={[-0.6, 0.4]} />
+          {t > grab && <Actor a={A.chips} t={t} x={520 - g * 1400} y={1080 - g * 900} w={170} rot={-20} bob={0} />}
+        </Cam>
+      );
+    },
   },
   /* …a monkey makes off with a tourist's phone… */
   {
