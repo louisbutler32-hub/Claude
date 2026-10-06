@@ -404,7 +404,7 @@ def main():
         for cue_ in line.get("sfx", []):
             name, wi, off = (list(cue_) + [0.0])[:3]
             cues.append((name, abs_words[min(wi, len(abs_words) - 1)][1] + off, None))
-        t += len(clip) / SR + gap
+        t += len(clip) / SR + gap + float(line.get("hold_after", 0))
     total = round(t - gap + spec.get("tail", 0.35), 3)
 
     mix = np.zeros(N(total) + SR, np.float32)

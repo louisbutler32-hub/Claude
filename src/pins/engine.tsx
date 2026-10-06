@@ -14,6 +14,15 @@ import { AbsoluteFill, Img, continueRender, delayRender, random, staticFile, use
 export const W = 1080;
 export const H = 1920;
 
+/**
+ * The frame the engine draws into. Shorts are 1080×1920 (the default, and the
+ * W/H constants above); a 16:9 long-form wraps its tree in
+ * <Stage.Provider value={{ W: 1920, H: 1080 }}> so the camera, backdrops,
+ * transitions and captions centre and fill its frame instead.
+ */
+export const Stage = React.createContext({ W, H });
+export const useStage = () => React.useContext(Stage);
+
 /* ------------------------------------------------------------ timing */
 
 export type Word = [string, number, number];
@@ -72,7 +81,9 @@ export const CAPTION_FONT = "Anton, Impact, sans-serif";
  * shake: amplitude in px of a quick camera rattle (decays by itself if the
  * caller fades it).
  */
-export const Cam: React.FC<{ t: number; x?: number; y?: number; z?: number; rot?: number; shake?: number; children: React.ReactNode }> = ({ t, x = W / 2, y = H / 2, z = 1, rot = 0, shake = 0, children }) => {
+export const Cam: React.FC<{ t: number; x?: number; y?: number; z?: number; rot?: number; shake?: number; children: React.ReactNode }> = ({ t, x: cx, y: cy, z = 1, rot = 0, shake = 0, children }) => {
+  const { W, H } = useStage();
+  const x = cx ?? W / 2, y = cy ?? H / 2;
   const sx = shake ? Math.sin(t * 71) * shake : 0;
   const sy = shake ? Math.cos(t * 53) * shake : 0;
   return (
@@ -88,7 +99,9 @@ export const Cam: React.FC<{ t: number; x?: number; y?: number; z?: number; rot?
 /* ------------------------------------------------------------ backdrops */
 
 /** a photo filling a world rect (default: the frame), with a gentle drift of its own */
-export const Backdrop: React.FC<{ src: string; t: number; x?: number; y?: number; w?: number; h?: number; drift?: number; blur?: number; tone?: string; flip?: boolean }> = ({ src, t, x = -W * 0.2, y = -H * 0.2, w = W * 1.4, h = H * 1.4, drift = 0.02, blur = 0.5, tone, flip }) => {
+export const Backdrop: React.FC<{ src: string; t: number; x?: number; y?: number; w?: number; h?: number; drift?: number; blur?: number; tone?: string; flip?: boolean }> = ({ src, t, x: bx, y: by, w: bw, h: bh, drift = 0.02, blur = 0.5, tone, flip }) => {
+  const { W, H } = useStage();
+  const x = bx ?? -W * 0.2, y = by ?? -H * 0.2, w = bw ?? W * 1.4, h = bh ?? H * 1.4;
   const s = 1.04 + drift * Math.sin(t * 0.25);
   return (
     <div style={{ position: "absolute", left: x, top: y, width: w, height: h, overflow: "hidden" }}>
@@ -457,7 +470,9 @@ export const Bubble: React.FC<{ text: string; sub?: string; size?: number; tail?
  * popping on as it's spoken. Measured off its frames: cap height ~3.6% of
  * the frame, an 8-letter word spans ~a third of the width.
  */
-export const WordCaption: React.FC<{ T: Timing; t: number; y?: number; size?: number }> = ({ T, t, y = H * 0.69, size = 100 }) => {
+export const WordCaption: React.FC<{ T: Timing; t: number; y?: number; size?: number }> = ({ T, t, y: cy, size = 100 }) => {
+  const { H } = useStage();
+  const y = cy ?? H * 0.69;
   let hit: Word | null = null;
   for (const l of T.lines) {
     for (let i = 0; i < l.words.length; i++) {
@@ -545,7 +560,7 @@ export type Shot = {
 const WHIP = 0.2, ZOOM = 0.28, SETTLE = 0.28, JUMP = 1.4;
 
 /** the framing in force at t: the latest reframe, or an automatic tight/wide alternation */
-const frameAt = (s: Shot, t: number, end: number) => {
+const frameAt = (s: Shot, t: number, end: number, W: number, H: number) => {
   let f = { z: 1, fx: W / 2, fy: H * 0.45, since: s.at };
   if (s.reframes === false) return f;
   let list = s.reframes;
@@ -560,6 +575,7 @@ const frameAt = (s: Shot, t: number, end: number) => {
 
 /** plays the shot whose `at` is the latest one not after t, with its transition in */
 export const ShotPlayer: React.FC<{ shots: Shot[]; t: number; total: number }> = ({ shots, t, total }) => {
+  const { W, H } = useStage();
   const sorted = [...shots].sort((a, b) => a.at - b.at);
   let i = 0;
   for (let k = 0; k < sorted.length; k++) if (t >= sorted[k].at) i = k;
@@ -567,7 +583,7 @@ export const ShotPlayer: React.FC<{ shots: Shot[]; t: number; total: number }> =
   const end = sorted[i + 1]?.at ?? total;
   const u = t - s.at;
   const draw = (sh: Shot, e: number) => {
-    const f = frameAt(sh, t, e);
+    const f = frameAt(sh, t, e, W, H);
     const body = sh.render({ t, u: t - sh.at, start: sh.at, end: e });
     return f.z === 1 ? body : <AbsoluteFill style={{ transform: `scale(${f.z})`, transformOrigin: `${f.fx}px ${f.fy}px` }}>{body}</AbsoluteFill>;
   };
@@ -587,7 +603,7 @@ export const ShotPlayer: React.FC<{ shots: Shot[]; t: number; total: number }> =
     return <AbsoluteFill style={{ transform: `scale(${1.35 - 0.35 * k})`, filter: `blur(${14 * (1 - k)}px)` }}>{draw(s, end)}</AbsoluteFill>;
   }
   // every hard cut (and every jump cut) lands with a small zoom settle
-  const v = t - frameAt(s, t, end).since;
+  const v = t - frameAt(s, t, end, W, H).since;
   const settle = v < SETTLE ? 0.06 * (1 - ease(v, 0, SETTLE)) : 0;
   return <AbsoluteFill style={{ transform: `scale(${1 + settle})` }}>{draw(s, end)}</AbsoluteFill>;
 };

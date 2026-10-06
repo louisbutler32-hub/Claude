@@ -1,0 +1,26 @@
+[
+  {
+    "id": "bg-sea-wide",
+    "prompt": "photorealistic calm ocean surface on a sunny morning seen from just above the water, gentle ripples, a kelp bed floating on the surface, rocky green coastline far in the distance, blue sky, no animals, no people, wide landscape composition",
+    "w": 1792,
+    "h": 1024
+  },
+  {
+    "id": "bg-temple-wide",
+    "prompt": "photorealistic Balinese clifftop temple at Uluwatu, carved stone gate and walls, a stone footpath, tropical trees, the ocean far below, sunny, no people, no animals, wide landscape composition",
+    "w": 1792,
+    "h": 1024
+  },
+  {
+    "id": "bg-zoo-wide",
+    "prompt": "photorealistic empty sunny zoo enclosure with sandy ground, a small pool, boulders, a wooden fence and green trees behind, bright daylight, the enclosure is empty, no elephants, no animals at all, no people, wide landscape composition",
+    "w": 1792,
+    "h": 1024
+  },
+  {
+    "id": "bg-village-wide",
+    "prompt": "photorealistic rural village in northern Mozambique, red earth, thatched round huts, tall trees and a mountain behind, bright daylight, no people, no animals, wide landscape composition",
+    "w": 1792,
+    "h": 1024
+  }
+]

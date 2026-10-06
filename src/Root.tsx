@@ -154,6 +154,7 @@ import { StatesShort, STATES_FPS, STATES_FRAMES } from "./geo/states/StatesShort
 import { PeopleSheet as PinsPeopleSheet } from "./pins/people";
 import { PinsAvatar, AVATAR as PINS_AVATAR } from "./pins/Avatar";
 import { TalkShort as PinsTalkShort, TalkThumb as PinsTalkThumb, TALK_FPS as PINS_TALK_FPS, TALK_FRAMES as PINS_TALK_FRAMES } from "./pins/talk/TalkShort";
+import { HumanLong as PinsHumanLong, HUMAN_FPS as PINS_HUMAN_FPS, HUMAN_FRAMES as PINS_HUMAN_FRAMES } from "./pins/human/HumanLong";
 import { RobShort as PinsRobShort, RobThumb as PinsRobThumb, ROB_FPS as PINS_ROB_FPS, ROB_FRAMES as PINS_ROB_FRAMES } from "./pins/rob/RobShort";
 import { SleepShort as PinsSleepShort, SleepThumb as PinsSleepThumb, SLEEP_FPS as PINS_SLEEP_FPS, SLEEP_FRAMES as PINS_SLEEP_FRAMES } from "./pins/sleep/SleepShort";
 
@@ -281,6 +282,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Akki-Fear-Thumbnail" component={FearThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="Pins-Sleep" component={PinsSleepShort} durationInFrames={PINS_SLEEP_FRAMES} fps={PINS_SLEEP_FPS} width={1080} height={1920} defaultProps={{ audio: "audio/pins-sleep-mix.mp3", captions: true }} />
       <Composition id="Pins-Talk" component={PinsTalkShort} durationInFrames={PINS_TALK_FRAMES} fps={PINS_TALK_FPS} width={1080} height={1920} defaultProps={{ audio: "audio/pins-talk-mix.mp3", captions: true }} />
+      <Composition id="Pins-Human-Long" component={PinsHumanLong} durationInFrames={PINS_HUMAN_FRAMES} fps={PINS_HUMAN_FPS} width={1920} height={1080} defaultProps={{ audio: "audio/pins-human-mix.mp3", captions: true }} />
       <Composition id="Pins-Rob" component={PinsRobShort} durationInFrames={PINS_ROB_FRAMES} fps={PINS_ROB_FPS} width={1080} height={1920} defaultProps={{ audio: "audio/pins-rob-mix.mp3", captions: true }} />
       <Composition id="Pins-Rob-Thumbnail" component={PinsRobThumb} durationInFrames={1} fps={PINS_ROB_FPS} width={1080} height={1920} />
       <Composition id="Pins-Talk-Thumbnail" component={PinsTalkThumb} durationInFrames={1} fps={PINS_TALK_FPS} width={1080} height={1920} />

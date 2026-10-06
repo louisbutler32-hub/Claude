@@ -1,0 +1,301 @@
+{
+  "voice": "en-US-AndrewNeural",
+  "rate": "+5%",
+  "pitch": "+0Hz",
+  "gap": 0.12,
+  "max_pause": 0.3,
+  "music": ".music/pins-sleep-track.wav",
+  "music_start": 0,
+  "music_db": 15,
+  "duck_db": 3,
+  "sfx": true,
+  "sfx_files": {
+    "ding": ".sfx/pins/ding.mp3",
+    "pop": ".sfx/pins/pop.mp3",
+    "whoosh": ".sfx/pins/whoosh.mp3",
+    "wrong": ".sfx/pins/wrong.mp3",
+    "counter": {
+      "path": ".sfx/pins/counter.mp3",
+      "start": 0.25,
+      "dur": 1.24
+    },
+    "riser": {
+      "path": ".sfx/pins/riser.mp3",
+      "start": 1.15,
+      "dur": 1.9,
+      "fade_out": 0.03
+    },
+    "monkey": {
+      "path": ".sfx/pins/monkey.mp3",
+      "start": 0.4,
+      "dur": 2.2,
+      "fade_out": 0.3
+    },
+    "kaching": {
+      "path": ".sfx/pins/kaching.mp3",
+      "start": 0.48,
+      "dur": 1.7,
+      "fade_out": 0.3
+    },
+    "tiptoe": {
+      "path": ".sfx/pins/tiptoe.mp3",
+      "start": 0.2,
+      "dur": 1.1,
+      "fade_out": 0.1
+    },
+    "elephant": {
+      "path": ".sfx/pins/elephant.mp3",
+      "start": 0,
+      "dur": 1.3,
+      "fade_out": 0.15
+    },
+    "huh": ".sfx/pins/huh.mp3",
+    "whale": ".sfx/pins/whale.mp3",
+    "chirp": ".sfx/pins/bird-chirp.mp3",
+    "bird": ".sfx/pins/bird.mp3",
+    "bees": ".sfx/pins/bees.mp3",
+    "wings": {
+      "path": ".sfx/pins/wings.mp3",
+      "start": 0,
+      "dur": 1.6,
+      "fade_out": 0.5
+    }
+  },
+  "sfx_gain": {
+    "ding": 0.5,
+    "pop": 0.3,
+    "whoosh": 0.32,
+    "wrong": 0.4,
+    "counter": 0.3,
+    "riser": 0.45,
+    "monkey": 0.35,
+    "kaching": 0.4,
+    "tiptoe": 0.35,
+    "elephant": 0.45,
+    "huh": 0.5,
+    "whale": 0.35,
+    "chirp": 0.3,
+    "bird": 0.35,
+    "bees": 0.3,
+    "wings": 0.3
+  },
+  "start_sfx": [
+    [
+      "ding",
+      0.0
+    ]
+  ],
+  "lines": [
+    {
+      "id": "hook",
+      "text": "These animals act way more like humans than you'd think.",
+      "hold_after": 1.0,
+      "sfx": [
+        [
+          "whoosh",
+          3,
+          -0.08
+        ],
+        [
+          "whoosh",
+          5,
+          -0.08
+        ],
+        [
+          "whoosh",
+          7,
+          -0.08
+        ],
+        [
+          "riser",
+          9,
+          -1.403
+        ],
+        [
+          "huh",
+          9,
+          0.767
+        ]
+      ]
+    },
+    {
+      "id": "tease",
+      "text": "Some hold hands. Some rob tourists. And one learned to talk.",
+      "sfx": [
+        [
+          "pop",
+          2
+        ],
+        [
+          "pop",
+          6
+        ],
+        [
+          "pop",
+          10
+        ]
+      ]
+    },
+    {
+      "id": "otter1",
+      "text": "First, sea otters."
+    },
+    {
+      "id": "otter2",
+      "text": "When they sleep, they hold hands, so the current can't pull them apart.",
+      "sfx": [
+        [
+          "pop",
+          5
+        ]
+      ]
+    },
+    {
+      "id": "otter3",
+      "text": "Some even wrap themselves in kelp, like a blanket. And the pups just nap on mom's belly.",
+      "sfx": [
+        [
+          "pop",
+          5
+        ],
+        [
+          "pop",
+          15
+        ]
+      ]
+    },
+    {
+      "id": "monkey1",
+      "text": "Next, the monkeys of Uluwatu Temple in Bali.",
+      "sfx": [
+        [
+          "monkey",
+          2
+        ]
+      ]
+    },
+    {
+      "id": "monkey2",
+      "text": "They snatch phones, glasses and hats right out of tourists' hands.",
+      "sfx": [
+        [
+          "pop",
+          2
+        ],
+        [
+          "pop",
+          3
+        ],
+        [
+          "pop",
+          5
+        ]
+      ]
+    },
+    {
+      "id": "monkey3",
+      "text": "Then they wait, and only trade them back for food.",
+      "sfx": [
+        [
+          "tiptoe",
+          2
+        ],
+        [
+          "kaching",
+          8
+        ]
+      ]
+    },
+    {
+      "id": "monkey4",
+      "text": "And the more valuable the thing they took, the bigger the snack they hold out for.",
+      "sfx": [
+        [
+          "counter",
+          12
+        ]
+      ]
+    },
+    {
+      "id": "koshik1",
+      "text": "Then there's Koshik, an elephant at a zoo in South Korea.",
+      "sfx": [
+        [
+          "elephant",
+          3
+        ]
+      ]
+    },
+    {
+      "id": "koshik2",
+      "text": "He learned to say five Korean words, like hello and no, by putting his trunk in his mouth.",
+      "sfx": [
+        [
+          "pop",
+          3
+        ],
+        [
+          "pop",
+          13
+        ],
+        [
+          "pop",
+          15
+        ]
+      ]
+    },
+    {
+      "id": "guide1",
+      "text": "Finally, the honeyguide, a little bird in Mozambique.",
+      "sfx": [
+        [
+          "chirp",
+          3
+        ]
+      ]
+    },
+    {
+      "id": "guide2",
+      "text": "When honey hunters call out to it, it answers, flies ahead, and leads them straight to a wild beehive.",
+      "sfx": [
+        [
+          "bird",
+          8
+        ],
+        [
+          "wings",
+          10
+        ],
+        [
+          "bees",
+          18
+        ]
+      ]
+    },
+    {
+      "id": "guide3",
+      "text": "The hunters take the honey, and the bird gets the wax.",
+      "sfx": [
+        [
+          "pop",
+          5
+        ],
+        [
+          "pop",
+          11
+        ]
+      ]
+    },
+    {
+      "id": "outro",
+      "text": "And that's not even the strangest one.",
+      "sfx": [
+        [
+          "whoosh",
+          6,
+          0.2
+        ]
+      ]
+    }
+  ]
+}
