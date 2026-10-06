@@ -11,7 +11,13 @@
     },
     {
       "id": "koshik1",
-      "text": "First, Koshik the elephant. For years, his only friends at a South Korean zoo were humans."
+      "text": "First, Koshik the elephant. For years, his only friends at a South Korean zoo were humans.",
+      "sfx": [
+        [
+          "elephant",
+          3
+        ]
+      ]
     },
     {
       "id": "koshik2",
@@ -19,23 +25,65 @@
     },
     {
       "id": "koshik3",
-      "text": "By sticking his trunk in his mouth, he can say five Korean words, like hello, sit down, and no."
+      "text": "By sticking his trunk in his mouth, he can say five Korean words, like hello, sit down, and no.",
+      "sfx": [
+        [
+          "pop",
+          14
+        ],
+        [
+          "pop",
+          15
+        ],
+        [
+          "pop",
+          18
+        ]
+      ]
     },
     {
       "id": "guide1",
-      "text": "Next, the honeyguide. This bird teams up with humans to find honey."
+      "text": "Next, the honeyguide. This bird teams up with humans to find honey.",
+      "sfx": [
+        [
+          "chirp",
+          2
+        ]
+      ]
     },
     {
       "id": "guide2",
-      "text": "When honey hunters in Africa call out brrr-hm, it flies over and leads them straight to a wild beehive."
+      "text": "When honey hunters in Africa call out brrr-hm, it flies over and leads them straight to a wild beehive.",
+      "sfx": [
+        [
+          "bird",
+          8
+        ],
+        [
+          "bees",
+          17
+        ]
+      ]
     },
     {
       "id": "guide3",
-      "text": "That call more than triples their chances of finding one."
+      "text": "That call more than triples their chances of finding one.",
+      "sfx": [
+        [
+          "counter",
+          4
+        ]
+      ]
     },
     {
       "id": "guide4",
-      "text": "The humans take the honey, and the bird gets the wax."
+      "text": "The humans take the honey, and the bird gets the wax.",
+      "sfx": [
+        [
+          "pop",
+          10
+        ]
+      ]
     },
     {
       "id": "noc1",
@@ -47,7 +95,56 @@
     },
     {
       "id": "noc3",
-      "text": "Nobody had. It was Noc, copying human voices."
+      "text": "Nobody had. It was Noc, copying human voices.",
+      "sfx": [
+        [
+          "wrong",
+          0
+        ],
+        [
+          "pop",
+          4
+        ]
+      ]
     }
+  ],
+  "music": ".music/pins-sleep-track.wav",
+  "music_start": 0,
+  "music_db": 15,
+  "duck_db": 3,
+  "sfx": true,
+  "sfx_files": {
+    "ding": ".sfx/pins/ding.mp3",
+    "pop": ".sfx/pins/pop.mp3",
+    "whoosh": ".sfx/pins/whoosh.mp3",
+    "splash": ".sfx/pins/splash.mp3",
+    "wrong": ".sfx/pins/wrong.mp3",
+    "counter": {
+      "path": ".sfx/pins/counter.mp3",
+      "start": 0.25,
+      "dur": 1.24
+    },
+    "elephant": ".sfx/pins/elephant.mp3",
+    "bird": ".sfx/pins/bird.mp3",
+    "chirp": ".sfx/pins/bird-chirp.mp3",
+    "bees": ".sfx/pins/bees.mp3"
+  },
+  "sfx_gain": {
+    "ding": 0.5,
+    "pop": 0.3,
+    "whoosh": 0.32,
+    "splash": 0.4,
+    "wrong": 0.4,
+    "counter": 0.3,
+    "elephant": 0.45,
+    "bird": 0.35,
+    "chirp": 0.3,
+    "bees": 0.3
+  },
+  "start_sfx": [
+    [
+      "ding",
+      0.0
+    ]
   ]
 }

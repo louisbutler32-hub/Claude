@@ -59,6 +59,10 @@
           9
         ],
         [
+          "counter",
+          10
+        ],
+        [
           "wrong",
           14
         ]
@@ -74,7 +78,7 @@
           0.1
         ],
         [
-          "pop",
+          "counter",
           9
         ]
       ]
@@ -159,14 +163,20 @@
     "pop": ".sfx/pins/pop.mp3",
     "whoosh": ".sfx/pins/whoosh.mp3",
     "splash": ".sfx/pins/splash.mp3",
-    "wrong": ".sfx/pins/wrong.mp3"
+    "wrong": ".sfx/pins/wrong.mp3",
+    "counter": {
+      "path": ".sfx/pins/counter.mp3",
+      "start": 0.25,
+      "dur": 1.24
+    }
   },
   "sfx_gain": {
     "ding": 0.5,
     "pop": 0.3,
     "whoosh": 0.32,
     "splash": 0.4,
-    "wrong": 0.4
+    "wrong": 0.4,
+    "counter": 0.3
   },
   "start_sfx": [
     [
