@@ -190,5 +190,65 @@
   "headW": 0.359,
   "turn": 0,
   "tilt": 0
+ },
+ "man-chips": {
+  "file": "man-chips.png",
+  "w": 370,
+  "h": 1115,
+  "neck": [
+   0.5405,
+   0.139
+  ],
+  "headW": 0.3351,
+  "turn": 0,
+  "tilt": 0
+ },
+ "man-shock": {
+  "file": "man-shock.png",
+  "w": 583,
+  "h": 1231,
+  "neck": [
+   0.5163,
+   0.1917
+  ],
+  "headW": 0.2401,
+  "turn": 0,
+  "tilt": 0
+ },
+ "woman-phone": {
+  "file": "woman-phone.png",
+  "w": 449,
+  "h": 1150,
+  "neck": [
+   0.3318,
+   0.1713
+  ],
+  "headW": 0.4677,
+  "turn": 0.75,
+  "tilt": 0
+ },
+ "woman-shock": {
+  "file": "woman-shock.png",
+  "w": 319,
+  "h": 1079,
+  "neck": [
+   0.5674,
+   0.1715
+  ],
+  "headW": 0.4514,
+  "turn": 0,
+  "tilt": 0
+ },
+ "woman-reach": {
+  "file": "woman-reach.png",
+  "w": 640,
+  "h": 1138,
+  "neck": [
+   0.8078,
+   0.1547
+  ],
+  "headW": 0.3188,
+  "turn": -0.8,
+  "tilt": 0
  }
 }

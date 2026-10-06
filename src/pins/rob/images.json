@@ -1,0 +1,126 @@
+[
+  {
+    "id": "bg-beach",
+    "prompt": "photorealistic sunny British seaside promenade, railings, a pier and the sea behind, blue sky, bright daylight, no people, no birds, vertical composition"
+  },
+  {
+    "id": "bg-carpark",
+    "prompt": "photorealistic alpine car park in New Zealand mountains, steep green and rocky peaks, a few parked cars, bright daylight, no people, no birds, vertical composition"
+  },
+  {
+    "id": "bg-playground",
+    "prompt": "photorealistic small bird playground beside a mountain car park in New Zealand: a low wooden frame of poles and beams with hanging ropes, chains and swinging toys, on gravel, steep green and rocky peaks behind, bright daylight, nobody there, no people, no birds, vertical composition"
+  },
+  {
+    "id": "bg-temple",
+    "prompt": "photorealistic Balinese clifftop temple at Uluwatu, carved stone gate and walls, tropical trees, the ocean far below, sunny, no people, no animals, vertical composition"
+  },
+  {
+    "id": "bg-temple-path",
+    "prompt": "photorealistic stone footpath along a clifftop in Bali with a low carved wall, tropical trees, ocean behind, sunny, no people, no animals, vertical composition"
+  },
+  {
+    "id": "bg-car-close",
+    "prompt": "photorealistic close view of a parked white hatchback car's windscreen and roof in a mountain car park, mountains behind, bright daylight, no people, no animals, vertical composition"
+  },
+  {
+    "id": "gull",
+    "prompt": "photorealistic herring gull standing, whole body visible, side view facing left, beak slightly open, plain pure white background, soft studio lighting",
+    "w": 1024,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "gull-fly",
+    "prompt": "photorealistic herring gull swooping down with wings spread wide, whole bird visible, beak open, plain pure white background, soft studio lighting",
+    "w": 1344,
+    "h": 768,
+    "cutout": true
+  },
+  {
+    "id": "kea",
+    "prompt": "photorealistic wildlife photo of a kea (Nestor notabilis), the big New Zealand mountain parrot: dull olive-green body with dark-edged scalloped feathers, bright orange-red feathers under the wings, a long narrow strongly hooked dark grey upper beak, standing, whole body visible, side view facing left, plain pure white background, soft studio lighting",
+    "w": 1024,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "kea-tug",
+    "prompt": "photorealistic wildlife photo of a kea (Nestor notabilis), the big New Zealand mountain parrot: dull olive-green body with dark-edged scalloped feathers, bright orange-red feathers under the wings, a long narrow strongly hooked dark grey upper beak, pulling hard on a black rubber car window seal held in its beak, wings half open showing the orange underside, whole body visible, plain pure white background, soft studio lighting",
+    "w": 1344,
+    "h": 768,
+    "cutout": true
+  },
+  {
+    "id": "monkey",
+    "prompt": "photorealistic long-tailed macaque monkey sitting and holding a smartphone in its hands, looking at the camera, whole body visible, plain pure white background, soft studio lighting",
+    "w": 1024,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "monkey-glasses",
+    "prompt": "photorealistic long-tailed macaque monkey sitting, holding a pair of sunglasses, smug expression, whole body visible, plain pure white background, soft studio lighting",
+    "w": 1024,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "chips",
+    "prompt": "photorealistic paper cone of hot chips french fries, plain pure white background, soft studio lighting",
+    "w": 768,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "backpack",
+    "prompt": "photorealistic red hiking backpack, unzipped and open, plain pure white background, soft studio lighting",
+    "w": 1024,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "car",
+    "prompt": "photorealistic small white hatchback car, side view facing left, whole car visible, plain pure white background, soft studio lighting",
+    "w": 1344,
+    "h": 768,
+    "cutout": true
+  },
+  {
+    "id": "fruit",
+    "prompt": "photorealistic small pile of bananas, peanuts and a boiled egg, plain pure white background, soft studio lighting",
+    "w": 1024,
+    "h": 768,
+    "cutout": true
+  },
+  {
+    "id": "man-chips",
+    "prompt": "a British man in his 30s wearing a light blue t-shirt, beige shorts and white trainers holding a paper cone of chips and eating one, whole body visible from head to shoes, standing, facing the camera, plain pure white background, soft studio lighting, photorealistic",
+    "w": 768,
+    "h": 1344
+  },
+  {
+    "id": "man-shock",
+    "prompt": "a British man in his 30s wearing a light blue t-shirt, beige shorts and white trainers with both hands on his head in shock, whole body visible from head to shoes, standing, facing the camera, plain pure white background, soft studio lighting, photorealistic",
+    "w": 768,
+    "h": 1344
+  },
+  {
+    "id": "woman-phone",
+    "prompt": "a young woman tourist wearing a yellow sundress, brown sandals and a small brown crossbody bag, dark hair in a ponytail holding a smartphone up in one hand to take a photo, whole body visible from head to shoes, standing, facing the camera, plain pure white background, soft studio lighting, photorealistic",
+    "w": 768,
+    "h": 1344
+  },
+  {
+    "id": "woman-shock",
+    "prompt": "a young woman tourist wearing a yellow sundress, brown sandals and a small brown crossbody bag, dark hair in a ponytail with both hands on her cheeks in shock, whole body visible from head to shoes, standing, facing the camera, plain pure white background, soft studio lighting, photorealistic",
+    "w": 768,
+    "h": 1344
+  },
+  {
+    "id": "woman-reach",
+    "prompt": "a young woman tourist wearing a yellow sundress, brown sandals and a small brown crossbody bag, dark hair in a ponytail reaching one arm forward to grab something, leaning forward, whole body visible from head to shoes, standing, facing the camera, plain pure white background, soft studio lighting, photorealistic",
+    "w": 768,
+    "h": 1344
+  }
+]

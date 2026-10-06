@@ -18,14 +18,72 @@
       "path": ".sfx/pins/counter.mp3",
       "start": 0.25,
       "dur": 1.24
-    }
+    },
+    "seagull": {
+      "path": ".sfx/pins/seagull.mp3",
+      "start": 5.0,
+      "dur": 1.8,
+      "fade_out": 0.4
+    },
+    "parrot": {
+      "path": ".sfx/pins/parrot.mp3",
+      "start": 0.3,
+      "dur": 1.5,
+      "fade_out": 0.4
+    },
+    "monkey": {
+      "path": ".sfx/pins/monkey.mp3",
+      "start": 0.4,
+      "dur": 2.2,
+      "fade_out": 0.3
+    },
+    "rip": {
+      "path": ".sfx/pins/rip.mp3",
+      "start": 46.3,
+      "dur": 1.15,
+      "fade_out": 0.1
+    },
+    "zipper": {
+      "path": ".sfx/pins/zipper.mp3",
+      "start": 0.45,
+      "dur": 1.3,
+      "fade_out": 0.2
+    },
+    "kaching": {
+      "path": ".sfx/pins/kaching.mp3",
+      "start": 0.48,
+      "dur": 1.7,
+      "fade_out": 0.3
+    },
+    "tiptoe": {
+      "path": ".sfx/pins/tiptoe.mp3",
+      "start": 0.2,
+      "dur": 1.1,
+      "fade_out": 0.1
+    },
+    "riser": {
+      "path": ".sfx/pins/riser.mp3",
+      "start": 1.15,
+      "dur": 1.9,
+      "fade_out": 0.03
+    },
+    "beep": ".sfx/pins/beep.wav"
   },
   "sfx_gain": {
     "ding": 0.5,
     "pop": 0.3,
     "whoosh": 0.32,
     "wrong": 0.4,
-    "counter": 0.3
+    "counter": 0.3,
+    "seagull": 0.4,
+    "parrot": 0.3,
+    "monkey": 0.35,
+    "rip": 0.4,
+    "zipper": 0.4,
+    "kaching": 0.4,
+    "tiptoe": 0.35,
+    "riser": 0.45,
+    "beep": 0.3
   },
   "start_sfx": [
     [
@@ -36,47 +94,173 @@
   "lines": [
     {
       "id": "hook",
-      "text": "Three animals that actually rob humans."
+      "text": "Three animals that actually rob humans.",
+      "sfx": [
+        [
+          "whoosh",
+          2,
+          -0.08
+        ],
+        [
+          "whoosh",
+          4,
+          -0.08
+        ],
+        [
+          "pop",
+          5
+        ],
+        [
+          "riser",
+          5,
+          -1.34
+        ],
+        [
+          "pop",
+          5,
+          0.6
+        ],
+        [
+          "beep",
+          5,
+          0.85
+        ]
+      ],
+      "hold_after": 1.0
     },
     {
       "id": "gull1",
-      "text": "First, seagulls. They don't just grab any food."
+      "text": "First, seagulls. They don't just grab any food.",
+      "sfx": [
+        [
+          "seagull",
+          1
+        ]
+      ]
     },
     {
       "id": "gull2",
-      "text": "In one experiment, gulls watched a person pick up one of two snacks, and they went straight for the one the human had touched."
+      "text": "In one experiment, gulls watched a person pick up one of two snacks, and they went straight for the one the human had touched.",
+      "sfx": [
+        [
+          "tiptoe",
+          4
+        ],
+        [
+          "pop",
+          12
+        ],
+        [
+          "pop",
+          23
+        ]
+      ]
     },
     {
       "id": "gull3",
-      "text": "They watch what you eat, and they want that."
+      "text": "They watch what you eat, and they want that.",
+      "sfx": [
+        [
+          "pop",
+          8
+        ]
+      ]
     },
     {
       "id": "kea1",
-      "text": "Next, the kea, a parrot from New Zealand."
+      "text": "Next, the kea, a parrot from New Zealand.",
+      "sfx": [
+        [
+          "parrot",
+          2
+        ]
+      ]
     },
     {
       "id": "kea2",
-      "text": "It rips the rubber off car windows, pulls off windshield wipers, and unzips backpacks to see what's inside."
+      "text": "It rips the rubber off car windows, pulls off windshield wipers, and unzips backpacks to see what's inside.",
+      "sfx": [
+        [
+          "rip",
+          1,
+          -0.75
+        ],
+        [
+          "pop",
+          7
+        ],
+        [
+          "zipper",
+          12,
+          -0.1
+        ]
+      ]
     },
     {
       "id": "kea3",
-      "text": "It got so bad that people built them a playground, just to keep them away from the cars."
+      "text": "It got so bad that people built them a playground, just to keep them away from the cars.",
+      "sfx": [
+        [
+          "pop",
+          9
+        ]
+      ]
     },
     {
       "id": "monkey1",
-      "text": "Finally, the monkeys at Uluwatu Temple in Bali."
+      "text": "Finally, the monkeys at Uluwatu Temple in Bali.",
+      "sfx": [
+        [
+          "monkey",
+          2
+        ]
+      ]
     },
     {
       "id": "monkey2",
-      "text": "They snatch tourists' phones, glasses and hats, and then they wait."
+      "text": "They snatch tourists' phones, glasses and hats, and then they wait.",
+      "sfx": [
+        [
+          "pop",
+          3
+        ],
+        [
+          "pop",
+          4
+        ],
+        [
+          "pop",
+          6
+        ],
+        [
+          "tiptoe",
+          8
+        ]
+      ]
     },
     {
       "id": "monkey3",
-      "text": "Because they'll only give it back for food."
+      "text": "Because they'll only give it back for food.",
+      "sfx": [
+        [
+          "kaching",
+          7
+        ]
+      ]
     },
     {
       "id": "monkey4",
-      "text": "And scientists found the more valuable the thing they steal, the more food they hold out for."
+      "text": "And scientists found the more valuable the thing they steal, the more food they hold out for.",
+      "sfx": [
+        [
+          "pop",
+          5
+        ],
+        [
+          "counter",
+          11
+        ]
+      ]
     }
   ]
 }

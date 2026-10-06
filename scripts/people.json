@@ -208,6 +208,72 @@
       "src": ".photo-review/people-ai/sci-b.jpg",
       "turn": 0,
       "model": "u2net"
+    },
+    {
+      "id": "man-chips",
+      "src": ".photo-review/pins-rob-ai/man-chips.jpg",
+      "turn": 0,
+      "model": "u2net",
+      "neck": [
+        385,
+        345
+      ],
+      "head": [
+        390,
+        268,
+        62,
+        90
+      ]
+    },
+    {
+      "id": "man-shock",
+      "src": ".photo-review/pins-rob-ai/man-shock.jpg",
+      "turn": 0,
+      "neck": [
+        392,
+        300
+      ],
+      "head": [
+        392,
+        185,
+        70,
+        112
+      ]
+    },
+    {
+      "id": "woman-phone",
+      "src": ".photo-review/pins-rob-ai/woman-phone.jpg",
+      "turn": 0.75,
+      "neck": [
+        318,
+        345
+      ],
+      "head": [
+        300,
+        245,
+        105,
+        100
+      ]
+    },
+    {
+      "id": "woman-shock",
+      "src": ".photo-review/pins-rob-ai/woman-shock.jpg",
+      "turn": 0,
+      "neck": [
+        390,
+        370
+      ],
+      "head": [
+        390,
+        280,
+        72,
+        92
+      ]
+    },
+    {
+      "id": "woman-reach",
+      "src": ".photo-review/pins-rob-ai/woman-reach.jpg",
+      "turn": -0.8
     }
   ]
 }

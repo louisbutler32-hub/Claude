@@ -154,6 +154,7 @@ import { StatesShort, STATES_FPS, STATES_FRAMES } from "./geo/states/StatesShort
 import { PeopleSheet as PinsPeopleSheet } from "./pins/people";
 import { PinsAvatar, AVATAR as PINS_AVATAR } from "./pins/Avatar";
 import { TalkShort as PinsTalkShort, TalkThumb as PinsTalkThumb, TALK_FPS as PINS_TALK_FPS, TALK_FRAMES as PINS_TALK_FRAMES } from "./pins/talk/TalkShort";
+import { RobShort as PinsRobShort, RobThumb as PinsRobThumb, ROB_FPS as PINS_ROB_FPS, ROB_FRAMES as PINS_ROB_FRAMES } from "./pins/rob/RobShort";
 import { SleepShort as PinsSleepShort, SleepThumb as PinsSleepThumb, SLEEP_FPS as PINS_SLEEP_FPS, SLEEP_FRAMES as PINS_SLEEP_FRAMES } from "./pins/sleep/SleepShort";
 
 export const RemotionRoot: React.FC = () => {
@@ -280,6 +281,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Akki-Fear-Thumbnail" component={FearThumb} durationInFrames={1} fps={24} width={1080} height={1920} />
       <Composition id="Pins-Sleep" component={PinsSleepShort} durationInFrames={PINS_SLEEP_FRAMES} fps={PINS_SLEEP_FPS} width={1080} height={1920} defaultProps={{ audio: "audio/pins-sleep-mix.mp3", captions: true }} />
       <Composition id="Pins-Talk" component={PinsTalkShort} durationInFrames={PINS_TALK_FRAMES} fps={PINS_TALK_FPS} width={1080} height={1920} defaultProps={{ audio: "audio/pins-talk-mix.mp3", captions: true }} />
+      <Composition id="Pins-Rob" component={PinsRobShort} durationInFrames={PINS_ROB_FRAMES} fps={PINS_ROB_FPS} width={1080} height={1920} defaultProps={{ audio: "audio/pins-rob-mix.mp3", captions: true }} />
+      <Composition id="Pins-Rob-Thumbnail" component={PinsRobThumb} durationInFrames={1} fps={PINS_ROB_FPS} width={1080} height={1920} />
       <Composition id="Pins-Talk-Thumbnail" component={PinsTalkThumb} durationInFrames={1} fps={PINS_TALK_FPS} width={1080} height={1920} />
       <Composition id="Pins-Avatar" component={PinsAvatar} durationInFrames={1} fps={30} width={PINS_AVATAR} height={PINS_AVATAR} defaultProps={{ pick: "elephant" }} />
       <Composition id="Pins-People-Sheet" component={PinsPeopleSheet} durationInFrames={1} fps={30} width={1080} height={1920} />

@@ -281,7 +281,10 @@
     "lapeace3d:thumb": "remotion still LaPeace3D out/thumbnail-la-peace-3d.jpg --frame=165 --gl=swangle --image-format=jpeg --quality=92",
     "friend:mix": "python3 scripts/build-friend-audio.py",
     "friend:audio": "remotion render FriendShort out/friend-silent.mp4 && python3 scripts/lift-reference-audio.py public/audio/friend-mix.mp3 friend-mix-final.wav out/friend-silent.mp4 out/friend.mp4",
-    "friend:thumb": "remotion still Friend-Thumbnail out/thumbnail-friend.jpg --image-format=jpeg --quality=92"
+    "friend:thumb": "remotion still Friend-Thumbnail out/thumbnail-friend.jpg --image-format=jpeg --quality=92",
+    "pins:rob:audio": "python3 scripts/build-pins-audio.py rob",
+    "pins:rob": "remotion render Pins-Rob out/pins/rob.mp4",
+    "pins:rob:thumb": "remotion still Pins-Rob-Thumbnail out/pins/thumbnail-rob.jpg --image-format=jpeg --quality=92"
   },
   "dependencies": {
     "@react-three/fiber": "8.17.10",

@@ -370,6 +370,18 @@ def main():
         if missing:
             sys.exit("the recording doesn't cover the whole script; add the missing takes with --vo a.mp3 b.mp3 ...")
         clip = decode(vo_path)
+        # "hold_after": seconds of silence spliced in after a line (room for a gag
+        # the picture plays out, like the hook's payoff); later words shift with it
+        shift, held = 0.0, []
+        for line, ws in zip(spec["lines"], words_by_line):
+            ws = [[w, s + shift, e + shift] for w, s, e in ws]
+            held.append(ws)
+            hold = float(line.get("hold_after", 0))
+            if hold > 0:
+                at = N(ws[-1][2] + 0.05)
+                clip = np.concatenate([clip[:at], np.zeros(N(hold), clip.dtype), clip[at:]])
+                shift += hold
+        words_by_line = held
         voice_parts.append((lead_in, clip))
         for line, ws in zip(spec["lines"], words_by_line):
             abs_words = [[w, round(lead_in + s, 3), round(lead_in + e, 3)] for w, s, e in ws]
