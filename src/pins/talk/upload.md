@@ -40,30 +40,16 @@ animals that can talk, talking animals, animals that talk to humans, koshik elep
 | Chapters | none, because Shorts don't show them |
 | `#shorts` | in the description |
 
-## Credits (photos)
+## Credits (images)
 
-| id | title | creator | licence | source |
-|---|---|---|---|---|
-| elephant | Testing the waters | shankar s. | CC BY 2.0 | https://www.flickr.com/photos/77742560@N06/11932533316 |
-| honeyguide | Greater Honeyguide - Gambia 17_CD5A1223 | fveronesi1 | CC BY-SA 2.0 | https://www.flickr.com/photos/30818542@N04/32270131400 |
-| beluga | Beluga Whale | tigrecanela | CC BY-SA 2.0 | https://www.flickr.com/photos/12168606@N00/480865112 |
-| belugahead | Beluga whale | Lars Plougmann | CC BY-SA 2.0 | https://www.flickr.com/photos/75062596@N00/27640481 |
-| honeycomb | Honeycomb | wildxplorer | CC BY 2.0 | https://www.flickr.com/photos/21932201@N04/2268587409 |
-| beehive | Honeycomb (drawn into a hanging nest) | wildxplorer | CC BY 2.0 | https://www.flickr.com/photos/21932201@N04/2268587409 |
-| bg-zoo | Borneo Pygmy Elephants | shankar s. | CC BY 2.0 | https://www.flickr.com/photos/77742560@N06/11931854785 |
-| bg-zoo-lonely | Friends 1 | suvodeb | CC BY 2.0 | https://www.flickr.com/photos/8706370@N02/4608724568 |
-| bg-savanna | Nivali | Stig Nygaard | CC BY 2.0 | https://www.flickr.com/photos/10259776@N00/2815223470 |
-| bg-tree | Acacia tree | Nagarjun | CC BY 2.0 | https://www.flickr.com/photos/64924693@N00/29164586908 |
-| bg-bay | Coronado Bridge & Seaport Village | Prayitno / Thank you for (12 millions +) view | CC BY 2.0 | https://www.flickr.com/photos/34128007@N04/9522456494 |
+Every image in this Short is AI-generated for the channel, so no photo
+credit is owed:
 
-The people's bodies (zookeeper, honey hunter, Navy divers) are AI-generated
-for this channel with TubeAI's image generator, cut out by
-`scripts/prep-people.py`, with comic heads drawn in code. No photo credit is
-owed for them.
-
-BY-SA photos were cut out and composited, so the video is an adaptation
-under BY-SA. Keep this credit block in the description, or link a pinned
-comment that carries it.
+- animals, props and backgrounds: FLUX.1 [schnell] on Runware, from the
+  prompts in `src/pins/talk/images.json` (17 of the 20-image budget used),
+  built with `scripts/gen-images.py`
+- the people's bodies (zookeeper, honey hunter, Navy divers): TubeAI's image
+  generator, cut by `scripts/prep-people.py`; the comic heads are drawn in code
 
 ## Audio
 

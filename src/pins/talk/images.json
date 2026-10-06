@@ -1,0 +1,76 @@
+[
+  {
+    "id": "bg-zoo",
+    "prompt": "photorealistic empty elephant enclosure at a modern zoo, sandy ground, large rocks, a small pool, lush green trees behind a wooden fence, bright sunny daylight, eye-level view, shallow depth of field, no animals, no people, vertical composition"
+  },
+  {
+    "id": "bg-zoo-dusk",
+    "prompt": "photorealistic empty elephant enclosure at a zoo at dusk, concrete wall and steel bars, a single lamp, sandy ground, moody lonely blue evening light, eye-level view, no animals, no people, vertical composition"
+  },
+  {
+    "id": "bg-village",
+    "prompt": "photorealistic rural village clearing in northern Mozambique, red dirt ground in the foreground, two thatched round huts in the distance, green bush and trees, a tall granite mountain under a blue sky with white clouds, bright daylight, eye-level view, no people, vertical composition"
+  },
+  {
+    "id": "bg-hive-tree",
+    "prompt": "photorealistic big African miombo tree in dry woodland with a wild honeybee nest of several golden honeycombs hanging under a thick branch, bees flying around it, warm afternoon sunlight, low angle, no people, vertical composition"
+  },
+  {
+    "id": "bg-deep",
+    "prompt": "photorealistic open ocean underwater, deep clear blue water, bright sun rays shining down from the surface, floating particles, empty water, no animals, no fish, no people, vertical composition"
+  },
+  {
+    "id": "bg-bay",
+    "prompt": "photorealistic calm harbor water in San Diego bay in the 1980s, floating wooden docks and net pens on the water, navy ships far in the distance, clear blue sky, daylight, eye-level view from just above the water surface, no people, vertical composition"
+  },
+  {
+    "id": "elephant",
+    "prompt": "photorealistic full body young Asian elephant (small rounded ears, twin-domed head), standing, facing the camera at a slight angle, trunk hanging down, entire body visible, plain pure white background, soft studio lighting",
+    "cutout": true
+  },
+  {
+    "id": "elephant-trunk",
+    "prompt": "photorealistic young Asian elephant head, side view, with its trunk curled up in a tight loop so the trunk tip is pushed inside its own open mouth, the whole head and trunk inside the frame with space around, plain pure white background, soft studio lighting",
+    "cutout": true,
+    "w": 1024,
+    "h": 1024
+  },
+  {
+    "id": "elephant-sad",
+    "prompt": "photorealistic full body young Asian elephant standing alone, head and trunk lowered, looking sad, side view, entire body visible, plain pure white background, soft studio lighting",
+    "cutout": true
+  },
+  {
+    "id": "honeyguide",
+    "prompt": "photorealistic greater honeyguide bird perched, side view, brown-grey back, black throat, white cheek patch, pink bill, standing on a short twig, entire bird visible, plain pure white background, soft studio lighting",
+    "w": 1024,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "honeyguide-fly",
+    "prompt": "photorealistic greater honeyguide bird flying with wings fully spread, side view, brown-grey back, black throat, pink bill, entire bird visible, plain pure white background, soft studio lighting",
+    "w": 1024,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "beluga",
+    "prompt": "photorealistic full body white beluga whale swimming, side view facing right, rounded melon forehead, gentle smile, entire whale visible with space around it, plain solid dark navy blue background, soft studio lighting",
+    "w": 1344,
+    "h": 768,
+    "cutout": true
+  },
+  {
+    "id": "beluga-up",
+    "prompt": "photorealistic white beluga whale head and upper body rising vertically, looking at the camera with a curious smile, rounded melon forehead, plain pure white background, soft studio lighting",
+    "cutout": true
+  },
+  {
+    "id": "honeycomb",
+    "prompt": "photorealistic chunk of wild golden honeycomb dripping with honey, irregular natural shape, plain pure white background, soft studio lighting",
+    "w": 1024,
+    "h": 1024,
+    "cutout": true
+  }
+]

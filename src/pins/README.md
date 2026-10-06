@@ -53,6 +53,22 @@ findings, not preferences.
    sources and photo credits, tags under 500 characters) and build the
    9:16 thumbnail (`<Ep>Thumb`).
 
+## Making the images (the reference's look)
+
+The reference's animals, backgrounds and people are AI-generated: clean,
+full-length, posed to the line, lit to match. Ours are too:
+
+    IMAGE_API_KEY=... python3 scripts/gen-images.py <ep> src/pins/<ep>/images.json
+
+FLUX.1 [schnell] on Runware (~$0.0006 an image), **20 images per video at
+most** (the script counts and stops). Backgrounds: "photorealistic …, no
+animals, no people, vertical composition", 768×1344. Subjects: "…, entire body
+visible, plain pure white background, soft studio lighting" with
+`"cutout": true`. A white animal needs a dark background to cut out cleanly.
+Re-roll one by deleting its jpg. Install the picks into
+`public/images/pins-<ep>-ai/` with a `sizes.json`, then place the eyes off a
+gridded sheet. The key lives in the environment, never in the repo.
+
 ## Making people
 
 1. **Generate the bodies.** Use any image AI (TubeAI's thumbnail generator

@@ -1,0 +1,58 @@
+{
+ "elephant": [
+  726,
+  1124
+ ],
+ "elephant-trunk": [
+  761,
+  888
+ ],
+ "elephant-sad": [
+  622,
+  955
+ ],
+ "honeyguide": [
+  624,
+  761
+ ],
+ "honeyguide-fly": [
+  705,
+  894
+ ],
+ "beluga": [
+  1206,
+  328
+ ],
+ "beluga-up": [
+  555,
+  1173
+ ],
+ "honeycomb": [
+  800,
+  681
+ ],
+ "bg-zoo": [
+  768,
+  1344
+ ],
+ "bg-zoo-dusk": [
+  768,
+  1344
+ ],
+ "bg-village": [
+  768,
+  1344
+ ],
+ "bg-hive-tree": [
+  768,
+  1344
+ ],
+ "bg-deep": [
+  768,
+  1344
+ ],
+ "bg-bay": [
+  768,
+  1344
+ ]
+}

@@ -1,21 +1,31 @@
 import { Asset } from "../engine";
+import SIZES from "../../../public/images/pins-talk-ai/sizes.json";
 
 /**
- * The talk short's cutouts (public/images/pins-talk/): natural sizes from
- * credits.json, eye centres and radii in 0–1 of the image, placed by hand off
- * gridded close-ups of each head.
+ * The talk short's cutouts: AI-generated for the channel (FLUX.1 [schnell] on
+ * Runware, prompts in images.json, cut out by scripts/gen-images.py). Eye
+ * centres and radii in 0–1 of the image, placed off a gridded sheet.
  */
-const IMG = "images/pins-talk/";
-
-const elephant: Asset = { src: IMG + "elephant.png", w: 518, h: 615, eyes: [{ x: 0.75, y: 0.505, r: 0.042 }, { x: 0.9, y: 0.47, r: 0.034 }] };
+const IMG = "images/pins-talk-ai/";
+const S = SIZES as Record<string, number[]>;
+const a = (id: string, eyes: Asset["eyes"] = []): Asset => ({ src: IMG + id + ".png", w: S[id][0], h: S[id][1], eyes });
 
 export const ASSETS = {
-  elephant,
-  honeyguide: { src: IMG + "honeyguide.png", w: 467, h: 314, eyes: [{ x: 0.12, y: 0.09, r: 0.036 }, { x: 0.158, y: 0.075, r: 0.03 }] } as Asset,
-  beluga: { src: IMG + "beluga.png", w: 885, h: 348, eyes: [{ x: 0.86, y: 0.36, r: 0.022 }, { x: 0.9, y: 0.33, r: 0.019 }] } as Asset,
-  belugahead: { src: IMG + "belugahead.png", w: 536, h: 360, eyes: [{ x: 0.77, y: 0.555, r: 0.045 }, { x: 0.85, y: 0.5, r: 0.038 }] } as Asset,
-  beehive: { src: IMG + "beehive.png", w: 900, h: 818 } as Asset,
-  honeycomb: { src: IMG + "honeycomb.png", w: 897, h: 755 } as Asset,
-  /** world point of Koshik's mouth when drawn at x 540, y 1060, w 1040 (the close-up aims here) */
-  elephantMouth: [852, 1258] as [number, number],
+  elephant: a("elephant", [{ x: 0.41, y: 0.265, r: 0.05 }, { x: 0.8, y: 0.265, r: 0.046 }]),
+  elephantTrunk: a("elephant-trunk", [{ x: 0.376, y: 0.357, r: 0.05 }]),
+  elephantSad: a("elephant-sad", [{ x: 0.42, y: 0.196, r: 0.05 }]),
+  honeyguide: a("honeyguide", [{ x: 0.75, y: 0.086, r: 0.04 }, { x: 0.69, y: 0.075, r: 0.032 }]),
+  honeyguideFly: a("honeyguide-fly", [{ x: 0.766, y: 0.482, r: 0.034 }]),
+  beluga: a("beluga", [{ x: 0.827, y: 0.28, r: 0.02 }, { x: 0.865, y: 0.24, r: 0.017 }]),
+  belugaUp: a("beluga-up", [{ x: 0.21, y: 0.236, r: 0.05 }, { x: 0.717, y: 0.236, r: 0.05 }]),
+  honeycomb: a("honeycomb"),
+};
+
+export const BG = {
+  zoo: IMG + "bg-zoo.jpg",
+  zooDusk: IMG + "bg-zoo-dusk.jpg",
+  village: IMG + "bg-village.jpg",
+  hiveTree: IMG + "bg-hive-tree.jpg",
+  deep: IMG + "bg-deep.jpg",
+  bay: IMG + "bg-bay.jpg",
 };
