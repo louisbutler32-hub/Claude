@@ -367,7 +367,7 @@ export const TalkThumb: React.FC = () => {
   const t = 1;
   return (
     <AbsoluteFill style={{ background: "#0b2a4d" }}>
-      <Backdrop src={IMG + "bg-zoo.jpg"} t={0} />
+      <Backdrop src={IMG + "bg-zoo.jpg"} t={0} blur={7} tone="rgba(20,30,10,0.12)" />
       <Actor a={A.elephant} t={t} x={540} y={1180} w={1080} bob={0} moods={OPEN} look={[0, 0.2]} />
       <div style={{ position: "absolute", left: 640, top: 600 }}><Bubble text="ANNYEONG!" sub="hello" size={80} tail={[-150, 180]} /></div>
       <div style={{ position: "absolute", left: 50, right: 50, top: 170, textAlign: "center", fontFamily: "Anton", fontSize: 150, lineHeight: 1,
