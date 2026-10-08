@@ -346,7 +346,7 @@ export const ToolsThumb: React.FC = () => {
     <AbsoluteFill style={{ background: "#0b2a4d" }}>
       <Backdrop src={BG.lab} t={0} />
       <Actor a={A.crow} t={t} x={560} y={1400} w={720} bob={0} moods={OPEN} look={[-0.2, 0.2]} />
-      <div style={{ position: "absolute", left: 640, top: 980 }}><GradCap w={330} /></div>
+      <div style={{ position: "absolute", left: 700, top: 800 }}><GradCap w={300} /></div>
       <div style={{ position: "absolute", left: 50, right: 50, top: 170, textAlign: "center", fontFamily: "Anton", fontSize: 150, lineHeight: 1,
         color: "#ff7a14", WebkitTextStroke: "16px #1b0f05", paintOrder: "stroke fill", textTransform: "uppercase", filter: "drop-shadow(0 8px 2px rgba(0,0,0,0.55))" }}>
         Smarter<br /><span style={{ color: "#fff" }}>than us?!</span>

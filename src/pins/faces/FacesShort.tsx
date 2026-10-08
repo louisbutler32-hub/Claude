@@ -375,7 +375,7 @@ export const FacesThumb: React.FC = () => {
     <AbsoluteFill style={{ background: "#0b2a4d" }}>
       <Backdrop src={BG.campus} t={0} />
       <Actor a={A.crowAngry} t={t} x={560} y={1300} w={760} bob={0} moods={ANGRY} look={[-0.3, 0.2]} />
-      <div style={{ position: "absolute", left: 790, top: 1020 }}><Wanted t={t} /></div>
+      <div style={{ position: "absolute", left: 250, top: 800, transform: "rotate(-8deg)" }}><Wanted t={t} /></div>
       <div style={{ position: "absolute", left: 50, right: 50, top: 170, textAlign: "center", fontFamily: "Anton", fontSize: 150, lineHeight: 1,
         color: "#ff7a14", WebkitTextStroke: "16px #1b0f05", paintOrder: "stroke fill", textTransform: "uppercase", filter: "drop-shadow(0 8px 2px rgba(0,0,0,0.55))" }}>
         They never<br /><span style={{ color: "#fff" }}>forget you</span>
