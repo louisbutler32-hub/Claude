@@ -1,0 +1,137 @@
+{
+  "voice": "en-US-AndrewNeural",
+  "rate": "+12%",
+  "pitch": "+0Hz",
+  "gap": 0.12,
+  "max_pause": 0.3,
+  "music": ".music/pins-sleep-track.wav",
+  "music_start": 0,
+  "music_db": 15,
+  "duck_db": 3,
+  "sfx": true,
+  "sfx_files": {
+    "ding": ".sfx/pins/ding.mp3",
+    "pop": ".sfx/pins/pop.mp3",
+    "whoosh": ".sfx/pins/whoosh.mp3",
+    "wrong": ".sfx/pins/wrong.mp3",
+    "counter": {
+      "path": ".sfx/pins/counter.mp3",
+      "start": 0.25,
+      "dur": 1.24
+    },
+    "seagull": {
+      "path": ".sfx/pins/seagull.mp3",
+      "start": 5.0,
+      "dur": 1.8,
+      "fade_out": 0.4
+    },
+    "parrot": {
+      "path": ".sfx/pins/parrot.mp3",
+      "start": 0.3,
+      "dur": 1.5,
+      "fade_out": 0.4
+    },
+    "monkey": {
+      "path": ".sfx/pins/monkey.mp3",
+      "start": 0.4,
+      "dur": 2.2,
+      "fade_out": 0.3
+    },
+    "rip": {
+      "path": ".sfx/pins/rip.mp3",
+      "start": 46.3,
+      "dur": 1.15,
+      "fade_out": 0.1
+    },
+    "zipper": {
+      "path": ".sfx/pins/zipper.mp3",
+      "start": 0.45,
+      "dur": 1.3,
+      "fade_out": 0.2
+    },
+    "kaching": {
+      "path": ".sfx/pins/kaching.mp3",
+      "start": 0.48,
+      "dur": 1.7,
+      "fade_out": 0.3
+    },
+    "tiptoe": {
+      "path": ".sfx/pins/tiptoe.mp3",
+      "start": 0.2,
+      "dur": 1.1,
+      "fade_out": 0.1
+    },
+    "riser": {
+      "path": ".sfx/pins/riser.mp3",
+      "start": 1.15,
+      "dur": 1.9,
+      "fade_out": 0.03
+    },
+    "beep": ".sfx/pins/beep.wav"
+  },
+  "sfx_gain": {
+    "ding": 0.5,
+    "pop": 0.3,
+    "whoosh": 0.32,
+    "wrong": 0.4,
+    "counter": 0.3,
+    "seagull": 0.4,
+    "parrot": 0.3,
+    "monkey": 0.35,
+    "rip": 0.4,
+    "zipper": 0.4,
+    "kaching": 0.4,
+    "tiptoe": 0.35,
+    "riser": 0.45,
+    "beep": 0.3
+  },
+  "start_sfx": [
+    [
+      "ding",
+      0.0
+    ]
+  ],
+  "lines": [
+    {
+      "id": "hook",
+      "text": "Three animals that basically refuse to die.",
+      "hold_after": 1.0
+    },
+    {
+      "id": "jelly1",
+      "text": "First, the immortal jellyfish. It's smaller than your fingernail."
+    },
+    {
+      "id": "jelly2",
+      "text": "But when it gets old or hurt, it doesn't die. It turns back into a baby and starts its whole life over."
+    },
+    {
+      "id": "jelly3",
+      "text": "And then it can do it again. And again."
+    },
+    {
+      "id": "shark1",
+      "text": "Next, the Greenland shark."
+    },
+    {
+      "id": "shark2",
+      "text": "Scientists dated one at around 400 years old. It was probably alive before the United States even existed."
+    },
+    {
+      "id": "shark3",
+      "text": "It grows about one centimeter a year, and it isn't even an adult until it's around 150."
+    },
+    {
+      "id": "tort1",
+      "text": "Finally, Jonathan the tortoise."
+    },
+    {
+      "id": "tort2",
+      "text": "He hatched around 1832, before anyone had ever taken a photo of a person."
+    },
+    {
+      "id": "tort3",
+      "text": "He's about 190 years old now, the oldest known land animal alive. And he's still going."
+    }
+  ]
+}
