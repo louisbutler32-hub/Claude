@@ -372,20 +372,28 @@ def main():
         clip = decode(vo_path)
         # "hold_after": seconds of silence spliced in after a line (room for a gag
         # the picture plays out, like the hook's payoff); later words shift with it
-        shift, held = 0.0, []
+        shift, held, hold_at = 0.0, [], {}
         for line, ws in zip(spec["lines"], words_by_line):
             ws = [[w, s + shift, e + shift] for w, s, e in ws]
             held.append(ws)
             hold = float(line.get("hold_after", 0))
             if hold > 0:
-                at = N(ws[-1][2] + 0.05)
+                # splice at the quietest 20 ms after the line's last word (the aligner
+                # can end a word before its tail fades, and start the next one early), not mid-syllable
+                lo, hi = N(ws[-1][2] - 0.02), N(ws[-1][2] + 0.45)
+                win = N(0.02)
+                cands = range(lo, max(lo + 1, hi - win), N(0.005))
+                at = min(cands, key=lambda i: float(np.mean(clip[i:i + win] ** 2))) + win // 2
                 clip = np.concatenate([clip[:at], np.zeros(N(hold), clip.dtype), clip[at:]])
+                hold_at[line["id"]] = round(lead_in + at / SR, 3)
                 shift += hold
         words_by_line = held
         voice_parts.append((lead_in, clip))
         for line, ws in zip(spec["lines"], words_by_line):
             abs_words = [[w, round(lead_in + s, 3), round(lead_in + e, 3)] for w, s, e in ws]
             lines_out.append({"id": line["id"], "text": line["text"], "start": abs_words[0][1], "end": abs_words[-1][2], "words": abs_words})
+            if line["id"] in hold_at:
+                lines_out[-1]["hold_at"] = hold_at[line["id"]]   # where the held silence starts (the line's true end)
             if abs_words[0][0].lower().strip(",.") in SECTION_WORDS:
                 cues.append(("whoosh", abs_words[0][1] - 0.12, 0.35))
             for cue_ in line.get("sfx", []):

@@ -286,7 +286,10 @@
     "pins:rob": "remotion render Pins-Rob out/pins/rob.mp4",
     "pins:rob:thumb": "remotion still Pins-Rob-Thumbnail out/pins/thumbnail-rob.jpg --image-format=jpeg --quality=92",
     "pins:human": "remotion render Pins-Human-Long out/pins/human-long.mp4",
-    "pins:human:audio": "python3 scripts/build-pins-audio.py human"
+    "pins:human:audio": "python3 scripts/build-pins-audio.py human",
+    "pins:forever:audio": "python3 scripts/build-pins-audio.py forever",
+    "pins:forever": "remotion render Pins-Forever out/pins/forever.mp4",
+    "pins:forever:thumb": "remotion still Pins-Forever-Thumbnail out/pins/thumbnail-forever.jpg --image-format=jpeg --quality=92"
   },
   "dependencies": {
     "@react-three/fiber": "8.17.10",

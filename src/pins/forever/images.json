@@ -1,0 +1,80 @@
+[
+  {
+    "id": "bg-arctic",
+    "prompt": "photorealistic deep arctic sea underwater, dark teal and navy water, faint soft rays of light from the surface far above, floating particles, gloomy and calm, no ice in view, no animals, no people, vertical composition"
+  },
+  {
+    "id": "bg-island",
+    "prompt": "photorealistic sunny green lawn in front of a white colonial governor's house on a hilly tropical island, St Helena, big trees, blue sky, no people, no animals, vertical composition"
+  },
+  {
+    "id": "jellyfish",
+    "prompt": "photorealistic macro photo of the immortal jellyfish Turritopsis dohrnii, a tiny transparent bell with a bright red-orange stomach inside and fine white tentacles around the rim, whole jellyfish visible, plain pure white background",
+    "w": 1024,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "polyp",
+    "prompt": "photorealistic macro photo of a tiny hydroid jellyfish polyp colony, small pale pink branching stalks each topped with a ring of little tentacles, on a small rock, plain pure white background",
+    "w": 1024,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "shark",
+    "prompt": "photorealistic huge fat old sleeper shark, the whole body the same dull brown-grey colour with dark mottled spots and no white underside, a thick tubby log-shaped body, a short very rounded blunt snout, tiny cloudy eyes, two small low fins near the tail, a small tail fin, whole shark visible, side view facing left, plain pure white background, soft studio lighting",
+    "w": 1344,
+    "h": 768,
+    "cutout": true
+  },
+  {
+    "id": "shark-head",
+    "prompt": "photorealistic wildlife photo of the head of a Greenland shark (Somniosus microcephalus): a very thick, heavy, sluggish sleeper shark with a dark grey-brown mottled body, a short blunt rounded snout, tiny pale cloudy eyes, two small low dorsal fins set far back, no pointed nose, no white belly, seen head-on facing the camera, mouth closed, plain pure white background, soft studio lighting",
+    "w": 1024,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "tortoise",
+    "prompt": "photorealistic very old Seychelles giant tortoise walking, huge domed worn shell, wrinkled grey neck stretched out, whole tortoise visible, side view facing left, plain pure white background, soft studio lighting",
+    "w": 1344,
+    "h": 768,
+    "cutout": true
+  },
+  {
+    "id": "tortoise-face",
+    "prompt": "photorealistic close-up of a very old giant tortoise face looking at the camera, deeply wrinkled grey skin, two small dark eyes, front view, plain pure white background, soft studio lighting",
+    "w": 1024,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "cake",
+    "prompt": "photorealistic birthday cake absolutely covered in dozens of lit candles, white icing, on a cake stand, plain pure white background",
+    "w": 1024,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "reaper",
+    "prompt": "photorealistic person in a long black hooded robe holding a tall scythe, the hood pulled down so the face is completely hidden in black shadow, standing, whole body visible, plain pure white background, soft studio lighting",
+    "w": 768,
+    "h": 1344,
+    "cutout": true
+  },
+  {
+    "id": "camera",
+    "prompt": "photorealistic antique 1830s wooden box camera with a brass lens on a wooden tripod, plain pure white background, soft studio lighting",
+    "w": 768,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "finger",
+    "prompt": "photorealistic human hand pointing straight up with the index finger, fingernail clearly visible, plain pure white background, soft studio lighting",
+    "w": 768,
+    "h": 1024,
+    "cutout": true
+  }
+]
