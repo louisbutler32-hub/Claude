@@ -1,5 +1,5 @@
 {
- "duration": 38.666,
+ "duration": 37.459,
  "lines": [
   {
    "id": "hook",
@@ -588,7 +588,7 @@
    "id": "tort3",
    "text": "He's about 190 years old now, the oldest known land animal alive. And he's still going.",
    "start": 32.41,
-   "end": 37.91,
+   "end": 36.45,
    "words": [
     [
      "He's",
@@ -649,26 +649,6 @@
      "alive.",
      36.13,
      36.45
-    ],
-    [
-     "And",
-     36.55,
-     37.17
-    ],
-    [
-     "he's",
-     37.17,
-     37.47
-    ],
-    [
-     "still",
-     37.47,
-     37.65
-    ],
-    [
-     "going.",
-     37.65,
-     37.91
     ]
    ]
   }

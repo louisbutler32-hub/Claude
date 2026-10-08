@@ -414,11 +414,34 @@ def main():
             cues.append((name, abs_words[min(wi, len(abs_words) - 1)][1] + off, None))
         t += len(clip) / SR + gap + float(line.get("hold_after", 0))
     total = round(t - gap + spec.get("tail", 0.35), 3)
+    # "end_after": [line_id, word_index] ends the Short on that word (the read runs on
+    # past it): the mix stops, with the music's fade, a tail after it, and later words go
+    if spec.get("end_after"):
+        eid, ewi = spec["end_after"]
+        k = next(i for i, l in enumerate(lines_out) if l["id"] == eid)
+        lines_out = lines_out[:k + 1]
+        lines_out[k]["words"] = lines_out[k]["words"][:ewi + 1]
+        lines_out[k]["end"] = lines_out[k]["words"][-1][2]
+        end_word = lines_out[k]["end"]
+        total = round(end_word + spec.get("tail", 0.35), 3)
+        cues = [cu for cu in cues if cu[1] < total]
 
     mix = np.zeros(N(total) + SR, np.float32)
     voice = np.zeros_like(mix)
     for start, clip in voice_parts:
         place(voice, clip, start, 1.0)
+    if spec.get("end_after"):
+        # silence the read from the quietest 20 ms just after the last kept word, so
+        # none of the next word leaks into the tail
+        win = N(0.02)
+        cands = range(N(end_word - 0.02), N(end_word + 0.4), N(0.005))
+        cut = min(cands, key=lambda i: float(np.mean(voice[i:i + win] ** 2))) + win // 2
+        f = N(0.02)
+        voice[cut:cut + f] *= np.linspace(1, 0, f)
+        voice[cut + f:] = 0
+        total = round(cut / SR + spec.get("tail", 0.35), 3)
+        mix = mix[:N(total) + SR]
+        voice = voice[:N(total) + SR]
     voice /= np.max(np.abs(voice)) + 1e-9
     mix += voice
     if spec.get("music"):

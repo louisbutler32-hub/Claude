@@ -38,7 +38,7 @@ animals that live forever, immortal animals, immortal jellyfish, turritopsis doh
 
 | field | value |
 |---|---|
-| Aspect | 9:16, 1080×1920, 38.7 s, 30 fps (a Short) |
+| Aspect | 9:16, 1080×1920, 37.5 s, 30 fps (a Short) |
 | Category | Pets & Animals |
 | Audience | not made for kids (the Grim Reaper gag), general-audience animal facts |
 | Chapters | none, because Shorts don't show them |

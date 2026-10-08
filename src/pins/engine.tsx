@@ -492,6 +492,43 @@ export const WordCaption: React.FC<{ T: Timing; t: number; y?: number; size?: nu
   );
 };
 
+/**
+ * The channel's own caption, not the reference's: each word on a chunky
+ * rounded sticker (thick black outline, hard offset shadow), black Poppins
+ * Black on a colour that cycles word to word, tilted alternately and popping
+ * in with a bounce. Numbers get a bigger red sticker so they hit harder.
+ */
+const STICKERS = ["#ffe14d", "#4de1ff", "#ff6fb5", "#8cff5a"];
+export const StickerCaption: React.FC<{ T: Timing; t: number; y?: number; size?: number }> = ({ T, t, y: cy, size = 84 }) => {
+  const { H } = useStage();
+  const y = cy ?? H * 0.71;
+  let hit: Word | null = null, n = 0, idx = 0;
+  for (const l of T.lines) {
+    for (let i = 0; i < l.words.length; i++, n++) {
+      const w = l.words[i], next = l.words[i + 1];
+      const end = next ? next[1] : w[2] + 0.25;
+      if (t >= w[1] - 0.03 && t < end) { hit = w; idx = n; }
+    }
+  }
+  if (!hit) return null;
+  const word = hit[0].replace(/[,.?!;:]+$/, "");
+  const num = /\d/.test(word);
+  const k = over(t, hit[1] - 0.03, hit[1] + 0.14);
+  const fs = num ? size * 1.3 : size;
+  const rot = (idx % 2 ? 1 : -1) * (num ? 5 : 3);
+  return (
+    <div style={{ position: "absolute", left: 0, right: 0, top: y, display: "flex", justifyContent: "center",
+      transform: `translateY(${-50 + (1 - Math.min(1, k)) * 30}%) scale(${0.55 + 0.45 * k}) rotate(${rot}deg)` }}>
+      <div style={{ fontFamily: FONT, fontSize: fs, lineHeight: 1.05, textTransform: "uppercase", letterSpacing: "0.01em",
+        color: num ? "#fff" : "#111", background: num ? "#ff3b3b" : STICKERS[idx % STICKERS.length],
+        padding: `${fs * 0.12}px ${fs * 0.36}px ${fs * 0.16}px`, border: `${Math.max(5, fs * 0.08)}px solid #111`, borderRadius: fs * 0.28,
+        boxShadow: `${fs * 0.11}px ${fs * 0.13}px 0 #111`, WebkitTextStroke: num ? `${fs * 0.05}px #111` : undefined, paintOrder: "stroke fill" }}>
+        {word}
+      </div>
+    </div>
+  );
+};
+
 /** the phrase style (2–3 words, spoken one yellow): kept for shorts that want it */
 
 const YELLOW = "#ffd400";

@@ -2,7 +2,7 @@ import React from "react";
 import { AbsoluteFill, Audio, staticFile } from "remotion";
 import {
   Actor, Arrow, Backdrop, Brand, Bubble, Calendar, Cam, Chip, Clock, Mark, Mood, Pop, Punch, RedX, Shot, ShotPlayer, Timing,
-  WordCaption, Zzz, bell, cue, ease, hitsFromScript, lerp, loadPinsFonts, useT,
+  StickerCaption, Zzz, bell, cue, ease, hitsFromScript, lerp, loadPinsFonts, useT,
 } from "../engine";
 import { HeadLook, PhotoPerson } from "../people";
 import { BODY } from "../bodies";
@@ -272,7 +272,7 @@ const shots: Shot[] = [
         <Backdrop src={BG.arctic} t={t} flip />
         <Actor a={A.shark} t={t} x={540} y={1000} w={1000} bob={6} bobRate={0.3} moods={[[-99, "closed"]]} />
         <Zzz t={t} x={360} y={820} size={60} />
-        <Pop t={t} at={c("shark3", 3)} x={540} y={1450}><Ruler k={ease(t, c("shark3", 3), c("shark3", 7)) * 0.08} /></Pop>
+        <Pop t={t} at={c("shark3", 3)} x={540} y={1450}><Ruler k={0.15 + ease(t, c("shark3", 3), c("shark3", 7)) * 0.25} /></Pop>
         <Pop t={t} at={c("shark3", 4)} x={540} y={560}><Chip text="1 CM / YEAR" size={62} /></Pop>
       </Cam>
     ),
@@ -347,7 +347,7 @@ const shots: Shot[] = [
       </Cam>
     ),
   },
-  /* "the oldest known land animal alive." */
+  /* "the oldest known land animal alive." the last shot: it cuts here and loops to the hook */
   {
     at: c("tort3", 6),
     render: ({ t, u }) => (
@@ -355,19 +355,6 @@ const shots: Shot[] = [
         <Backdrop src={BG.island} t={t} blur={3} />
         <Actor a={A.tortoiseFace} t={t} x={540} y={960} w={760} bob={0} moods={OPEN} look={[0, 0]} />
         <Pop t={t} at={c("tort3", 8)} x={540} y={560}><Chip text="OLDEST ON LAND" size={44} bg="#ffd400" /></Pop>
-      </Cam>
-    ),
-  },
-  /* "And he's still going." the Reaper, still waiting; it loops to the hook */
-  {
-    at: c("tort3", 12),
-    transition: "zoom",
-    render: ({ t, u }) => (
-      <Cam t={t} z={1.05}>
-        <Backdrop src={BG.island} t={t} />
-        <Actor a={A.reaper} t={t} x={780} y={1040} w={420} bob={2} moods={[[-99, "sad"]]} look={[-0.6, 0.4]} />
-        <Actor a={A.tortoise} t={t} x={lerp(420, 520, ease(u, 0, 1.4))} y={1350} w={620} bob={3} bobRate={0.8} moods={OPEN} look={[0.6, 0]} />
-        <Pop t={t} at={c("tort3", 14)} x={780} y={560}><Clock t={t} size={200} spin={3} fill={0.95} /></Pop>
       </Cam>
     ),
   },
@@ -382,7 +369,7 @@ export const ForeverShort: React.FC<{ audio?: string | null; captions?: boolean;
     <AbsoluteFill style={{ background: "#0b2a4d" }}>
       <Punch t={t} hits={HITS}><ShotPlayer shots={shots} t={t} total={T.duration} /></Punch>
       <Brand logo={logo} name={brand} />
-      {captions && <WordCaption T={T} t={t} />}
+      {captions && <StickerCaption T={T} t={t} size={90} />}
       {audio && <Audio src={staticFile(audio)} />}
     </AbsoluteFill>
   );
