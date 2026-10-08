@@ -1,0 +1,78 @@
+[
+  {
+"id": "bg-desert",
+"prompt": "photorealistic White Sands New Mexico desert in 1947, white gypsum dunes, a tall steel rocket launch gantry in the distance, clear blue sky, no people, vertical composition"
+},
+  {
+"id": "bg-space",
+"prompt": "photorealistic view of planet Earth from low orbit, blue oceans and white clouds curving across the lower half, black space with stars above, vertical composition"
+},
+  {
+"id": "bg-moscow",
+"prompt": "photorealistic snowy Moscow street in the 1950s, old stone apartment buildings, street lamps, light snowfall, no people, no animals, vertical composition"
+},
+  {
+"id": "bg-ocean",
+"prompt": "photorealistic open Atlantic ocean surface, gentle blue waves, a grey navy ship far away on the horizon, bright sky, vertical composition"
+},
+  {
+"id": "bg-control",
+"prompt": "photorealistic 1960s NASA mission control room, rows of grey consoles with dials and small lights, big screens on the wall, no people, vertical composition"
+},
+  {
+"id": "fly",
+"prompt": "photorealistic tiny tan fruit fly drosophila melanogaster, light brown body, bright red eyes, black and tan striped abdomen, clear wings, side view, whole insect visible, macro photo, plain pure white background",
+"w": 1024,
+"h": 768,
+"cutout": true
+},
+  {
+"id": "rocket",
+"prompt": "photorealistic 1940s V-2 rocket standing upright, black and white checker pattern, four fins, whole rocket visible, plain pure white background",
+"w": 640,
+"h": 1344,
+"cutout": true
+},
+  {
+"id": "laika",
+"prompt": "photorealistic small scruffy mixed breed street dog, white with light brown patches on the head, pointed ears, sitting facing the camera, whole dog visible, plain pure white background, soft studio lighting",
+"w": 1024,
+"h": 1024,
+"cutout": true
+},
+  {
+"id": "sputnik",
+"prompt": "photorealistic shiny metal Sputnik satellite, silver sphere with four long antennas trailing behind, plain pure white background, soft studio lighting",
+"w": 1024,
+"h": 768,
+"cutout": true
+},
+  {
+"id": "ham",
+"prompt": "photorealistic chimpanzee wearing a small white 1960s astronaut flight suit with straps, sitting upright facing the camera, whole chimp visible, plain pure white background, soft studio lighting",
+"w": 1024,
+"h": 1024,
+"cutout": true
+},
+  {
+"id": "capsule",
+"prompt": "photorealistic black cone shaped 1960s Mercury space capsule floating upright, whole capsule visible, plain pure white background, soft studio lighting",
+"w": 1024,
+"h": 1024,
+"cutout": true
+},
+  {
+"id": "apple",
+"prompt": "photorealistic shiny red apple with a green leaf, plain pure white background, soft studio lighting",
+"w": 768,
+"h": 768,
+"cutout": true
+},
+  {
+"id": "astronaut",
+"prompt": "photorealistic 1960s astronaut in a silver Mercury space suit, helmet on with a fully opaque mirror gold visor so no face is visible, standing, whole body visible, plain pure white background, soft studio lighting",
+"w": 768,
+"h": 1344,
+"cutout": true
+}
+]

@@ -2,7 +2,7 @@ import React from "react";
 import { AbsoluteFill, Audio, staticFile } from "remotion";
 import {
   Actor, Arrow, Backdrop, Brand, Bubble, Calendar, Cam, Chip, Clock, Mark, Mood, Pop, Punch, RedX, Shot, ShotPlayer, Timing,
-  StickerCaption, Zzz, bell, cue, ease, hitsFromScript, lerp, loadPinsFonts, useT,
+  BoldCaption, Zzz, bell, cue, ease, hitsFromScript, lerp, loadPinsFonts, useT,
 } from "../engine";
 import { HeadLook, PhotoPerson } from "../people";
 import { BODY } from "../bodies";
@@ -369,7 +369,7 @@ export const ForeverShort: React.FC<{ audio?: string | null; captions?: boolean;
     <AbsoluteFill style={{ background: "#0b2a4d" }}>
       <Punch t={t} hits={HITS}><ShotPlayer shots={shots} t={t} total={T.duration} /></Punch>
       <Brand logo={logo} name={brand} />
-      {captions && <StickerCaption T={T} t={t} size={90} />}
+      {captions && <BoldCaption T={T} t={t} />}
       {audio && <Audio src={staticFile(audio)} />}
     </AbsoluteFill>
   );

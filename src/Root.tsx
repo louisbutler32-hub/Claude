@@ -155,6 +155,10 @@ import { PeopleSheet as PinsPeopleSheet } from "./pins/people";
 import { PinsAvatar, AVATAR as PINS_AVATAR } from "./pins/Avatar";
 import { TalkShort as PinsTalkShort, TalkThumb as PinsTalkThumb, TALK_FPS as PINS_TALK_FPS, TALK_FRAMES as PINS_TALK_FRAMES } from "./pins/talk/TalkShort";
 import { HumanLong as PinsHumanLong, HUMAN_FPS as PINS_HUMAN_FPS, HUMAN_FRAMES as PINS_HUMAN_FRAMES } from "./pins/human/HumanLong";
+import { DrunkShort as PinsDrunkShort, DrunkThumb as PinsDrunkThumb, DRUNK_FPS as PINS_DRUNK_FPS, DRUNK_FRAMES as PINS_DRUNK_FRAMES } from "./pins/drunk/DrunkShort";
+import { ToolsShort as PinsToolsShort, ToolsThumb as PinsToolsThumb, TOOLS_FPS as PINS_TOOLS_FPS, TOOLS_FRAMES as PINS_TOOLS_FRAMES } from "./pins/tools/ToolsShort";
+import { SpaceShort as PinsSpaceShort, SpaceThumb as PinsSpaceThumb, SPACE_FPS as PINS_SPACE_FPS, SPACE_FRAMES as PINS_SPACE_FRAMES } from "./pins/space/SpaceShort";
+import { FacesShort as PinsFacesShort, FacesThumb as PinsFacesThumb, FACES_FPS as PINS_FACES_FPS, FACES_FRAMES as PINS_FACES_FRAMES } from "./pins/faces/FacesShort";
 import { ForeverShort as PinsForeverShort, ForeverThumb as PinsForeverThumb, FOREVER_FPS as PINS_FOREVER_FPS, FOREVER_FRAMES as PINS_FOREVER_FRAMES } from "./pins/forever/ForeverShort";
 import { RobShort as PinsRobShort, RobThumb as PinsRobThumb, ROB_FPS as PINS_ROB_FPS, ROB_FRAMES as PINS_ROB_FRAMES } from "./pins/rob/RobShort";
 import { SleepShort as PinsSleepShort, SleepThumb as PinsSleepThumb, SLEEP_FPS as PINS_SLEEP_FPS, SLEEP_FRAMES as PINS_SLEEP_FRAMES } from "./pins/sleep/SleepShort";
@@ -284,6 +288,14 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Pins-Sleep" component={PinsSleepShort} durationInFrames={PINS_SLEEP_FRAMES} fps={PINS_SLEEP_FPS} width={1080} height={1920} defaultProps={{ audio: "audio/pins-sleep-mix.mp3", captions: true }} />
       <Composition id="Pins-Talk" component={PinsTalkShort} durationInFrames={PINS_TALK_FRAMES} fps={PINS_TALK_FPS} width={1080} height={1920} defaultProps={{ audio: "audio/pins-talk-mix.mp3", captions: true }} />
       <Composition id="Pins-Human-Long" component={PinsHumanLong} durationInFrames={PINS_HUMAN_FRAMES} fps={PINS_HUMAN_FPS} width={1920} height={1080} defaultProps={{ audio: "audio/pins-human-mix.mp3", captions: true }} />
+      <Composition id="Pins-Drunk" component={PinsDrunkShort} durationInFrames={PINS_DRUNK_FRAMES} fps={PINS_DRUNK_FPS} width={1080} height={1920} defaultProps={{ audio: "audio/pins-drunk-mix.mp3", captions: true }} />
+      <Composition id="Pins-Drunk-Thumbnail" component={PinsDrunkThumb} durationInFrames={1} fps={PINS_DRUNK_FPS} width={1080} height={1920} />
+      <Composition id="Pins-Tools" component={PinsToolsShort} durationInFrames={PINS_TOOLS_FRAMES} fps={PINS_TOOLS_FPS} width={1080} height={1920} defaultProps={{ audio: "audio/pins-tools-mix.mp3", captions: true }} />
+      <Composition id="Pins-Tools-Thumbnail" component={PinsToolsThumb} durationInFrames={1} fps={PINS_TOOLS_FPS} width={1080} height={1920} />
+      <Composition id="Pins-Space" component={PinsSpaceShort} durationInFrames={PINS_SPACE_FRAMES} fps={PINS_SPACE_FPS} width={1080} height={1920} defaultProps={{ audio: "audio/pins-space-mix.mp3", captions: true }} />
+      <Composition id="Pins-Space-Thumbnail" component={PinsSpaceThumb} durationInFrames={1} fps={PINS_SPACE_FPS} width={1080} height={1920} />
+      <Composition id="Pins-Faces" component={PinsFacesShort} durationInFrames={PINS_FACES_FRAMES} fps={PINS_FACES_FPS} width={1080} height={1920} defaultProps={{ audio: "audio/pins-faces-mix.mp3", captions: true }} />
+      <Composition id="Pins-Faces-Thumbnail" component={PinsFacesThumb} durationInFrames={1} fps={PINS_FACES_FPS} width={1080} height={1920} />
       <Composition id="Pins-Forever" component={PinsForeverShort} durationInFrames={PINS_FOREVER_FRAMES} fps={PINS_FOREVER_FPS} width={1080} height={1920} defaultProps={{ audio: "audio/pins-forever-mix.mp3", captions: true }} />
       <Composition id="Pins-Forever-Thumbnail" component={PinsForeverThumb} durationInFrames={1} fps={PINS_FOREVER_FPS} width={1080} height={1920} />
       <Composition id="Pins-Rob" component={PinsRobShort} durationInFrames={PINS_ROB_FRAMES} fps={PINS_ROB_FPS} width={1080} height={1920} defaultProps={{ audio: "audio/pins-rob-mix.mp3", captions: true }} />

@@ -289,7 +289,19 @@
     "pins:human:audio": "python3 scripts/build-pins-audio.py human",
     "pins:forever:audio": "python3 scripts/build-pins-audio.py forever",
     "pins:forever": "remotion render Pins-Forever out/pins/forever.mp4",
-    "pins:forever:thumb": "remotion still Pins-Forever-Thumbnail out/pins/thumbnail-forever.jpg --image-format=jpeg --quality=92"
+    "pins:forever:thumb": "remotion still Pins-Forever-Thumbnail out/pins/thumbnail-forever.jpg --image-format=jpeg --quality=92",
+    "pins:faces:audio": "python3 scripts/build-pins-audio.py faces",
+    "pins:faces": "remotion render Pins-Faces out/pins/faces.mp4",
+    "pins:faces:thumb": "remotion still Pins-Faces-Thumbnail out/pins/thumbnail-faces.jpg --image-format=jpeg --quality=92",
+    "pins:drunk:audio": "python3 scripts/build-pins-audio.py drunk",
+    "pins:drunk": "remotion render Pins-Drunk out/pins/drunk.mp4",
+    "pins:drunk:thumb": "remotion still Pins-Drunk-Thumbnail out/pins/thumbnail-drunk.jpg --image-format=jpeg --quality=92",
+    "pins:tools:audio": "python3 scripts/build-pins-audio.py tools",
+    "pins:tools": "remotion render Pins-Tools out/pins/tools.mp4",
+    "pins:tools:thumb": "remotion still Pins-Tools-Thumbnail out/pins/thumbnail-tools.jpg --image-format=jpeg --quality=92",
+    "pins:space:audio": "python3 scripts/build-pins-audio.py space",
+    "pins:space": "remotion render Pins-Space out/pins/space.mp4",
+    "pins:space:thumb": "remotion still Pins-Space-Thumbnail out/pins/thumbnail-space.jpg --image-format=jpeg --quality=92"
   },
   "dependencies": {
     "@react-three/fiber": "8.17.10",

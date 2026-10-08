@@ -1,0 +1,88 @@
+[
+  {
+    "id": "bg-jungle",
+    "prompt": "photorealistic West African forest clearing near a village in Guinea, tall raffia palm trees, lush green undergrowth, warm sunlight, no people, no animals, vertical composition"
+  },
+  {
+    "id": "bg-orchard",
+    "prompt": "photorealistic Swedish garden with an apple orchard in autumn, apple trees full of red apples, fallen apples on the grass, a red wooden house behind, no people, no animals, vertical composition"
+  },
+  {
+    "id": "bg-snowtown",
+    "prompt": "photorealistic small snowy town street in the Yukon, Canada in winter, wooden houses with big windows, snow on the ground, rowan trees with red berries, no people, no animals, vertical composition"
+  },
+  {
+    "id": "chimp",
+    "prompt": "photorealistic chimpanzee sitting, facing the camera, whole body visible, plain pure white background, soft studio lighting",
+    "w": 1024,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "chimp-drink",
+    "prompt": "photorealistic chimpanzee sitting and drinking from a crumpled leaf held to its mouth, eyes half closed, whole body visible, plain pure white background, soft studio lighting",
+    "w": 1024,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "chimp-sleep",
+    "prompt": "photorealistic chimpanzee lying on its back fast asleep with its arms spread out, mouth open, whole body visible, plain pure white background, soft studio lighting",
+    "w": 1344,
+    "h": 768,
+    "cutout": true
+  },
+  {
+    "id": "jug",
+    "prompt": "photorealistic plastic jug tied to a palm tree trunk collecting dripping palm sap, cloudy white sap inside, plain pure white background, soft studio lighting",
+    "w": 768,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "moose",
+    "prompt": "photorealistic moose with big antlers standing, side view facing left, whole moose visible, plain pure white background, soft studio lighting",
+    "w": 1344,
+    "h": 768,
+    "cutout": true
+  },
+  {
+    "id": "apples",
+    "prompt": "photorealistic small pile of rotten fermenting red apples, plain pure white background, soft studio lighting",
+    "w": 1024,
+    "h": 768,
+    "cutout": true
+  },
+  {
+    "id": "waxwing",
+    "prompt": "photorealistic Bohemian waxwing bird perched, crested head, black eye mask, grey-brown feathers with red and yellow wing tips, side view facing left, whole bird visible, plain pure white background, soft studio lighting",
+    "w": 1024,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "waxwing-dizzy",
+    "prompt": "photorealistic Bohemian waxwing bird lying on its back with its feet in the air, dazed, whole bird visible, plain pure white background, soft studio lighting",
+    "w": 1024,
+    "h": 768,
+    "cutout": true
+  },
+  {
+    "id": "berries",
+    "prompt": "photorealistic cluster of shiny red rowan berries on a twig, plain pure white background, soft studio lighting",
+    "w": 1024,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "cage",
+    "prompt": "photorealistic small empty wire birdcage with an open door, front view, plain pure white background, soft studio lighting",
+    "w": 768,
+    "h": 1024,
+    "cutout": true
+  },
+  {
+    "id": "moose-stuck",
+    "prompt": "photorealistic funny photo of a moose stuck in a small apple tree in a Swedish garden, its body wedged in the forked branches and its long legs dangling off the ground, antlers tangled in leaves and red apples, the moose looking at the camera, autumn, vertical composition"
+  }
+]

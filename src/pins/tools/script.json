@@ -99,7 +99,13 @@
       "dur": 1.9,
       "fade_out": 0.5
     },
-    "huh": ".sfx/pins/huh.mp3"
+    "huh": ".sfx/pins/huh.mp3",
+    "wings": {
+      "path": ".sfx/pins/wings.mp3",
+      "start": 0,
+      "dur": 1.6,
+      "fade_out": 0.5
+    }
   },
   "sfx_gain": {
     "ding": 0.5,
@@ -122,7 +128,8 @@
     "party": 0.35,
     "bubble": 0.35,
     "dundun": 0.32,
-    "huh": 0.5
+    "huh": 0.5,
+    "wings": 0.3
   },
   "start_sfx": [
     [
@@ -134,35 +141,161 @@
     {
       "id": "hook",
       "text": "Three animals that use tools like us.",
-      "hold_after": 1.2
+      "hold_after": 1.2,
+      "sfx": [
+        [
+          "whoosh",
+          2,
+          -0.08
+        ],
+        [
+          "whoosh",
+          4,
+          -0.08
+        ],
+        [
+          "whoosh",
+          6,
+          -0.08
+        ],
+        [
+          "riser",
+          6,
+          -1.186
+        ],
+        [
+          "party",
+          6,
+          0.714
+        ],
+        [
+          "huh",
+          6,
+          1.264
+        ]
+      ]
     },
     {
       "id": "octo1",
-      "text": "First, the veined octopus. It collects coconut shells, carries them under its body, and walks on its arm tips."
+      "text": "First, the veined octopus. It collects coconut shells, carries them under its body, and walks on its arm tips.",
+      "sfx": [
+        [
+          "bubble",
+          2
+        ],
+        [
+          "pop",
+          3
+        ],
+        [
+          "pop",
+          6
+        ],
+        [
+          "tiptoe",
+          14
+        ]
+      ]
     },
     {
       "id": "octo2",
-      "text": "When danger comes, it climbs inside and pulls the shell shut."
+      "text": "When danger comes, it climbs inside and pulls the shell shut.",
+      "sfx": [
+        [
+          "dundun",
+          1
+        ],
+        [
+          "pop",
+          10
+        ]
+      ]
     },
     {
       "id": "crow1",
-      "text": "Next, the New Caledonian crow. Scientists gave a crow named Betty a straight piece of wire."
+      "text": "Next, the New Caledonian crow. Scientists gave a crow named Betty a straight piece of wire.",
+      "sfx": [
+        [
+          "wings",
+          1
+        ],
+        [
+          "pop",
+          3
+        ],
+        [
+          "pop",
+          10
+        ],
+        [
+          "pop",
+          13
+        ]
+      ]
     },
     {
       "id": "crow2",
-      "text": "She bent it into a hook, and used it to pull a bucket of food out of a tube."
+      "text": "She bent it into a hook, and used it to pull a bucket of food out of a tube.",
+      "sfx": [
+        [
+          "pop",
+          5
+        ],
+        [
+          "kaching",
+          18
+        ]
+      ]
     },
     {
       "id": "chimp1",
-      "text": "Finally, chimpanzees. They strip the leaves off a twig, poke it into a termite mound, and pull it out covered in termites."
+      "text": "Finally, chimpanzees. They strip the leaves off a twig, poke it into a termite mound, and pull it out covered in termites.",
+      "sfx": [
+        [
+          "pop",
+          1
+        ],
+        [
+          "pop",
+          13
+        ],
+        [
+          "pop",
+          17
+        ],
+        [
+          "pop",
+          21
+        ]
+      ]
     },
     {
       "id": "chimp2",
-      "text": "When Jane Goodall saw this in 1960, it changed science."
+      "text": "When Jane Goodall saw this in 1960, it changed science.",
+      "sfx": [
+        [
+          "counter",
+          6
+        ],
+        [
+          "pop",
+          8
+        ]
+      ]
     },
     {
       "id": "chimp3",
-      "text": "Because until then, only humans were supposed to make tools."
+      "text": "Because until then, only humans were supposed to make tools.",
+      "sfx": [
+        [
+          "pop",
+          3
+        ],
+        [
+          "wrong",
+          8
+        ]
+      ]
     }
   ]
 }

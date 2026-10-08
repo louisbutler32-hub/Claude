@@ -493,6 +493,34 @@ export const WordCaption: React.FC<{ T: Timing; t: number; y?: number; size?: nu
 };
 
 /**
+ * Plain bold white captions: one word at a time, white Poppins Black caps with
+ * a thick black outline and a soft shadow, popping on as each word is spoken.
+ * Sits where the sticker caption did (~71% down). The default from the week-1
+ * batch on.
+ */
+export const BoldCaption: React.FC<{ T: Timing; t: number; y?: number; size?: number }> = ({ T, t, y: cy, size = 104 }) => {
+  const { H } = useStage();
+  const y = cy ?? H * 0.71;
+  let hit: Word | null = null;
+  for (const l of T.lines) {
+    for (let i = 0; i < l.words.length; i++) {
+      const w = l.words[i], next = l.words[i + 1];
+      const end = next ? next[1] : w[2] + 0.25;
+      if (t >= w[1] - 0.03 && t < end) hit = w;
+    }
+  }
+  if (!hit) return null;
+  const k = over(t, hit[1] - 0.03, hit[1] + 0.12);
+  return (
+    <div style={{ position: "absolute", left: 40, right: 40, top: y, transform: `translateY(-50%) scale(${0.72 + 0.28 * k})`, textAlign: "center",
+      fontFamily: FONT, fontSize: size, lineHeight: 1.05, textTransform: "uppercase", letterSpacing: "0.01em", color: "#fff",
+      WebkitTextStroke: `${size * 0.14}px #000`, paintOrder: "stroke fill", filter: "drop-shadow(0 6px 4px rgba(0,0,0,0.6))" }}>
+      {hit[0].replace(/[,.?!;:]+$/, "")}
+    </div>
+  );
+};
+
+/**
  * The channel's own caption, not the reference's: each word on a chunky
  * rounded sticker (thick black outline, hard offset shadow), black Poppins
  * Black on a colour that cycles word to word, tilted alternately and popping

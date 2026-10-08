@@ -99,7 +99,15 @@
       "dur": 1.9,
       "fade_out": 0.5
     },
-    "huh": ".sfx/pins/huh.mp3"
+    "huh": ".sfx/pins/huh.mp3",
+    "chirp": ".sfx/pins/bird-chirp.mp3",
+    "bird": ".sfx/pins/bird.mp3",
+    "wings": {
+      "path": ".sfx/pins/wings.mp3",
+      "start": 0,
+      "dur": 1.6,
+      "fade_out": 0.5
+    }
   },
   "sfx_gain": {
     "ding": 0.5,
@@ -122,7 +130,10 @@
     "party": 0.35,
     "bubble": 0.35,
     "dundun": 0.32,
-    "huh": 0.5
+    "huh": 0.5,
+    "chirp": 0.3,
+    "bird": 0.35,
+    "wings": 0.3
   },
   "start_sfx": [
     [
@@ -134,35 +145,169 @@
     {
       "id": "hook",
       "text": "Three animals that actually get drunk.",
-      "hold_after": 1.2
+      "hold_after": 1.2,
+      "sfx": [
+        [
+          "whoosh",
+          2,
+          -0.08
+        ],
+        [
+          "whoosh",
+          3,
+          -0.08
+        ],
+        [
+          "whoosh",
+          5,
+          -0.08
+        ],
+        [
+          "riser",
+          5,
+          -1.39
+        ],
+        [
+          "pop",
+          5,
+          0.51
+        ],
+        [
+          "party",
+          5,
+          1.06
+        ]
+      ]
     },
     {
       "id": "chimp1",
-      "text": "First, chimpanzees in Guinea. Farmers tap palm trees and collect the sap, which ferments into palm wine."
+      "text": "First, chimpanzees in Guinea. Farmers tap palm trees and collect the sap, which ferments into palm wine.",
+      "sfx": [
+        [
+          "pop",
+          1
+        ],
+        [
+          "pop",
+          3
+        ],
+        [
+          "pop",
+          9
+        ],
+        [
+          "bubble",
+          13
+        ],
+        [
+          "pop",
+          15
+        ]
+      ]
     },
     {
       "id": "chimp2",
-      "text": "The chimps sneak in, soak it up with leaves, and drink it. Some drank so much they had to lie down for a nap."
+      "text": "The chimps sneak in, soak it up with leaves, and drink it. Some drank so much they had to lie down for a nap.",
+      "sfx": [
+        [
+          "tiptoe",
+          1
+        ],
+        [
+          "bubble",
+          4
+        ],
+        [
+          "pop",
+          7
+        ],
+        [
+          "pop",
+          19
+        ]
+      ]
     },
     {
       "id": "moose1",
-      "text": "Next, a moose in Sweden. It ate so many fermented apples, it got stuck in an apple tree."
+      "text": "Next, a moose in Sweden. It ate so many fermented apples, it got stuck in an apple tree.",
+      "sfx": [
+        [
+          "pop",
+          4
+        ],
+        [
+          "pop",
+          8
+        ],
+        [
+          "pop",
+          10
+        ],
+        [
+          "wrong",
+          13
+        ]
+      ]
     },
     {
       "id": "moose2",
-      "text": "Rescuers had to come and cut it free."
+      "text": "Rescuers had to come and cut it free.",
+      "sfx": [
+        [
+          "pop",
+          5
+        ]
+      ]
     },
     {
       "id": "wax1",
-      "text": "Finally, Bohemian waxwings. These birds eat fermented berries and crash into windows."
+      "text": "Finally, Bohemian waxwings. These birds eat fermented berries and crash into windows.",
+      "sfx": [
+        [
+          "chirp",
+          1
+        ],
+        [
+          "pop",
+          2
+        ],
+        [
+          "pop",
+          7
+        ],
+        [
+          "wrong",
+          11
+        ]
+      ]
     },
     {
       "id": "wax2",
-      "text": "In Canada, wildlife officers actually put the drunk birds in little cages until they sobered up."
+      "text": "In Canada, wildlife officers actually put the drunk birds in little cages until they sobered up.",
+      "sfx": [
+        [
+          "pop",
+          1
+        ],
+        [
+          "pop",
+          11
+        ]
+      ]
     },
     {
       "id": "wax3",
-      "text": "A drunk tank. For birds."
+      "text": "A drunk tank. For birds.",
+      "sfx": [
+        [
+          "pop",
+          1
+        ],
+        [
+          "pop",
+          3
+        ]
+      ]
     }
   ]
 }

@@ -1,0 +1,14 @@
+[
+  {"id": "bg-campus", "prompt": "photorealistic university campus lawn in Seattle on an overcast day, old brick buildings, tall evergreen trees, a path, no people, no birds, vertical composition"},
+  {"id": "bg-field", "prompt": "photorealistic green English farm field with a wooden fence, rolling hills, blue sky with white clouds, no people, no animals, vertical composition"},
+  {"id": "bg-flowers", "prompt": "photorealistic close view of a sunny meadow full of purple lavender and yellow wildflowers, soft blurred background, no people, no insects, vertical composition"},
+  {"id": "crow", "prompt": "photorealistic American crow standing, glossy black feathers, side view facing left, whole bird visible, plain pure white background, soft studio lighting", "w": 1024, "h": 1024, "cutout": true},
+  {"id": "crow-angry", "prompt": "photorealistic American crow cawing loudly with its beak wide open and wings half spread, aggressive, facing left, whole bird visible, plain pure white background, soft studio lighting", "w": 1024, "h": 1024, "cutout": true},
+  {"id": "crow-chick", "prompt": "photorealistic young fledgling crow with fluffy black feathers and a wide open pink-edged beak, sitting, facing left, whole bird visible, plain pure white background, soft studio lighting", "w": 1024, "h": 1024, "cutout": true},
+  {"id": "mask", "prompt": "photorealistic rubber Halloween caveman mask with a heavy brow, messy hair and a scary face, front view, plain pure white background, soft studio lighting", "w": 1024, "h": 1024, "cutout": true},
+  {"id": "sheep", "prompt": "photorealistic fluffy white sheep standing, facing the camera, whole sheep visible, plain pure white background, soft studio lighting", "w": 1024, "h": 1024, "cutout": true},
+  {"id": "sheep-side", "prompt": "photorealistic fluffy white sheep standing, side view facing right, whole sheep visible, plain pure white background, soft studio lighting", "w": 1344, "h": 768, "cutout": true},
+  {"id": "bee", "prompt": "photorealistic macro photo of a honeybee standing, facing the camera, big compound eyes, fuzzy striped body, whole bee visible, plain pure white background, soft studio lighting", "w": 1024, "h": 1024, "cutout": true},
+  {"id": "bee-fly", "prompt": "photorealistic macro photo of a honeybee flying with wings spread, side view facing left, whole bee visible, plain pure white background, soft studio lighting", "w": 1024, "h": 1024, "cutout": true},
+  {"id": "frame", "prompt": "photorealistic empty ornate gold picture frame with a plain white inside, front view, plain pure white background, soft studio lighting", "w": 768, "h": 1024, "cutout": true}
+]

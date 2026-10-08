@@ -99,7 +99,13 @@
       "dur": 1.9,
       "fade_out": 0.5
     },
-    "huh": ".sfx/pins/huh.mp3"
+    "huh": ".sfx/pins/huh.mp3",
+    "splash": {
+      "path": ".sfx/pins/splash.mp3",
+      "start": 1.15,
+      "dur": 1.5,
+      "fade_out": 0.4
+    }
   },
   "sfx_gain": {
     "ding": 0.5,
@@ -122,7 +128,8 @@
     "party": 0.35,
     "bubble": 0.35,
     "dundun": 0.32,
-    "huh": 0.5
+    "huh": 0.5,
+    "splash": 0.4
   },
   "start_sfx": [
     [
@@ -134,19 +141,109 @@
     {
       "id": "hook",
       "text": "Three animals that went to space before us.",
-      "hold_after": 1.2
+      "hold_after": 1.2,
+      "sfx": [
+        [
+          "whoosh",
+          3,
+          -0.08
+        ],
+        [
+          "whoosh",
+          5,
+          -0.08
+        ],
+        [
+          "whoosh",
+          7,
+          -0.08
+        ],
+        [
+          "riser",
+          7,
+          -1.156
+        ],
+        [
+          "party",
+          7,
+          0.694
+        ],
+        [
+          "huh",
+          7,
+          1.244
+        ]
+      ]
     },
     {
       "id": "fly1",
-      "text": "First, fruit flies. In 1947, scientists launched them on a rocket over New Mexico."
+      "text": "First, fruit flies. In 1947, scientists launched them on a rocket over New Mexico.",
+      "sfx": [
+        [
+          "pop",
+          1
+        ],
+        [
+          "counter",
+          4
+        ],
+        [
+          "whoosh",
+          7
+        ],
+        [
+          "pop",
+          12
+        ]
+      ]
     },
     {
       "id": "fly2",
-      "text": "They flew more than 100 kilometers up, and came back alive. The first animals ever in space."
+      "text": "They flew more than 100 kilometers up, and came back alive. The first animals ever in space.",
+      "sfx": [
+        [
+          "counter",
+          1
+        ],
+        [
+          "pop",
+          10
+        ],
+        [
+          "pop",
+          12
+        ],
+        [
+          "pop",
+          14
+        ]
+      ]
     },
     {
       "id": "laika1",
-      "text": "Next, Laika. In 1957, this street dog from Moscow became the first animal to orbit the Earth."
+      "text": "Next, Laika. In 1957, this street dog from Moscow became the first animal to orbit the Earth.",
+      "sfx": [
+        [
+          "pop",
+          1
+        ],
+        [
+          "counter",
+          3
+        ],
+        [
+          "pop",
+          5
+        ],
+        [
+          "pop",
+          8
+        ],
+        [
+          "beep",
+          11
+        ]
+      ]
     },
     {
       "id": "laika2",
@@ -154,15 +251,73 @@
     },
     {
       "id": "ham1",
-      "text": "Finally, Ham the chimp. In 1961, he flew into space and pulled levers when lights flashed, to prove a person could work up there."
+      "text": "Finally, Ham the chimp. In 1961, he flew into space and pulled levers when lights flashed, to prove a person could work up there.",
+      "sfx": [
+        [
+          "monkey",
+          1
+        ],
+        [
+          "counter",
+          5
+        ],
+        [
+          "whoosh",
+          6
+        ],
+        [
+          "beep",
+          14
+        ],
+        [
+          "pop",
+          19
+        ]
+      ]
     },
     {
       "id": "ham2",
-      "text": "He splashed down safe, and got an apple as a reward."
+      "text": "He splashed down safe, and got an apple as a reward.",
+      "sfx": [
+        [
+          "splash",
+          1
+        ],
+        [
+          "pop",
+          3
+        ],
+        [
+          "pop",
+          7
+        ],
+        [
+          "kaching",
+          10
+        ]
+      ]
     },
     {
       "id": "ham3",
-      "text": "Three months later, the first American followed him."
+      "text": "Three months later, the first American followed him.",
+      "sfx": [
+        [
+          "clock",
+          0
+        ],
+        [
+          "whoosh",
+          3
+        ],
+        [
+          "pop",
+          5
+        ],
+        [
+          "pop",
+          7
+        ]
+      ]
     }
   ]
 }

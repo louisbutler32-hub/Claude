@@ -1,0 +1,9 @@
+[
+  {"id": "bg-seafloor", "prompt": "photorealistic shallow tropical sandy seafloor underwater, scattered shells, soft sunbeams from above, clear blue water, no animals, no people, vertical composition"},
+  {"id": "bg-lab", "prompt": "photorealistic bright animal behaviour research lab at Oxford, white benches, a large window, wooden perches and simple test apparatus, no people, no animals, vertical composition"},
+  {"id": "bg-gombe", "prompt": "photorealistic Gombe forest in Tanzania, dense green trees and vines, dappled sunlight, a big reddish termite mound in a clearing, no people, no animals, vertical composition"},
+  {"id": "octopus", "prompt": "photorealistic veined octopus walking on the tips of two arms while carrying two coconut shell halves stacked under its body, side view, whole octopus visible, plain pure white background, soft studio lighting", "w": 1024, "h": 1024, "cutout": true},
+  {"id": "shells", "prompt": "photorealistic two empty halves of a brown coconut shell, plain pure white background, soft studio lighting", "w": 1024, "h": 768, "cutout": true},
+  {"id": "chimp-fish", "prompt": "photorealistic chimpanzee sitting and poking a long thin twig into a termite mound, concentrating, whole chimp visible, plain pure white background, soft studio lighting", "w": 1024, "h": 1024, "cutout": true},
+  {"id": "twig", "prompt": "photorealistic long thin stripped twig covered in tiny brown termites, horizontal, plain pure white background, soft studio lighting", "w": 1344, "h": 768, "cutout": true}
+]

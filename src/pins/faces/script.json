@@ -99,7 +99,16 @@
       "dur": 1.9,
       "fade_out": 0.5
     },
-    "huh": ".sfx/pins/huh.mp3"
+    "huh": ".sfx/pins/huh.mp3",
+    "wings": {
+      "path": ".sfx/pins/wings.mp3",
+      "start": 0,
+      "dur": 1.6,
+      "fade_out": 0.5
+    },
+    "bird": ".sfx/pins/bird.mp3",
+    "bees": ".sfx/pins/bees.mp3",
+    "chirp": ".sfx/pins/bird-chirp.mp3"
   },
   "sfx_gain": {
     "ding": 0.5,
@@ -122,7 +131,11 @@
     "party": 0.35,
     "bubble": 0.35,
     "dundun": 0.32,
-    "huh": 0.5
+    "huh": 0.5,
+    "wings": 0.3,
+    "bird": 0.35,
+    "bees": 0.3,
+    "chirp": 0.3
   },
   "start_sfx": [
     [
@@ -134,35 +147,145 @@
     {
       "id": "hook",
       "text": "Three animals that never forget your face.",
-      "hold_after": 1.2
+      "hold_after": 1.2,
+      "sfx": [
+        [
+          "whoosh",
+          2,
+          -0.08
+        ],
+        [
+          "whoosh",
+          4,
+          -0.08
+        ],
+        [
+          "whoosh",
+          6,
+          -0.08
+        ],
+        [
+          "riser",
+          6,
+          -1.256
+        ],
+        [
+          "wings",
+          6,
+          0.644
+        ],
+        [
+          "wrong",
+          6,
+          1.144
+        ]
+      ]
     },
     {
       "id": "crow1",
-      "text": "First, crows. Scientists in Seattle caught some crows while wearing a scary mask."
+      "text": "First, crows. Scientists in Seattle caught some crows while wearing a scary mask.",
+      "sfx": [
+        [
+          "wings",
+          1
+        ],
+        [
+          "pop",
+          4
+        ],
+        [
+          "pop",
+          12
+        ]
+      ]
     },
     {
       "id": "crow2",
-      "text": "For years afterwards, the crows screamed at anyone wearing that mask."
+      "text": "For years afterwards, the crows screamed at anyone wearing that mask.",
+      "sfx": [
+        [
+          "counter",
+          1
+        ],
+        [
+          "bird",
+          5
+        ]
+      ]
     },
     {
       "id": "crow3",
-      "text": "Even crows that were never caught joined in, and they taught their chicks to do it too."
+      "text": "Even crows that were never caught joined in, and they taught their chicks to do it too.",
+      "sfx": [
+        [
+          "wings",
+          1
+        ],
+        [
+          "chirp",
+          12
+        ]
+      ]
     },
     {
       "id": "sheep1",
-      "text": "Next, sheep. Scientists at Cambridge taught sheep to recognize celebrities, like Barack Obama and Emma Watson, just from photos."
+      "text": "Next, sheep. Scientists at Cambridge taught sheep to recognize celebrities, like Barack Obama and Emma Watson, just from photos.",
+      "sfx": [
+        [
+          "pop",
+          1
+        ],
+        [
+          "pop",
+          4
+        ],
+        [
+          "pop",
+          11
+        ],
+        [
+          "pop",
+          14
+        ]
+      ]
     },
     {
       "id": "sheep2",
-      "text": "They got it right about eight times out of ten."
+      "text": "They got it right about eight times out of ten.",
+      "sfx": [
+        [
+          "counter",
+          3
+        ],
+        [
+          "pop",
+          5
+        ]
+      ]
     },
     {
       "id": "bee1",
-      "text": "Finally, honeybees. Bees can learn to recognize a human face in a photo, and still remember it two days later."
+      "text": "Finally, honeybees. Bees can learn to recognize a human face in a photo, and still remember it two days later.",
+      "sfx": [
+        [
+          "bees",
+          1
+        ],
+        [
+          "pop",
+          16
+        ]
+      ]
     },
     {
       "id": "bee2",
-      "text": "With a brain smaller than a grain of rice."
+      "text": "With a brain smaller than a grain of rice.",
+      "sfx": [
+        [
+          "pop",
+          6
+        ]
+      ]
     }
   ]
 }
