@@ -47,6 +47,7 @@ export const useHistFonts = () => {
     face("Bebas Neue", "BebasNeue-Regular.ttf"),
     face("Montserrat", "Montserrat-Variable.ttf", { weight: "100 900" }),
     face("Anton", "Anton-Regular.ttf"),
+    face("Poppins", "Poppins-Black.ttf", { weight: "900" }),
   ];
   Promise.all(faces.map((f) => f.load().then((l) => document.fonts.add(l))))
     .then(() => continueRender(handle))

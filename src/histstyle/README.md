@@ -33,3 +33,29 @@ Display, Oswald and Bebas Neue (added for these), plus Montserrat and Anton.
 
 Once a look is picked, it becomes its own kit. Its scene pieces move out of
 the test file into reusable components, the way `src/geo/` is laid out.
+
+## E · Pebble People (the bean-format Short)
+
+`bean/` is the house take on the Ricks Clips format: simple cartoon people
+acting inside rich, lit sets, a cut every one to two seconds, a slow push on
+every shot, and the narration one word at a time in fat white type with
+key words in yellow.
+
+The cast is our own, so it isn't a copy. Their people have blank white
+circle heads; ours have pebble heads in real skin tones with blush, big
+eyebrows that do the acting, a nose, glinting eyes, and pawn-shaped bodies
+in period uniform. Hats and coats tell you who's who. `bean/Bean.tsx` is the
+rig: `expr` (neutral, worried, sad, angry, determined, shocked, smug),
+`look`, `talk` (lip flap), auto-blink, `shiver`, `sweat`, `drip`, a `rim`
+light from the set, hand targets, and props (`PocketWatch`, `Telescope`).
+`OUTFITS` holds Napoleon, French line, gunner, officer, Prussian, Blücher,
+and a rain cloak.
+
+`bean/RainShort.tsx` is the test: "What if one rainstorm cost Napoleon an
+empire?" It runs 20 s across six sets (tent at night, storm camp, guns in
+the mud, the watch, the Prussians over the hill, the sunset). It's silent:
+captions are timed evenly per line until a real voice track sets the beats.
+
+```bash
+npx remotion render HistStyle-E-Bean-Rain out/histstyle-e.mp4
+```
