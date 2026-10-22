@@ -13,6 +13,7 @@ import { Act2, Act2Thumb, ACT2_FRAMES } from "./akki/saga/act2/Act2";
 import { Act3, Act3Thumb, ACT3_FRAMES } from "./akki/saga/act3/Act3";
 import { Act4, Act4Thumb, ACT4_FRAMES } from "./akki/saga/act4/Act4";
 import { Composition } from "remotion";
+import { HistoryStyleCompositions } from "./histstyle/compositions";
 import { BountyVideo, TOTAL_DURATION_IN_FRAMES } from "./BountyVideo";
 import { WhatIfVideo } from "./whatif/WhatIfVideo";
 import { WHATIF_DURATION_IN_FRAMES } from "./whatif/shots";
@@ -166,6 +167,8 @@ import { SleepShort as PinsSleepShort, SleepThumb as PinsSleepThumb, SLEEP_FPS a
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* ── history style tests: four candidate looks, 9:16 ── */}
+      <HistoryStyleCompositions />
       {/* ── geo shorts: satellite-map explainers, 9:16 ── */}
       <Composition
         id="Geo-Bering"

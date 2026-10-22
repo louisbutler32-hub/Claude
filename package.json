@@ -301,7 +301,12 @@
     "pins:tools:thumb": "remotion still Pins-Tools-Thumbnail out/pins/thumbnail-tools.jpg --image-format=jpeg --quality=92",
     "pins:space:audio": "python3 scripts/build-pins-audio.py space",
     "pins:space": "remotion render Pins-Space out/pins/space.mp4",
-    "pins:space:thumb": "remotion still Pins-Space-Thumbnail out/pins/thumbnail-space.jpg --image-format=jpeg --quality=92"
+    "pins:space:thumb": "remotion still Pins-Space-Thumbnail out/pins/thumbnail-space.jpg --image-format=jpeg --quality=92",
+    "histstyle:compare": "remotion render HistStyle-Compare out/histstyle-compare.mp4",
+    "histstyle:a": "remotion render HistStyle-A-Engraving out/histstyle-a.mp4",
+    "histstyle:b": "remotion render HistStyle-B-Paper out/histstyle-b.mp4",
+    "histstyle:c": "remotion render HistStyle-C-Cinematic out/histstyle-c.mp4",
+    "histstyle:d": "remotion render HistStyle-D-Poster out/histstyle-d.mp4"
   },
   "dependencies": {
     "@react-three/fiber": "8.17.10",
