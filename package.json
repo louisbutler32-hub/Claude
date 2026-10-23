@@ -310,7 +310,8 @@
     "histstyle:e": "remotion render HistStyle-E-Bean-Rain out/histstyle-e.mp4",
     "histstyle:f": "remotion render HistStyle-F-Storybook out/histstyle-f.mp4",
     "histstyle:f:vo": "python3 scripts/make-vo.py histstyle-trousers",
-    "histstyle:looks": "remotion render HistStyle-Looks-Reel out/histstyle-10-looks.mp4"
+    "histstyle:looks": "remotion render HistStyle-Looks-Reel out/histstyle-10-looks.mp4",
+    "histstyle:f2": "remotion render HistStyle-F2-Storybook out/histstyle-f2.mp4"
   },
   "dependencies": {
     "@react-three/fiber": "8.17.10",

@@ -92,3 +92,28 @@ and Pixel Art. A `Look` sets the palette, the outline (via the rig's
 ```bash
 npx remotion render HistStyle-Looks-Reel out/histstyle-10-looks.mp4   # 3 s per look
 ```
+
+## F v2 · the explainer rebuilt to production finish
+
+`squire/TrouserV2.tsx` is the red-trousers test rebuilt after studying the
+reference at full resolution. It uses the same original script and
+narration, on the reference's general shot grammar:
+
+- **Rig v2** (`squire/Figure.tsx`): a big round head on a small body,
+  thick near-black outlines, every part shaded with a soft gradient lit from
+  the upper left, two-segment arms posed by name (`down`, `rifle`, `wave`,
+  `aim`, `forward`, `shrug`, `hips`), mitten hands with thumbs, walk with
+  alternating feet, and proper kit (belts, pouches, packs, crossbelts,
+  lapels, buttons). Kits: `fr1914`, `de1914`, `redcoat`, `bluecoat`.
+  The cast is our own design (skin tones, blush, eyebrows, period
+  uniforms), not a copy of the reference's characters.
+- **Sets v2** (`squire/sets.tsx`): layered countryside (three-tone clouds,
+  far ridge with a village and spire, patchwork wheat and pasture with
+  hedges, a poppy meadow) with a separate blur per depth band, so close
+  shots keep the actor sharp and the world soft.
+- **Framing:** actors big in frame (waist-up and two-shots), slow camera
+  moves, and cutaways (stage spotlight, year banner, blueprint).
+
+```bash
+npx remotion render HistStyle-F2-Storybook out/histstyle-f2.mp4
+```
