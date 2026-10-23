@@ -1,0 +1,20 @@
+{
+ "voice": "am_liam", "speed": 0.95, "duration": "auto", "out": "src/histstyle/squire",
+ "lines": [
+  {"id": "l0", "scene": "redtrousers", "gap": 0.35,
+   "text": "Imagine you're a French soldier. It's August 1914, and you're marching to war in bright red trousers.",
+   "say": "Imagine you're a French soldier. It's August nineteen fourteen, and you're marching to war in bright red trousers."},
+  {"id": "l1", "scene": "grey", "gap": 0.3,
+   "text": "Across the fields, the Germans are wearing grey. You can barely see them."},
+  {"id": "l2", "scene": "binoculars", "gap": 0.45,
+   "text": "They can see you just fine."},
+  {"id": "l3", "scene": "spotlight", "gap": 0.5,
+   "text": "So why would an army dress its men like targets?"},
+  {"id": "l4", "scene": "muskets", "gap": 0.3,
+   "text": "Go back a hundred years. Every musket shot made a cloud of thick white smoke."},
+  {"id": "l5", "scene": "fog", "gap": 0.35,
+   "text": "After a few volleys, the whole battlefield vanished, and bright colours helped you tell friend from enemy."},
+  {"id": "l6", "scene": "bullseye", "gap": 0.0,
+   "text": "Then a new gunpowder cleared the smoke, and those red trousers became a bullseye."}
+ ]
+}

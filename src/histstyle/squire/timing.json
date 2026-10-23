@@ -1,0 +1,51 @@
+[
+ {
+  "id": "l0",
+  "scene": "redtrousers",
+  "text": "Imagine you're a French soldier. It's August 1914, and you're marching to war in bright red trousers.",
+  "start": 0.0,
+  "end": 6.098
+ },
+ {
+  "id": "l1",
+  "scene": "grey",
+  "text": "Across the fields, the Germans are wearing grey. You can barely see them.",
+  "start": 6.447,
+  "end": 10.366
+ },
+ {
+  "id": "l2",
+  "scene": "binoculars",
+  "text": "They can see you just fine.",
+  "start": 10.665,
+  "end": 12.415
+ },
+ {
+  "id": "l3",
+  "scene": "spotlight",
+  "text": "So why would an army dress its men like targets?",
+  "start": 12.864,
+  "end": 15.591
+ },
+ {
+  "id": "l4",
+  "scene": "muskets",
+  "text": "Go back a hundred years. Every musket shot made a cloud of thick white smoke.",
+  "start": 16.09,
+  "end": 20.444
+ },
+ {
+  "id": "l5",
+  "scene": "fog",
+  "text": "After a few volleys, the whole battlefield vanished, and bright colours helped you tell friend from enemy.",
+  "start": 20.743,
+  "end": 26.026
+ },
+ {
+  "id": "l6",
+  "scene": "bullseye",
+  "text": "Then a new gunpowder cleared the smoke, and those red trousers became a bullseye.",
+  "start": 26.375,
+  "end": 30.7
+ }
+]

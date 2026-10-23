@@ -59,3 +59,23 @@ captions are timed evenly per line until a real voice track sets the beats.
 ```bash
 npx remotion render HistStyle-E-Bean-Rain out/histstyle-e.mp4
 ```
+
+## F · Storybook explainer (16:9 long-form)
+
+`squire/` is the long-form "imagine you're a…" explainer format: 16:9,
+second-person narration with no captions, flat vector sets (soft sky,
+peach clouds, layered outlined hills and trees, a village, a road), the
+pebble-people cast acting each line, and recurring set pieces: a pointer
+label, a binocular POV, a spotlight stage, a year counter, a blueprint,
+a crosshair. The rig gained `kepi`, `pickelhaube`, `fr1914`, `de1914`,
+`redcoat`, `Musket` and `Binoculars` for it.
+
+The test is an original 31 s script: why French soldiers went to war in
+1914 in red trousers. The narration is Kokoro, voice `am_liam`, from
+`scripts-vo/histstyle-trousers.json`, and every shot is keyed to
+`squire/timing.json`.
+
+```bash
+python3 scripts/make-vo.py histstyle-trousers   # needs .tts/ (Kokoro model)
+npx remotion render HistStyle-F-Storybook out/histstyle-f.mp4
+```

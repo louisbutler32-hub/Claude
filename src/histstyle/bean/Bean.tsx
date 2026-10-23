@@ -13,7 +13,7 @@ import { hash, onN } from "../shared";
 // the camera. `look` slides the face left/right to turn the head.
 
 export type Expr = "neutral" | "worried" | "angry" | "shocked" | "smug" | "sad" | "determined";
-export type Hat = "bicorne" | "shako" | "bearskin" | "cap" | "none";
+export type Hat = "bicorne" | "shako" | "bearskin" | "cap" | "kepi" | "pickelhaube" | "none";
 export type Outfit = {
   coat: string;
   shade: string;
@@ -33,6 +33,10 @@ export const OUTFITS: Record<string, Outfit> = {
   blucher: { coat: "#1f2a44", shade: "#141c30", trim: "#c23a2e", buttons: "#d8b45a", epaulette: "#d8b45a", trousers: "#ece6d6" },
   officer: { coat: "#2c4f94", shade: "#1f3a70", trim: "#c23a2e", buttons: "#d8b45a", epaulette: "#d8b45a", trousers: "#ece6d6" },
   soggy: { coat: "#2c4f94", shade: "#1f3a70", cloak: "#6f6a62", trousers: "#ece6d6" },
+  // 1914: the French still in the red trousers of 1870; the Germans in field grey since 1910
+  fr1914: { coat: "#4f6489", shade: "#3c4e6e", buttons: "#d8b45a", trousers: "#c8302a" },
+  de1914: { coat: "#7c806b", shade: "#626652", buttons: "#b9b8a0", trousers: "#6d7060" },
+  redcoat: { coat: "#b8322a", shade: "#8e2620", trim: "#1f2a44", belts: true, buttons: "#e6e1d2", trousers: "#5b5f68" },
 };
 
 const LINE = "#231815";
@@ -113,6 +117,26 @@ const HatShape: React.FC<{ hat: Hat; color?: string; f: number; id: string }> = 
       </g>
     );
   }
+  if (hat === "kepi")
+    return (
+      <g>
+        <path d="M-50,-286 L-42,-334 C-10,-344 30,-342 50,-336 L54,-288 C20,-280 -20,-280 -50,-286 Z" fill={color ?? "#c8302a"} stroke={LINE} strokeWidth={LW} strokeLinejoin="round" />
+        <path d="M-52,-262 L-50,-290 C-20,-284 20,-284 54,-292 L56,-264 C20,-256 -20,-256 -52,-262 Z" fill="#26375e" stroke={LINE} strokeWidth={4} strokeLinejoin="round" />
+        <path d="M-50,-262 C-24,-244 30,-244 58,-262 C30,-254 -24,-254 -50,-262 Z" fill="#111" stroke={LINE} strokeWidth={4} />
+        <circle cx={0} cy={-276} r={5} fill="#d8b45a" stroke={LINE} strokeWidth={2} />
+      </g>
+    );
+  if (hat === "pickelhaube")
+    return (
+      <g>
+        <path d="M-60,-262 C-64,-318 -30,-336 0,-336 C30,-336 64,-318 60,-262 Z" fill={color ?? "#8a8b72"} stroke={LINE} strokeWidth={LW} strokeLinejoin="round" />
+        <path d="M-10,-334 L-6,-366 L6,-366 L10,-334 Z" fill={color ?? "#8a8b72"} stroke={LINE} strokeWidth={4} strokeLinejoin="round" />
+        <path d="M-60,-262 C-30,-246 30,-246 64,-262 C30,-256 -30,-256 -60,-262 Z" fill="#2a2a24" stroke={LINE} strokeWidth={4} />
+        <text x={0} y={-292} textAnchor="middle" fontFamily="Anton, sans-serif" fontSize={22} fill="#c23a2e">
+          {"16"}
+        </text>
+      </g>
+    );
   if (hat === "cap")
     return (
       <g>
@@ -262,6 +286,24 @@ export const PocketWatch: React.FC<{ r?: number; t?: number }> = ({ r = 26, t = 
     <line x1={0} y1={0} x2={Math.sin(t / 12) * r * 0.55} y2={-Math.cos(t / 12) * r * 0.55} stroke={LINE} strokeWidth={3} strokeLinecap="round" />
     <line x1={0} y1={0} x2={Math.sin(t) * r * 0.8} y2={-Math.cos(t) * r * 0.8} stroke={LINE} strokeWidth={2} strokeLinecap="round" />
     <rect x={-5} y={-r - 16} width={10} height={10} rx={3} fill="#d8b45a" stroke={LINE} strokeWidth={3} />
+  </g>
+);
+
+/** A musket, held at the right hand, muzzle forward. */
+export const Musket: React.FC<{ angle?: number }> = ({ angle = -4 }) => (
+  <g transform={`rotate(${angle})`}>
+    <path d="M-70,-4 L-40,-10 L60,-8 L60,8 L-40,8 L-74,16 Z" fill="#8a5a32" stroke={LINE} strokeWidth={4} strokeLinejoin="round" />
+    <rect x={40} y={-9} width={150} height={8} rx={3} fill="#8d939a" stroke={LINE} strokeWidth={3} />
+    <path d="M186,-8 L222,-6 L186,-3 Z" fill="#c9ced3" stroke={LINE} strokeWidth={2} />
+  </g>
+);
+
+/** Field glasses, held up. */
+export const Binoculars: React.FC = () => (
+  <g>
+    <rect x={-34} y={-16} width={30} height={34} rx={8} fill="#3a3a34" stroke={LINE} strokeWidth={4} />
+    <rect x={4} y={-16} width={30} height={34} rx={8} fill="#3a3a34" stroke={LINE} strokeWidth={4} />
+    <rect x={-6} y={-6} width={12} height={12} fill="#55554c" stroke={LINE} strokeWidth={3} />
   </g>
 );
 
