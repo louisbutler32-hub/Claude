@@ -79,3 +79,16 @@ The test is an original 31 s script: why French soldiers went to war in
 python3 scripts/make-vo.py histstyle-trousers   # needs .tts/ (Kokoro model)
 npx remotion render HistStyle-F-Storybook out/histstyle-f.mp4
 ```
+
+## Ten looks for the storybook explainer
+
+`looks/Looks.tsx` draws the same scene (the red-trousers soldier and his
+column) ten ways, so the series can pick one: Storybook, Bold Comic,
+Watercolour, Ink & Sepia, Chalkboard, Dusk, Soft Pastel, Riso Print, Clay,
+and Pixel Art. A `Look` sets the palette, the outline (via the rig's
+`InkCtx`, so the cast is restyled too), the face ink, the frame rate (on
+1s, 2s or 3s), an SVG treatment over the whole picture, and a texture.
+
+```bash
+npx remotion render HistStyle-Looks-Reel out/histstyle-10-looks.mp4   # 3 s per look
+```
