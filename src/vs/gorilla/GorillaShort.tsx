@@ -397,15 +397,16 @@ export const GorillaShort: React.FC<{ captions?: boolean }> = ({ captions = true
 export const GorillaThumb: React.FC = () => {
   const ready = useVsFonts();
   if (!ready) return null;
-  const cam: Cam = { pos: [1.4, 0.9, -8.6], look: [-0.1, 2.5, -11.2], fov: 56 };
+  const cam: Cam = { pos: [0, 1.15, 3.4], look: [0, 1.25, -0.2], fov: 52 };
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <ThreeCanvas width={W} height={H} gl={{ antialias: true }}>
         <CamRig pos={cam.pos} look={cam.look} fov={cam.fov} />
         <Arena />
-        <Body a={{ at: [-0.75, 0, -10.8], yaw: 172, pose: { lean: 4, hipL: [72, 6], knL: 90, hipR: [-4, 4], knR: 8, shR: [172, 6], elR: 12, shL: [70, 20], elL: 40, face: "focus", y: 0.95 }, holdR: HELD }} kind="lb" />
-        <Body a={{ at: [0.6, 0, -10.4], yaw: -110, pose: { ...GO.tall, y: 0.9, shR: [170, 50], elR: 10, shL: [40, 30], elL: 30, face: "shout", lean: -6 } }} kind="go" />
+        <Body a={{ at: [-0.5, 0, 0.1], yaw: 24, pose: { ...LB.stand, shL: [10, 14], elL: 20, shR: [8, 26], elR: 46, face: "smirk", head: [-4, 12] }, holdR: HELD }} kind="lb" />
+        <Body a={{ at: [0.72, 0, -0.35], yaw: -34, pose: { ...GO.tall, shL: [150, 55], shR: [150, 55], elL: 30, elR: 30, face: "shout", head: [-8, 10] } }} kind="go" />
       </ThreeCanvas>
+      <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 760, background: "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0))" }} />
       <div style={{ position: "absolute", left: 0, right: 0, top: 120, textAlign: "center", fontFamily: "Montserrat", fontWeight: 900, fontSize: 150, lineHeight: 1.0, color: "#ffd21c", WebkitTextStroke: "14px #111", paintOrder: "stroke fill" }}>LEBRON<br /><span style={{ color: "#fff" }}>vs</span><br />GORILLA</div>
     </AbsoluteFill>
   );
