@@ -179,7 +179,7 @@ export const Baller: React.FC<Common & { num?: string; name?: string; kit?: { sh
 /* ======================================================================= the gorilla */
 
 const G = { lt: 0.32, ls: 0.3, foot: 0.06, torso: 0.62, ua: 0.48, fa: 0.46, shW: 0.31, hipW: 0.15 };
-const FUR = "#47413c", FUR_D = "#38332f", SILVER = "#b3aea5", HIDE = "#1e1a18";
+const FUR = "#4a443f", FUR_D = "#3a3531", SILVER = "#8f8a82", HIDE = "#2e2826";
 
 const GorillaFace: React.FC<{ face: Face }> = ({ face }) => {
   const hide = mat(HIDE), dark = mat("#0d0a08", { rough: 0.4 });
@@ -191,7 +191,7 @@ const GorillaFace: React.FC<{ face: Face }> = ({ face }) => {
       {/* eyes */}
       {[-1, 1].map((s) => (
         <group key={s} position={[s * 0.045, 0.012, 0.14]}>
-          <mesh scale={[1, face === "shock" || face === "dazed" ? 1.2 : 0.75, 0.5]} geometry={ball(0.02, 8, 6)} material={mat("#7a4414", { rough: 0.3 })} />
+          <mesh scale={[1, face === "shock" || face === "dazed" ? 1.2 : 0.75, 0.5]} geometry={ball(0.024, 8, 6)} material={mat("#8a4c16", { rough: 0.3 })} />
           <mesh position={[0, 0, 0.008]} geometry={ball(face === "dazed" ? 0.004 : 0.008, 6, 5)} material={dark} />
           <mesh position={[0.005, 0.005, 0.012]} geometry={ball(0.003, 4, 3)} material={mat("#ffffff", { emissive: "#ffffff", ei: 0.5 })} />
         </group>

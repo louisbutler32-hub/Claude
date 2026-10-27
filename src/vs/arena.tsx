@@ -250,7 +250,7 @@ export const Scoreboard3D: React.FC<{ position: [number, number, number]; rotY?:
   return (
     <group position={position} rotation={[0, rotY, 0]}>
       <mesh position={[0, 5, -0.2]}><boxGeometry args={[0.3, 10, 0.3]} /><meshStandardMaterial color="#2a2f3a" /></mesh>
-      <mesh position={[0, 0, -0.15]}><boxGeometry args={[8.6, 5.8, 0.3]} /><meshStandardMaterial color="#141820" /></mesh>
+      <mesh position={[0, 0, -0.25]}><boxGeometry args={[8.6, 5.8, 0.3]} /><meshStandardMaterial color="#141820" /></mesh>
       <mesh><planeGeometry args={[8, 5.2]} /><meshStandardMaterial map={scoreTex(s)} emissive="#ffffff" emissiveMap={scoreTex(s)} emissiveIntensity={0.6} roughness={0.6} /></mesh>
     </group>
   );
@@ -272,10 +272,10 @@ export const Trophy: React.FC<{ position: [number, number, number]; s?: number }
   );
 };
 
-export const Podium: React.FC<{ position: [number, number, number]; w?: number }> = ({ position, w = 3.2 }) => (
+export const Podium: React.FC<{ position: [number, number, number]; w?: number; h?: number; color?: string }> = ({ position, w = 3.2, h = 1, color = "#15161c" }) => (
   <group position={position}>
-    <mesh position={[0, 0.5, 0]}><boxGeometry args={[w, 1, 1.1]} /><primitive object={mat("#15161c", { rough: 0.4 })} attach="material" /></mesh>
-    <mesh position={[0, 1.01, 0]}><boxGeometry args={[w + 0.05, 0.04, 1.15]} /><primitive object={mat("#f2c230", { rough: 0.3, metal: 0.8 })} attach="material" /></mesh>
+    <mesh position={[0, h / 2, 0]}><boxGeometry args={[w, h, 1.1]} /><primitive object={mat(color, { rough: 0.4 })} attach="material" /></mesh>
+    <mesh position={[0, h + 0.01, 0]}><boxGeometry args={[w + 0.05, 0.04, 1.15]} /><primitive object={mat("#f2c230", { rough: 0.3, metal: 0.8 })} attach="material" /></mesh>
   </group>
 );
 

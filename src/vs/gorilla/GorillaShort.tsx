@@ -138,9 +138,9 @@ const SHOTS: Shot[] = [
   } },
   // the trophies
   { at: 5.8, fn: (t, n) => ({
-    cam: { pos: lerpV([0, 1.55, 5.4], [0, 1.6, 4.4], t / n), look: [0, 1.45, 0], fov: 46 },
-    lb: { at: [0, 0, -0.2], yaw: 0, pose: LB.crossed },
-    props: <><Podium position={[0, 0, 1.05]} />{[-1.2, -0.4, 0.4, 1.2].map((x, i) => <Trophy key={i} position={[x, 1.03, 1.05]} s={0.95} />)}</>,
+    cam: { pos: lerpV([0, 1.6, 4.9], [0, 1.6, 4.1], t / n), look: [0, 1.2, 0], fov: 48 },
+    lb: { at: [0, 0, -0.3], yaw: 0, pose: LB.crossed },
+    props: <><Podium position={[0, 0, 0.75]} w={2.1} h={0.42} color="#1d2b6b" />{[-0.75, -0.25, 0.25, 0.75].map((x, i) => <Trophy key={i} position={[x, 0.45, 0.75]} s={0.7} />)}</>,
     hud: t < 36 ? <StatCard big="4×" sub="NBA CHAMPION" t={t} /> : <StatCard big="#1" sub="ALL-TIME SCORING LEADER" t={t - 36} />,
   }) },
   // the jungle: the silverback knuckle-walks up to camera
@@ -159,7 +159,7 @@ const SHOTS: Shot[] = [
   { at: 11.8, fn: (t) => {
     const u = sm(t, 0, 10);
     return {
-      cam: { pos: [0, 2.0, 11.5], look: [0, 1.3, 0], fov: 50 },
+      cam: { pos: [0, 1.8, 9.4], look: [0, 1.25, 0], fov: 56 },
       lb: { at: [-1.75, 0, 0], yaw: 0, pose: mix(LB.stand, LB.tpose, u) },
       go: { at: [1.55, 0, 0], yaw: 0, pose: mix(GO.tall, GO.tpose, u) },
       props: <mesh position={[1.55, 1.62, 0.5]} scale={[sm(t, 10, 22), 1, 1]}><boxGeometry args={[2.65, 0.05, 0.05]} /><meshBasicMaterial color="#ffd21c" /></mesh>,
@@ -171,7 +171,7 @@ const SHOTS: Shot[] = [
   // LeBron reconsiders
   { at: 15.2, fn: (t) => ({ cam: { pos: [0.15, 2.0, -6.3], look: [0.35, 1.9, -4.6], fov: 38 }, lb: { at: TOP, yaw: 180, pose: { ...mix(LB.stand, LB.shock, sm(t, 0, 6)), head: [-4 + 8 * bump(t, 14, 24), 0] } } }) },
   // the scoreboard
-  { at: 16.4, fn: (t, n) => ({ cam: { pos: lerpV([0, 13.5, -16.6], [0, 13.5, -17.6], t / n), look: [0, 13.5, -24], fov: 42 }, score: { label: "FIRST BASKET WINS", a: 0, b: 0 } }) },
+  { at: 16.4, fn: (t, n) => ({ cam: { pos: lerpV([0, 13.3, -10.4], [0, 13.3, -11.6], t / n), look: [0, 13.5, -24], fov: 58 }, score: { label: "FIRST BASKET WINS", a: 0, b: 0 } }) },
   // the drive
   { at: 18.2, fn: (t) => {
     const go_ = sm(t, 12, 42);
@@ -189,7 +189,7 @@ const SHOTS: Shot[] = [
     const pose: Pose = t < 22 ? run(t, 0.6) : { ...mix(run(22, 0.6), { lean: 4, hipL: [72, 6], knL: 90, hipR: [-4, 4], knR: 8, shR: [172, 6], elR: 12, shL: [70, 20], elL: 40, face: "focus" }, sm(t, 22, 28)), y: air };
     const lb: Actor = { at, yaw: face(a, b), pose, holdR: HELD };
     const g = lerpV([-0.4, 0, -8.2], [0.7, 0, -10.4], t / n);
-    return { cam: { pos: [5.6, 1.8, at[2] + 0.6], look: [at[0], 1.4, at[2] - 0.6], fov: 52 }, lb, go: { at: g, yaw: face(g, at), pose: gallop(t, 0.5) } };
+    return { cam: { pos: [-5.4, 1.8, at[2] + 0.4], look: [at[0] + 0.4, 1.5, at[2] - 0.8], fov: 52 }, lb, go: { at: g, yaw: face(g, at), pose: gallop(t, 0.5) } };
   } },
   // swatted
   { at: 20.8, fn: (t) => {
@@ -202,7 +202,7 @@ const SHOTS: Shot[] = [
     const p0: V = [-0.55, 3.55, -11.2];
     const b = t >= SW ? arc(p0, [-14.5, 4.85, -8.0], 3, (t - SW) / 40) : null;
     return {
-      cam: { pos: [0.9, 0.9, -8.4], look: [-0.3, 2.8, -11.4], fov: 56, shake: t > SW && t < SW + 8 ? 0.06 : 0 },
+      cam: { pos: [0.7, 0.9, -8.3], look: [-0.5, 2.8, -11.4], fov: 58, shake: t > SW && t < SW + 8 ? 0.06 : 0 },
       lb, go: { at: gAt, yaw: -110, pose: gPose }, ball: b, spin: t * 0.6,
       hud: <>{t >= SW && <Flash t={t - SW} />}{t >= SW && <PixelLabel text="REJECTED" t={t - SW} y={140} size={96} />}</>,
     };
@@ -228,20 +228,20 @@ const SHOTS: Shot[] = [
   } },
   // it sniffs it
   { at: 24.6, fn: (t) => {
-    const go: Actor = { at: DEF, yaw: 0, pose: { ...GO.hold, head: [16 + 4 * Math.sin(t * 0.9), 0, 10], face: "sniff" } };
-    return { cam: { pos: [0.28, 1.72, -5.7], look: [0, 1.55, -7.3], fov: 40 }, go, ball: goWorld(go, [0, 1.36, 0.5]) };
+    const go: Actor = { at: DEF, yaw: 0, pose: { ...GO.hold, head: [10 + 4 * Math.sin(t * 0.9), 0, 4], face: "sniff" } };
+    return { cam: { pos: [1.25, 1.85, -5.55], look: [0.1, 1.5, -6.9], fov: 42 }, go, ball: goWorld(go, [0, 1.32, 0.58]) };
   } },
   // it bites it
   { at: 25.8, fn: (t) => {
     const chomp = Math.floor(t / 7) % 2 === 0;
     const go: Actor = { at: DEF, yaw: 0, pose: { ...GO.hold, head: [10, 0, -6], face: t > 4 && chomp ? "bite" : "plain" } };
-    return { cam: { pos: [-0.55, 1.62, -5.6], look: [0, 1.55, -7.3], fov: 40 }, go, ball: goWorld(go, [0, 1.33, 0.44]), hud: <PixelLabel text="BASKETBALL IQ: 0" t={t - 8} y={150} size={64} /> };
+    return { cam: { pos: [-1.2, 1.8, -5.6], look: [-0.1, 1.5, -6.95], fov: 42 }, go, ball: goWorld(go, [0, 1.33, 0.46]), hud: <PixelLabel text="BASKETBALL IQ: 0" t={t - 8} y={150} size={64} /> };
   } },
   // tries to peel it; LeBron behind it, hand on face
   { at: 27.0, fn: (t) => {
     const k = Math.sin(t * 0.5);
     const go: Actor = { at: DEF, yaw: 0, pose: { ...GO.hold, shR: [118 + 14 * k, 8], elR: 104, twR: 10, head: [12, 0], face: "plain" } };
-    return { cam: { pos: [0.75, 1.7, -4.3], look: [0.35, 1.45, -8.2], fov: 46 }, go, ball: goWorld(go, [0.06, 1.3, 0.44]), spin: k * 0.3, lb: { at: [1.55, 0, -9.9], yaw: 200, pose: mix(LB.stand, LB.facepalm, sm(t, 6, 14)) } };
+    return { cam: { pos: [0.75, 1.7, -4.3], look: [0.35, 1.45, -8.2], fov: 46 }, go, ball: goWorld(go, [0.06, 1.3, 0.44]), spin: k * 0.3, lb: { at: [2.4, 0, -10.0], yaw: 205, pose: mix(LB.stand, LB.facepalm, sm(t, 6, 14)) } };
   } },
   // and walks off with it
   { at: 28.6, fn: (t, n) => {
@@ -266,7 +266,7 @@ const SHOTS: Shot[] = [
     const at: V = [lerp(1.3, -2.6, t / n), 0, -6];
     const d = dribble(t, { face: "focus" }, 0.8);
     const lb: Actor = { at: WING, yaw: 90, pose: d.pose };
-    return { cam: { pos: [-2.2, 2.3, 3.2], look: [-2.2, 0.9, -6], fov: 64 }, lb, ball: lbWorld(lb, d.ball), go: { at, yaw: -90, pose: gallop(t + 12, 0.85) }, props: <Dust at={at} t={t} dir={[-1, 0, 0]} />, hud: <StatCard big="25 MPH" t={t - 6} /> };
+    return { cam: { pos: [-2.7, 2.4, 5.2], look: [-2.8, 0.9, -6], fov: 64 }, lb, ball: lbWorld(lb, d.ball), go: { at, yaw: -90, pose: gallop(t + 12, 0.85) }, props: <Dust at={at} t={t} dir={[-1, 0, 0]} />, hud: <StatCard big="25 MPH" t={t - 6} /> };
   } },
   // the pump fake
   { at: 34.4, fn: (t) => {
@@ -294,7 +294,7 @@ const SHOTS: Shot[] = [
     const sprawl: Pose = { ...GO.tpose, shL: [40, 100], shR: [30, 110], hipL: [60, 30], hipR: [90, 20], knL: 40, knR: 70, face: "dazed", y: 0 };
     const go: Actor = t < HIT ? { at: [p[0], p[1], p[2]], yaw: -90, pose: flying } : { at: land, yaw: 90, pose: sprawl, tilt: [-70, 0, 0], pivot: 0.7, shadow: false };
     return {
-      cam: { pos: [-3.3, 2.5, -2.2], look: lerpV([-7.6, 1.6, -6.2], [-11.6, 3.0, -6.4], sm(t, 0, HIT)), fov: 52, shake: t >= HIT && t < HIT + 12 ? 0.08 : 0 },
+      cam: { pos: lerpV([-4.6, 2.4, -2.8], [-6.6, 3.2, -3.4], sm(t, 0, HIT)), look: lerpV([-7.6, 1.6, -6.2], [-11.6, 3.0, -6.2], sm(t, 0, HIT)), fov: 52, shake: t >= HIT && t < HIT + 12 ? 0.08 : 0 },
       go, lb: { at: WING, yaw: -100, pose: { ...LB.stand, head: [-6, 0], face: "smirk" } }, ball: lbWorld({ at: WING, yaw: -100, pose: LB.stand }, [-0.3, 0.95, 0.25]),
       fans: [{ at: [-11.0, STAND(-11.0), -9.4], yaw: 70, pose: t >= HIT ? LB.shock : LB.stand }, { at: [-13.6, STAND(-13.6), -4.6], yaw: 120, pose: t >= HIT ? LB.celebrate : LB.stand }],
       props: t >= HIT ? <Debris at={[land[0], land[1] + 0.5, land[2]]} t={t - HIT} /> : null,
@@ -326,7 +326,7 @@ const SHOTS: Shot[] = [
     return { cam: { pos: [1.5, 0.8, -9.5], look: [-0.15, 2.9, -12.3], fov: 58, shake: t >= SLAM && t < SLAM + 8 ? 0.05 : 0 }, lb, ball: b2, bend: bump(t, SLAM, SLAM + 14), sway: t >= SLAM ? Math.sin(t) * bump(t, SLAM, SLAM + 30) : 0, hud: t >= SLAM ? <Flash t={t - SLAM} /> : null };
   } },
   // FINAL
-  { at: 41.6, fn: (t, n) => ({ cam: { pos: lerpV([0, 13.5, -17.6], [0, 13.5, -16.9], t / n), look: [0, 13.5, -24], fov: 42 }, score: { label: "FINAL", a: 2, b: 0 }, hud: <Flash t={t} len={4} /> }) },
+  { at: 41.6, fn: (t, n) => ({ cam: { pos: lerpV([0, 13.3, -11.8], [0, 13.3, -10.8], t / n), look: [0, 13.5, -24], fov: 58 }, score: { label: "FINAL", a: 2, b: 0 }, hud: <Flash t={t} len={4} /> }) },
   // LeBron celebrates
   { at: 43.0, fn: (t, n) => {
     const a = lerp(20, -20, t / n) * (Math.PI / 180);
@@ -336,13 +336,13 @@ const SHOTS: Shot[] = [
   // the gorilla, dazed in the stands
   { at: 45.0, fn: (t) => {
     const go: Actor = { at: SEAT, yaw: 90, pose: { ...GO.sit, head: [6, 0, 14 * Math.sin(t * 0.15)] }, shadow: false };
-    return { cam: { pos: [-8.3, 3.8, -5.3], look: [-12.2, 3.75, -7.6], fov: 42 }, go, props: <Stars at={goWorld(go, [0, 1.62, 0.18])} t={t} />, fans: [{ at: [-11.1, STAND(-11.1), -9.0], yaw: 70, pose: LB.shrug }, { at: [-12.6, STAND(-12.6), -5.9], yaw: 110, pose: LB.stand }] };
+    return { cam: { pos: [-8.6, 3.8, -5.6], look: [-12.2, 3.75, -7.6], fov: 40 }, go, props: <><Stars at={goWorld(go, [0, 1.62, 0.18])} t={t} /><pointLight position={[-9.5, 5.5, -6.6]} intensity={14} distance={9} color="#fff2dc" /></>, fans: [{ at: [-11.1, STAND(-11.1), -9.0], yaw: 70, pose: LB.shrug }, { at: [-12.6, STAND(-12.6), -5.9], yaw: 110, pose: LB.stand }] };
   } },
   // one banana
   { at: 47.0, fn: (t) => {
     const chew = Math.floor(t / 6) % 2 === 0;
-    const go: Actor = { at: SEAT, yaw: 90, pose: { ...GO.sit, shR: [96, 14], elR: 122, twR: 20, head: [4, 0, 6], face: chew ? "chew" : "plain" }, holdR: <Banana rotation={[0.3, 0, 1.4]} scale={1.6} bitten={sm(t, 10, 60)} />, shadow: false };
-    return { cam: { pos: [-9.5, 3.95, -6.5], look: [-12.2, 3.8, -7.6], fov: 40 }, go, fans: [{ at: [-11.1, STAND(-11.1), -9.0], yaw: 70, pose: LB.celebrate }, { at: [-12.6, STAND(-12.6), -5.9], yaw: 110, pose: LB.stand }], hud: <StatCard big="0 POINTS" sub="1 BANANA" t={t - 10} size={128} /> };
+    const go: Actor = { at: SEAT, yaw: 90, pose: { ...GO.sit, shR: [58, 10], elR: 112, twR: 30, head: [4, 0, 6], face: chew ? "chew" : "plain" }, shadow: false };
+    return { cam: { pos: [-9.6, 3.95, -6.7], look: [-12.2, 3.8, -7.6], fov: 40 }, go, props: <><pointLight position={[-9.8, 5.5, -6.8]} intensity={14} distance={9} color="#fff2dc" /><Banana position={goWorld(go, [-0.1, 0.98, 0.56])} rotation={[0, Math.PI / 2, -0.5]} scale={2.6} bitten={sm(t, 10, 60)} /></>, fans: [{ at: [-11.1, STAND(-11.1), -9.0], yaw: 70, pose: LB.celebrate }, { at: [-12.6, STAND(-12.6), -5.9], yaw: 110, pose: LB.stand }], hud: <StatCard big="0 POINTS" sub="1 BANANA" t={t - 10} size={128} /> };
   } },
 ];
 
