@@ -351,7 +351,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="LaPeace-Thumbnail" component={LaPeaceThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="PickShort" component={PickShort} durationInFrames={PICK_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Pick-Thumbnail" component={PickThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
-      <Composition id="Vs-Gorilla" component={GorillaShort} durationInFrames={GORILLA_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ captions: true }} />
+      <Composition id="Vs-Gorilla" component={GorillaShort} durationInFrames={GORILLA_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ captions: true, audio: null as string | null }} />
       <Composition id="Vs-Gorilla-Thumbnail" component={GorillaThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="Vs-Gorilla-ArtSheet" component={GorillaArtSheet} durationInFrames={6} fps={30} width={1080} height={1920} />
       <Composition id="LaPeace3D" component={LaPeace3D} durationInFrames={LAPEACE3D_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />

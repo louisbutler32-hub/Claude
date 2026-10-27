@@ -1,5 +1,7 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Audio, staticFile, useCurrentFrame } from "remotion";
+import SCRIPT from "./script.json";
+import TIMING from "./timing.json";
 import { ThreeCanvas } from "@remotion/three";
 import { bump, CamRig, H, hash, lerp, lerpV, lin, sm, useVsFonts, V, W } from "../kit";
 import { Arena, Blob, Jungle, Podium, RIM, Ruler, Score, START_SCORE, Trophy } from "../arena";
@@ -11,48 +13,17 @@ import { arc, chestBeat, dribble, face, gallop, GO, GO_SCALE, HOLD_BALL, LB, LB_
  * "Could LeBron James score on a silverback gorilla?" — a 50 s one-on-one sim in
  * the format of the reference shorts (Durant vs Galactus, Kawhi vs the Mongols):
  * intro stats for both, first basket wins, a block, a dumb possession, a pump
- * fake, a dunk, a FINAL scoreboard and a punchline. Visuals only for now; the
- * captions are the script a voiceover will be cut to.
+ * fake, a dunk, a FINAL scoreboard and a punchline. The voiceover, effects and
+ * caption timing come from scripts/build-vs-gorilla-audio.py.
  */
 
 const F = (s: number) => Math.round(s * 30);
 
 /* ------------------------------------------------------------------ the script */
 
-const CAPS: [number, string][] = [
-  [0.0, "could lebron james"], [0.8, "score on a"], [1.3, "silverback gorilla?"],
-  [2.7, "lebron james is"], [3.4, "six-foot-nine,"],
-  [4.5, "two hundred fifty pounds,"],
-  [5.8, "a four-time champion"], [7.0, "and the all-time"], [7.7, "leading scorer."],
-  [8.4, "but a silverback gorilla"],
-  [10.0, "weighs up to"], [10.6, "four hundred pounds,"],
-  [11.8, "has an eight-foot"], [12.6, "arm span,"],
-  [13.6, "and is up to"], [14.2, "ten times stronger"],
-  [15.2, "than a grown man."],
-  [16.4, "one-on-one."], [17.2, "first basket wins."],
-  [18.2, "lebron drives left,"],
-  [19.6, "goes up for the layup,"],
-  [20.8, "and gets swatted"],
-  [22.0, "into the fifth row."],
-  [23.4, "gorilla's ball."],
-  [24.6, "it sniffs it."],
-  [25.8, "it bites it."],
-  [27.0, "it tries"], [27.5, "to peel it."],
-  [28.6, "then it walks off"], [29.4, "with it."],
-  [30.4, "lebron's ball."],
-  [31.6, "the gorilla charges"],
-  [32.8, "at twenty-five"], [33.5, "miles an hour."],
-  [34.4, "lebron pump fakes."],
-  [35.6, "the gorilla flies"], [36.3, "right past him"],
-  [37.0, "into the bleachers."],
-  [38.4, "lebron walks in"],
-  [39.8, "and throws it down."],
-  [41.6, "final score:"],
-  [43.0, "lebron two,"], [43.8, "gorilla zero."],
-  [45.0, "the gorilla"], [45.6, "didn't score a point."],
-  [47.0, "but it did"], [47.6, "get a banana."],
-];
-const END = 50.0;
+/** caption chunks, timed to the voiceover by scripts/build-vs-gorilla-audio.py (lines and wording: script.json) */
+const CAPS = TIMING.caps as [number, string][];
+const END = SCRIPT.end;
 export const GORILLA_FRAMES = F(END);
 
 /* ------------------------------------------------------------------ shot plumbing */
@@ -366,7 +337,7 @@ const Body: React.FC<{ a: Actor; kind: "lb" | "go" | "fan"; i?: number }> = ({ a
   );
 };
 
-export const GorillaShort: React.FC<{ captions?: boolean }> = ({ captions = true }) => {
+export const GorillaShort: React.FC<{ captions?: boolean; audio?: string | null }> = ({ captions = true, audio = null }) => {
   const f = useCurrentFrame();
   const ready = useVsFonts();
   if (!ready) return null;
@@ -389,6 +360,7 @@ export const GorillaShort: React.FC<{ captions?: boolean }> = ({ captions = true
       </ThreeCanvas>
       {s.hud}
       {captions && <Caption text={CAPS[c][1]} />}
+      {audio && <Audio src={staticFile(audio)} />}
     </AbsoluteFill>
   );
 };
