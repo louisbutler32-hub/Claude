@@ -212,10 +212,10 @@ def cues():
     add(19.6 + 22 / FPS, "swish-5", -12)
     add(20.8 + 10 / FPS, "impactPunch_heavy_002", -2)
     add(20.8 + 10 / FPS, "swish-9", -6)
-    add(21.25, "ooo", -6)
+    add(21.25, "ooo", -12)
     add(21.4, "whoosh", -12, dur=1.0)
     add(22.47, "impactSoft_medium_002", -8)
-    add(22.5, "applause", -12, dur=2.0, src=8.0)
+    add(22.5, "applause", -18, dur=2.0, src=8.0)
 
     # gorilla's ball
     add(23.8, "impactSoft_medium_003", -6)
@@ -245,7 +245,7 @@ def cues():
     add(37.0 + 22 / FPS, "impactMetal_heavy_003", -8)
     add(37.0 + 26 / FPS, "impactGlass_light_001", -12)
     add(37.0 + 32 / FPS, "impactGlass_light_003", -14)
-    add(37.85, "ooo", -8)
+    add(37.85, "ooo", -14)
 
     # the dunk
     add(39.8 + 6 / FPS, "swish-11", -10)
@@ -253,7 +253,7 @@ def cues():
     add(39.8 + 22 / FPS, "impactPunch_heavy_004", -4)
     add(39.8 + 24 / FPS, "swish-2", -8)
     add(39.8 + 34 / FPS, "impactPlate_light_001", -9)
-    add(40.6, "applause", -6, dur=5.0, src=12.0)
+    add(40.6, "applause", -13, dur=5.0, src=12.0)
     add(41.6, "@buzzer", -9)
 
     # the stands
@@ -266,14 +266,14 @@ def cues():
 
 
 def bed_gain(t):
-    """the crowd under everything: out in the jungle, up for the charge and the dunk"""
-    g = -24.0
-    if 8.3 <= t < 11.85:
-        g = -60.0
+    """the crowd: quiet under the game, out for the stat intros and the gorilla's possession, up for the charge and the dunk"""
+    if 2.6 <= t < 16.4 or 23.3 <= t < 30.4:
+        return -80.0
+    g = -32.0
     if 31.6 <= t < 38.4:
-        g = -18.0
+        g = -26.0
     if 40.5 <= t < 45.0:
-        g = -14.0
+        g = -22.0
     return g
 
 
