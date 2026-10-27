@@ -128,6 +128,8 @@ import { FaceStyleSheet } from "./minecraft-lapeace/faces";
 import { FriendShort, FriendThumb, FRIEND_FRAMES } from "./minecraft-friend/FriendShort";
 import { PickShort, PickThumb, PICK_FRAMES } from "./minecraft-pick/PickShort";
 import { LaPeace3D, LAPEACE3D_FRAMES } from "./lapeace3d/LaPeace3D";
+import { GorillaArtSheet } from "./vs/gorilla/ArtSheet";
+import { GorillaShort, GorillaThumb, GORILLA_FRAMES } from "./vs/gorilla/GorillaShort";
 import { TennisShort, TennisThumb, TENNIS_FRAMES } from "./tennis/TennisShort";
 import { TableTennisShort, TableTennisThumb, TT_FRAMES } from "./tabletennis/TableTennisShort";
 import { FoodShort, FoodThumb, FOOD_FRAMES } from "./minecraft-food/FoodShort";
@@ -349,6 +351,9 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="LaPeace-Thumbnail" component={LaPeaceThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
       <Composition id="PickShort" component={PickShort} durationInFrames={PICK_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Pick-Thumbnail" component={PickThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Vs-Gorilla" component={GorillaShort} durationInFrames={GORILLA_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ captions: true }} />
+      <Composition id="Vs-Gorilla-Thumbnail" component={GorillaThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
+      <Composition id="Vs-Gorilla-ArtSheet" component={GorillaArtSheet} durationInFrames={6} fps={30} width={1080} height={1920} />
       <Composition id="LaPeace3D" component={LaPeace3D} durationInFrames={LAPEACE3D_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="TennisShort" component={TennisShort} durationInFrames={TENNIS_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ audio: null }} />
       <Composition id="Tennis-Thumbnail" component={TennisThumb} durationInFrames={1} fps={30} width={1080} height={1920} />
