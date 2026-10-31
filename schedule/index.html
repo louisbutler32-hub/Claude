@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Posting Schedule</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style id="css">
+/* Layout idea: a broadcast run-sheet. Header + tabs, then one working view (next 14 days, month grid, or channel rules). */
+:root {
+  --bg: #f4f5f7;
+  --panel: #ffffff;
+  --ink: #16181d;
+  --muted: #5d6370;
+  --line: #dde0e6;
+  --accent: #d93a2b;       /* on-air red */
+  --accent-ink: #ffffff;
+  --soft: #eceef2;
+  --ok: #1f8a4c;
+  --warn: #b7791f;
+  --bad: #c62828;
+  --font-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111318; --panel: #1a1d24; --ink: #eef0f4; --muted: #9aa1ae; --line: #2c313b;
+    --accent: #ff5a47; --accent-ink: #16181d; --soft: #232731;
+    --ok: #4cc27f; --warn: #e3a948; --bad: #ff6b6b;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111318; --panel: #1a1d24; --ink: #eef0f4; --muted: #9aa1ae; --line: #2c313b;
+  --accent: #ff5a47; --accent-ink: #16181d; --soft: #232731;
+  --ok: #4cc27f; --warn: #e3a948; --bad: #ff6b6b;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.45 var(--font-body); }
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px 48px; }
+
+header.top { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+.top-inner { max-width: 1180px; margin: 0 auto; padding: 12px 16px 0; display: grid; gap: 10px; }
+.title-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+h1 { font: 800 22px/1.1 var(--font-display); letter-spacing: .01em; margin: 0; text-wrap: balance; display: flex; align-items: center; gap: 10px; }
+.onair { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent); }
+.sub { color: var(--muted); font-size: 13px; }
+.spacer { flex: 1; }
+.status { font-size: 12px; color: var(--muted); }
+.status.saving { color: var(--warn); }
+.status.err { color: var(--bad); }
+.tabs { display: flex; gap: 4px; overflow-x: auto; }
+.tab { border: 0; background: none; padding: 8px 12px 10px; font-weight: 600; color: var(--muted); border-bottom: 3px solid transparent; white-space: nowrap; }
+.tab[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
+.btn { border: 1px solid var(--line); background: var(--panel); padding: 7px 12px; border-radius: 8px; font-weight: 500; font-size: 14px; }
+.btn:hover { border-color: var(--muted); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+.btn.small { padding: 3px 9px; font-size: 13px; border-radius: 6px; }
+.btn.ghost { background: none; border-color: transparent; color: var(--muted); }
+.btn.ghost:hover { color: var(--ink); border-color: var(--line); }
+
+/* summary tiles */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 18px 0; }
+.tile { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.tile .k { font-size: 12px; color: var(--muted); }
+.tile .v { font: 800 24px/1.15 var(--font-display); font-variant-numeric: tabular-nums; }
+.tile .v small { font: 500 12px var(--font-body); color: var(--muted); margin-left: 4px; }
+.tile.flag .v { color: var(--bad); }
+
+/* load meter: one segment per allowed post */
+.meter { display: inline-flex; gap: 2px; vertical-align: middle; }
+.meter i { width: 7px; height: 12px; border-radius: 2px; background: var(--soft); border: 1px solid var(--line); }
+.meter i.l { background: var(--ink); border-color: var(--ink); }
+.meter i.s { background: var(--muted); border-color: var(--muted); opacity: .55; }
+.meter i.over { background: var(--bad); border-color: var(--bad); }
+
+/* agenda */
+.agenda { display: grid; gap: 12px; margin-top: 18px; }
+.day { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.day.today { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.day-head { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.day-head h3 { margin: 0; font: 800 16px/1.2 var(--font-display); }
+.pill { font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px; background: var(--soft); color: var(--muted); }
+.pill.accent { background: var(--accent); color: var(--accent-ink); }
+.pill.bad { background: color-mix(in srgb, var(--bad) 18%, transparent); color: var(--bad); }
+.pill.ok { background: color-mix(in srgb, var(--ok) 18%, transparent); color: var(--ok); }
+.counts { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.empty { padding: 12px 14px; color: var(--muted); font-size: 14px; }
+
+.row { display: grid; grid-template-columns: auto 6px 1fr auto; align-items: center; gap: 10px; padding: 9px 14px; border-top: 1px solid var(--line); }
+.day-head + .row { border-top: 0; }
+.row .bar { width: 6px; align-self: stretch; border-radius: 3px; }
+.row.short .bar { width: 4px; margin-left: 1px; }
+.row .name { font-weight: 600; }
+.row .meta { font-size: 12.5px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.kind { font: 600 10.5px/1 var(--font-body); letter-spacing: .06em; text-transform: uppercase; padding: 3px 6px; border-radius: 4px; }
+.kind.long { background: var(--ink); color: var(--panel); }
+.kind.short { border: 1px solid var(--muted); color: var(--muted); padding: 2px 5px; }
+.time { font-family: var(--font-mono); font-size: 12px; }
+.row.done .name { text-decoration: line-through; color: var(--muted); }
+.row.skip { opacity: .55; }
+.row.skip .name { text-decoration: line-through; }
+.acts { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+.check { width: 22px; height: 22px; accent-color: var(--ok); margin: 0; }
+.movebox { grid-column: 1 / -1; display: flex; gap: 6px; flex-wrap: wrap; padding: 4px 0 2px 32px; }
+.movebox button { border: 1px solid var(--line); background: var(--bg); border-radius: 6px; padding: 4px 8px; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.movebox button:hover { border-color: var(--ink); }
+.movebox button.full { color: var(--bad); }
+.movebox button.cur { border-color: var(--accent); }
+
+/* month grid */
+.month-bar { display: flex; align-items: center; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
+.month-bar h2 { font: 800 22px/1 var(--font-display); margin: 0 6px; min-width: 9ch; text-wrap: balance; }
+.grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; margin-top: 12px; }
+.dow { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; padding: 0 4px; }
+.cell { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; min-height: 132px; padding: 6px; text-align: left; display: flex; flex-direction: column; gap: 4px; }
+.cell:hover { border-color: var(--muted); }
+.cell.out { opacity: .45; }
+.cell.today { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.cell.over { background: color-mix(in srgb, var(--bad) 7%, var(--panel)); }
+.cell .top { display: flex; align-items: center; justify-content: space-between; gap: 4px; }
+.cell .num { font: 800 15px/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.chips { display: flex; flex-direction: column; gap: 2px; }
+.chip { display: flex; align-items: center; gap: 5px; font-size: 11.5px; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.chip .sw { flex: none; width: 9px; height: 9px; border-radius: 2px; }
+.chip.short .sw { width: 5px; height: 11px; border-radius: 3px; }
+.chip.done { color: var(--muted); text-decoration: line-through; }
+.chip.skip { display: none; }
+.chip.opt { font-style: italic; }
+.dots { display: none; flex-wrap: wrap; gap: 3px; }
+.dots i { width: 8px; height: 8px; border-radius: 50%; }
+.dots i.short { border-radius: 2px; width: 5px; height: 9px; }
+.dots i.done { opacity: .3; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 14px; font-size: 12.5px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend .sw { width: 10px; height: 10px; border-radius: 2px; }
+.legend .short .sw { width: 5px; height: 12px; border-radius: 3px; }
+
+/* sheet */
+.scrim { position: fixed; inset: 0; background: rgb(0 0 0 / .35); z-index: 20; display: flex; justify-content: flex-end; }
+.sheet { background: var(--panel); width: min(460px, 100%); height: 100%; overflow-y: auto; border-left: 1px solid var(--line); display: flex; flex-direction: column; }
+.sheet-head { position: sticky; top: 0; background: var(--panel); display: flex; align-items: center; gap: 8px; padding: 14px; border-bottom: 1px solid var(--line); z-index: 1; }
+.sheet-head h3 { margin: 0; font: 800 18px/1.2 var(--font-display); flex: 1; }
+.sheet .day { border: 0; border-radius: 0; }
+.sheet-body { padding: 0 0 20px; }
+.sheet-note { padding: 10px 14px; font-size: 13px; color: var(--muted); }
+
+/* channels */
+.section-h { font: 800 18px/1.2 var(--font-display); margin: 26px 0 4px; }
+.section-p { color: var(--muted); margin: 0 0 12px; max-width: 70ch; font-size: 14px; }
+.limits { display: flex; flex-wrap: wrap; gap: 16px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; align-items: end; }
+label.f { display: grid; gap: 4px; font-size: 12.5px; color: var(--muted); font-weight: 500; }
+label.f input, label.f select { border: 1px solid var(--line); background: var(--bg); border-radius: 6px; padding: 6px 8px; font-size: 14px; color: var(--ink); min-width: 0; }
+label.f input[type="number"] { width: 72px; }
+label.f input[type="color"] { padding: 2px; width: 44px; height: 34px; }
+.chlist { display: grid; gap: 10px; }
+.ch { background: var(--panel); border: 1px solid var(--line); border-left: 6px solid var(--c); border-radius: 12px; padding: 12px 14px; display: grid; gap: 10px; }
+.ch.off { opacity: .6; }
+.ch-head { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.ch-head .nm { font: 800 16px/1.2 var(--font-display); flex: 1; min-width: 160px; }
+.ch-fields { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }
+.wdays { display: inline-flex; gap: 3px; }
+.wdays button { width: 34px; padding: 5px 0; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); font-size: 12.5px; font-weight: 600; color: var(--muted); }
+.wdays button[aria-pressed="true"] { background: var(--ink); color: var(--panel); border-color: var(--ink); }
+.switch { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
+.switch input { width: 18px; height: 18px; accent-color: var(--ok); }
+.rate { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.rate b { color: var(--ink); }
+.note { font-size: 12.5px; color: var(--muted); }
+
+table.week { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; background: var(--panel); }
+table.week th, table.week td { border: 1px solid var(--line); padding: 6px 8px; text-align: center; }
+table.week th:first-child, table.week td:first-child { text-align: left; white-space: nowrap; }
+table.week td.on { font-weight: 600; }
+table.week tfoot td { font-weight: 700; }
+table.week td.bad { color: var(--bad); }
+.tablewrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+.tablewrap table { border-style: hidden; }
+
+/* export modal */
+.modal { background: var(--panel); margin: auto; width: min(520px, calc(100% - 32px)); border-radius: 14px; border: 1px solid var(--line); padding: 18px; display: grid; gap: 12px; }
+.scrim.center { justify-content: center; align-items: center; }
+.modal h3 { margin: 0; font: 800 18px/1.2 var(--font-display); }
+.modal p { margin: 0; color: var(--muted); font-size: 14px; }
+.modal textarea { width: 100%; height: 140px; font: 12px/1.4 var(--font-mono); background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 8px; }
+.modal .row-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.msg { font-size: 13px; color: var(--ok); min-height: 1em; }
+.msg.err { color: var(--bad); }
+
+@media (max-width: 760px) {
+  .cell { min-height: 74px; padding: 5px; }
+  .chips { display: none; }
+  .dots { display: flex; }
+  .cell .meter { display: none; }
+  .grid { gap: 4px; }
+  .row { gap: 8px; padding: 9px 10px; }
+  .row .acts .btn { padding: 3px 6px; }
+  .movebox { padding-left: 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sheet { animation: slide .18s ease-out; }
+  @keyframes slide { from { transform: translateX(24px); opacity: .6; } to { transform: none; opacity: 1; } }
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="application/json" id="saved-state">null</script>
+<script id="app">
+"use strict";
+/* ================= ENGINE (pure: dates + planner) ================= */
+const DAY = 86400000;
+const WD = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+function toNum(s) { const [y, m, d] = s.split("-").map(Number); return Math.round(Date.UTC(y, m - 1, d) / DAY); }
+function toStr(n) { return new Date(n * DAY).toISOString().slice(0, 10); }
+function wd(n) { return ((n + 3) % 7 + 7) % 7; }            /* Mon = 0 … Sun = 6 */
+function monday(n) { return n - wd(n); }
+function todayNum() { const t = new Date(); return Math.round(Date.UTC(t.getFullYear(), t.getMonth(), t.getDate()) / DAY); }
+function ymd(n) { const d = new Date(n * DAY); return { y: d.getUTCFullYear(), m: d.getUTCMonth(), d: d.getUTCDate() }; }
+
+function combos(arr, k) {
+  const out = [];
+  const rec = (s, cur) => {
+    if (cur.length === k) { out.push(cur.slice()); return; }
+    for (let i = s; i < arr.length; i++) { cur.push(arr[i]); rec(i + 1, cur); cur.pop(); }
+  };
+  rec(0, []);
+  return out;
+}
+
+/* Plan one Monday-to-Sunday week. Fixed rules (every-N-days, set weekdays) go
+   down first; "N per week" channels are then placed on the combination of days
+   that keeps the daily load lowest and the posts evenly spaced, honouring the
+   daily caps, preferred days, and link groups (linked channels avoid sharing a day). */
+function planWeek(cfg, mon) {
+  const L = cfg.limits;
+  const posts = [];
+  const tot = [0,0,0,0,0,0,0], lng = [0,0,0,0,0,0,0], sht = [0,0,0,0,0,0,0];
+  const onDay = [0,1,2,3,4,5,6].map(() => new Set());
+  const linkOf = {};
+  cfg.channels.forEach(c => { linkOf[c.id] = (c.link || "").trim().toLowerCase(); });
+  const startOk = (c, n) => !c.start || n >= toNum(c.start);
+  const add = (c, i, id, optional) => {
+    posts.push({ id, ch: c.id, day: mon + i, optional: !!optional });
+    tot[i]++; if (c.kind === "long") lng[i]++; else sht[i]++;
+    onDay[i].add(c.id);
+  };
+  const active = cfg.channels.filter(c => c.enabled);
+
+  for (const c of active) {
+    const r = c.rule;
+    if (r.type !== "rolling" && r.type !== "weekly") continue;
+    for (let i = 0; i < 7; i++) {
+      const n = mon + i;
+      if (!startOk(c, n)) continue;
+      let hit = false;
+      if (r.type === "rolling") {
+        const a = toNum(r.anchor), e = Math.max(1, Math.round(r.every || 1));
+        hit = n >= a && (n - a) % e === 0;
+      } else hit = (r.days || []).includes(i);
+      if (hit) add(c, i, c.id + "|" + toStr(n));
+    }
+  }
+
+  const dayCost = (c, i) => {
+    let cost = 0;
+    const t = tot[i] + 1;
+    if (t > L.maxPerDay) cost += 1000 * (t - L.maxPerDay);
+    cost += t * t;
+    if (c.kind === "long") {
+      const l = lng[i] + 1;
+      if (l > L.maxLongPerDay) cost += 1000 * (l - L.maxLongPerDay);
+      cost += 1.5 * l * l;
+    } else {
+      const s = sht[i] + 1; cost += s * s;
+    }
+    const lk = linkOf[c.id];
+    if (lk) for (const o of onDay[i]) if (o !== c.id && linkOf[o] === lk) cost += 60;
+    const pref = c.rule.prefer || [];
+    if (pref.length && !pref.includes(i)) cost += 3;
+    return cost;
+  };
+
+  const flex = active.filter(c => c.rule.type === "flex")
+    .map((c, idx) => ({ c, idx }))
+    .sort((a, b) => (a.c.kind === b.c.kind ? 0 : a.c.kind === "long" ? -1 : 1) || (b.c.rule.perWeek - a.c.rule.perWeek) || (a.idx - b.idx))
+    .map(x => x.c);
+
+  for (const c of flex) {
+    const eligible = [0,1,2,3,4,5,6].filter(i => startOk(c, mon + i));
+    const k = Math.min(Math.max(0, Math.round(c.rule.perWeek || 0)), eligible.length);
+    if (!k) continue;
+    let best = null;
+    for (const D of combos(eligible, k)) {
+      let cost = 0;
+      for (const i of D) cost += dayCost(c, i);
+      if (k > 1) {
+        const ideal = 7 / k;
+        for (let j = 0; j < k; j++) {
+          const g = j < k - 1 ? D[j + 1] - D[j] : 7 - D[k - 1] + D[0];
+          cost += 2 * (g - ideal) * (g - ideal);
+        }
+      }
+      if (!best || cost < best.cost - 1e-9) best = { D, cost };
+    }
+    best.D.forEach((i, j) => add(c, i, c.id + "|w" + toStr(mon) + "|" + j));
+  }
+
+  /* optional extras ("1–2 a week"): only on days that still have room */
+  for (const c of flex) {
+    const extra = Math.round(c.rule.bonus || 0);
+    if (!extra) continue;
+    const used = new Set(posts.filter(p => p.ch === c.id).map(p => p.day - mon));
+    for (let b = 0; b < extra; b++) {
+      let best = null;
+      for (let i = 0; i < 7; i++) {
+        if (used.has(i) || !startOk(c, mon + i)) continue;
+        if (tot[i] >= L.maxPerDay) continue;
+        if (c.kind === "long" && lng[i] >= L.maxLongPerDay) continue;
+        let near = 0;
+        for (const u of used) { const g = Math.min(Math.abs(u - i), 7 - Math.abs(u - i)); if (g < 2) near += 4; }
+        const cost = dayCost(c, i) + near;
+        if (!best || cost < best.cost) best = { i, cost };
+      }
+      if (!best) break;
+      used.add(best.i);
+      add(c, best.i, c.id + "|w" + toStr(mon) + "|x" + b, true);
+    }
+  }
+  return posts;
+}
+/* ================= END ENGINE ================= */
+
+const DEFAULTS = {
+  limits: { maxPerDay: 5, maxLongPerDay: 3 },
+  channels: [
+    { id: "onepiece", name: "One Piece", kind: "long", color: "#E5484D", enabled: true, time: "17:00", link: "", start: "",
+      rule: { type: "rolling", every: 2, anchor: "2026-11-02" }, note: "Every 2 days from Monday, rolling on through the month." },
+    { id: "marvel", name: "Marvel", kind: "long", color: "#6E56CF", enabled: true, time: "17:00", link: "", start: "",
+      rule: { type: "rolling", every: 2, anchor: "2026-11-03" }, note: "The opposite days to One Piece." },
+    { id: "gta", name: "GTA", kind: "long", color: "#2B9A66", enabled: true, time: "15:00", link: "", start: "",
+      rule: { type: "weekly", days: [0, 2, 4, 6] }, note: "Mon, Wed, Fri, Sun every week." },
+    { id: "whatif", name: "What If", kind: "long", color: "#0090FF", enabled: true, time: "19:00", link: "commentary", start: "",
+      rule: { type: "flex", perWeek: 2, bonus: 0, prefer: [] }, note: "Linked with Streamer Commentary: never the same day." },
+    { id: "streamer", name: "Streamer Commentary", kind: "long", color: "#F76B15", enabled: true, time: "19:00", link: "commentary", start: "",
+      rule: { type: "flex", perWeek: 2, bonus: 0, prefer: [] }, note: "Linked with What If." },
+    { id: "truecrime", name: "True Crime", kind: "long", color: "#8E4B3A", enabled: true, time: "20:00", link: "crime-fitness", start: "",
+      rule: { type: "flex", perWeek: 2, bonus: 0, prefer: [2, 6] }, note: "Leans Wed + Sun; split from Fitness onto the lighter days." },
+    { id: "fitness", name: "Fitness", kind: "long", color: "#12A594", enabled: true, time: "08:00", link: "crime-fitness", start: "",
+      rule: { type: "flex", perWeek: 2, bonus: 0, prefer: [2, 6] }, note: "Leans Wed + Sun; split from True Crime." },
+    { id: "kids", name: "Kids (Pebblo Pebble)", kind: "long", color: "#E5A800", enabled: true, time: "10:00", link: "", start: "",
+      rule: { type: "flex", perWeek: 1, bonus: 1, prefer: [5, 6] }, note: "1 a week, plus a 2nd when a day has room. Flag as made for kids." },
+    { id: "minecraft", name: "Minecraft Animation", kind: "short", color: "#7FAE1B", enabled: true, time: "12:00", link: "mc-bball", start: "",
+      rule: { type: "flex", perWeek: 3, bonus: 0, prefer: [] }, note: "Linked with Basketball." },
+    { id: "basketball", name: "Basketball", kind: "short", color: "#D6409F", enabled: true, time: "12:00", link: "mc-bball", start: "",
+      rule: { type: "flex", perWeek: 3, bonus: 0, prefer: [] }, note: "Linked with Minecraft Animation." },
+    { id: "motivation", name: "Peak Motivation", kind: "short", color: "#AB4ABA", enabled: true, time: "07:00", link: "", start: "",
+      rule: { type: "flex", perWeek: 3, bonus: 0, prefer: [] }, note: "" },
+    { id: "fitshorts", name: "Fitness Shorts", kind: "short", color: "#3FC8B4", enabled: true, time: "13:00", link: "", start: "",
+      rule: { type: "flex", perWeek: 3, bonus: 0, prefer: [] }, note: "" },
+    { id: "finance", name: "Finance", kind: "long", color: "#7D8590", enabled: false, time: "18:00", link: "", start: "2027-01-04",
+      rule: { type: "flex", perWeek: 1, bonus: 0, prefer: [] }, note: "Coming later. Switch on when it's ready." }
+  ]
+};
+
+/* ================= STATE ================= */
+const LS_KEY = "posting-schedule-v1";
+const clone = o => JSON.parse(JSON.stringify(o));
+function loadState() {
+  let embedded = null, local = null;
+  try { embedded = JSON.parse(document.getElementById("saved-state").textContent); } catch (e) {}
+  try { local = JSON.parse(localStorage.getItem(LS_KEY)); } catch (e) {}
+  const pick = [embedded, local].filter(s => s && s.config && Array.isArray(s.config.channels))
+    .sort((a, b) => (b.rev || 0) - (a.rev || 0))[0];
+  const st = pick ? clone(pick) : { rev: 0, config: clone(DEFAULTS), overrides: {} };
+  st.overrides = st.overrides || {};
+  return { st, embeddedRev: embedded && embedded.rev || 0 };
+}
+let { st: state, embeddedRev } = loadState();
+let cfgVer = 0;
+const weekCache = new Map();
+let cacheVer = -1;
+function weekPosts(mon) {
+  if (cacheVer !== cfgVer) { weekCache.clear(); cacheVer = cfgVer; }
+  if (!weekCache.has(mon)) weekCache.set(mon, planWeek(state.config, mon));
+  return weekCache.get(mon);
+}
+const chMap = () => Object.fromEntries(state.config.channels.map(c => [c.id, c]));
+
+/* posts whose final day (after moves) falls in [a, b] */
+function postsBetween(a, b) {
+  const res = new Map();
+  for (let n = a; n <= b; n++) res.set(n, []);
+  const chs = chMap();
+  for (let m = monday(a) - 14; m <= monday(b) + 14; m += 7) {
+    for (const p of weekPosts(m)) {
+      const o = state.overrides[p.id] || {};
+      const day = o.move ? toNum(o.move) : p.day;
+      if (day < a || day > b || !chs[p.ch]) continue;
+      res.get(day).push({ ...p, day, orig: p.day, done: !!o.done, skip: !!o.skip, moved: !!o.move });
+    }
+  }
+  for (const list of res.values()) list.sort((x, y) => {
+    const cx = chs[x.ch], cy = chs[y.ch];
+    return (cx.time || "").localeCompare(cy.time || "") || (cx.kind === cy.kind ? 0 : cx.kind === "long" ? -1 : 1) || cx.name.localeCompare(cy.name);
+  });
+  return res;
+}
+function loadOf(list) {
+  const chs = chMap();
+  const live = list.filter(p => !p.skip);
+  const long = live.filter(p => chs[p.ch].kind === "long").length;
+  return { total: live.length, long, short: live.length - long, done: live.filter(p => p.done).length };
+}
+
+/* ================= SAVING ================= */
+let artifactApi = null, downloadsApi = null, saveTimer = null, saveMode = "local";
+const statusEl = () => document.getElementById("status");
+function setStatus(text, cls) { const el = statusEl(); if (el) { el.textContent = text; el.className = "status " + (cls || ""); } }
+function commit(configChanged) {
+  if (configChanged) cfgVer++;
+  state.rev = Date.now();
+  try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch (e) {}
+  if (artifactApi && saveMode !== "readonly") { setStatus("Unsaved changes…", "saving"); queuePublish(); }
+  else setStatus(saveMode === "readonly" ? "View only: changes stay on this device" : "Saved on this device");
+  render();
+}
+function queuePublish() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    const a = document.activeElement;
+    if (a && /^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName) && a.type !== "checkbox") { queuePublish(); return; }
+    if (document.querySelector(".movebox")) { queuePublish(); return; }
+    publishNow();
+  }, 2500);
+}
+function buildDocument() {
+  const css = document.getElementById("css").textContent;
+  const app = document.getElementById("app").textContent;
+  const json = JSON.stringify(state).replace(/</g, "\\u003c");
+  return "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n" +
+    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Posting Schedule</title>\n" +
+    "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n" +
+    "<link href=\"https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap\" rel=\"stylesheet\">\n" +
+    "<style id=\"css\">" + css + "</style>\n</head>\n<body>\n<div id=\"root\"></div>\n" +
+    "<script type=\"application/json\" id=\"saved-state\">" + json + "<\/script>\n" +
+    "<script id=\"app\">" + app + "<\/script>\n</body>\n</html>\n";
+}
+async function publishNow() {
+  if (!artifactApi) return;
+  setStatus("Saving…", "saving");
+  try { await artifactApi.publish(buildDocument()); setStatus("Saved"); }
+  catch (e) {
+    const code = e && e.code;
+    if (code === "conflict") setStatus("Someone else saved first; reloaded their version", "err");
+    else if (code === "not_granted" || code === "not_writer") { saveMode = "readonly"; setStatus("View only: changes stay on this device"); }
+    else setStatus("Couldn't save to the page; kept on this device", "err");
+  }
+}
+
+/* ================= HELPERS ================= */
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+function fmtDay(n, long) {
+  const { m, d } = ymd(n);
+  return long ? `${["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"][wd(n)]} ${d} ${MONTHS[m]}` : `${WD[wd(n)]} ${d} ${MONTHS[m].slice(0, 3)}`;
+}
+function meter(ld) {
+  const max = state.config.limits.maxPerDay;
+  const slots = Math.max(max, ld.total);
+  let h = "";
+  for (let i = 0; i < slots; i++) {
+    const cls = i >= max ? "over" : i < ld.long ? "l" : i < ld.total ? "s" : "";
+    h += `<i class="${cls}"></i>`;
+  }
+  return `<span class="meter" title="${ld.total} of ${max} posts">${h}</span>`;
+}
+function loadPills(ld) {
+  const L = state.config.limits;
+  let h = `<span class="counts">${ld.long} long · ${ld.short} short</span>`;
+  if (ld.total > L.maxPerDay) h += ` <span class="pill bad">${ld.total - L.maxPerDay} over the ${L.maxPerDay}/day cap</span>`;
+  else if (ld.long > L.maxLongPerDay) h += ` <span class="pill bad">too many long-forms</span>`;
+  if (ld.total && ld.done === ld.total) h += ` <span class="pill ok">all posted</span>`;
+  return h;
+}
+function ruleText(c) {
+  const r = c.rule;
+  if (r.type === "rolling") return r.every == 1 ? "Every day" : `Every ${r.every} days from ${fmtDay(toNum(r.anchor))}`;
+  if (r.type === "weekly") return (r.days || []).slice().sort().map(i => WD[i]).join(", ") || "No days picked";
+  let t = `${r.perWeek} a week`;
+  if (r.bonus) t += ` (+${r.bonus} if there's room)`;
+  if ((r.prefer || []).length) t += `, leaning ${r.prefer.slice().sort().map(i => WD[i]).join("/")}`;
+  return t;
+}
+
+/* ================= VIEW STATE ================= */
+const today = todayNum();
+const view = { tab: "next", month: null, day: null, moving: null, exportOpen: false };
+function readHash() {
+  const h = (location.hash || "").slice(1);
+  view.day = null;
+  if (h === "channels") view.tab = "channels";
+  else if (h === "week") view.tab = "week";
+  else if (/^month-\d{4}-\d{2}$/.test(h)) { view.tab = "month"; view.month = h.slice(6); }
+  else if (h === "month") view.tab = "month";
+  else if (/^day-\d{4}-\d{2}-\d{2}$/.test(h)) { view.tab = "month"; view.day = toNum(h.slice(4)); view.month = h.slice(4, 11); }
+  else view.tab = "next";
+  if (!view.month) view.month = toStr(today).slice(0, 7);
+}
+function go(hash) { if (location.hash.slice(1) === hash) { readHash(); render(); } else location.hash = hash; }
+
+/* ================= RENDER ================= */
+function rowHtml(p, chs) {
+  const c = chs[p.ch];
+  const cls = ["row", c.kind, p.done ? "done" : "", p.skip ? "skip" : ""].join(" ");
+  const meta = [`<span class="kind ${c.kind}">${c.kind === "long" ? "Long-form" : "Short"}</span>`, `<span class="time">${esc(c.time || "")}</span>`];
+  if (p.optional) meta.push(`<span>extra, if you have time</span>`);
+  if (p.moved) meta.push(`<span>moved from ${fmtDay(p.orig)}</span>`);
+  if (c.id === "kids") meta.push(`<span>made for kids</span>`);
+  let h = `<div class="${cls}" data-id="${esc(p.id)}" data-orig="${p.orig}">
+    <input type="checkbox" class="check" id="chk-${esc(p.id.replace(/[^a-z0-9]/gi, "-"))}" data-act="done" ${p.done ? "checked" : ""} ${p.skip ? "disabled" : ""} aria-label="Mark ${esc(c.name)} as posted">
+    <span class="bar" style="background:${esc(c.color)}"></span>
+    <div><div class="name">${esc(c.name)}</div><div class="meta">${meta.join("")}</div></div>
+    <div class="acts">
+      ${p.skip ? "" : `<button class="btn small ghost" data-act="move">Move</button>`}
+      <button class="btn small ghost" data-act="skip">${p.skip ? "Restore" : "Skip"}</button>
+    </div>`;
+  if (view.moving === p.id) {
+    const from = Math.max(p.orig - 3, today - 1), to = p.orig + 7;
+    const range = postsBetween(from, to);
+    let opts = "";
+    for (let n = from; n <= to; n++) {
+      const ld = loadOf(range.get(n));
+      const full = ld.total >= state.config.limits.maxPerDay || (c.kind === "long" && ld.long >= state.config.limits.maxLongPerDay);
+      opts += `<button data-act="moveto" data-to="${n}" class="${full ? "full" : ""} ${n === p.day ? "cur" : ""}">${fmtDay(n)} · ${ld.total}</button>`;
+    }
+    h += `<div class="movebox"><span class="note">Move to (number = posts that day):</span>${opts}<button data-act="movecancel">Cancel</button></div>`;
+  }
+  return h + `</div>`;
+}
+function dayBlock(n, list, chs, opts = {}) {
+  const ld = loadOf(list);
+  const isToday = n === today;
+  const rows = list.length ? list.map(p => rowHtml(p, chs)).join("") : `<div class="empty">Nothing scheduled. A free day.</div>`;
+  return `<section class="day ${isToday && !opts.inSheet ? "today" : ""}">
+    ${opts.inSheet ? "" : `<div class="day-head"><h3>${fmtDay(n, true)}</h3>${isToday ? `<span class="pill accent">Today</span>` : n === today + 1 ? `<span class="pill">Tomorrow</span>` : ""}${meter(ld)}${loadPills(ld)}</div>`}
+    ${opts.inSheet ? `<div class="day-head">${meter(ld)}${loadPills(ld)}</div>` : ""}
+    ${rows}</section>`;
+}
+
+function tilesFor(a, b, label) {
+  const range = postsBetween(a, b);
+  const L = state.config.limits;
+  let tot = 0, long = 0, done = 0, busiest = 0, over = 0, days = 0;
+  for (const list of range.values()) {
+    const ld = loadOf(list); days++;
+    tot += ld.total; long += ld.long; done += ld.done;
+    busiest = Math.max(busiest, ld.total);
+    if (ld.total > L.maxPerDay || ld.long > L.maxLongPerDay) over++;
+  }
+  return `<div class="tiles">
+    <div class="tile"><div class="k">${label}</div><div class="v">${tot}<small>posts</small></div></div>
+    <div class="tile"><div class="k">Long-form / Shorts</div><div class="v">${long} / ${tot - long}</div></div>
+    <div class="tile"><div class="k">Average per day</div><div class="v">${(tot / days).toFixed(1)}<small>cap ${L.maxPerDay}</small></div></div>
+    <div class="tile"><div class="k">Busiest day</div><div class="v">${busiest}<small>posts</small></div></div>
+    <div class="tile ${over ? "flag" : ""}"><div class="k">Days over a cap</div><div class="v">${over}</div></div>
+    <div class="tile"><div class="k">Posted</div><div class="v">${done}<small>of ${tot}</small></div></div>
+  </div>`;
+}
+
+function renderNext(chs) {
+  const end = today + 13;
+  const range = postsBetween(today, end);
+  let h = tilesFor(today, end, "Next 14 days");
+  h += `<div class="agenda">`;
+  for (let n = today; n <= end; n++) h += dayBlock(n, range.get(n), chs);
+  return h + `</div>`;
+}
+
+function renderWeek(chs) {
+  const L = state.config.limits;
+  const start = monday(today);
+  const weeks = [start, start + 7];
+  let h = "";
+  for (const m of weeks) {
+    const range = postsBetween(m, m + 6);
+    h += `<h2 class="section-h">${m === start ? "This week" : "Next week"} · ${fmtDay(m)} to ${fmtDay(m + 6)}</h2>`;
+    h += `<div class="tablewrap"><table class="week"><thead><tr><th>Channel</th>${[0,1,2,3,4,5,6].map(i => `<th>${WD[i]} ${ymd(m + i).d}</th>`).join("")}<th>Total</th></tr></thead><tbody>`;
+    for (const c of state.config.channels.filter(c => c.enabled)) {
+      let rowTot = 0, cells = "";
+      for (let i = 0; i < 7; i++) {
+        const ps = range.get(m + i).filter(p => p.ch === c.id && !p.skip);
+        rowTot += ps.length;
+        cells += `<td class="${ps.length ? "on" : ""}">${ps.length ? `<span class="meter"><i style="background:${esc(c.color)};border-color:${esc(c.color)}"></i></span>${ps.some(p => p.optional) ? "?" : ""}` : ""}</td>`;
+      }
+      h += `<tr><td>${esc(c.name)} <span class="kind ${c.kind}">${c.kind === "long" ? "L" : "S"}</span></td>${cells}<td>${rowTot}</td></tr>`;
+    }
+    let foot = "", grand = 0;
+    for (let i = 0; i < 7; i++) {
+      const ld = loadOf(range.get(m + i)); grand += ld.total;
+      foot += `<td class="${ld.total > L.maxPerDay || ld.long > L.maxLongPerDay ? "bad" : ""}">${ld.total} <span class="note">(${ld.long}L)</span></td>`;
+    }
+    h += `</tbody><tfoot><tr><td>Per day</td>${foot}<td>${grand}</td></tr></tfoot></table></div>`;
+  }
+  h += `<p class="note" style="margin-top:10px">L = long-form, S = short. “?” marks an extra post that only goes out if you have time.</p>`;
+  return h;
+}
+
+function renderMonth(chs) {
+  const [y, mo] = view.month.split("-").map(Number);
+  const first = toNum(`${y}-${String(mo).padStart(2, "0")}-01`);
+  const lastD = new Date(Date.UTC(y, mo, 0)).getUTCDate();
+  const last = first + lastD - 1;
+  const gridStart = monday(first), gridEnd = monday(last) + 6;
+  const range = postsBetween(gridStart, gridEnd);
+  const L = state.config.limits;
+  const prev = mo === 1 ? `${y - 1}-12` : `${y}-${String(mo - 1).padStart(2, "0")}`;
+  const next = mo === 12 ? `${y + 1}-01` : `${y}-${String(mo + 1).padStart(2, "0")}`;
+  let h = `<div class="month-bar">
+    <button class="btn" data-act="nav" data-to="month-${prev}" aria-label="Previous month">‹</button>
+    <h2>${MONTHS[mo - 1]} ${y}</h2>
+    <button class="btn" data-act="nav" data-to="month-${next}" aria-label="Next month">›</button>
+    <button class="btn ghost" data-act="nav" data-to="month-${toStr(today).slice(0, 7)}">This month</button>
+  </div>`;
+  h += tilesFor(first, last, `${MONTHS[mo - 1]} total`);
+  h += `<div class="grid">${WD.map(d => `<div class="dow">${d}</div>`).join("")}`;
+  for (let n = gridStart; n <= gridEnd; n++) {
+    const list = range.get(n);
+    const ld = loadOf(list);
+    const over = ld.total > L.maxPerDay || ld.long > L.maxLongPerDay;
+    const chips = list.map(p => { const c = chs[p.ch]; return `<span class="chip ${c.kind} ${p.done ? "done" : ""} ${p.skip ? "skip" : ""} ${p.optional ? "opt" : ""}"><span class="sw" style="background:${esc(c.color)}"></span>${esc(c.name)}</span>`; }).join("");
+    const dots = list.filter(p => !p.skip).map(p => { const c = chs[p.ch]; return `<i class="${c.kind} ${p.done ? "done" : ""}" style="background:${esc(c.color)}"></i>`; }).join("");
+    h += `<button class="cell ${n < first || n > last ? "out" : ""} ${n === today ? "today" : ""} ${over ? "over" : ""}" data-act="nav" data-to="day-${toStr(n)}" aria-label="${fmtDay(n, true)}: ${ld.total} posts">
+      <span class="top"><span class="num">${ymd(n).d}</span>${meter(ld)}</span>
+      <span class="chips">${chips}</span><span class="dots">${dots}</span></button>`;
+  }
+  h += `</div>`;
+  h += `<div class="legend">${state.config.channels.filter(c => c.enabled).map(c => `<span class="${c.kind}"><span class="sw" style="background:${esc(c.color)}"></span>${esc(c.name)}</span>`).join("")}</div>`;
+  h += `<p class="note">Square = long-form, tall bar = short. Bars in each day's meter: dark = long-form, light = short, red = over the daily cap. Tap a day to tick off, move or skip posts.</p>`;
+  return h;
+}
+
+function renderSheet(chs) {
+  const n = view.day;
+  const list = postsBetween(n, n).get(n);
+  return `<div class="scrim" data-act="closesheet"><div class="sheet" role="dialog" aria-label="${fmtDay(n, true)}">
+    <div class="sheet-head"><button class="btn small" data-act="dayshift" data-to="-1" aria-label="Previous day">‹</button><h3>${fmtDay(n, true)}</h3><button class="btn small" data-act="dayshift" data-to="1" aria-label="Next day">›</button><button class="btn small" data-act="closesheet">Close</button></div>
+    <div class="sheet-body">${dayBlock(n, list, chs, { inSheet: true })}
+    <p class="sheet-note">Ticks, moves and skips are saved with the schedule. Moving a post doesn't reshuffle anything else.</p></div>
+  </div></div>`;
+}
+
+function wdButtons(c, field) {
+  const sel = field === "days" ? (c.rule.days || []) : (c.rule.prefer || []);
+  return `<span class="wdays">${WD.map((d, i) => `<button type="button" data-act="wday" data-ch="${c.id}" data-field="${field}" data-i="${i}" aria-pressed="${sel.includes(i)}">${d.slice(0, 2)}</button>`).join("")}</span>`;
+}
+function renderChannels() {
+  const L = state.config.limits;
+  /* average over the next 8 weeks, so rolling rules show their true rate */
+  const s = monday(today), e = s + 55;
+  const range = postsBetween(s, e);
+  const per = {};
+  for (const list of range.values()) for (const p of list) if (!p.skip) per[p.ch] = (per[p.ch] || 0) + 1;
+  let longW = 0, shortW = 0;
+  state.config.channels.forEach(c => { const w = (per[c.id] || 0) / 8; if (c.kind === "long") longW += w; else shortW += w; });
+
+  let h = `<h2 class="section-h">Daily limits</h2>
+  <p class="section-p">The planner places the “N a week” channels around the fixed ones so no day goes over these. Right now that works out to about <b>${longW.toFixed(1)}</b> long-forms and <b>${shortW.toFixed(1)}</b> shorts a week, ${((longW + shortW) / 7).toFixed(1)} a day.</p>
+  <div class="limits">
+    <label class="f" for="lim-total">Most posts in a day<input id="lim-total" type="number" min="1" max="20" data-act="limit" data-field="maxPerDay" value="${L.maxPerDay}"></label>
+    <label class="f" for="lim-long">Most long-forms in a day<input id="lim-long" type="number" min="1" max="20" data-act="limit" data-field="maxLongPerDay" value="${L.maxLongPerDay}"></label>
+    <span class="spacer"></span>
+    <button class="btn" data-act="addch">Add a channel</button>
+    <button class="btn ghost" data-act="reset">Reset to the original schedule</button>
+  </div>
+  <h2 class="section-h">Channels</h2>
+  <p class="section-p">Change any rule and every calendar view updates. Channels with the same link group never post on the same day.</p>
+  <div class="chlist">`;
+  for (const c of state.config.channels) {
+    const r = c.rule, id = c.id;
+    let ruleFields = "";
+    if (r.type === "rolling") ruleFields = `
+      <label class="f" for="ev-${id}">Every … days<input id="ev-${id}" type="number" min="1" max="14" data-act="field" data-ch="${id}" data-field="rule.every" value="${r.every}"></label>
+      <label class="f" for="an-${id}">Starting on<input id="an-${id}" type="date" data-act="field" data-ch="${id}" data-field="rule.anchor" value="${esc(r.anchor)}"></label>`;
+    else if (r.type === "weekly") ruleFields = `<label class="f">Days${wdButtons(c, "days")}</label>`;
+    else ruleFields = `
+      <label class="f" for="pw-${id}">Per week<input id="pw-${id}" type="number" min="0" max="7" data-act="field" data-ch="${id}" data-field="rule.perWeek" value="${r.perWeek}"></label>
+      <label class="f" for="bo-${id}">Extra if room<input id="bo-${id}" type="number" min="0" max="7" data-act="field" data-ch="${id}" data-field="rule.bonus" value="${r.bonus || 0}"></label>
+      <label class="f">Lean towards${wdButtons(c, "prefer")}</label>`;
+    h += `<div class="ch ${c.enabled ? "" : "off"}" style="--c:${esc(c.color)}">
+      <div class="ch-head">
+        <span class="nm">${esc(c.name)}</span>
+        <span class="kind ${c.kind}">${c.kind === "long" ? "Long-form" : "Short"}</span>
+        <span class="rate"><b>${((per[c.id] || 0) / 8).toFixed(1)}</b> a week · ${esc(ruleText(c))}</span>
+        <label class="switch" for="en-${id}"><input id="en-${id}" type="checkbox" data-act="field" data-ch="${id}" data-field="enabled" ${c.enabled ? "checked" : ""}>On</label>
+      </div>
+      <div class="ch-fields">
+        <label class="f" for="nm-${id}">Name<input id="nm-${id}" type="text" data-act="field" data-ch="${id}" data-field="name" value="${esc(c.name)}"></label>
+        <label class="f" for="co-${id}">Colour<input id="co-${id}" type="color" data-act="field" data-ch="${id}" data-field="color" value="${esc(c.color)}"></label>
+        <label class="f" for="ki-${id}">Type<select id="ki-${id}" data-act="field" data-ch="${id}" data-field="kind"><option value="long" ${c.kind === "long" ? "selected" : ""}>Long-form</option><option value="short" ${c.kind === "short" ? "selected" : ""}>Short</option></select></label>
+        <label class="f" for="ru-${id}">Schedule<select id="ru-${id}" data-act="ruletype" data-ch="${id}">
+          <option value="rolling" ${r.type === "rolling" ? "selected" : ""}>Every N days</option>
+          <option value="weekly" ${r.type === "weekly" ? "selected" : ""}>Set weekdays</option>
+          <option value="flex" ${r.type === "flex" ? "selected" : ""}>N a week, auto-placed</option></select></label>
+        ${ruleFields}
+        <label class="f" for="ti-${id}">Post time<input id="ti-${id}" type="time" data-act="field" data-ch="${id}" data-field="time" value="${esc(c.time || "")}"></label>
+        <label class="f" for="st-${id}">From date<input id="st-${id}" type="date" data-act="field" data-ch="${id}" data-field="start" value="${esc(c.start || "")}"></label>
+        <label class="f" for="lk-${id}">Link group<input id="lk-${id}" type="text" size="12" placeholder="none" data-act="field" data-ch="${id}" data-field="link" value="${esc(c.link || "")}"></label>
+        ${c.custom ? `<button class="btn small ghost" data-act="delch" data-ch="${id}">Remove</button>` : ""}
+      </div>
+      ${c.note ? `<div class="note">${esc(c.note)}</div>` : ""}
+    </div>`;
+  }
+  return h + `</div>`;
+}
+
+function renderExport() {
+  return `<div class="scrim center" data-act="closeexport"><div class="modal" role="dialog" aria-label="Export the schedule">
+    <h3>Put it in your calendar</h3>
+    <p>The CSV imports straight into Google Calendar (Settings › Import &amp; export) and opens in Excel or Sheets. The .ics text works with Apple Calendar and Outlook: copy it into a file ending in .ics.</p>
+    <label class="f" for="ex-range">Range<select id="ex-range">
+      <option value="month">${MONTHS[Number(view.month.slice(5)) - 1]} ${view.month.slice(0, 4)} (the month on screen)</option>
+      <option value="30">Next 30 days</option>
+      <option value="90" selected>Next 90 days</option></select></label>
+    <div class="row-btns">
+      <button class="btn primary" data-act="dl-csv">Download CSV</button>
+      <button class="btn" data-act="copy-ics">Copy .ics text</button>
+      ${artifactApi ? "" : `<button class="btn" data-act="dl-ics">Download .ics</button>`}
+      <span class="spacer"></span><button class="btn ghost" data-act="closeexport">Close</button>
+    </div>
+    <div class="msg" id="ex-msg"></div>
+    <textarea id="ex-text" readonly aria-label="Calendar text" hidden></textarea>
+  </div></div>`;
+}
+
+function render() {
+  const chs = chMap();
+  const L = state.config.limits;
+  const on = state.config.channels.filter(c => c.enabled);
+  const tabs = [["next", "Next 14 days"], ["week", "Week grid"], ["month", "Month"], ["channels", "Channels"]];
+  let body = "";
+  if (view.tab === "next") body = renderNext(chs);
+  else if (view.tab === "week") body = renderWeek(chs);
+  else if (view.tab === "month") body = renderMonth(chs);
+  else body = renderChannels();
+  const prevStatus = statusEl() ? [statusEl().innerHTML, statusEl().className] : null;
+  const scrollY = window.scrollY;
+  const sheetScroll = document.querySelector(".sheet") ? document.querySelector(".sheet").scrollTop : 0;
+  document.getElementById("root").innerHTML = `
+  <header class="top"><div class="top-inner">
+    <div class="title-row">
+      <h1><span class="onair" aria-hidden="true"></span>Posting Schedule</h1>
+      <span class="sub">${on.length} channels · ${on.filter(c => c.kind === "long").length} long-form, ${on.filter(c => c.kind === "short").length} shorts · max ${L.maxPerDay} a day, ${L.maxLongPerDay} long</span>
+      <span class="spacer"></span>
+      <span id="status" class="status"></span>
+      <button class="btn" data-act="export">Export to calendar</button>
+    </div>
+    <nav class="tabs" aria-label="Views">${tabs.map(([k, t]) => `<button class="tab" data-act="nav" data-to="${k === "month" ? "month-" + view.month : k}" ${view.tab === k ? 'aria-current="page"' : ""}>${t}</button>`).join("")}</nav>
+  </div></header>
+  <main class="wrap">${body}</main>
+  ${view.tab === "month" && view.day != null ? renderSheet(chs) : ""}
+  ${view.exportOpen ? renderExport() : ""}`;
+  if (prevStatus) { statusEl().innerHTML = prevStatus[0]; statusEl().className = prevStatus[1]; }
+  else setStatus(saveMode === "local" && !artifactApi ? "Saved on this device" : "");
+  window.scrollTo(0, scrollY);
+  const sh = document.querySelector(".sheet"); if (sh) sh.scrollTop = sheetScroll;
+}
+
+/* ================= EXPORT ================= */
+function exportRange() {
+  const v = (document.getElementById("ex-range") || {}).value || "90";
+  if (v === "month") {
+    const [y, mo] = view.month.split("-").map(Number);
+    const a = toNum(`${view.month}-01`);
+    return [a, a + new Date(Date.UTC(y, mo, 0)).getUTCDate() - 1];
+  }
+  return [today, today + Number(v) - 1];
+}
+function exportPosts() {
+  const [a, b] = exportRange();
+  const range = postsBetween(a, b), chs = chMap(), out = [];
+  for (const [n, list] of range) for (const p of list) if (!p.skip) out.push({ n, p, c: chs[p.ch] });
+  return out;
+}
+function addMin(t, mins) { const [h, m] = (t || "12:00").split(":").map(Number); const x = h * 60 + m + mins; return [Math.floor(x / 60) % 24, x % 60]; }
+function buildCsv() {
+  const q = s => `"${String(s).replace(/"/g, '""')}"`;
+  const lines = ["Subject,Start Date,Start Time,End Date,End Time,All Day Event,Description"];
+  for (const { n, p, c } of exportPosts()) {
+    const { y, m, d } = ymd(n);
+    const date = `${String(m + 1).padStart(2, "0")}/${String(d).padStart(2, "0")}/${y}`;
+    const [h1, m1] = addMin(c.time, 0), [h2, m2] = addMin(c.time, 30);
+    const tm = (h, mi) => `${(h % 12) || 12}:${String(mi).padStart(2, "0")} ${h < 12 ? "AM" : "PM"}`;
+    const desc = `${c.kind === "long" ? "Long-form" : "Short"} upload${p.optional ? " (extra, if there's time)" : ""}${c.id === "kids" ? ". Flag as made for kids." : ""}`;
+    lines.push([q(`${c.name}: ${c.kind === "long" ? "long-form" : "short"}`), date, tm(h1, m1), date, tm(h2, m2), "False", q(desc)].join(","));
+  }
+  return lines.join("\r\n") + "\r\n";
+}
+function buildIcs() {
+  const e = s => String(s).replace(/\\/g, "\\\\").replace(/[,;]/g, m => "\\" + m).replace(/\n/g, "\\n");
+  const stamp = new Date().toISOString().replace(/[-:]/g, "").slice(0, 15) + "Z";
+  const L = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Posting Schedule//EN", "CALSCALE:GREGORIAN", "X-WR-CALNAME:Posting Schedule"];
+  for (const { n, p, c } of exportPosts()) {
+    const [h, m] = addMin(c.time, 0);
+    const dt = toStr(n).replace(/-/g, "") + "T" + String(h).padStart(2, "0") + String(m).padStart(2, "0") + "00";
+    L.push("BEGIN:VEVENT", `UID:${p.id.replace(/[^a-z0-9-]/gi, "-")}@posting-schedule`, `DTSTAMP:${stamp}`, `DTSTART:${dt}`, "DURATION:PT30M",
+      `SUMMARY:${e(c.name + ": " + (c.kind === "long" ? "long-form" : "short"))}`,
+      `DESCRIPTION:${e((c.kind === "long" ? "Long-form" : "Short") + " upload" + (p.optional ? " (extra, if there's time)" : ""))}`, "END:VEVENT");
+  }
+  L.push("END:VCALENDAR");
+  return L.join("\r\n") + "\r\n";
+}
+function exMsg(t, err) { const el = document.getElementById("ex-msg"); if (el) { el.textContent = t; el.className = "msg" + (err ? " err" : ""); } }
+async function saveFile(filename, data, mime) {
+  if (downloadsApi) {
+    try { await downloadsApi.save({ filename, data }); exMsg("Saved " + filename + "."); }
+    catch (e) { exMsg(e && e.code === "declined" ? "Download cancelled." : "This view can't save files. Use Copy instead.", e && e.code !== "declined"); }
+    return;
+  }
+  try {
+    const url = URL.createObjectURL(new Blob([data], { type: mime }));
+    const a = document.createElement("a"); a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+    exMsg("Downloading " + filename + ".");
+  } catch (e) { exMsg("Downloads are blocked here. Use Copy instead.", true); }
+}
+
+/* ================= EVENTS ================= */
+function setOverride(id, patch) {
+  const o = Object.assign({}, state.overrides[id] || {}, patch);
+  Object.keys(o).forEach(k => { if (!o[k]) delete o[k]; });
+  if (Object.keys(o).length) state.overrides[id] = o; else delete state.overrides[id];
+  commit(false);
+}
+function findChannel(id) { return state.config.channels.find(c => c.id === id); }
+
+document.addEventListener("click", async ev => {
+  const t = ev.target.closest("[data-act]");
+  if (!t) return;
+  const act = t.dataset.act;
+  const rowEl = t.closest(".row");
+  const pid = rowEl && rowEl.dataset.id;
+  if (act === "closesheet" && t.classList.contains("scrim") && ev.target !== t) return;
+  if (act === "closeexport" && t.classList.contains("scrim") && ev.target !== t) return;
+  switch (act) {
+    case "nav": go(t.dataset.to); break;
+    case "closesheet": go("month-" + view.month); break;
+    case "dayshift": go("day-" + toStr(view.day + Number(t.dataset.to))); break;
+    case "skip": {
+      const cur = state.overrides[pid] || {};
+      view.moving = null; setOverride(pid, { skip: !cur.skip, done: false }); break;
+    }
+    case "move": view.moving = view.moving === pid ? null : pid; render(); break;
+    case "movecancel": view.moving = null; render(); break;
+    case "moveto": {
+      const n = Number(t.dataset.to);
+      view.moving = null;
+      setOverride(pid, { move: n === Number(rowEl.dataset.orig) ? "" : toStr(n) });
+      break;
+    }
+    case "savenow": publishNow(); break;
+    case "export": view.exportOpen = true; render(); break;
+    case "closeexport": view.exportOpen = false; render(); break;
+    case "dl-csv": saveFile("posting-schedule.csv", buildCsv(), "text/csv"); break;
+    case "dl-ics": saveFile("posting-schedule.ics", buildIcs(), "text/calendar"); break;
+    case "copy-ics": {
+      const text = buildIcs();
+      const ta = document.getElementById("ex-text");
+      ta.hidden = false; ta.value = text;
+      try { await navigator.clipboard.writeText(text); exMsg("Copied. Paste it into a new file named schedule.ics, then open that file."); }
+      catch (e) { ta.select(); exMsg("Copying is blocked here. The text is selected below: copy it by hand."); }
+      break;
+    }
+    case "wday": {
+      const c = findChannel(t.dataset.ch), f = t.dataset.field, i = Number(t.dataset.i);
+      const arr = (c.rule[f] || []).slice();
+      const k = arr.indexOf(i); if (k >= 0) arr.splice(k, 1); else arr.push(i);
+      c.rule[f] = arr.sort(); commit(true); break;
+    }
+    case "reset": {
+      if (t.dataset.confirm !== "1") { t.dataset.confirm = "1"; t.textContent = "Tap again to reset everything"; t.classList.add("primary"); return; }
+      state.config = clone(DEFAULTS); state.overrides = {}; commit(true); break;
+    }
+    case "addch": {
+      const id = "ch" + Date.now().toString(36);
+      state.config.channels.push({ id, name: "New channel", kind: "short", color: "#888888", enabled: true, time: "12:00", link: "", start: "", custom: true,
+        rule: { type: "flex", perWeek: 2, bonus: 0, prefer: [] }, note: "" });
+      commit(true); break;
+    }
+    case "delch": state.config.channels = state.config.channels.filter(c => c.id !== t.dataset.ch); commit(true); break;
+  }
+});
+document.addEventListener("change", ev => {
+  const t = ev.target;
+  const act = t.dataset && t.dataset.act;
+  if (!act) return;
+  if (act === "done") { const pid = t.closest(".row").dataset.id; setOverride(pid, { done: t.checked }); return; }
+  if (act === "limit") { const v = Math.max(1, Math.round(Number(t.value) || 1)); state.config.limits[t.dataset.field] = v; commit(true); return; }
+  if (act === "ruletype") {
+    const c = findChannel(t.dataset.ch), v = t.value;
+    if (v === "rolling") c.rule = { type: "rolling", every: 2, anchor: toStr(monday(today) + 7) };
+    else if (v === "weekly") c.rule = { type: "weekly", days: [0, 2, 4] };
+    else c.rule = { type: "flex", perWeek: 2, bonus: 0, prefer: [] };
+    commit(true); return;
+  }
+  if (act === "field") {
+    const c = findChannel(t.dataset.ch), f = t.dataset.field;
+    let v = t.type === "checkbox" ? t.checked : t.value;
+    if (t.type === "number") v = Math.max(0, Math.round(Number(v) || 0));
+    if (f === "rule.every") v = Math.max(1, v);
+    if ((f === "rule.anchor") && !v) return;
+    if (f.startsWith("rule.")) c.rule[f.slice(5)] = v; else c[f] = v;
+    commit(true);
+  }
+});
+document.addEventListener("keydown", ev => {
+  if (ev.key !== "Escape") return;
+  if (view.exportOpen) { view.exportOpen = false; render(); }
+  else if (view.day != null) go("month-" + view.month);
+});
+window.addEventListener("hashchange", () => { view.moving = null; readHash(); render(); });
+
+readHash();
+render();
+if (window.claude && typeof window.claude.use === "function") {
+  window.claude.use("artifact").then(a => {
+    if (!a) return;
+    artifactApi = a; saveMode = "page";
+    /* this device has newer changes than the page: offer them up */
+    if ((state.rev || 0) > embeddedRev) {
+      const el = statusEl();
+      if (el) { el.className = "status saving"; el.innerHTML = 'This device has changes the page doesn\u2019t <button class="btn small" data-act="savenow">Save them</button>'; }
+    } else setStatus("Saved");
+  }).catch(() => {});
+  window.claude.use("downloads").then(d => { if (d) downloadsApi = d; }).catch(() => {});
+}
+</script>
+</body>
+</html>
