@@ -211,6 +211,57 @@ table.week td.bad { color: var(--bad); }
   .sheet { animation: slide .18s ease-out; }
   @keyframes slide { from { transform: translateX(24px); opacity: .6; } to { transform: none; opacity: 1; } }
 }
+
+/* ---------- results tracker ---------- */
+.res-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; margin-top: 18px; }
+.banner { margin-top: 14px; padding: 10px 14px; border-radius: 10px; border: 1px dashed var(--warn); background: color-mix(in srgb, var(--warn) 10%, var(--panel)); font-size: 14px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.insights { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
+.ins { background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--ink); border-radius: 10px; padding: 10px 12px; font-size: 14px; }
+.ins.good { border-left-color: var(--ok); }
+.ins.fix { border-left-color: var(--warn); }
+.ins h4 { margin: 0 0 3px; font: 600 12px/1.3 var(--font-body); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.ins p { margin: 0; }
+.ins button.linkish { border: 0; background: none; padding: 0; color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; text-align: left; }
+table.lb { width: 100%; border-collapse: collapse; font-size: 13.5px; font-variant-numeric: tabular-nums; background: var(--panel); }
+table.lb th, table.lb td { padding: 7px 9px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+table.lb th { font-size: 12px; color: var(--muted); font-weight: 600; position: sticky; top: 0; background: var(--panel); }
+table.lb th button { border: 0; background: none; padding: 0; font: inherit; color: inherit; }
+table.lb th button[aria-sort] { color: var(--ink); }
+table.lb td.t, table.lb th.t { text-align: left; white-space: normal; min-width: 220px; }
+table.lb tbody tr { cursor: pointer; }
+table.lb tbody tr:hover { background: var(--soft); }
+table.lb .vt { font-weight: 600; }
+table.lb .vs { font-size: 12px; color: var(--muted); display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; }
+.hi { color: var(--ok); font-weight: 600; }
+.lo { color: var(--bad); }
+.score { font-weight: 700; }
+.tagchip { font-size: 11px; padding: 1px 6px; border-radius: 999px; background: var(--soft); color: var(--muted); }
+.charts { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 12px; align-items: start; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; position: relative; }
+.card h3 { margin: 0 0 2px; font: 800 15px/1.2 var(--font-display); }
+.card .cap { margin: 0 0 8px; font-size: 12.5px; color: var(--muted); }
+.card svg { width: 100%; height: auto; display: block; }
+.card svg text { fill: var(--muted); font: 11px var(--font-body); }
+.card svg .grid { stroke: var(--line); stroke-width: 1; }
+.card svg .med { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 4 4; }
+.card svg .q { fill: var(--ink); font-weight: 600; opacity: .55; }
+.card svg circle.dot { fill: var(--ink); stroke: var(--panel); stroke-width: 2; cursor: pointer; }
+.card svg circle.dot:hover, .card svg circle.dot.on { fill: var(--accent); }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--panel); font-size: 12px; padding: 6px 8px; border-radius: 6px; max-width: 240px; z-index: 3; }
+.bars { display: grid; gap: 6px; }
+.bars .b { display: grid; grid-template-columns: minmax(90px, 140px) 1fr auto; gap: 8px; align-items: center; font-size: 13px; font-variant-numeric: tabular-nums; }
+.bars .b .nm { display: flex; gap: 6px; align-items: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bars .track { height: 12px; }
+.bars .fill { height: 12px; background: var(--ink); border-radius: 0 4px 4px 0; min-width: 2px; opacity: .8; }
+.form { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+.form .wide { grid-column: 1 / -1; }
+.form label.f input, .form label.f select, .form label.f textarea { width: 100%; }
+label.f textarea { border: 1px solid var(--line); background: var(--bg); border-radius: 6px; padding: 6px 8px; font: 14px var(--font-body); color: var(--ink); min-height: 60px; }
+.modal.big { width: min(720px, calc(100% - 32px)); max-height: calc(100% - 32px); overflow-y: auto; }
+.modal ol { margin: 0; padding-left: 20px; font-size: 14px; color: var(--muted); display: grid; gap: 3px; }
+.fieldset-h { grid-column: 1 / -1; font: 600 12px var(--font-body); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-top: 4px; }
+@media (max-width: 760px) { .charts { grid-template-columns: 1fr; } .card svg text { font-size: 17px; } }
 </style>
 </head>
 <body>
@@ -441,7 +492,7 @@ function queuePublish() {
   saveTimer = setTimeout(() => {
     const a = document.activeElement;
     if (a && /^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName) && a.type !== "checkbox") { queuePublish(); return; }
-    if (document.querySelector(".movebox")) { queuePublish(); return; }
+    if (document.querySelector(".movebox") || editing || importOpen) { queuePublish(); return; }
     publishNow();
   }, 2500);
 }
@@ -510,6 +561,7 @@ function readHash() {
   const h = (location.hash || "").slice(1);
   view.day = null;
   if (h === "channels") view.tab = "channels";
+  else if (h === "results") view.tab = "results";
   else if (h === "week") view.tab = "week";
   else if (/^month-\d{4}-\d{2}$/.test(h)) { view.tab = "month"; view.month = h.slice(6); }
   else if (h === "month") view.tab = "month";
@@ -527,11 +579,12 @@ function rowHtml(p, chs) {
   if (p.optional) meta.push(`<span>extra, if you have time</span>`);
   if (p.moved) meta.push(`<span>moved from ${fmtDay(p.orig)}</span>`);
   if (c.id === "kids") meta.push(`<span>made for kids</span>`);
-  let h = `<div class="${cls}" data-id="${esc(p.id)}" data-orig="${p.orig}">
+  let h = `<div class="${cls}" data-id="${esc(p.id)}" data-orig="${p.orig}" data-day="${p.day}">
     <input type="checkbox" class="check" id="chk-${esc(p.id.replace(/[^a-z0-9]/gi, "-"))}" data-act="done" ${p.done ? "checked" : ""} ${p.skip ? "disabled" : ""} aria-label="Mark ${esc(c.name)} as posted">
     <span class="bar" style="background:${esc(c.color)}"></span>
     <div><div class="name">${esc(c.name)}</div><div class="meta">${meta.join("")}</div></div>
     <div class="acts">
+      ${p.done ? (state.videos || []).some(v => v.post === p.id) ? `<button class="btn small" data-act="addresult">Results ✓</button>` : `<button class="btn small" data-act="addresult">Add results</button>` : ""}
       ${p.skip ? "" : `<button class="btn small ghost" data-act="move">Move</button>`}
       <button class="btn small ghost" data-act="skip">${p.skip ? "Restore" : "Skip"}</button>
     </div>`;
@@ -747,11 +800,12 @@ function render() {
   const chs = chMap();
   const L = state.config.limits;
   const on = state.config.channels.filter(c => c.enabled);
-  const tabs = [["next", "Next 14 days"], ["week", "Week grid"], ["month", "Month"], ["channels", "Channels"]];
+  const tabs = [["next", "Next 14 days"], ["week", "Week grid"], ["month", "Month"], ["results", "Results"], ["channels", "Channels"]];
   let body = "";
   if (view.tab === "next") body = renderNext(chs);
   else if (view.tab === "week") body = renderWeek(chs);
   else if (view.tab === "month") body = renderMonth(chs);
+  else if (view.tab === "results") body = renderResults();
   else body = renderChannels();
   const prevStatus = statusEl() ? [statusEl().innerHTML, statusEl().className] : null;
   const scrollY = window.scrollY;
@@ -769,11 +823,14 @@ function render() {
   </div></header>
   <main class="wrap">${body}</main>
   ${view.tab === "month" && view.day != null ? renderSheet(chs) : ""}
-  ${view.exportOpen ? renderExport() : ""}`;
+  ${view.exportOpen ? renderExport() : ""}
+  ${editing ? renderEditor() : ""}
+  ${importOpen ? renderImport() : ""}`;
   if (prevStatus) { statusEl().innerHTML = prevStatus[0]; statusEl().className = prevStatus[1]; }
   else setStatus(saveMode === "local" && !artifactApi ? "Saved on this device" : "");
   window.scrollTo(0, scrollY);
   const sh = document.querySelector(".sheet"); if (sh) sh.scrollTop = sheetScroll;
+  wireScatterTips();
 }
 
 /* ================= EXPORT ================= */
@@ -835,6 +892,400 @@ async function saveFile(filename, data, mime) {
   } catch (e) { exMsg("Downloads are blocked here. Use Copy instead.", true); }
 }
 
+/* ================= RESULTS (video performance tracker) ================= */
+/* Each video: { id, vid (YouTube id), ch, title, published, kind, duration (s), asOf, tags[], notes, post (schedule post id), sample, m: {metrics} } */
+const METRICS = [
+  { k: "views", label: "Views", fmt: "int" },
+  { k: "impressions", label: "Impressions", fmt: "int" },
+  { k: "ctr", label: "Click-through rate (%)", short: "CTR", fmt: "pct" },
+  { k: "avd", label: "Avg view duration (m:ss)", short: "Avg view", fmt: "dur" },
+  { k: "avp", label: "Avg % viewed", short: "% viewed", fmt: "pct" },
+  { k: "stayed", label: "Stayed to watch (%)", short: "Stayed", fmt: "pct" },
+  { k: "likes", label: "Likes", fmt: "int" },
+  { k: "comments", label: "Comments", fmt: "int" },
+  { k: "shares", label: "Shares", fmt: "int" },
+  { k: "subs", label: "Subscribers gained", short: "Subs", fmt: "int" },
+  { k: "watchHours", label: "Watch time (hours)", short: "Watch hrs", fmt: "dec" },
+  { k: "revenue", label: "Revenue ($)", short: "Revenue", fmt: "money" }
+];
+const MDEF = Object.fromEntries(METRICS.map(m => [m.k, m]));
+const SAMPLE_VIDEOS = (() => {
+  const v = (ch, title, published, kind, m, tags) => ({ id: "s-" + ch + published, vid: "", ch, title, published, kind, duration: kind === "short" ? 45 : 720, asOf: "2026-10-30", tags, notes: "", sample: true, m });
+  return [
+    v("onepiece", "Every Gear 5 fight ranked", "2026-10-05", "long", { views: 48200, impressions: 512000, ctr: 7.9, avd: 402, avp: 46, likes: 2100, comments: 388, shares: 140, subs: 610, watchHours: 5380 }, ["ranking", "luffy"]),
+    v("onepiece", "Why Shanks is scarier than you think", "2026-10-12", "long", { views: 19500, impressions: 371000, ctr: 4.6, avd: 455, avp: 52, likes: 980, comments: 240, shares: 61, subs: 205, watchHours: 2460 }, ["theory"]),
+    v("onepiece", "Ranking every Straw Hat bounty", "2026-10-19", "long", { views: 31800, impressions: 402000, ctr: 6.8, avd: 300, avp: 34, likes: 1400, comments: 510, shares: 77, subs: 300, watchHours: 2650 }, ["ranking"]),
+    v("marvel", "What if Thanos won? The real answer", "2026-10-06", "long", { views: 22100, impressions: 298000, ctr: 6.1, avd: 380, avp: 41, likes: 1150, comments: 230, shares: 88, subs: 190, watchHours: 2330 }, ["theory"]),
+    v("marvel", "Every Avengers team ranked", "2026-10-15", "long", { views: 40300, impressions: 455000, ctr: 7.2, avd: 420, avp: 48, likes: 2300, comments: 460, shares: 150, subs: 520, watchHours: 4700 }, ["ranking"]),
+    v("gta", "GTA 6 map vs GTA 5 map", "2026-10-07", "long", { views: 61000, impressions: 690000, ctr: 8.4, avd: 350, avp: 39, likes: 3100, comments: 900, shares: 300, subs: 840, watchHours: 5930 }, ["comparison"]),
+    v("gta", "Things you missed in the trailer", "2026-10-14", "long", { views: 14800, impressions: 330000, ctr: 3.9, avd: 410, avp: 50, likes: 700, comments: 160, shares: 40, subs: 110, watchHours: 1690 }, ["breakdown"]),
+    v("truecrime", "The case that was solved by a receipt", "2026-10-09", "long", { views: 9800, impressions: 140000, ctr: 6.6, avd: 760, avp: 44, likes: 520, comments: 190, shares: 35, subs: 160, watchHours: 2070 }, ["case"]),
+    v("minecraft", "When the creeper has a bad day", "2026-10-10", "short", { views: 182000, likes: 9100, comments: 310, shares: 1200, subs: 420, stayed: 78, avd: 31, avp: 92 }, ["creeper"]),
+    v("minecraft", "Steve tries to sleep", "2026-10-17", "short", { views: 39000, likes: 1600, comments: 60, shares: 150, subs: 70, stayed: 61, avd: 22, avp: 71 }, ["steve"]),
+    v("basketball", "The fastest ankle-breaker ever", "2026-10-11", "short", { views: 96000, likes: 5200, comments: 260, shares: 610, subs: 250, stayed: 74, avd: 24, avp: 88 }, ["highlight"]),
+    v("motivation", "Nobody is coming to save you", "2026-10-13", "short", { views: 27000, likes: 2400, comments: 120, shares: 900, subs: 140, stayed: 69, avd: 33, avp: 79 }, ["speech"])
+  ];
+})();
+
+const rview = { ch: "all", kind: "all", period: "all", sort: "score", dir: -1 };
+let editing = null;      /* video being edited (a copy) */
+let importOpen = false;
+
+const median = a => { const s = a.filter(x => x != null && !isNaN(x)).sort((x, y) => x - y); if (!s.length) return null; const h = s.length >> 1; return s.length % 2 ? s[h] : (s[h - 1] + s[h]) / 2; };
+const num = x => (x === "" || x == null || isNaN(Number(x))) ? null : Number(x);
+function fmtVal(k, x) {
+  if (x == null) return "–";
+  const f = (MDEF[k] || {}).fmt || k;
+  if (f === "int") return Math.round(x).toLocaleString("en-GB");
+  if (f === "pct") return x.toFixed(1) + "%";
+  if (f === "dec") return x.toFixed(1);
+  if (f === "money") return "$" + x.toFixed(2);
+  if (f === "dur") { const s = Math.round(x); const h = Math.floor(s / 3600), mm = Math.floor(s % 3600 / 60), ss = s % 60; return (h ? h + ":" + String(mm).padStart(2, "0") : mm) + ":" + String(ss).padStart(2, "0"); }
+  if (f === "x") return x.toFixed(1) + "×";
+  return String(x);
+}
+function compact(x) { if (x == null) return "–"; if (x >= 1e6) return (x / 1e6).toFixed(1) + "M"; if (x >= 1e4) return Math.round(x / 1e3) + "k"; if (x >= 1e3) return (x / 1e3).toFixed(1) + "k"; return String(Math.round(x)); }
+function parseDur(s) {
+  if (s == null || s === "") return null;
+  if (typeof s === "number") return s;
+  s = String(s).trim();
+  if (/^\d+(\.\d+)?$/.test(s)) return Number(s);
+  const p = s.split(":").map(Number); if (p.some(isNaN)) return null;
+  return p.reduce((a, b) => a * 60 + b, 0);
+}
+function ytId(s) {
+  s = String(s || "").trim();
+  const m = s.match(/(?:v=|youtu\.be\/|shorts\/|embed\/|live\/)([\w-]{11})/);
+  if (m) return m[1];
+  return /^[\w-]{11}$/.test(s) ? s : "";
+}
+/* retention means % viewed for long-form; for Shorts, "stayed to watch" when YouTube gives it */
+const retOf = v => v.kind === "short" ? (v.m.stayed != null ? v.m.stayed : v.m.avp) : v.m.avp;
+const engOf = v => v.m.views ? ((v.m.likes || 0) + (v.m.comments || 0) + (v.m.shares || 0)) / v.m.views * 100 : null;
+const subsK = v => v.m.views && v.m.subs != null ? v.m.subs / v.m.views * 1000 : null;
+
+/* every video gets compared with the median of its own channel + format */
+function enrich(videos) {
+  const groups = {};
+  for (const v of videos) (groups[v.ch + "|" + v.kind] = groups[v.ch + "|" + v.kind] || []).push(v);
+  const base = {};
+  for (const [g, list] of Object.entries(groups)) base[g] = {
+    views: median(list.map(v => v.m.views)), ctr: median(list.map(v => v.m.ctr)), ret: median(list.map(retOf)), n: list.length
+  };
+  return videos.map(v => {
+    const b = base[v.ch + "|" + v.kind];
+    return { v, b, score: b.views && v.m.views != null && b.n > 1 ? v.m.views / b.views : null, ret: retOf(v), eng: engOf(v), subsK: subsK(v) };
+  });
+}
+function filteredVideos() {
+  let list = state.videos.slice();
+  if (rview.ch !== "all") list = list.filter(v => v.ch === rview.ch);
+  if (rview.kind !== "all") list = list.filter(v => v.kind === rview.kind);
+  if (rview.period !== "all") { const cut = today - Number(rview.period); list = list.filter(v => v.published && toNum(v.published) >= cut); }
+  return list;
+}
+
+function insightsHtml(rows, all) {
+  const out = [];
+  const chs = chMap();
+  const link = r => `<button class="linkish" data-act="editvid" data-vid="${esc(r.v.id)}">${esc(r.v.title)}</button>`;
+  const scored = rows.filter(r => r.score != null);
+  if (scored.length) {
+    const best = scored.slice().sort((a, b) => b.score - a.score)[0];
+    if (best.score >= 1.3) out.push(["good", "Breakout", `${link(best)} got <b>${best.score.toFixed(1)}×</b> the usual views for ${esc((chs[best.v.ch] || {}).name || "its channel")}. Make a follow-up on the same idea.`]);
+  }
+  const pack = rows.filter(r => r.v.kind === "long" && r.v.m.ctr != null && r.ret != null && r.b.ctr && r.b.ret && r.b.n > 2 && r.ret >= r.b.ret && r.v.m.ctr < r.b.ctr * 0.8)
+    .sort((a, b) => a.v.m.ctr / a.b.ctr - b.v.m.ctr / b.b.ctr)[0];
+  if (pack) out.push(["fix", "Fix the thumbnail or title", `${link(pack)} holds viewers well (${fmtVal("avp", pack.ret)} watched) but only ${fmtVal("ctr", pack.v.m.ctr)} click, against ${fmtVal("ctr", pack.b.ctr)} usually. A new thumbnail or title could lift it.`]);
+  const hook = rows.filter(r => r.v.kind === "long" && r.v.m.ctr != null && r.ret != null && r.b.ctr && r.b.ret && r.b.n > 2 && r.v.m.ctr >= r.b.ctr && r.ret < r.b.ret * 0.85)
+    .sort((a, b) => a.ret / a.b.ret - b.ret / b.b.ret)[0];
+  if (hook) out.push(["fix", "Fix the opening", `${link(hook)} gets clicks (${fmtVal("ctr", hook.v.m.ctr)}) but viewers leave early (${fmtVal("avp", hook.ret)} watched vs ${fmtVal("avp", hook.b.ret)} usual). Check that the first 30 seconds deliver what the title promises.`]);
+  /* best weekday by median score */
+  const byDay = {};
+  for (const r of scored) if (r.v.published) (byDay[wd(toNum(r.v.published))] = byDay[wd(toNum(r.v.published))] || []).push(r.score);
+  const days = Object.entries(byDay).filter(([, s]) => s.length >= 2).map(([d, s]) => [Number(d), median(s), s.length]).sort((a, b) => b[1] - a[1]);
+  if (days.length >= 3 && days[0][1] - days[days.length - 1][1] >= 0.3) out.push(["", "Best day to post", `Videos posted on <b>${["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"][days[0][0]]}</b> do best: ${days[0][1].toFixed(1)}× usual views across ${days[0][2]} videos. The weakest is ${WD[days[days.length - 1][0]]} at ${days[days.length - 1][1].toFixed(1)}×.`]);
+  /* best tag */
+  const byTag = {};
+  for (const r of scored) for (const t of r.v.tags || []) (byTag[t] = byTag[t] || []).push(r.score);
+  const tags = Object.entries(byTag).filter(([, s]) => s.length >= 2).map(([t, s]) => [t, median(s), s.length]).sort((a, b) => b[1] - a[1]);
+  if (tags.length >= 2) out.push(["good", "Best topic tag", `Videos tagged <b>${esc(tags[0][0])}</b> get ${tags[0][1].toFixed(1)}× usual views (${tags[0][2]} videos). <b>${esc(tags[tags.length - 1][0])}</b> is lowest at ${tags[tags.length - 1][1].toFixed(1)}×.`]);
+  /* long vs short */
+  const L = all.filter(r => r.v.kind === "long"), S = all.filter(r => r.v.kind === "short");
+  if (L.length >= 2 && S.length >= 2) {
+    const ls = median(L.map(r => r.subsK)), ss = median(S.map(r => r.subsK));
+    if (ls != null && ss != null) out.push(["", "Long-form vs Shorts", `Shorts get ${compact(median(S.map(r => r.v.m.views)))} views each and long-forms get ${compact(median(L.map(r => r.v.m.views)))}. Long-forms bring <b>${ls.toFixed(1)}</b> subscribers per 1,000 views, Shorts <b>${ss.toFixed(1)}</b>.`]);
+  }
+  if (!out.length) return `<p class="note">Insights appear once a channel has 3 or more videos with numbers in.</p>`;
+  return `<div class="insights">${out.map(([cls, h, p]) => `<div class="ins ${cls}"><h4>${h}</h4><p>${p}</p></div>`).join("")}</div>`;
+}
+
+function scatterHtml(rows) {
+  const pts = rows.filter(r => r.v.kind === "long" && r.v.m.ctr != null && r.ret != null);
+  if (pts.length < 3) return `<div class="card"><h3>Clicks vs watching</h3><p class="cap">Needs 3 long-form videos with CTR and % viewed filled in.</p></div>`;
+  const W = 600, H = 330, pl = 44, pr = 14, pt = 14, pb = 38;
+  const xmax = Math.max(4, Math.ceil(Math.max(...pts.map(r => r.v.m.ctr)) * 1.15));
+  const ymax = Math.min(100, Math.max(20, Math.ceil(Math.max(...pts.map(r => r.ret)) * 1.15 / 10) * 10));
+  const X = x => pl + x / xmax * (W - pl - pr), Y = y => H - pb - y / ymax * (H - pt - pb);
+  const mx = median(pts.map(r => r.v.m.ctr)), my = median(pts.map(r => r.ret));
+  let g = "";
+  const xs = xmax <= 10 ? 2 : xmax <= 20 ? 4 : 5;
+  for (let x = 0; x <= xmax; x += xs) g += `<line class="grid" x1="${X(x)}" x2="${X(x)}" y1="${pt}" y2="${H - pb}"/><text x="${X(x)}" y="${H - pb + 15}" text-anchor="middle">${x}%</text>`;
+  for (let y = 0; y <= ymax; y += ymax <= 40 ? 10 : 20) g += `<line class="grid" x1="${pl}" x2="${W - pr}" y1="${Y(y)}" y2="${Y(y)}"/><text x="${pl - 6}" y="${Y(y) + 4}" text-anchor="end">${y}%</text>`;
+  g += `<line class="med" x1="${X(mx)}" x2="${X(mx)}" y1="${pt}" y2="${H - pb}"/><line class="med" x1="${pl}" x2="${W - pr}" y1="${Y(my)}" y2="${Y(my)}"/>`;
+  g += `<text class="q" x="${W - pr - 4}" y="${pt + 12}" text-anchor="end">Winners</text>`;
+  g += `<text class="q" x="${pl + 6}" y="${pt + 12}">Good video, weak thumbnail</text>`;
+  g += `<text class="q" x="${W - pr - 4}" y="${H - pb - 6}" text-anchor="end">Clicks, then leaves</text>`;
+  g += `<text class="q" x="${pl + 6}" y="${H - pb - 6}">Rethink</text>`;
+  g += `<text x="${(pl + W - pr) / 2}" y="${H - 4}" text-anchor="middle">Click-through rate →</text>`;
+  g += `<text x="12" y="${(pt + H - pb) / 2}" text-anchor="middle" transform="rotate(-90 12 ${(pt + H - pb) / 2})">% viewed →</text>`;
+  const chs = chMap();
+  for (const r of pts) g += `<circle class="dot" r="5.5" cx="${X(r.v.m.ctr).toFixed(1)}" cy="${Y(r.ret).toFixed(1)}" data-act="editvid" data-vid="${esc(r.v.id)}" data-tip="${esc(r.v.title)}|${esc((chs[r.v.ch] || {}).name || "")} · ${fmtVal("ctr", r.v.m.ctr)} CTR · ${fmtVal("avp", r.ret)} viewed · ${compact(r.v.m.views)} views"/>`;
+  return `<div class="card" id="scatter"><h3>Clicks vs watching</h3><p class="cap">Each dot is a long-form video. Dashed lines are your medians. Hover or tap a dot.</p>
+    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Scatter of click-through rate against percent viewed for ${pts.length} long-form videos">${g}</svg><div class="tip" hidden></div></div>`;
+}
+function channelBarsHtml(rows) {
+  const chs = chMap();
+  const by = {};
+  for (const r of rows) (by[r.v.ch] = by[r.v.ch] || []).push(r);
+  const list = Object.entries(by).map(([ch, rs]) => ({ c: chs[ch] || { name: ch, color: "#888" }, n: rs.length, views: median(rs.map(r => r.v.m.views)), ctr: median(rs.map(r => r.v.m.ctr)), ret: median(rs.map(r => r.ret)) }))
+    .sort((a, b) => (b.views || 0) - (a.views || 0));
+  if (!list.length) return "";
+  const max = Math.max(...list.map(x => x.views || 0)) || 1;
+  return `<div class="card"><h3>Typical views per video</h3><p class="cap">Median views for each channel, so one viral hit doesn't skew it.</p><div class="bars">${list.map(x => `
+    <div class="b" title="${esc(x.c.name)}: ${x.n} videos · median CTR ${fmtVal("ctr", x.ctr)} · median retention ${fmtVal("avp", x.ret)}">
+      <span class="nm"><span class="sw" style="background:${esc(x.c.color)}"></span>${esc(x.c.name)}</span>
+      <span class="track"><span class="fill" style="display:block;width:${((x.views || 0) / max * 100).toFixed(1)}%"></span></span>
+      <span>${compact(x.views)} <span class="note">· ${x.n}</span></span></div>`).join("")}</div></div>`;
+}
+
+function renderResults() {
+  const chs = chMap();
+  const vids = filteredVideos();
+  const allRows = enrich(state.videos);
+  const byId = Object.fromEntries(allRows.map(r => [r.v.id, r]));
+  const rows = vids.map(v => byId[v.id]);
+  const hasSample = state.videos.some(v => v.sample);
+  const sel = (id, opts, cur, label) => `<label class="f" for="${id}">${label}<select id="${id}" data-act="rfilter" data-field="${id.slice(3)}">${opts.map(([v, t]) => `<option value="${v}" ${String(cur) === String(v) ? "selected" : ""}>${esc(t)}</option>`).join("")}</select></label>`;
+  let h = `<div class="res-bar">
+    ${sel("rf-ch", [["all", "All channels"], ...state.config.channels.map(c => [c.id, c.name])], rview.ch, "Channel")}
+    ${sel("rf-kind", [["all", "Long-form + Shorts"], ["long", "Long-form"], ["short", "Shorts"]], rview.kind, "Format")}
+    ${sel("rf-period", [["all", "All time"], ["7", "Last 7 days"], ["28", "Last 28 days"], ["90", "Last 90 days"], ["365", "Last year"]], rview.period, "Posted in")}
+    <span class="spacer"></span>
+    <button class="btn" data-act="importopen">Import from YouTube Studio</button>
+    <button class="btn primary" data-act="addvid">Add a video</button>
+  </div>`;
+  if (hasSample) h += `<div class="banner"><span>These are <b>example videos</b> so you can see how it works. They disappear when you add or import your first real video.</span><button class="btn small" data-act="clearsamples">Remove examples now</button></div>`;
+  const sum = k => rows.reduce((a, r) => a + (r.v.m[k] || 0), 0);
+  const longRows = rows.filter(r => r.v.kind === "long");
+  h += `<div class="tiles">
+    <div class="tile"><div class="k">Videos</div><div class="v">${rows.length}</div></div>
+    <div class="tile"><div class="k">Views</div><div class="v">${compact(sum("views"))}</div></div>
+    <div class="tile"><div class="k">Median CTR <span title="long-form">(long)</span></div><div class="v">${fmtVal("ctr", median(longRows.map(r => r.v.m.ctr)))}</div></div>
+    <div class="tile"><div class="k">Median retention</div><div class="v">${fmtVal("avp", median(rows.map(r => r.ret)))}</div></div>
+    <div class="tile"><div class="k">Likes / Comments</div><div class="v">${compact(sum("likes"))} / ${compact(sum("comments"))}</div></div>
+    <div class="tile"><div class="k">Subscribers gained</div><div class="v">${compact(sum("subs"))}</div></div>
+  </div>`;
+  h += `<h2 class="section-h">What's working</h2>` + insightsHtml(rows, allRows);
+  h += `<h2 class="section-h">Charts</h2><div class="charts">${scatterHtml(rows)}${channelBarsHtml(rows)}</div>`;
+  /* leaderboard */
+  const cols = [
+    ["score", "vs usual", r => r.score, r => r.score == null ? "–" : `<span class="score ${r.score >= 1.3 ? "hi" : r.score <= 0.7 ? "lo" : ""}">${r.score.toFixed(1)}×</span>`],
+    ["views", "Views", r => r.v.m.views, r => fmtVal("views", r.v.m.views)],
+    ["ctr", "CTR", r => r.v.m.ctr, r => cmp(r.v.m.ctr, r.b.ctr, "ctr")],
+    ["ret", "Retention", r => r.ret, r => cmp(r.ret, r.b.ret, "avp")],
+    ["avd", "Avg view", r => r.v.m.avd, r => fmtVal("avd", r.v.m.avd)],
+    ["likes", "Likes", r => r.v.m.likes, r => fmtVal("likes", r.v.m.likes)],
+    ["comments", "Comments", r => r.v.m.comments, r => fmtVal("comments", r.v.m.comments)],
+    ["eng", "Engagement", r => r.eng, r => r.eng == null ? "–" : r.eng.toFixed(1) + "%"],
+    ["subs", "Subs", r => r.v.m.subs, r => fmtVal("subs", r.v.m.subs)],
+    ["published", "Posted", r => r.v.published ? toNum(r.v.published) : null, r => r.v.published ? fmtDay(toNum(r.v.published)) : "–"]
+  ];
+  function cmp(x, b, k) { if (x == null) return "–"; const c = b ? (x >= b * 1.1 ? "hi" : x <= b * 0.85 ? "lo" : "") : ""; return `<span class="${c}">${fmtVal(k, x)}</span>`; }
+  const col = cols.find(c => c[0] === rview.sort) || cols[0];
+  const sorted = rows.slice().sort((a, b) => { const x = col[2](a), y = col[2](b); if (x == null && y == null) return 0; if (x == null) return 1; if (y == null) return -1; return (x - y) * rview.dir; });
+  h += `<h2 class="section-h">All videos</h2><p class="section-p">“vs usual” compares a video's views with the median for its channel and format: 2.0× means twice as many views as normal. Green is clearly above that channel's usual, red clearly below. Tap a video to update its numbers.</p>`;
+  h += `<div class="tablewrap"><table class="lb"><thead><tr><th class="t">Video</th>${cols.map(c => `<th><button data-act="rsort" data-k="${c[0]}" ${rview.sort === c[0] ? `aria-sort="${rview.dir < 0 ? "descending" : "ascending"}"` : ""}>${c[1]}${rview.sort === c[0] ? (rview.dir < 0 ? " ↓" : " ↑") : ""}</button></th>`).join("")}</tr></thead><tbody>`;
+  if (!sorted.length) h += `<tr><td class="t" colspan="${cols.length + 1}">No videos match these filters yet.</td></tr>`;
+  for (const r of sorted) {
+    const c = chs[r.v.ch] || { name: r.v.ch, color: "#888" };
+    h += `<tr data-act="editvid" data-vid="${esc(r.v.id)}"><td class="t"><div class="vt">${esc(r.v.title || "Untitled")}</div><div class="vs"><span class="sw" style="background:${esc(c.color)}"></span>${esc(c.name)} <span class="kind ${r.v.kind}">${r.v.kind === "long" ? "Long" : "Short"}</span>${(r.v.tags || []).map(t => `<span class="tagchip">${esc(t)}</span>`).join("")}${r.v.asOf ? `<span>numbers from ${fmtDay(toNum(r.v.asOf))}</span>` : ""}</div></td>${cols.map(cc => `<td>${cc[3](r)}</td>`).join("")}</tr>`;
+  }
+  h += `</tbody></table></div>`;
+  return h;
+}
+
+function renderEditor() {
+  const v = editing;
+  const chOpts = state.config.channels.map(c => `<option value="${c.id}" ${v.ch === c.id ? "selected" : ""}>${esc(c.name)}</option>`).join("");
+  const mf = k => { const d = MDEF[k]; const val = v.m[k]; const shown = d.fmt === "dur" ? (val == null ? "" : fmtVal("avd", val)) : (val == null ? "" : val);
+    return `<label class="f" for="ve-${k}">${d.label}<input id="ve-${k}" data-vf="m.${k}" ${d.fmt === "dur" ? 'type="text" inputmode="numeric" placeholder="4:30"' : 'type="number" step="any" min="0"'} value="${esc(shown)}"></label>`; };
+  const isNew = !state.videos.some(x => x.id === v.id);
+  return `<div class="scrim center" data-act="closeedit"><form class="modal big" id="vform" role="dialog" aria-label="${isNew ? "Add a video" : "Edit video"}">
+    <h3>${isNew ? "Add a video" : "Update video"}</h3>
+    <p>Copy the numbers from YouTube Studio › Content › the video › Analytics. Leave anything you don't have blank.</p>
+    <div class="form">
+      <label class="f wide" for="ve-title">Title<input id="ve-title" data-vf="title" type="text" value="${esc(v.title)}" required></label>
+      <label class="f" for="ve-ch">Channel<select id="ve-ch" data-vf="ch">${chOpts}</select></label>
+      <label class="f" for="ve-kind">Format<select id="ve-kind" data-vf="kind"><option value="long" ${v.kind === "long" ? "selected" : ""}>Long-form</option><option value="short" ${v.kind === "short" ? "selected" : ""}>Short</option></select></label>
+      <label class="f" for="ve-pub">Posted on<input id="ve-pub" data-vf="published" type="date" value="${esc(v.published || "")}"></label>
+      <label class="f" for="ve-asof">Numbers as of<input id="ve-asof" data-vf="asOf" type="date" value="${esc(v.asOf || toStr(today))}"></label>
+      <label class="f wide" for="ve-url">YouTube link or video ID (optional)<input id="ve-url" data-vf="vid" type="text" placeholder="https://youtu.be/…" value="${esc(v.vid || "")}"></label>
+      <div class="fieldset-h">Reach</div>${mf("views")}${mf("impressions")}${mf("ctr")}
+      <div class="fieldset-h">Retention</div>${mf("avd")}${mf("avp")}${mf("stayed")}
+      <div class="fieldset-h">Engagement</div>${mf("likes")}${mf("comments")}${mf("shares")}${mf("subs")}${mf("watchHours")}${mf("revenue")}
+      <label class="f wide" for="ve-tags">Tags: topic, hook or thumbnail style, comma-separated. These power the “best topic” insight.<input id="ve-tags" data-vf="tags" type="text" placeholder="ranking, luffy, red thumbnail" value="${esc((v.tags || []).join(", "))}"></label>
+      <label class="f wide" for="ve-notes">Notes<textarea id="ve-notes" data-vf="notes">${esc(v.notes || "")}</textarea></label>
+    </div>
+    <div class="row-btns"><button class="btn primary" type="submit">Save</button><button class="btn" type="button" data-act="closeedit">Cancel</button>
+      <span class="spacer"></span>${isNew ? "" : `<button class="btn ghost" type="button" data-act="delvid">Delete this video</button>`}</div>
+    <div class="msg" id="ve-msg"></div>
+  </form></div>`;
+}
+function newVideo(patch) {
+  const ch = (patch && patch.ch) || (rview.ch !== "all" ? rview.ch : state.config.channels[0].id);
+  const c = chMap()[ch] || {};
+  return Object.assign({ id: "v" + Date.now().toString(36), vid: "", ch, title: "", published: toStr(today), kind: c.kind || "long", duration: null, asOf: toStr(today), tags: [], notes: "", m: {} }, patch || {});
+}
+function saveEditor(form) {
+  const v = editing;
+  for (const el of form.querySelectorAll("[data-vf]")) {
+    const f = el.dataset.vf, val = el.value.trim();
+    if (f.startsWith("m.")) {
+      const k = f.slice(2);
+      const x = MDEF[k].fmt === "dur" ? parseDur(val) : num(val.replace(/,/g, ""));
+      if (x == null) delete v.m[k]; else v.m[k] = x;
+    } else if (f === "tags") v.tags = val.split(",").map(s => s.trim().toLowerCase()).filter(Boolean);
+    else if (f === "vid") v.vid = ytId(val) || val;
+    else v[f] = val;
+  }
+  if (!v.title) { const m = document.getElementById("ve-msg"); m.textContent = "Give the video a title."; m.className = "msg err"; return; }
+  delete v.sample;
+  if (state.videos.some(x => x.sample)) state.videos = state.videos.filter(x => !x.sample);
+  const i = state.videos.findIndex(x => x.id === v.id);
+  if (i >= 0) state.videos[i] = v; else state.videos.push(v);
+  editing = null;
+  commit(false);
+}
+
+/* ---------- YouTube Studio export import ---------- */
+function parseCsv(text) {
+  const rows = []; let row = [], f = "", q = false;
+  text = text.replace(/^﻿/, "");
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) { if (c === '"') { if (text[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
+    else if (c === '"') q = true;
+    else if (c === ",") { row.push(f); f = ""; }
+    else if (c === "\n" || c === "\r") { if (c === "\r" && text[i + 1] === "\n") i++; row.push(f); rows.push(row); row = []; f = ""; }
+    else f += c;
+  }
+  if (f !== "" || row.length) { row.push(f); rows.push(row); }
+  return rows.filter(r => r.some(x => x.trim() !== ""));
+}
+const COLMAP = [
+  ["vid", /^(content|video id|video)$/i], ["title", /video title|^title$/i], ["published", /publish/i], ["duration", /^duration/i],
+  ["views", /^views$/i], ["impressions", /^impressions$/i], ["ctr", /click-through rate/i], ["avd", /average view duration/i],
+  ["avp", /average percentage viewed/i], ["stayed", /stayed to watch|viewed \(vs\.? swiped away\)/i], ["likes", /^likes$/i],
+  ["comments", /^comments( added)?$/i], ["shares", /^shares$/i], ["subs", /^subscribers( gained)?$/i], ["watchHours", /watch time \(hours\)/i],
+  ["revenue", /estimated revenue/i]
+];
+const MON3 = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+function parseDate(s) {
+  s = String(s || "").trim();
+  let m = s.match(/^(\d{4})-(\d{2})-(\d{2})/); if (m) return `${m[1]}-${m[2]}-${m[3]}`;
+  m = s.match(/^([A-Za-z]{3})[a-z]*\.? (\d{1,2}),? (\d{4})/);
+  if (m && MON3[m[1].toLowerCase()] != null) return `${m[3]}-${String(MON3[m[1].toLowerCase()] + 1).padStart(2, "0")}-${m[2].padStart(2, "0")}`;
+  m = s.match(/^(\d{1,2}) ([A-Za-z]{3})[a-z]*\.? (\d{4})/);
+  if (m && MON3[m[2].toLowerCase()] != null) return `${m[3]}-${String(MON3[m[2].toLowerCase()] + 1).padStart(2, "0")}-${m[1].padStart(2, "0")}`;
+  return "";
+}
+function importRows(text, ch) {
+  const rows = parseCsv(text);
+  if (rows.length < 2) return { error: "That file has no rows. Use “Table data.csv” from the export." };
+  const head = rows[0].map(h => h.trim());
+  const idx = {};
+  for (const [k, re] of COLMAP) { const i = head.findIndex(h => re.test(h)); if (i >= 0) idx[k] = i; }
+  if (idx.views == null || (idx.title == null && idx.vid == null)) return { error: "Couldn't find the Views and Video title columns. Use “Table data.csv” from a YouTube Studio Advanced mode export." };
+  const c = chMap()[ch] || {};
+  let added = 0, updated = 0;
+  const asOf = toStr(today);
+  if (state.videos.some(x => x.sample)) state.videos = state.videos.filter(x => !x.sample);
+  for (const r of rows.slice(1)) {
+    const get = k => idx[k] != null ? (r[idx[k]] || "").trim() : "";
+    const vid = get("vid"), title = get("title");
+    if (/^total$/i.test(vid) || /^total$/i.test(title) || (!vid && !title)) continue;
+    const m = {};
+    for (const k of ["views", "impressions", "ctr", "avp", "stayed", "likes", "comments", "shares", "subs", "watchHours", "revenue"]) { const x = num(get(k).replace(/[,%$\s]/g, "")); if (x != null) m[k] = x; }
+    const avd = parseDur(get("avd")); if (avd != null) m.avd = avd;
+    const duration = parseDur(get("duration"));
+    const existing = state.videos.find(v => (vid && v.vid === vid) || (!vid && v.title === title && v.ch === ch));
+    if (existing) { existing.m = Object.assign({}, existing.m, m); existing.asOf = asOf; if (title) existing.title = title; updated++; }
+    else {
+      const kind = duration != null ? (duration <= 180 ? "short" : "long") : (c.kind || "long");
+      state.videos.push(newVideo({ id: "v" + (vid || Date.now().toString(36) + added), vid, ch, title: title || vid, published: parseDate(get("published")), kind, duration, asOf, m }));
+      added++;
+    }
+  }
+  return { added, updated };
+}
+let jszipPromise = null;
+function loadJsZip() {
+  if (window.JSZip) return Promise.resolve(window.JSZip);
+  if (!jszipPromise) jszipPromise = new Promise((res, rej) => {
+    const s = document.createElement("script");
+    s.src = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
+    s.onload = () => res(window.JSZip); s.onerror = () => { jszipPromise = null; rej(new Error("zip")); };
+    document.head.appendChild(s);
+  });
+  return jszipPromise;
+}
+async function readImportFile(file) {
+  if (/\.zip$/i.test(file.name) || file.type === "application/zip") {
+    const JSZip = await loadJsZip();
+    const zip = await JSZip.loadAsync(file);
+    const entry = Object.values(zip.files).find(f => /table data\.csv$/i.test(f.name)) || Object.values(zip.files).find(f => /\.csv$/i.test(f.name) && !/chart|totals/i.test(f.name));
+    if (!entry) throw new Error("No “Table data.csv” inside that zip.");
+    return entry.async("string");
+  }
+  return file.text();
+}
+function renderImport() {
+  const cur = rview.ch !== "all" ? rview.ch : state.config.channels[0].id;
+  return `<div class="scrim center" data-act="closeimport"><div class="modal big" role="dialog" aria-label="Import from YouTube Studio">
+    <h3>Import from YouTube Studio</h3>
+    <ol>
+      <li>Open YouTube Studio for one channel › <b>Analytics</b> › <b>Advanced mode</b>.</li>
+      <li>Keep the <b>Content</b> tab and pick a period (Lifetime works well).</li>
+      <li>If they aren't showing, add the columns <b>Impressions</b>, <b>Impressions click-through rate</b>, <b>Average view duration</b>, <b>Average percentage viewed</b>, <b>Likes</b>, <b>Comments added</b> and <b>Subscribers</b> (for Shorts, also <b>Stayed to watch</b>).</li>
+      <li>Click the download arrow › <b>Comma-separated values (.csv)</b>.</li>
+      <li>Choose the channel below and drop in the .zip it gives you, or “Table data.csv” from inside it.</li>
+    </ol>
+    <label class="f" for="im-ch">Which channel is this from?<select id="im-ch">${state.config.channels.map(c => `<option value="${c.id}" ${c.id === cur ? "selected" : ""}>${esc(c.name)}</option>`).join("")}</select></label>
+    <label class="f" for="im-file">Export file (.zip or .csv)<input id="im-file" type="file" accept=".zip,.csv,text/csv,application/zip"></label>
+    <label class="f" for="im-text">…or paste the CSV text<textarea id="im-text" placeholder="Content,Video title,Video publish time,Views,…"></textarea></label>
+    <p>Importing again later updates the same videos with fresh numbers, and keeps your tags and notes.</p>
+    <div class="row-btns"><button class="btn primary" data-act="doimport">Import</button><span class="spacer"></span><button class="btn ghost" data-act="closeimport">Close</button></div>
+    <div class="msg" id="im-msg"></div>
+  </div></div>`;
+}
+function wireScatterTips() {
+  const card = document.getElementById("scatter"); if (!card) return;
+  const tip = card.querySelector(".tip");
+  const show = e => {
+    const d = e.target.closest("circle.dot"); if (!d) { tip.hidden = true; return; }
+    const [t, rest] = d.dataset.tip.split("|");
+    tip.innerHTML = `<b>${esc(t)}</b><br>${esc(rest)}`; tip.hidden = false;
+    const cr = card.getBoundingClientRect(), dr = d.getBoundingClientRect();
+    let x = dr.left - cr.left + 10, y = dr.top - cr.top - 10;
+    if (x + 240 > cr.width) x = Math.max(4, dr.left - cr.left - 250);
+    tip.style.left = x + "px"; tip.style.top = y + "px";
+  };
+  card.addEventListener("pointerover", show);
+  card.addEventListener("pointerleave", () => { tip.hidden = true; });
+}
+if (!Array.isArray(state.videos)) state.videos = clone(SAMPLE_VIDEOS);
+
 /* ================= EVENTS ================= */
 function setOverride(id, patch) {
   const o = Object.assign({}, state.overrides[id] || {}, patch);
@@ -852,6 +1303,7 @@ document.addEventListener("click", async ev => {
   const pid = rowEl && rowEl.dataset.id;
   if (act === "closesheet" && t.classList.contains("scrim") && ev.target !== t) return;
   if (act === "closeexport" && t.classList.contains("scrim") && ev.target !== t) return;
+  if ((act === "closeedit" || act === "closeimport") && t.classList.contains("scrim") && ev.target !== t) return;
   switch (act) {
     case "nav": go(t.dataset.to); break;
     case "closesheet": go("month-" + view.month); break;
@@ -869,6 +1321,39 @@ document.addEventListener("click", async ev => {
       break;
     }
     case "savenow": publishNow(); break;
+    case "rsort": if (rview.sort === t.dataset.k) rview.dir = -rview.dir; else { rview.sort = t.dataset.k; rview.dir = -1; } render(); break;
+    case "editvid": { const v = state.videos.find(x => x.id === t.dataset.vid); if (v) { editing = clone(v); render(); } break; }
+    case "addvid": editing = newVideo(); render(); break;
+    case "addresult": {
+      const v = state.videos.find(x => x.post === pid);
+      if (v) editing = clone(v);
+      else { const ch = pid.split("|")[0]; editing = newVideo({ ch, post: pid, published: toStr(Number(rowEl.dataset.day)) }); }
+      render(); break;
+    }
+    case "closeedit": editing = null; render(); break;
+    case "delvid": {
+      if (t.dataset.confirm !== "1") { t.dataset.confirm = "1"; t.textContent = "Tap again to delete"; return; }
+      state.videos = state.videos.filter(x => x.id !== editing.id); editing = null; commit(false); break;
+    }
+    case "clearsamples": state.videos = state.videos.filter(x => !x.sample); commit(false); break;
+    case "importopen": importOpen = true; render(); break;
+    case "closeimport": importOpen = false; render(); break;
+    case "doimport": {
+      const msg = document.getElementById("im-msg");
+      const say = (txt, err) => { msg.textContent = txt; msg.className = "msg" + (err ? " err" : ""); };
+      const file = document.getElementById("im-file").files[0];
+      const pasted = document.getElementById("im-text").value;
+      const ch = document.getElementById("im-ch").value;
+      let text = pasted;
+      try { if (file) { say("Reading…"); text = await readImportFile(file); } }
+      catch (e) { say(e.message === "zip" ? "Couldn't open the zip here. Unzip it and choose “Table data.csv” instead." : e.message || "Couldn't read that file.", true); break; }
+      if (!text || !text.trim()) { say("Choose a file or paste the CSV first.", true); break; }
+      const r = importRows(text, ch);
+      if (r.error) { say(r.error, true); break; }
+      importOpen = false; rview.ch = ch; commit(false);
+      setTimeout(() => setStatus(`Imported: ${r.added} new, ${r.updated} updated`), 0);
+      break;
+    }
     case "export": view.exportOpen = true; render(); break;
     case "closeexport": view.exportOpen = false; render(); break;
     case "dl-csv": saveFile("posting-schedule.csv", buildCsv(), "text/csv"); break;
@@ -904,6 +1389,7 @@ document.addEventListener("change", ev => {
   const t = ev.target;
   const act = t.dataset && t.dataset.act;
   if (!act) return;
+  if (act === "rfilter") { rview[t.dataset.field] = t.value; render(); return; }
   if (act === "done") { const pid = t.closest(".row").dataset.id; setOverride(pid, { done: t.checked }); return; }
   if (act === "limit") { const v = Math.max(1, Math.round(Number(t.value) || 1)); state.config.limits[t.dataset.field] = v; commit(true); return; }
   if (act === "ruletype") {
@@ -925,9 +1411,12 @@ document.addEventListener("change", ev => {
 });
 document.addEventListener("keydown", ev => {
   if (ev.key !== "Escape") return;
-  if (view.exportOpen) { view.exportOpen = false; render(); }
+  if (editing) { editing = null; render(); }
+  else if (importOpen) { importOpen = false; render(); }
+  else if (view.exportOpen) { view.exportOpen = false; render(); }
   else if (view.day != null) go("month-" + view.month);
 });
+document.addEventListener("submit", ev => { if (ev.target.id === "vform") { ev.preventDefault(); saveEditor(ev.target); } });
 window.addEventListener("hashchange", () => { view.moving = null; readHash(); render(); });
 
 readHash();

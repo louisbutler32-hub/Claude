@@ -11,6 +11,7 @@ https://claude.ai/artifact/Ldcn5t2UMBr62tWQwTzaBG
 - **Week grid**: channels down the side and days across the top, for this
   week and next, with a total for each day.
 - **Month**: the calendar. Tap a day to open it.
+- **Results**: tracks how each video performs (see below).
 - **Channels**: every rule, the daily caps, on/off switches, colours and post times.
 - **Export to calendar**: a CSV that Google Calendar imports, or .ics text
   for Apple Calendar and Outlook.
@@ -44,3 +45,42 @@ long-forms. Finance is in the list but switched off until 4 Jan 2027.
 
 Changes save to the browser right away. On the hosted copy they're also
 written into the page itself, so they show up on every device.
+
+## Results tracker
+
+The Results tab tracks views, impressions, CTR, average view duration, %
+viewed, stayed-to-watch (Shorts), likes, comments, shares, subscribers, watch
+hours and revenue for every video.
+
+### Getting numbers in
+
+- **Import from YouTube Studio.** Go to Analytics › Advanced mode › Content
+  › export as CSV. Drop in the .zip, or "Table data.csv" from inside it, and
+  pick which channel it's from. Importing again updates the same videos by
+  video ID and keeps their tags and notes.
+- **Add a video** to type the numbers in by hand.
+- **From the schedule:** tick a post in the schedule and it gets an
+  **Add results** button, which opens the form with the channel and date
+  already filled in.
+
+### How videos are judged
+
+- **"vs usual"** is a video's views divided by the median views for its own
+  channel and format. 2.0× means twice as many views as that channel normally
+  gets. Comparing within a channel is fairer than comparing across channels.
+- **Retention** means average % viewed for long-forms. For Shorts it's
+  "stayed to watch" when the export includes it.
+- **What's working** flags:
+  - the biggest breakout;
+  - videos to repackage (they hold viewers but have low CTR);
+  - videos whose opening needs work (they get clicks but viewers leave early);
+  - the best posting weekday;
+  - the best topic tag;
+  - how long-forms compare with Shorts.
+
+  Each one appears only once there's enough data for it.
+- **Clicks vs watching** is a scatter chart of CTR against % viewed for
+  long-forms, split into four quadrants at your own medians.
+
+The YouTube Analytics API doesn't provide impressions or CTR, which is why
+the import uses Studio's export.
