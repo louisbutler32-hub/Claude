@@ -1,4 +1,5 @@
-// Hot Plate client. The server decides everything; this file draws the latest state and sends what the player does.
+// Hot Plate client. The server decides everything; this file draws the latest state over the
+// dining room and sends what the player does.
 (() => {
   const $ = (id) => document.getElementById(id);
   const EMOJIS = ["😎", "🤠", "👽", "🦊", "🐸", "🤖", "👻", "🐼", "🦄", "💀", "🧃", "🍉", "🐙", "🦖", "🍄", "🐝"];
@@ -8,6 +9,7 @@
     { name: "Main Course", pts: 50 },
     { name: "Chef's Secret", pts: 100 },
   ];
+  const PER_HEART = [0, 300, 400, 500, 600, 800, 1000, 1500, 2000];
   const store = {
     get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
@@ -18,7 +20,7 @@
   /* ---------------- sound ---------------- */
   let actx = null;
   let muted = !!store.get("hp-muted");
-  function tone(freq, dur = 0.12, type = "sine", vol = 0.12, delay = 0) {
+  function tone(freq, dur = 0.12, type = "square", vol = 0.06, delay = 0) {
     if (muted) return;
     try {
       actx = actx || new (window.AudioContext || window.webkitAudioContext)();
@@ -30,14 +32,17 @@
     } catch {}
   }
   const sfx = {
-    pass(tier) { const base = [523, 587, 698, 880][tier]; tone(base, 0.1, "triangle"); tone(base * 1.5, 0.14, "triangle", 0.1, 0.07); if (tier === 3) tone(base * 2, 0.2, "triangle", 0.1, 0.15); },
-    yourTurn() { tone(880, 0.08, "square", 0.05); tone(1175, 0.1, "square", 0.05, 0.08); },
-    miss() { tone(200, 0.18, "sawtooth", 0.06); },
-    taken() { tone(330, 0.08, "square", 0.05); tone(260, 0.12, "square", 0.05, 0.08); },
-    burn() { tone(120, 0.5, "sawtooth", 0.12); tone(80, 0.6, "square", 0.08, 0.1); },
-    win() { [523, 659, 784, 1046].forEach((f, i) => tone(f, 0.2, "triangle", 0.12, i * 0.12)); },
+    pass(tier) { const b = [523, 587, 698, 880][tier]; tone(b, 0.08); tone(b * 1.5, 0.12, "square", 0.05, 0.06); if (tier === 3) tone(b * 2, 0.18, "square", 0.05, 0.13); },
+    yourTurn() { tone(988, 0.07); tone(1319, 0.1, "square", 0.06, 0.07); },
+    nope() { tone(196, 0.14, "sawtooth", 0.05); },
+    tick(urgent) { tone(urgent ? 1400 : 1000, 0.03, "square", urgent ? 0.05 : 0.025); },
+    burn() { tone(110, 0.45, "sawtooth", 0.1); tone(70, 0.5, "square", 0.07, 0.08); },
+    bell() { [1319, 1568, 2093].forEach((f, i) => tone(f, 0.35, "triangle", 0.07, i * 0.09)); },
+    win() { [523, 659, 784, 1046].forEach((f, i) => tone(f, 0.18, "square", 0.06, i * 0.12)); },
+    heart() { tone(784, 0.08, "triangle", 0.08); tone(1046, 0.14, "triangle", 0.08, 0.08); },
   };
-  const buzz = (ms) => { try { navigator.vibrate && navigator.vibrate(ms); } catch {} };
+  const buzz = (ms) => { try { if (navigator.vibrate && (!navigator.userActivation || navigator.userActivation.hasBeenActive)) navigator.vibrate(ms); } catch {} };
+  function unlockAudio() { try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); actx.resume(); } catch {} }
 
   /* ---------------- connection ---------------- */
   let ws = null, retry = 0, queue = [];
@@ -45,6 +50,8 @@
   let S = null;                            // latest room state
   let clockOffset = 0;
   let autoRejoin = !!session;
+  const typing = {};                       // live text of whoever holds the plate
+  const nope = {};                         // id -> { text, until }
 
   function connect() {
     ws = new WebSocket((location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/ws");
@@ -61,25 +68,33 @@
     if (ws && ws.readyState === 1) ws.send(JSON.stringify(m));
     else queue.push(m);
   }
+  const now = () => Date.now() + clockOffset;
 
-  /* ---------------- profile (home) ---------------- */
+  /* ---------------- home ---------------- */
   const profile = store.get("hp-profile") || { name: "", emoji: EMOJIS[Math.floor(Math.random() * EMOJIS.length)] };
   $("name-input").value = profile.name;
-  function renderEmojis() {
-    $("emoji-row").innerHTML = EMOJIS.map((e) => `<button type="button" role="radio" aria-checked="${e === profile.emoji}" aria-label="${e}">${e}</button>`).join("");
+  function renderFaces() {
+    $("faces").innerHTML = EMOJIS.map((e) => `<button type="button" role="radio" aria-checked="${e === profile.emoji}" aria-label="${e}">${e}</button>`).join("");
   }
-  $("emoji-row").addEventListener("click", (e) => {
+  $("faces").addEventListener("click", (e) => {
     const b = e.target.closest("button"); if (!b) return;
-    profile.emoji = b.textContent; store.set("hp-profile", profile); renderEmojis();
+    profile.emoji = b.textContent; store.set("hp-profile", profile); renderFaces();
   });
   $("name-input").addEventListener("input", () => { profile.name = $("name-input").value.trim(); store.set("hp-profile", profile); });
-  renderEmojis();
+  renderFaces();
 
   function needName() {
     if (profile.name) return false;
     $("home-error").textContent = "Pop your name in first.";
     $("name-input").focus();
     return true;
+  }
+  function join(code) {
+    if (needName()) return;
+    unlockAudio();
+    if (session && session.code === code) return send({ t: "rejoin", ...session, name: profile.name, emoji: profile.emoji });
+    session = null; autoRejoin = false;
+    send({ t: "join", code, name: profile.name, emoji: profile.emoji });
   }
   $("create-btn").onclick = () => {
     if (needName()) return;
@@ -89,16 +104,24 @@
   };
   $("join-form").addEventListener("submit", (e) => {
     e.preventDefault();
-    if (needName()) return;
     const code = $("code-input").value.trim().toUpperCase();
     if (!/^[A-Z]{4}$/.test(code)) { $("home-error").textContent = "Table codes are four letters."; return; }
-    unlockAudio();
-    if (session && session.code === code) return send({ t: "rejoin", ...session, name: profile.name, emoji: profile.emoji });
-    session = null; autoRejoin = false;
-    send({ t: "join", code, name: profile.name, emoji: profile.emoji });
+    join(code);
   });
   $("code-input").addEventListener("input", (e) => { e.target.value = e.target.value.toUpperCase().replace(/[^A-Z]/g, ""); });
-  function unlockAudio() { try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); actx.resume(); } catch {} }
+  $("tables").addEventListener("click", (e) => { const b = e.target.closest("button[data-code]"); if (b) join(b.dataset.code); });
+
+  async function loadTables() {
+    if (S) return;
+    try {
+      const { tables } = await (await fetch("/api/tables")).json();
+      $("tables").innerHTML = tables.length
+        ? tables.map((t) => `<li><span class="who">${esc(t.host)}'s table${t.playing ? " · eating" : ""}</span><span class="n">${t.players}/${t.seats}</span><button class="px-btn" data-code="${t.code}">Sit</button></li>`).join("")
+        : `<li class="muted">No public tables right now. Open one and set it to public.</li>`;
+    } catch { $("tables").innerHTML = `<li class="muted">Couldn't load open tables.</li>`; }
+  }
+  loadTables();
+  setInterval(loadTables, 6000);
 
   // a shared link looks like /?t=ABCD
   const linkCode = (new URLSearchParams(location.search).get("t") || "").toUpperCase();
@@ -120,193 +143,281 @@
       case "state": {
         const prev = S;
         S = m;
-        if (m.game) clockOffset = m.game.now - Date.now();
+        clockOffset = m.now - Date.now();
         render(prev);
         break;
       }
       case "typing":
-        if (S && S.game && S.game.holder === m.id && m.id !== S.you) { $("bubble").textContent = m.text; }
+        // a late echo of the rejected guess, or the box clearing itself, shouldn't hide the crossed-out guess
+        if (nope[m.id] && (!m.text || m.text.trim() === nope[m.id].text)) break;
+        typing[m.id] = m.text;
+        delete nope[m.id];
+        renderBubbles();
+        break;
+      case "nope":
+        nope[m.id] = { text: m.text, until: Date.now() + 1300 };
+        typing[m.id] = "";
+        renderBubbles();
+        setTimeout(renderBubbles, 1350);
         break;
       case "served": onServed(m); break;
       case "result": onResult(m); break;
-      case "pop": onPop(m); break;
+      case "burn": onBurn(m); break;
       case "error":
-        if (autoRejoin) { session = null; store.del("hp-session"); autoRejoin = false; show("scr-home"); break; }
+        if (autoRejoin) { session = null; store.del("hp-session"); autoRejoin = false; S = null; render(); break; }
         $("home-error").textContent = m.msg;
-        show("scr-home");
+        S = null; render();
         break;
       case "left":
         session = null; store.del("hp-session"); S = null;
         history.replaceState(null, "", "/");
-        show("scr-home");
+        render();
+        loadTables();
         break;
     }
   }
 
-  /* ---------------- render ---------------- */
-  function show(id) {
-    for (const s of document.querySelectorAll(".screen")) s.hidden = s.id !== id;
+  /* ---------------- geometry ---------------- */
+  const scene = $("scene");
+  Room.mount($("room-canvas"));
+  let L = null, layoutKey = "";
+  function seatList() {
+    if (!S) return { players: [], count: 6 };
+    const players = S.players.filter((p) => p.connected || p.alive || p.score);
+    // the lobby shows open chairs; once dinner starts only the people eating get a seat
+    const eating = S.phase !== "lobby";
+    return { players, count: eating ? Math.max(2, players.length) : Math.max(S.settings.seats, players.length) };
   }
+  function relayout(force) {
+    const w = scene.clientWidth, h = scene.clientHeight;
+    const { count } = seatList();
+    const narrow = w < 720;
+    const opts = { top: narrow ? 128 : 150, bottom: narrow ? 150 : 140 };
+    const key = [w, h, count].join("x");
+    if (!force && key === layoutKey) return;
+    layoutKey = key;
+    L = Room.draw(w, h, count, opts);
+    const c = $("centrepiece");
+    c.style.left = L.css.cx + "px"; c.style.top = L.css.cy + "px";
+  }
+  new ResizeObserver(() => { relayout(); renderSeats(); renderBubbles(); }).observe(scene);
+
+  /* ---------------- render ---------------- */
   const meP = () => S && S.players.find((p) => p.id === S.you);
   const byId = (id) => S && S.players.find((p) => p.id === id);
   const isHost = () => S && S.hostId === S.you;
+  const phaseName = () => !S ? "home" : S.phase === "playing" ? "play" : S.phase;
 
   function render(prev) {
-    if (!S) return show("scr-home");
-    if (S.phase === "lobby") { show("scr-lobby"); renderLobby(); }
-    else if (S.phase === "over") { show("scr-over"); renderOver(prev); }
-    else { show("scr-game"); renderGame(prev); }
+    const phase = phaseName();
+    $("app").dataset.phase = phase;
+    const inRoom = !!S;
+    $("home-card").hidden = inRoom;
+    $("side").hidden = !inRoom;
+    $("code-badge").hidden = !inRoom;
+    $("status-badge").hidden = !inRoom;
+    $("dock").hidden = !inRoom || phase === "over";
+    $("over").hidden = phase !== "over";
+    $("centrepiece").hidden = !(phase === "play" || phase === "break");
+    relayout();
+
+    if (!inRoom) {
+      $("marquee-eyebrow").textContent = "Dining Room presents";
+      $("marquee-title").textContent = "HOT PLATE";
+      $("marquee-sub").textContent = "pass the plate · don't get burned";
+      renderSeats(); renderBubbles();
+      return;
+    }
+    $("badge-kind").textContent = S.settings.public ? "PUBLIC" : "PRIVATE";
+    $("badge-code").textContent = S.code;
+    $("big-code").textContent = S.code;
+    $("link-btn").textContent = location.host + "/?t=" + S.code;
+    renderChat();
+
+    $("dock-lobby").hidden = phase !== "lobby";
+    $("dock-play").hidden = phase !== "play";
+    $("dock-burn").hidden = phase !== "break";
+
+    if (phase === "lobby") renderLobby();
+    if (phase === "play" || phase === "break") renderGame(prev);
+    if (phase === "over") renderOver(prev);
+    renderSeats(); renderBubbles();
+    if (!$("settings-modal").hidden) renderSettings();
+    if (!$("cats-modal").hidden) renderCats();
+  }
+
+  function renderSeats() {
+    if (!L) return;
+    const { players } = seatList();
+    const g = S && S.game;
+    const phase = phaseName();
+    let html = "";
+    L.seats.forEach((seat, i) => {
+      const p = players[i];
+      const pos = `left:${seat.x.toFixed(1)}px;top:${seat.y.toFixed(1)}px`;
+      if (!p) { html += `<div class="seat empty" style="${pos}"><div class="tile">${S ? "OPEN" : ""}</div></div>`; return; }
+      const holder = g && phase === "play" && g.holder === p.id;
+      const inGame = g && (phase === "play" || phase === "break" || phase === "over");
+      const cls = ["seat", p.id === S.you ? "me" : "", holder ? "holder" : "", inGame && !p.alive ? "out" : "", p.connected ? "" : "away"].join(" ");
+      let stats;
+      if (!inGame) stats = `<span class="tag">${p.id === S.hostId ? "HOST" : p.ready ? "READY" : "…"}</span>`;
+      else stats = `<span class="hearts">${p.alive ? "♥".repeat(p.hearts) : p.hearts === 0 && p.score + p.served > 0 ? "✕" : "👀"}</span><span class="sc">${p.score}<small>pts</small></span>`;
+      html += `<div class="${cls}" data-id="${p.id}" style="${pos}"><div class="tile">${p.emoji}</div><div class="nm">${esc(p.name)}</div><div class="stats">${stats}</div>${holder ? `<div class="tbar"><i></i></div>` : ""}</div>`;
+    });
+    $("seats").innerHTML = html;
+    // point the plate at whoever holds it
+    if (g && phase === "play") {
+      const idx = players.findIndex((p) => p.id === g.holder);
+      if (idx >= 0) $("pointer").style.transform = `rotate(${(L.seats[idx].a * 180) / Math.PI + 90}deg)`;
+    }
+    $("pointer").hidden = phase !== "play";
+  }
+
+  // speech bubbles over each player's plate: their last answer, or live typing for the holder
+  const bubbleEls = new Map();
+  function renderBubbles(popId) {
+    const layer = $("seats");
+    const keep = new Set();
+    if (L && S && S.game && (S.phase === "playing" || S.phase === "break" || S.phase === "over")) {
+      const { players } = seatList();
+      players.forEach((p, i) => {
+        const seat = L.seats[i]; if (!seat) return;
+        let cls = "", html = "";
+        const n = nope[p.id] && nope[p.id].until > Date.now() ? nope[p.id] : null;
+        if (S.phase === "playing" && S.game.holder === p.id) {
+          if (n) { cls = "nope"; html = esc(n.text); }
+          else { cls = "typing"; html = esc(p.id === S.you ? $("answer-input").value : typing[p.id] || ""); }
+        } else if (p.last) {
+          cls = "t" + p.last.tier;
+          html = `${esc(p.last.name)}<small>+${TIERS[p.last.tier].pts}</small>`;
+        } else return;
+        keep.add(p.id);
+        let el = bubbleEls.get(p.id);
+        if (!el || !el.isConnected) { el = document.createElement("div"); bubbleEls.set(p.id, el); }
+        layer.appendChild(el);
+        el.className = "bubble " + cls + (popId === p.id ? " pop" : "");
+        el.innerHTML = html;
+        el.style.left = seat.plateX + "px";
+        el.style.top = seat.plateY + "px";
+      });
+    }
+    for (const [id, el] of bubbleEls) if (!keep.has(id)) { el.remove(); bubbleEls.delete(id); }
   }
 
   /* lobby */
-  let CATS = [], catsLoaded = false;
-  fetch("/api/categories").then((r) => r.json()).then((d) => { CATS = d.categories; catsLoaded = true; if (S && S.phase === "lobby") renderLobby(); }).catch(() => {});
-
   function renderLobby() {
-    $("room-code").textContent = S.code;
-    const link = location.origin + "/?t=" + S.code;
-    $("link-text").textContent = link;
-    $("lobby-players").innerHTML = S.players.filter((p) => p.connected).map((p) =>
-      `<li class="${p.id === S.you ? "me" : ""}"><span>${p.emoji}</span><span>${esc(p.name)}</span>${p.id === S.hostId ? `<span class="host">host</span>` : ""}</li>`).join("");
-    const host = isHost();
-    $("host-panel").hidden = !host;
-    const hostP = byId(S.hostId);
-    $("guest-wait").textContent = host ? "" : `Waiting for ${hostP ? hostP.emoji + " " + hostP.name : "the host"} to serve the first plate…`;
-    if (!host) return;
-    $("hearts-seg").innerHTML = [1, 2, 3, 4, 5].map((h) => `<button data-h="${h}" aria-pressed="${S.settings.hearts === h}">❤️ ${h}</button>`).join("");
-    if (!catsLoaded) return;
-    const sel = new Set(S.settings.cats);
-    const groups = {};
-    CATS.forEach((c) => (groups[c.group] = groups[c.group] || []).push(c));
-    const total = CATS.filter((c) => sel.has(c.id)).reduce((n, c) => n + c.size, 0);
-    $("cat-count").textContent = `Categories · ${sel.size} picked · ${total.toLocaleString()} answers`;
-    $("cat-groups").innerHTML = Object.entries(groups).map(([g, list]) => `
-      <div class="cat-group"><h3>${esc(g)}</h3><div class="cat-list">
-        ${list.map((c) => `<button class="cat-chip" data-id="${c.id}" aria-pressed="${sel.has(c.id)}">${c.emoji} ${esc(c.prompt.replace(/^Name (any |an? )?/i, ""))} <small>${c.size.toLocaleString()}</small></button>`).join("")}
-      </div></div>`).join("");
-  }
-  $("hearts-seg").addEventListener("click", (e) => {
-    const b = e.target.closest("button"); if (!b || !isHost()) return;
-    send({ t: "settings", hearts: +b.dataset.h });
-  });
-  $("cat-groups").addEventListener("click", (e) => {
-    const b = e.target.closest(".cat-chip"); if (!b || !isHost()) return;
-    const sel = new Set(S.settings.cats);
-    if (sel.has(b.dataset.id)) { if (sel.size === 1) return toast("Keep at least one category."); sel.delete(b.dataset.id); }
-    else sel.add(b.dataset.id);
-    send({ t: "settings", cats: [...sel] });
-  });
-  $("cats-all").onclick = () => send({ t: "settings", cats: CATS.map((c) => c.id) });
-  $("cats-none").onclick = () => {
-    const ids = CATS.map((c) => c.id).sort(() => Math.random() - 0.5).slice(0, 6);
-    if (ids.length) send({ t: "settings", cats: ids });
-  };
-  $("start-btn").onclick = () => { unlockAudio(); send({ t: "start" }); };
-  $("copy-link").onclick = async () => {
-    const link = location.origin + "/?t=" + S.code;
-    if (navigator.share && matchMedia("(pointer: coarse)").matches) {
-      try { await navigator.share({ title: "Hot Plate", text: `Join my Hot Plate table: ${S.code}`, url: link }); return; } catch {}
+    $("marquee-eyebrow").textContent = "Dining Room presents";
+    $("marquee-title").textContent = "HOT PLATE";
+    $("marquee-sub").textContent = "pass the plate · don't get burned";
+    const seated = S.players.filter((p) => p.connected);
+    const ready = seated.filter((p) => p.ready || p.id === S.hostId).length;
+    $("status-label").textContent = "READY";
+    $("status-value").textContent = `${ready}/${S.settings.seats}`;
+    $("ready-info").textContent = `${ready} ready · ${Math.max(0, S.settings.seats - seated.length)} open`;
+    const me = meP();
+    const big = $("big-btn");
+    if (isHost()) {
+      big.textContent = seated.length === 1 ? "▼ Practise solo ▼" : "▼ Ring the dinner bell ▼";
+      big.classList.remove("ready");
+    } else {
+      big.textContent = me && me.ready ? "✓ Ready · waiting for host" : "▼ I'm ready ▼";
+      big.classList.toggle("ready", !!(me && me.ready));
     }
-    try { await navigator.clipboard.writeText(link); toast("Invite link copied"); }
-    catch { toast("Copy this: " + link); }
+  }
+  $("big-btn").onclick = () => {
+    unlockAudio();
+    if (!S) return;
+    if (isHost()) send({ t: "start" });
+    else { const me = meP(); send({ t: "ready", ready: !(me && me.ready) }); }
   };
-  $("lobby-leave").onclick = $("game-leave").onclick = () => { send({ t: "leave" }); };
 
   /* game */
-  let heatRaf = null;
+  let lastTickSec = null;
   function renderGame(prev) {
     const g = S.game;
     const me = meP();
-    $("game-meta").textContent = `${S.code} · plate ${g.round}`;
-    $("prompt").textContent = `${g.cat.emoji} ${g.cat.prompt}`;
-    $("prompt-sub").textContent = `${g.cat.size.toLocaleString()} answers on the menu · ${g.served.length} served`;
-
-    // seats around the table
-    const players = S.players.filter((p) => p.connected || p.alive || p.score);
-    const n = players.length;
-    const table = $("table");
-    const size = table.clientWidth || 320;
-    const r = size * 0.43;
-    let html = "";
-    let holderAngle = 0;
-    players.forEach((p, i) => {
-      const a = -Math.PI / 2 + (i * 2 * Math.PI) / n;
-      if (p.id === g.holder) holderAngle = a;
-      const x = Math.cos(a) * r, y = Math.sin(a) * r;
-      const cls = ["seat", p.id === S.you ? "me" : "", p.id === g.holder && S.phase === "playing" ? "holder" : "", p.alive ? "" : "out", p.connected ? "" : "away"].join(" ");
-      html += `<div class="${cls}" data-id="${p.id}" style="transform:translate(${x.toFixed(1)}px,${y.toFixed(1)}px)">
-        <div class="face">${p.emoji}</div><div class="nm">${esc(p.name)}</div>
-        <div class="hp">${p.alive ? "❤️".repeat(p.hearts) : p.hearts === 0 && g.round > 0 ? "💀" : "👀"}</div><div class="sc">${p.score}</div></div>`;
-    });
-    table.querySelectorAll(".seat").forEach((el) => el.remove());
-    table.insertAdjacentHTML("beforeend", html);
-    $("pointer").style.transform = `rotate(${(holderAngle * 180) / Math.PI + 90}deg)`;
-    $("pointer").hidden = S.phase !== "playing";
+    $("marquee-eyebrow").textContent = `Plate ${g.round}`;
+    $("marquee-title").textContent = `${g.cat.emoji} ${g.cat.prompt}`;
+    $("marquee-sub").textContent = `${g.cat.size.toLocaleString()} on the menu · ${g.served.length} served`;
+    $("status-label").textContent = "ALIVE";
+    $("status-value").textContent = `${S.players.filter((p) => p.alive).length}/${S.players.filter((p) => p.alive || p.score || p.served).length}`;
+    $("plate-dish").textContent = S.phase === "break" ? "💥" : g.cat.emoji;
     $("plate").classList.toggle("burnt", S.phase === "break");
-    $("plate-face").textContent = S.phase === "break" ? "💥" : g.cat.emoji;
 
-    // whose turn
     const holder = byId(g.holder);
     const mine = S.phase === "playing" && g.holder === S.you;
-    const watching = !me || (!me.alive && g.round > 0);
     $("answer-form").hidden = !mine;
-    $("bubble").hidden = mine || S.phase !== "playing";
     if (S.phase === "playing") {
-      $("turn-who").innerHTML = mine
-        ? `<span class="you">Your plate! Name one…</span>`
-        : `${holder ? holder.emoji + " " + esc(holder.name) : "Someone"} is holding the plate${watching ? " · you're watching" : ""}`;
-    } else {
-      $("turn-who").textContent = "";
+      const watching = !me || !me.alive;
+      $("turn-line").innerHTML = mine
+        ? `<span class="you">Your plate! Serve something…</span>`
+        : `${holder ? holder.emoji + " " + esc(holder.name) : "Someone"} has the plate${watching ? " · you're watching" : ""}`;
     }
-    const becameMine = mine && !(prev && prev.phase === "playing" && prev.game && prev.game.holder === S.you && prev.game.round === g.round);
+    const becameMine = mine && !(prev && prev.phase === "playing" && prev.game && prev.game.holder === S.you && prev.game.turnEnd === g.turnEnd);
     if (becameMine) {
       $("answer-input").value = "";
       $("answer-input").focus({ preventScroll: true });
-      sfx.yourTurn(); buzz(60);
+      sfx.yourTurn(); buzz(50);
+      lastTickSec = null;
     }
-    if (!prev || !prev.game || prev.game.holder !== g.holder || prev.game.round !== g.round) $("bubble").textContent = "";
+    if (prev && prev.game && prev.game.holder !== g.holder) typing[prev.game.holder] = "";
     if (prev && prev.game && prev.game.round !== g.round) setFlash("", "");
 
-    // burned panel
-    const burn = $("burn");
     if (S.phase === "break" && g.lastPop) {
       const p = byId(g.lastPop.id);
-      const secs = Math.max(0, Math.round((g.breakUntil - (Date.now() + clockOffset)) / 1000));
-      burn.hidden = false;
-      burn.innerHTML = `<h3>${g.lastPop.out ? "💀" : "🔥"} ${p ? esc(p.name) : "Someone"} got burned</h3>
-        <p>${g.lastPop.out ? "Out of hearts. They're off the table." : "That's a heart gone."} Next plate in ${secs}s.</p>
-        ${g.lastPop.missed.length ? `<p>Nobody said:</p><div class="chips" style="justify-content:center">${g.lastPop.missed.map((x) => chip(x)).join("")}</div>` : ""}`;
-    } else burn.hidden = true;
-
-    // served list
-    $("served-label").textContent = g.served.length ? "Already served (off the menu)" : "";
-    $("served").innerHTML = g.served.map((s, i) => chip(s, i === 0 && prev && prev.game && prev.game.served.length < g.served.length)).join("");
-
-    // heat: grows with time since the plate came out (the real fuse is secret)
-    cancelAnimationFrame(heatRaf);
-    const loop = () => {
-      if (!S || !S.game || S.phase !== "playing") { document.documentElement.style.setProperty("--heat", S && S.phase === "break" ? 1 : 0); return; }
-      const t = (Date.now() + clockOffset - S.game.startedAt) / 1000;
-      document.documentElement.style.setProperty("--heat", Math.min(1, t / 30).toFixed(3));
-      heatRaf = requestAnimationFrame(loop);
-    };
-    loop();
-    if (S.phase === "break") setTimeout(() => S && S.phase === "break" && renderGame(S), 1000);
+      const secs = Math.max(0, Math.ceil((g.breakUntil - now()) / 1000));
+      $("dock-burn").innerHTML = `<h3>${g.lastPop.out ? "💀" : "🔥"} ${p ? esc(p.name) : "Someone"} got burned</h3>
+        <p>${g.lastPop.out ? "Out of hearts. They're off the table." : "One heart gone."} Next plate in ${secs}s.</p>
+        ${g.lastPop.missed.length ? `<p>Nobody said:</p><div class="chips">${g.lastPop.missed.map((x) => `<span class="tier t${x.tier}">${esc(x.name)}</span>`).join("")}</div>` : ""}`;
+      setTimeout(() => S && S.phase === "break" && renderGame(S), 1000);
+    }
   }
-  function chip(s, isNew) {
-    const p = s.by && byId(s.by);
-    return `<span class="chip t${s.tier}${isNew ? " new" : ""}" title="${TIERS[s.tier].name}"><span>${esc(s.name)}</span><small>${p ? p.emoji : TIERS[s.tier].pts}</small></span>`;
+
+  // the clock: ring of blocks round the plate, seconds underneath, bar under the holder
+  const tctx = $("timer-canvas").getContext("2d");
+  function drawTimer(frac) {
+    tctx.clearRect(0, 0, 64, 64);
+    const N = 28;
+    const lit = Math.ceil(frac * N);
+    const col = frac > 0.5 ? "#4fe0a6" : frac > 0.25 ? "#ffc54d" : "#ff4d5e";
+    for (let i = 0; i < N; i++) {
+      const a = -Math.PI / 2 + (i / N) * Math.PI * 2;
+      const x = Math.round(32 + Math.cos(a) * 28 - 2), y = Math.round(32 + Math.sin(a) * 28 - 2);
+      tctx.fillStyle = "#12070b"; tctx.fillRect(x - 1, y - 1, 6, 6);
+      tctx.fillStyle = i < lit ? col : "#3d2219"; tctx.fillRect(x, y, 4, 4);
+    }
   }
+  function tick() {
+    requestAnimationFrame(tick);
+    if (!S || !S.game) { Room.setHeat(0); return; }
+    if (S.phase === "break") { drawTimer(0); $("secs").textContent = "BURNED"; $("secs").classList.add("low"); Room.setHeat(1); return; }
+    if (S.phase !== "playing") { Room.setHeat(0); return; }
+    const g = S.game;
+    const left = Math.max(0, g.turnEnd - now());
+    const frac = Math.min(1, left / (g.turnLen * 1000));
+    drawTimer(frac);
+    const secs = $("secs");
+    secs.textContent = (left / 1000).toFixed(1) + "s";
+    secs.classList.toggle("low", left < 3000);
+    const bar = document.querySelector(".seat.holder .tbar i");
+    if (bar) { bar.style.transform = `scaleX(${frac})`; bar.style.background = frac > 0.5 ? "#4fe0a6" : frac > 0.25 ? "#ffc54d" : "#ff4d5e"; }
+    Room.setHeat(1 - frac);
+    const whole = Math.ceil(left / 1000);
+    if (left < 3500 && whole !== lastTickSec && left > 0) { lastTickSec = whole; sfx.tick(g.holder === S.you); }
+  }
+  requestAnimationFrame(tick);
 
   // typing + answering
   let typeTimer = null;
   $("answer-input").addEventListener("input", () => {
+    renderBubbles();
     clearTimeout(typeTimer);
-    typeTimer = setTimeout(() => send({ t: "type", text: $("answer-input").value }), 40);
+    typeTimer = setTimeout(() => send({ t: "type", text: $("answer-input").value }), 35);
   });
   $("answer-form").addEventListener("submit", (e) => {
     e.preventDefault();
     const v = $("answer-input").value.trim();
+    clearTimeout(typeTimer);
     if (v) send({ t: "answer", text: v });
   });
 
@@ -315,87 +426,174 @@
     const p = byId(m.by);
     const t = TIERS[m.tier];
     sfx.pass(m.tier);
+    if (m.heart) setTimeout(sfx.heart, 200);
+    typing[m.by] = "";
     $("plate").classList.remove("pass"); void $("plate").offsetWidth; $("plate").classList.add("pass");
-    if (m.by === S.you) {
-      setFlash(`${m.name} · ${t.name} · +${m.pts}`, "good");
-      const r = $("answer-input").getBoundingClientRect();
-      const f = document.createElement("div");
-      f.className = "fly"; f.textContent = `+${m.pts}`;
-      f.style.left = r.left + r.width / 2 + "px"; f.style.top = r.top - 10 + "px";
-      document.body.appendChild(f); setTimeout(() => f.remove(), 1200);
-    } else {
-      setFlash(`${p ? p.emoji + " " + p.name : "Someone"}: ${m.name} · ${t.name}`, "good");
-    }
+    setFlash(`${m.by === S.you ? "You" : p ? p.emoji + " " + p.name : "Someone"}: ${m.name} · ${t.name} +${m.pts}${m.heart ? " · +1 ♥" : ""}`, "good");
+    setTimeout(() => renderBubbles(m.by), 30);
   }
   function onResult(m) {
     const inp = $("answer-input");
     if (m.kind === "taken") {
       const p = byId(m.by);
-      setFlash(`${m.name} is already served${p ? " by " + p.emoji + " " + p.name : ""}. Quick, another!`, "warn");
-      sfx.taken();
+      setFlash(`${m.name} is already served${p ? " by " + p.name : ""}. Quick, another!`, "warn");
     } else if (m.kind === "which") {
       setFlash(`Which ${m.text}? Add their first name.`, "warn");
-      sfx.taken();
     } else {
       setFlash(`"${m.text}" isn't on the menu.`, "warn");
-      sfx.miss();
     }
-    if (m.kind === "which") {
-      inp.setSelectionRange(0, 0); // cursor at the start, ready for the first name
-    } else {
-      inp.value = "";
-      send({ t: "type", text: "" });
-    }
+    sfx.nope();
+    if (m.kind === "which") inp.setSelectionRange(0, 0);
+    else { inp.value = ""; send({ t: "type", text: "" }); }
+    nope[S.you] = { text: m.text, until: Date.now() + 1000 };
+    renderBubbles(); setTimeout(renderBubbles, 1050);
     inp.classList.remove("shake"); void inp.offsetWidth; inp.classList.add("shake");
   }
-  function onPop(m) {
+  function onBurn(m) {
     sfx.burn();
     if (m.id === (S && S.you)) buzz([120, 60, 200]);
     setTimeout(() => {
       const el = document.querySelector(`.seat[data-id="${m.id}"]`);
       if (el) { el.classList.remove("hit"); void el.offsetWidth; el.classList.add("hit"); }
-    }, 50);
+    }, 60);
   }
 
   /* over */
   function renderOver(prev) {
     const g = S.game;
-    const ranked = [...S.players].filter((p) => p.alive || p.score || p.served || p.connected)
+    const ranked = S.players.filter((p) => p.alive || p.score || p.served)
       .sort((a, b) => (b.id === g.winner) - (a.id === g.winner) || b.score - a.score);
     const w = byId(g.winner);
-    if (w) {
-      $("over-emoji").textContent = w.emoji;
-      $("over-kicker").textContent = "Last one at the table";
-      $("over-title").textContent = `${w.name} wins`;
-    } else {
-      const me = meP();
-      $("over-emoji").textContent = "🍽️";
-      $("over-kicker").textContent = "Solo practice";
-      $("over-title").textContent = `${me ? me.score : 0} points`;
-    }
-    const bf = g.bestFind;
-    const bfp = bf && byId(bf.id);
-    $("over-sub").textContent = bf ? `Best find: ${bf.name} (${TIERS[bf.tier].name}) by ${bfp ? bfp.emoji + " " + bfp.name : "someone"}` : "";
-    $("bill").innerHTML = `<h3>The Bill</h3>` + ranked.map((p, i) => `
-      <div class="bill-row"><span>${i + 1}</span><span class="who">${p.emoji} ${esc(p.name)}</span>
-      <span class="ex">${p.served} served</span><span class="tot">${p.score}</span></div>`).join("");
+    $("marquee-eyebrow").textContent = `${g.round} plate${g.round === 1 ? "" : "s"} served`;
+    $("marquee-title").textContent = "HOT PLATE";
+    $("marquee-sub").textContent = "dinner's done";
+    $("over-kicker").textContent = w ? "Last one at the table" : "Solo practice";
+    $("over-title").textContent = w ? `${w.emoji} ${w.name} wins` : `${(meP() || {}).score || 0} points`;
+    const bf = g.bestFind, bfp = bf && byId(bf.id);
+    $("over-sub").textContent = bf ? `Best find: ${bf.name} (${TIERS[bf.tier].name}) by ${bfp ? bfp.name : "someone"}` : "";
+    $("bill").innerHTML = ranked.map((p, i) => `<div class="bill-row"><span>${i + 1}.</span><span class="who">${p.emoji} ${esc(p.name)}</span><span class="ex">${p.served} served</span><span class="tot">${p.score}</span></div>`).join("");
     $("over-actions").innerHTML = isHost()
-      ? `<button class="big-btn" id="again-btn">Play again</button><button class="pill" id="lobby-btn">Change categories</button><button class="pill" id="over-leave">Leave table</button>`
-      : `<p class="waiting">Waiting for the host to start another round…</p><button class="pill" id="over-leave">Leave table</button>`;
+      ? `<button class="px-big" id="again-btn">▼ Another round ▼</button><button class="px-btn" id="lobby-btn">Back to the lobby</button>`
+      : `<p class="over-sub">Waiting for the host to serve another round…</p>`;
     const again = $("again-btn"); if (again) again.onclick = () => send({ t: "start" });
     const lob = $("lobby-btn"); if (lob) lob.onclick = () => send({ t: "lobby" });
-    $("over-leave").onclick = () => send({ t: "leave" });
+    $("status-label").textContent = "DONE";
+    $("status-value").textContent = `#${g.round}`;
     if (!prev || prev.phase !== "over") sfx.win();
   }
 
-  /* misc */
-  let toastTimer = null;
-  function toast(msg) { const t = $("toast"); t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => (t.hidden = true), 2600); }
-  function paintMute() { $("mute-btn").textContent = muted ? "🔇" : "🔊"; }
+  /* chat */
+  let chatCount = 0;
+  function renderChat() {
+    const log = $("chat-log");
+    const atBottom = log.scrollHeight - log.scrollTop - log.clientHeight < 40;
+    log.innerHTML = S.chat.map((c) => c.kind === "sys"
+      ? `<li class="sys">${esc(c.text)}</li>`
+      : `<li><b>${esc(c.emoji)} ${esc(c.name)}:</b> ${esc(c.text)}</li>`).join("");
+    if (atBottom || S.chat.length !== chatCount) log.scrollTop = log.scrollHeight;
+    chatCount = S.chat.length;
+  }
+  $("chat-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const v = $("chat-input").value.trim();
+    if (!v) return;
+    send({ t: "chat", text: v });
+    $("chat-input").value = "";
+  });
+
+  /* settings */
+  const STEPS = [
+    { k: "hearts", label: "Hearts", vals: [1, 2, 3, 4, 5] },
+    { k: "turn", label: "Turn time", vals: Array.from({ length: 16 }, (_, i) => i + 5), fmt: (v) => v + "s" },
+    { k: "seats", label: "Seats", vals: Array.from({ length: 11 }, (_, i) => i + 2) },
+    { k: "heartCap", label: "Heart cap", vals: [1, 2, 3, 4, 5, 6, 7, 8, 9] },
+    { k: "perHeart", label: "Points / heart", vals: PER_HEART, fmt: (v) => (v ? v : "OFF") },
+    { k: "public", label: "Room", vals: [false, true], fmt: (v) => (v ? "PUBLIC" : "PRIVATE") },
+  ];
+  function renderSettings() {
+    if (!S) return;
+    const host = isHost() && S.phase !== "playing" && S.phase !== "break";
+    $("steppers").innerHTML = STEPS.map((s) => {
+      const v = S.settings[s.k];
+      const i = s.vals.indexOf(v);
+      const loop = s.k === "public";
+      return `<div class="stepper" data-k="${s.k}"><span class="k">${s.label}</span>
+        <button data-d="-1" aria-label="Less ${s.label}" ${!host || (!loop && i <= 0) ? "disabled" : ""}>◀</button>
+        <span class="v">${s.fmt ? s.fmt(v) : v}</span>
+        <button data-d="1" aria-label="More ${s.label}" ${!host || (!loop && i >= s.vals.length - 1) ? "disabled" : ""}>▶</button></div>`;
+    }).join("");
+    const sel = S.settings.cats.length;
+    $("cats-summary").textContent = CATS.length && sel === CATS.length ? "Everything" : `${sel} picked`;
+    $("settings-note").textContent = host
+      ? "Each pass takes half a second off the next turn, down to 4s. Points / heart: every time you pass that many points you win a heart back, up to the cap."
+      : "Only the host can change these.";
+  }
+  $("steppers").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-d]"); if (!b || !isHost()) return;
+    const row = b.closest(".stepper");
+    const s = STEPS.find((x) => x.k === row.dataset.k);
+    const i = s.vals.indexOf(S.settings[s.k]);
+    const n = (i + Number(b.dataset.d) + s.vals.length) % s.vals.length;
+    send({ t: "settings", [s.k]: s.vals[s.k === "public" ? n : Math.max(0, Math.min(s.vals.length - 1, i + Number(b.dataset.d)))] });
+  });
+  $("settings-btn").onclick = () => { renderSettings(); openModal("settings-modal"); };
+  $("cats-open").onclick = () => { renderCats(); openModal("cats-modal"); };
+  $("how-btn").onclick = () => openModal("how-modal");
+  function openModal(id) { $(id).hidden = false; }
+  document.querySelectorAll(".modal").forEach((m) => m.addEventListener("click", (e) => {
+    if (e.target === m || e.target.closest("[data-close]")) m.hidden = true;
+  }));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") document.querySelectorAll(".modal").forEach((m) => (m.hidden = true)); });
+
+  /* categories */
+  let CATS = [];
+  fetch("/api/categories").then((r) => r.json()).then((d) => { CATS = d.categories; }).catch(() => {});
+  function renderCats() {
+    if (!S) return;
+    const host = isHost();
+    const sel = new Set(S.settings.cats);
+    const total = CATS.filter((c) => sel.has(c.id)).reduce((n, c) => n + c.size, 0);
+    $("cats-title").textContent = `Categories · ${sel.size} · ${total.toLocaleString()} answers`;
+    const groups = {};
+    CATS.forEach((c) => (groups[c.group] = groups[c.group] || []).push(c));
+    $("cat-groups").innerHTML = Object.entries(groups).map(([g, list]) => `
+      <div class="cat-group"><h3>${esc(g)}</h3><div class="cat-list">
+        ${list.map((c) => `<button class="cat-chip" data-id="${c.id}" aria-pressed="${sel.has(c.id)}" ${host ? "" : "disabled"}>${c.emoji} ${esc(c.prompt.replace(/^Name (any |an? )?/i, ""))} <small>${c.size.toLocaleString()}</small></button>`).join("")}
+      </div></div>`).join("");
+    $("cats-all").hidden = $("cats-rand").hidden = !host;
+  }
+  $("cat-groups").addEventListener("click", (e) => {
+    const b = e.target.closest(".cat-chip"); if (!b || !isHost()) return;
+    const sel = new Set(S.settings.cats);
+    if (sel.has(b.dataset.id)) { if (sel.size === 1) return toast("Keep at least one category."); sel.delete(b.dataset.id); }
+    else sel.add(b.dataset.id);
+    send({ t: "settings", cats: [...sel] });
+  });
+  $("cats-all").onclick = () => send({ t: "settings", cats: CATS.map((c) => c.id) });
+  $("cats-rand").onclick = () => send({ t: "settings", cats: CATS.map((c) => c.id).sort(() => Math.random() - 0.5).slice(0, 6) });
+
+  /* invite, menu */
+  async function invite() {
+    if (!S) return;
+    const link = location.origin + "/?t=" + S.code;
+    if (navigator.share && matchMedia("(pointer: coarse)").matches) {
+      try { await navigator.share({ title: "Hot Plate", text: `Sit at my Hot Plate table: ${S.code}`, url: link }); return; } catch {}
+    }
+    try { await navigator.clipboard.writeText(link); toast("Invite link copied"); }
+    catch { toast("Send friends: " + link); }
+  }
+  $("invite-btn").onclick = invite;
+  $("link-btn").onclick = invite;
+  $("menu-btn").onclick = () => { const m = $("menu"); m.hidden = !m.hidden; $("menu-btn").setAttribute("aria-expanded", String(!m.hidden)); };
+  document.addEventListener("click", (e) => { if (!e.target.closest(".top-left")) $("menu").hidden = true; });
+  function paintMute() { $("mute-btn").textContent = "Sound: " + (muted ? "off" : "on"); }
   $("mute-btn").onclick = () => { muted = !muted; store.set("hp-muted", muted); paintMute(); };
   paintMute();
-  window.addEventListener("resize", () => { if (S && S.game && (S.phase === "playing" || S.phase === "break")) renderGame(S); });
+  $("leave-btn").onclick = () => { $("menu").hidden = true; if (S) send({ t: "leave" }); };
 
-  show("scr-home");
+  let toastTimer = null;
+  function toast(msg) { const t = $("toast"); t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => (t.hidden = true), 2600); }
+
+  render();
   connect();
 })();

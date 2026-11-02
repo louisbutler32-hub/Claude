@@ -27,7 +27,9 @@ OUT = Path(__file__).resolve().parent.parent / "data"
 UA = "DiningRoomHotPlate/0.2 (https://github.com/louisbutler32-hub/Claude)"
 ENDPOINT = "https://query.wikidata.org/sparql"
 
-# kind: "person" and "character" also match a unique first or last name at runtime
+# kind: "person" and "character" also match a unique first or last name at runtime.
+# Labels: Wikidata now keeps many names only as a "mul" (all languages) label, so we read
+# the English label and fall back to "mul"; dropping that fallback loses Kendrick Lamar.
 CATEGORIES = [
     # ---- sports ----
     dict(id="nba", group="Sports", emoji="🏀", prompt="Name any NBA player", kind="person", limit=4000, minsl=1,
@@ -36,10 +38,10 @@ CATEGORIES = [
          where="VALUES ?occ { wd:Q10871364 wd:Q11336312 } ?x wdt:P106 ?occ ; wdt:P54 ?t . VALUES ?lg { wd:Q465469 wd:Q858082 wd:Q1163715 } ?t wdt:P118 ?lg ."),
     dict(id="nfl", group="Sports", emoji="🏈", prompt="Name any NFL player", kind="person", limit=4000, minsl=2,
          where="?x wdt:P54 ?t . ?t wdt:P118 wd:Q1215884 ."),
-    dict(id="footballer", group="Sports", emoji="⚽", prompt="Name any footballer (soccer player)", kind="person", limit=5000, minsl=25,
+    dict(id="footballer", group="Sports", emoji="⚽", prompt="Name any footballer", kind="person", limit=5000, minsl=25,
          where="?x wdt:P106 wd:Q937857 ."),
     dict(id="club", group="Sports", emoji="🥅", prompt="Name any football (soccer) club", kind="thing", limit=3000, minsl=12,
-         where="?x wdt:P31 wd:Q476028 ."),
+         where="?x wdt:P31 ?c . VALUES ?c { wd:Q476028 wd:Q103229495 } ."),
     dict(id="f1", group="Sports", emoji="🏎️", prompt="Name any Formula 1 driver", kind="person", limit=2000, minsl=1,
          where="?x wdt:P106 wd:Q10841764 ."),
     dict(id="wrestler", group="Sports", emoji="🤼", prompt="Name any pro wrestler", kind="person", limit=2500, minsl=4,
@@ -155,7 +157,9 @@ def build(cat):
     q = f"""SELECT DISTINCT ?x ?sl ?l WHERE {{
       {cat['where']}
       ?x wikibase:sitelinks ?sl . FILTER(?sl >= {cat['minsl']})
-      ?x rdfs:label ?l . FILTER(lang(?l) = "en")
+      OPTIONAL {{ ?x rdfs:label ?le . FILTER(lang(?le) = "en") }}
+      OPTIONAL {{ ?x rdfs:label ?lm . FILTER(lang(?lm) = "mul") }}
+      BIND(COALESCE(?le, ?lm) AS ?l) FILTER(BOUND(?l))
     }} ORDER BY DESC(?sl) LIMIT {cat['limit']}"""
     rows = sparql(q)
     items = {}
@@ -173,7 +177,7 @@ def build(cat):
     for i in range(0, len(qids), 250):
         chunk = qids[i:i + 250]
         vals = " ".join("wd:" + x for x in chunk)
-        aq = f'SELECT ?x ?a WHERE {{ VALUES ?x {{ {vals} }} ?x skos:altLabel ?a . FILTER(lang(?a) = "en") }}'
+        aq = f'SELECT ?x ?a WHERE {{ VALUES ?x {{ {vals} }} ?x skos:altLabel|rdfs:label ?a . FILTER(lang(?a) = "en" || lang(?a) = "mul") }}'
         for b in sparql(aq):
             qid = b["x"]["value"].rsplit("/", 1)[-1]
             a = clean(b["a"]["value"])

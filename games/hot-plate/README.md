@@ -1,17 +1,28 @@
 # Hot Plate
 
-A Dining Room party game for phones. Everyone joins a table with a four-letter
-code, then a hot plate goes round. When it lands on you, name something in the
-category to pass it on. Answers already given are off the menu, rarer answers
-score more, and the plate burns at a random moment. Whoever is holding it loses
-a heart. Last one with hearts wins.
+A Dining Room party game. Everyone sits round a pixel-art dining table, on
+their own phone or laptop, joined by a four-letter code. A category comes up
+("Name any NBA player") and a hot plate goes round. When it lands in front of
+you, type something in the category and serve it to pass the plate on.
 
-- 1 to 12 players per table, each on their own phone. A table of one is solo practice.
-- 34 categories, each with 500 to 6,000 real answers (NBA, MLB and NFL players,
-  footballers, rappers, songs, movies, TV, anime, Marvel/DC/Disney/Star Wars
-  characters, Pokémon, video games, apps, cars, cities and more).
-- Rarity scoring: Bread Basket 10, Side Dish 25, Main Course 50, Chef's Secret 100.
-- Everyone watches the holder type live. The host picks categories and hearts.
+- **Everyone sees everything.** Each player's latest answer sits on their plate.
+  The holder's typing shows live in their bubble, and wrong guesses appear
+  crossed out for the whole table.
+- **The clock is on the table.** A ring of blocks round the plate counts down,
+  the holder gets a bar under their seat and the table glows hotter. Each pass
+  takes half a second off the next turn, down to 4 seconds.
+- **Run out and you're burned:** one heart gone, and a new plate starts.
+  Last one with hearts wins.
+- **No repeats, rarer is richer:** Bread Basket 10, Side Dish 25, Main Course 50,
+  Chef's Secret 100. Enough points buy a heart back.
+- **Big answer lists:** 34 categories with 500 to 6,000 real answers each
+  (NBA/MLB/NFL players, footballers, clubs, F1, wrestlers, UFC, rappers, singers,
+  bands, songs, albums, K-pop, movies, TV, cartoons, anime, actors,
+  YouTubers/TikTokers, Marvel, DC, Disney, Star Wars, anime and game characters,
+  Pokémon, video games, apps, food, dog breeds, cars, fashion brands, cities).
+- **Room features:** chat, ready-up, public or private tables (public ones are
+  listed on the home screen), and host settings for hearts, turn time, seats,
+  heart cap, points per heart and categories.
 
 ## Run it on your computer
 
@@ -49,28 +60,28 @@ so a restart clears any game in progress.
 
 | file | what it does |
 |---|---|
-| `server.js` | rooms, the hidden fuse, answer checking and scoring; serves the site and a WebSocket at `/ws` |
-| `public/` | the phone app (`index.html`, `app.js`, `style.css`); colours and fonts are the tokens at the top of `style.css` |
+| `server.js` | rooms, the turn clock, answer checking, scoring and chat; serves the site and a WebSocket at `/ws` |
+| `public/` | the app: `index.html`, `app.js` (screens, seats, bubbles, clock, chat), `scene.js` (draws the pixel dining room and lays out the seats), `style.css` (colour and font tokens at the top) |
 | `data/*.json` | one file per category: `[name, tier, [other accepted spellings]]`, most famous first |
 | `scripts/build_data.py` | rebuilds `data/` from Wikidata |
 | `scripts/smoke-test.cjs` | three headless phones play a full game (`npm test`, needs Playwright) |
 
 **Answer checking.** Case, accents, spaces and punctuation don't matter, and a
-leading "the" is optional. Wikidata's alternative names count ("King James",
-"Shaq"). For people and characters, a lone first or last name counts when only
-one answer has it ("LeBron", "Haaland"). Small typos are forgiven (one slip in
-5 to 8 letters, two in longer answers, swapped letters count as one), but
-never on answers with numbers in them.
+leading "the" is optional. Wikidata's alternative names count ("Shaq", "Wemby",
+"Big Papi"). For people and characters, a lone first or last name counts when
+only one answer has it ("LeBron", "Haaland"); when several share it ("Curry"),
+the player is asked to add a first name instead. Small typos are forgiven (one
+slip in 6 to 8 letters, two in longer answers, swapped letters count as one),
+but never on single shared names or answers with numbers in them.
 
 **Rarity.** Answers are ranked by how many Wikipedia language editions have an
 article about them, a good stand-in for how well known something is. In each
 category the top 40 are Bread Basket, the next 160 Side Dish, the next 600 Main
 Course, and everything after that is a Chef's Secret.
 
-**The fuse.** Each plate burns 14 to 38 seconds after it comes out, picked at
-random and never sent to the phones. Whoever catches the plate always gets at
-least 3.5 seconds. The steam and glow only show how long the plate has been
-out, not when it will burn.
+**The clock.** The first turn on each plate lasts the host's turn time (12s by
+default). Each pass takes 0.5s off, never below 4s. The server owns the clock;
+phones only draw it.
 
 ## Change the answer lists
 

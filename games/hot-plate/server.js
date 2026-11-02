@@ -1,6 +1,6 @@
 // Dining Room: Hot Plate — room-code multiplayer category game.
 // One Node process holds every room in memory. Clients talk JSON over a WebSocket at /ws.
-// The server is the only judge: it checks answers, runs the hidden fuse and keeps score.
+// The server is the only judge: it checks answers, runs the turn clock and keeps score.
 
 const http = require("http");
 const fs = require("fs");
@@ -18,10 +18,10 @@ const TIERS = [
   { name: "Main Course", pts: 50 },
   { name: "Chef's Secret", pts: 100 },
 ];
-const MAX_PLAYERS = 12;
-const FUSE_MIN = 14, FUSE_MAX = 38;   // seconds a plate stays hot, picked at random and never shown
-const HANDOFF_MIN = 3.5;              // whoever catches the plate always gets at least this long
-const BREAK_MS = 5000;                // pause between plates
+const BREAK_MS = 4500;                // pause after a burn before the next plate
+const MIN_TURN = 4;                   // the clock never drops below this many seconds
+const SPEEDUP = 0.5;                  // each pass takes this much off the next turn
+const LIMITS = { hearts: [1, 5], turn: [5, 20], seats: [2, 12], heartCap: [1, 9], perHeart: [0, 2000] };
 const EMOJIS = ["😎", "🤠", "👽", "🦊", "🐸", "🤖", "👻", "🐼", "🦄", "💀", "🧃", "🍉", "🐙", "🦖", "🍄", "🐝"];
 
 /* ------------------------------------------------------------------ */
@@ -57,7 +57,15 @@ function loadCategories() {
   for (const f of fs.readdirSync(DATA).filter((f) => f.endsWith(".json")).sort()) {
     const c = JSON.parse(fs.readFileSync(path.join(DATA, f), "utf8"));
     if (!c.answers || c.answers.length < 300) { console.warn(`skipping ${c.id}: only ${c.answers?.length || 0} answers`); continue; }
-    const answers = c.answers.map(([name, tier, alts]) => ({ name, tier, alts: alts || [] }));
+    let answers = c.answers.map(([name, tier, alts]) => ({ name, tier, alts: alts || [] }));
+    if (c.id === "club") {
+      // "Real Madrid Club de Fútbol" reads as "Real Madrid"; the full name still counts
+      const SUFFIX = /\s*\b(F\.?\s?C\.?|A\.?\s?F\.?\s?C\.?|C\.?\s?F\.?|S\.?\s?C\.?|Club de Fútbol|Football Club|Futebol Clube|Fußball-Club)\b\.?\s*/gi;
+      answers = answers.map((a) => {
+        const short = a.name.replace(SUFFIX, " ").replace(/\s+/g, " ").trim();
+        return short && short.length >= 3 && short !== a.name ? { ...a, name: short, alts: [a.name, ...a.alts] } : a;
+      });
+    }
     const exact = new Map();
     const add = (k, i) => { if (k && !exact.has(k)) exact.set(k, i); };
     // most famous first, so a shared alias belongs to the better-known answer
@@ -116,9 +124,10 @@ function newCode() {
     if (!rooms.has(c)) return c;
   }
 }
-const rand = (a, b) => a + Math.random() * (b - a);
 const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+const clamp = (v, [lo, hi]) => Math.min(hi, Math.max(lo, v));
 const cleanName = (s) => String(s || "").replace(/[\u0000-\u001f<>]/g, "").trim().slice(0, 16);
+const cleanText = (s, n) => String(s || "").replace(/[\u0000-\u001f]/g, " ").trim().slice(0, n);
 
 function createRoom() {
   const room = {
@@ -126,8 +135,9 @@ function createRoom() {
     hostId: null,
     players: [],               // seat order
     phase: "lobby",            // lobby | playing | break | over
-    settings: { hearts: 3, cats: [...CATS.keys()] },
+    settings: { hearts: 2, turn: 12, seats: 8, heartCap: 5, perHeart: 600, public: false, cats: [...CATS.keys()] },
     game: null,
+    chat: [],
     timer: null,
     lastActive: Date.now(),
   };
@@ -136,19 +146,24 @@ function createRoom() {
 }
 
 function addPlayer(room, ws, name, emoji) {
+  const taken = new Set(room.players.map((p) => p.emoji));
   const p = {
     id: crypto.randomBytes(6).toString("hex"),
     token: crypto.randomBytes(16).toString("hex"),
     name: cleanName(name) || "Guest",
-    emoji: EMOJIS.includes(emoji) ? emoji : pick(EMOJIS),
-    ws, connected: true,
-    hearts: 0, alive: false, score: 0, served: 0, best: null,
-    lastAnswer: 0, lastType: 0,
+    emoji: EMOJIS.includes(emoji) ? emoji : pick(EMOJIS.filter((e) => !taken.has(e))) || pick(EMOJIS),
+    ws, connected: true, ready: false,
+    hearts: 0, alive: false, score: 0, served: 0, best: null, last: null, nextHeartAt: 0,
+    lastAnswer: 0, lastType: 0, lastChat: 0,
   };
-  // late arrivals watch until the next game
-  room.players.push(p);
+  room.players.push(p);   // late arrivals watch until the next game
   if (!room.hostId) room.hostId = p.id;
   return p;
+}
+
+function sys(room, text) {
+  room.chat.push({ kind: "sys", text, at: Date.now() });
+  if (room.chat.length > 80) room.chat.splice(0, room.chat.length - 80);
 }
 
 function publicState(room, forId) {
@@ -160,17 +175,19 @@ function publicState(room, forId) {
     hostId: room.hostId,
     phase: room.phase,
     settings: room.settings,
+    now: Date.now(),
     players: room.players.map((p) => ({
-      id: p.id, name: p.name, emoji: p.emoji, connected: p.connected,
-      hearts: p.hearts, alive: p.alive, score: p.score, served: p.served,
+      id: p.id, name: p.name, emoji: p.emoji, connected: p.connected, ready: p.ready,
+      hearts: p.hearts, alive: p.alive, score: p.score, served: p.served, last: p.last,
     })),
+    chat: room.chat.slice(-50),
     game: g && {
       round: g.round,
       cat: g.cat && { id: g.cat.id, emoji: g.cat.emoji, prompt: g.cat.prompt, size: g.cat.answers.length },
       holder: g.holder,
+      turnEnd: g.turnEnd, turnLen: g.turnLen,
+      passes: g.passes,
       served: g.served.slice(0, 60),
-      startedAt: g.startedAt,
-      now: Date.now(),
       winner: g.winner || null,
       bestFind: g.bestFind || null,
       lastPop: g.lastPop || null,
@@ -184,6 +201,7 @@ function broadcast(room, msg) { for (const p of room.players) send(p.ws, msg); }
 function sync(room) { room.lastActive = Date.now(); for (const p of room.players) send(p.ws, publicState(room, p.id)); }
 
 const alive = (room) => room.players.filter((p) => p.alive);
+const seated = (room) => room.players.filter((p) => p.connected);
 function nextAlive(room, fromId) {
   const n = room.players.length;
   const start = room.players.findIndex((p) => p.id === fromId);
@@ -208,6 +226,9 @@ function finishIfOver(room) {
   g.winner = g.solo ? null : (left[0] || ranked[0]).id;
   const finds = room.players.filter((x) => x.best).sort((a, b) => b.best.tier - a.best.tier || b.best.rank - a.best.rank);
   g.bestFind = finds.length ? { id: finds[0].id, ...finds[0].best } : null;
+  const w = room.players.find((p) => p.id === g.winner);
+  sys(room, w ? `🏆 ${w.name} is the last one at the table` : `🍽️ Practice over: ${room.players[0].score} points`);
+  for (const p of room.players) p.ready = false;
   sync(room);
   return true;
 }
@@ -216,21 +237,38 @@ function finishIfOver(room) {
 function forfeit(room, p) {
   if (!room.game || p.connected || !p.alive || (room.phase !== "playing" && room.phase !== "break")) return;
   p.alive = false; p.hearts = 0;
+  sys(room, `🚪 ${p.name} left the table`);
   if (finishIfOver(room)) return;
-  if (room.game.holder === p.id && room.phase === "playing") room.game.holder = nextAlive(room, p.id);
-  sync(room);
+  if (room.game.holder === p.id && room.phase === "playing") giveTurn(room, nextAlive(room, p.id));
+  else sync(room);
 }
 
 function startGame(room) {
   clearTimeout(room.timer);
-  const playing = room.players.filter((p) => p.connected);
+  const playing = seated(room);
   if (!playing.length) return;
+  const s = room.settings;
   for (const p of room.players) {
     const inGame = p.connected;
-    Object.assign(p, { hearts: inGame ? room.settings.hearts : 0, alive: inGame, score: 0, served: 0, best: null });
+    Object.assign(p, { hearts: inGame ? s.hearts : 0, alive: inGame, score: 0, served: 0, best: null, last: null, ready: false, nextHeartAt: s.perHeart || 0 });
   }
-  room.game = { round: 0, cat: null, holder: playing[Math.floor(Math.random() * playing.length)].id, served: [], used: new Set(), recentCats: [], solo: playing.length === 1 };
+  room.game = { round: 0, cat: null, holder: pick(playing).id, served: [], used: new Set(), recentCats: [], solo: playing.length === 1, passes: 0 };
+  sys(room, `🔔 Dinner is served. ${playing.length === 1 ? "Solo practice." : playing.length + " at the table."}`);
   nextPlate(room, room.game.holder);
+}
+
+function turnLength(room) {
+  return Math.max(MIN_TURN, room.settings.turn - room.game.passes * SPEEDUP);
+}
+
+function giveTurn(room, holderId) {
+  const g = room.game;
+  g.holder = holderId;
+  g.turnLen = turnLength(room);
+  g.turnEnd = Date.now() + g.turnLen * 1000;
+  clearTimeout(room.timer);
+  room.timer = setTimeout(() => burn(room), g.turnLen * 1000);
+  sync(room);
 }
 
 function nextPlate(room, holderId) {
@@ -238,23 +276,15 @@ function nextPlate(room, holderId) {
   const pool = room.settings.cats.filter((id) => CATS.has(id));
   const fresh = pool.filter((id) => !g.recentCats.includes(id));
   const catId = pick(fresh.length ? fresh : pool);
-  g.recentCats = [catId, ...g.recentCats].slice(0, Math.min(6, Math.max(0, pool.length - 1)));
-  Object.assign(g, {
-    round: g.round + 1, cat: CATS.get(catId), holder: holderId, served: [], used: new Set(),
-    startedAt: Date.now(), lastPop: null, breakUntil: null,
-  });
-  g.fuseEnd = Date.now() + rand(FUSE_MIN, FUSE_MAX) * 1000;
+  g.recentCats = [catId, ...g.recentCats].slice(0, Math.min(8, Math.max(0, pool.length - 1)));
+  Object.assign(g, { round: g.round + 1, cat: CATS.get(catId), served: [], used: new Set(), passes: 0, lastPop: null, breakUntil: null });
+  for (const p of room.players) p.last = null;
   room.phase = "playing";
-  armFuse(room);
-  sync(room);
+  sys(room, `${g.cat.emoji} New plate: ${g.cat.prompt}`);
+  giveTurn(room, holderId);
 }
 
-function armFuse(room) {
-  clearTimeout(room.timer);
-  room.timer = setTimeout(() => pop(room), Math.max(0, room.game.fuseEnd - Date.now()));
-}
-
-function pop(room) {
+function burn(room) {
   const g = room.game;
   if (room.phase !== "playing") return;
   const p = room.players.find((x) => x.id === g.holder);
@@ -267,13 +297,14 @@ function pop(room) {
   const unused = g.cat.answers.map((a, i) => i).filter((i) => !g.used.has(i));
   const sample = (tier, n) => {
     const c = unused.filter((i) => g.cat.answers[i].tier === tier);
-    const outArr = [];
-    while (c.length && outArr.length < n) outArr.push(c.splice(Math.floor(Math.random() * c.length), 1)[0]);
-    return outArr;
+    const res = [];
+    while (c.length && res.length < n) res.push(c.splice(Math.floor(Math.random() * c.length), 1)[0]);
+    return res;
   };
   const missed = [...sample(1, 2), ...sample(2, 3), ...sample(3, 2)].map((i) => ({ name: g.cat.answers[i].name, tier: g.cat.answers[i].tier }));
   g.lastPop = { id: g.holder, out, missed };
-  broadcast(room, { t: "pop", id: g.holder, out });
+  if (p) sys(room, out ? `💀 ${p.name} got burned and is out` : `🔥 ${p.name} got burned`);
+  broadcast(room, { t: "burn", id: g.holder, out });
   if (finishIfOver(room)) return;
   room.phase = "break";
   g.breakUntil = Date.now() + BREAK_MS;
@@ -288,44 +319,71 @@ function handleAnswer(room, p, text) {
   const now = Date.now();
   if (now - p.lastAnswer < 60) return; // flood guard
   p.lastAnswer = now;
-  const raw = String(text || "").slice(0, 60).trim();
+  const raw = cleanText(text, 60);
   if (!raw) return;
   const i = matchAnswer(g.cat, raw);
-  if (i === -2) return send(p.ws, { t: "result", kind: "which", text: raw });
-  if (i < 0) return send(p.ws, { t: "result", kind: "miss", text: raw });
+  // misses are shown to the whole table, autocorrect disasters included
+  const nope = (kind, extra) => {
+    send(p.ws, { t: "result", kind, text: raw, ...extra });
+    for (const o of room.players) if (o !== p) send(o.ws, { t: "nope", id: p.id, kind, text: raw });
+  };
+  if (i === -2) return nope("which");
+  if (i < 0) return nope("miss");
   const a = g.cat.answers[i];
   if (g.used.has(i)) {
     const by = g.served.find((s) => s.i === i);
-    return send(p.ws, { t: "result", kind: "taken", name: a.name, by: by && by.by });
+    return nope("taken", { name: a.name, by: by && by.by });
   }
   g.used.add(i);
   const pts = TIERS[a.tier].pts;
   p.score += pts; p.served++;
+  p.last = { name: a.name, tier: a.tier };
   if (!p.best || a.tier > p.best.tier || (a.tier === p.best.tier && i > p.best.rank)) p.best = { name: a.name, tier: a.tier, rank: i, cat: g.cat.prompt };
   g.served.unshift({ i, name: a.name, tier: a.tier, by: p.id });
-  broadcast(room, { t: "served", by: p.id, name: a.name, tier: a.tier, pts, typed: raw });
-  // pass the plate; the catcher always gets a moment to react
-  g.holder = nextAlive(room, p.id);
-  if (g.fuseEnd - Date.now() < HANDOFF_MIN * 1000) { g.fuseEnd = Date.now() + HANDOFF_MIN * 1000; armFuse(room); }
-  sync(room);
+  sys(room, `${p.emoji} ${p.name} served ${a.name} · +${pts}`);
+  // points buy hearts back, up to the cap
+  let bonus = false;
+  const s = room.settings;
+  while (s.perHeart && p.score >= p.nextHeartAt) {
+    p.nextHeartAt += s.perHeart;
+    if (p.hearts < s.heartCap) { p.hearts++; bonus = true; }
+  }
+  if (bonus) sys(room, `❤️ ${p.name} earned a heart`);
+  broadcast(room, { t: "served", by: p.id, name: a.name, tier: a.tier, pts, heart: bonus });
+  g.passes++;
+  giveTurn(room, nextAlive(room, p.id));
 }
 
 function leave(room, p, forGood) {
   p.connected = false;
   p.ws = null;
   clearTimeout(p.dropTimer);
-  if (room.phase === "lobby") room.players = room.players.filter((x) => x !== p);
-  else if (forGood) forfeit(room, p);
+  if (room.phase === "lobby") {
+    room.players = room.players.filter((x) => x !== p);
+    sys(room, `${p.emoji} ${p.name} left`);
+  } else if (forGood) forfeit(room, p);
   else p.dropTimer = setTimeout(() => forfeit(room, p), 20000);
   if (room.hostId === p.id) {
     const nh = room.players.find((x) => x.connected);
     room.hostId = nh ? nh.id : null;
+    if (nh) sys(room, `👑 ${nh.name} is now the host`);
   }
-  if (!room.players.some((x) => x.connected)) {
-    // keep an empty room a little while so a refresh can reconnect
-    room.lastActive = Date.now();
-  }
+  room.lastActive = Date.now();
   sync(room);
+}
+
+function applySettings(room, m) {
+  const s = room.settings;
+  const num = (k) => { const v = Math.round(Number(m[k])); if (Number.isFinite(v)) s[k] = clamp(v, LIMITS[k]); };
+  ["hearts", "turn", "seats", "heartCap", "perHeart"].forEach((k) => { if (k in m) num(k); });
+  s.seats = Math.max(s.seats, Math.min(LIMITS.seats[1], seated(room).length));
+  s.heartCap = Math.max(s.heartCap, s.hearts);
+  if (s.perHeart && s.perHeart < 100) s.perHeart = 100;
+  if (typeof m.public === "boolean") s.public = m.public;
+  if (Array.isArray(m.cats)) {
+    const cats = m.cats.filter((id) => CATS.has(id));
+    if (cats.length) s.cats = [...new Set(cats)];
+  }
 }
 
 // sweep rooms nobody has touched for 20 minutes
@@ -345,12 +403,27 @@ setInterval(() => {
 
 const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".svg": "image/svg+xml", ".png": "image/png", ".ico": "image/x-icon", ".json": "application/json" };
 
+function json(res, obj) {
+  res.writeHead(200, { "Content-Type": "application/json", "Cache-Control": "no-cache" });
+  res.end(JSON.stringify(obj));
+}
+
 const server = http.createServer((req, res) => {
   const url = new URL(req.url, "http://x");
   if (url.pathname === "/api/categories") {
     const list = [...CATS.values()].map((c) => ({ id: c.id, group: c.group, emoji: c.emoji, prompt: c.prompt, size: c.answers.length }));
-    res.writeHead(200, { "Content-Type": "application/json", "Cache-Control": "no-cache" });
-    return res.end(JSON.stringify({ categories: list, tiers: TIERS }));
+    return json(res, { categories: list, tiers: TIERS });
+  }
+  if (url.pathname === "/api/tables") {
+    const tables = [...rooms.values()]
+      .filter((r) => r.settings.public && seated(r).length && seated(r).length < r.settings.seats)
+      .map((r) => {
+        const host = r.players.find((p) => p.id === r.hostId);
+        return { code: r.code, host: host ? `${host.emoji} ${host.name}` : "", players: seated(r).length, seats: r.settings.seats, playing: r.phase !== "lobby" };
+      })
+      .sort((a, b) => a.playing - b.playing || b.players - a.players)
+      .slice(0, 20);
+    return json(res, { tables });
   }
   if (url.pathname === "/healthz") { res.writeHead(200); return res.end("ok"); }
   let file = path.normalize(decodeURIComponent(url.pathname)).replace(/^([/\\])+/, "");
@@ -359,7 +432,6 @@ const server = http.createServer((req, res) => {
   if (!full.startsWith(PUBLIC)) { res.writeHead(403); return res.end(); }
   fs.readFile(full, (err, buf) => {
     if (err) {
-      // unknown paths fall back to the app so /ABCD style links work
       return fs.readFile(path.join(PUBLIC, "index.html"), (e2, html) => {
         if (e2) { res.writeHead(404); return res.end("not found"); }
         res.writeHead(200, { "Content-Type": TYPES[".html"] });
@@ -385,77 +457,86 @@ wss.on("connection", (ws) => {
 
     if (m.t === "create" || m.t === "join" || m.t === "rejoin") {
       if (room && me) return;
-      if (m.t === "create") {
-        room = createRoom();
-      } else {
-        room = rooms.get(String(m.code || "").toUpperCase().trim());
-        if (!room) { room = null; return send(ws, { t: "error", msg: "No table with that code. Check the four letters and try again." }); }
+      let r;
+      if (m.t === "create") r = createRoom();
+      else {
+        r = rooms.get(String(m.code || "").toUpperCase().trim());
+        if (!r) return send(ws, { t: "error", msg: "No table with that code. Check the four letters and try again." });
       }
       if (m.t === "rejoin") {
-        const p = room.players.find((x) => x.id === m.id && x.token === m.token);
+        const p = r.players.find((x) => x.id === m.id && x.token === m.token);
         if (p) {
           if (p.ws && p.ws !== ws) try { p.ws.close(); } catch {}
           clearTimeout(p.dropTimer);
-          p.ws = ws; p.connected = true; me = p;
-          if (!room.hostId || !room.players.some((x) => x.id === room.hostId && x.connected)) room.hostId = p.id;
-          send(ws, { t: "welcome", id: p.id, token: p.token, code: room.code });
-          return sync(room);
+          p.ws = ws; p.connected = true;
+          room = r; me = p;
+          if (!r.players.some((x) => x.id === r.hostId && x.connected)) r.hostId = p.id;
+          send(ws, { t: "welcome", id: p.id, token: p.token, code: r.code });
+          return sync(r);
         }
       }
-      if (room.players.filter((x) => x.connected).length >= MAX_PLAYERS) { room = null; return send(ws, { t: "error", msg: `That table is full (${MAX_PLAYERS} seats).` }); }
+      if (seated(r).length >= r.settings.seats) return send(ws, { t: "error", msg: `That table is full (${r.settings.seats} seats).` });
+      room = r;
       me = addPlayer(room, ws, m.name, m.emoji);
+      sys(room, `${me.emoji} ${me.name} ${room.players.length === 1 ? "opened the table" : room.phase === "lobby" ? "sat down" : "is watching"}`);
       send(ws, { t: "welcome", id: me.id, token: me.token, code: room.code });
       return sync(room);
     }
 
     if (!room || !me) return;
     const isHost = room.hostId === me.id;
+    const midGame = room.phase === "playing" || room.phase === "break";
 
     switch (m.t) {
-      case "settings": {
-        if (!isHost || room.phase === "playing" || room.phase === "break") return;
-        const hearts = Math.round(Number(m.hearts));
-        if (hearts >= 1 && hearts <= 5) room.settings.hearts = hearts;
-        if (Array.isArray(m.cats)) {
-          const cats = m.cats.filter((id) => CATS.has(id));
-          if (cats.length) room.settings.cats = [...new Set(cats)];
-        }
+      case "settings":
+        if (!isHost || midGame) return;
+        applySettings(room, m);
         return sync(room);
-      }
-      case "start": {
-        if (!isHost || room.phase === "playing" || room.phase === "break") return;
+      case "start":
+        if (!isHost || midGame) return;
         return startGame(room);
-      }
-      case "lobby": {
+      case "ready":
+        if (midGame) return;
+        me.ready = !!m.ready;
+        return sync(room);
+      case "lobby":
         if (!isHost || room.phase !== "over") return;
         clearTimeout(room.timer);
         room.phase = "lobby"; room.game = null;
         room.players = room.players.filter((p) => p.connected);
+        for (const p of room.players) Object.assign(p, { alive: false, hearts: 0, last: null });
         return sync(room);
-      }
       case "type": {
         if (room.phase !== "playing" || room.game.holder !== me.id) return;
         const now = Date.now();
-        if (now - me.lastType < 60) return;
+        if (now - me.lastType < 50) return;
         me.lastType = now;
-        const text = String(m.text || "").slice(0, 40);
+        const text = cleanText(m.text, 40);
         for (const p of room.players) if (p !== me) send(p.ws, { t: "typing", id: me.id, text });
         return;
       }
       case "answer":
         return handleAnswer(room, me, m.text);
+      case "chat": {
+        const now = Date.now();
+        const text = cleanText(m.text, 160);
+        if (!text || now - me.lastChat < 700) return;
+        me.lastChat = now;
+        room.chat.push({ kind: "chat", id: me.id, name: me.name, emoji: me.emoji, text, at: now });
+        if (room.chat.length > 80) room.chat.splice(0, room.chat.length - 80);
+        return sync(room);
+      }
       case "profile": {
-        if (room.phase !== "lobby") return;
+        if (midGame) return;
         const name = cleanName(m.name);
         if (name) me.name = name;
         if (EMOJIS.includes(m.emoji)) me.emoji = m.emoji;
         return sync(room);
       }
-      case "leave": {
+      case "leave":
         leave(room, me, true);
         room = null; me = null;
         return send(ws, { t: "left" });
-      }
     }
   });
 
