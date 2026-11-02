@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<title>Hot Plate · Dining Room</title>
+<meta name="description" content="Name it and pass the plate before it burns. A party game for phones: open a table, share the code, play.">
+<meta name="theme-color" content="#2a0c16">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Figtree:wght@400;600;800&family=DM+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- HOME -->
+  <section id="scr-home" class="screen">
+    <header class="hero">
+      <p class="kicker">Dining Room presents</p>
+      <h1>Hot Plate</h1>
+      <p class="tagline">Name it, pass the plate, don't get burned.</p>
+    </header>
+
+    <div class="cloth card-wrap">
+      <div class="card">
+        <label class="label" for="name-input">Your name</label>
+        <input id="name-input" class="text-in" maxlength="16" autocomplete="nickname" placeholder="e.g. Lou">
+        <div class="label">Pick a face</div>
+        <div class="emoji-row" id="emoji-row" role="radiogroup" aria-label="Avatar"></div>
+        <button class="big-btn" id="create-btn">Open a table</button>
+        <div class="or"><span>or join friends</span></div>
+        <form class="join-row" id="join-form">
+          <input id="code-input" class="text-in code-in" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="CODE" aria-label="Table code">
+          <button class="big-btn alt" type="submit">Join</button>
+        </form>
+        <p class="error" id="home-error" role="alert"></p>
+      </div>
+    </div>
+
+    <ol class="how">
+      <li><b>Open a table</b> and send friends the four-letter code.</li>
+      <li><b>When the plate lands on you</b>, name something in the category to pass it on.</li>
+      <li><b>No repeats.</b> Rarer answers score more: 10, 25, 50 or 100.</li>
+      <li><b>The plate burns at a random moment.</b> Holding it costs a heart. Last one with hearts wins.</li>
+    </ol>
+  </section>
+
+  <!-- LOBBY -->
+  <section id="scr-lobby" class="screen" hidden>
+    <div class="topbar">
+      <span class="brand">Hot Plate</span>
+      <button class="pill" id="lobby-leave">Leave</button>
+    </div>
+    <div class="code-card">
+      <span class="label light">Table code</span>
+      <div class="room-code" id="room-code"></div>
+      <button class="pill" id="copy-link">Share invite link</button>
+      <span class="link-text" id="link-text"></span>
+    </div>
+    <div class="label light">At the table</div>
+    <ul class="lobby-players" id="lobby-players"></ul>
+
+    <div id="host-panel" class="host-panel">
+      <div class="label light">Hearts each</div>
+      <div class="seg" id="hearts-seg"></div>
+      <div class="cat-head">
+        <div class="label light" id="cat-count">Categories</div>
+        <div class="cat-tools">
+          <button class="pill small" id="cats-all">Everything</button>
+          <button class="pill small" id="cats-none">Random 6</button>
+        </div>
+      </div>
+      <div id="cat-groups" class="cat-groups"></div>
+      <button class="big-btn" id="start-btn">Serve the first plate</button>
+    </div>
+    <p class="waiting" id="guest-wait"></p>
+  </section>
+
+  <!-- GAME -->
+  <section id="scr-game" class="screen" hidden>
+    <div class="topbar">
+      <span class="brand">Hot Plate</span>
+      <span class="meta" id="game-meta"></span>
+      <div class="top-actions">
+        <button class="pill" id="mute-btn" aria-label="Sound on or off">🔊</button>
+        <button class="pill" id="game-leave">Leave</button>
+      </div>
+    </div>
+
+    <div class="prompt-card cloth">
+      <div class="prompt-inner">
+        <p class="prompt" id="prompt"></p>
+        <p class="prompt-sub" id="prompt-sub"></p>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <div class="table" id="table">
+        <div class="pointer" id="pointer"><span></span></div>
+        <div class="plate" id="plate">
+          <div class="steam"><i></i><i></i><i></i></div>
+          <div class="plate-face" id="plate-face">🍽️</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="turn" id="turn">
+      <p class="turn-who" id="turn-who"></p>
+      <form class="answer-row" id="answer-form" hidden>
+        <input id="answer-input" class="text-in big" maxlength="60" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="send" placeholder="Type an answer" aria-label="Your answer">
+        <button class="big-btn" type="submit">Pass</button>
+      </form>
+      <p class="bubble" id="bubble" hidden></p>
+      <p class="flash" id="flash" aria-live="polite"></p>
+    </div>
+
+    <div class="burn" id="burn" hidden></div>
+
+    <div class="served-wrap">
+      <div class="label light" id="served-label"></div>
+      <div class="chips" id="served"></div>
+    </div>
+  </section>
+
+  <!-- OVER -->
+  <section id="scr-over" class="screen" hidden>
+    <div class="over-hero">
+      <div class="crown" id="over-emoji">👨‍🍳</div>
+      <p class="kicker" id="over-kicker"></p>
+      <h2 id="over-title"></h2>
+      <p class="tagline" id="over-sub"></p>
+    </div>
+    <div class="bill" id="bill"></div>
+    <div class="over-actions" id="over-actions"></div>
+  </section>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+<script src="/app.js"></script>
+</body>
+</html>
