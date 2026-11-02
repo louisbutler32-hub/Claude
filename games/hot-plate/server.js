@@ -74,10 +74,10 @@ function loadCategories() {
     const names = new Map();
     if (c.kind === "person" || c.kind === "character") {
       answers.forEach((a, i) => {
-        const words = a.name.split(/\s+/).map(norm).filter((w) => w.length >= 4);
+        const words = a.name.split(/\s+/).map(norm).filter(Boolean);
         if (words.length < 2) return;
         for (const w of new Set([words[0], words[words.length - 1]])) {
-          if (exact.has(w)) continue;
+          if (w.length < 4 || exact.has(w)) continue;
           names.set(w, names.has(w) ? -1 : i);
         }
       });
