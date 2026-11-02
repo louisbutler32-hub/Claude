@@ -333,12 +333,19 @@
       const p = byId(m.by);
       setFlash(`${m.name} is already served${p ? " by " + p.emoji + " " + p.name : ""}. Quick, another!`, "warn");
       sfx.taken();
+    } else if (m.kind === "which") {
+      setFlash(`Which ${m.text}? Add their first name.`, "warn");
+      sfx.taken();
     } else {
       setFlash(`"${m.text}" isn't on the menu.`, "warn");
       sfx.miss();
     }
-    inp.value = "";
-    send({ t: "type", text: "" });
+    if (m.kind === "which") {
+      inp.setSelectionRange(0, 0); // cursor at the start, ready for the first name
+    } else {
+      inp.value = "";
+      send({ t: "type", text: "" });
+    }
     inp.classList.remove("shake"); void inp.offsetWidth; inp.classList.add("shake");
   }
   function onPop(m) {

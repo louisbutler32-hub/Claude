@@ -33,7 +33,7 @@ CATEGORIES = [
     dict(id="nba", group="Sports", emoji="🏀", prompt="Name any NBA player", kind="person", limit=4000, minsl=1,
          where="?x wdt:P54 ?t . ?t wdt:P118 wd:Q155223 ."),
     dict(id="mlb", group="Sports", emoji="⚾", prompt="Name any MLB player", kind="person", limit=4000, minsl=4,
-         where="?x wdt:P106 wd:Q10871364 ; wdt:P54 ?t . VALUES ?lg { wd:Q465469 wd:Q858082 wd:Q1163715 } ?t wdt:P118 ?lg ."),
+         where="VALUES ?occ { wd:Q10871364 wd:Q11336312 } ?x wdt:P106 ?occ ; wdt:P54 ?t . VALUES ?lg { wd:Q465469 wd:Q858082 wd:Q1163715 } ?t wdt:P118 ?lg ."),
     dict(id="nfl", group="Sports", emoji="🏈", prompt="Name any NFL player", kind="person", limit=4000, minsl=2,
          where="?x wdt:P54 ?t . ?t wdt:P118 wd:Q1215884 ."),
     dict(id="footballer", group="Sports", emoji="⚽", prompt="Name any footballer (soccer player)", kind="person", limit=5000, minsl=25,

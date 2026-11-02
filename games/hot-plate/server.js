@@ -74,19 +74,26 @@ function loadCategories() {
         }
       });
     }
-    for (const [w, i] of names) if (i >= 0) exact.set(w, i);
+    const shared = new Set();
+    for (const [w, i] of names) {
+      if (i >= 0) exact.set(w, i);
+      else shared.add(w); // "Curry", "Jordan": several answers have it
+    }
     const fuzzy = [...exact.entries()].filter(([k]) => k.length >= 5 && !/\d/.test(k));
-    CATS.set(c.id, { id: c.id, group: c.group, emoji: c.emoji, prompt: c.prompt, kind: c.kind, answers, exact, fuzzy });
+    CATS.set(c.id, { id: c.id, group: c.group, emoji: c.emoji, prompt: c.prompt, kind: c.kind, answers, exact, fuzzy, shared });
   }
   const total = [...CATS.values()].reduce((n, c) => n + c.answers.length, 0);
   console.log(`loaded ${CATS.size} categories, ${total.toLocaleString()} answers`);
 }
 
+// returns an answer index, -1 for no match, or -2 when a lone name fits several answers
 function matchAnswer(cat, input) {
   const k = norm(input);
   if (!k) return -1;
   if (cat.exact.has(k)) return cat.exact.get(k);
-  if (k.length < 5 || /\d/.test(k)) return -1;
+  if (cat.shared.has(k)) return -2;
+  // typo help only on longer answers, and never across a single word (Curry is not Curly)
+  if (k.length < 6 || /\d/.test(k)) return -1;
   const max = k.length >= 9 ? 2 : 1;
   let best = -1, bestD = max + 1;
   for (const [key, i] of cat.fuzzy) {
@@ -284,6 +291,7 @@ function handleAnswer(room, p, text) {
   const raw = String(text || "").slice(0, 60).trim();
   if (!raw) return;
   const i = matchAnswer(g.cat, raw);
+  if (i === -2) return send(p.ws, { t: "result", kind: "which", text: raw });
   if (i < 0) return send(p.ws, { t: "result", kind: "miss", text: raw });
   const a = g.cat.answers[i];
   if (g.used.has(i)) {
