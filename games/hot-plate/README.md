@@ -15,10 +15,10 @@ you, type something in the category and serve it to pass the plate on.
   Last one with hearts wins.
 - **No repeats, rarer is richer:** Bread Basket 10, Side Dish 25, Main Course 50,
   Chef's Secret 100. Enough points buy a heart back.
-- **Big answer lists:** 34 categories with 500 to 6,000 real answers each
+- **Big answer lists:** 33 categories with 500 to 5,000 real answers each
   (NBA/MLB/NFL players, footballers, clubs, F1, wrestlers, UFC, rappers, singers,
   bands, songs, albums, K-pop, movies, TV, cartoons, anime, actors,
-  YouTubers/TikTokers, Marvel, DC, Disney, Star Wars, anime and game characters,
+  YouTubers/TikTokers, Marvel, DC, Star Wars, anime and game characters,
   Pokémon, video games, apps, food, dog breeds, cars, fashion brands, cities).
 - **Room features:** chat, ready-up, public or private tables (public ones are
   listed on the home screen), and host settings for hearts, turn time, seats,
@@ -92,7 +92,7 @@ query pattern plus a size limit. To add one, add an entry and run:
 python3 scripts/build_data.py <id>
 ```
 
-The server skips any category with fewer than 300 answers. A full rebuild takes
+The server skips any category with fewer than 500 answers (Disney characters is currently one, at 422). A full rebuild takes
 about an hour because the Wikidata query service limits how much query time
 each user gets per minute.
 

@@ -56,7 +56,7 @@ const CATS = new Map();
 function loadCategories() {
   for (const f of fs.readdirSync(DATA).filter((f) => f.endsWith(".json")).sort()) {
     const c = JSON.parse(fs.readFileSync(path.join(DATA, f), "utf8"));
-    if (!c.answers || c.answers.length < 300) { console.warn(`skipping ${c.id}: only ${c.answers?.length || 0} answers`); continue; }
+    if (!c.answers || c.answers.length < 500) { console.warn(`skipping ${c.id}: only ${c.answers?.length || 0} answers`); continue; }
     let answers = c.answers.map(([name, tier, alts]) => ({ name, tier, alts: alts || [] }));
     if (c.id === "club") {
       // "Real Madrid Club de Fútbol" reads as "Real Madrid"; the full name still counts
