@@ -210,7 +210,52 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--gold); outl
 .shake { animation: shake .35s; }
 @keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
 
+/* ---------- mode picker ---------- */
+.modes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.modes button { text-align: left; background: #fff; border: 2px solid #ecd6bd; border-radius: 14px; padding: 14px; color: var(--ink); display: flex; flex-direction: column; gap: 4px; }
+.modes button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--cream); }
+.modes .mt { font-family: var(--display); font-size: 1.3rem; }
+.modes button[aria-pressed="true"] .mt { color: var(--gold); }
+.modes .md { font-size: .88rem; line-height: 1.35; opacity: .85; }
+
+/* ---------- last bite ---------- */
+.bseats { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.bseat { background: var(--wine-2); border: 2px solid rgba(255,243,223,.14); border-radius: 14px; padding: 8px 12px; display: flex; align-items: center; gap: 8px; min-width: 0; transition: transform .2s; }
+.bseat .nm { font-weight: 800; max-width: 9ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bseat .hp { letter-spacing: 1px; font-size: .85rem; }
+.bseat .sc { font-family: var(--mono); color: var(--gold); font-variant-numeric: tabular-nums; }
+.bseat.active { border-color: var(--gold); background: var(--gold); color: var(--ink); transform: translateY(-3px); }
+.bseat.active .sc { color: var(--ink); }
+.bseat.out { opacity: .45; text-decoration: line-through; }
+.bite-card { padding: 18px; }
+.bite-inner { background: var(--cream); color: var(--ink); border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+.bite-prompt { font-family: var(--display); font-weight: 400; font-size: clamp(1.7rem, 6vw, 2.6rem); line-height: 1.1; margin: 0; text-wrap: balance; text-align: center; }
+.bite-who { text-align: center; font-weight: 800; font-size: 1.1rem; }
+.bite-who b { color: var(--cloth); }
+.bite-form { display: flex; gap: 8px; }
+.bite-form input { flex: 1; min-width: 0; font: 700 1.2rem var(--body); color: var(--ink); background: #fff; border: 3px solid var(--ink); border-radius: 14px; padding: 14px 16px; }
+.bite-form input:focus { outline: none; border-color: var(--cloth); box-shadow: 0 0 0 4px rgba(200,50,62,.2); }
+.bite-form input:disabled { opacity: .5; }
+.bite-form .big-btn { font-size: 1.15rem; padding: 12px 18px; }
+.flash { min-height: 1.5em; text-align: center; font-weight: 800; }
+.flash.good { color: #16855c; }
+.flash.warn { color: var(--cloth); }
+.tiers, .served, .missed { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.served { max-height: 160px; overflow: auto; }
+.srv { border-radius: 999px; padding: 5px 10px; font-weight: 700; font-size: .88rem; display: inline-flex; gap: 6px; align-items: center; border: 2px solid transparent; }
+.srv small { font-family: var(--mono); font-size: .72rem; opacity: .8; }
+.t0 { background: #efe2cf; color: var(--ink); }
+.t1 { background: #ffe09a; color: var(--ink); }
+.t2 { background: #ffab7a; color: var(--ink); }
+.t3 { background: var(--ink); color: var(--gold); border-color: var(--gold); }
+.served-label { text-align: center; font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #8a4a52; }
+.result .row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+
 @media (max-width: 640px) {
+  .modes { grid-template-columns: 1fr; }
+  .bite-card { padding: 10px; }
+  .bite-inner { padding: 16px; }
+  .bite-form .big-btn { padding: 10px 14px; }
   .menu { grid-template-columns: 1fr; }
   .menu-item { flex-direction: row; justify-content: flex-start; text-align: left; padding: 14px 16px; gap: 14px; }
   .menu-item .dish { font-size: 2rem; }
@@ -236,13 +281,30 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--gold); outl
     <div style="height:18px"></div>
     <div class="cloth setup-card">
       <div class="setup-inner">
+        <div class="label">Pick a game</div>
+        <div class="modes" id="mode-seg">
+          <button data-mode="quiz" aria-pressed="true"><span class="mt">Quiz Night</span><span class="md">Pick a course from the menu and answer multiple choice against the clock.</span></button>
+          <button data-mode="bite" aria-pressed="false"><span class="mt">Last Bite</span><span class="md">Name something in the category. Rarer answers score more. Blank and you lose a heart.</span></button>
+        </div>
         <div class="label">Who's at the table? (1 to 4 players)</div>
         <div class="seats" id="seats"></div>
-        <div class="label">Courses each</div>
-        <div class="seg" id="len-seg">
-          <button data-n="5" aria-pressed="false">5<small>quick bite</small></button>
-          <button data-n="8" aria-pressed="true">8<small>dinner</small></button>
-          <button data-n="12" aria-pressed="false">12<small>all-you-can-eat</small></button>
+        <div id="quiz-opts" style="display:flex;flex-direction:column;gap:18px">
+          <div class="label">Courses each</div>
+          <div class="seg" id="len-seg">
+            <button data-n="5" aria-pressed="false">5<small>quick bite</small></button>
+            <button data-n="8" aria-pressed="true">8<small>dinner</small></button>
+            <button data-n="12" aria-pressed="false">12<small>all-you-can-eat</small></button>
+          </div>
+        </div>
+        <div id="bite-opts" hidden>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div class="label">Hearts each</div>
+            <div class="seg" id="hearts-seg">
+              <button data-h="2" aria-pressed="false">2<small>brutal</small></button>
+              <button data-h="3" aria-pressed="true">3<small>standard</small></button>
+              <button data-h="5" aria-pressed="false">5<small>long dinner</small></button>
+            </div>
+          </div>
         </div>
         <button class="big-btn" id="start-btn">Take your seats</button>
       </div>
@@ -294,6 +356,38 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--gold); outl
     </div>
     <div style="height:16px"></div>
     <div id="result-slot"></div>
+  </section>
+
+  <!-- LAST BITE -->
+  <section id="scr-bite" hidden>
+    <div class="top">
+      <div class="brand">Dining Room</div>
+      <div class="top-right">
+        <span class="course-count" id="bite-count"></span>
+        <button class="pill-btn" id="bite-mute" aria-label="Toggle sound">🔊</button>
+        <button class="pill-btn" id="bite-quit">Leave</button>
+      </div>
+    </div>
+    <div style="height:14px"></div>
+    <div class="bseats" id="bseats"></div>
+    <div style="height:14px"></div>
+    <div class="cloth bite-card">
+      <div class="bite-inner" id="bite-inner">
+        <div class="timer-wrap"><div class="timer" id="bite-timer"></div></div>
+        <p class="bite-prompt" id="bite-prompt"></p>
+        <div class="tiers" id="bite-tiers"></div>
+        <div class="bite-who" id="bite-who"></div>
+        <form class="bite-form" id="bite-form" autocomplete="off">
+          <input id="bite-input" type="text" placeholder="Type an answer" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="send" maxlength="40" aria-label="Your answer">
+          <button class="big-btn" type="submit">Serve</button>
+        </form>
+        <div class="flash" id="bite-flash" aria-live="polite"></div>
+        <div class="served-label" id="served-label"></div>
+        <div class="served" id="served"></div>
+      </div>
+    </div>
+    <div style="height:16px"></div>
+    <div id="bite-result"></div>
   </section>
 
   <!-- END -->
@@ -517,7 +611,7 @@ function drawQuestion(catId) {
 
 /* ---------------- screens ---------------- */
 function show(id) {
-  ["scr-setup", "scr-table", "scr-q", "scr-end"].forEach((s) => { $(s).hidden = s !== id; });
+  ["scr-setup", "scr-table", "scr-q", "scr-bite", "scr-end"].forEach((s) => { $(s).hidden = s !== id; });
   window.scrollTo(0, 0);
 }
 
@@ -803,4 +897,409 @@ function paintMute() { $("mute-btn").textContent = muted ? "🔇" : "🔊"; }
 $("mute-btn").onclick = () => { muted = !muted; store.set("dr-muted", muted ? "1" : "0"); paintMute(); };
 paintMute();
 renderSeats();
+</script>
+
+<script>
+/* =================== LAST BITE: name-it mode =================== */
+/* Each prompt has four tiers, most common first. ";" separates answers, "|" separates accepted spellings (first is shown). */
+const TIERS = [
+  { name: "Bread Basket", pts: 10 },
+  { name: "Side Dish", pts: 25 },
+  { name: "Main Course", pts: 50 },
+  { name: "Chef's Secret", pts: 100 },
+];
+const PROMPTS = [
+  { c: "⚽", p: "Name a club that's played in the Premier League", t: [
+    "Manchester United|Man United|Man Utd|Man U; Manchester City|Man City; Liverpool; Arsenal; Chelsea; Tottenham|Tottenham Hotspur|Spurs",
+    "Newcastle|Newcastle United; Aston Villa|Villa; West Ham|West Ham United; Everton; Brighton|Brighton and Hove Albion; Leicester|Leicester City",
+    "Wolves|Wolverhampton|Wolverhampton Wanderers; Crystal Palace|Palace; Fulham; Brentford; Nottingham Forest|Forest|Nottm Forest; Bournemouth|AFC Bournemouth; Leeds|Leeds United; Southampton; Burnley; Sunderland; Ipswich|Ipswich Town",
+    "Luton|Luton Town; Sheffield United; Watford; Norwich|Norwich City; Stoke|Stoke City; Swansea|Swansea City; Cardiff|Cardiff City; Hull|Hull City; Middlesbrough|Boro; Huddersfield|Huddersfield Town; Blackburn|Blackburn Rovers; Bolton|Bolton Wanderers; Wigan|Wigan Athletic; Reading; QPR|Queens Park Rangers; West Brom|West Bromwich Albion; Portsmouth; Birmingham|Birmingham City; Sheffield Wednesday; Coventry|Coventry City; Oldham|Oldham Athletic; Wimbledon; Derby|Derby County; Charlton|Charlton Athletic; Bradford|Bradford City; Barnsley; Blackpool; Swindon|Swindon Town",
+  ]},
+  { c: "🏀", p: "Name an NBA team", t: [
+    "Lakers|Los Angeles Lakers|LA Lakers; Warriors|Golden State|Golden State Warriors; Celtics|Boston Celtics; Bulls|Chicago Bulls; Heat|Miami Heat; Knicks|New York Knicks",
+    "Nets|Brooklyn Nets; Clippers|LA Clippers; Mavericks|Mavs|Dallas Mavericks; Bucks|Milwaukee Bucks; Suns|Phoenix Suns; 76ers|Sixers|Philadelphia 76ers; Spurs|San Antonio Spurs; Nuggets|Denver Nuggets; Raptors|Toronto Raptors; Rockets|Houston Rockets; Thunder|OKC|Oklahoma City Thunder",
+    "Cavaliers|Cavs|Cleveland Cavaliers; Hawks|Atlanta Hawks; Timberwolves|Wolves|Minnesota Timberwolves; Grizzlies|Memphis Grizzlies; Pelicans|New Orleans Pelicans; Magic|Orlando Magic; Pistons|Detroit Pistons; Jazz|Utah Jazz; Kings|Sacramento Kings; Pacers|Indiana Pacers",
+    "Hornets|Charlotte Hornets; Trail Blazers|Blazers|Portland Trail Blazers; Wizards|Washington Wizards",
+  ]},
+  { c: "🎤", p: "Name a Taylor Swift album", t: [
+    "1989; Folklore; Midnights; Lover; Reputation",
+    "Red; Fearless; Evermore; The Tortured Poets Department|TTPD|Tortured Poets Department; Speak Now",
+    "The Life of a Showgirl|Life of a Showgirl|Showgirl",
+    "Taylor Swift|Debut|Self-titled",
+  ]},
+  { c: "🦸", p: "Name a Marvel hero or antihero", t: [
+    "Iron Man; Spider-Man|Spiderman; Captain America; Thor; Hulk; Black Widow",
+    "Black Panther; Doctor Strange|Dr Strange; Ant-Man|Antman; Hawkeye; Captain Marvel; Scarlet Witch|Wanda; Groot; Deadpool; Wolverine; Star-Lord|Starlord; Vision; Loki",
+    "Falcon; Winter Soldier|Bucky; Rocket|Rocket Raccoon; Gamora; Drax; Shang-Chi; Ms. Marvel; She-Hulk; Moon Knight; Wasp; War Machine; Daredevil; Quicksilver; Nebula; Mantis; Venom; Storm; Cyclops; Jean Grey; Gambit; Ghost Rider; Blade",
+    "Okoye; Shuri; Yelena|Yelena Belova; Valkyrie; Nova; The Thing|Thing; Human Torch; Mister Fantastic|Mr Fantastic; Invisible Woman; Silver Surfer; Squirrel Girl; Kate Bishop; America Chavez; Wong; Echo; US Agent; Sentry; Punisher|The Punisher; Jessica Jones; Luke Cage; Iron Fist; Beast; Rogue; Nightcrawler; Colossus; Psylocke; Cable; Domino; Elektra; Hercules; Adam Warlock; Kitty Pryde|Shadowcat; Iceman; Jubilee; Miles Morales; Spider-Gwen|Ghost-Spider|Gwen Stacy",
+  ]},
+  { c: "⚡", p: "Name a Pokémon", t: [
+    "Pikachu; Charizard; Bulbasaur; Squirtle; Charmander; Eevee; Mewtwo; Jigglypuff; Snorlax; Mew",
+    "Gengar; Psyduck; Meowth; Lucario; Greninja; Magikarp; Gyarados; Dragonite; Lapras; Ditto; Blastoise; Venusaur; Machamp; Onix; Togepi; Piplup; Raichu; Vaporeon; Umbreon; Sylveon; Rayquaza; Lugia; Arcanine; Mimikyu; Garchomp; Gardevoir",
+    "Jolteon; Flareon; Espeon; Leafeon; Glaceon; Growlithe; Vulpix; Ninetales; Cubone; Slowpoke; Geodude; Abra; Alakazam; Ho-Oh; Mudkip; Torchic; Treecko; Totodile; Cyndaquil; Chikorita; Blaziken; Sceptile; Swampert; Wobbuffet; Butterfree; Caterpie; Pidgey; Rattata; Zubat; Ekans; Arbok; Koffing; Weezing; Haunter; Gastly; Clefairy; Diglett; Magnemite; Voltorb; Scyther; Mr. Mime; Articuno; Zapdos; Moltres; Dratini; Sobble; Scorbunny; Grookey; Rowlet; Litten; Popplio; Fuecoco; Sprigatito; Quaxly; Bidoof; Wooper; Marill; Tyranitar; Metagross; Salamence; Absol; Zoroark; Pichu; Riolu; Charmeleon; Ivysaur; Wartortle; Kyogre; Groudon; Dialga; Palkia; Giratina; Zekrom; Reshiram; Arceus; Celebi; Jirachi; Darkrai; Pidgeot",
+    "Sandshrew; Oddish; Poliwag; Tentacool; Ponyta; Seel; Grimer; Shellder; Cloyster; Drowzee; Krabby; Electrode; Exeggcute; Hitmonlee; Hitmonchan; Lickitung; Rhydon; Chansey; Tangela; Kangaskhan; Horsea; Goldeen; Staryu; Starmie; Jynx; Electabuzz; Magmar; Pinsir; Tauros; Porygon; Omanyte; Kabuto; Aerodactyl; Dragonair; Spheal; Wailord; Shuckle; Smeargle; Sableye; Mawile; Spinda; Luvdisc; Feebas; Milotic; Bronzor; Klefki; Trubbish; Garbodor; Stunfisk; Dedenne; Wooloo; Applin; Tinkaton; Annihilape; Kingambit; Lechonk; Pawmi; Maushold|Tandemaus; Farfetch'd; Exeggutor; Muk; Slowbro; Golem; Graveler; Nidoking; Nidoqueen; Nidoran; Paras; Venonat; Mankey; Primeape; Poliwrath; Kadabra; Machop; Bellsprout; Weepinbell; Victreebel; Doduo; Dodrio; Gloom; Vileplume; Seaking; Kabutops; Omastar; Hypno; Kingler; Marowak; Rhyhorn; Tentacruel; Magneton; Dewgong; Golduck; Persian; Sandslash; Clefable; Wigglytuff; Golbat; Parasect; Venomoth; Dugtrio; Rapidash; Seadra; Fearow; Spearow; Raticate; Pidgeotto; Metapod; Kakuna; Beedrill; Weedle",
+  ]},
+  { c: "🎮", p: "Name a games console", t: [
+    "PlayStation 5|PS5; Nintendo Switch|Switch; Xbox Series X|Series X; PlayStation 4|PS4; Xbox One; Nintendo Switch 2|Switch 2",
+    "Wii; Xbox 360; PlayStation 3|PS3; PlayStation 2|PS2; PlayStation|PS1|PlayStation 1; Game Boy|Gameboy; Nintendo DS|DS; Nintendo 3DS|3DS; Steam Deck",
+    "Wii U; GameCube; Nintendo 64|N64; Game Boy Advance|GBA; PSP|PlayStation Portable; PS Vita|Vita; Xbox Series S|Series S; Original Xbox|Xbox; Super Nintendo|SNES; NES|Nintendo Entertainment System; Sega Mega Drive|Mega Drive|Sega Genesis|Genesis",
+    "Dreamcast|Sega Dreamcast; Sega Saturn|Saturn; Atari 2600|Atari; Game Gear|Sega Game Gear; Virtual Boy; Ouya; Game Boy Color; Neo Geo; PlayStation Portal; Meta Quest|Oculus Quest|Quest; Master System|Sega Master System; Atari Jaguar|Jaguar; 3DO",
+  ]},
+  { c: "🍟", p: "Name a fast food chain", t: [
+    "McDonald's|McDonalds|Maccies|Mickey D's; Burger King; KFC|Kentucky Fried Chicken; Subway; Taco Bell; Wendy's",
+    "Chick-fil-A; Domino's; Pizza Hut; Five Guys; Popeyes; Starbucks; Chipotle; In-N-Out; Greggs; Shake Shack",
+    "Wingstop; Arby's; Sonic; Dunkin|Dunkin Donuts; Panda Express; Jack in the Box; Papa John's; Little Caesars; Dairy Queen|DQ; Raising Cane's|Canes; Nando's; Tim Hortons|Timmies; Krispy Kreme; Carl's Jr; Hardee's; Whataburger; Culver's; Jollibee; Pret|Pret A Manger; Panera|Panera Bread",
+    "White Castle; Del Taco; Bojangles; Church's Chicken|Church's; Steak 'n Shake; Checkers; Rally's; Jersey Mike's; Jimmy John's; Firehouse Subs; Zaxby's; El Pollo Loco; Wimpy; Leon; Taco John's; Long John Silver's; Qdoba; Sweetgreen; Dave's Hot Chicken; Smashburger; Freddy's; Cook Out|Cookout; Wingstop Express; German Doner Kebab|GDK; Chicken Cottage; Crunchy Roll",
+  ]},
+  { c: "🎙️", p: "Name a rapper", t: [
+    "Drake; Eminem; Kanye West|Kanye|Ye; Travis Scott; Kendrick Lamar|Kendrick; Jay-Z; Nicki Minaj; Snoop Dogg",
+    "Lil Wayne; J. Cole; Cardi B; 50 Cent; Post Malone; Megan Thee Stallion; Tyler, the Creator; Lil Baby; Future; 21 Savage; Playboi Carti|Carti; Doja Cat; Ice Spice; Lil Uzi Vert|Lil Uzi; Juice WRLD|Juice World; XXXTentacion|XXX; Tupac|2Pac; Biggie|Notorious B.I.G.|Biggie Smalls; Dr. Dre; Ice Cube; Lil Nas X; A$AP Rocky; Central Cee; Stormzy",
+    "Gunna; Young Thug; Lil Durk; NBA YoungBoy|YoungBoy; Polo G; Pop Smoke; Mac Miller; Childish Gambino; Chance the Rapper; Kid Cudi; Logic; Metro Boomin; Offset; Quavo; Takeoff; Migos; Roddy Ricch; DaBaby; Lil Yachty; Don Toliver; Dave|Santan Dave; Skepta; GloRilla; Latto; Sexyy Red; Coi Leray; Jack Harlow; Nas; Lauryn Hill; Missy Elliott; Lil Tecca; Ski Mask the Slump God; Denzel Curry; JID; Rod Wave; Kodak Black; Tyga; Wiz Khalifa; Pusha T; Lil Kim; Busta Rhymes; Ludacris; T.I.; Nelly; Pitbull; Flo Rida; Macklemore; Doechii",
+    "MF DOOM; Rakim; KRS-One; Run-DMC; LL Cool J; Andre 3000; Big Boi; OutKast; Common; Mos Def|Yasiin Bey; Earl Sweatshirt; Freddie Gibbs; Vince Staples; Danny Brown; Little Simz; AJ Tracey; Headie One; Aitch; Digga D; Ken Carson; Destroy Lonely; Yeat; Lil Tjay; Fivio Foreign; Westside Gunn; Joey Bada$$; Isaiah Rashad; Schoolboy Q; Ab-Soul; Cash Cobain; BossMan Dlow; Rico Nasty; Tierra Whack; Flo Milli; Kano; Wiley; Dizzee Rascal; Giggs",
+  ]},
+  { c: "🏰", p: "Name a Disney or Pixar animated movie", t: [
+    "Frozen; The Lion King|Lion King; Toy Story; Moana; Finding Nemo; Encanto; Aladdin; Cars",
+    "Tangled; Zootopia|Zootropolis; Up; Inside Out; Coco; Monsters, Inc.|Monsters Inc; The Incredibles|Incredibles; Beauty and the Beast; The Little Mermaid|Little Mermaid; Cinderella; Snow White|Snow White and the Seven Dwarfs; Mulan; Ratatouille; WALL-E; Big Hero 6; Wreck-It Ralph; Lilo & Stitch; Frozen 2|Frozen II; Toy Story 2; Toy Story 3; Toy Story 4; Inside Out 2; Moana 2",
+    "Brave; Soul; Luca; Turning Red; Elemental; Onward; A Bug's Life; Finding Dory; Monsters University; Cars 2; Cars 3; Incredibles 2; Raya and the Last Dragon|Raya; Wish; Bolt; Hercules; Pocahontas; The Princess and the Frog|Princess and the Frog; Bambi; Dumbo; Pinocchio; Peter Pan; Sleeping Beauty; 101 Dalmatians|One Hundred and One Dalmatians; The Jungle Book|Jungle Book; Tarzan; The Good Dinosaur; Strange World; Elio; Zootopia 2|Zootropolis 2; Ralph Breaks the Internet",
+    "The Emperor's New Groove|Emperor's New Groove; Treasure Planet; Atlantis|Atlantis: The Lost Empire; Lady and the Tramp; The Aristocats|Aristocats; Robin Hood; The Fox and the Hound; Fantasia; Brother Bear; Home on the Range; Chicken Little; Meet the Robinsons; The Hunchback of Notre Dame|Hunchback of Notre Dame; Oliver & Company; The Rescuers|Rescuers; The Great Mouse Detective; The Black Cauldron; The Sword in the Stone|Sword in the Stone; Winnie the Pooh; Lightyear; Lilo & Stitch 2; Dinosaur",
+  ]},
+  { c: "🪄", p: "Name a Harry Potter character", t: [
+    "Harry Potter|Harry; Hermione|Hermione Granger; Ron|Ron Weasley; Dumbledore|Albus Dumbledore; Voldemort|Tom Riddle|You-Know-Who; Snape|Severus Snape; Hagrid|Rubeus Hagrid; Draco|Draco Malfoy|Malfoy",
+    "Dobby; Sirius Black|Sirius; Ginny|Ginny Weasley; Neville|Neville Longbottom; Luna|Luna Lovegood; Fred Weasley|Fred; George Weasley|George; McGonagall|Professor McGonagall|Minerva McGonagall; Bellatrix|Bellatrix Lestrange; Hedwig; Dudley|Dudley Dursley; Lupin|Remus Lupin; Cedric|Cedric Diggory; Lucius Malfoy|Lucius",
+    "Cho Chang|Cho; Umbridge|Dolores Umbridge; Peter Pettigrew|Wormtail; Moaning Myrtle|Myrtle; Molly Weasley; Arthur Weasley; Percy Weasley|Percy; Bill Weasley; Charlie Weasley; Vernon Dursley|Uncle Vernon; Petunia Dursley|Aunt Petunia; Kreacher; Mad-Eye Moody|Moody|Alastor Moody; Tonks|Nymphadora Tonks; Gilderoy Lockhart|Lockhart; Quirrell|Professor Quirrell; Filch|Argus Filch; Fawkes; Crabbe; Goyle; Lily Potter; James Potter; Fleur|Fleur Delacour; Viktor Krum|Krum; Dean Thomas; Seamus|Seamus Finnigan; Nagini; Buckbeak; Aragog; Slughorn|Horace Slughorn; Trelawney|Sybill Trelawney",
+    "Lavender Brown; Oliver Wood; Grindelwald|Gellert Grindelwald; Aberforth|Aberforth Dumbledore; Narcissa Malfoy|Narcissa; Scorpius|Scorpius Malfoy; Fenrir Greyback|Greyback; Antonin Dolohov|Dolohov; Barty Crouch|Barty Crouch Jr; Ludo Bagman; Rita Skeeter; Madam Hooch; Madam Pomfrey; Professor Sprout|Sprout; Flitwick|Professor Flitwick; Firenze; Griphook; Ollivander; Xenophilius Lovegood; Winky; Kingsley Shacklebolt|Kingsley; Cornelius Fudge|Fudge; Rufus Scrimgeour; Pansy Parkinson; Blaise Zabini; Colin Creevey; Padma Patil; Parvati Patil; Nearly Headless Nick; Peeves; Mrs Norris; Crookshanks; Scabbers; Errol; Hannah Abbott; Ernie Macmillan; Katie Bell; Angelina Johnson; Lee Jordan; Aunt Marge|Marge Dursley; Mundungus Fletcher|Dung; Regulus Black; Gregorovitch; Bathilda Bagshot",
+  ]},
+  { c: "🏅", p: "Name a sport that's been in the Summer Olympics", t: [
+    "Swimming; Athletics|Track and Field|Track; Gymnastics; Basketball; Football|Soccer; Tennis; Boxing",
+    "Volleyball; Diving; Cycling; Rowing; Wrestling; Judo; Fencing; Archery; Weightlifting; Table Tennis|Ping Pong; Badminton; Golf; Hockey|Field Hockey; Rugby|Rugby Sevens; Skateboarding; Surfing; Sailing; Taekwondo; Handball; Triathlon",
+    "Water Polo; Breaking|Breakdancing|Breakdance; Sport Climbing|Climbing|Rock Climbing; Canoeing|Kayaking|Canoe|Kayak; Equestrian|Horse Riding|Show Jumping|Dressage; Shooting; Modern Pentathlon|Pentathlon; BMX; Marathon Swimming; Beach Volleyball; Artistic Swimming|Synchronised Swimming|Synchronized Swimming; Trampoline; Mountain Biking; 3x3 Basketball; Rhythmic Gymnastics; Marathon",
+    "Karate; Baseball; Softball; Lacrosse; Cricket; Flag Football; Squash; Tug of War; Polo; Croquet; Rugby Union; Decathlon; Heptathlon; Pole Vault; Javelin; Discus; Hammer Throw; Long Jump; High Jump; Triple Jump; Shot Put; Steeplechase",
+  ]},
+  { c: "📱", p: "Name a social media app", t: [
+    "TikTok; Instagram|Insta|IG; Snapchat|Snap; YouTube; Facebook; X|Twitter",
+    "WhatsApp; Reddit; Pinterest; Discord; Threads; BeReal; Twitch; LinkedIn; Telegram",
+    "Tumblr; Bluesky; Vine; Messenger|Facebook Messenger; Kick; Lemon8; Signal; Clubhouse; WeChat; Quora; Yik Yak; Strava; Letterboxd; Substack; Mastodon",
+    "MySpace; Bebo; Google+|Google Plus; Periscope; Musical.ly; Houseparty; Ask.fm; Friendster; Hi5; Path; Peach; Poparazzi; Dispo; Weibo; Douyin; VSCO; Vero; RedNote|Xiaohongshu; Kik; Gas; NGL; Locket; Fizz",
+  ]},
+  { c: "📺", p: "Name a Netflix original show", t: [
+    "Stranger Things; Squid Game; Wednesday; Bridgerton; The Crown; Money Heist",
+    "Outer Banks; Ozark; The Witcher; You; Black Mirror; Cobra Kai; Sex Education; Emily in Paris; Ginny & Georgia; Never Have I Ever; 13 Reasons Why; Orange Is the New Black|OITNB; Narcos; Adolescence; One Piece; Lupin; Dark; Arcane; The Umbrella Academy|Umbrella Academy; Elite; Baby Reindeer; Beef; Big Mouth",
+    "House of Cards; BoJack Horseman|BoJack; Mindhunter; The Haunting of Hill House|Haunting of Hill House; Maniac; Russian Doll; Love Is Blind; Too Hot to Handle; The Queen's Gambit|Queen's Gambit; Monster|Dahmer; Heartstopper; Shadow and Bone; Locke & Key; Sweet Tooth; Avatar: The Last Airbender|Avatar The Last Airbender; 3 Body Problem; The Night Agent|Night Agent; Selling Sunset; Drive to Survive|Formula 1: Drive to Survive; Tiger King; Making a Murderer; The Gentlemen; Kaos; Nobody Wants This; The Diplomat; XO, Kitty|XO Kitty; Alice in Borderland; All of Us Are Dead; Unbreakable Kimmy Schmidt|Kimmy Schmidt; Master of None; Atypical; On My Block; GLOW; Dead to Me; Grace and Frankie; Jessica Jones; Luke Cage; Iron Fist; The Punisher",
+    "Hemlock Grove; Sense8; The OA; Altered Carbon; Cursed; Warrior Nun; 1899; Kingdom; Dash & Lily; Julie and the Phantoms; Fate: The Winx Saga|Winx Saga; Daybreak; Insatiable; Chilling Adventures of Sabrina|Sabrina; Raising Dion; The Society; I Am Not Okay with This; Everything Sucks!; Dead Boy Detectives; Kaleidoscope; The Defenders; Marco Polo; Bloodline; The Get Down; Godless",
+  ]},
+  { c: "🚗", p: "Name a car brand", t: [
+    "Toyota; Ford; BMW; Mercedes|Mercedes-Benz|Merc; Tesla; Honda; Audi; Ferrari; Lamborghini|Lambo",
+    "Porsche; Nissan; Chevrolet|Chevy; Volkswagen|VW; Hyundai; Kia; Jeep; Dodge; Bugatti; McLaren; Rolls-Royce; Bentley; Mazda; Subaru; Volvo; Land Rover|Range Rover; Lexus; Jaguar; Maserati; Aston Martin",
+    "Peugeot; Renault; Fiat; Mini; Mitsubishi; Cadillac; Lincoln; GMC; Buick; Chrysler; Ram; Infiniti; Acura; Genesis; Alfa Romeo; Skoda; Seat; Citroën; Suzuki; Rivian; Lucid; Polestar; BYD; Koenigsegg; Pagani; Lotus; Vauxhall; Opel; Dacia; Smart",
+    "Saab; Pontiac; Hummer; Plymouth; Oldsmobile; Saturn; Lada; Trabant; DeLorean; Rimac; Spyker; Noble; TVR; Morgan; Lancia; Cupra; DS; Tata; Mahindra; Proton; Geely; Nio; Xpeng; Fisker; Scion; Mercury; Datsun; Hennessey; SSC; Maybach; Abarth; Alpine; Holden",
+  ]},
+  { c: "💜", p: "Name a K‑pop group", t: [
+    "BTS; BLACKPINK; TWICE; Stray Kids; NewJeans; SEVENTEEN",
+    "EXO; Red Velvet; aespa; ITZY; IVE; LE SSERAFIM; (G)I-DLE|GIDLE|I-DLE; ENHYPEN; TXT|Tomorrow X Together; NCT|NCT 127|NCT Dream; ATEEZ; BIGBANG|Big Bang; Girls' Generation|SNSD; BABYMONSTER",
+    "Super Junior; SHINee; 2NE1; MAMAMOO; Monsta X; GOT7; ILLIT; KISS OF LIFE; NMIXX; ZEROBASEONE|ZB1; RIIZE; TREASURE; iKON; WINNER; Wonder Girls; f(x); Apink; Oh My Girl; WJSN|Cosmic Girls; Dreamcatcher; LOONA; fromis_9; STAYC; Kep1er; EVERGLOW; THE BOYZ; SF9; ASTRO; PENTAGON; VIXX; BTOB; Infinite; 2PM; TVXQ; Xdinary Heroes; BOYNEXTDOOR; TWS; H1-KEY; Hearts2Hearts; MEOVV; QWER",
+    "H.O.T.; Sechs Kies; S.E.S.; Fin.K.L; g.o.d; Shinhwa; KARA; T-ara; SISTAR; miss A; 4Minute; After School; Brown Eyed Girls; Secret; Rainbow; Nine Muses; Girl's Day; EXID; AOA; Lovelyz; GFRIEND; CLC; PRISTIN; IZ*ONE|IZONE; Wanna One; X1; I.O.I; CRAVITY; ONEUS; P1Harmony; ONF; Golden Child; VERIVERY; B.A.P",
+  ]},
+  { c: "⛏️", p: "Name a Minecraft mob", t: [
+    "Creeper; Zombie; Skeleton; Enderman; Spider; Pig; Cow; Sheep; Chicken",
+    "Villager; Iron Golem; Wither; Ender Dragon; Slime; Witch; Blaze; Ghast; Piglin; Wolf|Dog; Cat; Horse; Axolotl; Warden; Bee; Phantom; Drowned; Pillager; Squid; Fox; Llama; Parrot; Panda",
+    "Husk; Stray; Zombie Villager; Magma Cube; Wither Skeleton; Zombified Piglin|Zombie Pigman; Hoglin; Strider; Endermite; Silverfish; Shulker; Guardian; Elder Guardian; Evoker; Vindicator; Ravager; Vex; Cave Spider; Polar Bear; Turtle; Dolphin; Rabbit; Ocelot; Mooshroom; Goat; Frog; Allay; Sniffer; Camel; Glow Squid; Snow Golem; Wandering Trader; Donkey; Mule; Skeleton Horse; Bat; Cod; Salmon; Pufferfish; Tropical Fish; Breeze; Armadillo; Bogged",
+    "Zoglin; Piglin Brute; Tadpole; Zombie Horse; Illusioner; Giant; Creaking; Happy Ghast; Copper Golem; Killer Bunny; Trader Llama; Charged Creeper; Spider Jockey; Chicken Jockey",
+  ]},
+  { c: "🥅", p: "Name a famous footballer (soccer player)", t: [
+    "Lionel Messi|Messi; Cristiano Ronaldo|Ronaldo|CR7; Neymar; Kylian Mbappé|Mbappe; Erling Haaland|Haaland; Mohamed Salah|Salah|Mo Salah",
+    "Jude Bellingham|Bellingham; Harry Kane|Kane; Vinícius Jr|Vinicius|Vini Jr; Kevin De Bruyne|De Bruyne|KDB; Robert Lewandowski|Lewandowski; Luka Modrić|Modric; Karim Benzema|Benzema; Bukayo Saka|Saka; Lamine Yamal|Yamal; David Beckham|Beckham; Pelé; Maradona|Diego Maradona; Zidane|Zinedine Zidane; Marcus Rashford|Rashford; Son Heung-min|Son|Sonny; Virgil van Dijk|Van Dijk; Phil Foden|Foden; Wayne Rooney|Rooney; Cole Palmer|Palmer; Antoine Griezmann|Griezmann",
+    "Pedri; Gavi; Rodri; Toni Kroos|Kroos; Sergio Ramos|Ramos; Iniesta; Xavi; Luis Suárez|Suarez; Zlatan Ibrahimović|Zlatan|Ibrahimovic; Kaká; Ronaldinho; Thierry Henry|Henry; Steven Gerrard|Gerrard; Frank Lampard|Lampard; Buffon|Gianluigi Buffon; Iker Casillas|Casillas; Manuel Neuer|Neuer; Thibaut Courtois|Courtois; Alisson; Ederson; Jamal Musiala|Musiala; Florian Wirtz|Wirtz; Martin Ødegaard|Odegaard; Declan Rice|Rice; Gabriel Martinelli|Martinelli; Bruno Fernandes|Bruno; Casemiro; Mason Mount|Mount; Jack Grealish|Grealish; Raheem Sterling|Sterling; Trent Alexander-Arnold|Trent; Andy Robertson|Robertson; Darwin Núñez|Nunez; Alexander Isak|Isak; Victor Osimhen|Osimhen; Lautaro Martínez|Lautaro; Paulo Dybala|Dybala; Ángel Di María|Di Maria; N'Golo Kanté|Kante; Paul Pogba|Pogba; Ousmane Dembélé|Dembele; Achraf Hakimi|Hakimi; Sadio Mané|Mane; Roberto Firmino|Firmino; Endrick; Federico Valverde|Valverde; Gareth Bale|Bale; Eden Hazard|Hazard; Romelu Lukaku|Lukaku; Joško Gvardiol|Gvardiol; William Saliba|Saliba; Viktor Gyökeres|Gyokeres; Jérémy Doku|Doku; Michael Olise|Olise; Khvicha Kvaratskhelia|Kvaratskhelia|Kvara",
+    "Ferenc Puskás|Puskas; Johan Cruyff|Cruyff; Franz Beckenbauer|Beckenbauer; Eusébio; Thomas Müller|Muller; Francesco Totti|Totti; Paolo Maldini|Maldini; Andrea Pirlo|Pirlo; Roberto Baggio|Baggio; Eric Cantona|Cantona; Alan Shearer|Shearer; Didier Drogba|Drogba; Samuel Eto'o|Eto'o; Michael Essien|Essien; Yaya Touré|Yaya Toure; Jay-Jay Okocha|Okocha; George Weah|Weah; Luís Figo|Figo; Raúl; Michael Owen|Owen; Dennis Bergkamp|Bergkamp; Patrick Vieira|Vieira; Robert Pires|Pires; Peter Schmeichel|Schmeichel; Ryan Giggs|Giggs; Paul Scholes|Scholes; Roy Keane|Keane; Petr Čech|Cech; John Terry|Terry; Rio Ferdinand|Ferdinand; Nemanja Vidić|Vidic; Pavel Nedvěd|Nedved; Andriy Shevchenko|Shevchenko; Ronaldo Nazário|R9; Romário; Rivaldo; Cafu; Roberto Carlos; Garrincha; Zico; Sócrates; Miroslav Klose|Klose; Michael Ballack|Ballack; Philipp Lahm|Lahm; Bastian Schweinsteiger|Schweinsteiger; Franck Ribéry|Ribery; Arjen Robben|Robben; Robin van Persie|Van Persie|RVP; Wesley Sneijder|Sneijder; Henrik Larsson|Larsson; Diego Forlán|Forlan; Edinson Cavani|Cavani; Sergio Agüero|Aguero; Carlos Tevez|Tevez; Juan Román Riquelme|Riquelme; Javier Zanetti|Zanetti; Gabriel Batistuta|Batistuta; Hernán Crespo|Crespo; Alessandro Del Piero|Del Piero; Fabio Cannavaro|Cannavaro; Alessandro Nesta|Nesta",
+  ]},
+];
+
+/* ---------- matching ---------- */
+function norm(s) {
+  return String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .replace(/&/g, "and").replace(/\$/g, "s").replace(/^\s*the\s+/, "").replace(/[^a-z0-9]/g, "");
+}
+function lev(a, b, max) {
+  if (Math.abs(a.length - b.length) > max) return max + 1;
+  // edit distance where swapping two neighbouring letters (Hermoine) counts as one typo
+  let pp = null, prev = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i++) {
+    const cur = [i];
+    let rowMin = i;
+    for (let j = 1; j <= b.length; j++) {
+      let v = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      if (pp && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) v = Math.min(v, pp[j - 2] + 1);
+      cur[j] = v;
+      if (v < rowMin) rowMin = v;
+    }
+    if (rowMin > max) return max + 1;
+    pp = prev;
+    prev = cur;
+  }
+  return prev[b.length];
+}
+function buildPrompt(def) {
+  const entries = [], map = new Map();
+  def.t.forEach((str, tier) => str.split(";").forEach((raw) => {
+    const names = raw.split("|").map((s) => s.trim()).filter(Boolean);
+    if (!names.length) return;
+    const e = { display: names[0], tier, keys: [], by: null };
+    names.forEach((n) => { const k = norm(n); if (k && !map.has(k)) { map.set(k, e); e.keys.push(k); } });
+    if (e.keys.length) entries.push(e);
+  }));
+  return { text: def.p, icon: def.c, entries, map, served: [], turns: 0 };
+}
+function matchAnswer(pr, input) {
+  const k = norm(input);
+  if (!k) return null;
+  if (pr.map.has(k)) return pr.map.get(k);
+  if (k.length < 5 || /\d/.test(k)) return null; // no typo help on short or numbered answers (Toy Story 2 vs 3)
+  const max = k.length >= 9 ? 2 : 1;
+  let best = null, bestD = max + 1;
+  for (const [key, e] of pr.map) {
+    if (/\d/.test(key)) continue;
+    const d = lev(k, key, max);
+    if (d < bestD) { bestD = d; best = e; }
+  }
+  return best;
+}
+
+/* ---------- state ---------- */
+let mode = "quiz", heartsEach = 3, lastMode = "quiz";
+let B = null, biteRaf = null, biteLocked = false, biteStart = 0;
+
+function aliveList() { return B.players.filter((p) => p.alive); }
+function nextAlive(i) {
+  const n = B.players.length;
+  for (let s = 1; s <= n; s++) { const j = (i + s) % n; if (B.players[j].alive) return j; }
+  return i;
+}
+function lapSize() { const a = aliveList().length; return a === 1 ? 3 : a; }
+function turnTime() { const lap = Math.floor(B.prompt.turns / lapSize()); return Math.max(7, 15 - lap * 2); }
+function biteOver() { return B.players.length === 1 ? aliveList().length === 0 : aliveList().length <= 1; }
+
+function startBite() {
+  lastMode = "bite";
+  B = {
+    players: seats.map((s, i) => ({ name: (s.name || "").trim() || `Player ${i + 1}`, emoji: s.emoji, score: 0, hearts: heartsEach, alive: true, served: 0, outAt: 0 })),
+    order: shuffle(PROMPTS.map((_, i) => i)), promptIdx: -1, cur: 0, outCount: 0, prompt: null,
+  };
+  sfx.pick();
+  newPrompt(0);
+}
+function newPrompt(starter) {
+  B.promptIdx = (B.promptIdx + 1) % B.order.length;
+  if (B.promptIdx === 0 && B.prompt) B.order = shuffle(B.order);
+  B.prompt = buildPrompt(PROMPTS[B.order[B.promptIdx]]);
+  B.cur = starter;
+  $("bite-result").innerHTML = "";
+  show("scr-bite");
+  $("bite-inner").classList.remove("pop"); void $("bite-inner").offsetWidth; $("bite-inner").classList.add("pop");
+  startBiteTurn();
+}
+
+function renderBite() {
+  const pr = B.prompt;
+  $("bseats").innerHTML = B.players.map((p, i) => `
+    <div class="bseat ${i === B.cur && p.alive ? "active" : ""} ${p.alive ? "" : "out"}">
+      <span>${p.emoji}</span><span class="nm">${esc(p.name)}</span>
+      <span class="hp">${p.alive ? "❤️".repeat(p.hearts) : "💀"}</span><span class="sc">${p.score}</span>
+    </div>`).join("");
+  $("bite-prompt").textContent = `${pr.icon} ${pr.text}`;
+  $("bite-tiers").innerHTML = TIERS.map((t, i) => `<span class="srv t${i}">${t.name} <small>${t.pts}</small></span>`).join("");
+  $("bite-count").textContent = `${pr.served.length} served`;
+  $("served-label").textContent = pr.served.length ? "Already served, so off the menu" : "Nothing served yet";
+  $("served").innerHTML = pr.served.map((s) => `<span class="srv t${s.tier}">${esc(s.display)} <small>${B.players[s.by].emoji}</small></span>`).join("");
+}
+
+function startBiteTurn() {
+  biteLocked = false;
+  const p = B.players[B.cur];
+  B.turnTime = turnTime();
+  renderBite();
+  $("bite-who").innerHTML = B.players.length > 1
+    ? `<b>${p.emoji} ${esc(p.name)}</b>, you're up · ${B.turnTime}s`
+    : `${p.emoji} Your turn · ${B.turnTime}s`;
+  const inp = $("bite-input");
+  inp.disabled = false; inp.value = "";
+  inp.focus({ preventScroll: true });
+  setFlash("", "");
+  biteStart = performance.now();
+  let lastT = B.turnTime;
+  cancelAnimationFrame(biteRaf);
+  const bar = $("bite-timer");
+  const step = (now) => {
+    const left = Math.max(0, B.turnTime - (now - biteStart) / 1000);
+    bar.style.transform = `scaleX(${left / B.turnTime})`;
+    bar.classList.toggle("low", left < 4);
+    if (left < 4 && Math.ceil(left) < lastT) { lastT = Math.ceil(left); sfx.tick(); }
+    if (left <= 0) return biteFail("time", "");
+    biteRaf = requestAnimationFrame(step);
+  };
+  biteRaf = requestAnimationFrame(step);
+}
+function setFlash(text, cls) { const f = $("bite-flash"); f.textContent = text; f.className = "flash " + cls; }
+
+function submitBite() {
+  if (biteLocked || !B) return;
+  const inp = $("bite-input");
+  const val = inp.value.trim();
+  if (!val) return;
+  const pr = B.prompt;
+  const e = matchAnswer(pr, val);
+  if (e && e.by !== null) {
+    const who = B.players[e.by];
+    setFlash(`${e.display} was already served by ${who.emoji} ${who.name}. Think fast!`, "warn");
+    tone(220, 0.12, "square", 0.06);
+    inp.value = "";
+    $("bite-inner").classList.add("shake"); setTimeout(() => $("bite-inner").classList.remove("shake"), 400);
+    return;
+  }
+  if (!e) return biteFail("menu", val);
+  const p = B.players[B.cur];
+  const t = TIERS[e.tier];
+  e.by = B.cur;
+  p.score += t.pts; p.served++;
+  pr.served.unshift({ display: e.display, tier: e.tier, by: B.cur });
+  pr.turns++;
+  biteLocked = true;
+  cancelAnimationFrame(biteRaf);
+  inp.disabled = true;
+  if (e.tier === 3) sfx.steal(); else sfx.right();
+  flyPoints(inp, `+${t.pts}`);
+  renderBite();
+  setFlash(`${e.display} · ${t.name} · +${t.pts}`, "good");
+  setTimeout(() => {
+    const allGone = pr.entries.every((x) => x.by !== null);
+    if (allGone || pr.turns >= lapSize() * 3) return tableCleared(allGone);
+    B.cur = nextAlive(B.cur);
+    startBiteTurn();
+  }, 850);
+}
+
+function missedChips(n) {
+  const left = shuffle(B.prompt.entries.filter((e) => e.by === null)).sort((a, b) => b.tier - a.tier).slice(0, n);
+  if (!left.length) return "";
+  return `<p>Nobody said:</p><div class="missed">${left.map((e) => `<span class="srv t${e.tier}">${esc(e.display)} <small>${TIERS[e.tier].pts}</small></span>`).join("")}</div>`;
+}
+
+function biteFail(reason, guess) {
+  if (biteLocked) return;
+  biteLocked = true;
+  cancelAnimationFrame(biteRaf);
+  $("bite-input").disabled = true;
+  const p = B.players[B.cur];
+  p.hearts--;
+  let out = false;
+  if (p.hearts <= 0) { p.alive = false; p.outAt = ++B.outCount; out = true; }
+  sfx.wrong();
+  $("bite-inner").classList.add("shake"); setTimeout(() => $("bite-inner").classList.remove("shake"), 400);
+  renderBite();
+  const over = biteOver();
+  const nextIdx = nextAlive(B.cur);
+  const head = out ? `💀 ${esc(p.name)} is out` : `💔 ${esc(p.name)} loses a heart`;
+  const why = reason === "time" ? "Out of time." : `"${esc(guess)}" isn't on our menu.`;
+  const label = over ? "Bring the bill" : `Next prompt · ${B.players[nextIdx].emoji} ${esc(B.players[nextIdx].name)}`;
+  $("bite-result").innerHTML = `
+    <div class="result no pop">
+      <h3>${head}</h3>
+      <p>${why}</p>
+      ${missedChips(6)}
+      <div class="row">
+        <button class="big-btn" id="bite-next">${label}</button>
+        ${reason === "menu" ? `<button class="ghost-btn" id="bite-allow" title="Use this if the table agrees the answer counts">We'll allow it</button>` : ""}
+      </div>
+    </div>`;
+  $("bite-next").onclick = () => {
+    sfx.pick();
+    if (biteOver()) return endBite();
+    newPrompt(nextAlive(B.cur));
+  };
+  const allow = $("bite-allow");
+  if (allow) allow.onclick = () => {
+    // the table overrules: give the heart back, score it as a Bread Basket answer, and carry on with the same prompt
+    p.hearts++;
+    if (out) { p.alive = true; p.outAt = 0; B.outCount--; }
+    p.score += TIERS[0].pts; p.served++;
+    const e = { display: guess, tier: 0, keys: [norm(guess)], by: B.cur };
+    B.prompt.map.set(norm(guess), e);
+    B.prompt.entries.push(e);
+    B.prompt.served.unshift({ display: guess, tier: 0, by: B.cur });
+    B.prompt.turns++;
+    sfx.right();
+    $("bite-result").innerHTML = "";
+    B.cur = nextAlive(B.cur);
+    startBiteTurn();
+  };
+  $("bite-next").focus({ preventScroll: true });
+  $("bite-result").scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+function tableCleared(allGone) {
+  const nextIdx = nextAlive(B.cur);
+  setFlash("", "");
+  $("bite-result").innerHTML = `
+    <div class="result ok pop">
+      <h3>🍽️ Table cleared</h3>
+      <p>${allGone ? "You ate the whole menu. Nothing left to name." : "Everyone survived this one. New prompt, fresh clock."}</p>
+      ${missedChips(6)}
+      <button class="big-btn" id="bite-next">Next prompt · ${B.players[nextIdx].emoji} ${esc(B.players[nextIdx].name)}</button>
+    </div>`;
+  $("bite-next").onclick = () => { sfx.pick(); newPrompt(nextIdx); };
+  $("bite-next").focus({ preventScroll: true });
+}
+
+function endBite() {
+  cancelAnimationFrame(biteRaf);
+  const n = B.players.length;
+  if (n === 1) {
+    const p = B.players[0];
+    const best = Math.max(+store.get("dr-bite-best") || 0, p.score);
+    store.set("dr-bite-best", String(best));
+    $("end-kicker").textContent = "Last Bite is over";
+    $("end-title").textContent = `${p.score} points`;
+    $("end-sub").textContent = `${p.served} answers served · your best is ${best}`;
+  } else {
+    const survivor = aliveList()[0];
+    if (survivor) survivor.score += 150;
+    const ranked0 = B.players.slice().sort((a, b) => b.score - a.score);
+    const top = ranked0.filter((p) => p.score === ranked0[0].score);
+    $("end-kicker").textContent = top.length > 1 ? "It's a tie for chef of the night" : "Chef of the night";
+    $("end-title").textContent = top.map((p) => `${p.emoji} ${p.name}`).join(" & ");
+    $("end-sub").textContent = survivor ? `${survivor.emoji} ${survivor.name} took the last bite for +150` : "";
+  }
+  const ranked = B.players.slice().sort((a, b) => b.score - a.score);
+  $("bill").innerHTML = `<h3>The Bill</h3>` + ranked.map((p, i) => `
+    <div class="bill-row">
+      <span class="rk">${i + 1}</span>
+      <span class="who">${p.emoji} ${esc(p.name)}</span>
+      <span class="dishes">${p.served} served · ${p.alive ? "❤️".repeat(p.hearts) : "💀"}</span>
+      <span class="tot">${p.score}</span>
+    </div>`).join("");
+  show("scr-end");
+  sfx.win();
+  confetti();
+}
+
+/* ---------- wiring ---------- */
+$("bite-form").addEventListener("submit", (e) => { e.preventDefault(); submitBite(); });
+$("bite-quit").onclick = () => { cancelAnimationFrame(biteRaf); biteLocked = true; show("scr-setup"); renderSeats(); };
+$("mode-seg").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  mode = b.dataset.mode;
+  [...$("mode-seg").children].forEach((c) => c.setAttribute("aria-pressed", c === b ? "true" : "false"));
+  $("quiz-opts").hidden = mode !== "quiz";
+  $("quiz-opts").style.display = mode === "quiz" ? "flex" : "none";
+  $("bite-opts").hidden = mode !== "bite";
+  sfx.pick();
+});
+$("hearts-seg").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  heartsEach = +b.dataset.h;
+  [...$("hearts-seg").children].forEach((c) => c.setAttribute("aria-pressed", c === b ? "true" : "false"));
+});
+$("start-btn").onclick = () => { lastMode = mode; mode === "bite" ? startBite() : startGame(); };
+$("again-btn").onclick = () => (lastMode === "bite" ? startBite() : startGame());
+function paintMute() { const t = muted ? "🔇" : "🔊"; $("mute-btn").textContent = t; $("bite-mute").textContent = t; }
+$("bite-mute").onclick = () => { muted = !muted; store.set("dr-muted", muted ? "1" : "0"); paintMute(); };
+paintMute();
 </script>
