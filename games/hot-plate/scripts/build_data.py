@@ -30,6 +30,9 @@ ENDPOINT = "https://query.wikidata.org/sparql"
 # kind: "person" and "character" also match a unique first or last name at runtime.
 # Labels: Wikidata now keeps many names only as a "mul" (all languages) label, so we read
 # the English label and fall back to "mul"; dropping that fallback loses Kendrick Lamar.
+# checked per item after the main query, which keeps the heavy part off the query service
+IS_CHARACTER = "?x wdt:P31/wdt:P279* wd:Q95074 ."
+
 CATEGORIES = [
     # ---- sports ----
     dict(id="nba", group="Sports", emoji="🏀", prompt="Name any NBA player", kind="person", limit=4000, minsl=1,
@@ -71,7 +74,8 @@ CATEGORIES = [
     dict(id="anime", group="Movies & TV", emoji="🍥", prompt="Name any anime or manga", kind="thing", limit=3000, minsl=6,
          where="?x wdt:P31 ?c . VALUES ?c { wd:Q63952888 wd:Q1107 wd:Q21198342 } ."),
     dict(id="actor", group="Movies & TV", emoji="🎬", prompt="Name any actor or actress", kind="person", limit=6000, minsl=45,
-         where="?x wdt:P106 ?o . VALUES ?o { wd:Q33999 wd:Q10800557 wd:Q10798782 } . FILTER NOT EXISTS { ?x wdt:P106 ?no . VALUES ?no { wd:Q82955 wd:Q36180 wd:Q1028181 wd:Q49757 wd:Q4964182 } }"),
+         where="?x wdt:P106 ?o . VALUES ?o { wd:Q33999 wd:Q10800557 wd:Q10798782 } .",
+         drop="?x wdt:P106 ?no . VALUES ?no { wd:Q82955 wd:Q36180 wd:Q1028181 wd:Q49757 wd:Q4964182 } ."),
     dict(id="tiktoker", group="Internet", emoji="📱", prompt="Name any YouTuber or TikToker", kind="person", limit=3000, minsl=2,
          where="?x wdt:P106 ?o . VALUES ?o { wd:Q17125263 wd:Q94791573 } ."),
     # ---- characters ----
@@ -80,11 +84,11 @@ CATEGORIES = [
     dict(id="dc", group="Characters", emoji="🦇", prompt="Name any DC character", kind="character", limit=4000, minsl=1,
          where="?x wdt:P1080 wd:Q1152150 . FILTER EXISTS { ?x wdt:P31/wdt:P279* wd:Q95074 } ."),
     dict(id="animechar", group="Characters", emoji="🍙", prompt="Name any anime character", kind="character", limit=4000, minsl=2,
-         where="?x wdt:P1441 ?w . ?w wdt:P31 ?t . VALUES ?t { wd:Q63952888 wd:Q21198342 wd:Q1107 } . FILTER EXISTS { ?x wdt:P31/wdt:P279* wd:Q95074 } ."),
+         where="?x wdt:P1441 ?w . ?w wdt:P31 ?t . VALUES ?t { wd:Q63952888 wd:Q21198342 wd:Q1107 } .", keep=IS_CHARACTER),
     dict(id="gamechar", group="Characters", emoji="🕹️", prompt="Name any video game character", kind="character", limit=4000, minsl=2,
          where="?x wdt:P31 wd:Q1569167 ."),
     dict(id="disney", group="Characters", emoji="🏰", prompt="Name any Disney or Pixar character", kind="character", limit=3000, minsl=1,
-         where="?x wdt:P1441 ?w . ?w wdt:P272 ?st . VALUES ?st { wd:Q1047410 wd:Q127552 wd:Q191224 } . FILTER EXISTS { ?x wdt:P31/wdt:P279* wd:Q95074 } ."),
+         where="?x wdt:P1441 ?w . ?w wdt:P272 ?st . VALUES ?st { wd:Q1047410 wd:Q127552 wd:Q191224 } .", keep=IS_CHARACTER),
     dict(id="starwars", group="Characters", emoji="🌌", prompt="Name any Star Wars character", kind="character", limit=3000, minsl=1,
          where="?x wdt:P8345 wd:Q462 . FILTER EXISTS { ?x wdt:P31/wdt:P279* wd:Q95074 } ."),
     dict(id="pokemon", group="Characters", emoji="⚡", prompt="Name any Pokémon", kind="thing", limit=2000, minsl=1,
@@ -176,6 +180,18 @@ def build(cat):
         sl = int(b["sl"]["value"])
         if qid not in items or items[qid]["sl"] < sl:
             items[qid] = {"name": label, "sl": sl, "alt": set()}
+
+    # keep / drop filters, run in small batches
+    for mode in ("keep", "drop"):
+        if not cat.get(mode):
+            continue
+        hits = set()
+        qids = list(items)
+        for i in range(0, len(qids), 300):
+            vals = " ".join("wd:" + x for x in qids[i:i + 300])
+            for b in sparql(f"SELECT DISTINCT ?x WHERE {{ VALUES ?x {{ {vals} }} {cat[mode]} }}"):
+                hits.add(b["x"]["value"].rsplit("/", 1)[-1])
+        items = {q: v for q, v in items.items() if (q in hits) == (mode == "keep")}
 
     # aliases in batches
     qids = list(items)
