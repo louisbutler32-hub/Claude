@@ -1,0 +1,634 @@
+# id: swlotr
+# prompt: Name a character from Star Wars or The Lord of the Rings
+# group: Characters
+# emoji: 🌌
+# kind: character
+# Sources: Star Wars - main and secondary characters of the films and series, checked against
+# Wikipedia's Star Wars character lists (original/prequel/sequel trilogy, Rebels, Book of Boba
+# Fett pages); a few famous Legends characters at the tail. Lord of the Rings / Hobbit -
+# lotr.fandom.com character categories (books, films, Hobbit, Silmarillion; fetched 2026-11-03),
+# famous-first then by page length. The two franchises are interleaved.
+Darth Vader | Anakin Skywalker | Anakin | Vader
+Gandalf | Gandalf the Grey | Gandalf the White | Mithrandir | Olórin | Olorin
+Luke Skywalker | Luke
+Frodo Baggins | Frodo
+Yoda | Master Yoda
+Gollum | Sméagol | Smeagol
+Han Solo | Han
+Princess Leia | Leia Organa | Leia | General Leia
+Aragorn | Strider | Aragorn II | Elessar | Aragorn son of Arathorn
+Chewbacca | Chewie
+Legolas
+Obi-Wan Kenobi | Obi-Wan | Ben Kenobi | Obi Wan Kenobi
+Samwise Gamgee | Sam | Sam Gamgee | Samwise
+R2-D2 | R2 | Artoo
+Gimli
+C-3PO | Threepio | C3PO
+Emperor Palpatine | Darth Sidious | Palpatine | Sheev Palpatine | The Emperor
+Bilbo Baggins | Bilbo
+Darth Maul | Maul
+Sauron | Annatar | Halbrand | The Dark Lord | The Necromancer
+Kylo Ren | Ben Solo
+Saruman | Sharkey | Saruman the White
+Rey | Rey Skywalker | Rey Palpatine
+Boromir
+Boba Fett
+Grogu | Baby Yoda | Din Grogu
+Merry | Meriadoc Brandybuck | Merry Brandybuck
+Din Djarin | The Mandalorian | Mando
+Pippin | Peregrin Took | Pippin Took
+Jabba the Hutt | Jabba
+Galadriel
+Padmé Amidala | Padme Amidala | Padmé | Padme | Queen Amidala
+Elrond
+Mace Windu
+Qui-Gon Jinn | Qui-Gon | Qui Gon Jinn
+Arwen | Arwen Undómiel | Arwen Undomiel
+Count Dooku | Darth Tyranus | Dooku
+Smaug | Smaug the Golden
+General Grievous | Grievous
+Éowyn | Eowyn
+Jar Jar Binks | Jar Jar
+Théoden | Theoden | King Théoden | King Theoden
+Lando Calrissian | Lando
+Finn | FN-2187
+Faramir
+Poe Dameron
+Thorin Oakenshield | Thorin
+BB-8
+Gríma Wormtongue | Wormtongue | Grima Wormtongue | Gríma | Grima
+Ahsoka Tano | Ahsoka
+Witch-king of Angmar | Witch-king | Witch King | Lord of the Nazgûl | Lord of the Nazgul
+Jango Fett
+Grand Moff Tarkin | Tarkin | Wilhuff Tarkin
+Treebeard | Fangorn
+Snoke | Supreme Leader Snoke
+Éomer | Eomer
+Captain Phasma | Phasma
+Denethor | Denethor II
+General Hux | Armitage Hux | Hux
+Shelob
+Admiral Ackbar | Ackbar
+Captain Rex | Rex | CT-7567
+Tom Bombadil
+Jyn Erso
+Radagast | Radagast the Brown
+Cassian Andor
+Azog | Azog the Defiler
+K-2SO
+Thranduil
+Rose Tico
+Wedge Antilles
+Tauriel
+Grand Admiral Thrawn | Thrawn
+Balin
+Cal Kestis
+Bard
+Darth Plagueis
+Beorn
+Fennec Shand
+Moff Gideon
+Isildur
+Bo-Katan Kryze | Bo-Katan
+Elendil
+Cara Dune
+Haldir
+Greef Karga
+Celeborn
+IG-11
+The Armorer
+Fíli | Fili
+Asajj Ventress | Ventress
+Kíli | Kili
+Cad Bane
+Dwalin
+Ezra Bridger
+Bombur
+Kanan Jarrus | Caleb Dume
+Hera Syndulla
+Bofur
+Sabine Wren
+Glóin | Gloin
+Garazeb Orrelios | Zeb Orrelios | Zeb
+Óin | Oin
+Chopper | C1-10P
+Dori
+Chirrut Îmwe | Chirrut Imwe
+Baze Malbus
+Nori
+Orson Krennic | Director Krennic | Krennic
+Ori
+Saw Gerrera
+Bifur
+Galen Erso
+Lurtz
+Bodhi Rook
+Maz Kanata
+Mouth of Sauron
+Mon Mothma
+Gothmog
+Bail Organa
+The Balrog | Balrog | Durin's Bane
+Owen Lars | Uncle Owen
+Rosie Cotton | Rose Cotton | Rosie
+Beru Lars | Aunt Beru
+Shmi Skywalker
+Celebrimbor
+Watto
+Gil-galad | Gil-Galad
+Sebulba
+Glorfindel
+Nute Gunray
+Morgoth | Melkor
+Plo Koon
+Kit Fisto
+Déagol | Deagol
+Ki-Adi-Mundi
+Shadowfax
+Shaak Ti
+Bill the Pony
+Aayla Secura
+Alfrid
+Luminara Unduli
+Barriss Offee
+Bain
+Quinlan Vos
+Lobelia Sackville-Baggins
+Commander Cody | Cody | CC-2224
+Barliman Butterbur
+Fives | ARC-5555
+Farmer Maggot
+Echo
+Hunter
+Hamfast Gamgee | The Gaffer | Gaffer Gamgee
+Wrecker
+Gwaihir
+Tech
+Great Goblin
+Crosshair
+Bolg
+Omega
+Savage Opress | Savage
+Master of Lake-town
+Hondo Ohnaka | Hondo
+Sigrid
+Mother Talzin
+Tilda
+Agent Kallus | Kallus
+Gamling
+The Grand Inquisitor | Grand Inquisitor
+Reva Sevander | Reva | Third Sister
+Háma | Hama
+Second Sister | Trilla Suduri
+Théodred | Theodred
+Seventh Sister
+Uglúk | Ugluk
+Fifth Brother
+Grishnákh | Grishnakh
+BD-1
+Merrin
+Shagrat
+Cere Junda
+Gorbag
+Greez Dritus
+Snaga
+Kuiil
+King of the Dead
+Peli Motto
+Cobb Vanth
+Ghân-buri-Ghân | Ghan-buri-Ghan
+Paz Vizsla
+Imrahil
+Black Krrsantan | Krrsantan
+Beregond
+Migs Mayfeld | Mayfeld
+Bergil
+Satine Kryze | Duchess Satine
+Pre Vizsla
+Elladan
+Luthen Rael
+Elrohir
+Syril Karn
+Lúthien | Luthien | Lúthien Tinúviel | Luthien Tinuviel
+Dedra Meero
+Beren
+Bix Caleen
+Kino Loy
+Fëanor | Feanor
+Vel Sartha
+Túrin | Turin
+Cinta Kaz
+Eärendil | Earendil
+Maarva Andor
+Ungoliant
+Kleya Marki
+B2EMO
+Glaurung
+Qi'ra
+Ancalagon
+Tobias Beckett | Beckett
+Thrór | Thror
+L3-37
+Thráin | Thrain
+Dryden Vos
+Enfys Nest
+Dáin Ironfoot | Dain Ironfoot | Dáin | Dain
+Val
+Goldberry
+Rio Durant
+Fatty Bolger | Fredegar Bolger
+Wicket | Wicket W. Warrick
+Quickbeam | Bregalad
+Chief Chirpa
+Nien Nunb
+Bill Ferny
+Admiral Piett | Piett
+Old Man Willow
+Admiral Ozzel | Ozzel
+Ioreth
+General Veers | Veers
+Halbarad
+Moff Jerjerrod | Jerjerrod
+Lobot
+Helm Hammerhand
+Biggs Darklighter | Biggs
+Héra | Hera
+Jek Porkins | Porkins
+Adar
+Garven Dreis | Red Leader
+Arondir
+Dak Ralter
+Hobbie Klivian
+Nori Brandyfoot
+Wes Janson
+Durin IV
+General Rieekan | Carlist Rieekan
+Disa
+Jan Dodonna | General Dodonna
+Bronwyn
+Crix Madine | General Madine
+Raymus Antilles | Captain Antilles
+Ted Sandyman
+Greedo
+Figwit
+Bib Fortuna
+Gildor Inglorion
+Salacious B. Crumb | Salacious Crumb
+Círdan | Cirdan
+Max Rebo
+Sy Snootles
+Khamûl | Khamul
+Oola
+Ar-Pharazôn | Pharazôn | Ar-Pharazon | Pharazon
+Bossk
+Míriel | Tar-Míriel | Queen Míriel | Miriel | Tar-Miriel | Queen Miriel
+IG-88
+Elros
+Dengar
+Zuckuss
+Eru Ilúvatar | Eru | Ilúvatar | Eru Iluvatar | Iluvatar
+4-LOM
+Mîm | Mim
+Ponda Baba
+Watcher in the Water
+Doctor Evazan | Dr. Evazan | Cornelius Evazan
+Golfimbul
+Figrin D'an
+R5-D4
+Bladorthin
+2-1B
+Saeros
+Zam Wesell
+Fingolfin
+Aurra Sing
+Maedhros
+Lama Su
+Taun We
+Finrod
+Boss Nass
+Sador
+Captain Tarpals | Tarpals
+Ecthelion
+Captain Panaka | Panaka
+Gamil Zirak
+Sabé | Sabe
+Sio Bibble
+Thingol
+Finis Valorum | Chancellor Valorum | Valorum
+Thuringwethil
+Mas Amedda
+Maglor
+Sly Moore
+Tuor
+Rune Haako
+Wat Tambor
+Húrin | Hurin
+San Hill
+Finwë | Finwe
+Poggle the Lesser
+Yavanna
+Cliegg Lars
+Fingon
+Yaddle
+Saesee Tiin
+Amras
+Agen Kolar
+Orodreth
+Even Piell
+Curufin
+Depa Billaba
+Manwë | Manwe
+Eeth Koth
+Adi Gallia
+Harry Goatleaf
+Oppo Rancisis
+Aulë | Aule
+Stass Allie
+Turgon
+Jocasta Nu
+Beleg
+Sifo-Dyas
+Cin Drallig
+Mandos
+Commander Wolffe | Wolffe
+Gwindor
+Commander Bly | Bly
+Melian
+Commander Fox
+Varda
+Commander Gree
+Captain Gregor | Gregor
+Olwë | Olwe
+Embo
+Vána | Vana
+Ziro the Hutt | Ziro
+Morwen
+Rotta the Huttlet | Rotta
+Finarfin
+Pong Krell
+Lux Bonteri
+Maeglin
+Riyo Chuchi
+Finduilas
+Orn Free Taa
+Huan
+Wullf Yularen | Admiral Yularen | Yularen
+Annael
+Admiral Trench | Trench
+Tera Sinube
+Urwen
+Steela Gerrera
+Tulkas
+Gar Saxon
+Durin I
+Fenn Rau
+Mablung
+Ursa Wren
+Jun Sato | Commander Sato
+Nienna
+Kassius Konstantine | Admiral Konstantine
+Niënor | Nienor
+Arihnda Pryce | Governor Pryce
+Barahir
+Rukh
+Ulmo
+AP-5
+The Bendu | Bendu
+Aredhel
+Cikatro Vizago | Vizago
+Lorgan
+Ketsu Onyo
+Arien
+Jacen Syndulla
+Nimrodel
+Cham Syndulla
+Cid
+Idril
+Baylan Skoll
+Tar-Palantir
+Shin Hati
+Grimbold
+Morgan Elsbeth
+Dior
+Huyang
+Marrok
+Oromë | Orome
+Unkar Plutt
+Celegorm
+Lor San Tekka
+Amandil
+DJ
+Eldarion
+Amilyn Holdo | Vice Admiral Holdo | Holdo
+Zorii Bliss
+Hador
+Jannah
+Carcharoth
+Allegiant General Pryde | Pryde
+Elwing
+Babu Frik
+Ingwë | Ingwe
+D-O
+Snap Wexley
+Nessa
+Kaydel Ko Connix | Connix
+Caranthir
+Paige Tico
+Mardil Voronwë | Mardil Voronwe
+Elia Kane
+Amrod
+Penn Pershing | Dr. Pershing
+Axe Woves
+Daeron
+Tala Durith
+Osha Aniseya | Osha
+Eönwë | Eonwe
+Mae Aniseya | Mae
+Tar-Minastir
+Sol | Master Sol
+Qimir | The Stranger
+Uinen
+Jecki Lon
+Eöl | Eol
+Vernestra Rwoh
+Madril
+Wim
+Elendur
+Neel
+Fern
+Damrod
+Jod Na Nawood | Jod | Jude Na Nawood
+Fimbul
+SM-33
+Indis
+BT-1
+Aegnor
+0-0-0 | Triple-Zero
+Darth Bane
+Andreth
+Revan | Darth Revan
+Tilion
+Darth Malak
+Erkenbrand
+Darth Nihilus
+Thorondor
+Bastila Shan
+HK-47
+Orophin
+Mara Jade
+Tar-Ancalimë | Tar-Ancalime
+Jacen Solo
+Voronwë | Voronwe
+Jaina Solo
+Nimloth of Doriath
+Ben Skywalker
+Galen Marek | Starkiller
+Tar-Atanamir
+Kyle Katarn
+Tar-Ciryatan
+Meneldil
+Tar-Vanimeldë | Tar-Vanimelde
+Eärwen | Earwen
+Sharku
+Rían | Rian
+Tar-Ancalimon
+Mahtan
+Huor
+Nerdanel
+Yazneg
+Valandil
+Bëor | Beor
+Haleth
+Amárië | Amarie
+Tar-Elendil
+Bandobras Took
+Percy
+Brandir
+Emeldir
+Gorlim
+Ossë | Osse
+Aratan
+Elenwë | Elenwe
+Ar-Sakalthôr | Ar-Sakalthor
+Tar-Telemmaitë | Tar-Telemmaite
+Bregor
+Gelmir
+Old Noakes
+Galion
+Malach
+Elanor Gardner | Elanor
+Ilmarë | Ilmare
+Hilda Bianca
+Angrod
+Uldor
+Bór | Bor
+Mauhúr | Mauhur
+Estë | Este
+Azaghâl | Azaghal
+Diamond Took
+Odo Proudfoot
+Erestor
+Murgash
+Rúmil | Rumil
+Draugluin
+Brodda
+Vairë | Vaire
+Númendil | Numendil
+Ar-Gimilzôr | Ar-Gimilzor
+Handir
+Galdor
+Bregolas
+Ulfang
+Otho Sackville-Baggins
+Telchar
+Gimilkhâd | Gimilkhad
+Glirhuin
+Finglas
+Vëantur | Veantur
+Adelard Took
+Brego
+Inzilbêth | Inzilbeth
+Salmar
+Frodo Gardner
+Erellont
+Soronto
+Aerin
+Wulf
+Narzug
+Ohtar
+Lenwë | Lenwe
+Ulwarth
+Guritz
+Andróg | Androg
+Belegund
+Calmacil
+Elatan
+Baragund
+Roäc | Roac
+Ulfast
+Borlad
+Eilinel
+Hareth
+Ragnor
+Glóredhel | Gloredhel
+Bereg
+Grinnah
+Aranwë | Aranwe
+Fladrif
+Beechbone
+Guthláf | Guthlaf
+Dorlas
+Imlach
+Irolas
+Aerandir
+Halmir
+Ragash
+Herubrand
+Albert Dreary
+Asgon
+Aratar
+Borlas
+Marach
+Radhruin
+Haldar
+Melilot Brandybuck
+Haldad
+Master Worrywort
+Filibert Bolger
+Aldor
+Léowyn | Leowyn
+Olga
+Lugdush
+Baran
+Borlach
+Feren
+Lindenroot
+Ibûn | Ibun
+Borthand
+Éothain | Eothain
+Khîm | Khim
+Iorlas
+Urthel
+Hugin
+Haldan
+Hunthor
+Falathar
+Squint
+Bell Boffin
+Herumor
+Hathaldir
+Fuinur
+Freda
+Dairuin
+Carc
+Minto Boffin
+Fredegar Chubb
+Saelbeth
+Guilin
+Gundor
+Arthad
+Angrim
+Ecgláf | Ecglaf
+Hláfwine | Hlafwine
+Guma
+Ottar
