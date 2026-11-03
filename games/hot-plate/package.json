@@ -5,6 +5,7 @@
   "description": "Dining Room: Hot Plate, a room-code multiplayer category party game",
   "main": "server.js",
   "scripts": {
+    "build": "npm install --omit=dev",
     "start": "node server.js",
     "data": "python3 scripts/build_data.py",
     "test": "node scripts/smoke-test.cjs"
