@@ -1,0 +1,262 @@
+# id: musclebone
+# prompt: Name a muscle or bone in the human body
+# group: Body
+# emoji: 🦴
+# kind: thing
+# Named muscles and bones, with their everyday names as aliases. Groups
+# people actually name (quads, hamstrings, carpals, ribs) count as one
+# answer each and so do their members (rectus femoris, scaphoid). Tendons,
+# ligaments and joints (Achilles tendon, ACL, knee) are left out; the heart
+# and tongue are in because they are muscles.
+Biceps | Bicep | Biceps brachii
+Femur | Thigh bone | Thighbone
+Skull | Cranium
+Ribs | Rib | Ribcage | Rib cage
+Spine | Backbone | Spinal column | Vertebral column
+Abs | Abdominals | Six-pack | Six pack | Rectus abdominis
+Glutes | Glute | Gluteus maximus | Butt muscle
+Triceps | Tricep | Triceps brachii
+Quads | Quadriceps | Quad
+Hamstrings | Hamstring
+Calves | Calf | Calf muscle
+Pecs | Pec | Pectorals | Pectoralis major | Chest muscle
+Kneecap | Patella | Knee cap
+Collarbone | Clavicle | Collar bone
+Jaw | Jawbone | Mandible | Jaw bone
+Tibia | Shinbone | Shin bone | Shin
+Fibula
+Humerus
+Pelvis | Hip bone | Hipbone | Pelvic bone
+Heart | Cardiac muscle | Myocardium
+Tongue
+Deltoids | Deltoid | Delts | Delt | Shoulder muscle
+Lats | Lat | Latissimus dorsi
+Traps | Trap | Trapezius
+Sternum | Breastbone | Breast bone
+Radius
+Ulna
+Coccyx | Tailbone | Tail bone
+Shoulder blade | Scapula | Shoulder blades
+Vertebrae | Vertebra
+Diaphragm
+Obliques | Oblique
+Phalanges | Phalanx | Finger bones | Toe bones
+Stapes | Stirrup
+Cheekbone | Zygomatic bone | Zygoma | Cheek bone
+Hip flexors | Hip flexor
+Rotator cuff
+Sacrum
+Carpals | Wrist bones | Carpal bones
+Metacarpals | Metacarpal
+Tarsals | Tarsal bones | Ankle bones
+Metatarsals | Metatarsal
+Heel bone | Calcaneus | Calcaneum
+Incus | Anvil
+Malleus | Hammer
+Maxilla | Upper jaw
+Gastrocnemius | Gastroc
+Soleus
+Masseter
+Hyoid | Hyoid bone
+Sartorius
+Rhomboids | Rhomboid
+Psoas | Iliopsoas | Psoas major
+Adductors | Adductor | Groin muscle
+Abductors | Abductor
+Pelvic floor | Kegel muscles | Pelvic floor muscles
+Sphincter | Anal sphincter
+Gluteus medius
+Gluteus minimus
+Erector spinae
+Serratus anterior | Serratus
+Sternocleidomastoid
+Intercostals | Intercostal muscles
+Transverse abdominis | Transversus abdominis | TVA
+External obliques | External oblique
+Internal obliques | Internal oblique
+Piriformis
+Rectus femoris
+Vastus lateralis
+Vastus medialis
+Vastus intermedius
+Biceps femoris
+Semitendinosus
+Semimembranosus
+Tibialis anterior
+Tibialis posterior
+Frontal bone | Forehead bone
+Parietal bone | Parietal bones
+Temporal bone | Temporal bones
+Occipital bone
+Sphenoid | Sphenoid bone
+Ethmoid | Ethmoid bone
+Nasal bone | Nose bone | Nasal bones
+Lacrimal bone
+Palatine bone
+Vomer
+Inferior nasal concha | Turbinate | Nasal concha
+Cervical vertebrae | Neck bones | Cervical spine
+Thoracic vertebrae | Thoracic spine
+Lumbar vertebrae | Lumbar spine
+Atlas
+Axis
+Xiphoid process | Xiphoid
+Manubrium
+Ilium
+Ischium
+Pubis | Pubic bone
+Talus | Astragalus
+Navicular
+Cuboid
+Cuneiforms | Cuneiform
+Scaphoid
+Lunate
+Triquetrum
+Pisiform
+Trapezium
+Trapezoid
+Capitate
+Hamate
+Sesamoid bones | Sesamoid
+Floating ribs | Floating rib
+Teres major
+Teres minor
+Infraspinatus
+Supraspinatus
+Subscapularis
+Brachialis
+Brachioradialis
+Pectoralis minor | Pec minor
+Levator scapulae
+Scalenes | Scalene
+Splenius capitis
+Quadratus lumborum | QL
+Multifidus
+Tensor fasciae latae | TFL
+Gracilis
+Pectineus
+Adductor longus
+Adductor brevis
+Adductor magnus
+Peroneus longus | Fibularis longus
+Peroneus brevis | Fibularis brevis
+Popliteus
+Plantaris
+Temporalis
+Orbicularis oculi
+Orbicularis oris
+Frontalis
+Occipitalis
+Buccinator
+Zygomaticus | Zygomaticus major
+Platysma
+Stapedius
+Coracobrachialis
+Anconeus
+Supinator
+Pronator teres
+Palmaris longus
+Flexor carpi radialis
+Flexor carpi ulnaris
+Extensor carpi radialis longus
+Extensor carpi radialis brevis
+Extensor carpi ulnaris
+Flexor digitorum superficialis
+Flexor digitorum profundus
+Extensor digitorum
+Extensor digitorum longus
+Extensor hallucis longus
+Flexor hallucis longus
+Flexor digitorum longus
+Abductor hallucis
+Abductor pollicis longus
+Abductor pollicis brevis
+Opponens pollicis
+Adductor pollicis
+Flexor pollicis longus
+Extensor pollicis longus
+Thenar muscles | Thenar eminence
+Hypothenar muscles | Hypothenar eminence
+Lumbricals
+Interossei | Interosseous muscles
+Abductor digiti minimi
+Iliacus
+Psoas minor
+Obturator internus
+Obturator externus
+Superior gemellus | Gemellus
+Inferior gemellus
+Quadratus femoris
+Iliocostalis
+Longissimus
+Spinalis
+Pyramidalis
+Subclavius
+Serratus posterior
+Levator ani
+Cremaster
+Detrusor
+Superior rectus
+Inferior rectus
+Lateral rectus
+Medial rectus
+Superior oblique
+Inferior oblique
+Levator palpebrae superioris
+Ciliary muscle
+Corrugator supercilii | Corrugator
+Procerus
+Nasalis
+Risorius
+Mentalis
+Depressor anguli oris
+Levator labii superioris
+Medial pterygoid
+Lateral pterygoid
+Digastric
+Mylohyoid
+Geniohyoid
+Stylohyoid
+Sternohyoid
+Omohyoid
+Thyrohyoid
+Sternothyroid
+Genioglossus
+Hyoglossus
+Styloglossus
+Palatoglossus
+Cricothyroid
+Uvula muscle | Musculus uvulae
+Tensor tympani
+Arrector pili
+Quadratus plantae
+Extensor digitorum brevis
+Flexor digitorum brevis
+Extensor indicis
+Flexor digiti minimi
+Opponens digiti minimi
+Dorsal interossei
+Palmar interossei
+Plantar interossei
+Fibularis tertius | Peroneus tertius
+Articularis genus
+Anterior scalene
+Middle scalene
+Posterior scalene
+Rectus capitis
+Longus colli
+Longus capitis
+Semispinalis
+Rotatores
+Intertransversarii
+Interspinales
+Transversus thoracis
+Subcostal muscles | Subcostals
+Levatores costarum
+Coccygeus
+Bulbospongiosus
+Ischiocavernosus
+External urethral sphincter
+Superficial transverse perineal
+Sternal ribs | True ribs
+False ribs
