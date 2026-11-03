@@ -6,7 +6,7 @@
 # Settings and toggles on iPhone (iOS) or Android/Samsung (One UI), by
 # the name the menu uses; iPhone and Android names for the same thing are
 # aliases.
-Wi-Fi | WiFi | Wifi | Wireless
+Wi-Fi | WiFi | Wireless
 Bluetooth
 Airplane mode | Aeroplane mode | Flight mode
 Do Not Disturb | DND

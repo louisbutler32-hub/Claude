@@ -1,0 +1,200 @@
+# id: appsfeature
+# prompt: Name a feature on TikTok, Instagram or YouTube
+# group: Everyday
+# emoji: 📲
+# kind: thing
+# Features, tabs and tools of the three apps (current or recently retired),
+# under the name the app uses. Generic actions shared by every app (like,
+# comment, share, follow, search) count, since each app has them.
+Stories | Story | Instagram Stories
+Reels | Reel
+Shorts | YouTube Shorts
+For You Page | FYP | For You
+Live | Lives | Going live | Livestream | Live stream
+Duet | Duets
+Stitch | Stitches
+Explore | Explore page
+Close Friends
+Highlights | Story highlights
+Filters | Filter
+Likes | Like | Like button | Heart
+Comments | Comment
+DMs | Direct messages | DM | Messages
+Subscribe | Subscribe button | Subscriptions
+Follow | Following | Followers
+Share | Sharing | Share button
+Save | Saved | Bookmarks
+Notes | Instagram Notes
+Playlists | Playlist
+Captions | Subtitles | Auto captions | Closed captions
+Effects | AR effects
+Sounds | Trending sounds | Original sound
+Hashtags | Hashtag
+Trending | Trending page
+Search
+Feed | Home feed
+Following feed | Following tab
+Profile
+Bio
+Link in bio
+Verified badge | Blue tick | Blue check | Verification
+Meta Verified
+Watch Later
+Watch history | History
+Picture-in-picture | PiP | Picture in picture
+Autoplay
+Playback speed | Speed
+Skip ad | Ads
+YouTube Premium | Premium
+Background play
+Download | Downloads | Offline
+Dislike | Dislike button
+Notification bell | Bell | Notifications
+Community posts | Community tab | Posts
+Super Thanks
+Super Chat
+Super Stickers
+Memberships | Channel memberships | Join button
+Premieres | Premiere
+Chapters | Video chapters
+Timestamps
+End screens | End screen
+Cards | Info cards
+Thumbnails | Thumbnail | Custom thumbnail
+Collab posts | Collab | Collabs
+Broadcast channels | Channels
+Carousel | Carousel post | Photo dump
+Polls | Poll | Poll sticker
+Questions sticker | Question box | Q&A
+Stickers | Sticker
+Music sticker | Add music
+Countdown sticker
+Quiz sticker
+Emoji slider
+Add Yours | Add Yours sticker
+Location tag | Location sticker
+Mention | Tagging | Tags | Tag
+Link sticker
+GIFs | GIF stickers
+Boomerang
+Layout
+Hands-free
+Superzoom
+Green screen
+Text to speech | TTS
+Voice effects | Voice changer
+Voiceover
+Templates | Template
+Edits | Edits app
+Remix | Remixes
+Repost | Reposts
+Photo mode | Photo carousel | TikTok photos
+TikTok Shop | Shop | Shopping
+Instagram Shop
+Product tags | Shoppable posts
+Creator Fund | Creator Rewards Program
+Gifts | Gifting | LIVE Gifts
+Coins | TikTok Coins
+Diamonds
+Battles | LIVE battles | Match
+Live subscriptions
+Pinned comments | Pin comment | Pinned
+Pinned posts | Pin post | Pin video
+Favourites | Favorites
+Archive
+Hide like count | Hide likes
+Restrict
+Block
+Mute | Mute account
+Report
+Activity status | Online status
+Read receipts
+Vanish mode
+Quiet mode
+Take a break
+Daily limit | Screen time limit
+Sleep reminders
+Restricted mode
+Family Pairing
+Supervised account | Parental supervision
+Teen accounts
+Hidden words
+Comment filter | Filter comments
+Two-factor authentication | 2FA
+Account Center | Accounts Centre
+Switch accounts | Multiple accounts
+Private account | Private
+Business account | Creator account | Professional account
+Insights | Analytics
+YouTube Studio | Studio
+TikTok Studio
+Monetisation | Monetization | Partner Program | YPP
+Clips | YouTube Clips
+Mixes | Mix | YouTube Mix
+YouTube Music
+YouTube Kids
+YouTube TV
+Library | You tab
+Gaming | YouTube Gaming
+Movies & TV
+YouTube Shopping
+Ambient mode
+Stable volume
+Sleep timer
+Lock screen | Lock video
+Loop video | Loop
+Quality | Video quality | 4K | HD
+Annotations
+Translations | Auto-translate | Auto-dubbing | Dubbing
+Description | Video description
+Live chat | Chat
+Slow mode
+Members-only
+View count | Views | Like count
+Discover page | Discover
+Inbox
+Friends tab | Friends
+Nearby feed | Nearby
+STEM feed
+TikTok Now
+TikTok Notes
+Series | TikTok Series
+Beauty mode | Retouch | Enhance
+Timer | Countdown timer
+Effect House
+AI Alive
+Symphony
+Footnotes
+Views on stories | Story views | Seen by
+Story replies | Reply
+Story reactions | Quick reactions
+Grid | Profile grid
+Guides
+IGTV
+Instagram Map | Map | Friend Map
+Blend
+Trial Reels
+Audio page
+Live rooms
+Live shopping
+Fundraisers | Donation sticker
+Paid partnership | Sponsored posts | Branded content
+Boost post | Promote
+Saved collections | Collections
+Message requests
+Group chats | Group chat
+Video calls | Video chat
+Voice messages | Voice notes
+Disappearing messages | View once
+Reactions | Message reactions
+Edit message
+Unsend | Unsend message
+Pinned chats
+Chat themes
+Nicknames
+Scheduled posts | Schedule
+Drafts
+Edit post | Edit caption
+Alt text
+Dark mode
+Data saver

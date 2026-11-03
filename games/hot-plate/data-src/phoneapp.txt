@@ -1,0 +1,148 @@
+# id: phoneapp
+# prompt: Name an app that comes on your phone
+# group: Everyday
+# emoji: 📱
+# kind: thing
+# Apps preinstalled on a new iPhone, Google Pixel / stock Android or Samsung
+# Galaxy (plus a few other Android makers), current or recently retired.
+# Apps with the same name on several phones share one line (Messages,
+# Calendar, Photos). Third-party apps Samsung ships on Galaxy phones
+# (Netflix, Spotify, Facebook, Microsoft apps) are in at the tail, as they
+# do come on the phone in many countries.
+Camera
+Photos | Google Photos | Apple Photos
+Messages | iMessage | Google Messages | Samsung Messages | Text messages
+Phone | Dialer | Phone app
+Settings
+Clock | Alarm | Alarms
+Calculator
+Notes | Apple Notes
+Maps | Apple Maps
+Safari
+Chrome | Google Chrome
+App Store
+Play Store | Google Play | Google Play Store
+YouTube
+Gmail
+Calendar | Google Calendar | Samsung Calendar
+Weather
+Contacts
+FaceTime
+Music | Apple Music
+Google Maps
+Wallet | Apple Wallet | Apple Pay | Passbook
+Health | Apple Health
+Files | Files by Google | Files Go
+Find My | Find My iPhone | Find My Friends
+Reminders
+Mail | Apple Mail
+Gallery | Samsung Gallery
+Google | Google app | Google Search
+Samsung Internet | Internet
+Podcasts | Apple Podcasts | Google Podcasts
+Apple TV | TV | Apple TV+
+Books | Apple Books | iBooks
+Compass
+Voice Memos
+Translate | Apple Translate
+Measure
+Fitness | Activity
+Stocks
+Home | Apple Home
+Shortcuts
+Tips
+Magnifier
+iTunes Store | iTunes
+Watch | Apple Watch app
+News | Apple News
+Freeform
+Journal
+Passwords
+Games | Apple Games | Game Center
+Preview
+Image Playground
+Pages
+Numbers
+Keynote
+iMovie
+GarageBand
+iCloud Drive
+Videos
+Newsstand
+Siri
+Google Assistant | Assistant
+Gemini
+Google Drive | Drive
+Google Meet | Meet | Google Duo | Duo
+Google Wallet | Google Pay | GPay
+Google Keep | Keep Notes | Keep
+Google Lens | Lens
+YouTube Music | Google Play Music
+Google TV | Google Play Movies | Play Movies & TV
+Google One
+Google Home
+Google Play Games | Play Games
+Google Play Books | Play Books
+Google News
+Google Fit
+Google Docs | Docs
+Google Sheets | Sheets
+Google Slides | Slides
+Google Translate
+Recorder | Voice Recorder | Sound recorder
+Digital Wellbeing
+Find My Device | Find Hub
+Android Auto
+Personal Safety | Safety
+Pixel Tips
+Pixel Camera
+Pixel Screenshots | Screenshots
+Pixel Studio
+Pixel Weather
+Samsung Notes
+Samsung Health
+Galaxy Store | Samsung Galaxy Store | Samsung Apps
+Bixby
+Samsung Wallet | Samsung Pay
+SmartThings
+Galaxy Wearable | Samsung Wearable
+Samsung Members
+Game Launcher | Gaming Hub
+Samsung Free | Samsung Daily | Samsung News
+Samsung TV Plus
+My Files
+Samsung Kids
+Secure Folder
+Smart Switch
+Samsung Cloud
+Samsung Find | Find My Mobile
+Samsung Pass
+Bixby Vision
+AR Zone | AR Emoji
+Galaxy Shop | Samsung Shop
+Samsung Email | Email
+Samsung Music
+Samsung Video | Video Player
+Samsung Health Monitor
+Samsung Global Goals
+PENUP | Pen Up
+Quick Share | Nearby Share
+FM Radio | Radio
+Downloads
+SIM Toolkit
+Mi Browser | Xiaomi Browser
+GetApps | Xiaomi GetApps
+Mi Remote
+Security | Xiaomi Security
+Huawei AppGallery | AppGallery
+Petal Search
+Huawei Health
+Moto | Moto app
+Netflix
+Spotify
+Facebook
+Microsoft Office | Office
+OneDrive
+Outlook
+LinkedIn
+Microsoft 365 Copilot | Copilot
