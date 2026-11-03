@@ -1,0 +1,1046 @@
+# id: mcblock
+# prompt: Name a Minecraft block
+# group: Gaming
+# emoji: ⛏️
+# kind: thing
+Dirt
+Grass Block | Grass
+Stone
+Cobblestone | Cobble
+Oak Planks | Planks | Wood Planks | Wooden Planks
+Oak Log | Log | Wood Log | Wood
+Sand
+Gravel
+Glass
+Obsidian
+TNT | Dynamite
+Crafting Table | Workbench | Crafting Bench
+Furnace
+Chest
+Bedrock
+Diamond Ore
+Iron Ore
+Gold Ore
+Coal Ore
+Redstone Ore
+Lapis Lazuli Ore | Lapis Ore
+Emerald Ore
+Block of Diamond | Diamond Block
+Block of Iron | Iron Block
+Block of Gold | Gold Block
+Block of Emerald | Emerald Block
+Block of Netherite | Netherite Block
+Ancient Debris
+Netherrack
+Soul Sand
+Glowstone
+End Stone
+Bookshelf | Bookcase
+Enchanting Table | Enchantment Table
+Anvil
+Beacon
+Water
+Lava
+Ice
+Packed Ice
+Blue Ice
+Snow Block
+Snow
+Oak Leaves | Leaves
+Cactus
+Pumpkin
+Carved Pumpkin
+Jack o'Lantern
+Melon | Melon Block
+Hay Bale | Hay Block
+Sponge
+Slime Block | Slime
+Honey Block
+Piston
+Sticky Piston
+Redstone Dust | Redstone Wire | Redstone
+Block of Redstone | Redstone Block
+Redstone Torch
+Redstone Lamp
+Lever
+Stone Button | Button
+Hopper
+Dispenser
+Dropper
+Observer
+Note Block
+Jukebox
+Command Block
+Monster Spawner | Spawner | Mob Spawner
+Ender Chest
+Shulker Box
+Red Bed | Bed
+Torch
+Lantern
+Sea Lantern
+Ladder
+Oak Door | Door | Wooden Door
+Iron Door
+Oak Trapdoor | Trapdoor
+Oak Fence | Fence
+Oak Fence Gate | Fence Gate
+Rail | Rails | Minecart Track
+Powered Rail
+Cobweb | Web | Spider Web
+Bricks | Brick Block
+Stone Bricks
+Mossy Cobblestone
+Sandstone
+Red Sand
+Clay
+Terracotta | Hardened Clay
+Mycelium
+Podzol
+Coarse Dirt
+Farmland
+Dirt Path | Grass Path | Path
+Sugar Cane
+Bamboo
+Dragon Egg
+End Portal Frame
+Nether Portal | Portal
+End Portal
+Magma Block | Magma
+Nether Bricks
+Block of Quartz | Quartz Block
+Nether Quartz Ore | Quartz Ore
+Crying Obsidian
+Respawn Anchor
+Lodestone
+Blackstone
+Basalt
+Deepslate
+Cobbled Deepslate
+Tuff
+Calcite
+Block of Amethyst | Amethyst Block
+Copper Ore
+Block of Copper | Copper Block
+Block of Coal | Coal Block
+Block of Lapis Lazuli | Lapis Block | Lapis Lazuli Block
+Barrel
+Smoker
+Blast Furnace
+Grindstone
+Stonecutter
+Smithing Table
+Cartography Table
+Fletching Table
+Loom
+Lectern
+Composter
+Brewing Stand
+Cauldron
+Campfire
+Bell
+Scaffolding
+Target
+Beehive
+Bee Nest
+Barrier
+Structure Block
+Sculk
+Sculk Sensor
+Sculk Shrieker
+Sculk Catalyst
+Moss Block
+Mud
+Prismarine
+Conduit
+Shroomlight
+Crimson Nylium
+Warped Nylium
+Dried Kelp Block
+Bone Block
+Poppy | Rose
+Dandelion
+Red Mushroom
+Brown Mushroom
+Oak Sapling | Sapling
+Tall Grass
+Short Grass
+Fern
+Dead Bush
+Vines | Vine
+Lily Pad
+Flower Pot
+Cake
+Birch Log
+Spruce Log
+Jungle Log
+Acacia Log
+Dark Oak Log
+Cherry Log
+Mangrove Log
+Pale Oak Log
+Birch Planks
+Spruce Planks
+Jungle Planks
+Acacia Planks
+Dark Oak Planks
+Cherry Planks
+Mangrove Planks
+Crimson Planks
+Warped Planks
+Bamboo Planks
+Pale Oak Planks
+White Wool | Wool
+Red Wool
+Blue Wool
+Black Wool
+Green Wool
+Yellow Wool
+Orange Wool
+Pink Wool
+Purple Wool
+Lime Wool
+Light Blue Wool
+Cyan Wool
+Magenta Wool
+Brown Wool
+Gray Wool | Grey Wool
+Light Gray Wool | Light Grey Wool
+Crafter
+Trial Spawner
+Vault
+Heavy Core
+Creaking Heart
+Sniffer Egg
+Turtle Egg
+Decorated Pot
+Suspicious Sand
+Suspicious Gravel
+Reinforced Deepslate
+Budding Amethyst
+Amethyst Cluster
+Pointed Dripstone | Dripstone
+Dripstone Block
+Spore Blossom
+Glow Lichen
+Frogspawn
+Daylight Detector | Daylight Sensor
+Tripwire Hook
+Redstone Repeater | Repeater
+Redstone Comparator | Comparator
+Trapped Chest
+Detector Rail
+Activator Rail
+Light Weighted Pressure Plate | Gold Pressure Plate
+Heavy Weighted Pressure Plate | Iron Pressure Plate
+Stone Pressure Plate | Pressure Plate
+Lightning Rod
+Chain Command Block
+Repeating Command Block
+Jigsaw Block | Jigsaw
+Structure Void
+Light | Light Block
+Wither Rose
+Sunflower
+Rose Bush
+Cornflower
+Blue Orchid
+Allium
+Lily of the Valley
+Oxeye Daisy
+Azure Bluet
+Torchflower
+Pitcher Plant
+Pink Petals
+Wheat Crops | Wheat
+Carrots | Carrot
+Potatoes | Potato
+Beetroots | Beetroot
+Cocoa | Cocoa Beans
+Kelp
+Seagrass
+Sea Pickle
+Nether Wart
+Nether Wart Block
+Warped Wart Block
+Crimson Fungus
+Warped Fungus
+Crimson Stem
+Warped Stem
+Weeping Vines
+Twisting Vines
+Soul Soil
+Soul Torch
+Soul Lantern
+Soul Campfire
+Fire
+Soul Fire
+Gilded Blackstone
+Polished Blackstone
+Chiseled Stone Bricks
+Cracked Stone Bricks
+Mossy Stone Bricks
+Smooth Stone
+Infested Stone | Silverfish Block
+Iron Bars
+Glass Pane
+Tinted Glass
+Air
+Granite
+Diorite
+Andesite
+Nether Gold Ore
+Wet Sponge
+Bush
+Short Dry Grass
+Tall Dry Grass
+Golden Dandelion
+Cactus Flower
+Packed Mud
+Mud Bricks
+Mushroom Stem
+Iron Chain
+Resin Clump
+Block of Resin | Resin Block
+Resin Bricks
+Skeleton Skull
+Wither Skeleton Skull
+Zombie Head
+Player Head
+Creeper Head
+Dragon Head
+Piglin Head
+Chipped Anvil
+Damaged Anvil
+Quartz Pillar
+Prismarine Bricks
+Dark Prismarine
+Lilac
+Peony
+Large Fern
+End Rod
+Chorus Plant
+Chorus Flower
+Purpur Block
+Purpur Pillar
+End Stone Bricks
+End Gateway
+Frosted Ice
+Dried Ghast
+Bubble Column
+Sweet Berry Bush
+Nether Sprouts
+Honeycomb Block
+Quartz Bricks
+Large Amethyst Bud
+Medium Amethyst Bud
+Small Amethyst Bud
+Tuff Bricks
+Powder Snow
+Calibrated Sculk Sensor
+Sculk Vein
+Cave Vines
+Azalea
+Flowering Azalea
+Wildflowers
+Leaf Litter
+Big Dripleaf
+Small Dripleaf
+Hanging Roots
+Rooted Dirt
+Deepslate Tiles
+Deepslate Bricks
+Block of Raw Iron | Raw Iron Block
+Block of Raw Gold | Raw Gold Block
+Ochre Froglight
+Verdant Froglight
+Pearlescent Froglight
+Pale Moss Block
+Pale Hanging Moss
+Open Eyeblossom
+Closed Eyeblossom
+Firefly Bush
+Bamboo Mosaic
+Spruce Sapling
+Birch Sapling
+Jungle Sapling
+Acacia Sapling
+Dark Oak Sapling
+Mangrove Propagule
+Mangrove Roots
+Muddy Mangrove Roots
+Block of Bamboo | Bamboo Block
+Spruce Leaves
+Birch Leaves
+Jungle Leaves
+Acacia Leaves
+Dark Oak Leaves
+Azalea Leaves
+Flowering Azalea Leaves
+Warped Roots
+Crimson Roots
+Cherry Sapling
+Pale Oak Sapling
+Oak Wood
+Spruce Wood
+Birch Wood
+Jungle Wood
+Acacia Wood
+Dark Oak Wood
+Cherry Leaves
+Pale Oak Leaves
+Mangrove Leaves
+Red Tulip
+Orange Tulip
+White Tulip
+Pink Tulip
+Oak Sign
+Spruce Sign
+Birch Sign
+Acacia Sign
+Jungle Sign
+Dark Oak Sign
+Copper Torch
+Spruce Trapdoor
+Birch Trapdoor
+Jungle Trapdoor
+Acacia Trapdoor
+Dark Oak Trapdoor
+Brown Mushroom Block
+Red Mushroom Block
+Copper Bars
+Copper Chain
+Nether Brick Fence
+Iron Trapdoor
+Red Sandstone
+Spruce Fence
+Birch Fence
+Jungle Fence
+Acacia Fence
+Dark Oak Fence
+Spruce Door
+Birch Door
+Jungle Door
+Acacia Door
+Dark Oak Door
+Red Nether Bricks
+Copper Lantern
+Copper Chest
+Block of Raw Copper | Raw Copper Block
+Polished Granite
+Polished Diorite
+Polished Andesite
+Pale Oak Wood
+Deepslate Gold Ore
+Deepslate Iron Ore
+Deepslate Coal Ore
+Stripped Spruce Log
+Stripped Birch Log
+Stripped Jungle Log
+Stripped Acacia Log
+Stripped Dark Oak Log
+Stripped Oak Log
+Cherry Wood
+Mangrove Wood
+Deepslate Lapis Lazuli Ore
+Chiseled Sandstone
+Cut Sandstone
+Chiseled Bookshelf
+Deepslate Diamond Ore
+Cherry Sign
+Pale Oak Sign
+Mangrove Sign
+Bamboo Sign
+Deepslate Redstone Ore
+Polished Basalt
+Cherry Trapdoor
+Pale Oak Trapdoor
+Mangrove Trapdoor
+Bamboo Trapdoor
+Chiseled Resin Bricks
+Deepslate Emerald Ore
+Chiseled Quartz Block
+Chiseled Red Sandstone
+Cut Red Sandstone
+Smooth Sandstone
+Smooth Quartz Block
+Smooth Red Sandstone
+Cherry Fence
+Pale Oak Fence
+Mangrove Fence
+Bamboo Fence
+Cherry Door
+Pale Oak Door
+Mangrove Door
+Bamboo Door
+White Concrete
+Orange Concrete
+Magenta Concrete
+Light Blue Concrete
+Yellow Concrete
+Lime Concrete
+Pink Concrete
+Gray Concrete | Grey Concrete
+Light Gray Concrete | Light Grey Concrete
+Cyan Concrete
+Purple Concrete
+Blue Concrete
+Brown Concrete
+Green Concrete
+Red Concrete
+Black Concrete
+Tube Coral Block
+Brain Coral Block
+Bubble Coral Block
+Fire Coral Block
+Horn Coral Block
+Tube Coral
+Brain Coral
+Bubble Coral
+Fire Coral
+Horn Coral
+Tube Coral Fan
+Brain Coral Fan
+Bubble Coral Fan
+Fire Coral Fan
+Horn Coral Fan
+Crimson Fence
+Warped Fence
+Crimson Trapdoor
+Warped Trapdoor
+Crimson Door
+Warped Door
+Crimson Sign
+Warped Sign
+Polished Blackstone Bricks
+Cracked Polished Blackstone Bricks
+Chiseled Polished Blackstone
+Chiseled Nether Bricks
+Cracked Nether Bricks
+Polished Tuff
+Chiseled Tuff
+Chiseled Tuff Bricks
+Moss Carpet
+Polished Deepslate
+Chiseled Deepslate
+Cracked Deepslate Bricks
+Cracked Deepslate Tiles
+Smooth Basalt
+Pale Moss Carpet
+Stripped Cherry Log
+Stripped Pale Oak Log
+Stripped Mangrove Log
+Block of Stripped Bamboo | Stripped Bamboo Block
+White Bed
+Orange Bed
+Magenta Bed
+Light Blue Bed
+Yellow Bed
+Lime Bed
+Pink Bed
+Gray Bed | Grey Bed
+Light Gray Bed | Light Grey Bed
+Cyan Bed
+Purple Bed
+Blue Bed
+Brown Bed
+Green Bed
+Black Bed
+Acacia Shelf
+Birch Shelf
+Dark Oak Shelf
+Jungle Shelf
+Oak Shelf
+Spruce Shelf
+Oak Stairs
+Cobblestone Stairs
+White Stained Glass
+Orange Stained Glass
+Magenta Stained Glass
+Light Blue Stained Glass
+Yellow Stained Glass
+Lime Stained Glass
+Pink Stained Glass
+Gray Stained Glass | Grey Stained Glass
+Light Gray Stained Glass | Light Grey Stained Glass
+Cyan Stained Glass
+Purple Stained Glass
+Blue Stained Glass
+Brown Stained Glass
+Green Stained Glass
+Red Stained Glass
+Black Stained Glass
+Brick Stairs
+Stone Brick Stairs
+Mud Brick Stairs
+Resin Brick Stairs
+Resin Brick Slab
+Nether Brick Stairs
+Sandstone Stairs
+Spruce Stairs
+Birch Stairs
+Jungle Stairs
+Quartz Stairs
+Acacia Stairs
+Dark Oak Stairs
+Prismarine Stairs
+Prismarine Brick Stairs
+Dark Prismarine Stairs
+Prismarine Slab
+Prismarine Brick Slab
+Dark Prismarine Slab
+Oak Slab
+Spruce Slab
+Birch Slab
+Jungle Slab
+Acacia Slab
+Dark Oak Slab
+Stone Slab
+Sandstone Slab
+Petrified Oak Slab
+Cobblestone Slab
+Brick Slab
+Stone Brick Slab
+Mud Brick Slab
+Nether Brick Slab
+Quartz Slab
+Purpur Slab
+Purpur Stairs
+End Stone Brick Stairs
+Stone Stairs
+Granite Stairs
+Andesite Stairs
+Diorite Stairs
+End Stone Brick Slab
+Granite Slab
+Andesite Slab
+Diorite Slab
+Stripped Warped Stem
+Warped Hyphae
+Stripped Crimson Stem
+Crimson Hyphae
+Blackstone Stairs
+Blackstone Slab
+Candle
+Tuff Slab
+Tuff Stairs
+Tuff Brick Slab
+Tuff Brick Stairs
+Copper Door
+Copper Trapdoor
+Copper Grate
+Copper Bulb
+Copper Golem Statue
+Exposed Lightning Rod
+Weathered Lightning Rod
+Oxidized Lightning Rod
+Cobbled Deepslate Stairs
+Cobbled Deepslate Slab
+Deepslate Tile Stairs
+Deepslate Tile Slab
+Deepslate Brick Stairs
+Deepslate Brick Slab
+Stripped Oak Wood
+Stripped Spruce Wood
+Stripped Birch Wood
+Stripped Jungle Wood
+Stripped Acacia Wood
+Stripped Dark Oak Wood
+Bamboo Shelf
+Cherry Shelf
+Crimson Shelf
+Mangrove Shelf
+Pale Oak Shelf
+Warped Shelf
+Oak Pressure Plate
+Spruce Pressure Plate
+Birch Pressure Plate
+Jungle Pressure Plate
+Acacia Pressure Plate
+Dark Oak Pressure Plate
+Resin Brick Wall
+Cobblestone Wall
+Oak Button
+Spruce Button
+Birch Button
+Jungle Button
+Acacia Button
+Dark Oak Button
+White Terracotta
+Orange Terracotta
+Magenta Terracotta
+Light Blue Terracotta
+Yellow Terracotta
+Lime Terracotta
+Pink Terracotta
+Gray Terracotta | Grey Terracotta
+Light Gray Terracotta | Light Grey Terracotta
+Cyan Terracotta
+Purple Terracotta
+Blue Terracotta
+Brown Terracotta
+Green Terracotta
+Red Terracotta
+Black Terracotta
+Cherry Stairs
+Pale Oak Stairs
+Mangrove Stairs
+Bamboo Stairs
+Bamboo Mosaic Stairs
+White Carpet
+Orange Carpet
+Magenta Carpet
+Light Blue Carpet
+Yellow Carpet
+Lime Carpet
+Pink Carpet
+Gray Carpet | Grey Carpet
+Light Gray Carpet | Light Grey Carpet
+Cyan Carpet
+Purple Carpet
+Blue Carpet
+Brown Carpet
+Green Carpet
+Red Carpet
+Black Carpet
+White Banner
+Orange Banner
+Magenta Banner
+Light Blue Banner
+Yellow Banner
+Lime Banner
+Pink Banner
+Gray Banner | Grey Banner
+Light Gray Banner | Light Grey Banner
+Cyan Banner
+Purple Banner
+Blue Banner
+Brown Banner
+Green Banner
+Red Banner
+Black Banner
+Cherry Slab
+Pale Oak Slab
+Mangrove Slab
+Bamboo Slab
+Bamboo Mosaic Slab
+Spruce Fence Gate
+Birch Fence Gate
+Jungle Fence Gate
+Acacia Fence Gate
+Dark Oak Fence Gate
+White Shulker Box
+Orange Shulker Box
+Magenta Shulker Box
+Light Blue Shulker Box
+Yellow Shulker Box
+Lime Shulker Box
+Pink Shulker Box
+Gray Shulker Box | Grey Shulker Box
+Light Gray Shulker Box | Light Grey Shulker Box
+Cyan Shulker Box
+Purple Shulker Box
+Blue Shulker Box
+Brown Shulker Box
+Green Shulker Box
+Red Shulker Box
+Black Shulker Box
+Dead Tube Coral Block
+Dead Brain Coral Block
+Dead Bubble Coral Block
+Dead Fire Coral Block
+Dead Horn Coral Block
+Dead Tube Coral
+Dead Brain Coral
+Dead Bubble Coral
+Dead Fire Coral
+Dead Horn Coral
+Dead Tube Coral Fan
+Dead Brain Coral Fan
+Dead Bubble Coral Fan
+Dead Fire Coral Fan
+Dead Horn Coral Fan
+Brick Wall
+Prismarine Wall
+Granite Wall
+Stone Brick Wall
+Mud Brick Wall
+Nether Brick Wall
+Andesite Wall
+Sandstone Wall
+End Stone Brick Wall
+Diorite Wall
+Crimson Slab
+Warped Slab
+Crimson Stairs
+Warped Stairs
+Blackstone Wall
+Tuff Wall
+Tuff Brick Wall
+Deepslate Copper Ore
+Cut Copper
+Chiseled Copper
+Cobbled Deepslate Wall
+Deepslate Tile Wall
+Deepslate Brick Wall
+Stripped Cherry Wood
+Stripped Pale Oak Wood
+Stripped Mangrove Wood
+Oak Hanging Sign
+Spruce Hanging Sign
+Birch Hanging Sign
+Acacia Hanging Sign
+Jungle Hanging Sign
+Dark Oak Hanging Sign
+Cherry Pressure Plate
+Pale Oak Pressure Plate
+Mangrove Pressure Plate
+Bamboo Pressure Plate
+Infested Cobblestone
+Infested Stone Bricks
+Exposed Copper Bars
+Weathered Copper Bars
+Oxidized Copper Bars
+Exposed Copper Chain
+Weathered Copper Chain
+Oxidized Copper Chain
+Cherry Button
+Pale Oak Button
+Mangrove Button
+Bamboo Button
+Red Sandstone Stairs
+Red Sandstone Slab
+Cherry Fence Gate
+Pale Oak Fence Gate
+Mangrove Fence Gate
+Bamboo Fence Gate
+Mossy Stone Brick Stairs
+Mossy Cobblestone Stairs
+Red Nether Brick Stairs
+Mossy Stone Brick Slab
+Mossy Cobblestone Slab
+Red Nether Brick Slab
+Exposed Copper Lantern
+Weathered Copper Lantern
+Oxidized Copper Lantern
+Crimson Pressure Plate
+Warped Pressure Plate
+Crimson Fence Gate
+Warped Fence Gate
+Crimson Button
+Warped Button
+White Candle
+Orange Candle
+Magenta Candle
+Light Blue Candle
+Yellow Candle
+Lime Candle
+Pink Candle
+Gray Candle | Grey Candle
+Light Gray Candle | Light Grey Candle
+Cyan Candle
+Purple Candle
+Blue Candle
+Brown Candle
+Green Candle
+Red Candle
+Black Candle
+Exposed Copper
+Weathered Copper
+Oxidized Copper
+Exposed Copper Chest
+Weathered Copper Chest
+Oxidized Copper Chest
+Infested Deepslate
+Cherry Hanging Sign
+Pale Oak Hanging Sign
+Crimson Hanging Sign
+Warped Hanging Sign
+Mangrove Hanging Sign
+Bamboo Hanging Sign
+Mossy Cobblestone Wall
+Smooth Stone Slab
+Cut Sandstone Slab
+Cut Red Sandstone Slab
+White Concrete Powder
+Orange Concrete Powder
+Magenta Concrete Powder
+Light Blue Concrete Powder
+Yellow Concrete Powder
+Lime Concrete Powder
+Pink Concrete Powder
+Gray Concrete Powder | Grey Concrete Powder
+Light Gray Concrete Powder | Light Grey Concrete Powder
+Cyan Concrete Powder
+Purple Concrete Powder
+Blue Concrete Powder
+Brown Concrete Powder
+Green Concrete Powder
+Red Concrete Powder
+Black Concrete Powder
+Polished Granite Stairs
+Smooth Red Sandstone Stairs
+Polished Diorite Stairs
+Smooth Sandstone Stairs
+Smooth Quartz Stairs
+Polished Andesite Stairs
+Polished Granite Slab
+Smooth Red Sandstone Slab
+Polished Diorite Slab
+Smooth Sandstone Slab
+Smooth Quartz Slab
+Polished Andesite Slab
+Red Sandstone Wall
+Mossy Stone Brick Wall
+Red Nether Brick Wall
+Stripped Warped Hyphae
+Stripped Crimson Hyphae
+Polished Blackstone Brick Slab
+Polished Blackstone Brick Stairs
+Polished Blackstone Stairs
+Polished Blackstone Slab
+Polished Tuff Slab
+Polished Tuff Stairs
+Polished Deepslate Stairs
+Polished Deepslate Slab
+Infested Mossy Stone Bricks
+White Stained Glass Pane
+Orange Stained Glass Pane
+Magenta Stained Glass Pane
+Light Blue Stained Glass Pane
+Yellow Stained Glass Pane
+Lime Stained Glass Pane
+Pink Stained Glass Pane
+Gray Stained Glass Pane | Grey Stained Glass Pane
+Light Gray Stained Glass Pane | Light Grey Stained Glass Pane
+Cyan Stained Glass Pane
+Purple Stained Glass Pane
+Blue Stained Glass Pane
+Brown Stained Glass Pane
+Green Stained Glass Pane
+Red Stained Glass Pane
+Black Stained Glass Pane
+Tube Coral Wall Fan
+Brain Coral Wall Fan
+Bubble Coral Wall Fan
+Fire Coral Wall Fan
+Horn Coral Wall Fan
+Polished Blackstone Brick Wall
+Polished Blackstone Pressure Plate
+Polished Blackstone Button
+Polished Blackstone Wall
+Polished Tuff Wall
+Exposed Copper Door
+Oxidized Copper Door
+Weathered Copper Door
+Exposed Copper Trapdoor
+Oxidized Copper Trapdoor
+Weathered Copper Trapdoor
+Exposed Copper Grate
+Weathered Copper Grate
+Oxidized Copper Grate
+Exposed Copper Bulb
+Weathered Copper Bulb
+Oxidized Copper Bulb
+Exposed Copper Golem Statue
+Weathered Copper Golem Statue
+Oxidized Copper Golem Statue
+Waxed Lightning Rod
+Polished Deepslate Wall
+Infested Cracked Stone Bricks
+Infested Chiseled Stone Bricks
+Oxidized Cut Copper
+Weathered Cut Copper
+Exposed Cut Copper
+Oxidized Chiseled Copper
+Weathered Chiseled Copper
+Exposed Chiseled Copper
+Cut Copper Stairs
+Cut Copper Slab
+Waxed Copper Bars
+Waxed Copper Chain
+White Glazed Terracotta
+Orange Glazed Terracotta
+Magenta Glazed Terracotta
+Light Blue Glazed Terracotta
+Yellow Glazed Terracotta
+Lime Glazed Terracotta
+Pink Glazed Terracotta
+Gray Glazed Terracotta | Grey Glazed Terracotta
+Light Gray Glazed Terracotta | Light Grey Glazed Terracotta
+Cyan Glazed Terracotta
+Purple Glazed Terracotta
+Blue Glazed Terracotta
+Brown Glazed Terracotta
+Green Glazed Terracotta
+Red Glazed Terracotta
+Black Glazed Terracotta
+Dead Tube Coral Wall Fan
+Dead Brain Coral Wall Fan
+Dead Bubble Coral Wall Fan
+Dead Fire Coral Wall Fan
+Dead Horn Coral Wall Fan
+Waxed Copper Lantern
+Waxed Block of Copper
+Waxed Copper Chest
+Waxed Copper Door
+Waxed Copper Trapdoor
+Waxed Copper Grate
+Waxed Copper Bulb
+Waxed Copper Golem Statue
+Waxed Exposed Lightning Rod
+Waxed Weathered Lightning Rod
+Waxed Oxidized Lightning Rod
+Waxed Chiseled Copper
+Oxidized Cut Copper Stairs
+Weathered Cut Copper Stairs
+Exposed Cut Copper Stairs
+Oxidized Cut Copper Slab
+Weathered Cut Copper Slab
+Exposed Cut Copper Slab
+Waxed Cut Copper
+Waxed Exposed Copper Bars
+Waxed Weathered Copper Bars
+Waxed Oxidized Copper Bars
+Waxed Exposed Copper Chain
+Waxed Weathered Copper Chain
+Waxed Oxidized Copper Chain
+Waxed Exposed Copper Lantern
+Waxed Weathered Copper Lantern
+Waxed Oxidized Copper Lantern
+Waxed Weathered Copper
+Waxed Exposed Copper
+Waxed Oxidized Copper
+Waxed Exposed Copper Chest
+Waxed Weathered Copper Chest
+Waxed Oxidized Copper Chest
+Waxed Exposed Copper Door
+Waxed Oxidized Copper Door
+Waxed Weathered Copper Door
+Waxed Exposed Copper Trapdoor
+Waxed Oxidized Copper Trapdoor
+Waxed Weathered Copper Trapdoor
+Waxed Exposed Copper Grate
+Waxed Weathered Copper Grate
+Waxed Oxidized Copper Grate
+Waxed Exposed Copper Bulb
+Waxed Weathered Copper Bulb
+Waxed Oxidized Copper Bulb
+Waxed Exposed Copper Golem Statue
+Waxed Weathered Copper Golem Statue
+Waxed Oxidized Copper Golem Statue
+Waxed Oxidized Chiseled Copper
+Waxed Weathered Chiseled Copper
+Waxed Exposed Chiseled Copper
+Waxed Oxidized Cut Copper
+Waxed Weathered Cut Copper
+Waxed Exposed Cut Copper
+Waxed Cut Copper Stairs
+Waxed Cut Copper Slab
+Waxed Oxidized Cut Copper Stairs
+Waxed Weathered Cut Copper Stairs
+Waxed Exposed Cut Copper Stairs
+Waxed Oxidized Cut Copper Slab
+Waxed Weathered Cut Copper Slab
+Waxed Exposed Cut Copper Slab
+Nether Reactor Core
+Glowing Obsidian

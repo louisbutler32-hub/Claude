@@ -1,0 +1,592 @@
+# id: suits
+# prompt: Name a character from Suits, Prison Break or Cobra Kai
+# group: Movies & TV
+# emoji: 🥋
+# kind: character
+Harvey Specter
+Mike Ross
+Michael Scofield | Scofield
+Johnny Lawrence
+Daniel LaRusso
+Donna Paulsen
+Louis Litt
+Lincoln Burrows | Linc
+T-Bag | Theodore Bagwell | Theodore "T-Bag" Bagwell | Teddy Bagwell
+Jessica Pearson
+Rachel Zane
+Miguel Diaz
+Robby Keene
+Sara Tancredi | Sara Scofield
+Fernando Sucre | Sucre
+Hawk | Eli Moskowitz
+John Kreese | Kreese | Sensei Kreese
+Samantha LaRusso | Sam LaRusso
+Tory Nichols
+Terry Silver
+Mr. Miyagi | Miyagi | Nariyoshi Miyagi | Keisuke Miyagi
+Alexander Mahone | Mahone
+Brad Bellick | Bellick
+C-Note | Benjamin Miles Franklin | Benjamin Franklin
+Tweener | David Apolskis | David "Tweener" Apolskis
+John Abruzzi | Abruzzi
+Paul Kellerman | Kellerman
+Demetri Alexopoulos | Demetri
+Chozen Toguchi | Chozen
+Katrina Bennett
+Robert Zane
+Alex Williams
+Samantha Wheeler
+Daniel Hardman | Hardman
+Amanda LaRusso
+Kenny Payne
+Haywire | Charles Patoshik
+LJ Burrows | Lincoln Burrows Jr.
+Gretchen Morgan
+Veronica Donovan
+Mike Barnes
+Kyler Park | Kyler
+Anthony LaRusso
+Devon Lee
+Carmen Diaz
+Stingray
+Kwon Jae-Sung | Kwon
+Axel Kovačević
+Ali Mills
+Kim Sun-Yung | Master Kim Sun-Yung
+Kim Da-Eun
+Henry Pope | Warden Pope
+Charles Westmoreland | Westmoreland
+Don Self | Donald Self
+James Whistler | Whistler
+Lechero
+Sofia Lugo
+Caroline Reynolds
+Bill Kim | William Kim
+Jacob Ness | Jacob Anton Ness
+Sheba
+Whip
+Christina Scofield
+Michael Scofield Jr. | Mike Scofield
+Trevor Evans
+Harold Gunderson
+Sheila Sazs
+Jenny Griffith
+Scottie | Dana Scott
+Esther Litt
+Gretchen Bodinski
+Travis Tanner
+Edward Darby
+Cameron Dennis
+Jeff Malone
+Sean Cahill
+Faye Richardson
+Lily Specter
+Marcus Specter
+Gordon Specter
+Kevin Miller
+Frank Gallo
+Ava Hessington
+Charles Forstman
+Jack Soloff
+Kumiko Tanaka | Kumiko
+Yasmine
+Moon Taylor | Moon
+Bert
+Nathaniel
+Mitch
+Shawn Payne
+Zara Malik
+Yoon Do-Jin
+Dutch
+Bobby Brown
+Tommy
+Jimmy
+Sid Weinberg
+Shannon Keene
+Rosa Diaz
+Hector Salazar
+Anoush Norouzi
+Piper Elswith
+Counselor Blatt
+Louie LaRusso Jr. | Louie LaRusso
+Roy Geary | Geary
+Jack Mannix | Mannix
+Terrence Steadman
+Jonathan Krantz | General Krantz
+Ray Zancanelli | Zancanelli
+Nika Volek
+Maricruz Delgado
+Bob Hudson
+Manche Sanchez
+Agatha Warren
+Sammy Norino
+Maytag | Jason Buchanan | Jason "Maytag" Buchanan
+Roland Glenn
+Wyatt Mathewson
+Luis Gallego
+Cameron Mahone
+Mrs. Miyagi | Yukie
+Keri Allen
+Bobby Novak
+Chris
+Nick D'Amato
+Derrick Mayes
+Feng Xiao
+Yoli Castillo
+Julianne Simms
+Pat McGann
+Angela Cook
+Edwin Caldwell
+Starla Roland
+Philomena Rotchliffer
+Big Red
+Aisha Robinson
+Lillian Cook
+Nick Savrinn
+Thomas Bratton
+Teets
+Thomas Kessler
+Nathan Krueger
+Stu Buzzini
+Miriam Holtz
+Trumpets
+Stanley Gordon
+Leticia Barris
+Joe Ramsey
+David Fox
+Richard Sullins
+Eric Kaldor
+Lloyd Triple
+Susan Carter
+Vanessa
+Moore
+Tony Gianopolous
+Smith
+Henry Gerard
+Rosalie Williams
+Ken Sharma
+Susan Hollander
+Andrew Malik
+Gavin Andrews
+Jeremiah King
+Laura Brown
+Oliver Grady
+Brucks
+Mark Wheeler
+Claire Bowden
+Abe
+Erik Stammel
+Alphonso Gallego
+Pedro Ramos
+Hector Avila
+Brian Altman
+Howard Scuderi
+Dede Franklin
+Lisa Tabak
+Jones
+Daylor
+Deborah Coates
+Ferguson
+Turk
+Lucas Hodge
+Zavala
+Felicia Lang
+Alexa Scuderi
+Dejesus
+Rubin
+Blondie
+Bearded Man
+Quinn
+Young boy
+James Bagwell
+Daniel Hale
+Priest
+Jane Phillips
+Oscar Shales
+Elliott Pike
+Edna Bellick
+Sebastian Balfour
+Frank Tancredi
+Papo
+Characters
+Liam Colson
+Dennis de Guzman
+Bruce Bennett
+Andrew Tyge
+Gunther Braun
+Griffin Oren
+Benjamin
+Gus Fiorello
+Mary Francis
+Stroker
+George Turner
+Cheo
+William Sutter
+Sam Walker
+Wilson Wright
+Harris
+Dennis Nivens
+Allison Hale
+Will Clayton
+Maria Monroe
+Bo Cowler
+Edith Ross
+Derrick Sweeney
+Monica Eton
+Chuck Hargrove
+Chris Franco
+Stuart Tuxhorn
+Terrence Wolf
+Kang Min-Seok
+Andre Brennan
+Orwell Wilson
+Solomon Okela
+Debra Jean Belle
+Herb Stanton
+Saint Patrick
+Jessica Andrews
+Craig Cameron
+Rickenberger
+Stephanie Patel
+Lisa Rix
+James Quelling
+Ralph Becker
+Dominic Barone
+Louis Patterson
+Naveen Banerjee
+Nigel Nesbitt
+Sensei Hyan-Woo
+Keith Stolte
+Zoe Lawford
+Lola Jensen
+Simon Lowe
+Leonard Bailey
+Gregory White
+Philly Falzone
+Grace Nichols
+Evan Smith
+Stan Jacobson
+Eric Woodall
+Vincent Sandinsky
+Jonathan Sidwell
+A&W
+Jimmy Kirkwood
+Octavio
+Denise
+Douglas Acadia
+Joanna Webster
+Blake Everett
+Fraser Jake
+Lucasz Peshcopi
+Maria Alvarez
+Bates
+Carruth
+Scott Carruth
+Marcel
+Tori
+Pam Larson
+Marvin Mancia
+Charles Van Dyke
+Ja
+Sapo
+A. Elliott Stemple
+Mariano
+Stan Lipschitz
+Syd
+Elias Gould
+Little Red
+Tom Daly
+Van Gogh
+Nancy
+Marvin Gudat
+Avery McKernon
+Jim Paulsen
+Feng Huan
+Park Chung-Hee
+Chicken Caesar
+Nathaniel Edison
+Matt Bailey
+Stephen Faulkner
+Cyrus
+Zack Thompson
+Mike Colburn
+Rizzo Green
+Gravedigger
+Cristobal
+Wade Irving
+Paul Porter
+Adrian Rix
+Betsy Sullivan
+Nick Rinaldi
+Sancho
+Ella Follman
+Thomas Walsh
+Carlos
+Stephen Huntley
+Jasper Potts
+Jasmine Zane
+Sensei Ivanov
+Omar
+David Baker
+Frank Cramer
+Trent Devon
+Tom Cole
+Leon
+Abu Ramal
+Donald Pearl
+Theresa Delgado
+Ernesto
+Say Davis
+Anna Westmoreland
+Kacee Franklin
+Luke
+Allison Holt
+Cara McAllistar
+Tess
+Armand Zarkarian
+James Thompson
+Tom Keller
+Samantha Brinker
+Robert Geller
+Gerald Tate
+Jason Black
+Jerry Curtin
+Gillian Colson
+Sam Middleton
+Ellen Rand
+Xander Epstein
+Samuel Tull
+Craig Seidel
+Seth Hoffner
+Luca Abruzzi
+Becky Gerber
+Nicholas Palermo
+Tony Santana
+Kelsey Price
+Packel
+Kenny Verdasco
+Rafael
+Quentin Sainz
+Darrin Hooks
+Judy Pope
+Andrew Blauner
+Nick Zegan
+Diego Aguilar
+Vlad
+Rita Morgan
+Jason Lief
+Ted Black
+Pistachio
+Augusto
+Cyclops
+Inez
+Downey
+Crab Simmons
+Marilyn
+Animal
+Lyle
+Clifford Watkins
+McMorrow
+Dan Foley
+Rat
+Lia Cabrera
+Tsili
+Trey
+Kyle Durant
+Robert Stensland
+Shan Xing
+Tara Messer
+John Dockery
+Cross
+Shimpo Miyagi
+Mikado
+Danielle Curtin
+Alexandra Leeds
+Burt Kimball
+Blue Hawaii
+Gregg Bilson
+Lucille Jackson
+Paula Agard
+Gabby Stone
+Madison Price
+Sensei Min-Jun
+Frost
+Wanda O'Connell
+Travis Muncey
+Ballard
+Billy
+Lucy Jones
+Sensei Odell
+Otto Fibonacci
+JJ
+Jill Miller
+Sensei Bacaria
+Katie Welch
+Heather
+Leah Pearson
+Brandon Nichols
+Emily Morgan
+Kaniel Outis
+Oksana
+Carlos Zepeda
+Sasha Murray
+Yuna
+Theresa Zancanelli
+Chi Chi
+Tonya Willis
+Zach Stoltz
+Richard Sooter
+Lucia
+Tina O'Sullivan
+Sergio
+Collin Church
+Cruz
+Vivien Tanaka
+Albert Chan
+Eric McBride
+Norma
+Anthony Mazlo
+Jeremy Wall
+Escamilla
+Vanessa LaRusso
+Mr. Silver
+Mack
+Kelli Foster
+Mack Andrews
+Elliot Perkins
+Jeanette Owens
+Lauren
+Trey Morgan
+Hunter
+Wayne Murray
+Arthur Bradshaw
+Zack Hollander
+Andrew Nelson
+Laslow Manckewicz
+Vera Madrid
+Nikki Sordel
+Roy Weston
+Roger Knowlton
+Bruno
+Rosario
+Caroline Reynolds' granddaughter
+Eugenia Campbell
+Frank Carvello
+Nandu Banerjee
+Ann Owens
+Koba
+Alan Pearson
+Erol Tabak
+Ed Pavelka
+Gregory Boone
+Zach Pushkarev
+James Bagwell Jr.
+Mr. Lawrence
+Charles Westmoreland Senior
+Elizabeth-Anne Rooney
+Nathan Byrnes
+Amy
+Jerome Jensen
+Seth Keller
+Wing
+Wholesale
+Conrad Dallow
+Laura Lawrence-Diaz
+Rodney
+Harlan Gaines
+Sue Wilderuit
+Tia Hayden
+Logan Sanders
+Judge McIntyre
+Nestor
+Dean Morello
+Mr. LaRusso
+Mr. Salazar
+Clifford Danner
+Olivia
+Winnie Taylor
+Laurence
+Mr. Palmer
+Mark Dauber
+Anita Gibbs
+Carrie Underwood
+Johnny Karinski
+Mrs. Mills
+Homeless Lynn
+Lisa Parker
+Stephanie Novak
+Keith Hoyt
+Holly Cromwell
+Stuart Lane
+Emmanuel Mariga
+Shrager
+Joanne
+Ponytail
+Joy McAfee
+Shane Page
+Julius Rowe
+Principal Lopez
+Elizabeth Schelling
+Mark Meadows
+Garvin Steiner
+Dee Snider
+Ray Benghazi
+Dylan Pryor
+Alberto Romero
+Rico
+Zenker
+Raymond
+Lucille LaRusso
+Dr. Hillier
+Xander Stone
+Rory
+Sensei Suk-Chin
+Sensei Morozov
+Mr. Steiner
+Fawn
+Sensei Rosenthal
+Cory Cook
+Mrs. Moskowitz
+Renee Aubuchon
+Anthony Morrison
+Baptiste
+Mr. Miyagi's Mother
+Marissa
+Gregory Schwarber
+Erica Rollins
+Mark Cook
+Erick
+Mercedes
+Rick Dodsen
+Laura Zane
+Arthur Reeves
+Isaiah Robinson
+James Palmer
+Marco
+Graham
+Derek
+Lucy Litt
+Walter Gillis
+Emily Folsom
+Nick Howell
+Amanda Stevens
+Mr. Santana
+Grigor
+Julia
+Roland Zarkarian
+Sandra Robinson
+James Payne
+Margaret Spencer
+Mr. Keene
+Phan
+Mrs Coe
+Mrs. Keene
+Mr. Kreese
+Cheyenne Hamidi
+Jose
+Mr. Moskowitz
+Mrs. Kreese
+Dr. Howard
+Ezra
+Sage Taylor
+Claramunt
