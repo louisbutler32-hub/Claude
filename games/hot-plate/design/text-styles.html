@@ -1,0 +1,230 @@
+<title>Hot Plate Text Styles</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jacquard+24&family=Pixelify+Sans:wght@400;600;700&family=Silkscreen&family=VT323&family=Press+Start+2P&family=Jersey+10&family=Micro+5&family=DotGothic16&family=Shrikhand&family=Figtree:wght@500;700;800&family=DM+Mono:wght@400;500&family=Monoton&family=Chakra+Petch:wght@500;600;700&family=Share+Tech+Mono&display=swap">
+<style>
+/* Layout: one mock of the game's screen per style, stacked in a two-column grid; every mock shows the same content so only the type changes. */
+:root {
+  --night: #0b0406;
+  --stage-a: #6c1f2d;
+  --stage-b: #1a080d;
+  --panel: rgba(16, 6, 9, .9);
+  --line: #3d1c25;
+  --text: #f5e7cf;
+  --dim: #c4a99a;
+  --muted: #8e7069;
+  --gold: #f0c060;
+  --rose: #ff6f91;
+  --hot: #ff7a2f;
+  --mint: #6ee0a8;
+  --ink: #120709;
+  --t0: #f3e7d0; --t1: #ffd77a; --t3: #2a0d1a;
+  --page-font: "Figtree", system-ui, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--night); color: var(--text); font: 16px/1.45 var(--page-font); }
+.wrap { max-width: 1240px; margin: 0 auto; padding-block: 36px 60px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header.page { display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; max-width: 70ch; }
+header.page h1 { margin: 0; font: 800 clamp(26px, 4vw, 36px)/1.1 var(--page-font); text-wrap: balance; }
+header.page p { margin: 0; color: var(--dim); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 22px; }
+
+.card { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.card-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.letter { font: 800 28px/1 var(--page-font); color: var(--gold); }
+.card-head h2 { margin: 0; font: 800 19px/1.2 var(--page-font); }
+.card-head .fonts { font-size: 13px; color: var(--muted); flex-basis: 100%; }
+
+/* the mock screen */
+.mock {
+  position: relative; overflow: hidden; border: 2px solid var(--line);
+  background: radial-gradient(ellipse 70% 55% at 50% 58%, var(--stage-a), var(--stage-b) 75%);
+  padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 14px; min-height: 520px;
+}
+.hud { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.badge { background: var(--panel); border: 2px solid var(--line); padding: 4px 12px 6px; display: flex; flex-direction: column; min-width: 86px; }
+.badge.r { align-items: flex-end; }
+.badge small { font-family: var(--label); font-size: var(--label-size); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--muted); }
+.badge b { font-family: var(--num); font-size: var(--num-size); font-weight: var(--num-weight); color: var(--gold); letter-spacing: .08em; line-height: 1.1; }
+.badge.r b { color: var(--rose); }
+.phase { font-family: var(--label); font-size: var(--label-size); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--muted); padding-top: 10px; }
+
+.title { text-align: center; }
+.title h3 { margin: 0; font-family: var(--title); font-size: var(--title-size); font-weight: var(--title-weight); line-height: .95; letter-spacing: var(--title-track); text-transform: var(--title-case); color: var(--text); text-shadow: var(--title-shadow); }
+.title .sub { margin: 8px 0 0; font-family: var(--label); font-size: calc(var(--label-size) * 1.4); letter-spacing: calc(var(--label-track) * 1.6); text-transform: uppercase; color: var(--gold); }
+.title .tag { margin: 6px 0 0; font-family: var(--body); font-size: var(--body-size); color: var(--dim); }
+
+.prompt { text-align: center; }
+.prompt p { margin: 0; font-family: var(--prompt); font-size: var(--prompt-size); font-weight: var(--prompt-weight); color: var(--text); text-shadow: 0 3px 0 var(--ink); text-wrap: balance; text-transform: var(--prompt-case); letter-spacing: var(--prompt-track); }
+.prompt small { display: block; margin-top: 6px; font-family: var(--label); font-size: var(--label-size); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--gold); }
+
+.table { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; align-items: end; justify-items: center; padding: 6px 0; }
+.seat { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0; }
+.bubble { font-family: var(--answer); font-size: var(--answer-size); font-weight: var(--answer-weight); line-height: 1.1; color: var(--ink); background: var(--t0); border: 2px solid var(--ink); padding: 4px 9px 5px; text-align: center; box-shadow: 0 3px 0 rgba(0,0,0,.45); max-width: 100%; overflow-wrap: anywhere; }
+.bubble em { display: block; font-style: normal; font-family: var(--label); font-size: calc(var(--label-size) * .9); letter-spacing: .1em; opacity: .7; }
+.bubble.t1 { background: var(--t1); }
+.bubble.t3 { background: var(--t3); color: var(--gold); border-color: var(--gold); box-shadow: 0 0 14px rgba(240,192,96,.5); }
+.bubble.typing { background: #fffaf0; border-color: var(--hot); }
+.bubble.typing::after { content: "▌"; color: var(--hot); }
+.face { font-size: 30px; line-height: 1; }
+.plate { width: 64px; height: 26px; border-radius: 50%; background: radial-gradient(ellipse, #f3e7d0 0 55%, #d9a648 58% 70%, #8a5e22 72%); }
+.name { font-family: var(--name); font-size: var(--name-size); font-weight: var(--name-weight); color: var(--text); text-shadow: 0 2px 0 var(--ink); letter-spacing: .03em; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.name.me { color: var(--gold); }
+.name.hot { color: var(--hot); }
+.name.out { color: var(--muted); text-decoration: line-through; }
+.hearts { font-family: var(--body); font-size: calc(var(--body-size) * .9); color: var(--rose); line-height: 1; }
+.hearts i { font-style: normal; color: #3d2731; }
+
+.button { align-self: center; width: min(100%, 440px); text-align: center; padding: 14px 10px; background: rgba(12,4,7,.82); border: 2px solid #b98a5a; box-shadow: inset 0 0 22px rgba(240,192,96,.12); font-family: var(--button); font-size: var(--button-size); font-weight: var(--button-weight); letter-spacing: var(--button-track); text-transform: uppercase; color: var(--text); }
+.lower { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: end; }
+.chat { background: var(--panel); border: 2px solid var(--line); padding: 10px 12px; display: flex; flex-direction: column; gap: 3px; font-family: var(--body); font-size: var(--body-size); line-height: 1.2; min-width: 0; }
+.chat .h { font-family: var(--label); font-size: var(--label-size); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--dim); margin-bottom: 4px; }
+.chat .sys { color: var(--muted); }
+.chat b { color: var(--gold); font-weight: inherit; }
+.win { text-align: center; }
+.win p { margin: 0; font-family: var(--title); font-size: calc(var(--title-size) * .7); font-weight: var(--title-weight); line-height: 1; letter-spacing: var(--title-track); text-transform: var(--title-case); color: var(--text); text-shadow: var(--title-shadow); }
+.win small { display: block; margin-top: 6px; font-family: var(--label); font-size: var(--label-size); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--gold); }
+
+/* ---- the six styles ---- */
+.s-a { /* Banquet Hall: what's live now */
+  --title: "Jacquard 24", serif; --title-size: 76px; --title-weight: 400; --title-track: .01em; --title-case: none;
+  --title-shadow: 3px 0 0 #d23a4f, -3px 0 0 var(--gold), 0 5px 0 var(--ink);
+  --prompt: "Pixelify Sans", monospace; --prompt-size: 30px; --prompt-weight: 700; --prompt-case: none; --prompt-track: 0;
+  --answer: "Pixelify Sans", monospace; --answer-size: 15px; --answer-weight: 600;
+  --name: "VT323", monospace; --name-size: 21px; --name-weight: 400;
+  --label: "Silkscreen", monospace; --label-size: 9px; --label-track: .26em;
+  --num: "Pixelify Sans", monospace; --num-size: 22px; --num-weight: 600;
+  --body: "VT323", monospace; --body-size: 19px;
+  --button: "Silkscreen", monospace; --button-size: 14px; --button-weight: 400; --button-track: .3em;
+}
+.s-b { /* Arcade Diner */
+  --title: "Press Start 2P", monospace; --title-size: 38px; --title-weight: 400; --title-track: .04em; --title-case: uppercase;
+  --title-shadow: 4px 4px 0 #d23a4f, 0 0 24px rgba(255,111,145,.35);
+  --prompt: "Press Start 2P", monospace; --prompt-size: 15px; --prompt-weight: 400; --prompt-case: none; --prompt-track: 0;
+  --answer: "VT323", monospace; --answer-size: 22px; --answer-weight: 400;
+  --name: "Press Start 2P", monospace; --name-size: 9px; --name-weight: 400;
+  --label: "Press Start 2P", monospace; --label-size: 7px; --label-track: .18em;
+  --num: "Press Start 2P", monospace; --num-size: 15px; --num-weight: 400;
+  --body: "VT323", monospace; --body-size: 20px;
+  --button: "Press Start 2P", monospace; --button-size: 11px; --button-weight: 400; --button-track: .2em;
+}
+.s-c { /* Scoreboard: tall condensed pixels */
+  --title: "Jersey 10", sans-serif; --title-size: 92px; --title-weight: 400; --title-track: .03em; --title-case: uppercase;
+  --title-shadow: 0 4px 0 #8a1f30, 0 8px 0 var(--ink), 0 0 26px rgba(255,180,110,.3);
+  --prompt: "Jersey 10", sans-serif; --prompt-size: 40px; --prompt-weight: 400; --prompt-case: uppercase; --prompt-track: .03em;
+  --answer: "Jersey 10", sans-serif; --answer-size: 22px; --answer-weight: 400;
+  --name: "Jersey 10", sans-serif; --name-size: 22px; --name-weight: 400;
+  --label: "Micro 5", monospace; --label-size: 15px; --label-track: .2em;
+  --num: "Jersey 10", sans-serif; --num-size: 30px; --num-weight: 400;
+  --body: "Pixelify Sans", monospace; --body-size: 15px;
+  --button: "Jersey 10", sans-serif; --button-size: 26px; --button-weight: 400; --button-track: .2em;
+}
+.s-d { /* Dot Matrix: RPG dialogue-box feel */
+  --title: "DotGothic16", monospace; --title-size: 60px; --title-weight: 400; --title-track: .12em; --title-case: uppercase;
+  --title-shadow: 0 0 10px rgba(255,214,140,.7), 0 0 30px rgba(255,140,90,.35), 0 4px 0 var(--ink);
+  --prompt: "DotGothic16", monospace; --prompt-size: 26px; --prompt-weight: 400; --prompt-case: none; --prompt-track: .02em;
+  --answer: "DotGothic16", monospace; --answer-size: 16px; --answer-weight: 400;
+  --name: "DotGothic16", monospace; --name-size: 16px; --name-weight: 400;
+  --label: "DotGothic16", monospace; --label-size: 11px; --label-track: .25em;
+  --num: "DotGothic16", monospace; --num-size: 22px; --num-weight: 400;
+  --body: "DotGothic16", monospace; --body-size: 15px;
+  --button: "DotGothic16", monospace; --button-size: 17px; --button-weight: 400; --button-track: .3em;
+}
+.s-e { /* Supper Club: smooth, the Dining Room brand */
+  --title: "Shrikhand", serif; --title-size: 72px; --title-weight: 400; --title-track: 0; --title-case: none;
+  --title-shadow: 0 5px 0 #c8323e, 0 10px 24px rgba(0,0,0,.5);
+  --prompt: "Figtree", sans-serif; --prompt-size: 30px; --prompt-weight: 800; --prompt-case: none; --prompt-track: -.01em;
+  --answer: "Figtree", sans-serif; --answer-size: 15px; --answer-weight: 800;
+  --name: "Figtree", sans-serif; --name-size: 16px; --name-weight: 700;
+  --label: "Figtree", sans-serif; --label-size: 10px; --label-track: .18em;
+  --num: "DM Mono", monospace; --num-size: 21px; --num-weight: 500;
+  --body: "DM Mono", monospace; --body-size: 14px;
+  --button: "Shrikhand", serif; --button-size: 22px; --button-weight: 400; --button-track: .04em;
+}
+.s-f { /* Neon Sign: late-night diner window */
+  --title: "Monoton", sans-serif; --title-size: 58px; --title-weight: 400; --title-track: .04em; --title-case: uppercase;
+  --title-shadow: 0 0 6px #ff6f91, 0 0 18px #ff2d6b, 0 0 36px rgba(255,45,107,.6);
+  --prompt: "Chakra Petch", sans-serif; --prompt-size: 28px; --prompt-weight: 700; --prompt-case: uppercase; --prompt-track: .04em;
+  --answer: "Chakra Petch", sans-serif; --answer-size: 15px; --answer-weight: 700;
+  --name: "Chakra Petch", sans-serif; --name-size: 15px; --name-weight: 600;
+  --label: "Share Tech Mono", monospace; --label-size: 11px; --label-track: .24em;
+  --num: "Chakra Petch", sans-serif; --num-size: 22px; --num-weight: 700;
+  --body: "Share Tech Mono", monospace; --body-size: 15px;
+  --button: "Chakra Petch", sans-serif; --button-size: 16px; --button-weight: 700; --button-track: .3em;
+}
+.s-f .title h3, .s-f .win p { color: #ffe3ec; }
+
+@media (max-width: 560px) {
+  .mock { min-height: 0; }
+  .lower { grid-template-columns: 1fr; }
+  .s-a { --title-size: 58px; } .s-b { --title-size: 26px; --prompt-size: 12px; } .s-c { --title-size: 70px; --prompt-size: 32px; }
+  .s-d { --title-size: 42px; } .s-e { --title-size: 54px; } .s-f { --title-size: 38px; --prompt-size: 22px; }
+}
+</style>
+
+<div class="wrap">
+  <header class="page">
+    <h1>Hot Plate text styles</h1>
+    <p>Six type sets on the same screen: the lobby title, a plate in play, answer bubbles, names, the big button, chat and the win banner. Pick a letter and I'll put it in the game.</p>
+  </header>
+
+  <div class="grid" id="grid"></div>
+</div>
+
+<template id="mock">
+  <div class="mock">
+    <div class="hud">
+      <div class="badge"><small>private</small><b>BBRX</b></div>
+      <span class="phase">plate 3</span>
+      <div class="badge r"><small>at the table</small><b>3/4</b></div>
+    </div>
+    <div class="title">
+      <h3>Hot Plate</h3>
+      <p class="sub">dinner party</p>
+      <p class="tag">pass the plate · don't get burned</p>
+    </div>
+    <div class="prompt">
+      <p>🏀 Name any NBA player</p>
+      <small>3,972 on the menu · 4 served</small>
+    </div>
+    <div class="table">
+      <div class="seat"><div class="bubble t1">Shaquille O'Neal<em>+25</em></div><div class="face">🦊</div><div class="plate"></div><div class="name">Lou</div><div class="hearts">♥♥<i>♥</i></div></div>
+      <div class="seat"><div class="bubble typing">Wemb</div><div class="face">🐸</div><div class="plate"></div><div class="name hot">Priya</div><div class="hearts">♥♥♥</div></div>
+      <div class="seat"><div class="bubble t3">Tacko Fall<em>+100</em></div><div class="face">👻</div><div class="plate"></div><div class="name me">you</div><div class="hearts">♥<i>♥♥</i></div></div>
+    </div>
+    <div class="button">▼ ring the dinner bell ▼</div>
+    <div class="lower">
+      <div class="chat">
+        <span class="h">chat</span>
+        <span class="sys">▸ 🏀 New plate: Name any NBA player</span>
+        <span class="sys">▸ 🦊 Lou served Shaquille O'Neal · +25</span>
+        <span><b>🐸 Priya</b> no way tacko counts 😭</span>
+      </div>
+      <div class="win"><p>You win</p><small>last one at the table</small></div>
+    </div>
+  </div>
+</template>
+
+<script>
+  const STYLES = [
+    ["a", "Banquet Hall", "What's live now. Pixel blackletter title, chunky pixel answers, tiny caps labels, terminal chat.", "Jacquard 24 · Pixelify Sans · Silkscreen · VT323"],
+    ["b", "Arcade Diner", "Old-school arcade cabinet. Blocky 8-bit headings with a readable terminal face for answers and chat.", "Press Start 2P · VT323"],
+    ["c", "Scoreboard", "Tall, condensed pixel letters like a stadium board. Big, loud and very readable on a phone.", "Jersey 10 · Micro 5 · Pixelify Sans"],
+    ["d", "Dot Matrix", "One dotted face everywhere, like a handheld RPG's dialogue box. Calm and consistent.", "DotGothic16"],
+    ["e", "Supper Club", "Smooth, not pixel: the Dining Room brand. Fat retro script title with clean modern text.", "Shrikhand · Figtree · DM Mono"],
+    ["f", "Neon Sign", "A diner window at midnight. Glowing tube-lettering title with techy uppercase text.", "Monoton · Chakra Petch · Share Tech Mono"],
+  ];
+  const tpl = document.getElementById("mock");
+  const grid = document.getElementById("grid");
+  for (const [id, name, blurb, fonts] of STYLES) {
+    const card = document.createElement("section");
+    card.className = "card";
+    card.innerHTML = `<div class="card-head"><span class="letter">${id.toUpperCase()}</span><h2>${name}</h2><span class="fonts">${blurb} <br>${fonts}</span></div>`;
+    const mock = tpl.content.cloneNode(true);
+    mock.querySelector(".mock").classList.add("s-" + id);
+    card.appendChild(mock);
+    grid.appendChild(card);
+  }
+</script>
