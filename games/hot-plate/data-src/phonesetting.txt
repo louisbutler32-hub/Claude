@@ -1,0 +1,199 @@
+# id: phonesetting
+# prompt: Name a phone setting
+# group: Everyday
+# emoji: ⚙️
+# kind: thing
+# Settings and toggles on iPhone (iOS) or Android/Samsung (One UI), by
+# the name the menu uses; iPhone and Android names for the same thing are
+# aliases.
+Wi-Fi | WiFi | Wifi | Wireless
+Bluetooth
+Airplane mode | Aeroplane mode | Flight mode
+Do Not Disturb | DND
+Dark mode | Night mode | Dark theme
+Brightness | Screen brightness
+Volume
+Ringtone | Ringtones
+Wallpaper | Background | Lock screen wallpaper
+Location services | Location | GPS
+Hotspot | Personal Hotspot | Mobile hotspot | Tethering
+Screen Time | Digital Wellbeing
+Battery saver | Low Power Mode | Power saving mode | Power saving
+Face ID | Face unlock | Face recognition
+Auto-rotate | Rotation lock | Screen rotation | Portrait orientation lock | Auto rotate
+Silent mode | Silent | Mute | Ring/Silent switch
+Vibrate | Vibration | Vibrate mode
+Notifications | Notification settings
+Passcode | PIN | Password | Screen lock
+Fingerprint | Touch ID | Fingerprint scanner
+Mobile data | Cellular data | Cellular | Data
+Night Shift | Eye comfort shield | Blue light filter | Night light
+Font size | Text size
+Language | Language & region
+Date & time | Date and time | Time | Time zone
+Storage | iPhone Storage
+Battery | Battery percentage
+Auto-brightness | Adaptive brightness | Auto brightness
+Focus | Focus mode | Sleep focus | Bedtime mode
+Sounds | Sound | Sounds & Haptics
+Keyboard | Keyboards
+Accessibility
+Privacy | Privacy & Security
+Software update | System update | Update
+Backup | iCloud Backup | Back up
+iCloud
+Apple ID | Apple Account | Google account | Accounts
+Screen timeout | Auto-Lock | Auto lock | Sleep
+Display | Display & Brightness
+General
+Find My | Find My iPhone | Find My Device
+Lock screen
+Home screen
+Always-on display | Always On Display | AOD
+Haptics | Haptic feedback | Keyboard haptics
+Emergency SOS | SOS
+Restrictions | Parental controls | Content & Privacy Restrictions
+App permissions | Permissions
+Camera settings
+Siri | Hey Siri | Google Assistant | Bixby
+Factory reset | Reset | Erase all content and settings
+Data roaming | Roaming
+VPN
+NFC | Contactless
+Apple Pay | Google Pay | Samsung Pay | Wallet
+Assistive Touch | AssistiveTouch
+Zoom | Magnification
+VoiceOver | TalkBack | Screen reader
+Bold text
+Reduce motion
+Mono audio
+Closed captions | Captions | Subtitles | Live Caption
+Hearing aids | Hearing devices
+Invert colours | Invert colors | Colour inversion | Smart invert
+Colour filters | Color filters | Grayscale | Greyscale
+Display zoom | Screen zoom
+Refresh rate | ProMotion | Motion smoothness | 120Hz
+Screen resolution | Resolution
+True Tone
+Raise to wake | Lift to wake
+Tap to wake | Double tap to wake
+Back Tap
+Navigation bar | Gesture navigation | Navigation gestures
+One-handed mode | Reachability
+Split screen | Multi window
+Developer options
+USB debugging
+Default apps | Default browser
+Ringer volume | Ring volume
+Media volume
+Alarm volume
+Notification sound | Text tone | Message tone
+Keyboard clicks | Keyboard sounds
+Lock sound
+Emergency alerts | Government alerts | Wireless emergency alerts | Amber alerts
+Emergency contacts | Medical ID
+Caller ID | Show My Caller ID
+Call forwarding | Call divert
+Call waiting
+Blocked contacts | Blocked numbers | Block list
+Silence unknown callers
+Voicemail | Voicemail settings
+Wi-Fi calling | WiFi calling
+SIM | SIM PIN | eSIM | Dual SIM
+5G | 4G | LTE | Network mode
+Personal voice
+Autocorrect | Auto-correction | Auto correct
+Predictive text
+Spell check | Spell checker
+Text replacement
+Swipe typing | Slide to type | Glide typing
+Dictation | Voice typing
+Emoji keyboard
+Auto-capitalisation | Auto-capitalization
+Background app refresh
+Auto-update | Automatic updates
+Location sharing
+Precise location
+Tracking | Allow apps to request to track | Ask app not to track
+Analytics | Diagnostics
+Significant locations
+Lockdown mode
+Stolen Device Protection
+Screen recording
+Control Centre | Control Center | Quick settings
+Notification Centre | Notification Center | Notification panel
+Notification previews | Show previews
+Badges | App badges | Notification dots
+Banners
+Scheduled summary | Notification summary
+Announce notifications
+Flash notifications | LED notification | Camera flash notifications
+Torch | Flashlight
+AirDrop | Nearby Share | Quick Share
+Handoff
+Wi-Fi Assist
+Private Wi-Fi address | MAC randomisation
+Low data mode | Data saver
+App Store settings | Play Store settings
+Optimised battery charging | Optimized charging | Protect battery | Adaptive charging
+Wireless charging | Reverse wireless charging | Wireless PowerShare
+Fast charging
+Battery health
+Adaptive battery
+Charging limit | 80% limit
+Lock screen widgets | Widgets
+Clock style
+StandBy
+App Library
+Hidden apps | Secure Folder | Private space
+App lock
+Guest mode | Guest user | Multiple users
+Kids mode | Kids space
+Driving mode | Driving focus | Do Not Disturb While Driving
+Sleep mode | Sleep schedule
+Wind down
+Downtime
+App limits
+Communication limits
+Ask to Buy
+Family Sharing | Family Link
+Keychain | Passwords | Password manager
+Two-factor authentication | 2FA
+Smart Lock | Trusted devices
+Sensors off
+Mic access | Microphone access
+Camera access
+Clipboard access
+Location history | Google Location History | Timeline
+Ad personalisation | Personalised ads
+Default keyboard
+Mouse & trackpad
+Sound recognition
+Background sounds
+Spatial audio
+Equaliser | Equalizer | EQ
+Dolby Atmos
+Headphone safety | Reduce loud audio
+Audio balance | Balance
+Text to speech | Speak screen | Spoken content
+Voice Control
+Guided Access | Screen pinning | App pinning
+Switch Control
+Accessibility shortcut
+Shake to undo
+Vibration intensity
+Touch sensitivity | Touch accommodations
+3D Touch | Haptic Touch
+Edge panels | Edge screen
+Bixby Routines | Modes and Routines | Shortcuts | Automations
+Side key | Side button | Power button settings
+Action button
+Camera Control
+Easy mode | Simple mode
+Game mode | Game Booster
+Performance mode
+RAM Plus | Virtual memory
+Device care | Device maintenance
+About phone | About
+Phone name | Device name
+Reset network settings | Network reset
