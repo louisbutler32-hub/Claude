@@ -1,0 +1,91 @@
+# id: contact
+# prompt: Name a way to contact someone
+# group: Everyday
+# emoji: 📞
+# kind: thing
+# Methods, not brands or apps (no WhatsApp, Snapchat, Zoom, FaceTime).
+Phone call | Call | Calling | Ring | Phone | Telephone | Phoning
+Text message | Text | SMS | Texting
+Email | E-mail | Emailing
+Letter | Mail | Post | Writing a letter | Snail mail
+Video call | Video chat | Video calling | Video conference
+Voicemail | Voice mail | Leaving a voicemail
+Social media message | Social media | Messaging
+DM | Direct message | DMs | Private message | PM
+Voice note | Voice message | Voice memo
+Picture message | MMS | Photo message
+Postcard
+Fax
+Carrier pigeon | Homing pigeon | Pigeon post | Messenger pigeon
+Smoke signal | Smoke signals
+Morse code
+Telegram | Telegraph
+Shouting | Yelling | Calling out | Hollering
+Knocking on the door | Knocking | Knock on the door
+Visiting | Visiting in person | In person | Face to face | Going round | Talking in person
+Sign language
+Walkie-talkie | Walkie talkie | Two-way radio
+Pager | Beeper
+CB radio
+Message in a bottle
+Word of mouth | Passing a message
+Note | Handwritten note | Passing notes | Leaving a note | Post-it note
+Doorbell | Ringing the doorbell
+Group chat | Group message
+Comment | Commenting
+Tagging | Tag | Mention | @ mention
+Whistling | Whistle
+Waving | Wave
+Video message
+Live chat | Online chat | Chat
+Instant message | IM | Instant messaging
+Conference call
+Landline
+Payphone | Phone box | Phone booth | Public phone | Pay phone
+Reverse charges | Collect call
+Missed call | Missed call signal
+Card | Greeting card | Birthday card | Christmas card
+Courier | Messenger | Delivery
+Intercom
+Radio
+Ham radio | Amateur radio
+Satellite phone | Sat phone
+Two cans and a string | Tin can telephone | String telephone
+Flares | Flare
+Signal fire | Beacon
+Semaphore | Flag signals | Signal flags
+Signal lamp | Aldis lamp | Flashing a light
+Mirror signal | Heliograph
+Drum | Drums | Talking drum
+Horn | Car horn | Honking
+Bell | Ringing a bell
+Megaphone | Loudhailer | Bullhorn
+Announcement | PA system | Tannoy | Loudspeaker
+Notice board | Noticeboard | Bulletin board
+Poster | Flyer
+Newspaper ad | Classified ad | Personal ad
+Skywriting
+Braille
+Gesture | Hand signal | Hand signals
+Tap on the shoulder | Tapping
+Runner | Messenger runner
+Town crier
+Pony Express
+Airmail | Air mail
+Registered mail | Recorded delivery | Certified mail
+Telex
+Bulletin board system | BBS
+Forum post | Forum
+Newsletter
+Mailing list
+Chain letter
+Voice chat
+Push to talk
+Emergency call | 999 | 911 | 111 | 000 | 112
+Text relay | Relay service
+TTY | Textphone
+SOS
+Mayday
+Story reply
+Singing telegram
+Throwing pebbles at the window | Throwing stones at the window

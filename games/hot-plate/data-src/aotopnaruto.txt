@@ -1,0 +1,1954 @@
+# id: aotopnaruto
+# prompt: Name a character from Attack on Titan, One Piece or Naruto
+# group: Characters
+# emoji: 🍥
+# kind: character
+# Sources: data-src/onepiece.txt (One Piece, as curated there); naruto.fandom.com and
+# attackontitan.fandom.com Category:Characters via api.php (fetched 2026-11-03), minor and
+# non-character pages dropped, ordered by a hand-ranked top then page length. The three
+# shows are interleaved so the most famous of each lead.
+Monkey D. Luffy | Luffy | Straw Hat Luffy
+Naruto Uzumaki | Naruto
+Roronoa Zoro | Zoro | Zolo
+Eren Yeager | Eren Jaeger | Eren
+Sasuke Uchiha | Sasuke
+Nami
+Kakashi Hatake | Kakashi | Sixth Hokage
+Usopp | Sogeking
+Mikasa Ackerman | Mikasa
+Sakura Haruno | Sakura
+Sanji | Vinsmoke Sanji | Black Leg Sanji
+Itachi Uchiha | Itachi
+Tony Tony Chopper | Chopper
+Levi Ackerman | Levi | Captain Levi
+Hinata Hyūga | Hinata | Hinata Hyuuga | Hinata Hyuga
+Nico Robin | Robin | Miss All Sunday
+Gaara
+Franky | Cutty Flam
+Armin Arlert | Armin
+Jiraiya | Pervy Sage
+Brook | Soul King
+Jinbe | Jimbei | Jinbei
+Madara Uchiha | Madara
+Erwin Smith | Erwin | Commander Erwin
+Shanks | Red-Haired Shanks | Red Hair Shanks
+Orochimaru
+Portgas D. Ace | Ace | Fire Fist Ace
+Reiner Braun | Reiner
+Rock Lee | Lee
+Whitebeard | Edward Newgate
+Shikamaru Nara | Shikamaru
+Blackbeard | Marshall D. Teach
+Annie Leonhart | Annie Leonhardt | Annie
+Obito Uchiha | Obito | Tobi
+Kaido | Kaidou
+Minato Namikaze | Minato | Fourth Hokage | Yellow Flash
+Big Mom | Charlotte Linlin
+Hange Zoë | Hange Zoe | Hange | Hanji Zoe
+Tsunade | Fifth Hokage | Lady Tsunade
+Trafalgar Law | Trafalgar D. Water Law | Law
+Kurama | Nine-Tails | Kyuubi | Kyubi | Nine-Tailed Fox
+Donquixote Doflamingo | Doflamingo | Doffy
+Jean Kirstein | Jean Kirschtein | Jean
+Neji Hyūga | Neji | Neji Hyuuga | Neji Hyuga
+Buggy | Buggy the Clown
+Gol D. Roger | Roger
+Might Guy | Might Gai | Guy Sensei | Gai
+Zeke Yeager | Zeke Jaeger | Zeke
+Sabo
+Nagato | Pain | Pein
+Monkey D. Garp | Garp
+Bertolt Hoover | Bertholdt Hoover | Bertolt | Bertholdt
+Boruto Uzumaki | Boruto
+Dracule Mihawk | Mihawk
+Iruka Umino | Iruka | Iruka Sensei
+Boa Hancock | Hancock
+Sasha Blouse | Sasha Braus | Sasha
+Zabuza Momochi | Zabuza
+Crocodile | Sir Crocodile | Mr. 0
+Haku
+Akainu | Sakazuki
+Historia Reiss | Krista Lenz | Christa Lenz | Christa Renz | Historia
+Deidara
+Kizaru | Borsalino
+Kiba Inuzuka
+Aokiji | Kuzan
+Connie Springer | Connie
+Ino Yamanaka | Ino
+Eustass Kid | Kid | Eustass Kidd | Kidd
+Yamato
+Chōji Akimichi | Choji | Chouji Akimichi | Choji Akimichi
+Ymir
+Monkey D. Dragon | Dragon
+Shino Aburame | Shino
+Silvers Rayleigh | Rayleigh
+Grisha Yeager | Grisha Jaeger | Grisha
+Tenten
+Marco | Polo Marco | Marco the Phoenix
+Hashirama Senju | Hashirama | First Hokage
+Enel | Eneru
+Gabi Braun | Gabi
+Kisame Hoshigaki | Kisame
+Rob Lucci | Lucci
+Hidan
+Arlong
+Falco Grice | Falco
+Kakuzu
+Smoker
+Sasori
+Koby | Coby
+Pieck Finger | Pieck
+Konan
+Charlotte Katakuri | Katakuri
+Bartholomew Kuma | Kuma
+Killer B | Killer Bee
+Porco Galliard | Porco
+Vegapunk | Dr. Vegapunk
+Hiruzen Sarutobi | Hiruzen | Third Hokage
+Nefertari Vivi | Vivi
+Kenny Ackerman | Kenny the Ripper | Kenny
+Tobirama Senju | Tobirama | Second Hokage
+Carrot
+Kabuto Yakushi | Kabuto
+Kouzuki Oden | Oden
+Hannes
+Temari
+Kouzuki Momonosuke | Momonosuke | Momo
+Kankurō | Kankuro | Kankurou
+Emporio Ivankov | Ivankov | Iva
+Carla Yeager | Carla Jaeger
+Asuma Sarutobi | Asuma
+Bentham | Mr. 2 | Bon Clay | Mr. 2 Bon Clay | Bon Kurei
+Kurenai Yūhi | Kurenai | Kurenai Yuuhi | Kurenai Yuhi
+Tashigi
+Ymir Fritz | Founder Ymir
+Danzō Shimura | Danzo | Danzou Shimura | Danzo Shimura
+Helmeppo
+Sengoku
+Shisui Uchiha | Shisui
+Marco Bott | Marco Bodt
+Fujitora | Issho
+Kushina Uzumaki | Kushina
+Ryokugyu | Aramaki | Green Bull
+Petra Ral | Petra Rall
+Kaguya Ōtsutsuki | Kaguya | Kaguya Outsutsuki | Kaguya Otsutsuki
+Jewelry Bonney | Bonney
+Sarada Uchiha | Sarada
+Gecko Moria | Moria
+Floch Forster | Floch
+Mitsuki
+Perona
+Himawari Uzumaki | Himawari
+Caesar Clown | Caesar
+Yelena
+Konohamaru Sarutobi | Konohamaru
+Shirahoshi
+Akamaru
+Hody Jones
+Keith Shadis | Keith Sadies
+Kawaki
+Fisher Tiger
+Kuro | Captain Kuro
+Suigetsu Hōzuki | Suigetsu | Suigetsu Houzuki | Suigetsu Hozuki
+Dot Pixis | Pixis
+Don Krieg | Krieg
+Jūgo | Juugo | Jugo
+Alvida
+Eren Kruger | The Owl
+Zetsu
+Zeff | Red-Leg Zeff
+Black Zetsu
+Laboon
+Marcel Galliard
+White Zetsu
+Kureha | Dr. Kureha
+Gamabunta
+Hiriluk | Dr. Hiriluk | Hiluluk
+Willy Tybur
+Pakkun
+Wapol
+Shizune
+Kaya
+Theo Magath | Magath
+Anko Mitarashi | Anko
+Kuina | Shimotsuki Kuina
+Makino
+Kimimaro
+Onyankopon
+Bell-mère | Bellemere
+Hagoromo Ōtsutsuki | Hagoromo Outsutsuki | Hagoromo Otsutsuki
+Nojiko
+Mike Zacharias | Mike Zakarius
+Shukaku | One-Tail | One-Tailed Shukaku
+Genzo
+Gyūki | Gyuki | Eight-Tails | Gyuuki
+Daz Bonez | Mr. 1
+Oluo Bozado | Auruo Bossard | Oluo
+Yahiko
+Galdino | Mr. 3
+Rin Nohara
+Mikita | Miss Valentine
+Eld Jinn | Erd Gin | Eld
+Fugaku Uchiha
+Gem | Mr. 5
+Mikoto Uchiha
+Zala | Miss Doublefinger
+Gunther Schultz
+Izuna Uchiha
+Marianne | Miss Goldenweek
+Babe | Mr. 4
+Hiashi Hyūga | Hiashi Hyuuga | Hiashi Hyuga
+Frieda Reiss
+Drophy | Miss Merry Christmas
+Hanabi Hyūga | Hanabi Hyuuga | Hanabi Hyuga
+Bellamy
+Rod Reiss
+Ibiki Morino
+Iceburg
+Tayuya
+Paulie
+Uri Reiss
+Kidōmaru | Kidoumaru | Kidomaru
+Kaku
+Jirōbō | Jiroubou | Jirobo
+Kalifa
+Karl Fritz | King Fritz
+Sakon and Ukon | Sakon
+Spandam
+Mei Terumī | Mei Terumi | Mizukage
+Jabra
+Dina Fritz | Dina Yeager
+Ōnoki | Onoki | Third Tsuchikage | Tsuchikage | Ounoki
+Blueno
+Magellan
+Chiyo
+Hitch Dreyse
+Hannyabal
+Momoshiki Ōtsutsuki | Momoshiki Outsutsuki | Momoshiki Otsutsuki
+Inazuma
+Nile Dok | Nile Dawk
+Teuchi | Ichiraku
+Jozu
+Ayame
+Vista
+Moblit Berner
+Ten-Tails | Ten Tails
+Thatch
+Shikadai Nara
+Izou
+Colt Grice
+Inojin Yamanaka
+King | Alber
+Chōchō Akimichi | Chouchou Akimichi | Chocho Akimichi
+Queen
+Niccolo
+Metal Lee
+Jack
+Who's-Who
+Toneri Ōtsutsuki | Toneri Outsutsuki | Toneri Otsutsuki
+Kiyomi Azumabito
+Black Maria
+Indra Ōtsutsuki | Indra Outsutsuki | Indra Otsutsuki
+Sasaki
+Darius Zackly
+Asura Ōtsutsuki | Asura Outsutsuki | Asura Otsutsuki
+Ulti
+Hamura Ōtsutsuki | Hamura Outsutsuki | Hamura Otsutsuki
+Page One
+Rico Brzenska
+Isshiki Ōtsutsuki | Isshiki Outsutsuki | Isshiki Otsutsuki
+Kurozumi Orochi | Orochi
+Katsuyu
+Kin'emon
+Marlowe Freudenberg
+Manda
+Kikunojo | Kiku
+Gamakichi
+Kawamatsu
+Tom Ksaver
+Mizuki
+Denjiro
+Raizo
+Sumire Kakei
+Djel Sannes
+Ashura Doji
+Amado Sanzu
+Kurozumi Kanjuro | Kanjuro
+Abel
+Iwabee Yuino
+Kouzuki Hiyori | Hiyori
+Denki Kaminarimon
+Kurozumi Tama | Tama | O-Tama
+Artur Blouse
+Fourth Raikage | A | Raikage
+Hyougoro | Hyogoro
+Koji Kashin
+Inuarashi
+Karina Braun
+Ada
+Nekomamushi
+Code
+Pedro
+Lara Tybur
+Chōjūrō | Choujuurou | Chojuro
+Charlotte Pudding | Pudding
+Charlotte Cracker | Cracker
+Utakata
+Keiji
+Charlotte Smoothie | Smoothie
+Darui
+Charlotte Perospero | Perospero
+Louise
+Katasuke Tōno | Katasuke Touno | Katasuke Tono
+Charlotte Oven | Oven
+Kurotsuchi
+Charlotte Daifuku | Daifuku
+Udo
+Wasabi Izuno
+Charlotte Brûlée | Brulee
+Kagura Karatachi
+Charlotte Lola | Lola
+Nanaba
+Hanzō | Hanzou
+Vinsmoke Judge | Judge
+Delta
+Vinsmoke Reiju | Reiju
+Flegel Reeves
+Shikaku Nara
+Vinsmoke Ichiji | Ichiji
+Vinsmoke Niji | Niji
+Gengetsu Hōzuki | Gengetsu Houzuki | Gengetsu Hozuki
+Traute Caven
+Vinsmoke Yonji | Yonji
+Mirai Sarutobi
+Capone Bege | Bege
+Alma
+Jigen
+Basil Hawkins | Hawkins
+Namida Suzumeno
+X Drake | Drake
+Anka Rheinberger
+Urashiki Ōtsutsuki | Urashiki Outsutsuki | Urashiki Otsutsuki
+Scratchmen Apoo | Apoo
+Buntan Kurosuki
+Urouge
+Nick | Pastor Nick
+Moegi Kazamatsuri
+Killer
+Shinki
+Bepo
+Ian Dietrich
+Jura
+Shachi
+Penguin
+Yagura Karatachi
+Dimo Reeves
+Jean Bart
+Third Raikage
+Cavendish
+Daz
+Fū | Fuu | Fu
+Bartolomeo
+Omoi
+Rebecca
+Zofia
+Homura Mitokado
+Kyros
+Mugino
+Viola
+Koslow
+Guren
+Riku Doldo III | Riku
+Koharu Utatane
+Sugar
+Nifa
+Inoichi Yamanaka
+Trebol
+Diamante
+Boro
+Gelgar
+Pica
+Rasa
+Vergo
+Roeg
+Isobu | Three-Tails
+Monet
+Daemon
+Baby 5
+Dirk
+Mifune
+Buffalo
+Hebiichigo
+Senor Pink
+Peaure
+Son Gokū | Son Goku | Four-Tails | Son Gokuu
+Donquixote Rosinante | Corazon | Rosinante
+Shin Uchiha
+Hina
+Faye Yeager
+Chōza Akimichi | Chouza Akimichi | Choza Akimichi
+Tsuru
+Momonga
+Hayate Gekkō | Hayate Gekkou | Hayate Gekko
+Samuel
+Shiryu
+Kyohō Fuefuki | Kyohou Fuefuki | Kyoho Fuefuki
+Van Augur
+Gross
+Sora
+Jesus Burgess | Burgess
+Nue
+Laffitte
+Mina Carolina
+Hana Kaka
+Doc Q
+Akatsuchi
+Avalo Pizarro | Pizarro
+Dita Ness
+Shojoji
+Catarina Devon | Devon
+Menō | Menou | Meno
+Vasco Shot
+Thomas Wagner
+Deepa
+Sanjuan Wolf
+Benn Beckman | Beckman
+Yugito Nii
+Kuchel Ackerman
+Lucky Roux
+Matatabi | Two-Tails
+Yasopp
+Ilse Langnar
+Shinnō | Shinnou | Shinno
+Rockstar
+Karui
+Uta
+Calvi
+Ōga | Ouga | Oga
+Imu | Nerona Imu
+Zansūru | Zansuuru | Zansuru
+Jaygarcia Saturn | Saint Saturn | Saturn
+Roy
+Tsubaki Kurogane
+Marcus Mars | Saint Marcus Mars
+Shira
+Topman Warcury | Saint Warcury
+Muller
+Aoba Yamashiro
+Ethanbaron V. Nusjuro | Saint Nusjuro | Nusjuro
+Shepherd Ju Peter | Saint Ju Peter | Ju Peter
+Sāra | Sara
+Lisa Blouse
+Figarland Garling | Garling
+Kazuma
+Figarland Shamrock | Shamrock
+Ralph
+Kokuō | Kokuo | Five-Tails | Kokuou
+Rocks D. Xebec | Xebec | Rocks
+Kinkaku
+Shiki | Golden Lion Shiki
+Griez
+Kae Yukiwari
+Joy Boy
+Kotetsu Hagane
+Loki
+Aurille
+Ikada Funato
+Harald
+Udon Ise
+Scopper Gaban | Gaban
+Hannah Diamant
+Bando
+Dorry
+Brogy
+Chōmei | Chomei | Seven-Tails | Choumei
+Ramzi
+Hajrudin
+Izumo Kamizuki
+Oimo
+Lynne
+Shizuma Hoshigaki
+Kashii
+Yūgao Uzuki | Yuugao Uzuki | Yugao Uzuki
+Jaguar D. Saul | Saul
+Kitz Weilman
+Yodo
+Nico Olvia | Olvia
+Hikari Uchiha
+Kouzuki Toki | Toki
+Helos
+Rōshi | Roushi | Roshi
+Kouzuki Sukiyaki | Sukiyaki
+Torune Aburame
+Shimotsuki Ryuma | Ryuma
+Varis
+Kahyō | Kahyou | Kahyo
+Gan Fall
+Wyper
+Hidari
+Harold
+Conis
+Chihare Amano
+Aisa
+Fritz (Figurehead)
+Chino
+Mont Blanc Noland | Noland
+Dan Katō | Dan Katou | Dan Kato
+Mont Blanc Cricket | Cricket
+Surma
+Han
+Kalgara
+Ajisai
+Foxy
+Lobov
+Hizashi Hyūga | Hizashi Hyuuga | Hizashi Hyuga
+Absalom
+Araya
+Hogback
+Phil
+Genma Shiranui
+Victoria Cindry | Cindry
+Pandaman
+Raidō Namiashi | Raidou Namiashi | Raido Namiashi
+Abel Reiss
+Pell
+Saiken | Six-Tails
+Chaka
+Claude Duvalier
+Fukasaku
+Igaram
+Menma Uzumaki
+Nefertari Cobra | Cobra
+Boris Feulner
+Ebisu
+Koza
+Haido
+Hatchan | Hachi
+Urklyn Reiss
+Baki
+Camie
+Zaku Abumi
+Pappag
+Maria Fritz
+Mamushi
+Kuroobi
+Chew
+Reishi Kodon
+Rose Fritz
+Nezumi
+Kosuke Maruboshi
+Shakuyaku | Shakky
+Sheena Fritz
+Mukade
+Duval
+Matsuri
+Rosward Charlos | Saint Charlos | Charlos
+Marlene
+Ginkaku
+Sentomaru
+Blue B
+Kokoro
+Dirk Reiss
+Yūkimaru | Yuukimaru | Yukimaru
+Chimney
+Fū Yamanaka | Fuu Yamanaka | Fu Yamanaka
+Otohime
+Franz Kefka
+Raiga Kurosuki
+Neptune
+Fukaboshi
+Funamushi
+Roderich
+Ryuboshi
+Kitsuchi
+Manboshi
+Carlo
+Mukai Kohinata
+Vander Decken IX | Vander Decken
+Hiruko
+Koala
+Darius Baer-Varbrun
+Dodai
+Hack
+Kiseru Gankubi
+Belo Betty
+Henning
+Gamamaru
+Morley
+Kina Kodon
+Lindbergh
+Thomas
+Hōki Taketori | Houki Taketori | Hoki Taketori
+Karasu
+Kong
+Hotaru
+Moses Braun
+Prince Grus
+Yukata
+Hibari
+Mitabi Jarnach
+Fūka | Fuuka | Fuka
+Bogard
+Dokku
+Stussy
+Florian Reiss
+Araumi Funato
+Lilith | Vegapunk Lilith
+Sakumo Hatake
+Shaka | Vegapunk Shaka
+Ogweno
+Osuka Kamakura
+York | Vegapunk York
+Samui
+Atlas | Vegapunk Atlas
+Klaus
+Dosu Kinuta
+S-Snake
+S-Hawk
+Pakura
+Sandra
+S-Bear
+Eiki Fūma | Eiki Fuuma | Eiki Fuma
+S-Shark
+Orvud District Garrison commander
+Gari
+Zeus
+Izumi Uchiha
+Prometheus
+Wim
+Miina
+Napoleon
+Shima
+Kumashi
+Deltoff
+Hana Inuzuka
+Pekoms
+Shibi Aburame
+Tamago
+Finger
+Hako Kuroi
+Bobbin
+Streusen
+Kinshiki Ōtsutsuki | Kinshiki Outsutsuki | Kinshiki Otsutsuki
+Sonny
+Charlotte Amande | Amande
+Kido Tsumiki
+Charlotte Galette | Galette
+Rashad
+Kōtarō Fūma | Koutarou Fuuma | Kotaro Fuma
+Charlotte Chiffon | Chiffon
+Isari Funato
+Charlotte Mont-d'Or | Mont-d'Or
+Gerald
+Fuguki Suikazan
+Charlotte Opera | Opera
+Ameyuri Ringo
+Lao G
+Bean
+Renga Kokubō | Renga Kokubou | Renga Kokubo
+Dellinger
+Tosaka
+Machvise
+Charlotte
+Jinpachi Munashi
+Gladius
+Sai
+Monkey King: Enma
+Chinjao
+Temujin
+Ideo
+Motoi
+Abdullah
+Mangetsu Hōzuki | Mangetsu Houzuki | Mangetsu Hozuki
+Jeet
+Aoi Rokushō | Aoi Rokushou | Aoi Rokusho
+Blue Gilly
+Shamo
+Orlumbus
+Sekiei
+Elizabello II | Elizabello
+Tentō Madoka | Tentou Madoka | Tento Madoka
+Dagama
+Ryōgi | Ryougi | Ryogi
+Fullbody
+Gin
+Shiseru
+Pearl
+Ehō Norimaki | Ehou Norimaki | Eho Norimaki
+Cabaji
+Nonō Yakushi | Nonou Yakushi | Nono Yakushi
+Mohji
+Kin Tsuchi
+Richie
+Benga
+Morgan | Axe-Hand Morgan
+Tenma Funato
+Jango
+Yome
+Johnny
+Penjira
+Yosaku
+Inari
+Gaimon
+Lassoo
+Yota
+Mr. 9
+Gengo
+Miss Monday
+Kokuyō | Kokuyou | Kokuyo
+Mr. 13
+Batta
+Miss Friday
+Kushimaru Kuriarare
+Kappa
+Kirara
+Dalton
+Seiren Funato
+Dadan | Curly Dadan
+Garaga
+Dogra
+Gamatatsu
+Magra
+Porchemy
+Kokuri
+Bluejam
+Gokai
+Outlook III
+Akahoshi
+Sterry
+Yoroi Akadō | Yoroi Akadou | Yoroi Akado
+Caribou
+Jūzō Biwa | Juuzou Biwa | Juzo Biwa
+Oars
+Fudō | Fudou | Fudo
+Leo
+Mui
+Manmayer Gunko
+Neon Asakusa
+Shinobu
+Rokuro
+Shepherd Sommers
+Jarul
+Nowaki
+Karoo
+Yomito Hirasaka
+Road
+Yakumo Kurama
+Wanda
+Enko Onikuma
+Gloriosa
+Muku
+Boa Sandersonia
+Hinoko
+Shimotsuki Yasuie
+Rahyō | Rahyou | Rahyo
+Boa Marigold
+Ranmaru
+Chadros Higelyges
+Yashamaru
+Morgans
+Gerd
+Third Kazekage
+Kumadori
+Disonasu
+Rimoshifu Killingham
+Jinin Akebino
+Mozu
+Soul Tao
+Kiwi
+Misuno
+Demalo Black
+Shiranami
+Vito
+Suiren
+Pound
+Idate Morino
+Zeo
+Ryū | Ryuu | Ryu
+D. D. Tee
+Rhodes
+Chūshin | Chuushin | Chushin
+Donquixote Homing
+Kobu
+Crocus
+Genbu
+Buckingham Stussy
+Mito Uzumaki
+Stansen
+Manari
+Pickles
+Chen
+Patty
+Okisuke
+Ikaros Much
+Dotō Kazahana | Dotou Kazahana | Doto Kazahana
+Colon
+Muta Aburame
+Hyouzou
+Giolla
+Kura Kageno
+Bomba
+Fuyō | Fuyou | Fuyo
+Donquixote Mjosgard
+Tsukino
+Aladine
+Tsume Inuzuka
+Toto
+Namua
+Shyarly
+Ryūki | Ryuuki | Ryuki
+T Bone
+Mabui
+Speed
+Ganno
+Pike
+Ryūzetsu | Ryuuzetsu | Ryuzetsu
+Clou D. Clover
+Gotti
+Sōsha Amino | Sousha Amino | Sosha Amino
+Wadatsumi
+Amaru
+Ida
+Ishikawa
+Carmel
+Butsuma Senju
+Gedatsu
+Dōshu Goetsu | Doushu Goetsu | Doshu Goetsu
+Toko
+En Oyashiro
+Ohm
+Koyuki Kazahana
+Hamburg
+Iwashi Tatami
+Minister of the Right
+Hanare
+Fukurou
+Marguerite
+Mozu Shitakiri
+Gal
+Toroi
+Doberman
+Batora Kuromori
+Zambai
+Tatewaki
+Jero
+Burami
+Boo
+Harika Aburame
+Shishilian
+Might Duy
+Bastille
+Chiriku
+Dosun
+Kuroma Tatsushiro
+Edward Weevil
+Kingbaum
+Aoda
+Gatz
+Chūkichi | Chuukichi | Chukichi
+Surume
+Saya
+Suleiman
+Benten
+John
+Oboro
+Tom
+Tsuru Itoi
+Onimaru
+Towa
+Daruma
+Gongorō Kamakura | Gongorou Kamakura | Gongoro Kamakura
+Ginny
+Garashi Tōno | Garashi Touno | Garashi Tono
+Coribou
+Ripley
+Kiiro
+Merry
+Ganryū | Ganryuu
+Fukurokuju
+Ishidate
+Charlotte Flampe
+Sumaru
+Satori
+Gozu
+Guernika
+Ebizō | Ebizou | Ebizo
+Heracles
+Kigiri
+Kelly Funk
+Gennō | Gennou | Genno
+Big Pan
+Nangō | Nangou | Nango
+Holed'em
+Baskerville
+Yuina Itomaki
+Squard
+Shizuka
+Masked Deuce
+Margo
+Hattori
+Taizō | Taizou | Taizo
+Kabu
+Tonbo Tobitake
+Kuromarimo
+Kagerō | Kagerou
+Little Oars Jr.
+Fuen
+Goldberg
+Gerotora
+Ganzui
+Genshō Ryūdōin | Genshou Ryuudouin | Gensho Ryudoin
+Tank Lepanto
+Sham
+Gamaken
+Inuppe
+Akaboshi
+Sarquiss
+Shibuki
+Buchi
+Kazami
+Gill Bastar
+Yūra | Yuura | Yura
+Shimotsuki Ushimaru
+Kyūsuke | Kyuusuke | Kyusuke
+Porche
+Onbu
+Woop Slap
+Ameyuki
+Urashima
+Karyū | Karyuu | Karyu
+Brannew
+Nako
+Ameno
+Hakugan
+Gitai
+Kurozumi Higurashi
+Bunpuku
+Tilestone
+Ikkyū Madoka | Ikkyuu Madoka | Ikkyu Madoka
+Epoida
+Shijima
+Peepley Lulu
+Suzumebachi
+Mansherry
+Kedama
+Wanze
+Mikoshi
+Sheepshead
+Tsurushi Hachiya
+Minister of the Left
+Stronger
+Yukimi
+Hera
+Yōrō | Yourou | Yoro
+Mocha
+Misumi Tsurugi
+Gally
+Muyami
+Isuka
+Babanuki
+Carne
+Inhel
+Shoujou
+Charlotte Praline
+Rosward Rosward
+Estrid
+Shimotsuki Kouzaburou
+Vinsmoke Sora
+Jigoro
+Momoo
+Higuma
+Tsurujo
+Indigo
+Capone Pez
+Chouchou
+Charlotte Nusstorte
+Cotton
+Sadi
+Shura
+Chess
+Hammond
+Whitey Bay
+Jean Ango
+Bobby Funk
+Doll
+Atmos
+Bobomba
+Wicca
+Sind
+Andre
+Ylva
+Concelot
+Daifugo
+Giovanni
+Macro
+Bian
+Blackback
+Shimotsuki Koushirou
+Haredas
+Onigumo
+Megalo
+Spandine
+Reuven
+Ange
+Raki
+Charlotte Basskarte
+Charlotte Snack
+Yamakaji
+Flapper
+Charlotte Kato
+Blenheim
+Mashikaku
+Seto
+Gambia
+Strawberry
+Nero
+Kyo
+Charlotte Mobile
+Pellini
+Heat
+Ucy
+Ipponmatsu
+Ochoku
+Yorki
+Boodle
+Bent
+Tonjit
+Lord of the Coast
+Holy
+Maynard
+Bakezo
+Rakuyo
+Miyagi
+Masira
+Yama
+Charlotte Raisin
+Gomorrah
+Charlotte Effilée
+Ronja
+Rampo
+Attach
+Tristan
+Mounblutain
+Fossa
+Rika
+Funkfreed
+Olav
+Roddy
+Rosward Shalria
+Gyaro
+Hotori
+Kotori
+Kiev
+Miss Catherina
+Gyogyo
+Kojuro
+Maha
+Charlotte Counter
+Charlotte Tablet
+Mag
+Kujaku
+Johanna
+Disco
+A O
+Charlotte Dosmarche
+Poseidon
+Limejuice
+Wire
+Minotaurus
+Drip
+Ally
+Jorul
+Peachbeard
+Lu Feld
+Kamakiri
+Yokozuna
+Some
+Charlotte Moscato
+Ginrummy
+Ripper
+John Giant
+Pagaya
+Dragon Number Thirteen
+Kikyo
+Bluegrass
+Ikkaku
+McKinley
+Skaldi
+Charlotte Compote
+Ninjin
+Daikoku
+Cho
+Stainless
+Aphelandra
+Baxcon
+Karma
+Charlotte Mascarpone
+Diez Barrels
+Mr. Mellow
+Joseph
+Bao Huang
+Poro
+Eris
+Pisaro
+Sodom
+Sweet Pea
+Footbianco
+Manjaro
+Curiel
+Jerry
+Charlotte Joscarpone
+Hippo Gentleman
+Tamanegi
+Flare
+Charlotte Poire
+Candelle
+Sarahebi
+Fuga
+Chessmarimo
+Charlotte Citron
+Skull
+Randolph
+Bariete
+Kakunoshin
+Piiman
+Hongo
+Ishilly
+Barbel
+Charlotte Cinnamon
+Charlotte Broyé
+Gion
+Tosa
+Hanzo
+Pomsky
+Diesel
+Michael
+Hoichael
+Scotch
+Ran
+Saldeath
+Chabo
+Hamlet
+Turco
+Marlon
+Alpha
+Mihar
+Dalmatian
+Davy D. Jones
+Kebi
+Bekori
+Kingdew
+Hatcha
+Red King
+Nubon
+Charlotte High-Fat
+Chocolat
+Chao
+Scarlett
+Charlotte Cadenza
+Ottoland
+Tenjo-Sagari
+Guillotine
+Seki
+Karin
+Doma
+Roshio
+Seagull Guns Nozdon
+Charlotte Noisette
+Briscola
+Ross
+Blamenco
+Brew
+Jigoku Benten
+Tokikake
+Dago
+Charlotte Newshi
+Charlotte Myukuru
+Braham
+Tararan
+Charlotte Cabaletta
+Rindo
+Clione
+Matsuge
+Cosette
+Bonk Punch
+Totts
+Rolling Logan
+Charlotte Mondée
+Tamagon
+Uni
+Bjorn
+Gab
+Kaneshiro
+Ramba
+Charlotte Saint-Marc
+Monjiro
+Urban
+Charlotte Zuccotto
+Nefertari D. Lili
+Fugetsu Omusubi
+Su
+Yomo
+Monster
+Hidayu
+Portgas D. Rouge
+Chome
+Nugire Yainu
+Hasami
+Gonbe
+McGuy
+Daikon
+Poker
+Fujin
+Thormann
+Charlotte Dacquoise
+Hound
+Comil
+Moda
+Zodia
+Daisy
+Kinoko
+Sunbell
+Tabuhachiro
+Islewan
+Hareji
+Aruyutayan V
+Hotei
+Scorpionlady
+Taro
+Charlotte Yuen
+Chuchun
+Kamijiro
+Tansui
+Devil Dias
+Charlotte Brownie
+Terracotta
+Conney
+Dobon
+Mr. Beans
+Kinderella
+Den
+Cocoa
+Uzuki Tempura
+Minozebra
+Ageha Woman
+Mr. 11
+Bingo
+Doringo
+Erik
+Poppoko
+Bizarre
+Pavlik
+Charlotte Laurin
+Gyro
+Millet Pine
+Capote
+Jigra
+Furrari
+Banshee
+Spartan
+Namur
+Yatappe
+Mato
+Peppoko
+Hanafuda
+Kurozumi Semimaru
+Sam
+Miss Thursday
+Caucasusman
+Himuro
+Tsunagoro
+Jujiro
+Honner
+Charlotte Compo
+Schollzo
+Nure-Onna
+Alpacaman
+Satchels Maffey
+Charlotte Bavarois
+Mr. Momora
+Charlotte Chiboust
+Speed Jiru
+Ganryu
+Charlotte Custard
+Potato
+Jaki
+Kazekage
+Batman
+Sancrin
+Heppoko
+Charlotte Cornstarch
+Part
+Mizerka
+Elmy
+Bishamon
+Gismonda
+Kiba
+Pudding Pudding
+Itomimizu
+Toyama Tsujigiro
+Building Snake
+Draw
+Hawkman
+Gazelleman
+Haruta
+Albion
+Saitank
+Yarisugi
+Genbo
+Gangaru
+Gyoru
+Saber
+Kinga
+Solitaire
+Hoe
+Banchi
+Mousse
+Keith
+Minorhinoceros
+Omasa
+Charlotte Kanten
+Mikio Itoo
+Raideen
+Chicory
+Kurosawa
+Sarutobi
+Ukkari
+Mizuta Madaisuki
+Minatomo
+Giberson
+Raijin
+Pierre
+Kagero
+Donquino
+Gancho
+Akumai
+Brontosaurus
+Very Good
+Cornelia
+Domino
+Kibagaeru
+Bishonure-Onna
+Leonero
+Gaburu
+Charlotte Angel
+Palms
+Ginko
+Manmayer Gurou
+Sapi
+Lacroix
+Charlotte Basans
+Bisley
+Aggie 68
+Mr. 7
+Kop
+Lip Doughty
+Cosmos
+Blue Fan
+Fillonce
+Charlotte Marnier
+Negikuma Maria
+Maujii
+Gorilla
+Shu
+Pekkori
+Hildon
+Hiramera
+Gyoro
+Nin
+and Bao
+Drug Peclo
+Jumper
+Wanyudo
+Bunbuku
+Goki
+Wallace
+Charlotte Prim
+Miss Father's Day
+Yazaemon
+Fourtricks
+Inbi
+Charlotte Montb
+Shioyaki
+Spencer
+Corgi
+Charlotte Allmeg
+Russian
+Bungo
+Kibin
+Jalmack
+Jericho
+Cancer
+Arthur
+Charlotte Mash
+Minokoala
+Doran
+Ukon
+Adele
+Stevie
+Hakowan
+Mero
+Fen Bock
+Mikazuki
+Vitan
+Natto
+Hublot
+Finamore
+Monjii
+Daigin
+Ducky Bree
+Kyuin
+Madilloman
+Mummy Mee
+Hyoutauros
+Koshi Falcon
+Rokkaku
+Aremo Ganmi
+Belladonna
+Milky
+Nerine
+Julius
+Daddy Dee
+Banzaburo
+Fuza
+Bongo
+Terry Gilteo
+Ivan X
+Charlotte Nougat
+Umit
+Garudan
+Zabo
+Moon Isaac Jr.
+Kentauros
+Jean Noueilles
+Charlotte Anana
+Sarie Nantokanette
+Charlotte Dolce
+Dragée
+Amazon
+Charlotte Fuyumeg
+Kamakirigirl
+Jeep
+Delacuaji
+Ahiru
+Clapp
+Bellett
+Kitton
+Yamanba
+Bunny Joe
+Charlotte Nutmeg
+Spoil
+Lonz
+Cocox
+Bourbon Jr.
+Zangirimaru
+Petermoo
+Kunyun
+Charlotte Mozart
+Usunoro
+Cowboy
+Baburu
+Nangi
+Ossamondo
+Misty
+Robson
+Shandia Chief
+Tamachibi
+Rivers
+Achao
+Hanji
+Goro
+Barry
+Hatsume
+Juki
+Amadob
+Bushon
+Dogya
+Shine
+Take
+Zanki
+Battaman
+Sharinguru
+Hikoichi
+Seira
+Hinokizu
+Charlotte Marble
+Mornin
+Blondie
+Kimel
+Motobaro
+Hototogisu
+Octopako
+Acilia
+Kukai
+Chocho
+Pascia
+Moodie
+Ham Burger
+Komane
+Mugren
+Tritoma
+Mororon
+Charlotte Akimeg
+Mizuta Mawaritosuki
+Mozambia
+Ban Dedessinée
+Damask
+Lulis
+Charlotte Harumeg
+Hitsugisukan
+Buche
+Judy
+Kechatch
+Banchina
+Milo
+Spacey
+Rokki
+Beegirl
+Charlotte Joconde
+Jibuemon
+Yurikah
+Jorge
+Nora Gitsune
+Hogan
+MAX Marx
+Shelly
+Forliewbs
+Happygun
+Rush
+Alice
+Billy
+Candy
+Meadows
+Killkhan
+Uholisia
+Colscon
+Iyan'eno Chinode
+Shanba
+Pankuta Dakeyan
+Chap
+Sicily
+Rowing
+Époni
+Charlotte Gala
+Horseman
+Soro
+Candre
+Jean Goen
+Agotogi
+Peterman
+Cands
+Jiron
+Sukare Tainen
+Kasagoba
+Kairen
+MocDonald
+Island Eater
+Brocca
+Lemoncheese
+Polo Gram
+Stomp
+Smooge
+Puppu
+Mr. Love
+Chappe
+Columbus
+Noble Croc
+Konbu
+CB Gallant
+Erio
+Mishoin Cashible
+Ramen
+Nakaiwa
+Norinosuke
+Laskey
+Snakeman
+Reforte
+Doha Ittanka II
+Oiwa
+Mr. Shimizu
+Farafra
+Enishida
+Charlotte Maple
+Minochihuahua
+Gina
+Marie
+Cosmo
+Royder
+Charlotte Panna
+Tsurube
+Catacombo
+Misery
+Uzu
+Pinky
+Azuki
+Pandawomanmi
+Zucca
+Galaxy
+Okame
+Koze
+Packy
+Wallem
+Charlotte Hachée
+Eikon
+Gambo
+Massui
+Bubblegum
+Ho
+Magnolia
+An Zengaiina
+Wellington
+Caimanlady
+Moyle
+Stealth Black
+Lily
+Tacos
+Tsumonsieur Kamaya
+Koiwa
+Dachoman
+Ushiano
+Biyo
+Rakushitemo Terusubehainaika
+Ahho Zurako
+Kagikko
+Chicken
+Didit
+Tensei
+Tsugaru Umi
+Bacura
+Lady Tree
+Gurutaro
+Unigaro
+Ririka
+Rabbitman
+Muret
+Charlotte Anglais
+Pudos
+Kuni
+Kadar
+Ratel
+Coburn
+Yotsubane
+Samosa
+Clara
+Francois
+Splash
+Splatter
+Tsunokkov
+Usakkov
+Ideaman
+Mouseman
+Buhichuck
+Haritsu Kendiyo
+Wheel
+Donquixote Shivercalero
+Sukare Karehosui
+Aegir
+Tea IV
+Hoisassa
+Gantonio
+Run
+Lacuba
+Marumieta
+Oran
+Nefertari Titi
+Waruno Furishiro
+Dobby Ibadonbo
+Sarai
+Thalassa Lucas
+Akudai Kanzaburo
+Suke
+Kirintauros
+Mountain Ricky
+Eddy
+Linaria
+Batchee
+Ipponume
+Hangan
+Yu
+Papaneel
+Nightcrab Girl
+Tsukimi
+Tamikebao
+Chokyumei-no Chosuke
+Jacksonbanner
+Jugemu Jugemuko
+Monda
+Hikkomitsukumai
+Beetleman
+Sauce
+Warashi
+Jobo
+Dirt Boss
+Jigokukamabuta Megatenpanchiro
+Marin
+Sig
+Potaufeu
+Minoruba
+Ubau
+George Mach
+UK
+Sukoshiba Kanishitoru
+Bulldog
+Zepo
+Urbain
+Warrior God
+Mayushika
+Kanezenny
+Great Michael
+Ishigo Shitemanna
+Beer VI
+Hocker
+Trafalgar Lami
+Pomp
+Charlotte Melise
+Chichilisia
+Byron
+Dotaku
+Taroimo
+Yui
+Gerotini
+Antonio
+Mezasuzowan Pisuo
+Nodoi Wakan
+Mani
+Sarfunkel
+Zotto
+Neoki
+Rangram
+Makko
+Gattenshochinosukeo
+Blade
+Sandayu
+Usagihebi
+Headband Catfish Village Elder
+Dashiteyaro
+Akehende
+Happa Yamao
+Poppy
+Maria Napole
+Fishbonen
+Ahho Desunen IX
+Hanger
+Ultraking
+Glove
+Shikon Kettai
+Hiro Gomon
+Margarita
+Choi
+Chesskippa
+Pluming
+Victoria Shiruton Doruyanaika
+Uzuki Namida
+Redwolf
+Hustle
+Kurokoma
+Chochinman
+Tritobu
+Charlotte De-Chat
+Hippan Natte
+Pansy
+Raccoon
+Emil
+Pururu
+Tarara
+Gimlet
+Iwatobi
+Boogie
+Sleepy
+Roji
+Kurotsuru
+Ibiributsu
+Nosgarl
+Stalker
+Moqueca
+Muchana
+Motzel
+Lionbuta
+Kairiken
+Rakuda
+Tegata Ringana
+Maidy
+Shinosuke
+Forest Boss
+Spector
+Vegapants
+Charlotte Wafers
+Isa
+Kobe
+Baggaley
+Uwattsura
+Dive
+Mosh
+Inoichibannosuke
+Giro Chintaro
+Ninth
+Nanday
+Nashi
+Kamekichi
+Beak Remark
+Nigeratta
+Mari
+Junan
+Tomatito
+Potsun
+Charlotte Normande
+Renona Topakka
+Bankuro
+Disc J
+Takao
+Jabari
+Seamars
+Kisegawa
+Blakey
+Donannoyo
+Kumadori Yamanbako
+Sennorikyuru
+Donovan
+Nyornyo Nyarmani
+Roronoa Arashi
+Ettara Chaunkai
+Busshiri
+Goo
+Sukune
+Rint
+Oli
+Moai
+Zururin
+Blumarine
+Hippie
+Bimine
+Genrin
+Neggy
+Gode
+Fugar
+Grabar
+Mr. 6
+Tomozo
+Lines
+Anjo
+Taka
+Nazu Ketagari
+Agsilly
+Papas
+Kakukaku
+Tokijiro
+Mukkashimi Tower
+Scimitarta
+Inukai
+Komakkov
+Hewitt
+Kairo Kureyo
+Yuki
+Kumagoro
+Wakasa
+Serizawa
+Zadie
+Roche
+House
+Hip
+Katsuzo
+Asashichi
+Nokotti
+Ibusu
+Togare
+Cezar
+Sonieh
+Master
+Hana
+Charlotte Wiro
+Tate
+Roronoa Pinzoro
+Hiroshi
+Shin Detamaruka
+Koda
+Moulon
+Yoshimoto
+Tsurue Monnosuke
+Reck
+Hara
+Anba
+Gorobe
+Miles
+Samurai Batts
+Oliva
+Couran
+Shimotsuki Furiko
+Miss Tuesday
+Stroganoff
+Kotetsu
+Furika
+Goldfish Princess
+Mizuira
+Suzume
+Muti
+Hocha
+Miss Mother's Day
+Saki
+Yame
+Unforgivable Mask
+Mr. 10
+Agyo
+Kyuji
+Quincy
+Yamenahare
+Mr. 12
+Shin Jaiya
+Tonsfer
+Gustav
+Vincent
+Yokan
+Fukumi
+Tori
+Oide
+Uraya Mashikatta
+Demoni Aiyo
+Kyukyu
+Asahija
+Deigoro
+Chiya
+Miss Saturday
+Kikipatsu
+Gatherine
+Kasa
+Maki
+Ginnosuke
+Esta
+Herb
+Axel
+Gig
+Aswa
+Tonjil
+Kinbo
+Roxanne
+Okome
+Hop
+Humphrey
+Stefan
+Tera
+Mario
+Mouthto Mouthyan
+Teru
+Noriko
+Atagoyama
+Emma
+Alvar
+Mochi
+Chihaya
+Koito
+Marilyn
+Egana
+Shion
+Fugetsu Kisaburo
+Eiri
+Zunesha
+Dagny
+Luca
+Faust
+Ratatoskr
+Kirinkodanuki
+Yamon
+Tibany
+Nola
+Uhho
+Nekozaemon
