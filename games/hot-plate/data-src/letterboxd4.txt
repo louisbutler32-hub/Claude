@@ -1,0 +1,294 @@
+# id: letterboxd4
+# prompt: Name a movie rated 4+ stars on Letterboxd
+# group: Movies & TV
+# emoji: 🎞️
+# kind: thing
+# APPROXIMATION: Letterboxd publishes no open data, so this is not a scrape. It is a
+# hand-built set of films known to sit at or above ~4.0/5 on Letterboxd (its Top 250
+# regulars, well-loved classics, anime and recent hits), leaving out famous films that are
+# borderline or below (e.g. Forrest Gump, Gladiator, The Avengers). Ordered by IMDb vote
+# count (public IMDb datasets, 2026-11-03) as a fame signal, with a nudge up for titles
+# teens know better than their IMDb votes suggest. Aliases include IMDb original titles.
+The Shawshank Redemption
+The Dark Knight
+Inception
+Fight Club
+Interstellar
+Pulp Fiction
+The Matrix
+The Godfather
+The Lord of the Rings: The Fellowship of the Ring | The Fellowship of the Ring | Fellowship of the Ring
+The Lord of the Rings: The Return of the King | The Return of the King | Return of the King
+Se7en | Seven
+The Lord of the Rings: The Two Towers | The Two Towers
+Django Unchained
+Inglourious Basterds
+Parasite | Gisaengchung
+The Silence of the Lambs
+Saving Private Ryan
+Whiplash
+The Prestige
+Schindler's List
+Star Wars: A New Hope | Star Wars | A New Hope | Star Wars: Episode IV - A New Hope
+The Departed
+Spirited Away | Sen to Chihiro no kamikakushi
+The Empire Strikes Back | Empire Strikes Back | Star Wars: Episode V - The Empire Strikes Back
+The Godfather Part II
+Back to the Future
+Memento
+Goodfellas
+The Truman Show
+WALL·E | WALL-E | Wall-E | Walle
+Sinners
+Kill Bill: Vol. 1 | Kill Bill | Kill Bill Volume 1
+Terminator 2: Judgment Day
+Up
+The Shining
+Good Will Hunting
+Mad Max: Fury Road
+No Country for Old Men
+Toy Story
+Dune: Part Two
+Eternal Sunshine of the Spotless Mind
+Gone Girl
+Reservoir Dogs
+One Flew Over the Cuckoo's Nest
+Spider-Man: Into the Spider-Verse | Into the Spider-Verse
+Raiders of the Lost Ark
+Oppenheimer
+Get Out
+Alien
+Everything Everywhere All at Once
+Taxi Driver
+The Pianist
+12 Angry Men
+The Grand Budapest Hotel
+Ratatouille
+Prisoners
+The Big Lebowski
+One Battle After Another
+The Good, the Bad and the Ugly | The Good the Bad and the Ugly | Il buono, il brutto, il cattivo
+Spider-Man: Across the Spider-Verse | Across the Spider-Verse
+Blade Runner
+City of God | Cidade de Deus
+Arrival
+Aliens
+Amélie | Le fabuleux destin d'Amélie Poulain | Amelie | Le fabuleux destin d'Amelie Poulain
+The Social Network
+Life Is Beautiful | La vita è bella | La vita e bella
+Heat
+Fargo
+Psycho
+2001: A Space Odyssey
+Taylor Swift: The Eras Tour | The Eras Tour | Eras Tour
+La La Land
+Apocalypse Now
+Blade Runner 2049
+Pan's Labyrinth | El laberinto del fauno
+Jaws
+Oldboy | Oldeuboi
+Her
+Coco
+There Will Be Blood
+Zodiac
+Dead Poets Society
+Casablanca
+Casino
+Your Name. | Your Name | Kimi no na wa.
+Monty Python and the Holy Grail | Holy Grail
+Rear Window
+Children of Men
+It's a Wonderful Life
+Dr. Strangelove | Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb | Doctor Strangelove
+The Thing
+Howl's Moving Castle | Hauru no ugoku shiro
+Citizen Kane
+Princess Mononoke | Mononoke-hime
+The Wild Robot
+Amadeus
+Puss in Boots: The Last Wish | Puss in Boots 2
+Vertigo
+The Lives of Others | Das Leben der Anderen
+My Neighbor Totoro | Tonari no Totoro
+Mulholland Drive | Mulholland Dr.
+Monty Python's Life of Brian | Life of Brian
+Little Women
+The Hunt | Jagten
+Raging Bull
+Once Upon a Time in America | C'era una volta in America
+Seven Samurai | Shichinin no samurai
+Grave of the Fireflies | Hotaru no haka
+The Deer Hunter
+Once Upon a Time in the West | C'era una volta il West
+Before Sunrise
+Pride & Prejudice | Pride and Prejudice
+Chinatown
+North by Northwest
+Hamilton
+Magnolia
+To Kill a Mockingbird
+Lawrence of Arabia
+Cinema Paradiso | Nuovo Cinema Paradiso
+Before Sunset
+Fantastic Mr. Fox
+Some Like It Hot
+The Sting
+For a Few Dollars More | Per qualche dollaro in più | Per qualche dollaro in piu
+Dog Day Afternoon
+Das Boot
+Modern Times
+Singin' in the Rain
+The Elephant Man
+A Separation | Jodaeiye Nader az Simin
+The Great Escape
+Memories of Murder | Salinui chueok
+The Holdovers
+Amores Perros
+Past Lives
+The Iron Giant
+Sunset Boulevard
+Rosemary's Baby
+Incendies
+The Great Dictator
+The Bridge on the River Kwai
+The Secret in Their Eyes | El secreto de sus ojos
+Klaus
+Paths of Glory
+Wild Tales | Relatos salvajes
+Paddington 2
+Godzilla Minus One | Gojira Mainasu Wan
+Akira
+La Haine
+The Apartment
+City Lights
+The Seventh Seal | Det sjunde inseglet
+The Handmaiden | Ah-ga-ssi
+Barry Lyndon
+Mary and Max | Mary and Max.
+Metropolis
+Aftersun
+Castle in the Sky | Tenkû no shiro Rapyuta | Tenku no shiro Rapyuta
+Nausicaä of the Valley of the Wind | Kaze no tani no Naushika | Nausicaa of the Valley of the Wind
+Rashomon | Rashômon
+The Third Man
+Cool Hand Luke
+Bicycle Thieves | Ladri di biciclette
+Kiki's Delivery Service | Majo no takkyûbin | Majo no takkyubin
+In the Mood for Love | Fa yeung nin wah
+Before Midnight
+Network
+M | M - Eine Stadt sucht einen Mörder | M - Eine Stadt sucht einen Morder
+Double Indemnity
+Ghost in the Shell | Kôkaku kidôtai | Kokaku kidotai
+Witness for the Prosecution
+Phantom Thread
+Rebecca
+Stalker
+Ran
+Flow | Straume
+A Silent Voice | A Silent Voice: The Movie | Koe no katachi
+All About Eve
+The Kid
+Paris, Texas
+Yojimbo | Yôjinbô | Yojinbo
+The Treasure of the Sierra Madre
+Persona
+The Conversation
+The King of Comedy
+The 400 Blows | Les quatre cents coups
+8½ | 8 1/2 | Eight and a Half | 81⁄2
+Portrait of a Lady on Fire | Portrait de la jeune fille en feu
+Mr. Smith Goes to Washington
+The Gold Rush
+Perfect Blue | Pâfekuto burû | Pafekuto buru
+Come and See | Idi i smotri
+Wild Strawberries | Smultronstället | Smultronstallet
+It Happened One Night
+Twin Peaks: Fire Walk with Me | Fire Walk with Me
+Three Colours: Blue | Three Colors: Blue | Trois couleurs : Bleu
+Porco Rosso | Kurenai no buta
+Three Colours: Red | Three Colors: Red | Trois couleurs : Rouge
+Paprika
+Chungking Express | Chung Hing sam lam
+Perfect Days
+The Night of the Hunter
+The Grapes of Wrath
+The General
+Ikiru
+Shoplifters | Manbiki kazoku
+Harakiri | Seppuku
+La Dolce Vita
+Whisper of the Heart | Mimi o sumaseba
+Wings of Desire | Der Himmel über Berlin | Der Himmel uber Berlin
+Senna
+Mother | Madeo
+The End of Evangelion | Neon Genesis Evangelion: The End of Evangelion | Shin seiki Evangelion Gekijô-ban: Air/Magokoro wo, kimi ni | Shin seiki Evangelion Gekijo-ban: Air/Magokoro wo, kimi ni
+Tokyo Story | Tôkyô monogatari | Tokyo monogatari
+Drive My Car | Doraibu mai kâ | Doraibu mai ka
+The Battle of Algiers | La battaglia di Algeri
+The Best Years of Our Lives
+The Wages of Fear | Le salaire de la peur
+High and Low | Tengoku to jigoku
+Chainsaw Man – The Movie: Reze Arc | Chainsaw Man: Reze Arc | Chainsaw Man - The Movie: Reze Arc | Reze Arc | Gekijô-ban Chensô Man Reze-hen | Gekijo-ban Chenso Man Reze-hen
+Fanny and Alexander | Fanny och Alexander
+Decision to Leave | He-eo-jil gyeol-sim
+La Strada
+The Passion of Joan of Arc | La passion de Jeanne d'Arc
+Le Samouraï | Le Samourai
+Sherlock Jr.
+The Tale of the Princess Kaguya | Kaguya-hime no monogatari
+Fallen Angels | Do lok tin si
+Andrei Rublev | Andrey Rublyov
+Throne of Blood | Kumonosu-jô | Kumonosu-jo
+The Double Life of Véronique | La double vie de Véronique | The Double Life of Veronique | La double vie de Veronique
+Nights of Cabiria | Le notti di Cabiria
+Sunrise: A Song of Two Humans | Sunrise
+Tokyo Godfathers | Tôkyô goddofâzâzu | Tokyo goddofazazu
+Wolf Children | Ôkami kodomo no Ame to Yuki | Okami kodomo no Ame to Yuki
+Central Station | Central do Brasil
+Taste of Cherry | Ta'm e guilass
+The Act of Killing
+Ivan's Childhood | Ivanovo detstvo
+Monster | Kaibutsu
+Sanjuro | Tsubaki Sanjûrô | Tsubaki Sanjuro
+Autumn Sonata | Höstsonaten | Hostsonaten
+Only Yesterday | Omohide poro poro
+Pather Panchali
+Grand Illusion | La grande illusion
+Sweet Smell of Success
+Cries and Whispers | Cries & Whispers | Viskningar och rop
+Happy Together | Chun gwong ja sit
+Au Revoir les Enfants | Goodbye, Children
+Raise the Red Lantern | Da hong denglong gaogao gua
+Farewell My Concubine | Ba wang bie ji
+Millennium Actress | Sennen joyû | Sennen joyu
+The Umbrellas of Cherbourg | Les parapluies de Cherbourg
+Yi Yi
+The Leopard | Il gattopardo
+The Rules of the Game | La règle du jeu | La regle du jeu
+Hoop Dreams
+Army of Shadows | L'armée des ombres | L'armee des ombres
+Apollo 11
+Close-Up | Nema-ye nazdik
+Woman in the Dunes | Suna no onna
+Look Back | Rukku Bakku
+Stop Making Sense
+Red Beard | Akahige
+Kwaidan | Kaidan
+The Cranes Are Flying | Letyat zhuravli
+The Last Waltz
+Late Spring | Banshun
+Paris Is Burning
+Ordet
+Werckmeister Harmonies | Werckmeister harmóniák | Werckmeister harmoniak
+A Brighter Summer Day | Guling jie shaonian sharen shijian
+Sátántangó | Satantango
+The First Slam Dunk | Za Fâsuto Suramu Danku | Za Fasuto Suramu Danku
+The Ascent | Voskhozhdenie
+Shoah
+Scenes from a Marriage | Scener ur ett äktenskap | Scener ur ett aktenskap
+Homecoming: A Film by Beyoncé | Homecoming | Homecoming: A Film by Beyonce
+Mirror | The Mirror | Zerkalo
+Cléo from 5 to 7 | Cleo from 5 to 7
+Children of Paradise | Les Enfants du Paradis
+Ali: Fear Eats the Soul | Fear Eats the Soul
