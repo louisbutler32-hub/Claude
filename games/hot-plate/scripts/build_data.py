@@ -70,8 +70,10 @@ CATEGORIES = [
     dict(id="bigcity", group="Places", emoji="🏙️", prompt="Name a city with over a million people", kind="thing", limit=1500, minsl=0,
          where="?x wdt:P1082 ?pop . FILTER(?pop >= 1000000) ?x wdt:P31 ?t . VALUES ?t { wd:Q515 wd:Q1549591 wd:Q1637706 wd:Q200250 wd:Q5119 wd:Q1093829 } ."),
     # ---- sport ----
-    dict(id="cricket", group="Sport", emoji="🏏", prompt="Name a cricket player", kind="person", limit=1500, minsl=15,
-         where="?x wdt:P106 wd:Q12299841 ."),
+    dict(id="cricket", group="Sport", emoji="🏏", prompt="Name a cricket player", kind="person", limit=1500, minsl=6,
+         where="?x wdt:P106 wd:Q12299841 .",
+         # Beckett and prime ministers played first-class cricket, but nobody says them first
+         drop="?x wdt:P106 ?no . VALUES ?no { wd:Q82955 wd:Q36180 wd:Q1028181 wd:Q49757 wd:Q4964182 wd:Q214917 wd:Q1930187 } ."),
     dict(id="rugby", group="Sport", emoji="🏉", prompt="Name an international rugby player from this century", kind="person", limit=1500, minsl=3,
          where="?x wdt:P54 ?t . ?t wdt:P31 wd:Q58840819 . ?x wdt:P569 ?b . FILTER(YEAR(?b) >= 1975)"),
     dict(id="teams", group="Sport", emoji="🏟️", prompt="Name a sports team", kind="thing", limit=2000, minsl=20,

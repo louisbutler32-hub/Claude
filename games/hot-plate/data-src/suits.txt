@@ -23,7 +23,7 @@ John Kreese | Kreese | Sensei Kreese
 Samantha LaRusso | Sam LaRusso
 Tory Nichols
 Terry Silver
-Mr. Miyagi | Miyagi | Nariyoshi Miyagi | Keisuke Miyagi
+Mr. Miyagi | Miyagi | Keisuke Miyagi
 Alexander Mahone | Mahone
 Brad Bellick | Bellick
 C-Note | Benjamin Miles Franklin | Benjamin Franklin
@@ -125,14 +125,11 @@ Roland Glenn
 Wyatt Mathewson
 Luis Gallego
 Cameron Mahone
-Mrs. Miyagi | Yukie
 Keri Allen
 Bobby Novak
 Chris
 Nick D'Amato
-Derrick Mayes
 Feng Xiao
-Yoli Castillo
 Julianne Simms
 Pat McGann
 Angela Cook
@@ -156,7 +153,6 @@ Joe Ramsey
 David Fox
 Richard Sullins
 Eric Kaldor
-Lloyd Triple
 Susan Carter
 Vanessa
 Moore
@@ -164,7 +160,6 @@ Tony Gianopolous
 Smith
 Henry Gerard
 Rosalie Williams
-Ken Sharma
 Susan Hollander
 Andrew Malik
 Gavin Andrews
@@ -185,32 +180,28 @@ Dede Franklin
 Lisa Tabak
 Jones
 Daylor
-Deborah Coates
 Ferguson
 Turk
 Lucas Hodge
 Zavala
 Felicia Lang
-Alexa Scuderi
-Dejesus
-Rubin
-Blondie
-Bearded Man
-Quinn
-Young boy
-James Bagwell
-Daniel Hale
-Priest
-Jane Phillips
-Oscar Shales
-Elliott Pike
-Edna Bellick
-Sebastian Balfour
-Frank Tancredi
 Papo
-Characters
+Quinn
+Blondie
+Edna Bellick
+Frank Tancredi
+Jane Phillips
+Dejesus
+Elliott Pike
+James Bagwell
+Oscar Shales
+Rubin
+Alexa Scuderi
+Sebastian Balfour
+Daniel Hale
 Liam Colson
 Dennis de Guzman
+Derrick Mayes
 Bruce Bennett
 Andrew Tyge
 Gunther Braun
@@ -225,7 +216,6 @@ William Sutter
 Sam Walker
 Wilson Wright
 Harris
-Dennis Nivens
 Allison Hale
 Will Clayton
 Maria Monroe
@@ -233,7 +223,6 @@ Bo Cowler
 Edith Ross
 Derrick Sweeney
 Monica Eton
-Chuck Hargrove
 Chris Franco
 Stuart Tuxhorn
 Terrence Wolf
@@ -246,6 +235,7 @@ Herb Stanton
 Saint Patrick
 Jessica Andrews
 Craig Cameron
+Yoli Castillo
 Rickenberger
 Stephanie Patel
 Lisa Rix
@@ -271,22 +261,19 @@ Vincent Sandinsky
 Jonathan Sidwell
 A&W
 Jimmy Kirkwood
-Octavio
 Denise
+Octavio
 Douglas Acadia
 Joanna Webster
-Blake Everett
 Fraser Jake
 Lucasz Peshcopi
 Maria Alvarez
 Bates
-Carruth
 Scott Carruth
 Marcel
 Tori
 Pam Larson
 Marvin Mancia
-Charles Van Dyke
 Ja
 Sapo
 A. Elliott Stemple
@@ -314,9 +301,7 @@ Rizzo Green
 Gravedigger
 Cristobal
 Wade Irving
-Paul Porter
 Adrian Rix
-Betsy Sullivan
 Nick Rinaldi
 Sancho
 Ella Follman
@@ -328,7 +313,6 @@ Jasmine Zane
 Sensei Ivanov
 Omar
 David Baker
-Frank Cramer
 Trent Devon
 Tom Cole
 Leon
@@ -339,12 +323,10 @@ Ernesto
 Say Davis
 Anna Westmoreland
 Kacee Franklin
-Luke
 Allison Holt
 Cara McAllistar
 Tess
 Armand Zarkarian
-James Thompson
 Tom Keller
 Samantha Brinker
 Robert Geller
@@ -353,7 +335,6 @@ Jason Black
 Jerry Curtin
 Gillian Colson
 Sam Middleton
-Ellen Rand
 Xander Epstein
 Samuel Tull
 Craig Seidel
@@ -371,11 +352,10 @@ Darrin Hooks
 Judy Pope
 Andrew Blauner
 Nick Zegan
-Diego Aguilar
 Vlad
+Diego Aguilar
 Rita Morgan
 Jason Lief
-Ted Black
 Pistachio
 Augusto
 Cyclops
@@ -385,6 +365,7 @@ Crab Simmons
 Marilyn
 Animal
 Lyle
+Betsy
 Clifford Watkins
 McMorrow
 Dan Foley
@@ -403,8 +384,8 @@ Mikado
 Danielle Curtin
 Alexandra Leeds
 Burt Kimball
-Blue Hawaii
 Gregg Bilson
+Blue Hawaii
 Lucille Jackson
 Paula Agard
 Gabby Stone
@@ -442,17 +423,13 @@ Sergio
 Collin Church
 Cruz
 Vivien Tanaka
-Albert Chan
-Eric McBride
-Norma
+Lloyd Triple
 Anthony Mazlo
 Jeremy Wall
 Escamilla
 Vanessa LaRusso
-Mr. Silver
-Mack
-Kelli Foster
 Mack Andrews
+Kelli Foster
 Elliot Perkins
 Jeanette Owens
 Lauren
@@ -469,19 +446,18 @@ Roy Weston
 Roger Knowlton
 Bruno
 Rosario
-Caroline Reynolds' granddaughter
 Eugenia Campbell
 Frank Carvello
 Nandu Banerjee
+Ken Sharma
 Ann Owens
 Koba
 Alan Pearson
-Erol Tabak
 Ed Pavelka
+Erol Tabak
 Gregory Boone
 Zach Pushkarev
 James Bagwell Jr.
-Mr. Lawrence
 Charles Westmoreland Senior
 Elizabeth-Anne Rooney
 Nathan Byrnes
@@ -500,24 +476,18 @@ Logan Sanders
 Judge McIntyre
 Nestor
 Dean Morello
-Mr. LaRusso
-Mr. Salazar
+Deborah Coates
 Clifford Danner
 Olivia
 Winnie Taylor
 Laurence
-Mr. Palmer
 Mark Dauber
 Anita Gibbs
-Carrie Underwood
 Johnny Karinski
-Mrs. Mills
 Homeless Lynn
 Lisa Parker
-Stephanie Novak
 Keith Hoyt
-Holly Cromwell
-Stuart Lane
+Dennis Nivens
 Emmanuel Mariga
 Shrager
 Joanne
@@ -525,68 +495,71 @@ Ponytail
 Joy McAfee
 Shane Page
 Julius Rowe
+Chuck Hargrove
 Principal Lopez
 Elizabeth Schelling
-Mark Meadows
 Garvin Steiner
-Dee Snider
 Ray Benghazi
-Dylan Pryor
-Alberto Romero
+Xander Stone
 Rico
 Zenker
-Raymond
-Lucille LaRusso
-Dr. Hillier
-Xander Stone
-Rory
 Sensei Suk-Chin
+Raymond
+Rory
+Lucille LaRusso
+Alberto Romero
 Sensei Morozov
-Mr. Steiner
 Fawn
 Sensei Rosenthal
 Cory Cook
-Mrs. Moskowitz
 Renee Aubuchon
 Anthony Morrison
+Blake Everett
 Baptiste
-Mr. Miyagi's Mother
+Charles Van Dyke
 Marissa
 Gregory Schwarber
-Erica Rollins
-Mark Cook
+Paul Porter
+Betsy Sullivan
 Erick
 Mercedes
-Rick Dodsen
-Laura Zane
-Arthur Reeves
+Frank Cramer
 Isaiah Robinson
+Luke
 James Palmer
+James Thompson
 Marco
 Graham
+Ellen Rand
 Derek
 Lucy Litt
 Walter Gillis
+Ted Black
 Emily Folsom
 Nick Howell
-Amanda Stevens
-Mr. Santana
 Grigor
 Julia
 Roland Zarkarian
 Sandra Robinson
 James Payne
+Albert Chan
+Eric McBride
+Norma
 Margaret Spencer
-Mr. Keene
 Phan
-Mrs Coe
-Mrs. Keene
-Mr. Kreese
+Stephanie Novak
+Holly Cromwell
+Stuart Lane
 Cheyenne Hamidi
+Mark Meadows
+Dylan Pryor
+Erica Rollins
+Mark Cook
+Rick Dodsen
+Laura Zane
+Arthur Reeves
 Jose
-Mr. Moskowitz
-Mrs. Kreese
-Dr. Howard
+Amanda Stevens
 Ezra
 Sage Taylor
 Claramunt
