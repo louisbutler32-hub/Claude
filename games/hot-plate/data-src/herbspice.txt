@@ -1,0 +1,154 @@
+# id: herbspice
+# prompt: Name a herb or spice
+# group: Food
+# emoji: 🌿
+# kind: thing
+# Salt is a mineral, not a herb or spice, so it is left out. Blends (curry
+# powder, garam masala, Chinese five spice...) are accepted as spices.
+Pepper | Black pepper | Peppercorn | Peppercorns
+Basil
+Cinnamon
+Oregano
+Garlic
+Ginger
+Parsley
+Rosemary
+Mint
+Paprika
+Thyme
+Chilli | Chili | Chilli flakes | Chili flakes | Chilli powder | Chili powder | Red pepper flakes
+Cumin
+Turmeric
+Coriander | Cilantro
+Nutmeg
+Dill
+Sage
+Chives
+Cayenne | Cayenne pepper
+Curry powder | Curry
+Vanilla
+Bay leaf | Bay leaves | Bay
+Saffron
+Cloves | Clove
+Lemongrass
+Garam masala
+Cardamom | Cardamon
+Allspice | Pimento
+Mustard | Mustard seed | Mustard seeds
+Tarragon
+Star anise
+Fennel | Fennel seed | Fennel seeds
+Smoked paprika
+Chinese five spice | Five spice | Five-spice
+Onion powder
+Garlic powder
+Sesame | Sesame seeds | Sesame seed
+Marjoram
+Lavender
+Anise | Aniseed
+Caraway | Caraway seed | Caraway seeds
+Horseradish
+Wasabi
+Sumac
+Za'atar | Zaatar | Zatar
+Cajun seasoning | Cajun spice | Cajun
+Italian seasoning | Italian herbs | Mixed herbs
+Mixed spice | Pumpkin spice | Pumpkin pie spice
+Fenugreek | Methi
+Curry leaves | Curry leaf
+Kaffir lime leaves | Kaffir lime leaf | Makrut lime leaves | Lime leaves
+Celery seed | Celery salt
+White pepper
+Pink peppercorns | Pink peppercorn | Pink pepper
+Sichuan pepper | Szechuan pepper | Sichuan peppercorn
+Juniper | Juniper berries | Juniper berry
+Mace
+Chervil
+Lovage
+Herbes de Provence
+Ras el hanout
+Berbere
+Harissa
+Dukkah | Dukka
+Jerk seasoning | Jerk spice
+Old Bay
+Chipotle
+Ancho | Ancho chilli | Ancho chili
+Kashmiri chilli | Kashmiri chili
+Thai basil
+Holy basil | Tulsi
+Lemon balm
+Lemon verbena
+Lemon thyme
+Spearmint
+Peppermint
+Shiso | Perilla
+Vietnamese mint | Rau ram
+Culantro | Sawtooth coriander
+Galangal
+Asafoetida | Asafetida | Hing
+Nigella | Nigella seeds | Kalonji | Black seed | Black cumin
+Ajwain | Carom | Carom seeds
+Amchur | Amchoor | Mango powder
+Annatto | Achiote
+Epazote
+Mexican oregano
+Savory | Summer savory | Winter savory
+Borage
+Sorrel
+Fennel pollen
+Grains of paradise
+Long pepper
+Cubeb | Cubeb pepper
+Tonka bean | Tonka
+Mahlab | Mahleb
+Black cardamom
+Sansho
+Shichimi | Shichimi togarashi | Togarashi
+Gochugaru
+Aleppo pepper
+Urfa biber | Urfa pepper
+Piment d'Espelette | Espelette pepper
+Pul biber
+Dried mint
+Panch phoron
+Chaat masala
+Tandoori masala | Tandoori spice
+Baharat
+Advieh
+Hawaij
+Tajín | Tajin
+Furikake
+Lemon pepper
+Steak seasoning | Montreal steak seasoning
+Poultry seasoning
+Pickling spice
+Quatre épices | Quatre epices
+Fines herbes
+Bouquet garni
+Kawakawa
+Horopito
+Lemon myrtle
+Wattleseed | Wattle seed
+Pepperberry | Mountain pepper | Tasmanian pepperberry
+Bush tomato | Akudjura
+Native thyme
+Hyssop
+Angelica
+Rue
+Woodruff | Sweet woodruff
+Stevia
+Licorice root | Liquorice root | Liquorice | Licorice
+Orris root
+Sassafras | Filé | File powder
+Hoja santa
+Pandan | Pandan leaf | Screwpine
+Fingerroot | Krachai
+Kencur | Sand ginger
+Dried orange peel | Orange peel
+Saltbush
+Cilantro root | Coriander root
+Garlic chives | Chinese chives
+Wild garlic | Ramsons
+Kokum
+Tamarind

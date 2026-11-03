@@ -1,0 +1,145 @@
+# id: subject
+# prompt: Name a school subject
+# group: School
+# emoji: 📚
+# kind: thing
+Maths | Math | Mathematics
+English
+Science
+History
+Geography
+PE | Physical Education | Phys Ed | Gym
+Art | Visual Arts
+Music
+Biology | Bio
+Chemistry | Chem
+Physics
+French
+Spanish
+Drama | Theatre | Theater
+Computer Science | Computing | CS
+Economics | Econ
+Health | Health Education
+Religious Education | RE | RS | Religious Studies
+Psychology
+Business Studies | Business
+Accounting | Accounts
+Calculus
+Statistics | Stats
+German
+Japanese
+Chinese | Mandarin
+Latin
+Te Reo Māori | Te Reo Maori | Te Reo | Māori | Maori
+Social Studies
+Algebra
+Geometry
+Design and Technology | DT | D&T | Design Technology
+Food Technology | Food Tech | Home Economics | Home Ec | Cooking
+Woodwork | Woodworking | Shop
+Technology | Tech
+Digital Technology | Digitech | Digital Technologies
+ICT | IT | Information Technology
+Media Studies | Media
+Film Studies | Film
+Sociology
+Philosophy
+Politics | Government | Government and Politics | Civics
+Legal Studies | Law
+Classics | Classical Studies
+Dance
+Photography
+Graphics | Graphic Design
+Engineering
+Agriculture | Ag
+Horticulture
+Sport Science | Sports Science | PE Studies
+Outdoor Education | Outdoor Ed
+Further Maths | Further Mathematics
+Earth Science | Earth and Space Science
+Environmental Science | Environmental Studies
+Textiles | Textiles Technology
+Italian
+Korean
+Indonesian
+Arabic
+Russian
+Ancient Greek | Greek
+Hindi
+Samoan
+Tongan
+English Literature | Literature
+English Language
+Creative Writing
+Journalism
+Debating | Debate
+Public Speaking
+World History
+US History | American History | APUSH
+European History
+Ancient History
+Modern History
+Art History
+Music Technology
+Computer Programming | Programming | Coding
+Robotics
+Electronics
+Metalwork
+Construction | Building
+Hospitality
+Tourism
+Child Care | Child Development
+Health and Social Care
+Personal Finance
+Life Skills
+Critical Thinking
+Theory of Knowledge | TOK
+General Studies
+Citizenship
+PSHE
+Precalculus | Pre-Calculus
+Trigonometry | Trig
+Mechanics
+Applied Maths | Applied Mathematics
+Physical Science
+Life Science
+Marine Science | Marine Studies
+Anatomy | Anatomy and Physiology
+Astronomy
+Geology
+Anthropology
+Archaeology
+Health Science
+Aboriginal Studies
+Pacific Studies
+Business Management
+Enterprise
+Mathematical Methods | Maths Methods
+Specialist Maths | Specialist Mathematics
+General Maths | General Mathematics
+Standard Maths
+Extension Maths | Maths Extension
+Product Design
+Fashion
+Textile Design
+Visual Communication | Vis Comm
+Painting
+Sculpture
+Printmaking
+Ceramics | Pottery
+Band
+Choir
+Orchestra
+Kapa Haka
+Welsh
+Gaelic
+Irish
+Hebrew
+Portuguese
+Dutch
+Vietnamese
+Auslan
+Sign Language | ASL | NZSL
+Religion
+Ethics
+Driver's Ed | Driver's Education | Drivers Ed

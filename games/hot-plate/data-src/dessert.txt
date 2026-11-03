@@ -1,0 +1,327 @@
+# id: dessert
+# prompt: Name a dessert
+# group: Food
+# emoji: 🍰
+# kind: thing
+Ice cream | Icecream
+Cake
+Chocolate cake
+Cheesecake
+Brownie | Brownies
+Cookie | Cookies | Biscuit | Biscuits
+Apple pie
+Pie
+Tiramisu
+Pancakes | Pancake
+Cupcake | Cupcakes
+Donut | Doughnut | Donuts | Doughnuts
+Pavlova | Pav
+Waffles | Waffle
+Crème brûlée | Creme brulee | Crème brulee
+Sundae | Ice cream sundae
+Banana split
+Muffin | Muffins
+Pudding
+Sticky toffee pudding
+Trifle
+Gelato
+Mousse | Chocolate mousse
+Macarons | Macaron | Macaroons | Macaroon
+Churros | Churro
+Crumble | Apple crumble | Fruit crumble | Rhubarb crumble
+Lamington | Lamingtons
+Jelly | Jello | Jell-O | Gelatin
+Fruit salad
+Red velvet cake | Red velvet
+Carrot cake
+Lemon meringue pie | Lemon meringue
+Key lime pie
+Pumpkin pie
+Crêpes | Crepes | Crepe | Crêpe
+Milkshake | Shake
+Sorbet
+Frozen yogurt | Froyo | Fro-yo
+Chocolate chip cookie | Chocolate chip cookies | Choc chip cookies
+Black Forest cake | Black Forest gateau
+Baklava
+Panna cotta
+Profiteroles | Profiterole | Cream puffs | Cream puff
+Eclair | Éclair | Eclairs
+Fudge
+Rice pudding
+Bread and butter pudding
+Cinnamon roll | Cinnamon rolls | Cinnamon bun | Cinnamon scroll
+Lava cake | Molten chocolate cake | Chocolate lava cake | Chocolate fondant
+Popsicle | Ice lolly | Ice block | Icy pole | Ice pop
+Sponge cake | Sponge | Victoria sponge | Victoria sandwich
+Tart | Fruit tart
+Strawberries and cream
+Cobbler | Peach cobbler
+Mochi
+Cannoli
+Affogato
+Hokey pokey ice cream | Hokey pokey
+Fairy bread
+Pecan pie
+Angel food cake
+Pound cake
+Banoffee pie | Banoffee | Banoffi
+Eton mess
+Jam roly-poly | Roly poly
+Spotted dick
+Custard
+Scones | Scone
+Shortbread
+Flapjack | Flapjacks
+Rocky road
+Lemon tart
+Treacle tart
+Bakewell tart
+Mince pie | Mince pies
+Christmas pudding | Plum pudding
+Yule log | Bûche de Noël | Buche de Noel
+Gingerbread | Gingerbread man
+Apple strudel | Strudel
+Chocolate fondue | Fondue
+S'mores | Smores
+Brookie
+Blondie | Blondies
+Tres leches | Tres leches cake
+Flan | Leche flan
+Crème caramel | Creme caramel
+Arctic roll
+Baked Alaska
+Neapolitan ice cream | Neapolitan
+Ice cream cake
+Ice cream sandwich
+Cookie dough
+Rainbow cake
+Funfetti cake | Funfetti
+Birthday cake
+Wedding cake
+Bundt cake
+Marble cake
+Coffee cake
+Fruitcake | Fruit cake | Christmas cake
+Battenberg | Battenberg cake
+Swiss roll | Jelly roll
+Mud cake | Mud pie
+Mississippi mud pie
+Boston cream pie
+Whoopie pie | Whoopie pies
+Cake pops | Cake pop
+Lemon drizzle cake | Lemon drizzle
+Coconut cake
+Opera cake
+Sachertorte | Sacher torte
+Pineapple upside-down cake | Upside-down cake
+Tarte Tatin
+Clafoutis
+Mille-feuille | Millefeuille | Napoleon | Vanilla slice | Custard slice
+Madeleines | Madeleine
+Financier | Financiers
+Soufflé | Souffle | Chocolate soufflé
+Meringue | Meringues
+Floating island | Île flottante | Ile flottante
+Croquembouche
+Paris-Brest
+Beignets | Beignet
+Zabaglione | Sabayon
+Semifreddo
+Cassata
+Zeppole
+Sfogliatella | Sfogliatelle
+Panettone
+Biscotti
+Pandoro
+Granita
+Spumoni
+Bombolone | Bomboloni
+Torta caprese
+Gulab jamun
+Jalebi
+Kulfi
+Rasgulla | Rasgula | Rosogolla
+Kheer
+Halwa | Halva | Halvah
+Barfi | Burfi
+Ladoo | Laddu | Laddoo
+Rasmalai | Ras malai
+Mango sticky rice
+Halo-halo
+Ube cake | Ube
+Bingsu | Patbingsu
+Shaved ice | Shave ice | Snow cone
+Dango
+Taiyaki
+Dorayaki
+Daifuku
+Matcha ice cream
+Egg tart | Egg tarts | Pastel de nata | Portuguese tart
+Mooncake | Mooncakes
+Sesame balls | Jian dui
+Mango pudding
+Red bean soup
+Tang yuan | Tangyuan
+Pandan cake
+Chè | Che
+Cendol
+Kuih | Kueh
+Turkish delight | Lokum
+Knafeh | Kunafa | Kanafeh
+Basbousa
+Umm Ali
+Malabi | Muhallebi
+Maamoul
+Loukoumades
+Galaktoboureko
+Brigadeiro | Brigadeiros
+Dulce de leche
+Alfajores | Alfajor
+Arroz con leche
+Sopapillas | Sopapilla
+Buñuelos | Bunuelos
+Concha | Conchas
+Paletas | Paleta
+Quindim
+Brazo de gitano
+Turrón | Turron
+Crema catalana
+Polvorones
+Black and white cookie
+Oatmeal raisin cookie | Oatmeal cookies | Oat cookies
+Snickerdoodle | Snickerdoodles
+Peanut butter cookie | Peanut butter cookies
+Sugar cookie | Sugar cookies
+Anzac biscuit | Anzac biscuits | Anzac cookies
+Afghan biscuit | Afghans | Afghan biscuits
+Caramel slice | Millionaire's shortbread
+Louise cake | Louise slice
+Ginger crunch
+Neenish tart | Neenish tarts
+Peach Melba
+Pear Belle Hélène | Poached pear | Poached pears
+Bananas Foster
+Cherries jubilee
+Crêpes Suzette | Crepes Suzette
+Apple crisp
+Apple turnover | Turnover
+Apple fritter | Apple fritters
+Funnel cake
+Elephant ear | Elephant ears
+Fried ice cream
+Deep-fried Mars bar | Deep fried Mars bar
+Doughnut holes | Donut holes | Timbits
+Jam doughnut | Jelly doughnut | Jelly donut
+Kransekake
+Princess cake | Prinsesstårta
+Semla | Semlor
+Kanelbulle | Kanelbullar
+Lemon posset | Posset
+Syllabub
+Fool | Gooseberry fool | Fruit fool
+Summer pudding
+Bread pudding
+Sticky date pudding
+Self-saucing pudding | Chocolate self-saucing pudding
+Steamed pudding | Steamed sponge | Sponge pudding
+Treacle sponge
+Jam tart | Jam tarts
+Custard tart
+Manchester tart
+Eccles cake
+Chelsea bun
+Iced bun | Iced finger | Finger bun
+Welsh cakes | Welsh cake
+Bara brith
+Cranachan
+Tablet
+Clootie dumpling
+Banana bread
+Zucchini bread
+Lemon bars | Lemon squares
+Magic bars | Seven-layer bars
+Rice Krispie treats | Rice Krispies treats | Rice bubble slice
+Puppy chow | Muddy buddies
+Dirt cup | Dirt cake | Mud cup
+Ambrosia | Ambrosia salad
+Cherry pie
+Blueberry pie
+Chess pie
+Sweet potato pie
+Shoofly pie
+Chocolate cream pie
+Banana cream pie
+Coconut cream pie
+Grasshopper pie
+Icebox cake
+Hummingbird cake
+German chocolate cake
+Devil's food cake
+Texas sheet cake
+Dump cake
+Strawberry shortcake | Shortcake
+Frozen custard
+Soft serve | Soft-serve | Mr Whippy | Ice cream cone | Cone
+Sherbet
+Italian ice
+Choc top | Choc tops
+Chocolate pudding
+Butterscotch pudding
+Tapioca pudding | Tapioca | Sago pudding | Sago
+Semolina pudding | Semolina
+Junket
+Blancmange
+Bavarois | Bavarian cream
+Charlotte | Charlotte russe
+Pots de crème | Pot de creme
+Chocolate truffles | Truffles
+Bonbons
+Pralines | Praline
+Nougat
+Marzipan
+Toffee apple | Candy apple | Caramel apple
+Candy floss | Cotton candy | Fairy floss
+Petit fours | Petits fours
+Chocolate-covered strawberries | Chocolate strawberries
+Frozen banana
+Peanut butter pie
+Oreo cheesecake
+Basque cheesecake | Burnt Basque cheesecake
+New York cheesecake
+Japanese cheesecake | Jiggly cheesecake | Cotton cheesecake
+Soufflé pancakes | Japanese pancakes
+Dutch baby
+Kaiserschmarrn
+Linzer torte
+Dobos torte
+Esterházy torte
+Gugelhupf | Kugelhopf
+Stollen
+Lebkuchen
+Bienenstich | Bee sting cake
+Cheese danish | Danish | Danish pastry
+Rugelach
+Hamantaschen
+Babka
+Sufganiyot
+Krembo
+Kolache | Kolaches
+Pierniczki
+Pączki | Paczki
+Medovik | Honey cake
+Napoleon cake
+Syrniki
+Ptichye moloko | Bird's milk cake
+Trdelník | Chimney cake
+Tarta de Santiago
+Kardinalschnitte
+Pastiera
+Zuppa inglese
+Bonet
+Torrone
+Kladdkaka
+Lussekatter
+Pebernødder
+Æbleskiver | Aebleskiver
+Vínarterta
