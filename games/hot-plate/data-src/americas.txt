@@ -1,0 +1,42 @@
+# id: americas
+# prompt: Name a country in the Americas
+# group: Places
+# emoji: 🌎
+# kind: thing
+# The 35 sovereign states of North, Central and South America and the Caribbean.
+# Territories (Puerto Rico, Greenland, French Guiana, Bermuda, Aruba...) are not countries and are not listed.
+United States | USA | US | America | United States of America | U.S.A. | U.S.
+Canada
+Mexico
+Brazil | Brasil
+Argentina
+Jamaica
+Cuba
+Peru
+Chile
+Colombia
+Venezuela
+Haiti
+Bahamas | The Bahamas
+Ecuador
+Bolivia
+Uruguay
+Paraguay
+Panama
+Costa Rica
+Guatemala
+Honduras
+El Salvador
+Nicaragua
+Dominican Republic
+Barbados
+Trinidad and Tobago | Trinidad | Trinidad & Tobago
+Guyana
+Suriname | Surinam
+Belize
+Grenada
+Saint Lucia | St Lucia | St. Lucia
+Antigua and Barbuda | Antigua | Antigua & Barbuda
+Dominica
+Saint Vincent and the Grenadines | Saint Vincent | St Vincent | St. Vincent | St Vincent and the Grenadines
+Saint Kitts and Nevis | Saint Kitts | St Kitts | St. Kitts | St Kitts and Nevis | St Kitts & Nevis

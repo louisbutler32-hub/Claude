@@ -1,0 +1,139 @@
+# id: sevenletters
+# prompt: Name a country with 7 or more letters
+# group: Places
+# emoji: 🔢
+# kind: thing
+# Letters in the common English short name only (spaces and punctuation ignored); shorter aliases (USA, UK, Congo, Burma) not accepted. Turkey (6) only as Türkiye (7, the UN short name).
+# DR Congo counts (7 letters); the Republic of the Congo only as its full name since 'Congo' is 5. Gambia (6) not counted even as 'The Gambia'.
+United States | America | United States of America
+United Kingdom | Britain | Great Britain
+Germany | Deutschland
+Australia
+New Zealand | Aotearoa
+Ireland | Republic of Ireland
+South Korea | Republic of Korea
+North Korea | Democratic People's Republic of Korea
+Netherlands | Holland | The Netherlands
+Argentina
+South Africa
+Switzerland
+Portugal
+Ukraine
+Jamaica
+Thailand
+Türkiye | Turkiye
+Belgium
+Denmark
+Finland
+Iceland
+Vietnam | Viet Nam
+Philippines | The Philippines
+Indonesia
+Pakistan
+Afghanistan
+Saudi Arabia
+Austria
+Nigeria
+Colombia
+Singapore
+Malaysia
+Morocco
+Croatia
+Venezuela
+Bahamas | The Bahamas
+Hungary
+Czechia | Czech Republic
+Romania
+Bulgaria
+Lebanon
+United Arab Emirates | Emirates
+Bangladesh
+Sri Lanka
+Ethiopia
+Zimbabwe
+Somalia
+Tunisia
+Algeria
+Ecuador
+Bolivia
+Uruguay
+Paraguay
+Costa Rica
+Guatemala
+Honduras
+El Salvador
+Nicaragua
+Dominican Republic
+Barbados
+Trinidad and Tobago | Trinidad | Trinidad & Tobago
+Mongolia
+Kazakhstan
+Vatican City | Vatican | Holy See
+Luxembourg
+Liechtenstein
+San Marino
+Andorra
+Estonia
+Lithuania
+Slovakia | Slovak Republic
+Slovenia
+Belarus
+Georgia
+Armenia
+Azerbaijan
+Albania
+Bosnia and Herzegovina | Bosnia & Herzegovina | Bosnia-Herzegovina
+Montenegro
+North Macedonia | Macedonia
+Moldova
+Uzbekistan
+Papua New Guinea
+Madagascar
+Tanzania
+DR Congo | Democratic Republic of the Congo | Congo-Kinshasa
+Republic of the Congo | Congo-Brazzaville | Congo Republic
+Cameroon
+Senegal
+Ivory Coast | Côte d'Ivoire | Cote d'Ivoire
+Mozambique
+Botswana
+Namibia
+Myanmar
+Cambodia
+East Timor | Timor-Leste | Timor Leste
+Maldives | The Maldives
+Bahrain
+Turkmenistan
+Kyrgyzstan | Kyrgyz Republic
+Tajikistan
+Palestine | State of Palestine | Palestinian Territories
+Suriname | Surinam
+Grenada
+Saint Lucia | St Lucia | St. Lucia
+Antigua and Barbuda | Antigua | Antigua & Barbuda
+Dominica
+Saint Vincent and the Grenadines | Saint Vincent | St Vincent | St. Vincent | St Vincent and the Grenadines
+Saint Kitts and Nevis | Saint Kitts | St Kitts | St. Kitts | St Kitts and Nevis | St Kitts & Nevis
+Seychelles
+Mauritius
+Cape Verde | Cabo Verde
+Eritrea
+Djibouti
+South Sudan
+Burkina Faso | Burkina
+Sierra Leone
+Liberia
+Guinea-Bissau | Guinea Bissau
+Equatorial Guinea
+Central African Republic
+Mauritania
+Burundi
+Lesotho
+Eswatini
+Comoros
+São Tomé and Príncipe | Sao Tome and Principe | Sao Tome | São Tomé
+Vanuatu
+Solomon Islands | Solomons
+Kiribati
+Marshall Islands
+Micronesia | Federated States of Micronesia

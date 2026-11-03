@@ -6,6 +6,7 @@ export const TIERS = [
   { name: "Side Dish", pts: 25 },
   { name: "Main Course", pts: 50 },
   { name: "Chef's Secret", pts: 100 },
+  { name: "Chef's Kiss", pts: 250 }, // the one hidden answer on each plate
 ];
 export const EMOJIS = ["😎", "🤠", "👽", "🦊", "🐸", "🤖", "👻", "🐼", "🦄", "💀", "🧃", "🍉", "🐙", "🦖", "🍄", "🐝"];
 

@@ -121,6 +121,11 @@ export function renderBubbles(popId) {
 /* ---------- the hot plate ---------- */
 
 let clocheAt = null, lastHolder = null;
+// where a player's seat is on screen (for effects)
+export function seatPoint(id) {
+  const s = seatOf(id);
+  return s ? { x: s.x, y: s.y - 20 * L.P } : null;
+}
 function seatOf(id) {
   const i = seating().players.findIndex((p) => p.id === id);
   return i >= 0 && L ? L.seats[i] : null;

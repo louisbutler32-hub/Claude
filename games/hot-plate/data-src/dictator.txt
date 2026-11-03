@@ -1,0 +1,129 @@
+# id: dictator
+# prompt: Name a dictator
+# group: Other
+# emoji: 👑
+# kind: person
+# Rulers widely described as dictators or autocrats: absolute personal or one-party rule, usually seized or kept without free elections.
+# Included as judgement calls: Julius Caesar, Sulla and Cincinnatus (literally held the Roman office of dictator), Napoleon, Oliver Cromwell,
+# Robespierre, Vladimir Putin, Xi Jinping, Ali Khamenei, Nayib Bukele (calls himself "the world's coolest dictator").
+# Not included: elected leaders merely called authoritarian (Erdogan, Orban, Modi), and hereditary monarchs.
+Adolf Hitler | Hitler
+Joseph Stalin | Stalin | Josef Stalin
+Benito Mussolini | Mussolini | Il Duce
+Kim Jong Un | Kim Jong-un
+Mao Zedong | Mao | Chairman Mao | Mao Tse-tung
+Saddam Hussein | Saddam
+Muammar Gaddafi | Gaddafi | Qaddafi | Gadhafi | Muammar al-Gaddafi | Colonel Gaddafi
+Pol Pot
+Idi Amin
+Fidel Castro
+Francisco Franco | Franco | General Franco
+Augusto Pinochet | Pinochet
+Vladimir Putin | Putin
+Napoleon Bonaparte | Napoleon | Napoleon I
+Julius Caesar | Caesar
+Kim Jong Il | Kim Jong-il
+Kim Il Sung | Kim Il-sung
+Bashar al-Assad | Assad | Bashar Assad
+Vladimir Lenin | Lenin
+Robert Mugabe | Mugabe
+Nicolae Ceaușescu | Ceausescu | Ceaușescu
+Xi Jinping
+Alexander Lukashenko | Lukashenko | Aleksandr Lukashenko
+Nicolás Maduro | Maduro | Nicolas Maduro
+Hugo Chávez | Chavez | Hugo Chavez
+Oliver Cromwell | Cromwell
+Ayatollah Khomeini | Khomeini | Ruhollah Khomeini
+Ali Khamenei | Khamenei | Ayatollah Khamenei
+Hosni Mubarak | Mubarak
+Ferdinand Marcos | Marcos
+Manuel Noriega | Noriega
+Slobodan Milošević | Milosevic | Slobodan Milosevic
+Hideki Tojo | Tojo
+Josip Broz Tito | Tito
+Mobutu Sese Seko | Mobutu
+Raúl Castro | Raul Castro
+Hafez al-Assad | Hafez Assad
+Erich Honecker | Honecker
+Enver Hoxha | Hoxha
+António de Oliveira Salazar | Salazar | Antonio Salazar
+Suharto | Soeharto
+Chiang Kai-shek
+Omar al-Bashir | al-Bashir
+Charles Taylor
+Mengistu Haile Mariam | Mengistu
+Jean-Bédel Bokassa | Bokassa | Jean-Bedel Bokassa
+François Duvalier | Papa Doc | Francois Duvalier
+Jean-Claude Duvalier | Baby Doc
+Rafael Trujillo | Trujillo
+Fulgencio Batista | Batista
+Anastasio Somoza | Somoza
+Alfredo Stroessner | Stroessner
+Jorge Rafael Videla | Videla
+Leopoldo Galtieri | Galtieri
+Daniel Ortega | Ortega
+Maximilien Robespierre | Robespierre
+Sulla | Lucius Cornelius Sulla
+Cincinnatus | Lucius Quinctius Cincinnatus
+Porfirio Díaz | Porfirio Diaz
+Antonio López de Santa Anna | Santa Anna
+Juan Perón | Peron | Juan Peron
+Getúlio Vargas | Getulio Vargas
+Park Chung-hee | Park Chung Hee
+Chun Doo-hwan | Chun Doo Hwan
+Ne Win
+Than Shwe
+Min Aung Hlaing
+Ngo Dinh Diem | Diem
+Sani Abacha | Abacha
+Ibrahim Babangida | Babangida
+Yahya Jammeh | Jammeh
+Teodoro Obiang | Obiang | Teodoro Obiang Nguema
+Paul Biya | Biya
+Isaias Afwerki | Afwerki
+Hissène Habré | Hissene Habre | Habre
+Siad Barre | Mohamed Siad Barre
+Hastings Banda | Hastings Kamuzu Banda
+Gnassingbé Eyadéma | Eyadema
+Ahmed Sékou Touré | Sekou Toure
+Francisco Macías Nguema | Macias Nguema
+Zine El Abidine Ben Ali | Ben Ali
+Abdel Fattah el-Sisi | Sisi | el-Sisi | Abdel Fattah al-Sisi
+Gamal Abdel Nasser | Nasser
+Milton Obote | Obote
+Daniel arap Moi | Moi
+Blaise Compaoré | Compaore | Blaise Compaore
+Saparmurat Niyazov | Niyazov | Turkmenbashi
+Gurbanguly Berdimuhamedow | Berdimuhamedov | Gurbanguly Berdimuhamedov
+Islam Karimov | Karimov
+Nursultan Nazarbayev | Nazarbayev
+Emomali Rahmon | Rahmon
+Hun Sen
+Zia-ul-Haq | Muhammad Zia-ul-Haq | General Zia
+Pervez Musharraf | Musharraf
+Ayub Khan
+Yahya Khan
+Efraín Ríos Montt | Rios Montt | Efrain Rios Montt
+Marcos Pérez Jiménez | Perez Jimenez
+Juan Vicente Gómez | Juan Vicente Gomez
+Hugo Banzer | Banzer
+Alberto Fujimori | Fujimori
+Gustavo Rojas Pinilla | Rojas Pinilla
+Jorge Ubico | Ubico
+Maximiliano Hernández Martínez | Hernandez Martinez
+Nayib Bukele | Bukele
+Miklós Horthy | Horthy | Miklos Horthy
+Ion Antonescu | Antonescu
+Ante Pavelić | Pavelic | Ante Pavelic
+Jozef Tiso | Tiso
+Philippe Pétain | Petain | Philippe Petain
+Vidkun Quisling | Quisling
+Engelbert Dollfuss | Dollfuss
+Ioannis Metaxas | Metaxas
+Georgios Papadopoulos | Papadopoulos
+Miguel Primo de Rivera | Primo de Rivera
+Józef Piłsudski | Pilsudski | Jozef Pilsudski
+Wojciech Jaruzelski | Jaruzelski
+Walter Ulbricht | Ulbricht
+Todor Zhivkov | Zhivkov
+Mátyás Rákosi | Rakosi | Matyas Rakosi

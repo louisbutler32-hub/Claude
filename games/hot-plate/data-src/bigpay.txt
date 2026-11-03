@@ -1,0 +1,112 @@
+# id: bigpay
+# prompt: Name a job that pays over $100,000 a year on average
+# group: Work
+# emoji: 💼
+# kind: thing
+Doctor | Physician | Medical Doctor
+Surgeon
+Lawyer | Attorney | Solicitor | Barrister
+Dentist
+Pilot | Airline Pilot | Commercial Pilot | Airline Captain
+Software Engineer | Software Developer | Programmer
+CEO | Chief Executive | Chief Executive Officer
+Anaesthetist | Anesthetist | Anesthesiologist | Anaesthesiologist
+Orthodontist
+Investment Banker | Banker
+Pharmacist
+Psychiatrist
+Judge
+Veterinarian | Vet
+Data Scientist
+Air Traffic Controller
+Neurosurgeon | Brain Surgeon
+Cardiologist | Heart Surgeon
+Dermatologist
+Plastic Surgeon | Cosmetic Surgeon
+Paediatrician | Pediatrician
+Optometrist
+Actuary
+Petroleum Engineer
+Hedge Fund Manager
+Radiologist
+Oral Surgeon
+Orthopaedic Surgeon | Orthopedic Surgeon
+Obstetrician | OB-GYN | Gynaecologist | Gynecologist
+GP | General Practitioner | Family Doctor
+Emergency Physician | ER Doctor | Emergency Doctor
+Ophthalmologist | Eye Surgeon
+Oncologist
+Neurologist
+Nurse Practitioner
+Nurse Anaesthetist | Nurse Anesthetist | CRNA
+Physician Assistant | PA
+Podiatrist
+CFO | Chief Financial Officer
+CTO | Chief Technology Officer
+COO | Chief Operating Officer
+Vice President | VP
+Senator
+Congressman | Congresswoman | Member of Congress
+President
+Prime Minister
+Governor
+NBA Player
+NFL Player
+MLB Player
+NHL Player
+Premier League Footballer
+F1 Driver | Formula 1 Driver | Formula One Driver
+Aerospace Engineer
+Chemical Engineer
+Electrical Engineer
+Computer Hardware Engineer
+Nuclear Engineer
+Machine Learning Engineer | AI Engineer
+Cybersecurity Analyst | Information Security Analyst | Cybersecurity Engineer
+Cloud Architect | Cloud Engineer
+Solutions Architect
+Software Architect
+Site Reliability Engineer | SRE
+DevOps Engineer
+Data Engineer
+Product Manager
+IT Manager | IT Director
+Engineering Manager
+Financial Manager | Finance Manager | Finance Director
+Marketing Manager | Marketing Director
+Sales Manager | Sales Director
+HR Manager | Human Resources Manager | HR Director
+Public Relations Manager | PR Manager
+Purchasing Manager
+Hospital Administrator | Health Services Manager
+Financial Advisor | Financial Adviser
+Portfolio Manager | Fund Manager
+Private Equity Associate | Private Equity
+Venture Capitalist | VC
+Quant | Quantitative Analyst | Quant Trader
+Physicist
+Astronomer
+Economist
+Political Scientist
+Mathematician
+Computer Research Scientist
+Network Architect | Computer Network Architect
+Sales Engineer
+Patent Attorney | Patent Lawyer
+Corporate Lawyer
+Law Firm Partner
+Periodontist
+Endodontist
+Prosthodontist
+Urologist
+Pathologist
+Gastroenterologist
+Psychiatric Nurse Practitioner
+Nurse Midwife
+Nuclear Power Reactor Operator
+School Superintendent | Superintendent
+University President | Vice-Chancellor
+Chief Marketing Officer | CMO
+Chief Information Officer | CIO
+Managing Director
+Head Coach | NFL Coach

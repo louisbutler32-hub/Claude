@@ -1,0 +1,134 @@
+# id: emojifood
+# prompt: Name a food or drink that has an emoji
+# group: Food
+# emoji: 🍔
+# kind: thing
+# One line per emoji in Unicode's Food & Drink set (through Emoji 16.0),
+# first name is what people call it, aliases include the official name.
+# Shared-image emoji are folded into one line (clinking glasses into
+# champagne, clinking beer mugs into beer, brown mushroom into mushroom).
+# Teapot, chopsticks, plates, cutlery, jar and baby bottle are not foods.
+Pizza
+Hamburger | Burger | Cheeseburger
+French fries | Fries | Chips | Hot chips
+Hot dog | Hotdog
+Taco
+Avocado
+Eggplant | Aubergine
+Peach
+Watermelon
+Apple | Red apple
+Banana
+Strawberry | Strawberries
+Ice cream
+Doughnut | Donut
+Cookie | Biscuit
+Birthday cake
+Cake | Shortcake | Strawberry shortcake | Slice of cake | Cake slice
+Coffee | Hot beverage | Hot chocolate
+Beer | Beer mug | Clinking beer mugs | Beers
+Wine | Red wine | Wine glass
+Sushi
+Ramen | Steaming bowl | Noodles | Noodle soup | Pho | Udon
+Spaghetti | Pasta
+Popcorn
+Cherries | Cherry
+Grapes | Grape
+Pineapple
+Lemon
+Orange | Tangerine | Mandarin
+Carrot
+Corn | Ear of corn | Sweetcorn | Corn on the cob | Maize
+Broccoli
+Chocolate | Chocolate bar
+Candy | Lolly | Lollies | Sweets | Sweet
+Lollipop
+Cupcake
+Egg
+Bacon
+Cheese | Cheese wedge
+Bread | Loaf | Toast
+Croissant
+Pancakes | Pancake
+Burrito | Wrap
+Sandwich | Sub
+Steak | Cut of meat | Meat
+Chicken leg | Poultry leg | Drumstick | Chicken | Chicken drumstick | Fried chicken
+Meat on bone | Ham | Ribs | Rib
+Fried egg | Cooking | Eggs
+Mango
+Kiwi | Kiwi fruit | Kiwifruit
+Coconut
+Tomato
+Potato
+Chilli | Chili | Hot pepper | Chile | Chili pepper
+Cucumber
+Mushroom | Brown mushroom
+Pear
+Green apple
+Blueberries | Blueberry
+Champagne | Bottle with popping cork | Sparkling wine | Prosecco | Bubbly | Clinking glasses
+Cocktail | Martini | Cocktail glass
+Tropical drink | Piña colada | Pina colada | Mai tai | Mocktail
+Whisky | Whiskey | Tumbler glass | Scotch | Bourbon
+Milk | Glass of milk
+Tea | Green tea | Teacup | Matcha
+Soda | Soft drink | Fizzy drink | Pop | Cup with straw | Coke
+Bubble tea | Boba | Pearl milk tea
+Juice box | Beverage box | Juice
+Shrimp | Prawn
+Crab
+Lobster
+Squid | Calamari
+Oyster
+Dumpling | Dumplings | Gyoza | Jiaozi | Potsticker
+Fortune cookie
+Takeout box | Takeaway box | Chinese takeaway | Chinese takeout | Noodle box
+Rice | Cooked rice | Bowl of rice
+Curry | Curry rice | Curry and rice
+Rice ball | Onigiri
+Bento | Bento box
+Pie
+Waffle
+Bagel
+Pretzel
+Baguette | French bread | French stick | Baguette bread
+Salad | Green salad
+Kebab | Stuffed flatbread | Doner | Doner kebab | Gyro | Shawarma
+Flatbread | Naan | Pita | Pita bread | Roti
+Falafel
+Honey | Honey pot
+Butter
+Salt
+Garlic
+Onion
+Peanuts | Peanut
+Bell pepper | Capsicum | Pepper | Sweet pepper
+Lettuce | Leafy green | Bok choy | Kale | Cabbage | Spinach | Greens
+Melon | Honeydew | Cantaloupe | Rockmelon
+Lime
+Olive | Olives
+Soft serve | Soft ice cream | Ice cream cone | Cone | Mr Whippy
+Shaved ice | Kakigori | Snow cone
+Custard | Pudding | Flan | Crème caramel | Creme caramel | Purin
+Sweet potato | Roasted sweet potato | Kumara | Yam
+Tempura | Fried shrimp | Ebi fry | Prawn tempura
+Sake
+Stew | Pot of food | Soup | Hotpot | Hot pot
+Paella | Shallow pan of food
+Fondue
+Cereal | Bowl with spoon | Porridge | Oatmeal | Congee
+Canned food | Can | Tin | Tinned food
+Ice | Ice cube
+Mate | Yerba mate
+Tamale
+Dango
+Oden
+Fish cake | Narutomaki | Naruto | Fish cake with swirl | Kamaboko
+Moon cake | Mooncake
+Rice cracker | Senbei
+Chestnut | Chestnuts
+Beans | Kidney beans | Bean
+Ginger | Ginger root
+Pea pod | Peas | Pea | Edamame | Snow peas | Mangetout
+Root vegetable | Beetroot | Beet | Radish | Turnip

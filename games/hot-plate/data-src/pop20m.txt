@@ -1,0 +1,73 @@
+# id: pop20m
+# prompt: Name a country with more than 20 million people
+# group: Places
+# emoji: 👥
+# kind: thing
+# UN World Population Prospects 2024 estimates for 2025. Ukraine counted at UN estimate (~38M).
+# Edge: Kazakhstan (~20.6M) and Chad (~21M UN; some World Bank series ~20M) included.
+# Just under, excluded: Chile (~19.8M), Somalia (~19.7M), Romania (~19M), Senegal (~18.9M), Guatemala, Ecuador, Netherlands, Cambodia.
+China | People's Republic of China | PRC
+India
+United States | USA | US | America | United States of America | U.S.A. | U.S.
+Russia | Russian Federation
+Japan | Nippon
+Brazil | Brasil
+Indonesia
+Mexico
+Germany | Deutschland
+United Kingdom | UK | Britain | Great Britain | U.K.
+France
+Pakistan
+Nigeria
+Italy | Italia
+Spain | España
+Canada
+Australia | Oz
+Egypt
+Philippines | The Philippines
+Vietnam | Viet Nam
+South Korea | Korea | Republic of Korea
+Turkey | Türkiye | Turkiye
+Iran | Persia
+Bangladesh
+Thailand | Siam
+South Africa | RSA
+Argentina
+Colombia
+Ukraine
+Poland
+North Korea | DPRK | Democratic People's Republic of Korea
+Iraq
+Afghanistan
+Saudi Arabia
+Kenya
+Peru
+Malaysia
+Morocco
+Taiwan | Republic of China | Chinese Taipei | ROC
+Venezuela
+Syria
+Sri Lanka | Ceylon
+Nepal
+Ethiopia
+Ghana
+Uganda
+Sudan
+Algeria
+Kazakhstan
+Uzbekistan
+Madagascar
+Tanzania
+DR Congo | Democratic Republic of the Congo | Congo-Kinshasa | DRC | Zaire
+Cameroon
+Ivory Coast | Côte d'Ivoire | Cote d'Ivoire
+Mali
+Niger
+Chad
+Angola
+Mozambique
+Zambia
+Myanmar | Burma
+Yemen
+Burkina Faso | Burkina | Upper Volta
+Malawi

@@ -1,0 +1,93 @@
+# id: lettere
+# prompt: Name a country with the letter E in its name
+# group: Places
+# emoji: 🔤
+# kind: thing
+# Common English short name contains e; only spellings that contain e are accepted (so Ivory Coast only as Côte d'Ivoire).
+United States | America | United States of America
+Mexico
+France
+Germany | Deutschland
+Greece | Hellas
+Sweden
+Ireland | Republic of Ireland | Eire
+Egypt
+New Zealand | Aotearoa
+Peru
+Chile
+United Kingdom | Great Britain
+Belgium
+Denmark
+Iceland
+Netherlands | The Netherlands
+Switzerland
+Turkey | Türkiye | Turkiye
+Israel
+Venezuela
+Ecuador
+Lebanon
+South Korea | Korea | Republic of Korea
+North Korea | Democratic People's Republic of Korea
+Argentina
+Ukraine
+Vietnam | Viet Nam
+Philippines | The Philippines
+Indonesia
+Nigeria
+Kenya
+Singapore
+Czechia | Czech Republic
+Serbia
+United Arab Emirates | Emirates
+Bangladesh
+Nepal
+Ethiopia
+Zimbabwe
+Algeria
+Guatemala
+El Salvador
+Dominican Republic
+Luxembourg
+Liechtenstein
+Estonia
+Slovenia
+Belarus
+Georgia
+Armenia
+Azerbaijan
+Bosnia and Herzegovina | Bosnia & Herzegovina | Bosnia-Herzegovina
+Montenegro
+North Macedonia | Macedonia
+Uzbekistan
+Papua New Guinea
+Republic of the Congo | Congo-Brazzaville | Congo Republic
+Cameroon
+Senegal
+Côte d'Ivoire | Cote d'Ivoire
+Niger
+Mozambique
+Brunei | Brunei Darussalam
+East Timor | Timor-Leste | Timor Leste
+Maldives | The Maldives
+Yemen
+Turkmenistan
+Palestine | State of Palestine | Palestinian Territories
+Suriname
+Belize
+Grenada
+Saint Vincent and the Grenadines | Saint Vincent | St Vincent | St. Vincent | St Vincent and the Grenadines
+Saint Kitts and Nevis | St Kitts and Nevis | St Kitts & Nevis
+Seychelles
+Cape Verde | Cabo Verde
+Eritrea
+Benin
+Sierra Leone
+Liberia
+Guinea
+Guinea-Bissau | Guinea Bissau
+Equatorial Guinea
+Central African Republic
+Lesotho
+Eswatini
+São Tomé and Príncipe | Sao Tome and Principe | Sao Tome | São Tomé
+Micronesia | Federated States of Micronesia

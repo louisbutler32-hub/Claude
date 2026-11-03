@@ -1,0 +1,184 @@
+# id: degree
+# prompt: Name a university degree
+# group: School
+# emoji: 🎓
+# kind: thing
+Law | LLB | Bachelor of Laws | JD | Juris Doctor
+Medicine | MBBS | MBChB | MD | Doctor of Medicine
+Engineering | BE | BEng | Bachelor of Engineering
+Science | BSc | BS | Bachelor of Science
+Arts | BA | Bachelor of Arts
+Commerce | BCom | Bachelor of Commerce
+Business | BBus | Bachelor of Business | Business Administration | BBA
+Psychology
+Nursing | BN | Bachelor of Nursing | BSN
+Computer Science | CS | Comp Sci
+Accounting
+Economics
+Architecture
+Teaching | Education | BEd | Bachelor of Education
+Biology
+Chemistry
+Physics
+Mathematics | Maths | Math
+History
+English | English Literature
+Marketing
+Finance
+Pharmacy
+Dentistry | BDS
+Veterinary Science | Vet Science | BVSc | Vet Med | Veterinary Medicine | DVM
+Biomedical Science | Biomed | BBiomedSc
+Health Science | BHSc | Health Sciences
+Physiotherapy | Physio | Physical Therapy
+Sport Science | Sports Science | Exercise Science
+Journalism
+Communications | Communication Studies | Comms
+Media Studies
+Film | Film Studies
+Fine Arts | BFA | Bachelor of Fine Arts
+Music | BMus | Bachelor of Music
+Design | Bachelor of Design | BDes
+Graphic Design
+Fashion Design
+Interior Design
+Politics | Political Science | PoliSci
+International Relations | IR
+Philosophy
+Sociology
+Criminology
+Anthropology
+Geography
+Geology
+Environmental Science
+Information Technology | IT
+Software Engineering
+Data Science
+Mechanical Engineering
+Civil Engineering
+Electrical Engineering
+Chemical Engineering
+Aerospace Engineering
+Biomedical Engineering
+Mechatronics
+Neuroscience
+Genetics
+Biochemistry
+Microbiology
+Marine Biology
+Zoology
+Ecology
+Agriculture | Agricultural Science
+Forestry
+Statistics
+Actuarial Science
+Optometry
+Occupational Therapy
+Speech Therapy | Speech Pathology | Speech-Language Pathology
+Social Work
+Midwifery
+Paramedicine | Paramedic Science
+Radiography | Medical Imaging
+Nutrition | Dietetics | Nutrition and Dietetics
+Public Health
+Medical Science | Medical Laboratory Science
+Physician Associate
+Theology | Divinity
+Religious Studies
+Classics
+Linguistics
+Languages | Modern Languages
+Spanish
+French
+Japanese
+Chinese | Mandarin
+German
+Māori Studies | Te Reo Māori
+Pacific Studies
+Art History
+Archaeology
+Drama | Theatre | Performing Arts
+Dance
+Creative Writing
+Photography
+Animation
+Game Design | Games Development
+Hospitality | Hotel Management
+Tourism
+Event Management
+Property | Real Estate
+Urban Planning | Planning | Town Planning
+Landscape Architecture
+Construction Management
+Quantity Surveying
+Surveying
+Aviation
+Logistics | Supply Chain Management
+Human Resources | HR
+Management
+Entrepreneurship
+International Business
+Public Relations | PR
+Advertising
+Banking
+Business Analytics
+Cybersecurity
+Artificial Intelligence | AI
+Information Systems
+Astrophysics
+Astronomy
+Earth Science
+Oceanography
+Food Science
+Viticulture | Wine Science
+Horticulture
+Biotechnology
+Pharmacology
+Physiology
+Anatomy
+Immunology
+Medical Physics
+Chiropractic
+Osteopathy
+Podiatry
+Audiology
+Exercise Physiology
+Early Childhood Education
+Primary Teaching
+Secondary Teaching
+Liberal Arts
+PPE | Philosophy Politics and Economics
+Global Studies
+Gender Studies
+Indigenous Studies
+Policy | Public Policy
+Public Administration
+Econometrics
+MBA | Master of Business Administration
+PhD | Doctorate | Doctor of Philosophy
+Master's | MA | MSc
+Music Production
+Sound Engineering | Audio Engineering
+Textiles
+Industrial Design
+Product Design
+Naval Architecture
+Petroleum Engineering
+Mining Engineering
+Nuclear Engineering
+Environmental Engineering
+Materials Science | Materials Engineering
+Robotics
+Sports Management
+Coaching
+Outdoor Education
+Library Science | Information Science
+Museum Studies
+Conservation
+Criminal Justice
+Forensic Science
+Policing
+Military Science
+Sonography
+Dental Hygiene | Oral Health
+Medical Radiation Science

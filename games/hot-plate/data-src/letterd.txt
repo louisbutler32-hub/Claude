@@ -1,0 +1,57 @@
+# id: letterd
+# prompt: Name a country with the letter D in its name
+# group: Places
+# emoji: 🔤
+# kind: thing
+# Common English short name contains d; only spellings that contain d are accepted (so Ivory Coast only as Côte d'Ivoire).
+# Former names are not counted (Swaziland for Eswatini; Holland is accepted as an alias of the Netherlands since both have a d).
+Canada
+Poland
+Ireland | Republic of Ireland
+Sweden
+Finland
+Iceland
+Switzerland
+Netherlands | Holland | The Netherlands
+New Zealand
+India
+Thailand
+Denmark
+Sudan
+Chad
+Dominican Republic
+United States | United States of America
+United Kingdom
+Indonesia
+Saudi Arabia
+Jordan
+United Arab Emirates
+Bangladesh
+Uganda
+Ecuador
+Honduras
+El Salvador
+Barbados
+Trinidad and Tobago | Trinidad | Trinidad & Tobago
+Andorra
+Bosnia and Herzegovina
+North Macedonia | Macedonia
+Moldova
+Madagascar
+Rwanda
+DR Congo | Democratic Republic of the Congo
+Côte d'Ivoire | Cote d'Ivoire
+Cambodia
+Maldives | The Maldives
+Grenada
+Antigua and Barbuda | Antigua & Barbuda
+Dominica
+Saint Vincent and the Grenadines | St Vincent and the Grenadines
+Saint Kitts and Nevis | St Kitts and Nevis
+Cape Verde | Cabo Verde
+Djibouti
+South Sudan
+Burundi
+São Tomé and Príncipe | Sao Tome and Principe
+Solomon Islands
+Marshall Islands

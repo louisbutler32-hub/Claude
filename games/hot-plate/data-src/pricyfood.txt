@@ -1,0 +1,78 @@
+# id: pricyfood
+# prompt: Name a food or ingredient that costs over US$100/kg
+# group: Food
+# emoji: 💸
+# kind: thing
+# Rule: the typical retail price (not a record auction lot) is over
+# US$100/kg. Spices sold in tiny supermarket jars (cardamom, cloves...) are
+# left out unless their bulk price is also over the line, as with saffron
+# and vanilla.
+#
+# Borderline (in, but only for the premium grade or near the line):
+#   Manuka honey (UMF 15+ yes, low grades ~$60/kg), Foie gras (~$100-150/kg),
+#   Ikura (~$90-130/kg), Jamaica Blue Mountain and Kona coffee (~$100-150/kg),
+#   Da Hong Pao (ordinary grades ~$100/kg), Abalone (fresh ~$80-150/kg,
+#   dried far more), Sea cucumber and fish maw (dried, premium grades),
+#   Fugu (wild tiger puffer), Ruby Roman grapes (~$120-200/kg per bunch),
+#   Matsutake (imported ~$100-200/kg, Japanese far more), Edible flowers
+#   (only because they sell by the 10 g punnet).
+# Left out as typically under the line: Yubari King melon and Taiyo no
+# Tamago mango (headline prices are auction lots), Densuke watermelon,
+# king crab, lobster, pine nuts, macadamias, porcini, ordinary wagyu grades.
+Caviar | Sturgeon caviar
+Saffron
+Truffle | Truffles
+White truffle | Alba truffle | White Alba truffle
+A5 Wagyu | Wagyu | Japanese Wagyu | A5 beef
+Kobe beef | Kobe
+Gold leaf | Edible gold | Gold flakes | 24k gold
+Black truffle | Périgord truffle | Perigord truffle
+Beluga caviar | Beluga
+Kopi luwak | Civet coffee | Cat poop coffee
+Otoro | Toro | Bluefin tuna belly | Bluefin tuna | Bluefin toro
+Manuka honey | Mānuka honey
+Vanilla | Vanilla beans | Vanilla pods | Vanilla bean
+Jamón ibérico | Jamon iberico | Iberico ham | Pata negra | Jamón ibérico de bellota | Iberico
+Uni | Sea urchin | Sea urchin roe
+Matcha | Ceremonial matcha
+Foie gras
+Bird's nest | Birds nest | Edible bird's nest | Bird's nest soup | Swiftlet nest
+Shark fin | Shark fin soup | Shark's fin
+Matsutake | Matsutake mushroom | Pine mushroom
+Morels | Morel | Morel mushrooms | Dried morels
+Abalone | Dried abalone | Pāua | Paua
+Almas caviar | Almas
+Osetra caviar | Oscietra | Ossetra | Osetra
+Kaluga caviar | Kaluga
+Sevruga caviar | Sevruga
+Black Ivory coffee
+Geisha coffee | Gesha coffee | Panama Geisha
+Jamaica Blue Mountain coffee | Blue Mountain coffee
+Kona coffee
+Sea cucumber | Bêche-de-mer | Trepang
+Burgundy truffle
+Summer truffle
+Olive Wagyu | Olive beef
+Matsusaka beef | Matsusaka
+Ohmi beef
+Bottarga | Karasumi | Mullet roe
+Fresh wasabi | Wasabi root | Real wasabi
+Ikura | Salmon roe
+Glass eels | Elvers | Angulas | Baby eels
+Percebes | Goose barnacles | Goose barnacle
+Fish maw
+Fugu | Pufferfish | Puffer fish | Blowfish
+Gyokuro
+Silver needle tea | Silver needle | Bai Hao Yin Zhen
+Da Hong Pao
+Finger lime | Caviar lime
+Ruby Roman grapes | Ruby Roman
+Edible silver | Silver leaf | Vark | Varak
+Cordyceps | Yartsa gunbu | Caterpillar fungus
+Wild ginseng
+Pule cheese | Donkey cheese | Pule
+Moose cheese
+White Stilton Gold
+Elvish honey
+Hop shoots
+Edible flowers

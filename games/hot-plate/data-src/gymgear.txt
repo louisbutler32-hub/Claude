@@ -1,0 +1,125 @@
+# id: gymgear
+# prompt: Name a piece of gym equipment
+# group: Gym
+# emoji: 🏋️‍♂️
+# kind: thing
+Dumbbell | dumbbells | dumbells
+Treadmill
+Barbell
+Bench | weight bench | gym bench
+Kettlebell
+Weight plates | plates | weights | plate
+Exercise bike | stationary bike | bike | spin bike
+Rowing machine | rower | erg
+Squat rack | power rack | squat cage | rack
+Elliptical | cross trainer
+Yoga mat | mat | exercise mat
+Pull-up bar | chin-up bar
+Medicine ball | med ball
+Resistance band | resistance bands | bands | band
+Skipping rope | jump rope | rope
+Smith machine
+Leg press | leg press machine
+Cable machine | cable station | cables
+Stair climber | StairMaster | stair machine
+Foam roller
+Exercise ball | Swiss ball | stability ball | fitness ball | gym ball
+Battle ropes | battle rope
+Punching bag | boxing bag | heavy bag
+Boxing gloves
+Lat pulldown machine | lat pulldown
+Chest press machine | chest press
+Pec deck | pec dec
+Leg extension machine | leg extension
+Leg curl machine | leg curl
+EZ bar | EZ curl bar | curl bar
+Trap bar | hex bar
+Plyo box | plyometric box | jump box | box
+Weightlifting belt | lifting belt | belt
+Lifting straps | straps | wrist straps
+Lifting gloves | gym gloves
+Chalk
+Wrist wraps
+Knee sleeves
+Collars | barbell collars | clips
+Assault bike | air bike | fan bike
+Sled | prowler
+Ab wheel | ab roller
+Dip station | dip bars
+Preacher curl bench | preacher bench
+Hack squat machine | hack squat
+Calf raise machine
+Hip thrust machine | glute machine
+Abductor machine | hip abductor
+Adductor machine | hip adductor
+Shoulder press machine
+Seated row machine | row machine
+Bosu ball | BOSU
+Gymnastics rings | rings
+TRX | suspension trainer
+Sandbag
+Slam ball
+Wall ball
+Landmine
+Kettlebell rack
+Dumbbell rack
+Heart rate monitor
+Step | aerobic step | step platform
+Balance board
+Agility ladder
+Cones
+Hurdles
+Sled harness
+Weight vest | weighted vest
+Ankle weights
+Wrist weights
+Hand grips | grip strengthener
+Captain's chair | roman chair
+Back extension bench | hyperextension bench
+GHD | glute-ham developer
+Reverse hyper
+Belt squat machine
+Pendulum squat machine
+Functional trainer
+Multi-gym | home gym
+SkiErg
+Curved treadmill | Woodway
+Recumbent bike
+Climbing wall
+Climbing rope | gym rope
+Peg board
+Parallettes
+Push-up handles
+Olympic bar | Olympic barbell
+Bumper plates
+Fractional plates
+Safety squat bar | SSB
+Cambered bar
+Swiss bar | football bar | multi-grip bar
+Axle bar
+Log | strongman log
+Atlas stones
+Yoke
+Tyre | tire
+Sledgehammer
+Mace
+Clubbells | Indian clubs
+Steel mace
+Vibration plate
+Massage gun | Theragun
+Stretching strap
+Lacrosse ball
+Pilates reformer | reformer
+Mini bands | booty bands
+Hip circle
+Dip belt
+Jammer arms
+Monolift
+Deadlift jack
+Incline bench
+Decline bench
+Ab bench | sit-up bench
+Speed bag
+Double-end bag
+Focus pads | pads
+Kick shield

@@ -1,0 +1,264 @@
+# id: fastfooditem
+# prompt: Name a branded fast-food menu item
+# group: Food
+# emoji: 🍟
+# kind: thing
+# Only names a chain owns or made famous (Big Mac, Zinger), not generic
+# dishes it happens to sell (cheeseburger, hash brown, apple pie, orange
+# chicken). Regional, discontinued and limited-time items count.
+Big Mac
+Whopper
+McFlurry
+Happy Meal
+Chicken McNuggets | McNuggets | McNugget
+McChicken
+Quarter Pounder | QP | Quarter Pounder with Cheese | QPC | Royale with Cheese
+Filet-O-Fish | Fillet-O-Fish | Filet o Fish | Fillet o Fish
+Zinger | Zinger Burger
+Frosty
+Baconator
+Crunchwrap Supreme | Crunchwrap
+Frappuccino | Frap
+Pumpkin Spice Latte | PSL
+Egg McMuffin | McMuffin | Bacon and Egg McMuffin
+McRib
+Blizzard
+Popcorn Chicken
+Doritos Locos Tacos | Doritos Locos | DLT
+Grimace Shake
+Double-Double | Double Double
+Animal Style
+Stuffed Crust
+Shamrock Shake
+Chalupa | Chalupa Supreme
+Mexican Pizza
+Baja Blast | Mountain Dew Baja Blast
+Twister
+Double Down
+Famous Bowl | Famous Bowls
+Original Recipe | Original Recipe Chicken
+KFC Bucket | Bucket | Family Bucket
+McSpicy
+McDouble
+McCrispy
+Big Tasty
+Chicken Royale
+Impossible Whopper | Plant-based Whopper | Rebel Whopper
+Whopper Jr | Whopper Junior
+Double Whopper
+Big Breakfast
+Munchkins
+Timbits
+Original Glazed | Krispy Kreme Original Glazed
+Kiwiburger | Kiwi Burger
+Footlong
+Italian B.M.T. | Italian BMT | BMT
+Chick-fil-A Sandwich | Chick-fil-A Chicken Sandwich
+Popeyes Chicken Sandwich
+Wendy's Spicy Chicken | Spicy Chicken Sandwich
+Pink Drink
+Chicken Fries
+Snack Wrap
+McWrap
+McGriddles | McGriddle
+Sausage McMuffin | Sausage and Egg McMuffin
+Mighty Wings
+McPlant
+Big King
+Bacon King
+Long Chicken | Original Chicken Sandwich
+Rodeo Burger
+Ch'King | Chking
+Croissan'wich | Croissanwich
+Son of Baconator
+Dave's Single | Dave's Double | Dave's Triple
+Junior Bacon Cheeseburger | JBC | Jr Bacon Cheeseburger
+Biggie Bag
+Frosty-ccino | Frostyccino
+Quesarito
+Nachos BellGrande | Nachos Bell Grande
+Cinnamon Twists
+Cheesy Gordita Crunch | Gordita Crunch | Gordita
+Beefy 5-Layer Burrito | 5-Layer Burrito | Beefy Five Layer Burrito
+Burrito Supreme
+Quesalupa
+Naked Chicken Chalupa
+Cheesy Roll Up
+Nacho Fries
+Cinnabon Delights
+Cravings Box
+Meat Lover's | Meat Lovers | Meatlovers
+Pan Pizza | Original Pan
+Cheesy Bites
+P'Zone | PZone
+Big New Yorker
+Pizza Hut Melts | Melts
+Triple Treat Box
+Super Supreme
+ExtravaganZZa | Extravaganza
+MeatZZa | Meatzza
+Pacific Veggie
+Mighty Meaty
+Brooklyn Style
+Stuffed Cheesy Bread
+Parmesan Bread Bites
+Chocolate Lava Crunch Cake
+Memphis BBQ Chicken
+Crazy Bread
+Hot-N-Ready | Hot N Ready
+Crazy Puffs
+Papadia
+Unicorn Frappuccino
+Java Chip Frappuccino
+Dragon Drink
+Puppuccino | Puppucino | Pup Cup
+Egg Bites | Sous Vide Egg Bites
+Medicine Ball | Honey Citrus Mint Tea
+Iced Brown Sugar Oatmilk Shaken Espresso | Brown Sugar Shaken Espresso
+Refresher | Refreshers | Starbucks Refresher
+Coolatta
+Dunkaccino
+Box O' Joe | Box of Joe
+Wake-Up Wrap
+Boston Kreme
+Iced Capp
+Chick-fil-A Sauce | Chick fil A Sauce
+Polynesian Sauce
+Chick-n-Strips
+Chick-n-Minis
+Frosted Lemonade
+Spicy Deluxe
+Cool Wrap
+Ocean Water
+Sonic Blast
+Route 44
+Dilly Bar
+Peanut Buster Parfait
+Misty Slush | Mr Misty | Mister Misty
+Buster Bar
+Beef 'n Cheddar | Beef n Cheddar
+Jamocha Shake
+Horsey Sauce
+Arby's Sauce
+Meat Mountain
+Jumbo Jack
+Sourdough Jack
+Munchie Meal
+Monster Taco | Monster Tacos
+Famous Star
+Western Bacon Cheeseburger | Western Bacon
+Six Dollar Burger
+Thickburger
+Super Star
+Big Carl
+Animal Fries
+Protein Style
+4x4 | Four by Four
+Flying Dutchman
+ShackBurger | Shack Burger
+Shack Stack
+SmokeShack
+'Shroom Burger | Shroom Burger
+ButterBurger | Butter Burger
+Crave Case
+Honey Butter Chicken Biscuit
+Whatachick'n | Whatachicken
+Steakburger
+Big Buford
+Teen Burger
+Papa Burger
+Mozza Burger
+Chickenjoy
+Jolly Spaghetti
+Yumburger
+Peach Mango Pie
+Wing Roulette
+Espetada
+Steak Bake
+Vegan Sausage Roll | Greggs Vegan Sausage Roll
+Sausage, Bean & Cheese Melt | Sausage Bean and Cheese Melt
+Bondi Burger
+Cane's Sauce | Canes Sauce
+Box Combo
+Caniac Combo
+Sofritas
+Bo-Berry Biscuit
+Zinger Box
+Tower Burger | Zinger Tower | Zinger Tower Burger
+Go Bucket
+Wicked Wings
+Krushers | Krusher
+KFC Pot Pie | Pot Pie
+Chicken Littles
+Boneless Banquet
+Box Master
+Extra Crispy
+Kentucky Grilled Chicken
+Mighty Bucket for One
+Chizza
+Secret Recipe Fries
+Zinger Stacker
+Subway Club
+Spicy Italian
+Meatball Marinara | Meatball Sub
+Cold Cut Combo
+Veggie Delite
+Sweet Onion Chicken Teriyaki
+Chicken Bacon Ranch Melt
+Subway Melt
+Grand Big Mac
+Double Big Mac
+Chicken Big Mac
+Big Arch
+Mayo Chicken
+Chicken Legend
+Chicken Selects
+McFeast
+Mighty Angus
+Georgie Pie
+McLobster
+McDLT
+Arch Deluxe
+McPizza
+McLean Deluxe
+Big N' Tasty | Big N Tasty
+Hula Burger
+McAloo Tikki
+Maharaja Mac
+McSpaghetti
+Chicken McDo
+Teriyaki McBurger
+Ebi Filet-O
+Tsukimi Burger
+Gracoro
+McArabia
+McBaguette
+Croque McDo
+Szechuan Sauce
+Travis Scott Meal
+BTS Meal
+Adult Happy Meal | Cactus Plant Flea Market Box
+Minecraft Meal
+Angry Whopper
+Halloween Whopper
+Whopper Melt
+Stacker | BK Stacker
+Tendercrisp
+Rodeo King
+Hershey's Sundae Pie
+Satisfries
+Mac n' Cheetos
+Pretzel Bacon Pub | Pretzel Bacon Pub Burger
+Big Bacon Classic
+Saucy Nuggs
+Breakfast Baconator
+Breakfast Crunchwrap
+Grilled Cheese Burrito
+Cheesy Fiesta Potatoes | Fiesta Potatoes
+Meximelt
+Enchirito
+7-Layer Burrito | Seven Layer Burrito
+Double Decker Taco
+Volcano Taco
+SuperSONIC | SuperSonic Double Cheeseburger
+Hunger-Buster | Hunger Buster

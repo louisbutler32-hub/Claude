@@ -1,0 +1,469 @@
+# id: birdinsect
+# prompt: Name a bird or insect
+# group: Animals
+# emoji: 🐦
+# kind: thing
+Bee | honeybee | bees
+Ant | ants
+Butterfly | butterflies
+Eagle
+Fly | housefly | flies | houseflies
+Mosquito | mozzie
+Penguin
+Owl | owls
+Parrot
+Chicken | hen | rooster | hens
+Duck | ducks
+Pigeon
+Ladybug | ladybird
+Seagull | gull | gulls
+Flamingo
+Crow | crows
+Wasp | wasps
+Beetle
+Kiwi | kiwis
+Grasshopper
+Cockroach | roach | cockroaches | roaches
+Dragonfly | dragonflies
+Moth | moths
+Swan | swans
+Peacock | peafowl | peahen
+Ostrich | ostriches
+Robin
+Hummingbird
+Turkey
+Goose | geese
+Sparrow
+Hawk | hawks
+Falcon
+Parakeet | budgie | budgerigar
+Cricket
+Termite
+Flea | fleas
+Caterpillar
+Woodpecker
+Toucan
+Pelican
+Emu | emus
+Bumblebee
+Firefly | fireflies
+Vulture
+Kookaburra
+Hornet
+Cockatoo
+Magpie
+Blackbird
+Bluebird
+Raven
+Stork
+Dove | doves
+Swallow
+Tūī | tūīs
+Kea | keas
+Pūkeko
+Kererū | wood pigeon | kūkupa
+Fantail | pīwakawaka
+Kākāpō
+Starling
+Finch | finches
+Canary | canaries
+Cardinal
+Blue jay | jay | jays
+Heron
+Kingfisher
+Albatross | albatrosses
+Puffin
+Condor
+Crane
+Lovebird
+Macaw
+Cassowary | cassowaries
+Roadrunner
+Louse | lice | head lice | lices
+Praying mantis | mantis | Praying mantises | mantises
+Stick insect | walking stick | stick bug
+Cicada
+Weta | wetas
+Gnat | gnats
+Aphid
+Silverfish
+Earwig
+Stink bug
+Bed bug
+Dung beetle
+Stag beetle
+Moa | moas
+Takahē
+Weka | wekas
+Kākā | kākās
+Morepork | ruru | rurus
+Tomtit | miromiro
+Bellbird | korimako
+Silvereye | waxeye | tauhou
+Mynah | myna | Indian myna | mynas
+Lorikeet | rainbow lorikeet
+Galah
+Thrush | thrushes
+Wren | wrens
+Lyrebird
+Tawny frogmouth | frogmouth
+Kestrel
+Osprey
+Buzzard
+Kite | kites
+Ibis | bin chicken | ibises
+Quail
+Pheasant
+Partridge
+Grouse
+Mockingbird
+Nightingale
+Skylark | lark | larks
+Goldfinch | goldfinches
+Chaffinch | chaffinches
+Bullfinch | bullfinches
+Greenfinch | greenfinches
+Hoopoe
+Oriole
+Tanager
+Warbler
+Chickadee
+Nuthatch | nuthatches
+Tit | great tit | blue tit | tits
+Yellowhammer
+Cuckoo
+Dodo | dodos
+Shoebill
+Secretary bird
+Hornbill
+Bird of paradise
+Quetzal
+Cormorant | shag | shags
+Gannet
+Tern | terns
+Petrel
+Shearwater
+Booby | blue-footed booby | boobies | blue-footed boobies
+Frigatebird
+Sandpiper
+Plover
+Dotterel
+Oystercatcher
+Godwit | bar-tailed godwit
+Avocet
+Stilt
+Snipe
+Curlew
+Lapwing
+Spoonbill
+Egret
+Bittern
+Coot | coots
+Moorhen
+Rail | rails
+Mallard
+Teal | teals
+Wigeon
+Shoveler
+Pintail
+Wood duck
+Paradise shelduck | paradise duck | pūtangitangi
+Blue duck | whio | whios
+Grebe
+Loon | diver | loons
+Kakariki
+Saddleback | tīeke
+Stitchbird | hihi | hihis
+Rifleman | tītitipounamu | riflemen
+Kōkako
+Huia | huias
+Rosella
+Cockatiel
+Corella
+Black cockatoo
+Conure
+African grey | African grey parrot
+Currawong
+Butcherbird
+Peewee | magpie-lark
+Willie wagtail | wagtail
+Honeyeater
+Wattlebird
+Fairywren | superb fairywren
+Pardalote
+Bowerbird | satin bowerbird
+Brolga
+Jabiru
+Malleefowl
+Brush turkey | bush turkey
+Magpie goose | Magpie geese
+Black swan
+Mute swan
+Bald eagle
+Golden eagle
+Harpy eagle
+Wedge-tailed eagle
+Sea eagle
+Harrier | swamp harrier | kāhu | kāhus
+Peregrine falcon
+Merlin
+Sparrowhawk
+Goshawk
+Barn owl
+Snowy owl
+Eagle owl
+Great horned owl
+Burrowing owl
+Nightjar
+Swift
+Martin
+Treecreeper
+Dipper
+Bulbul
+Shrike
+Drongo
+Weaver | weaverbird
+Sunbird
+Mousebird
+Turaco
+Ground hornbill
+Guineafowl
+Rhea | rheas
+Tinamou
+Bee-eater
+Roller
+Trogon
+Jacana
+Sunbittern
+Hoatzin
+Junco
+Grackle
+Cowbird
+Meadowlark
+Bobolink
+Towhee
+Phoebe
+Flycatcher
+Vireo
+Kinglet
+Waxwing | cedar waxwing
+Catbird
+Thrasher
+Pipit
+Bunting
+Linnet
+Siskin
+Redpoll
+Crossbill
+Grosbeak
+Dunnock
+Jackdaw
+Rook | rooks
+Chough
+Nutcracker
+Carpenter bee
+Mason bee
+Yellowjacket
+Paper wasp
+Mud dauber
+Sawfly | sawflies
+Fire ant
+Bullet ant
+Army ant
+Leafcutter ant
+Carpenter ant
+Bull ant | bulldog ant
+Horsefly | horseflies
+Fruit fly | Fruit flies
+Blowfly | bluebottle | blowflies
+Botfly | botflies
+Tsetse fly | Tsetse flies
+Crane fly | daddy longlegs | Crane flies
+Sandfly | sandflies
+Hoverfly | hoverflies
+Midge
+Mayfly | mayflies
+Stonefly | stoneflies
+Caddisfly | caddisflies
+Damselfly | damselflies
+Lacewing
+Antlion
+Dobsonfly | dobsonflies
+Glowworm
+Weevil
+Boll weevil
+Scarab | scarab beetle
+Rhinoceros beetle | rhino beetle
+Hercules beetle
+Goliath beetle
+Longhorn beetle
+Click beetle
+Tiger beetle
+Ground beetle
+Diving beetle
+Bombardier beetle
+Christmas beetle
+Huhu beetle | huhu | huhus
+Japanese beetle
+Colorado potato beetle
+June bug | June beetle
+Cockchafer
+Mealworm
+Woodworm
+Firebrat
+Monarch butterfly | monarch | Monarch butterflies | monarches
+Swallowtail
+Painted lady | Painted ladies
+Red admiral
+Cabbage white
+Blue morpho | morpho
+Peacock butterfly | Peacock butterflies
+Birdwing
+Hawk moth | sphinx moth
+Luna moth
+Atlas moth
+Silk moth | silkworm
+Gypsy moth
+Clothes moth
+Tiger moth
+Puriri moth
+Bogong moth
+Leafhopper
+Planthopper
+Treehopper
+Spittlebug | froghopper
+Water strider | pond skater
+Water boatman | Water boatmen
+Backswimmer
+Assassin bug
+Shield bug
+Mealybug
+Scale insect
+Whitefly | whiteflies
+Thrips
+Katydid
+Locust
+Mole cricket
+Cave weta | cave cricket
+Tree weta
+Giant weta | wētāpunga
+Leaf insect
+Orchid mantis | Orchid mantises
+German cockroach | German cockroaches
+Booklouse
+Bark louse | Bark lice
+Scorpionfly | scorpionflies
+Snakefly | snakeflies
+Bee fly | Bee flies
+Robber fly | Robber flies
+Deer fly | Deer flies
+Black fly | Black flies
+Stable fly | Stable flies
+Hornworm
+Inchworm
+Bagworm
+Armyworm
+Cutworm
+Woolly bear
+Bush cricket
+Dung fly | Dung flies
+Tachinid fly | Tachinid flies
+Ichneumon wasp
+Gall wasp
+Fig wasp
+Spider wasp
+Tarantula hawk
+Velvet ant
+Cuckoo wasp
+Snowy egret
+Great blue heron
+Sandhill crane
+Whooping crane
+Wild turkey
+Prairie chicken
+Ptarmigan
+Capercaillie
+Woodcock
+Kiskadee
+Cock-of-the-rock
+Manakin
+Toucanet
+Aracari
+Barbet
+Honeyguide
+Wryneck
+Flicker
+Sapsucker
+Pied stilt
+Banded dotterel
+Black stilt | kakī | kakīs
+Mohua | yellowhead
+Pīpipi | brown creeper
+Whitehead | pōpokotea
+Fernbird | mātātā
+Kōtare | sacred kingfisher
+Shining cuckoo | pīpīwharauroa
+Long-tailed cuckoo | koekoeā
+Little blue penguin | kororā | little penguin | fairy penguin
+Yellow-eyed penguin | hoiho
+Emperor penguin
+King penguin
+Adélie penguin
+Gentoo penguin
+Chinstrap penguin
+Rockhopper penguin
+Fiordland penguin | tawaki
+Royal albatross | toroa | Royal albatrosses
+Mollymawk
+Muttonbird | tītī | sooty shearwater | tītīs
+Prion
+Storm petrel
+Fulmar
+Skua | skuas
+Kittiwake
+Guillemot
+Razorbill
+Auk | auks
+Great auk
+Passenger pigeon
+Rock pigeon | rock dove
+Turtle dove
+Mourning dove
+Collared dove
+Bronzewing
+Crested pigeon
+Fruit dove
+Nicobar pigeon
+Song thrush | Song thrushes
+Blackcap
+Chiffchaff
+Goldcrest
+Firecrest
+Redstart
+Wheatear
+Stonechat
+Whinchat
+Fieldfare
+Redwing
+Mistle thrush | Mistle thrushes
+Ring ouzel
+Hawfinch | hawfinches
+Brambling
+Twite
+Reed warbler
+Sedge warbler
+Bushtit
+Titmouse
+Wood thrush | Wood thrushes
+Hermit thrush | Hermit thrushes
+Veery | veeries
+Ovenbird
+Yellowthroat
+Indigo bunting
+Painted bunting
+Scarlet tanager
+Western tanager
+Baltimore oriole
+Red-winged blackbird
+Bee hummingbird
+Sword-billed hummingbird

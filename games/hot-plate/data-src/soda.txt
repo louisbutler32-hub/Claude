@@ -1,0 +1,169 @@
+# id: soda
+# prompt: Name a soda or soda brand
+# group: Food
+# emoji: 🥤
+# kind: thing
+# Carbonated soft drinks: generic types and brands / well-known variants.
+# Brand-name mineral waters, energy drinks and juices are left out.
+Coca-Cola | Coke | Coca Cola
+Pepsi
+Sprite
+Fanta
+Lemonade | Lemon soda
+Cola
+Dr Pepper | Dr. Pepper
+Mountain Dew | Mtn Dew
+Root beer
+Ginger ale
+Ginger beer
+7 Up | 7UP | Seven Up
+Diet Coke
+Coke Zero | Coca-Cola Zero | Coke No Sugar
+Pepsi Max
+Cream soda | Creaming soda
+Cherry Coke | Cherry Cola
+Vanilla Coke
+Orange soda | Orangeade
+Grape soda
+Tonic water | Tonic
+Soda water | Club soda | Seltzer | Sparkling water
+Schweppes
+Sunkist
+A&W | A&W Root Beer
+Canada Dry
+L&P | Lemon & Paeroa | Lemon and Paeroa
+Irn-Bru | Irn Bru
+Solo
+Lilt
+Tango
+Fresca
+Crush | Orange Crush
+Barq's | Barqs
+Mug | Mug Root Beer
+Lucozade
+Vimto
+Diet Pepsi
+Pepsi Zero Sugar | Pepsi Zero
+Sprite Zero
+Fanta Grape
+Baja Blast | Mountain Dew Baja Blast
+Code Red | Mountain Dew Code Red
+Dr Pepper Cherry
+Cherry soda
+Lemon-lime soda | Lemon-lime
+Sarsaparilla | Sars
+Birch beer
+Red cream soda
+Pineapple soda
+Lime soda
+Bitter lemon
+Dandelion and burdock | Dandelion & Burdock
+Kola champagne
+Kirks
+Bundaberg | Bundy
+Pub Squash | Kirks Pub Squash
+Passiona
+Portello
+Lift
+Big Red
+Faygo
+Cheerwine
+Sun Drop
+Squirt
+Vernors
+Mello Yello
+Surge
+Sierra Mist
+Starry
+RC Cola | Royal Crown | Royal Crown Cola
+Pibb | Mr Pibb | Pibb Xtra
+Slice
+Shasta
+Jones Soda | Jones
+Stewart's | Stewarts
+IBC | IBC Root Beer
+Dad's Root Beer | Dad's
+Moxie
+Kickapoo Joy Juice | Kickapoo
+Olipop
+Poppi
+Jarritos
+Ramune
+Inca Kola
+Guaraná | Guarana | Guaraná Antarctica
+Kas
+Orangina
+San Pellegrino | Sanpellegrino | Aranciata
+Fentimans
+Fever-Tree | Fever Tree
+Mirinda
+Thums Up
+Limca
+Appy Fizz
+Mountain Dew Voltage | Voltage
+Sprite Cranberry
+Pepsi Blue
+Crystal Pepsi
+New Coke
+Tab
+OK Soda
+Josta
+Fanta Pineapple
+Cherryade
+Limeade
+Pink lemonade
+Old Jamaica | Old Jamaica Ginger Beer
+D&G | D&G Ginger Beer
+Ting
+Bigga
+KA | KA Soda
+Malta | Supermalt
+Tarax
+Saxbys | Saxby's
+Foxton Fizz
+Karma Cola
+Phoenix | Phoenix Organic
+Barr | Barr's
+Panda Pops
+Red Kola
+Chinotto
+Spezi
+Afri-Cola | Afri Cola
+Fritz-Kola | Fritz Kola
+Club-Mate | Club Mate
+Almdudler
+Apfelschorle | Apple spritzer
+Kvass
+Tarkhuna | Tarragon soda
+Sarsi
+Royal Tru-Orange
+Big Cola
+Postobón | Postobon
+Manzanita Sol
+Sidral Mundet
+Coco Rico
+Kola Real
+Ironbeer
+Cockta
+Cuba Cola
+Pop Cola
+Faxe Kondi
+Pommac
+Julmust
+Sinalco
+Bluna
+Schwip Schwap
+Mezzo Mix
+Bionade
+Calpis Soda | Calpico Soda
+Melon soda
+Yuzu soda
+Sparkling apple juice | Apple fizz
+Shloer
+Appletiser
+Cherry Pepsi | Pepsi Wild Cherry
+Diet Dr Pepper
+Dr Pepper Zero
+Vanilla Pepsi
+Mountain Dew Livewire | Livewire
+Coke Life | Coca-Cola Life

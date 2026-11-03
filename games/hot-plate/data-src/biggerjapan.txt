@@ -1,0 +1,69 @@
+# id: biggerjapan
+# prompt: Name a country bigger than Japan
+# group: Places
+# emoji: 📏
+# kind: thing
+# Total area > Japan's 377,975 km2. Smallest qualifiers: Zimbabwe 390,757, Paraguay 406,752, Iraq 438,317, Morocco 446,550 (without Western Sahara).
+# Edge: Norway 385,207 km2 total incl. Svalbard (mainland alone ~324,000; by World Bank land area 364,285 vs Japan 364,500) - included on total area.
+# Just smaller, excluded: Germany 357,592, Republic of the Congo 342,000, Finland 338,000, Vietnam 331,000, Malaysia 330,800.
+Russia | Russian Federation
+Canada
+China | People's Republic of China | PRC
+United States | USA | US | America | United States of America | U.S.A. | U.S.
+Brazil | Brasil
+Australia | Oz
+India
+Argentina
+Mexico
+Saudi Arabia
+Indonesia
+Egypt
+France
+Spain | España
+Iran | Persia
+Kazakhstan
+Mongolia
+South Africa | RSA
+Peru
+Chile
+Turkey | Türkiye | Turkiye
+Algeria
+Libya
+Ukraine
+Sweden
+Pakistan
+Nigeria
+Colombia
+DR Congo | Democratic Republic of the Congo | Congo-Kinshasa | DRC | Zaire
+Ethiopia
+Afghanistan
+Thailand | Siam
+Kenya
+Madagascar
+Iraq
+Sudan
+Venezuela
+Bolivia
+Norway
+Morocco
+Zimbabwe
+Somalia
+Paraguay
+Uzbekistan
+Papua New Guinea | PNG
+Tanzania
+Cameroon
+Mali
+Niger
+Chad
+Angola
+Mozambique
+Zambia
+Botswana
+Namibia
+Myanmar | Burma
+Yemen
+Turkmenistan
+South Sudan
+Central African Republic | CAR
+Mauritania

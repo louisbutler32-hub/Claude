@@ -22,6 +22,8 @@
   <!-- on the table -->
   <div id="seats" class="layer"></div>
   <div id="bubbles" class="layer"></div>
+  <div id="fx" class="layer fx" aria-hidden="true"></div>
+  <div class="kiss-banner" id="kiss-banner" hidden aria-live="polite"></div>
   <div id="cloche" class="cloche" data-mode="idle" aria-hidden="true">
     <div class="hop">
       <div class="steam"><i></i><i></i><i></i></div>
@@ -109,7 +111,7 @@
     <div id="dock-play" hidden>
       <form class="answer-row" id="answer-form" hidden>
         <input id="answer-input" class="field hot" maxlength="60" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="send" placeholder="your plate! type an answer…" aria-label="Your answer">
-        <button class="btn hot" type="submit">serve</button>
+        <button class="btn hot" id="serve-btn" type="submit">serve</button>
       </form>
       <p class="turn-line" id="turn-line"></p>
       <p class="flash" id="flash" aria-live="polite"></p>
@@ -121,6 +123,7 @@
   <!-- room code + chat: a column on wide screens, a drawer on phones -->
   <aside class="side" id="side" hidden>
     <section class="panel">
+      <button class="side-close" id="side-close" aria-label="Close chat" title="Close">✕</button>
       <div class="label rule">room code</div>
       <div class="side-code" id="side-code"></div>
       <button class="side-link" id="side-link" title="Copy invite link"></button>
@@ -205,6 +208,7 @@
       <li>Rarer answers score more, and enough points win a life back.</li>
       <li>Serve three in a row without a wrong guess for a <b>🌶️ spicy streak</b>: ×1.5 points, then ×2 from five.</li>
       <li>Sign in to keep your points, your daily streak 🔥 and your win streak 👑.</li>
+      <li>Every plate hides one <b>💋 chef's kiss</b>: a rare-but-gettable answer worth 250. Find it and the whole table knows.</li>
       <li>Last one at the table wins.</li>
     </ol>
     <div class="chips">
@@ -212,6 +216,7 @@
       <span class="chip t1">side dish · 25</span>
       <span class="chip t2">main course · 50</span>
       <span class="chip t3">chef's secret · 100</span>
+      <span class="chip t4">💋 chef's kiss · 250</span>
     </div>
     <button class="btn" data-close>got it</button>
   </div>

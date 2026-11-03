@@ -1,0 +1,155 @@
+# id: billboard10
+# prompt: Name a song that hit number one on the Billboard Hot 100 in the last 10 years
+# group: Music
+# emoji: 🥇
+# kind: thing
+# Source: Wikipedia "List of Billboard Hot 100 number ones of 2016" ... "of 2026"
+# (fetched 2026-11-03; every song that topped the chart in those years). Ordered by
+# fame with weeks at number one as the main tiebreak.
+Old Town Road
+Despacito
+Shape of You
+Blinding Lights
+As It Was
+Bad Guy
+Anti-Hero | Antihero
+Flowers
+Drivers License | Driver's License | Drivers Licence
+Stay
+God's Plan | Gods Plan
+All I Want for Christmas Is You
+Shallow
+Someone You Loved
+7 Rings | Seven Rings
+Golden
+Die with a Smile
+Not Like Us
+Sicko Mode
+Butter
+Dynamite
+Señorita | Senorita
+Thank U, Next | Thank U Next | Thank You, Next | Thank You Next
+Kill Bill
+Good 4 U | Good for U | Good for You
+Cruel Summer
+A Bar Song (Tipsy) | A Bar Song | Tipsy
+Havana
+Closer
+Easy on Me
+Heat Waves | Heatwaves
+Luther
+Please Please Please
+Vampire
+Paint the Town Red
+Rockstar
+Last Night
+The Fate of Ophelia | Fate of Ophelia
+Manchild
+Watermelon Sugar
+Sunflower
+Circles
+WAP
+Perfect
+Savage Love (Laxed – Siren Beat) | Savage Love | Savage Love (Laxed - Siren Beat)
+Mood
+One Dance
+Work
+Hello
+Sorry
+Love Yourself
+Look What You Made Me Do
+Bodak Yellow
+Truth Hurts
+We Don't Talk About Bruno | We Dont Talk About Bruno
+Girls Like You
+In My Feelings | Kiki Do You Love Me
+Ordinary
+Industry Baby
+Montero (Call Me by Your Name) | Montero | Call Me by Your Name
+Save Your Tears
+Peaches
+The Box
+Lose You to Love Me
+Rain on Me
+Lose Control
+Unholy
+Seven
+Like Crazy
+I Like It | I Like It Like That
+Starboy
+Humble
+Can't Stop the Feeling! | Can't Stop the Feeling | Cant Stop the Feeling
+Cheap Thrills
+Psycho
+Sad!
+This Is America
+Nice for What
+That's What I Like | Thats What I Like
+Bad and Boujee
+Rockin' Around the Christmas Tree | Rocking Around the Christmas Tree | Rockin Around the Christmas Tree
+Fortnight
+Texas Hold 'Em | Texas Hold Em
+Break My Soul
+About Damn Time
+Bad Habit
+Leave the Door Open
+Without Me
+Positions
+Willow
+Cardigan
+Die for You
+Too Sweet
+I Had Some Help
+Lovin on Me | Lovin' on Me | Loving on Me
+First Class
+Is It Over Now? | Is It Over Now
+All Too Well (Taylor's Version) | All Too Well
+Yes, And? | Yes And
+We Can't Be Friends (Wait for Your Love) | We Can't Be Friends | We Cant Be Friends
+Stuck with U | Stuck with You
+Say So
+Savage
+Highest in the Room
+Heartless
+Sucker
+Pillowtalk | Pillow Talk
+Panda
+Black Beatles
+I'm the One | Im the One
+Like That
+Super Freaky Girl
+Permission to Dance
+Life Goes On
+My Universe
+Toosie Slide
+Rapstar
+Up
+Wait for U | Wait for You
+Jimmy Cooks
+Way 2 Sexy | Way Too Sexy
+What's Next | Whats Next
+Slime You Out
+First Person Shooter
+Squabble Up
+Hiss
+Carnival
+Love Somebody
+4x4 | Four by Four
+What I Want
+Choosin' Texas | Choosing Texas | Choosin Texas
+I Just Might
+Patient Zero
+Opalite
+Aperture
+DTMF | Debí Tirar Más Fotos | Debi Tirar Mas Fotos
+Swim
+Drop Dead
+Hate That I Made You Love Me
+Janice STFU
+I Knew It, I Knew You | I Knew It I Knew You
+Try That in a Small Town
+Rich Men North of Richmond
+I Remember Everything
+Franchise
+Trollz
+The Scotts

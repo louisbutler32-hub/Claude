@@ -1,0 +1,18 @@
+# id: gymnz
+# prompt: Name a gym in New Zealand
+# group: Gym
+# emoji: 🏋️
+# kind: thing
+Les Mills
+CityFitness | City Fitness | City Fit
+Snap Fitness | Snap
+Anytime Fitness | Anytime
+Jetts | Jetts Fitness
+Flex Fitness | Flex
+CrossFit
+F45 | F45 Training
+Club Physical
+Orangetheory | Orangetheory Fitness | OTF
+BFT | Body Fit Training
+YMCA
+Curves

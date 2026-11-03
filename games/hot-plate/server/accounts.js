@@ -17,7 +17,7 @@ const sha = (s) => crypto.createHash("sha256").update(s).digest("hex");
 const hashPin = (pin, salt) => crypto.scryptSync(String(pin), salt, 32).toString("hex");
 
 function freshStats() {
-  return { games: 0, wins: 0, points: 0, best: 0, served: 0, bestFind: null, dayStreak: 0, bestDayStreak: 0, lastDay: null, winStreak: 0, bestWinStreak: 0, bestHotStreak: 0 };
+  return { games: 0, wins: 0, points: 0, best: 0, served: 0, kisses: 0, bestFind: null, dayStreak: 0, bestDayStreak: 0, lastDay: null, winStreak: 0, bestWinStreak: 0, bestHotStreak: 0 };
 }
 
 /* ---------- storage backends ---------- */
@@ -125,8 +125,9 @@ class Accounts {
   view(acct) { return { name: acct.name, emoji: acct.emoji, stats: { ...acct.stats, dayStreak: this.liveDayStreak(acct) } }; }
 
   // called once per finished game for every signed-in player who sat down for it
-  record(acct, { score, served, won, multiplayer, best, hotStreak }) {
+  record(acct, { score, served, won, multiplayer, best, hotStreak, kisses }) {
     const s = acct.stats;
+    s.kisses = (s.kisses || 0) + (kisses || 0);
     s.games++; s.points += score; s.served += served;
     s.best = Math.max(s.best, score);
     s.bestHotStreak = Math.max(s.bestHotStreak, hotStreak || 0);

@@ -1,0 +1,158 @@
+# id: cricketrugby
+# prompt: Name a country with an active international cricket or rugby team
+# group: Places
+# emoji: 🏏
+# kind: thing
+# ICC full + associate members and World Rugby full + associate members that are countries (as of 2025).
+# England, Scotland and Wales count; Ireland is the all-island team. West Indies listed as its ten sovereign member nations.
+# Not countries, so not listed: Hong Kong, Bermuda, Cayman Islands, Cook Islands, Jersey, Guernsey, Isle of Man, Gibraltar, Niue, Guam, American Samoa, Falklands, St Helena, Turks and Caicos, BVI.
+# Russia excluded: expelled by the ICC (2022) and suspended by World Rugby, so no active team. 'United Kingdom' not accepted (no UK team).
+England
+Australia | Oz
+India
+New Zealand | NZ | Aotearoa
+South Africa | RSA
+Pakistan
+Ireland | Republic of Ireland | Eire
+Scotland
+Wales | Cymru
+Sri Lanka | Ceylon
+Fiji
+Samoa
+Tonga
+Jamaica
+Bangladesh
+Afghanistan
+Zimbabwe
+France
+Italy | Italia
+Argentina
+Japan | Nippon
+Barbados
+Trinidad and Tobago | Trinidad | Trinidad & Tobago
+Guyana
+Antigua and Barbuda | Antigua | Antigua & Barbuda
+Saint Lucia | St Lucia | St. Lucia
+Grenada
+Saint Vincent and the Grenadines | Saint Vincent | St Vincent | St. Vincent | St Vincent and the Grenadines
+Saint Kitts and Nevis | Saint Kitts | St Kitts | St. Kitts | St Kitts and Nevis | St Kitts & Nevis
+Dominica
+Netherlands | Holland | The Netherlands
+United States | USA | US | America | United States of America | U.S.A. | U.S.
+Canada
+Georgia
+Nepal
+Kenya
+Namibia
+Uruguay
+Chile
+Portugal
+Spain | España
+Germany | Deutschland
+United Arab Emirates | UAE | Emirates
+Oman
+Papua New Guinea | PNG
+Romania
+China | People's Republic of China | PRC
+Mexico
+Brazil | Brasil
+South Korea | Korea | Republic of Korea
+Egypt
+Greece | Hellas
+Sweden
+Switzerland
+Norway
+Ukraine
+Israel
+Thailand | Siam
+Turkey | Türkiye | Turkiye
+Poland
+Belgium
+Denmark
+Finland
+Philippines | The Philippines
+Indonesia
+Iran | Persia
+Iraq
+Saudi Arabia
+Austria
+Nigeria
+Peru
+Colombia
+Singapore
+Malaysia
+Morocco
+Croatia
+Taiwan | Republic of China | Chinese Taipei | ROC
+Venezuela
+Bahamas | The Bahamas
+Hungary
+Czechia | Czech Republic
+Bulgaria
+Serbia
+Syria
+Lebanon
+Jordan
+Qatar
+Kuwait
+Ghana
+Uganda
+Tunisia
+Algeria
+Paraguay
+Panama
+Costa Rica
+Guatemala
+Mongolia
+Kazakhstan
+Monaco
+Luxembourg
+Andorra
+Malta
+Cyprus
+Estonia
+Latvia
+Lithuania
+Slovakia | Slovak Republic
+Slovenia
+Azerbaijan
+Bosnia and Herzegovina | Bosnia | Bosnia & Herzegovina | Bosnia-Herzegovina | BiH
+Montenegro
+Moldova
+Uzbekistan
+Madagascar
+Tanzania
+Rwanda
+DR Congo | Democratic Republic of the Congo | Congo-Kinshasa | DRC | Zaire
+Cameroon
+Senegal
+Ivory Coast | Côte d'Ivoire | Cote d'Ivoire
+Mali
+Mozambique
+Zambia
+Botswana
+Myanmar | Burma
+Cambodia | Kampuchea
+Laos | Lao
+Brunei | Brunei Darussalam
+East Timor | Timor-Leste | Timor Leste
+Maldives | The Maldives
+Bhutan
+Bahrain
+Kyrgyzstan | Kyrgyz Republic | Kirghizia
+Tajikistan
+Suriname | Surinam
+Belize
+Seychelles
+Mauritius
+Burkina Faso | Burkina | Upper Volta
+Benin
+Togo
+Sierra Leone
+Gambia | The Gambia
+Burundi
+Malawi
+Lesotho
+Eswatini | Swaziland
+Vanuatu
+Solomon Islands | Solomons

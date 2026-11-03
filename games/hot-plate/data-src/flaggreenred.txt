@@ -1,0 +1,185 @@
+# id: flaggreenred
+# prompt: Name a country whose flag has green or red
+# group: Places
+# emoji: 🚩
+# kind: thing
+# Every country except those whose flag has neither: Argentina, Bahamas, Barbados, Bhutan, Bosnia, Botswana, Estonia, Finland, Greece, Honduras,
+# Israel, Kazakhstan, Kosovo, Marshall Islands (orange), Micronesia, Nauru, Palau, Saint Lucia, Somalia, Sweden, Ukraine, Uruguay.
+# Judgement calls: Qatar maroon counted as red; Latvia carmine counted; Vatican (red cord on the keys), San Marino and Cyprus (green branches),
+# Guatemala/Nicaragua/El Salvador (emblems), Tuvalu/Fiji (Union Jack) counted. Afghanistan counted (UN-seated tricolour; Taliban flag is white/black).
+# Bhutan excluded (yellow/orange/white; red only in some depictions of the dragon's jewels).
+China | People's Republic of China | PRC
+Canada
+Japan | Nippon
+Mexico
+Italy | Italia
+United States | USA | US | America | United States of America | U.S.A. | U.S.
+United Kingdom | UK | Britain | Great Britain | U.K.
+Ireland | Republic of Ireland | Eire
+Brazil | Brasil
+Portugal
+Spain | España
+Switzerland
+Germany | Deutschland
+France
+Turkey | Türkiye | Turkiye
+India
+Pakistan
+Saudi Arabia
+Russia | Russian Federation
+South Korea | Korea | Republic of Korea
+Denmark
+Australia | Oz
+New Zealand | NZ | Aotearoa
+Jamaica
+Nigeria
+South Africa | RSA
+Kenya
+Vietnam | Viet Nam
+Poland
+Austria
+Norway
+North Korea | DPRK | Democratic People's Republic of Korea
+Egypt
+Netherlands | Holland | The Netherlands
+Thailand | Siam
+Belgium
+Iceland
+Cuba
+Philippines | The Philippines
+Indonesia
+Iran | Persia
+Iraq
+Afghanistan
+Peru
+Chile
+Colombia
+Fiji
+Samoa
+Tonga
+Singapore
+Malaysia
+Morocco
+Croatia
+Taiwan | Republic of China | Chinese Taipei | ROC
+Venezuela
+Haiti
+Hungary
+Czechia | Czech Republic
+Romania
+Bulgaria
+Serbia
+Syria
+Lebanon
+Jordan
+United Arab Emirates | UAE | Emirates
+Qatar
+Kuwait
+Bangladesh
+Sri Lanka | Ceylon
+Nepal
+Ethiopia
+Ghana
+Uganda
+Zimbabwe
+Sudan
+Libya
+Tunisia
+Algeria
+Ecuador
+Bolivia
+Paraguay
+Panama
+Costa Rica
+Guatemala
+El Salvador
+Nicaragua
+Dominican Republic
+Trinidad and Tobago | Trinidad | Trinidad & Tobago
+Mongolia
+Monaco
+Vatican City | Vatican | Holy See
+Luxembourg
+Liechtenstein
+San Marino
+Andorra
+Malta
+Cyprus
+Latvia
+Lithuania
+Slovakia | Slovak Republic
+Slovenia
+Belarus | Byelorussia | Belorussia
+Georgia
+Armenia
+Azerbaijan
+Albania
+Montenegro
+North Macedonia | Macedonia
+Moldova
+Uzbekistan
+Papua New Guinea | PNG
+Madagascar
+Tanzania
+Rwanda
+DR Congo | Democratic Republic of the Congo | Congo-Kinshasa | DRC | Zaire
+Republic of the Congo | Congo | Congo-Brazzaville | Congo Republic
+Cameroon
+Senegal
+Ivory Coast | Côte d'Ivoire | Cote d'Ivoire
+Mali
+Niger
+Chad
+Angola
+Mozambique
+Zambia
+Namibia
+Myanmar | Burma
+Cambodia | Kampuchea
+Laos | Lao
+Brunei | Brunei Darussalam
+East Timor | Timor-Leste | Timor Leste
+Maldives | The Maldives
+Oman
+Yemen
+Bahrain
+Turkmenistan
+Kyrgyzstan | Kyrgyz Republic | Kirghizia
+Tajikistan
+Palestine | State of Palestine | Palestinian Territories
+Guyana
+Suriname | Surinam
+Belize
+Grenada
+Antigua and Barbuda | Antigua | Antigua & Barbuda
+Dominica
+Saint Vincent and the Grenadines | Saint Vincent | St Vincent | St. Vincent | St Vincent and the Grenadines
+Saint Kitts and Nevis | Saint Kitts | St Kitts | St. Kitts | St Kitts and Nevis | St Kitts & Nevis
+Seychelles
+Mauritius
+Cape Verde | Cabo Verde
+Eritrea
+Djibouti
+South Sudan
+Burkina Faso | Burkina | Upper Volta
+Benin
+Togo
+Sierra Leone
+Liberia
+Guinea
+Guinea-Bissau | Guinea Bissau
+Equatorial Guinea
+Gabon
+Central African Republic | CAR
+Gambia | The Gambia
+Mauritania
+Burundi
+Malawi
+Lesotho
+Eswatini | Swaziland
+Comoros
+São Tomé and Príncipe | Sao Tome and Principe | Sao Tome | São Tomé
+Vanuatu
+Solomon Islands | Solomons
+Kiribati
+Tuvalu

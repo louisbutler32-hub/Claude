@@ -1,0 +1,127 @@
+# id: bodyweight
+# prompt: Name a bodyweight exercise
+# group: Gym
+# emoji: 🤸
+# kind: thing
+Push-up | push-ups | press-up | press-ups
+Sit-up | sit-ups
+Squat | squats | air squat | bodyweight squat
+Pull-up | pull-ups
+Plank | planks
+Burpee | burpees
+Lunge | lunges
+Jumping jack | jumping jacks | star jump | star jumps
+Chin-up | chin-ups
+Crunch | crunches
+Mountain climber | mountain climbers
+Dip | dips | tricep dips
+Wall sit
+Glute bridge | bridge | hip bridge
+Jump squat | jump squats | squat jumps
+High knees
+Russian twist | Russian twists
+Leg raise | leg raises | lying leg raise
+Superman | supermans
+Side plank
+Bicycle crunch | bicycle crunches
+Muscle-up | muscle-ups
+Handstand
+Handstand push-up | HSPU
+Pistol squat | pistol squats
+Diamond push-up | diamond push-ups
+Box jump | box jumps
+Calf raise | calf raises
+Hanging leg raise | hanging leg raises
+Inverted row | Australian pull-up | body row
+Bear crawl
+Flutter kicks
+Scissor kicks
+V-up | V-ups
+Hollow hold | hollow body hold
+L-sit
+Toes to bar
+Knees to elbows
+Dead hang
+Wide push-up
+Decline push-up
+Incline push-up
+Pike push-up
+Clap push-up | plyo push-up | plyometric push-up
+Archer push-up
+One-arm push-up
+Knee push-up
+Spiderman push-up
+Hindu push-up
+Dive bomber push-up
+Pseudo planche push-up
+Planche
+Front lever
+Back lever
+Human flag
+Dragon flag
+Skin the cat
+Tuck jump | tuck jumps
+Broad jump
+Skater jump | skaters
+Butt kicks
+Jog on the spot | running on the spot
+Shuttle run
+Sprint | sprints
+Bulgarian split squat
+Split squat
+Step-up | step-ups
+Reverse lunge
+Side lunge | lateral lunge
+Curtsy lunge
+Walking lunge
+Jumping lunge
+Cossack squat
+Shrimp squat
+Sissy squat
+Nordic curl
+Single-leg glute bridge
+Donkey kick | donkey kicks
+Fire hydrant | fire hydrants
+Clamshell | clamshells
+Bird dog
+Dead bug
+Plank jack
+Plank up-down | up-downs
+Shoulder tap | shoulder taps
+Commando plank
+Toe touch | toe touches
+Heel touch | heel taps
+Windshield wiper
+Reverse crunch
+Ab rollout
+Hip thrust
+Inchworm
+Crab walk
+Duck walk
+Frog jump
+Lizard crawl
+Wall push-up
+Bench dip
+Ring dip
+Ring row
+Negative pull-up
+Typewriter pull-up
+Commando pull-up
+Wall walk
+Headstand
+Crow pose
+Bridge pose | wheel
+Skipping | jump rope
+Rope climb
+Squat thrust | squat thrusts
+Sprawl
+Frog pump
+Glute kickback
+Good morning
+Pogo jumps
+Lateral bound
+Single-leg hop
+Seal jack
+Cross jack
+Half jack
+Arm circles

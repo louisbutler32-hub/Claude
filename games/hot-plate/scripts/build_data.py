@@ -111,12 +111,13 @@ CATEGORIES = [
          where="?x wdt:P31 ?c . VALUES ?c { wd:Q34770 wd:Q1288568 wd:Q33742 } ."),
     dict(id="musicgenre", group="Music", emoji="🎼", prompt="Name a music genre", kind="thing", limit=1200, minsl=10,
          where="?x wdt:P31 wd:Q188451 .", strip=r"\s+music$"),
-    dict(id="instrument", group="Music", emoji="🎺", prompt="Name a musical instrument", kind="thing", limit=800, minsl=10,
-         where="?x wdt:P31 ?c . VALUES ?c { wd:Q34379 wd:Q1254773 } ."),
+    dict(id="instrument", group="Music", emoji="🎺", prompt="Name a musical instrument", kind="thing", limit=800, minsl=8,
+         where="?x wdt:P279+ wd:Q34379 .", drop="?x wdt:P31 wd:Q4167836 ."),  # instrument types, not categories
     dict(id="dogcat", group="Animals", emoji="🐶", prompt="Name a dog or cat breed", kind="thing", limit=1500, minsl=1,
          where="?x wdt:P31 ?c . VALUES ?c { wd:Q39367 wd:Q43577 } ."),
     dict(id="recentmovie", group="Movies & TV", emoji="🍿", prompt="Name a movie from the last 3 years", kind="thing", limit=1500, minsl=5,
-         where="?x wdt:P31 wd:Q11424 ; wdt:P577 ?d . FILTER(?d >= \"2023-11-01T00:00:00Z\"^^xsd:dateTime && ?d <= NOW())"),
+         # first release in the last three years (re-releases of old films don't count)
+         where="?x wdt:P31 wd:Q11424 ; wdt:P577 ?d . FILTER(?d >= \"2023-11-01T00:00:00Z\"^^xsd:dateTime && ?d <= NOW()) FILTER NOT EXISTS { ?x wdt:P577 ?d0 . FILTER(?d0 < \"2023-11-01T00:00:00Z\"^^xsd:dateTime) }"),
     dict(id="politician", group="People", emoji="🏛️", prompt="Name someone currently serving in a national government or parliament", kind="person", limit=1500, minsl=15,
          where="?x p:P39 ?s . ?s ps:P39 ?pos . FILTER NOT EXISTS { ?s pq:P582 ?e } ?s pq:P580 ?st . FILTER(YEAR(?st) >= 2008) ?pos wdt:P279 ?cls . VALUES ?cls { wd:Q486839 wd:Q83307 wd:Q48352 wd:Q2285706 } . FILTER NOT EXISTS { ?x wdt:P570 ?died }"),
     dict(id="teammates", group="Sport", emoji="🤝", prompt="Name someone who has been a teammate of Lionel Messi, Cristiano Ronaldo or LeBron James", kind="person", limit=2500, minsl=2,

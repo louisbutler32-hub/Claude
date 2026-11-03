@@ -1,0 +1,211 @@
+# id: currency
+# prompt: Name a currency
+# group: Other
+# emoji: 💱
+# kind: thing
+# Current national currencies, then well-known historic ones, then crypto at the tail.
+# A bare generic name goes to the best-known currency of that name: Dollar = US dollar, Pound = sterling, Peso = Mexican,
+# Rupee = Indian, Franc = Swiss, Lira = Turkish, Krona = Swedish, Krone = Norwegian, Won = South Korean, Dinar = Kuwaiti,
+# Dirham = UAE, Riyal = Saudi, Rial = Iranian, Shilling = Kenyan, Ruble = Russian, Leu = Romanian, Mark = Deutsche Mark.
+# Bulgarian lev and Croatian kuna are historic (Bulgaria joined the euro on 1 January 2026, Croatia in 2023).
+US dollar | Dollar | American dollar | USD | United States dollar | Dollars | Buck | Greenback
+Euro | EUR | Euros
+Pound sterling | Pound | British pound | Sterling | GBP | Pounds | Quid | Great British pound
+Japanese yen | Yen | JPY
+Chinese yuan | Yuan | Renminbi | RMB | CNY
+Australian dollar | AUD | Aussie dollar
+Canadian dollar | CAD | Loonie
+New Zealand dollar | NZD | NZ dollar | Kiwi dollar
+Indian rupee | Rupee | INR | Rupees
+Mexican peso | Peso | MXN | Pesos
+Swiss franc | Franc | CHF | Francs
+Russian ruble | Ruble | Rouble | Russian rouble | RUB
+South Korean won | Won | Korean won | KRW
+Brazilian real | Real | BRL | Reais
+South African rand | Rand | ZAR
+Deutsche Mark | Mark | German mark | Deutschmark | DM
+French franc
+Italian lira
+Spanish peseta | Peseta
+Turkish lira | Lira | TRY
+Singapore dollar | SGD
+Hong Kong dollar | HKD
+UAE dirham | Dirham | Emirati dirham | AED
+Saudi riyal | Riyal | SAR
+Thai baht | Baht
+Swedish krona | Krona | SEK | Kronor
+Norwegian krone | Krone | NOK | Kroner
+Danish krone | DKK
+Polish złoty | Zloty | Polish zloty | PLN
+Egyptian pound
+Israeli new shekel | Shekel | Israeli shekel | New shekel | ILS
+Argentine peso | Argentinian peso
+Philippine peso | Filipino peso
+Vietnamese dong | Dong
+Indonesian rupiah | Rupiah
+Malaysian ringgit | Ringgit
+Pakistani rupee
+Nigerian naira | Naira
+Kenyan shilling | Shilling | Shillings
+Jamaican dollar
+Ukrainian hryvnia | Hryvnia | Hryvna
+Hungarian forint | Forint
+Czech koruna | Koruna | Czech crown
+Icelandic króna | Icelandic krona
+Chilean peso
+Colombian peso
+Cuban peso
+Kuwaiti dinar | Dinar
+Iraqi dinar
+Iranian rial | Rial | Toman
+Qatari riyal
+New Taiwan dollar | Taiwan dollar | Taiwanese dollar
+North Korean won
+Fijian dollar | Fiji dollar
+Dutch guilder | Guilder | Gulden
+Greek drachma | Drachma
+Irish pound | Punt
+Portuguese escudo
+Austrian schilling | Schilling
+Belgian franc
+Finnish markka | Markka
+Soviet ruble | Soviet rouble
+Reichsmark
+Zimbabwean dollar
+Bulgarian lev | Lev
+Croatian kuna | Kuna
+Sri Lankan rupee
+Nepalese rupee
+Bangladeshi taka | Taka
+Moroccan dirham
+Jordanian dinar
+Bahraini dinar
+Omani rial
+Peruvian sol | Sol | Nuevo sol
+Venezuelan bolívar | Bolivar | Bolívar | Venezuelan bolivar
+Uruguayan peso
+Dominican peso
+Romanian leu | Leu | Lei
+Serbian dinar
+Bosnia and Herzegovina convertible mark | Convertible mark | Bosnian mark
+Albanian lek | Lek
+North Macedonian denar | Denar | Macedonian denar
+Moldovan leu
+Belarusian ruble | Belarusian rouble
+Georgian lari | Lari
+Armenian dram | Dram
+Azerbaijani manat | Manat
+Kazakhstani tenge | Tenge
+Uzbekistani som | Uzbek som | Som | Sum
+Kyrgyzstani som | Kyrgyz som
+Tajikistani somoni | Somoni
+Turkmenistani manat | Turkmen manat
+Afghan afghani | Afghani
+Lebanese pound
+Syrian pound
+Yemeni rial
+Libyan dinar
+Tunisian dinar
+Algerian dinar
+Mongolian tögrög | Tugrik | Tögrög | Togrog | Mongolian tugrik
+Cambodian riel | Riel
+Lao kip | Kip | Laotian kip
+Myanmar kyat | Kyat | Burmese kyat
+Brunei dollar
+Maldivian rufiyaa | Rufiyaa
+Bhutanese ngultrum | Ngultrum
+Mauritian rupee
+Seychellois rupee | Seychelles rupee
+Ghanaian cedi | Cedi
+Ethiopian birr | Birr
+Tanzanian shilling
+Ugandan shilling
+Somali shilling
+Rwandan franc
+Burundian franc
+Congolese franc
+Guinean franc
+Djiboutian franc
+Comorian franc
+West African CFA franc | CFA franc | West African franc
+Central African CFA franc | Central African franc
+Zambian kwacha | Kwacha
+Malawian kwacha
+Angolan kwanza | Kwanza
+Mozambican metical | Metical
+Botswana pula | Pula
+Namibian dollar
+Lesotho loti | Loti | Maloti
+Swazi lilangeni | Lilangeni | Emalangeni
+Malagasy ariary | Ariary
+Zimbabwe Gold | ZiG
+Sudanese pound
+South Sudanese pound
+Eritrean nakfa | Nakfa
+Gambian dalasi | Dalasi
+Sierra Leonean leone | Leone
+Liberian dollar
+Mauritanian ouguiya | Ouguiya
+Cape Verdean escudo
+São Tomé and Príncipe dobra | Dobra | Sao Tome dobra
+Paraguayan guaraní | Guarani | Guaraní
+Bolivian boliviano | Boliviano
+Costa Rican colón | Colon | Colón | Costa Rican colon
+Guatemalan quetzal | Quetzal
+Honduran lempira | Lempira
+Nicaraguan córdoba | Cordoba | Córdoba | Nicaraguan cordoba
+Panamanian balboa | Balboa
+Haitian gourde | Gourde
+Bahamian dollar
+Barbadian dollar | Barbados dollar
+Belize dollar
+Trinidad and Tobago dollar | TT dollar
+East Caribbean dollar | EC dollar
+Guyanese dollar
+Surinamese dollar
+Papua New Guinean kina | Kina
+Solomon Islands dollar
+Vanuatu vatu | Vatu
+Samoan tālā | Tala | Samoan tala
+Tongan paʻanga | Paanga | Pa'anga | Tongan pa'anga
+Macanese pataca | Pataca
+Cayman Islands dollar
+Bermudian dollar
+Aruban florin
+Maltese lira
+Cypriot pound
+Estonian kroon | Kroon
+Latvian lats | Lats
+Lithuanian litas | Litas
+Slovenian tolar | Tolar
+Slovak koruna
+East German mark | Ostmark
+Yugoslav dinar
+Zairean zaire | Zaire
+Ecuadorian sucre | Sucre
+Brazilian cruzeiro | Cruzeiro
+Argentine austral | Austral
+Peruvian inti | Inti
+Rhodesian dollar
+Confederate dollar
+Roman denarius | Denarius
+Sestertius
+Spanish doubloon | Doubloon
+Piece of eight | Pieces of eight | Spanish dollar
+Ducat
+Florin
+Thaler
+French livre | Livre
+Écu | Ecu
+Bitcoin | BTC
+Ethereum | Ether | ETH
+Dogecoin | Doge
+Tether | USDT
+Litecoin
+Solana | SOL coin
+XRP | Ripple
+Cardano | ADA
+Monero
+Binance Coin | BNB
+USD Coin | USDC
+Shiba Inu coin | Shiba Inu

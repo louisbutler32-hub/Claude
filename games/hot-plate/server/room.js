@@ -7,8 +7,21 @@ const { TIERS, WHICH, matchAnswer } = require("./answers");
 const BREAK_MS = 4500;   // pause after a burn before the next plate
 const MIN_TURN = 4;      // the clock never drops below this many seconds
 const SPEEDUP = 0.5;     // each pass takes this much off the next turn
+// rarer answers cool the plate: how many "passes" of speed-up each tier adds (the kiss resets it)
+const COOL = [1, 0.5, 0, -1];
 // hot streak: answers served in a row without a wrong guess or a burn
 const streakMultiplier = (n) => (n >= 5 ? 2 : n >= 3 ? 1.5 : 1);
+// the chef's kiss: one hidden answer per plate, rare but gettable, worth a jackpot
+const KISS = { tier: 4, name: "Chef's Kiss", pts: 250 };
+function pickKiss(cat) {
+  // from the better-known half of the Main Course band: deep enough to be special,
+  // famous enough that someone at the table might actually land it
+  let band = cat.answers.map((a, i) => (a.tier === 2 ? i : -1)).filter((i) => i >= 0);
+  if (!band.length) band = cat.answers.map((a, i) => (a.tier >= 1 ? i : -1)).filter((i) => i >= 0);
+  if (!band.length) return -1;
+  const head = band.slice(0, Math.max(1, Math.ceil(band.length / 2)));
+  return head[Math.floor(Math.random() * head.length)];
+}
 const DROP_GRACE = 20000; // a player who drops mid-game has this long to come back
 const LIMITS = { hearts: [1, 5], turn: [5, 20], seats: [2, 12], heartCap: [1, 9], perHeart: [0, 2000] };
 const EMOJIS = ["😎", "🤠", "👽", "🦊", "🐸", "🤖", "👻", "🐼", "🦄", "💀", "🧃", "🍉", "🐙", "🦖", "🍄", "🐝"];
@@ -53,7 +66,7 @@ class Room {
       streak: 0, bestStreak: 0,
       name: (acct && acct.name) || cleanName(name) || "Guest",
       emoji: EMOJIS.includes(emoji) ? emoji : pick(EMOJIS.filter((e) => !taken.has(e))) || pick(EMOJIS),
-      ws, connected: true, ready: false,
+      ws, connected: true, ready: false, kisses: 0,
       hearts: 0, alive: false, score: 0, served: 0, best: null, last: null, nextHeartAt: 0,
       lastAnswer: 0, lastType: 0, lastChat: 0, dropTimer: null,
     };
@@ -180,7 +193,7 @@ class Room {
     if (!playing.length) return;
     const s = this.settings;
     for (const x of this.players) {
-      Object.assign(x, { hearts: x.connected ? s.hearts : 0, alive: x.connected, score: 0, served: 0, best: null, last: null, ready: false, nextHeartAt: s.perHeart || 0, streak: 0, bestStreak: 0 });
+      Object.assign(x, { hearts: x.connected ? s.hearts : 0, alive: x.connected, score: 0, served: 0, best: null, last: null, ready: false, nextHeartAt: s.perHeart || 0, streak: 0, bestStreak: 0, kisses: 0 });
     }
     this.game = { round: 0, cat: null, holder: pick(playing).id, served: [], used: new Set(), recentCats: [], solo: playing.length === 1, passes: 0, seated: playing.map((x) => x.id) };
     this.log(`🔔 Dinner is served. ${playing.length === 1 ? "Solo practice." : playing.length + " at the table."}`);
@@ -193,7 +206,8 @@ class Room {
     const fresh = pool.filter((id) => !g.recentCats.includes(id));
     const catId = pick(fresh.length ? fresh : pool);
     g.recentCats = [catId, ...g.recentCats].slice(0, Math.min(8, Math.max(0, pool.length - 1)));
-    Object.assign(g, { round: g.round + 1, cat: this.cats.get(catId), served: [], used: new Set(), passes: 0, lastPop: null, breakUntil: null });
+    Object.assign(g, { round: g.round + 1, cat: this.cats.get(catId), served: [], used: new Set(), passes: 0, lastPop: null, breakUntil: null, kissBy: null });
+    g.kiss = pickKiss(g.cat);
     for (const x of this.players) x.last = null;
     this.phase = "playing";
     this.log(`${g.cat.emoji} New plate: ${g.cat.prompt}`);
@@ -246,12 +260,15 @@ class Room {
     p.streak++;
     p.bestStreak = Math.max(p.bestStreak, p.streak);
     const mult = streakMultiplier(p.streak);
-    const pts = Math.round(TIERS[a.tier].pts * mult);
+    const kiss = i === g.kiss;
+    const tier = kiss ? KISS.tier : a.tier;
+    const pts = Math.round((kiss ? KISS.pts : TIERS[a.tier].pts) * mult);
+    if (kiss) { g.kissBy = p.id; p.kisses++; }
     p.score += pts; p.served++;
-    p.last = { name: a.name, tier: a.tier };
+    p.last = { name: a.name, tier };
     if (!p.best || a.tier > p.best.tier || (a.tier === p.best.tier && i > p.best.rank)) p.best = { name: a.name, tier: a.tier, rank: i, cat: g.cat.prompt };
-    g.served.unshift({ i, name: a.name, tier: a.tier, by: p.id });
-    this.log(`${p.emoji} ${p.name} served ${a.name} · +${pts}`);
+    g.served.unshift({ i, name: a.name, tier, by: p.id });
+    this.log(kiss ? `💋 ${p.name} found the chef's kiss: ${a.name} · +${pts}` : `${p.emoji} ${p.name} served ${a.name} · +${pts}`);
 
     // points buy hearts back, up to the cap
     const s = this.settings;
@@ -261,8 +278,8 @@ class Room {
       if (p.hearts < s.heartCap) { p.hearts++; heart = true; }
     }
     if (heart) this.log(`❤️ ${p.name} earned a heart`);
-    this.broadcast({ t: "served", by: p.id, name: a.name, tier: a.tier, pts, heart, streak: p.streak, mult });
-    g.passes++;
+    this.broadcast({ t: "served", by: p.id, name: a.name, tier, pts, heart, streak: p.streak, mult, kiss });
+    g.passes = kiss ? 0 : Math.max(0, g.passes + COOL[a.tier]);
     this.giveTurn(this.nextAlive(p.id));
   }
 
@@ -277,7 +294,9 @@ class Room {
       if (p.hearts === 0) { p.alive = false; out = true; }
       this.log(out ? `💀 ${p.name} got burned and is out` : `🔥 ${p.name} got burned`);
     }
-    g.lastPop = { id: g.holder, out, missed: this.missedAnswers() };
+    // reveal the chef's kiss if nobody found it
+    const kiss = !g.kissBy && g.kiss >= 0 ? g.cat.answers[g.kiss].name : null;
+    g.lastPop = { id: g.holder, out, missed: this.missedAnswers(), kiss };
     this.broadcast({ t: "burn", id: g.holder, out });
     if (this.finishIfOver()) return;
     this.phase = "break";
@@ -290,7 +309,7 @@ class Room {
   // a few answers nobody said, leaning rare, to show after a burn
   missedAnswers() {
     const g = this.game;
-    const unused = g.cat.answers.map((_, i) => i).filter((i) => !g.used.has(i));
+    const unused = g.cat.answers.map((_, i) => i).filter((i) => !g.used.has(i) && i !== g.kiss);
     const sample = (tier, n) => {
       const c = unused.filter((i) => g.cat.answers[i].tier === tier);
       const res = [];
@@ -317,7 +336,7 @@ class Room {
     if (w && w.winStreak >= 2) this.log(`👑 ${w.name} has won ${w.winStreak} in a row`);
     if (this.hooks.onFinish) {
       const results = this.players.filter((x) => g.seated.includes(x.id)).map((x) => ({
-        player: x, score: x.score, served: x.served, won: x.id === g.winner, multiplayer: !g.solo, best: x.best, hotStreak: x.bestStreak,
+        player: x, score: x.score, served: x.served, won: x.id === g.winner, multiplayer: !g.solo, best: x.best, hotStreak: x.bestStreak, kisses: x.kisses,
       }));
       try { this.hooks.onFinish(this, results); } catch (e) { console.error("saving stats failed:", e); }
     }
@@ -343,7 +362,7 @@ class Room {
       players: this.players.map((p) => ({
         id: p.id, name: p.name, emoji: p.emoji, connected: p.connected, ready: p.ready, signedIn: !!p.acct,
         hearts: p.hearts, alive: p.alive, score: p.score, served: p.served, last: p.last,
-        streak: p.streak, dayStreak: p.dayStreak, winStreak: p.winStreak,
+        streak: p.streak, dayStreak: p.dayStreak, winStreak: p.winStreak, kisses: p.kisses,
       })),
       chat: this.chat.slice(-50),
       game: g && {
@@ -352,6 +371,7 @@ class Room {
         holder: g.holder, turnEnd: g.turnEnd, turnLen: g.turnLen, passes: g.passes,
         served: g.served.slice(0, 60).map(({ name, tier, by }) => ({ name, tier, by })),
         winner: g.winner || null, bestFind: g.bestFind || null, lastPop: g.lastPop || null, breakUntil: g.breakUntil || null,
+        kissBy: g.kissBy || null,
       },
     };
   }

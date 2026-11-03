@@ -79,14 +79,21 @@ function renderPlayDock() {
   const r = S.room, g = r.game, p = S.prev;
   const mine = g.holder === r.you;
   const holder = byId(g.holder), m = me();
-  $("answer-form").hidden = !mine;
+  const playing = !!(m && m.alive);
+  // anyone still at the table can type ahead while they wait; it only serves when the plate is theirs
+  $("answer-form").hidden = !playing;
+  $("answer-form").classList.toggle("waiting", !mine);
+  $("serve-btn").textContent = mine ? "serve" : "wait";
+  $("answer-input").placeholder = mine ? "your plate! type an answer…" : "type ahead while you wait…";
   $("turn-line").hidden = mine;
-  if (!mine) $("turn-line").innerHTML = `${holder ? `${holder.emoji} <b>${esc(holder.name)}</b>` : "someone"} has the plate${!m || !m.alive ? " · you're watching" : ""}`;
+  if (!mine) $("turn-line").innerHTML = `${holder ? `${holder.emoji} <b>${esc(holder.name)}</b>` : "someone"} has the plate${!playing ? " · you're watching" : ""}`;
   const fresh = mine && !(p && p.phase === "playing" && p.game && p.game.holder === r.you && p.game.turnEnd === g.turnEnd);
   if (fresh) {
-    $("answer-input").value = "";
     $("answer-input").focus({ preventScroll: true });
+    // whatever you typed while waiting goes straight onto your bubble
+    if ($("answer-input").value) send({ t: "type", text: $("answer-input").value });
   }
+  if (p && p.game && p.game.round !== g.round) $("answer-input").value = "";
   if (p && p.game && p.game.round !== g.round) flash("", "");
   return fresh;
 }
@@ -100,6 +107,7 @@ function renderBurn() {
   const secs = Math.max(0, Math.ceil((g.breakUntil - now()) / 1000));
   $("dock-burn").innerHTML = `
     <p class="burn-head">${pop.out ? "💀" : "🔥"} <b>${p ? esc(p.name) : "someone"}</b> got burned${pop.out ? " and is out" : ""}</p>
+    ${pop.kiss ? `<p class="burn-sub">the chef's kiss was</p><div class="chips"><span class="chip t4">💋 ${esc(pop.kiss)}</span></div>` : ""}
     ${pop.missed.length ? `<p class="burn-sub">nobody said</p><div class="chips">${pop.missed.map((x) => `<span class="chip t${x.tier}">${esc(x.name)}</span>`).join("")}</div>` : ""}
     <p class="burn-sub">next plate in ${secs}s</p>`;
 }

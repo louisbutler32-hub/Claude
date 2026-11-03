@@ -1,0 +1,93 @@
+# id: organ
+# prompt: Name an organ in the human body
+# group: Body
+# emoji: 🫀
+# kind: thing
+# Organs in the anatomy-textbook sense: a distinct structure of several
+# tissues with its own job, including glands, sense organs and the hollow
+# organs of the gut, airway and urinary tract. Named parts of the brain
+# count; parts of the eye and membranes (pleura, meninges) do not. Single
+# tissues (blood, bone, nerves, fat) and body regions (chest, neck) are
+# left out. The diaphragm is in as it is often listed as an organ.
+# Paired organs accept singular and plural.
+Heart
+Brain
+Lungs | Lung
+Liver
+Kidneys | Kidney
+Stomach
+Skin
+Intestines | Intestine | Gut | Bowel | Bowels
+Small intestine
+Large intestine | Colon
+Pancreas
+Spleen
+Appendix
+Bladder | Urinary bladder
+Gallbladder | Gall bladder
+Eyes | Eye
+Tongue
+Thyroid | Thyroid gland
+Ears | Ear
+Nose
+Oesophagus | Esophagus | Gullet | Food pipe
+Uterus | Womb
+Ovaries | Ovary
+Testicles | Testicle | Testes | Testis | Balls
+Prostate | Prostate gland
+Tonsils | Tonsil
+Trachea | Windpipe
+Larynx | Voice box
+Rectum
+Mouth
+Teeth | Tooth
+Spinal cord
+Penis
+Vagina
+Pituitary gland | Pituitary
+Adrenal glands | Adrenal gland | Adrenals
+Thymus
+Diaphragm
+Pharynx | Throat
+Duodenum
+Pineal gland | Pineal
+Hypothalamus
+Cerebellum
+Placenta
+Breasts | Breast | Mammary glands | Mammary gland
+Salivary glands | Salivary gland
+Lymph nodes | Lymph node | Lymph glands
+Bone marrow
+Ureters | Ureter
+Urethra
+Fallopian tubes | Fallopian tube | Oviduct
+Cervix
+Epididymis
+Seminal vesicles | Seminal vesicle
+Vas deferens
+Parathyroid glands | Parathyroid
+Anus
+Caecum | Cecum
+Ileum
+Jejunum
+Brainstem | Brain stem
+Medulla oblongata | Medulla
+Cerebrum
+Pons
+Thalamus
+Hippocampus
+Amygdala
+Bronchi | Bronchus
+Epiglottis
+Vocal cords | Vocal folds
+Adenoids
+Cochlea
+Clitoris
+Vulva
+Mesentery
+Lacrimal glands | Tear glands | Lacrimal gland
+Sweat glands
+Sebaceous glands
+Bartholin's glands
+Bulbourethral glands | Cowper's glands
+Gonads | Gonad

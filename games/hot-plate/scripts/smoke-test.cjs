@@ -94,7 +94,7 @@ const waitPhase = (p, ph, timeout = 8000) => p.waitForSelector(`body[data-phase=
     check(true, "everyone is in the game");
 
     const holderPage = async () => {
-      for (const p of [a, b, c]) if (await p.isVisible("#answer-form")) return p;
+      for (const p of [a, b, c]) if (await p.isVisible("#answer-form:not(.waiting)")) return p;
       return null;
     };
     const promptOf = async (p) => (await p.textContent("#prompt-text")).replace(/^\S+\s/, "").trim();
@@ -129,7 +129,7 @@ const waitPhase = (p, ph, timeout = 8000) => p.waitForSelector(`body[data-phase=
       if (turn === 0) { await a.screenshot({ path: path.join(OUT, "4-typing-laptop.png") }); await b.screenshot({ path: path.join(OUT, "4-typing-phone.png") }); }
       await h.fill("#answer-input", ans);
       await h.press("#answer-input", "Enter");
-      await h.waitForFunction(() => document.querySelector("#answer-form").hidden, null, { timeout: 3000 });
+      await h.waitForFunction(() => document.querySelector("#answer-form").classList.contains("waiting") || document.querySelector("#answer-form").hidden, null, { timeout: 3000 });
       await others[0].waitForFunction((t) => [...document.querySelectorAll(".bubble")].some((el) => el.textContent.startsWith(t)), ans, { timeout: 3000 });
       check(true, `${h.name} served "${ans}" and it shows on their plate`);
       used.push(ans);

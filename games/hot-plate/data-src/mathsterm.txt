@@ -1,0 +1,270 @@
+# id: mathsterm
+# prompt: Name a maths term
+# group: School
+# emoji: ➗
+# kind: thing
+Addition | add | plus
+Subtraction | subtract | minus
+Multiplication | multiply | times
+Division | divide
+Fraction
+Equation
+Algebra
+Geometry
+Pi
+Angle
+Triangle
+Square
+Circle
+Number
+Percentage | percent
+Decimal
+Sum
+Average
+Median
+Mode
+Range
+Area
+Perimeter
+Volume
+Radius
+Diameter
+Circumference
+Integer
+Prime number | prime
+Square root | root
+Exponent | power | index | indices
+Variable
+Function
+Graph
+Probability
+Calculus
+Derivative | differentiation
+Integral | integration
+Trigonometry | trig
+Sine | sin
+Cosine | cos
+Tangent | tan
+Hypotenuse
+Pythagoras' theorem | Pythagoras | Pythagorean theorem
+Ratio
+Proportion
+Numerator
+Denominator
+Product
+Quotient
+Difference
+Remainder
+Factor
+Multiple
+Even number | even
+Odd number | odd
+Negative number | negative
+Positive number | positive
+Zero
+Infinity
+Parallel
+Perpendicular
+Vertex | vertices
+Edge
+Face
+Polygon
+Pentagon
+Hexagon
+Octagon
+Rectangle
+Rhombus
+Trapezium | trapezoid
+Parallelogram
+Cube
+Sphere
+Cylinder
+Cone
+Pyramid
+Prism
+Symmetry
+Line of symmetry
+Rotation
+Reflection
+Translation
+Enlargement | dilation
+Coordinates | coordinate
+X-axis
+Y-axis
+Axis | axes
+Origin
+Gradient | slope
+Intercept | y-intercept
+Linear
+Quadratic
+Cubic
+Polynomial
+Logarithm | log
+Matrix | matrices
+Vector
+Set
+Statistics | stats
+Mean
+Histogram
+Bar graph | bar chart
+Pie chart
+Scatter plot | scatter graph
+Standard deviation
+Variance
+Correlation
+Sample
+Theorem
+Proof
+Formula
+Expression
+Term
+Coefficient
+Constant
+Inequality
+Simplify
+Expand
+Factorise | factorize | factorisation | factorization
+Solve
+Substitution | substitute
+Estimate | estimation
+Rounding | round
+Significant figures | sig figs
+Place value
+Long division
+Times tables | times table
+Highest common factor | HCF | greatest common divisor | GCD | greatest common factor | GCF
+Lowest common multiple | LCM | least common multiple
+BIDMAS | BODMAS | PEMDAS | BEDMAS
+Sequence
+Series
+Arithmetic
+Geometric sequence | geometric progression
+Fibonacci sequence | Fibonacci
+Acute angle | acute
+Obtuse angle | obtuse
+Right angle
+Reflex angle | reflex
+Straight angle
+Degree | degrees
+Radian
+Equilateral triangle | equilateral
+Isosceles triangle | isosceles
+Scalene triangle | scalene
+Right-angled triangle | right triangle
+Congruent | congruence
+Similar | similarity
+Bisector | bisect
+Chord
+Arc
+Sector
+Segment
+Semicircle
+Ellipse | oval
+Parabola
+Hyperbola
+Asymptote
+Domain
+Limit
+Continuity
+Differential equation
+Turning point | stationary point
+Maximum | max
+Minimum | min
+Inflection point | point of inflection
+Binomial
+Permutation
+Combination
+Factorial
+Expected value
+Distribution
+Normal distribution | bell curve
+Outlier
+Quartile
+Interquartile range | IQR
+Box plot | box and whisker plot
+Frequency
+Tally
+Venn diagram
+Tree diagram
+Mutually exclusive
+Independent events
+Real number
+Rational number
+Irrational number
+Natural number
+Whole number
+Complex number
+Imaginary number | i
+Square number
+Cube number
+Cube root
+Triangular number
+Reciprocal
+Inverse
+Identity
+Absolute value | modulus
+Surd
+Scientific notation | standard form
+Exponential
+Simultaneous equations
+Quadratic formula
+Completing the square
+Discriminant
+Unit circle
+Sine rule
+Cosine rule
+SOH CAH TOA
+Bearing | bearings
+Locus
+Tessellation
+Net
+Surface area
+Cross-section
+Polyhedron
+Tetrahedron
+Dodecahedron
+Icosahedron
+Octahedron
+Hemisphere
+Kite
+Quadrilateral
+Decagon
+Heptagon
+Nonagon
+Dividend
+Divisor
+Addend
+Minuend
+Subtrahend
+Multiplicand
+Digit
+Numeral
+Roman numerals
+Binary
+Base
+Modulo | mod
+Greater than
+Less than
+Proof by induction | induction
+Contradiction
+Axiom
+Lemma
+Corollary
+Conjecture
+Topology
+Number theory
+Euler's number | e
+Golden ratio | phi
+Dot product
+Cross product
+Determinant
+Eigenvalue
+Transformation
+Mapping
+Composite function
+Inverse function
+Tangent line
+Rate of change
+Compound interest
+Simple interest
+Discount

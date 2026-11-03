@@ -1,0 +1,313 @@
+# id: namedanimal
+# prompt: Name an animal named after another animal
+# group: Animals
+# emoji: 🐴
+# kind: thing
+Seahorse
+Catfish
+Sea lion
+Tiger shark
+Guinea pig
+Koala bear
+Hedgehog
+Dogfish
+Horsefly | horseflies
+Lionfish
+Mountain lion
+Wolf spider
+Leopard seal
+Elephant seal
+Prairie dog
+Butterfly | butterflies
+Ladybird | ladybug
+Sea cow
+Whale shark
+Bull shark
+Bullfrog
+Groundhog
+Warthog
+Anteater
+Flying fox | Flying foxes
+Spider monkey
+Starfish
+Jellyfish
+Leopard gecko
+Kangaroo rat
+Zebra finch | Zebra finches
+Zebrafish
+Dragonfly | dragonflies
+Firefly | fireflies
+Parrotfish
+Butterflyfish
+Elephant shrew
+Squirrel monkey
+Tiger moth
+Bulldog ant | bull ant
+Cuttlefish
+Crayfish
+Silverfish
+Horseshoe crab
+Duck-billed platypus | platypus | Duck-billed platypuses | platypuses
+Water bear | tardigrade
+Sea pig
+Sea slug
+Sea snake
+Sea spider
+Mouse deer
+Ratfish
+Bat-eared fox | Bat-eared foxes
+Pig-nosed turtle
+Cattle egret
+Wolffish
+Tasmanian tiger | thylacine
+Zebra shark
+Leopard shark
+Cow shark
+Catshark
+Raccoon dog
+Maned wolf | Maned wolves
+Aardwolf
+Bee hummingbird
+Bee-eater
+Bumblebee bat
+Tiger snake
+Tiger beetle
+Tiger salamander
+Tiger prawn
+Tiger quoll
+Tiger barb
+Tiger swallowtail
+Tigerfish
+Leopard frog
+Leopard tortoise
+Leopard cat
+Leopard slug
+Leopard moth
+Lion's mane jellyfish
+Lion tamarin | golden lion tamarin
+Lion-tailed macaque
+Lionhead rabbit
+Bearcat | binturong
+Sloth bear
+Woolly bear
+Flycatcher
+Oystercatcher
+Crane fly | Crane flies
+Snakehead
+Frogfish
+Toadfish
+Horned toad | horny toad
+Slow worm
+Snake eagle
+Snakebird | anhinga
+Snake eel
+Snake-necked turtle
+Goatfish
+Pigfish
+Hogfish
+Hog-nosed snake | hognose snake
+Hog badger
+Pig-tailed macaque
+Pig frog
+Horse mackerel
+Horse mussel
+Horse conch | Horse conches
+Horseshoe bat
+Ponyfish
+Wolf eel
+Wolf snake
+Wolfhound | Irish wolfhound
+Foxhound
+Deerhound
+Otterhound
+Elkhound
+Fox terrier
+Bull terrier
+Rat terrier
+Sheepdog
+Lizardfish
+Crocodile fish
+Crocodile newt
+Crocodile monitor
+Alligator gar
+Alligator snapping turtle
+Alligator lizard
+Lobster moth
+Elephant hawk moth
+Hummingbird hawk moth
+Hawk moth
+Hawkfish
+Hawk owl
+Sparrowhawk
+Hawk-eagle
+Eagle owl
+Fish owl
+Fish eagle
+Fishing cat
+Fish crow
+Owl butterfly | Owl butterflies
+Owl monkey
+Owl parrot | kakapo
+Bee fly | Bee flies
+Beewolf
+Bee louse | Bee lice
+Wasp spider
+Wasp moth
+Hornet moth
+Antlion
+Antbird
+Antshrike
+Antelope squirrel
+Antelope jackrabbit
+Jackrabbit
+Bird-eating spider
+Crab spider
+Crab plover
+Crab-eating macaque
+Crab-eating fox | Crab-eating foxes
+Crabeater seal
+Elephant beetle
+Elephant bird
+Elephant fish
+Elephantnose fish
+Rhinoceros beetle | rhino beetle
+Rhinoceros hornbill
+Rhinoceros iguana
+Hippo tang
+Deer mouse | Deer mice
+Deer fly | Deer flies
+Mule deer
+Buffalo weaver
+Buffalofish
+Cowbird
+Cowfish
+Cow killer
+Oxpecker
+Goat moth
+Mountain goat
+Goat antelope
+Sheepshead
+Sheep tick
+Sheep blowfly | Sheep blowflies
+Sea mouse | Sea mice
+Sea hare
+Sea robin
+Sea butterfly | Sea butterflies
+Sea moth
+Mousebird
+Mouse lemur
+Mouse opossum
+Mouse-eared bat
+Kangaroo mouse | Kangaroo mice
+Grasshopper mouse | Grasshopper mice
+Bat ray
+Batfish
+Bat hawk
+Bat falcon
+Dog whelk
+Dog tick
+Dog salmon | chum salmon
+Mudpuppy | mudpuppies
+Catbird
+Cat snake
+Civet cat
+Cat flea
+Cat-eyed snake
+Pigeon guillemot
+Pigeon hawk
+Parrot crossbill
+Parrotbill
+Turtle dove
+Turtle ant
+Tortoise beetle
+Turkey vulture
+Chicken hawk
+Duck hawk
+Hen harrier
+Goose barnacle | gooseneck barnacle
+Goosefish
+Swan mussel
+Swallowtail | swallowtail butterfly | swallowtail butterflies
+Swallow-tailed kite
+Frogmouth | tawny frogmouth
+Toad-headed agama
+Lizard buzzard
+Spider crab
+Spider wasp
+Spider beetle
+Scorpionfly | scorpionflies
+Scorpionfish
+Squirrelfish
+Squirrel glider
+Fox squirrel
+Fox sparrow
+Fox moth
+Fox shark | thresher shark
+Snail kite
+Slug moth
+Snake mackerel
+Monkey frog
+Monkey slug
+Zebra mussel
+Zebra spider
+Zebra dove
+Zebra duiker
+Giraffe weevil
+Camel spider
+Camel cricket
+Dolphinfish | mahi-mahi
+Rabbitfish
+Rabbit-eared bandicoot | bilby | bilbies
+Hare-wallaby | hare-wallabies
+Rat snake
+Rat kangaroo
+Rattail | grenadier
+Muskrat
+Mole cricket
+Mole rat | naked mole rat
+Mole crab
+Mole salamander
+Mole snake
+Weasel lemur
+Weasel shark
+Ferret badger
+Otter civet
+Beaver rat | rakali
+Shrew mole
+Shrew opossum
+Cuckoo bee
+Cuckoo wasp
+Cuckoo-shrike
+Robin moth
+Crow butterfly | Crow butterflies
+Canary rockfish
+Bull trout
+Bulldog bat
+Jackal buzzard
+Poodle moth
+Gopher tortoise
+Gopher snake
+Mantis shrimp
+Cricket frog
+Snakefly | snakeflies
+Seal salamander
+Shark ray
+Whale louse | Whale lice
+Woodlouse
+Shipworm
+Worm lizard
+Mosquitofish
+Emu-wren
+Whale-headed stork | shoebill
+Magpie goose | Magpie geese
+Magpie-lark
+Owlet-nightjar
+Toucan barbet
+Viperfish
+Pelican eel
+Gnatcatcher
+Sloth moth
+Bear cuscus | Bear cuscuses
+Bear macaque
+Tiger heron
+Moose fly | Moose flies

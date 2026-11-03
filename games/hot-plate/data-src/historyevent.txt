@@ -1,0 +1,542 @@
+# id: historyevent
+# prompt: Name a historical event
+# group: Other
+# emoji: 📜
+# kind: thing
+# Wars, battles, revolutions, disasters, discoveries, treaties, assassinations, firsts and eras commonly taught as events
+# (Renaissance, Industrial Revolution). Prehistory (dinosaur extinction, Ice Age) left out. Ambiguous short names go to the
+# best-known event: "Civil War" = American, "Bloody Sunday" = Derry 1972, "Great Famine" = Irish, "Great Plague" = London 1665.
+World War II | WW2 | WWII | World War 2 | Second World War | World War Two
+World War I | WW1 | WWI | World War 1 | First World War | Great War | World War One
+9/11 | September 11 attacks | September 11 | 9-11 | Nine Eleven | 9/11 attacks | Twin Towers attack
+Moon landing | Apollo 11 | First moon landing | Apollo 11 moon landing | Moon landings
+Sinking of the Titanic | Titanic | Titanic sinking
+Fall of the Berlin Wall | Berlin Wall falls | Berlin Wall | Fall of the Wall
+The Holocaust | Holocaust | Shoah
+French Revolution
+American Revolution | American Revolutionary War | Revolutionary War | American War of Independence | War of Independence
+Cold War
+Vietnam War | Vietnam
+American Civil War | US Civil War | Civil War
+Black Death | Bubonic plague | The Plague | Black Plague
+COVID-19 pandemic | Covid | Covid-19 | Coronavirus pandemic | Covid pandemic | Pandemic | Coronavirus
+Great Depression
+Industrial Revolution
+Attack on Pearl Harbor | Pearl Harbor | Bombing of Pearl Harbor | Pearl Harbour
+D-Day | Normandy landings | D Day | Operation Overlord | Invasion of Normandy
+Atomic bombings of Hiroshima and Nagasaki | Hiroshima | Nagasaki | Bombing of Hiroshima | Atomic bombing of Hiroshima | Atomic bomb | Hiroshima and Nagasaki
+Assassination of John F. Kennedy | JFK assassination | Kennedy assassination | Assassination of JFK | Assassination of Kennedy
+Columbus reaches the Americas | Columbus discovers America | Discovery of America | Columbus's voyage | Columbus | 1492 | Voyage of Columbus
+Battle of Hastings | 1066 | Hastings
+Declaration of Independence | Signing of the Declaration of Independence | American independence
+Fall of the Roman Empire | Fall of Rome | Fall of the Western Roman Empire
+Chernobyl disaster | Chernobyl | Chernobyl nuclear disaster
+Assassination of Archduke Franz Ferdinand | Franz Ferdinand assassination | Assassination of Franz Ferdinand
+Renaissance | The Renaissance
+Russian Revolution | Bolshevik Revolution | October Revolution
+Magna Carta | Signing of the Magna Carta | Sealing of Magna Carta
+Great Fire of London
+Battle of Waterloo | Waterloo
+Spanish flu | 1918 flu pandemic | Spanish flu pandemic | 1918 pandemic
+Russian invasion of Ukraine | Ukraine war | War in Ukraine | Russia-Ukraine war | Russo-Ukrainian War | Invasion of Ukraine
+Korean War
+Gulf War | First Gulf War | Operation Desert Storm | Persian Gulf War | Desert Storm
+Iraq War | Invasion of Iraq | Second Gulf War | 2003 invasion of Iraq
+War in Afghanistan | Afghanistan War | War on Terror
+Boston Tea Party
+Cuban Missile Crisis
+Gallipoli campaign | Gallipoli | Anzac landing | Landing at Gallipoli | Dardanelles campaign | Anzac Cove landing
+Brexit | Brexit referendum | EU referendum
+2008 financial crisis | Global financial crisis | GFC | Financial crisis | 2008 crash | Great Recession
+Assassination of Abraham Lincoln | Lincoln assassination | Assassination of Lincoln
+Assassination of Martin Luther King Jr. | MLK assassination | Martin Luther King assassination | Assassination of MLK
+Civil rights movement | American civil rights movement
+Space Race
+Death of Princess Diana | Death of Diana | Princess Diana's death | Diana's death
+Wall Street Crash of 1929 | Wall Street Crash | Stock market crash of 1929 | Black Tuesday | Crash of 1929
+Treaty of Versailles
+Battle of the Somme | Somme
+Battle of Britain
+The Blitz | Blitz
+Dunkirk evacuation | Dunkirk | Operation Dynamo | Miracle of Dunkirk
+Boxing Day tsunami | 2004 tsunami | Indian Ocean tsunami | 2004 Indian Ocean tsunami
+Hurricane Katrina | Katrina
+Eruption of Mount Vesuvius | Pompeii | Destruction of Pompeii | Vesuvius eruption | Eruption of Vesuvius
+Spanish Armada | Defeat of the Spanish Armada
+Gunpowder Plot | Guy Fawkes | Bonfire Night plot
+The Crusades | Crusades | First Crusade | Crusade
+Abolition of slavery | End of slavery | Slavery abolition | Emancipation
+Women's suffrage | Women get the vote | Suffragettes | Votes for women | Suffrage movement
+End of apartheid | Fall of apartheid | Apartheid ending | Apartheid
+Release of Nelson Mandela | Mandela's release | Nelson Mandela released | Mandela freed
+Battle of Gettysburg | Gettysburg
+I Have a Dream speech | I Have a Dream | March on Washington
+Montgomery bus boycott | Rosa Parks bus protest | Rosa Parks
+Emancipation Proclamation
+Battle of Stalingrad | Stalingrad
+Fall of Saigon | End of the Vietnam War
+Tiananmen Square protests | Tiananmen Square massacre | Tiananmen Square | June Fourth Incident | Tiananmen
+Dissolution of the Soviet Union | Collapse of the Soviet Union | Fall of the Soviet Union | Fall of the USSR | Collapse of the USSR | End of the Soviet Union
+German reunification | Reunification of Germany
+Arab Spring
+Watergate scandal | Watergate | Nixon resignation | Resignation of Richard Nixon
+Challenger disaster | Space Shuttle Challenger disaster | Challenger explosion
+Wright brothers' first flight | First powered flight | First flight | Wright brothers | First airplane flight
+Invention of the printing press | Printing press | Gutenberg's printing press | Gutenberg
+Discovery of penicillin | Penicillin
+Rwandan genocide
+Partition of India | Partition
+Indian independence | Independence of India | Indian independence movement
+Irish Potato Famine | Great Famine | Irish famine | Potato famine | Great Hunger
+Easter Rising | 1916 Rising
+The Troubles | Troubles | Northern Ireland conflict
+Good Friday Agreement | Belfast Agreement
+Norman Conquest | Norman conquest of England | Norman invasion
+Wars of the Roses
+English Civil War
+Battle of Trafalgar | Trafalgar
+Napoleonic Wars
+Storming of the Bastille | Bastille Day | Fall of the Bastille
+Reign of Terror | The Terror
+Hundred Years' War | Hundred Years War
+Battle of Agincourt | Agincourt
+Bay of Pigs invasion | Bay of Pigs
+Cuban Revolution
+Battle of Thermopylae | Thermopylae | 300 Spartans
+Assassination of Julius Caesar | Death of Julius Caesar | Ides of March | Caesar's assassination | Assassination of Caesar
+Building of the pyramids | Construction of the Great Pyramid | Pyramids | Building of the Great Pyramid
+Building of the Great Wall of China | Great Wall of China | Great Wall construction | Great Wall
+Trojan War | Siege of Troy | Fall of Troy
+Viking invasions | Viking raids | Viking Age | Vikings | Viking raid on Lindisfarne
+Mongol invasions | Mongol conquests | Genghis Khan's conquests | Mongol Empire
+Salem witch trials | Salem witch hunt
+Mayflower voyage | Mayflower | Pilgrims landing | Landing of the Pilgrims | Arrival of the Pilgrims
+First Thanksgiving | Thanksgiving
+Battle of the Alamo | Alamo | The Alamo
+California Gold Rush | Gold Rush | Gold rush
+Prohibition
+Sinking of the Lusitania | Lusitania
+Armistice of 1918 | Armistice | Armistice Day | End of World War I | Armistice of 11 November 1918
+Hindenburg disaster | Hindenburg
+VE Day | Victory in Europe Day | V-E Day
+VJ Day | Victory over Japan Day | V-J Day
+Nuremberg trials
+First Fleet | Arrival of the First Fleet | First Fleet arrives | British settlement of Australia
+Captain Cook's first voyage | Captain Cook reaches Australia | Cook's voyage | Cook lands at Botany Bay | Captain Cook
+Treaty of Waitangi | Signing of the Treaty of Waitangi
+Federation of Australia | Australian Federation | Federation
+Christchurch earthquake | 2011 Christchurch earthquake | Canterbury earthquake
+Christchurch mosque shootings | Christchurch attack | Christchurch mosque attacks | Christchurch terror attack
+Port Arthur massacre
+Black Summer bushfires | 2019-20 bushfires | Australian bushfires | Black Summer | 2019 bushfires
+Fukushima nuclear disaster | Fukushima | Fukushima disaster | 2011 Japan tsunami | Tohoku earthquake | 2011 Tōhoku earthquake and tsunami
+Capitol riot | January 6 | January 6 Capitol attack | Storming of the Capitol | January 6th | Capitol attack | Capitol insurrection
+Murder of George Floyd | George Floyd protests | Death of George Floyd | George Floyd
+Death of Queen Elizabeth II | Death of the Queen | Queen's death | Queen Elizabeth's death
+Coronation of Charles III | Coronation of King Charles | King Charles coronation | Coronation of King Charles III
+October 7 attacks | October 7 | Hamas attack on Israel | 7 October attacks
+Gaza war | Israel-Hamas war | War in Gaza
+Syrian civil war | Syrian war
+Rise of ISIS | ISIS | Islamic State | Rise of the Islamic State
+Fall of Kabul | Taliban takeover of Afghanistan | Withdrawal from Afghanistan | 2021 fall of Kabul
+Death of Osama bin Laden | Killing of Osama bin Laden | Bin Laden raid | Osama bin Laden killed
+Election of Barack Obama | Obama elected | Obama's election | 2008 US election
+Assassination attempt on Donald Trump | Trump assassination attempt | Butler rally shooting | Attempted assassination of Donald Trump
+Battle of Midway | Midway
+Battle of Iwo Jima | Iwo Jima
+Battle of the Bulge
+Siege of Leningrad | Leningrad | Leningrad siege
+Invasion of Poland | German invasion of Poland
+Operation Barbarossa | Invasion of the Soviet Union | German invasion of the Soviet Union
+Kristallnacht | Night of Broken Glass
+Rise of Hitler | Hitler comes to power | Nazi seizure of power | Hitler becomes chancellor
+Liberation of Auschwitz
+Death of Hitler | Hitler's suicide | Hitler's death
+Manhattan Project | Trinity test | First atomic bomb test
+Bombing of Dresden | Dresden
+Battle of Okinawa | Okinawa
+Fall of Singapore
+Battle of El Alamein | El Alamein
+Kokoda Track campaign | Kokoda | Kokoda Trail
+Bombing of Darwin
+Founding of the United Nations | Creation of the United Nations | United Nations founded | Founding of the UN
+Berlin Airlift
+Marshall Plan
+Construction of the Berlin Wall | Building of the Berlin Wall | Berlin Wall built
+Founding of Israel | Israeli Declaration of Independence | Creation of Israel | Establishment of Israel | Israel founded
+Six-Day War | Six Day War | 1967 war
+Yom Kippur War
+Suez Crisis
+Launch of Sputnik | Sputnik | Sputnik launch
+Yuri Gagarin's spaceflight | First man in space | First human in space | Gagarin | Vostok 1
+Apollo 13
+Woodstock | Woodstock festival
+Assassination of Malcolm X
+Assassination of Robert F. Kennedy | RFK assassination | Assassination of Bobby Kennedy
+Iranian Revolution | Islamic Revolution | 1979 Iranian Revolution
+Iran hostage crisis
+Soviet-Afghan War | Soviet invasion of Afghanistan | Soviet–Afghan War
+Falklands War | Falklands | Malvinas War | Falklands conflict
+Iran-Iraq War | Iran–Iraq War
+Iraqi invasion of Kuwait | Invasion of Kuwait
+Revolutions of 1989 | Fall of communism | Fall of the Iron Curtain | Autumn of Nations
+Velvet Revolution
+Romanian Revolution | Fall of Ceaușescu | Fall of Ceausescu
+Bosnian War
+Srebrenica massacre | Srebrenica genocide
+Yugoslav Wars | Breakup of Yugoslavia
+Kosovo War
+Oklahoma City bombing
+Columbine shooting | Columbine | Columbine massacre
+Y2K | Millennium bug | Y2K bug
+Dot-com bubble | Dot-com crash | Dotcom bubble
+7/7 London bombings | 7/7 | London bombings | 7 July bombings
+Madrid train bombings | 2004 Madrid bombings
+Bali bombings | 2002 Bali bombings
+Paris attacks | November 2015 Paris attacks | Bataclan attack | Bataclan
+Charlie Hebdo shooting | Charlie Hebdo attack
+Notre-Dame fire | Notre Dame fire | Notre-Dame de Paris fire
+Boston Marathon bombing
+Sandy Hook shooting | Sandy Hook | Sandy Hook massacre
+Las Vegas shooting | 2017 Las Vegas shooting
+Manchester Arena bombing | Manchester bombing
+Grenfell Tower fire | Grenfell
+Haiti earthquake | 2010 Haiti earthquake
+Deepwater Horizon oil spill | BP oil spill | Deepwater Horizon | Gulf oil spill
+Exxon Valdez oil spill | Exxon Valdez
+Hurricane Sandy | Superstorm Sandy
+Hurricane Maria
+Beirut explosion | 2020 Beirut explosion | Beirut port explosion
+Turkey-Syria earthquake | 2023 Turkey earthquake | 2023 Turkey–Syria earthquake
+Fall of the Assad regime | Fall of Assad | Fall of Bashar al-Assad
+Annexation of Crimea | Crimea annexation | Russian annexation of Crimea
+Euromaidan | Maidan Revolution | Revolution of Dignity | Ukrainian revolution
+Russo-Georgian War | Russia-Georgia war | 2008 Georgia war
+Chechen Wars | First Chechen War | Second Chechen War | Chechen War
+Beslan school siege | Beslan
+Moscow theater hostage crisis | Moscow theatre siege | Nord-Ost siege
+Kursk submarine disaster | Kursk disaster
+Hong Kong handover | Handover of Hong Kong | Transfer of Hong Kong
+Hong Kong protests | 2019 Hong Kong protests | Umbrella Movement
+Assassination of Mahatma Gandhi | Assassination of Gandhi | Gandhi's assassination | Gandhi assassination
+Salt March | Gandhi's Salt March | Dandi March | Salt Satyagraha
+Amritsar massacre | Jallianwala Bagh massacre
+Indian Rebellion of 1857 | Indian Mutiny | Sepoy Mutiny | First War of Indian Independence
+Bangladesh Liberation War | Bangladesh War of Independence
+Assassination of Indira Gandhi
+2008 Mumbai attacks | Mumbai attacks | 26/11
+Assassination of Benazir Bhutto
+Assassination of Shinzo Abe
+Chinese Civil War
+Cultural Revolution
+Great Leap Forward
+Long March
+Opium Wars | Opium War | First Opium War
+Boxer Rebellion | Boxer Uprising
+Taiping Rebellion
+Xinhai Revolution | Chinese Revolution of 1911 | Fall of the Qing dynasty | 1911 Revolution
+Founding of the People's Republic of China | Chinese Communist Revolution | Communist victory in China
+Meiji Restoration
+Russo-Japanese War
+First Sino-Japanese War
+Second Sino-Japanese War
+Nanjing Massacre | Rape of Nanking | Nanking Massacre
+Cambodian genocide | Khmer Rouge genocide | Killing Fields
+Tet Offensive
+My Lai massacre | My Lai
+Gulf of Tonkin incident | Gulf of Tonkin
+Battle of Dien Bien Phu | Dien Bien Phu
+Fall of Constantinople | Conquest of Constantinople | 1453
+Battle of Marathon | Marathon
+Battle of Salamis | Salamis
+Greco-Persian Wars | Persian Wars
+Peloponnesian War
+Conquests of Alexander the Great | Alexander the Great's conquests | Alexander's conquests
+Punic Wars | Second Punic War | Hannibal crossing the Alps | Hannibal's crossing of the Alps
+Battle of Cannae | Cannae
+Founding of Rome
+Spartacus revolt | Third Servile War | Spartacus uprising | Slave revolt of Spartacus
+Battle of Actium | Actium
+Crucifixion of Jesus | Crucifixion | Death of Jesus
+Great Fire of Rome | Burning of Rome
+Siege of Jerusalem (70 AD) | Destruction of the Second Temple | Siege of Jerusalem | Fall of Jerusalem
+Roman conquest of Britain | Roman invasion of Britain
+Boudica's revolt | Boudica's rebellion | Boudicca's revolt | Boudicca's rebellion | Boudica
+Building of Hadrian's Wall | Hadrian's Wall
+Sack of Rome | Sack of Rome (410) | Visigoths sack Rome
+Burning of the Library of Alexandria | Destruction of the Library of Alexandria | Library of Alexandria
+Unification of China | Qin unification of China | Qin unification
+First Olympic Games | Ancient Olympics | First Olympics | Ancient Olympic Games
+First modern Olympics | 1896 Olympics | 1896 Athens Olympics
+Battle of Tours
+Coronation of Charlemagne | Charlemagne crowned emperor
+Battle of Stamford Bridge
+Domesday Book
+Murder of Thomas Becket | Assassination of Thomas Becket
+Battle of Bannockburn | Bannockburn
+Battle of Stirling Bridge | Stirling Bridge
+Peasants' Revolt
+Battle of Crécy | Battle of Crecy | Crecy
+Siege of Orléans | Joan of Arc | Execution of Joan of Arc | Siege of Orleans
+Battle of Bosworth Field | Battle of Bosworth | Bosworth
+Great Schism | East-West Schism | East–West Schism
+Spanish Inquisition | Inquisition
+Reconquista | Fall of Granada
+Marco Polo's travels | Travels of Marco Polo | Marco Polo
+Battle of Manzikert | Manzikert
+Fall of Tenochtitlan | Spanish conquest of the Aztec Empire | Conquest of Mexico | Conquest of the Aztecs | Fall of the Aztec Empire
+Spanish conquest of the Inca Empire | Fall of the Inca Empire | Conquest of the Inca | Conquest of Peru
+Magellan's circumnavigation | First circumnavigation of the world | Magellan's voyage | First circumnavigation
+Vasco da Gama's voyage to India | Vasco da Gama's voyage
+Leif Erikson reaches America | Vinland | Viking discovery of America | Leif Erikson
+Age of Discovery | Age of Exploration
+Protestant Reformation | Reformation | The Reformation
+Ninety-five Theses | 95 Theses | Martin Luther's 95 Theses | Martin Luther's Ninety-five Theses
+English Reformation | Henry VIII's break with Rome | Break with Rome
+Dissolution of the monasteries
+Execution of Anne Boleyn
+Battle of Lepanto | Lepanto
+Siege of Vienna | Battle of Vienna
+Thirty Years' War | Thirty Years War
+Peace of Westphalia | Treaty of Westphalia
+Great Plague of London | Great Plague
+Execution of Charles I
+Glorious Revolution
+Act of Union 1707 | Acts of Union 1707 | Act of Union | Union of England and Scotland
+Battle of Culloden | Culloden | Jacobite rising | Jacobite rebellion
+Scientific Revolution
+The Enlightenment | Enlightenment | Age of Enlightenment | Age of Reason
+Seven Years' War | Seven Years War | French and Indian War
+Atlantic slave trade | Transatlantic slave trade | Slave trade
+Abolition of the slave trade | Slave Trade Act | Slave Trade Act 1807
+Boston Massacre
+Battles of Lexington and Concord | Lexington and Concord | Shot heard round the world
+Battle of Bunker Hill | Bunker Hill
+Paul Revere's ride | Midnight ride of Paul Revere | Paul Revere
+Washington crossing the Delaware | Crossing of the Delaware
+Siege of Yorktown | Battle of Yorktown | Yorktown
+Signing of the US Constitution | Constitutional Convention | US Constitution | Signing of the Constitution
+Bill of Rights | US Bill of Rights
+Louisiana Purchase
+Lewis and Clark Expedition | Lewis and Clark
+War of 1812
+Trail of Tears
+Mexican-American War | Mexican–American War
+Underground Railroad
+Nat Turner's rebellion | Nat Turner's slave rebellion
+Dred Scott decision | Dred Scott v. Sandford
+John Brown's raid on Harpers Ferry | Raid on Harpers Ferry | Harpers Ferry raid
+Battle of Fort Sumter | Fort Sumter
+Gettysburg Address
+Sherman's March to the Sea | March to the Sea
+Surrender at Appomattox | Appomattox | Lee's surrender
+Reconstruction | Reconstruction era
+Transcontinental railroad | First transcontinental railroad | Golden spike
+Battle of the Little Bighorn | Little Bighorn | Custer's Last Stand
+Wounded Knee Massacre | Wounded Knee
+Great Chicago Fire | Chicago fire
+1906 San Francisco earthquake | San Francisco earthquake
+Spanish-American War | Spanish–American War
+Sinking of the USS Maine | USS Maine
+Assassination of William McKinley | McKinley assassination
+Klondike Gold Rush | Klondike
+Invention of the telephone | First telephone call
+Invention of the light bulb | Edison's light bulb
+Scopes trial | Scopes Monkey Trial | Monkey trial
+Harlem Renaissance
+Roaring Twenties | Jazz Age
+Dust Bowl
+New Deal
+Lindbergh's transatlantic flight | First solo transatlantic flight | Lindbergh's flight | Spirit of St. Louis
+Disappearance of Amelia Earhart | Amelia Earhart's disappearance | Amelia Earhart
+Internment of Japanese Americans | Japanese American internment | Japanese internment
+McCarthyism | Red Scare | Second Red Scare
+Brown v. Board of Education | Brown v Board
+Little Rock Nine
+Selma to Montgomery marches | Selma march | Selma
+Stonewall riots | Stonewall | Stonewall uprising
+Roe v. Wade | Roe v Wade
+Overturning of Roe v. Wade | Dobbs decision | Dobbs v. Jackson
+Kent State shootings | Kent State massacre | Kent State
+Three Mile Island accident | Three Mile Island
+Assassination attempt on Ronald Reagan | Reagan assassination attempt | Attempted assassination of Reagan
+Iran-Contra affair | Iran–Contra affair
+Impeachment of Bill Clinton | Clinton impeachment | Lewinsky scandal | Monica Lewinsky scandal
+1992 Los Angeles riots | LA riots | Rodney King riots
+Waco siege | Waco
+Hurricane Andrew
+Columbia disaster | Space Shuttle Columbia disaster
+First Space Shuttle launch | STS-1
+Voyager launch | Voyager missions | Voyager 1
+Hubble Space Telescope launch | Hubble launch
+Curiosity rover landing | Mars rover landing | Curiosity landing | Perseverance landing
+Launch of the International Space Station | ISS launch | International Space Station
+First spacewalk | Alexei Leonov's spacewalk
+SpaceX first crewed launch | Crew Dragon Demo-2 | First SpaceX crewed flight
+Conquest of Everest | First ascent of Everest | Hillary and Tenzing | First Everest summit | Everest first climbed
+Race to the South Pole | Amundsen reaches the South Pole | First to the South Pole | Scott's Terra Nova Expedition
+Shackleton's Endurance expedition | Endurance expedition | Imperial Trans-Antarctic Expedition | Shackleton
+Discovery of the structure of DNA | Discovery of DNA | Double helix discovery
+Human Genome Project
+Dolly the sheep | Cloning of Dolly the sheep | First cloned mammal
+Invention of the World Wide Web | World Wide Web | Birth of the internet | Invention of the internet
+Launch of the iPhone | First iPhone | iPhone launch
+First heart transplant
+First test-tube baby | Birth of Louise Brown | First IVF baby
+Eradication of smallpox | Smallpox eradication
+First vaccine | Smallpox vaccine | Jenner's smallpox vaccine
+Discovery of X-rays | X-rays
+Splitting the atom | First nuclear chain reaction | Chicago Pile-1
+Trial of Galileo | Galileo's trial
+Voyage of the Beagle | Darwin's voyage | Darwin's voyage on the Beagle
+Publication of On the Origin of Species | On the Origin of Species | Origin of Species
+Discovery of Tutankhamun's tomb | Tutankhamun's tomb | King Tut's tomb | Discovery of King Tut's tomb
+Discovery of the Rosetta Stone | Rosetta Stone
+Discovery of the Dead Sea Scrolls | Dead Sea Scrolls
+Agricultural Revolution | Neolithic Revolution | British Agricultural Revolution
+HIV/AIDS epidemic | AIDS epidemic | AIDS crisis | HIV epidemic
+SARS outbreak | SARS epidemic | 2003 SARS outbreak
+Swine flu pandemic | 2009 swine flu | H1N1 pandemic | Swine flu
+West African Ebola epidemic | Ebola outbreak | Ebola epidemic | Ebola
+Bhopal disaster | Bhopal gas tragedy
+Live Aid
+Ethiopian famine | 1984 Ethiopian famine | 1983–1985 famine in Ethiopia
+Soweto uprising
+Sharpeville massacre | Sharpeville
+Scramble for Africa
+Berlin Conference
+Second Boer War | Boer War | Anglo-Boer War
+Anglo-Zulu War | Zulu War | Battle of Isandlwana | Battle of Rorke's Drift | Rorke's Drift
+Battle of Adwa | Adwa
+Mau Mau uprising | Mau Mau rebellion
+Algerian War | Algerian War of Independence
+Nigerian Civil War | Biafran War | Biafra
+Battle of Mogadishu | Black Hawk Down | Somali Civil War
+War in Darfur | Darfur genocide | Darfur
+Assassination of Anwar Sadat | Sadat assassination
+Camp David Accords
+Oslo Accords
+Assassination of Yitzhak Rabin | Rabin assassination
+Munich massacre | 1972 Munich Olympics massacre | Munich Olympics massacre
+1948 Arab-Israeli War | 1948 war | Nakba | Israeli War of Independence
+First Intifada
+Second Intifada
+Balfour Declaration
+Sykes-Picot Agreement | Sykes–Picot Agreement
+Arab Revolt | Lawrence of Arabia | Great Arab Revolt
+Dissolution of the Ottoman Empire | Fall of the Ottoman Empire | End of the Ottoman Empire
+Armenian genocide
+Lebanese Civil War
+Capture of Saddam Hussein | Execution of Saddam Hussein | Saddam's capture
+Haitian Revolution
+Mexican War of Independence | Mexican independence | Grito de Dolores
+Mexican Revolution
+Spanish American wars of independence | Latin American wars of independence | Bolívar's liberation of South America
+Opening of the Panama Canal | Panama Canal | Building of the Panama Canal
+Opening of the Suez Canal | Suez Canal
+Canadian Confederation | Confederation of Canada | Confederation
+Battle of Vimy Ridge | Vimy Ridge
+Halifax Explosion
+October Crisis
+Battle of Passchendaele | Passchendaele | Third Battle of Ypres
+Battle of Verdun | Verdun
+Christmas truce | Christmas Truce of 1914
+Battle of Beersheba | Charge at Beersheba | Charge of the Light Horse at Beersheba
+Russian Civil War
+Spanish Civil War
+Holodomor | Ukrainian famine
+Great Purge | Stalin's purges | Great Terror
+Munich Agreement | Appeasement | Munich Pact
+Anschluss | Annexation of Austria
+Molotov-Ribbentrop Pact | Nazi-Soviet Pact | Molotov–Ribbentrop Pact | Hitler-Stalin Pact
+Battle of the Atlantic
+Warsaw Uprising
+Warsaw Ghetto Uprising
+Operation Market Garden | Battle of Arnhem | Market Garden
+Battle of Monte Cassino | Monte Cassino
+Battle of Guadalcanal | Guadalcanal
+Battle of Crete
+Battle of Kursk | Kursk
+Yalta Conference | Yalta
+Potsdam Conference | Potsdam
+Doolittle Raid
+Sinking of the Bismarck | Bismarck
+The Great Escape | Great Escape
+Battle of Long Tan | Long Tan
+Korean Armistice | Korean Armistice Agreement
+Hungarian Revolution of 1956 | Hungarian Uprising | 1956 Hungarian Revolution
+Prague Spring
+Solidarity movement | Solidarność | Solidarity
+Treaty of Rome
+Maastricht Treaty | Founding of the European Union | Formation of the EU | Creation of the EU
+Introduction of the euro | Euro launch | Launch of the euro
+Greek debt crisis | Greek financial crisis | Eurozone crisis
+Congress of Vienna
+Revolutions of 1848 | Spring of Nations | 1848 revolutions
+Unification of Italy | Italian unification | Risorgimento
+Unification of Germany | German unification | Unification of Germany 1871
+Crimean War | Charge of the Light Brigade
+Franco-Prussian War | Franco–Prussian War
+Paris Commune
+Dreyfus affair
+Jack the Ripper murders | Jack the Ripper | Whitechapel murders
+Execution of Louis XVI | Execution of Marie Antoinette | Execution of the king
+Coronation of Napoleon | Napoleon crowned emperor
+French invasion of Russia | Napoleon's invasion of Russia | Napoleon's retreat from Moscow
+Battle of Austerlitz | Austerlitz
+Mutiny on the Bounty | Bounty mutiny
+Eureka Stockade | Eureka Rebellion
+Australian gold rush | Victorian gold rush
+Siege of Glenrowan | Ned Kelly's last stand | Ned Kelly | Capture of Ned Kelly
+Stolen Generations
+1967 Australian referendum | 1967 referendum
+The Dismissal | Dismissal of Gough Whitlam | 1975 Australian constitutional crisis | Whitlam dismissal
+Apology to the Stolen Generations | National Apology | Sorry speech
+Mabo decision | Mabo | Mabo case
+Cyclone Tracy
+Black Saturday bushfires | Black Saturday
+Opening of the Sydney Harbour Bridge | Sydney Harbour Bridge opening
+2000 Sydney Olympics | Sydney Olympics
+Attack on Sydney Harbour | Japanese midget submarine attack on Sydney
+New Zealand Wars | Land Wars | Māori Wars | Maori Wars
+Musket Wars
+Women's suffrage in New Zealand | 1893 New Zealand election | NZ women get the vote
+Abel Tasman's voyage | Tasman reaches New Zealand | Abel Tasman
+Napier earthquake | Hawke's Bay earthquake | 1931 Hawke's Bay earthquake
+Tangiwai disaster
+Wahine disaster | Wahine
+Erebus disaster | Mount Erebus disaster | Air New Zealand Flight 901
+Sinking of the Rainbow Warrior | Rainbow Warrior bombing | Rainbow Warrior
+1981 Springbok Tour | Springbok tour
+Whakaari eruption | White Island eruption | Whakaari / White Island eruption
+Kaikōura earthquake | Kaikoura earthquake
+Bloody Sunday | Bloody Sunday 1972 | Bloody Sunday (1972)
+Hillsborough disaster | Hillsborough
+Aberfan disaster | Aberfan
+Lockerbie bombing | Pan Am Flight 103 | Lockerbie
+UK miners' strike | Miners' strike | 1984 miners' strike
+Poll tax riots
+2011 England riots | London riots | 2011 London riots
+Scottish independence referendum | 2014 Scottish referendum | Indyref
+Abdication of Edward VIII | Abdication crisis
+Coronation of Elizabeth II | Queen's coronation
+Wedding of Charles and Diana | Royal wedding of 1981
+Wedding of Prince William and Catherine Middleton | Royal wedding | William and Kate's wedding
+Irish War of Independence
+Irish Civil War
+Battle of the Boyne | Boyne
+Battle of Clontarf | Clontarf
+Partition of Ireland
+Utøya massacre | 2011 Norway attacks | Utoya massacre | Utøya
+Eyjafjallajökull eruption | 2010 Iceland volcano eruption | Eyjafjallajokull eruption | Iceland volcano
+Krakatoa eruption | Krakatoa | Krakatau
+Tunguska event
+1923 Great Kantō earthquake | Great Kanto earthquake
+Sri Lankan Civil War
+Kargil War
+Indonesian independence | Indonesian National Revolution
+Battle of Plassey | Plassey
+Assassination of Olof Palme
+Trial of Socrates | Death of Socrates
+Death of Cleopatra
+Battle of Gaugamela | Gaugamela

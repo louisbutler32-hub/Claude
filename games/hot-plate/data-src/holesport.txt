@@ -1,0 +1,61 @@
+# id: holesport
+# prompt: Name a sport or game where you score by getting a ball or object into a hole, hoop, basket or pocket
+# group: Sport
+# emoji: 🕳️
+# kind: thing
+Golf
+Basketball
+Netball
+Pool | Billiards | Pocket Billiards | Eight-ball | 8-ball
+Snooker
+Mini Golf | Minigolf | Putt-putt | Crazy Golf
+Beer Pong | Cup Pong
+Cornhole | Bean Bag Toss
+Croquet
+Skee-Ball | Skeeball
+Korfball
+Disc Golf | Frisbee Golf
+Quidditch | Quadball
+Pitch and Putt
+Foot Golf | FootGolf
+Golf Croquet
+Wheelchair Basketball
+3x3 Basketball | Three-on-three Basketball
+Streetball
+Slamball
+Water Basketball
+Bumper Pool
+Nine-ball | 9-ball
+Straight Pool
+Russian Pyramid | Russian Billiards
+English Billiards
+Bar Billiards
+Carrom
+Tiddlywinks
+Bagatelle
+Washer Toss | Washers
+Ping Pong Toss
+Pop-A-Shot | Arcade Basketball
+Pachinko
+Ground Golf
+Gateball
+Indoor Netball
+Fast5 | Fast5 Netball
+Horse | H-O-R-S-E
+Knockout
+Toad in the Hole
+Clock Golf
+Pato
+Mesoamerican Ballgame | Ulama | Ollamaliztli
+Cestoball
+Crokinole
+Klask
+Ringball
+Fishbowl Toss
+Kelly Pool
+Ten-ball | 10-ball
+Blackball
+One-pocket
+Underwater Rugby
+Horseball
+Walking Netball

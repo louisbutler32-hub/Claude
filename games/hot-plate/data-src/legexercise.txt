@@ -1,0 +1,90 @@
+# id: legexercise
+# prompt: Name a leg exercise at the gym
+# group: Gym
+# emoji: 🦵
+# kind: thing
+Squat | squats | back squat | barbell squat
+Lunge | lunges
+Deadlift | deadlifts
+Leg press
+Leg extension | leg extensions | quad extension
+Leg curl | leg curls | hamstring curl | lying leg curl
+Calf raise | calf raises
+Romanian deadlift | RDL | RDLs
+Bulgarian split squat | Bulgarian split squats | BSS
+Hip thrust | hip thrusts | barbell hip thrust
+Goblet squat
+Front squat
+Box jump | box jumps
+Step-up | step-ups
+Hack squat
+Glute bridge | glute bridges
+Jump squat | jump squats | squat jumps
+Wall sit
+Split squat
+Walking lunge | walking lunges
+Sumo squat
+Sumo deadlift
+Seated leg curl
+Seated calf raise
+Standing calf raise
+Smith machine squat
+Pistol squat | pistol squats
+Reverse lunge | reverse lunges
+Side lunge | lateral lunge
+Curtsy lunge
+Hip abduction | abductor machine | abductors
+Hip adduction | adductor machine | adductors
+Good morning | good mornings
+Stiff-leg deadlift | straight leg deadlift
+Trap bar deadlift | hex bar deadlift
+Single-leg deadlift | single leg RDL
+Kettlebell swing | kettlebell swings | KB swings
+Nordic curl | Nordic hamstring curl | Nordics
+Glute kickback | cable kickback | donkey kick | donkey kicks
+Cable pull-through | pull-through
+Belt squat
+Pendulum squat
+Sissy squat
+V-squat
+Overhead squat
+Zercher squat
+Safety bar squat | SSB squat
+Pause squat
+Box squat
+Landmine squat
+Cossack squat
+Jefferson squat
+Hip thrust machine | glute drive
+Reverse hyperextension | reverse hyper
+Back extension | hyperextension | 45-degree back extension
+Glute-ham raise | GHR
+Leg press calf raise | calf press
+Donkey calf raise
+Tibialis raise | tib raise
+Lateral band walk | banded side steps | monster walk | crab walk
+Sled push | prowler push | prowler
+Sled pull | sled drag
+Farmer's walk | farmer's carry
+Clean | power clean
+Snatch
+Thruster | thrusters
+Wall ball | wall balls
+Jumping lunge | lunge jumps
+Skater jump | skaters
+Broad jump
+Single-leg press
+Single-leg extension
+Single-leg glute bridge
+Frog pump | frog pumps
+Fire hydrant | fire hydrants
+Clamshell | clamshells
+Step-down | step downs
+Lateral step-up
+Deficit deadlift
+Deficit reverse lunge
+Heels-elevated squat
+Spanish squat
+Stair climber | StairMaster
+Cycling | exercise bike | spin bike
+Treadmill incline walk | incline walk | 12-3-30

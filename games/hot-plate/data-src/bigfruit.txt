@@ -1,0 +1,61 @@
+# id: bigfruit
+# prompt: Name a fruit bigger than an apple
+# group: Food
+# emoji: 🍉
+# kind: thing
+# Rule: a typical fruit of the kind is clearly bigger than a typical apple
+# (about 7-8 cm, 150-200 g) in both size and weight. Left out as roughly
+# apple-sized: orange, pear, quince, avocado, pomegranate, persimmon, sugar
+# apple, tangelo, Korean melon. Left out as long but lighter: banana,
+# plantain. Culinary vegetables that are botanically fruit (pumpkin,
+# squash, eggplant, winter melon) are left out.
+# Borderline but in: mango (most sold are 250-500 g), cherimoya and black
+# sapote (usually 300-500 g).
+Watermelon | Watermelons
+Pineapple | Pineapples
+Coconut | Coconuts
+Melon | Melons | Muskmelon
+Cantaloupe | Rockmelon | Rock melon
+Mango | Mangoes | Mangos
+Papaya | Pawpaw | Papaw
+Grapefruit
+Honeydew | Honeydew melon
+Jackfruit | Jakfruit
+Durian
+Pomelo | Pummelo | Shaddock
+Dragon fruit | Pitaya | Pitahaya
+Breadfruit
+Soursop | Guanabana | Graviola
+Ugli fruit | Ugli | Uniq fruit
+Galia melon | Galia
+Cherimoya | Custard apple
+Mamey sapote | Mamey
+Citron | Etrog
+Buddha's hand | Fingered citron
+Cempedak | Chempedak
+Marang
+Santa Claus melon | Piel de sapo | Christmas melon
+Canary melon
+Charentais melon | Charentais
+Casaba melon | Casaba
+Crenshaw melon | Crenshaw
+Hami melon
+Yubari King melon | Yubari melon
+Bailan melon
+Ogen melon
+Sharlyn melon
+Persian melon
+Oroblanco | Sweetie
+Atemoya
+Black sapote | Chocolate pudding fruit
+Babaco
+Gac | Gac fruit
+Bael | Bael fruit | Stone apple
+Monstera deliciosa | Monstera fruit | Fruit salad plant
+Cacao pod | Cacao fruit | Cocoa pod
+Baobab fruit | Baobab
+Cupuaçu | Cupuacu
+Biribá | Biriba | Rollinia
+Soncoya
+Pandanus fruit | Screwpine fruit | Pandan fruit
+Coco de mer

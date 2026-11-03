@@ -1,0 +1,411 @@
+# id: insta10m
+# prompt: Name someone with over 10 million Instagram followers
+# group: People
+# emoji: 📸
+# kind: person
+# Sources: Wikipedia "List of most-followed Instagram accounts" (top 50, Nov 2026, brands removed),
+# Wikidata P8687 follower counts tied to an Instagram username (>= 10M), plus well-known
+# accounts with long-standing 10M+ followings. People only, no brands/clubs/bands.
+Cristiano Ronaldo | Ronaldo | CR7
+Lionel Messi | Messi | Leo Messi
+Taylor Swift
+Kim Kardashian
+Kylie Jenner
+Selena Gomez
+Ariana Grande
+Dwayne Johnson | The Rock
+Justin Bieber
+Beyoncé | Beyonce
+Billie Eilish
+Kendall Jenner
+Rihanna
+Drake
+Zendaya
+Neymar | Neymar Jr
+MrBeast | Mr Beast | Jimmy Donaldson
+LeBron James
+Kylian Mbappé | Mbappe | Kylian Mbappe
+Khloé Kardashian | Khloe Kardashian
+Miley Cyrus
+Katy Perry
+Kevin Hart
+Cardi B
+Jennifer Lopez | JLo | J.Lo
+Dua Lipa
+Harry Styles
+Ed Sheeran
+Lady Gaga
+Bruno Mars
+Tom Holland
+Shakira
+David Beckham
+Kourtney Kardashian
+Travis Scott
+Chris Brown
+Demi Lovato
+Snoop Dogg
+Vin Diesel
+Gal Gadot
+Ellen DeGeneres
+Virat Kohli
+Olivia Rodrigo
+Sabrina Carpenter
+Shawn Mendes
+Camila Cabello
+Eminem
+Millie Bobby Brown
+Will Smith
+Leonardo DiCaprio
+Robert Downey Jr. | RDJ | Robert Downey Jr
+Chris Hemsworth
+Ryan Reynolds
+Emma Watson
+Gigi Hadid
+Bella Hadid
+Hailey Bieber | Hailey Baldwin
+Lisa | Lalisa Manobal | Lisa Blackpink
+Jennie | Jennie Kim
+Rosé | Rose | Roseanne Park
+Jisoo | Kim Jisoo
+Zayn Malik | Zayn
+Khaby Lame
+Charli D'Amelio | Charli DAmelio
+Addison Rae
+Kris Jenner
+Lewis Hamilton
+Mohamed Salah | Mo Salah
+Erling Haaland | Haaland
+Stephen Curry | Steph Curry
+Conor McGregor
+The Weeknd | Abel Tesfaye
+Post Malone
+Bad Bunny
+Nick Jonas
+Justin Timberlake
+Jenna Ortega
+Zac Efron
+Chris Pratt
+Jennifer Aniston
+Margot Robbie
+Sydney Sweeney
+Timothée Chalamet | Timothee Chalamet
+Jason Statham
+Logan Paul
+Jake Paul
+IShowSpeed | Speed | Darren Watkins
+Ronaldinho
+Zlatan Ibrahimović | Zlatan | Zlatan Ibrahimovic
+Gareth Bale
+Jude Bellingham
+Lamine Yamal
+Vinícius Júnior | Vinicius Junior | Vini Jr
+Karim Benzema
+Paul Pogba
+Sergio Ramos
+Barack Obama
+Michelle Obama
+Donald Trump
+Narendra Modi
+Kobe Bryant
+Shaquille O'Neal | Shaq
+Tom Brady
+Floyd Mayweather
+Mike Tyson
+John Cena
+Usain Bolt
+Simone Biles
+Serena Williams
+Rafael Nadal | Rafa Nadal
+Roger Federer
+Novak Djokovic
+Megan Thee Stallion
+Doja Cat
+SZA
+Lana Del Rey
+Adele
+Britney Spears
+Madonna
+Halsey
+Lizzo
+Niall Horan
+Louis Tomlinson
+Liam Payne
+Charlie Puth
+Sam Smith
+Kendrick Lamar
+J. Cole | J Cole
+21 Savage
+Lil Baby
+Lil Uzi Vert
+Lil Wayne
+Future
+XXXTentacion
+Marshmello
+DJ Khaled
+50 Cent
+Wiz Khalifa
+Tekashi 6ix9ine | 6ix9ine | Tekashi69
+Iggy Azalea
+Tyga
+Diddy | Sean Combs | P. Diddy
+Usher
+Karol G
+J Balvin
+Maluma
+Anitta
+Daddy Yankee
+Ozuna
+Anuel AA
+Becky G
+Rosalía | Rosalia
+Nicky Jam
+Romeo Santos
+Rauw Alejandro
+Natti Natasha
+V | Kim Taehyung | Taehyung
+Jimin | Park Jimin
+RM | Kim Namjoon
+J-Hope | Jung Hoseok
+Suga | Min Yoongi
+Jin | Kim Seokjin
+Cha Eun-woo
+Jackson Wang
+G-Dragon
+IU | Lee Ji-eun
+Felix | Lee Felix
+Lee Min-ho
+Joe Jonas
+Dove Cameron
+Vanessa Hudgens
+Anne Hathaway
+Hugh Jackman
+Mark Wahlberg
+Henry Cavill
+Jason Momoa
+Johnny Depp
+Chris Evans
+Michael B. Jordan
+Arnold Schwarzenegger
+Jack Black
+Kristen Bell
+Blake Lively
+Reese Witherspoon
+Sofía Vergara | Sofia Vergara
+Salma Hayek
+Jessica Alba
+Jennifer Garner
+Hilary Duff
+Ashley Graham
+Angelina Jolie
+Lily Collins
+Emma Roberts
+Lucy Hale
+Shay Mitchell
+Bella Thorne
+Anya Taylor-Joy
+Hailee Steinfeld
+Nina Dobrev
+Candice King | Candice Accola
+Ian Somerhalder
+Dylan O'Brien
+Cole Sprouse
+Lili Reinhart
+Camila Mendes
+KJ Apa
+Madelaine Petsch
+Noah Schnapp
+Finn Wolfhard
+Sadie Sink
+Gaten Matarazzo
+Caleb McLaughlin
+Jacob Elordi
+Noah Centineo
+Lana Condor
+Joey King
+Victoria Justice
+Ashley Benson
+Ashley Tisdale
+Sofia Carson
+JoJo Siwa
+Maddie Ziegler
+Emily Ratajkowski
+Adriana Lima
+Gisele Bündchen | Gisele Bundchen
+Irina Shayk
+Miranda Kerr
+Candice Swanepoel
+Barbara Palvin
+Cara Delevingne
+Chrissy Teigen
+John Legend
+Paris Hilton
+Scott Disick
+Jordyn Woods
+Jaden Smith
+Victoria Beckham
+Brooklyn Beckham
+Georgina Rodríguez | Georgina Rodriguez
+Antonela Roccuzzo
+Gwen Stefani
+Alicia Keys
+Rita Ora
+Jason Derulo
+Ciara
+Dixie D'Amelio | Dixie DAmelio
+Bella Poarch
+Loren Gray
+Zach King
+Avani Gregg
+Lele Pons
+Emma Chamberlain
+James Charles
+Jeffree Star
+NikkieTutorials | Nikkie de Jager
+Huda Kattan
+Liza Koshy
+Bretman Rock
+Amanda Cerny
+Sommer Ray
+Cameron Dallas
+David Dobrik
+KSI | Olajide Olatunji
+PewDiePie | Felix Kjellberg
+Dan Bilzerian
+Gordon Ramsay
+Jamie Oliver
+Salt Bae | Nusret Gökçe | Nusret Gokce
+Kayla Itsines
+Mark Zuckerberg
+Joe Biden
+Kamala Harris
+Jimmy Fallon
+Ronda Rousey
+Khabib Nurmagomedov | Khabib
+Canelo Álvarez | Canelo Alvarez | Canelo
+Antonio Brown
+Odell Beckham Jr. | Odell Beckham Jr | OBJ
+Russell Westbrook
+Kyrie Irving
+James Harden
+Dwyane Wade
+Charles Leclerc
+Max Verstappen
+Harry Kane
+Marcus Rashford
+Son Heung-min | Heung-min Son
+Kevin De Bruyne
+Robert Lewandowski
+Luka Modrić | Luka Modric
+Toni Kroos
+Andrés Iniesta | Andres Iniesta
+Antoine Griezmann
+Eden Hazard
+Luis Suárez | Luis Suarez
+Marcelo
+Paulo Dybala
+Ángel Di María | Angel Di Maria
+Sergio Agüero | Sergio Aguero
+James Rodríguez | James Rodriguez
+Mesut Özil | Mesut Ozil
+Gerard Piqué | Gerard Pique
+Philippe Coutinho
+Dani Alves
+Kaká | Kaka
+Casemiro
+Thibaut Courtois
+Rodrygo
+Pedri
+Gavi
+Achraf Hakimi
+David Alaba
+Antonio Rüdiger | Antonio Rudiger
+Alisha Lehmann
+MS Dhoni | Mahendra Singh Dhoni | Dhoni
+Rohit Sharma
+Hardik Pandya
+Sachin Tendulkar
+Shubman Gill
+Priyanka Chopra
+Deepika Padukone
+Katrina Kaif
+Alia Bhatt
+Shraddha Kapoor
+Shah Rukh Khan | SRK
+Salman Khan
+Akshay Kumar
+Anushka Sharma
+Hrithik Roshan
+Ranveer Singh
+Amitabh Bachchan
+Jacqueline Fernandez
+Disha Patani
+Tiger Shroff
+Kiara Advani
+Janhvi Kapoor
+Sara Ali Khan
+Kriti Sanon
+Nora Fatehi
+Urvashi Rautela
+Neha Kakkar
+Sunny Leone
+Sonam Kapoor
+Varun Dhawan
+Sidharth Malhotra
+Ajay Devgn
+Kartik Aaryan
+Shilpa Shetty
+Madhuri Dixit
+Malaika Arora
+Kareena Kapoor
+Ananya Panday
+Pooja Hegde
+Kajol
+Rashmika Mandanna
+Samantha Ruth Prabhu
+Tamannaah Bhatia
+Allu Arjun
+Vijay Deverakonda
+Diljit Dosanjh
+Sidhu Moose Wala
+Bhuvan Bam
+CarryMinati | Ajey Nagar
+Avneet Kaur
+Jannat Zubair
+Bruna Marquezine
+Larissa Manoela
+Whindersson Nunes
+Marina Ruy Barbosa
+Ivete Sangalo
+Tatá Werneck | Tata Werneck
+Virginia Fonseca
+Marília Mendonça | Marilia Mendonca
+Gusttavo Lima
+Kimberly Loaiza
+Danna Paola
+Tini Stoessel | Tini
+Sebastián Yatra | Sebastian Yatra
+Thalía | Thalia
+Manu Ríos | Manu Rios
+El Rubius | Rubius
+Yailin La Más Viral | Yailin
+Hande Erçel | Hande Ercel
+Burak Özçivit | Burak Ozcivit
+Kerem Bürsin | Kerem Bursin
+Nancy Ajram
+Ayeza Khan
+Sarah Khan
+Minal Khan
+Raffi Ahmad
+Nagita Slavina
+Lesti Kejora
+Ji Chang-wook
+Oh Se-hun | Sehun
+Hwang In-yeop
+Han So-hee
+Kim Ji-won
+Park Shin-hye
+Park Min-young
+Moon Ga-young
+Ahn Hyo-seop
+Seol In-ah
+Park Seo-joon

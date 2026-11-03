@@ -1,0 +1,33 @@
+# id: onevowel
+# prompt: Name a country whose name uses only one vowel letter
+# group: Places
+# emoji: 🅰️
+# kind: thing
+# Exactly one distinct vowel letter (a, e, i, o, u) in the common English short name; y is not a vowel, repeats allowed.
+# So Egypt, Cyprus, Myanmar and Kyrgyzstan count (Syria does not: i and a). DR Congo counts (only o). Abbreviations (US, UK) not counted.
+Canada
+Japan
+Panama
+Chad
+Egypt
+Greece
+Sweden
+Fiji
+Malta
+Bahamas
+Kazakhstan
+Madagascar
+Ghana
+Morocco
+Cyprus
+Yemen
+Qatar
+Kosovo
+Rwanda
+DR Congo
+Congo
+Myanmar
+Kyrgyzstan
+Seychelles
+Togo
+Comoros

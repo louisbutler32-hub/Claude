@@ -1,0 +1,270 @@
+# id: southasian
+# prompt: Name a South Asian dish
+# group: Food
+# emoji: 🍛
+# kind: thing
+# Dishes, breads, snacks, sweets and drinks from India, Pakistan,
+# Bangladesh, Sri Lanka, Nepal, Bhutan and the Maldives. British-Indian
+# restaurant dishes (tikka masala, balti, jalfrezi...) count.
+Butter chicken | Murgh makhani
+Chicken tikka masala | Tikka masala
+Naan | Nan | Naan bread | Garlic naan
+Biryani | Biryani rice
+Samosa | Samosas
+Curry
+Dal | Daal | Dhal | Dahl | Lentil curry
+Korma | Chicken korma
+Tandoori chicken | Tandoori
+Vindaloo
+Onion bhaji | Bhaji | Onion bhajis | Bhajia
+Pakora | Pakoras | Pakoda
+Poppadom | Papadum | Papad | Poppadoms | Pappadum
+Roti
+Chapati | Chapatti
+Paneer
+Palak paneer | Saag paneer
+Chicken tikka
+Mango lassi | Lassi
+Masala chai | Chai | Chai tea
+Rogan josh
+Madras | Madras curry
+Jalfrezi | Chicken jalfrezi
+Dosa | Dosai | Masala dosa
+Gulab jamun
+Pani puri | Golgappa | Gol gappa | Puchka | Phuchka
+Paratha | Parantha | Aloo paratha
+Chana masala | Chole | Chickpea curry
+Aloo gobi
+Bhuna
+Balti
+Tikka
+Raita
+Chutney | Mango chutney
+Pilau rice | Pilau | Pulao | Pilaf
+Dhansak
+Saag aloo | Saag | Sag aloo
+Bombay potatoes | Bombay aloo
+Keema | Keema matar | Keema curry
+Kebab | Seekh kebab | Sheekh kebab
+Phall | Phaal
+Pasanda
+Karahi | Kadai | Kadhai | Chicken karahi
+Bhindi | Bhindi masala | Okra curry
+Malai kofta | Kofta curry
+Paneer tikka
+Shahi paneer
+Kadai paneer | Karahi paneer
+Matar paneer | Mattar paneer
+Paneer butter masala
+Dal makhani
+Rajma | Rajma chawal
+Idli | Idly
+Vada | Medu vada | Vadai
+Sambar | Sambhar
+Uttapam | Uttappam
+Upma
+Pongal
+Rasam
+Appam
+Puttu
+Avial | Aviyal
+Bisi bele bath
+Lemon rice
+Curd rice | Thayir sadam
+Chettinad chicken | Chettinad
+Hyderabadi biryani
+Kolkata biryani
+Lucknowi biryani | Awadhi biryani
+Sindhi biryani
+Kacchi biryani
+Kottu | Kottu roti
+Hoppers | Appa | Egg hoppers | String hoppers | Idiyappam
+Lamprais
+Pol sambol | Coconut sambol | Sambol
+Kiribath | Milk rice
+Fish ambul thiyal | Ambul thiyal
+Wambatu moju | Brinjal moju
+Parippu | Dhal curry
+Polos | Jackfruit curry
+Kokis
+Watalappan | Wattalappam
+Lunu miris
+Gotu kola sambol | Mallum
+Momos | Momo
+Dal bhat
+Thukpa
+Sel roti
+Chatamari
+Yomari
+Gundruk
+Aloo tama
+Choila
+Ema datshi
+Mas huni
+Garudhiya
+Nihari
+Haleem
+Chapli kebab
+Karahi gosht
+Paya
+Sajji
+Kathi roll | Kati roll | Frankie | Kebab roll
+Bun kebab
+Halwa puri
+Bihari kebab
+Shami kebab
+Galouti kebab
+Reshmi kebab
+Boti kebab
+Chicken 65
+Gobi Manchurian | Manchurian | Chicken Manchurian
+Chilli chicken | Chili chicken
+Hakka noodles
+Pav bhaji
+Vada pav | Wada pav
+Misal pav
+Bhel puri | Bhel
+Sev puri
+Dahi puri
+Aloo tikki | Tikki
+Chaat | Papri chaat
+Dahi vada | Dahi bhalla
+Samosa chaat
+Kachori
+Dhokla
+Khandvi
+Thepla
+Undhiyu
+Handvo
+Khaman
+Fafda
+Jalebi
+Rasgulla | Rasgula | Rosogolla
+Ras malai | Rasmalai
+Kheer | Payasam | Payesh
+Kulfi
+Barfi | Burfi
+Ladoo | Laddu | Laddoo | Motichoor ladoo
+Gajar halwa | Gajar ka halwa | Carrot halwa
+Halwa | Sooji halwa
+Sandesh
+Mishti doi
+Peda | Pedha
+Kaju katli | Kaju barfi
+Soan papdi
+Mysore pak
+Shrikhand
+Modak
+Gujiya
+Malpua
+Imarti
+Rabri | Rabdi
+Falooda
+Sheer khurma
+Phirni
+Kalakand
+Chamcham | Cham cham
+Basundi
+Puran poli
+Ghevar
+Petha
+Sohan halwa
+Zarda
+Shahi tukda | Double ka meetha
+Bebinca
+Pitha
+Bhapa ilish | Shorshe ilish | Ilish
+Machher jhol | Fish curry
+Chingri malai curry | Prawn malai curry
+Kosha mangsho
+Luchi
+Aloo posto
+Shukto
+Panta bhat
+Khichdi | Khichuri | Kitchari | Kedgeree
+Dum aloo
+Aloo matar
+Baingan bharta | Begun bharta | Bharta
+Kadhi | Kadhi pakora
+Sarson ka saag
+Makki di roti | Makki ki roti
+Amritsari kulcha | Kulcha
+Chole bhature | Bhatura | Bhature
+Puri | Poori
+Rumali roti
+Tandoori roti
+Lachha paratha | Laccha paratha
+Missi roti
+Bajra roti
+Jowar roti | Bhakri
+Thali | Thalis
+Jeera rice
+Kashmiri pulao
+Yakhni pulao
+Tehri
+Rogan gosht
+Gushtaba
+Yakhni
+Wazwan
+Laal maas
+Dal baati churma | Dal baati
+Gatte ki sabzi
+Ker sangri
+Ghee rice | Neychoru
+Malabar parotta | Parotta | Kerala parotta
+Kerala fish curry | Meen curry
+Prawn moilee | Fish molee | Moilee
+Kerala beef fry | Beef fry
+Thalassery biryani
+Goan fish curry
+Xacuti
+Cafreal
+Sorpotel
+Bombil fry | Bombay duck
+Kolhapuri chicken | Tambda rassa
+Sabudana khichdi
+Poha
+Akuri
+Patra ni machhi
+Sali boti
+Lagan nu custard
+Saag gosht
+Methi chicken
+Murgh musallam
+Achari chicken | Achar gosht
+Do pyaza | Dopiaza
+Pickle | Achar | Lime pickle | Mango pickle
+Kachumber | Kachumber salad
+Mint chutney | Green chutney
+Tamarind chutney | Imli chutney
+Rava dosa
+Pesarattu
+Neer dosa
+Set dosa
+Ragi mudde
+Akki roti
+Kozhukattai
+Murukku
+Chakli
+Mixture | Bombay mix | Chivda
+Bhujia | Aloo bhujia
+Sev
+Namak para
+Mathri
+Masala papad
+Paan
+Thandai
+Jaljeera
+Nimbu pani | Shikanji
+Aam panna
+Sugarcane juice | Ganne ka ras
+Filter coffee | Kaapi
+Sweet lassi
+Salt lassi | Namkeen lassi
+Chaas | Buttermilk | Mattha
+Rooh Afza
+Kashmiri chai | Noon chai | Pink tea
+Kahwa
+Butter tea | Po cha
+Tongba
+Chhurpi

@@ -1,0 +1,193 @@
+# id: vehicle
+# prompt: Name a vehicle or mode of transport
+# group: Everyday
+# emoji: 🚗
+# kind: thing
+Car | automobile | cars
+Bus | buses
+Train
+Plane | aeroplane | airplane | aircraft
+Bike | bicycle | push bike | bikes
+Boat | boats
+Motorbike | motorcycle
+Truck | lorry | lorries
+Helicopter | chopper
+Scooter | kick scooter
+Ship | ships
+Taxi | cab | taxis | cabs
+Van | vans
+Tram | streetcar | trolley | trams
+Ferry | ferries
+Skateboard
+Walking | on foot | walk
+Subway | underground | metro | tube | tubes
+Electric scooter | e-scooter | Lime scooter
+E-bike | electric bike
+Ute | pickup truck | pickup | utes
+SUV | suvs
+Jeep | jeeps
+Rocket
+Spaceship | spacecraft
+Submarine
+Canoe
+Kayak
+Yacht
+Sailboat | sailing boat
+Jet ski
+Horse
+Camel
+Elephant
+Hot air balloon
+Golf cart | golf buggy | golf buggies
+Tractor
+Fire truck | fire engine
+Ambulance
+Police car
+Limousine | limo | limos
+Monorail
+Cable car
+Gondola
+Ski lift | chairlift
+Hovercraft
+Segway
+Rickshaw
+Tuk-tuk | auto rickshaw
+Unicycle
+Tricycle | trike
+Tandem bicycle | tandem
+Rollerblades | inline skates
+Roller skates
+Moped
+Quad bike | ATV | four-wheeler | atvs
+Dirt bike
+Go-kart | kart | karts
+Snowmobile | skidoo
+Sled | sledge | toboggan | sleds
+Dog sled | dog sledding
+Bobsled | bobsleigh
+Sleigh
+Surfboard
+Paddleboard | SUP | stand-up paddleboard | sups
+Raft | rafts
+Rowboat | rowing boat | dinghy | dinghies
+Speedboat
+Cruise ship
+Container ship | cargo ship
+Tugboat | tug | tugs
+Barge
+Catamaran
+Jet | jet plane | jets
+Private jet
+Glider
+Hang glider
+Paraglider
+Parachute
+Blimp | airship | zeppelin
+Drone
+Space shuttle
+Bullet train | Shinkansen
+High-speed rail | high-speed train
+Steam train | steam locomotive
+Locomotive
+Light rail
+Double-decker bus | double decker | Double-decker buses
+Coach | coaches
+Minibus | minibuses
+School bus | School buses
+Trolleybus | trolleybuses
+Caravan | RV | camper | campervan | motorhome | rvs
+Mobility scooter
+Wheelchair
+Pram | stroller | pushchair | buggy | prams | buggies
+Skates
+Hoverboard
+Electric skateboard
+Onewheel
+Pogo stick
+Carriage | horse and carriage
+Stagecoach | stagecoaches
+Wagon | covered wagon
+Cart | horse and cart | carts
+Chariot
+Donkey
+Mule | mules
+Ox cart
+Llama
+Pedicab | cycle rickshaw
+Gondola lift
+Funicular
+Zipline | flying fox | flying foxes
+Jetpack
+Amphibious vehicle | duck boat
+Tank | tanks
+Armoured car | armored car
+Humvee
+Bulldozer
+Digger | excavator
+Forklift
+Crane
+Dump truck | tipper truck
+Cement mixer | concrete mixer
+Garbage truck | rubbish truck | bin lorry | bin lorries
+Tow truck
+Semi-trailer | semi | articulated lorry | artic | eighteen-wheeler | semis | articulated lorries
+Road train
+Tanker
+Delivery van
+Food truck
+Ice cream van | ice cream truck
+Hearse
+Convertible
+Hatchback
+Sedan | saloon
+Station wagon | estate car
+Sports car
+Race car | racing car
+Formula 1 car | F1 car
+Monster truck
+Dune buggy | beach buggy | Dune buggies | beach buggies
+Land yacht
+Ice yacht
+Narrowboat | canal boat
+Houseboat
+Punt | punts
+Pedalo | pedal boat
+Rowing shell | scull
+Waka | waka ama | outrigger canoe | wakas
+Dragon boat
+Junk | junks
+Dhow | dhows
+Felucca
+Galleon
+Trireme
+Longship | Viking ship
+Steamboat | paddle steamer
+Ocean liner
+Aircraft carrier
+Battleship
+Destroyer
+Frigate
+Lifeboat
+Fishing boat | trawler
+Pontoon boat
+Airboat
+Seaplane | floatplane
+Biplane
+Microlight
+Gyrocopter | autogyro
+Lunar rover | moon buggy | moon buggies
+Mars rover
+Maglev
+Hyperloop
+Sidecar
+Penny-farthing
+BMX | bmxes
+Mountain bike
+Racing bike | road bike
+Fixie
+Cargo bike
+Recumbent bike
+Velomobile
+Electric car | EV | evs
+Hybrid
+Uber | rideshare | ubers

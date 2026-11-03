@@ -1,0 +1,82 @@
+# id: skigear
+# prompt: Name a piece of ski gear
+# group: Sport
+# emoji: ⛷️
+# kind: thing
+Skis | Ski
+Ski Poles | Poles | Ski Pole | Stocks
+Ski Boots | Boots | Ski Boot
+Goggles | Ski Goggles
+Helmet | Ski Helmet
+Gloves | Ski Gloves
+Ski Jacket | Jacket | Snow Jacket
+Ski Pants | Snow Pants | Salopettes | Ski Trousers
+Beanie | Beanie Hat | Woolly Hat | Toque
+Bindings | Ski Bindings | Binding
+Mittens | Mitts
+Snowboard
+Thermals | Base Layer | Thermal Underwear | Long Johns
+Neck Warmer | Neck Gaiter | Buff | Neck Tube
+Balaclava
+Sunscreen | Sunblock
+Sunglasses
+Ski Socks | Socks
+Lift Pass | Ski Pass | Season Pass
+Bib Pants | Bibs
+Fleece | Mid Layer
+Snowboard Boots
+Ski Suit | Onesie
+Face Mask
+Backpack | Ski Backpack
+Lip Balm | Chapstick | Lip Salve
+Hand Warmers
+Avalanche Transceiver | Avalanche Beacon | Beacon
+Avalanche Probe | Probe
+Shovel | Avalanche Shovel
+Airbag Pack | Avalanche Airbag
+Ski Wax | Wax
+Ski Bag
+Boot Bag
+Helmet Cover
+Goggle Lens | Lenses
+Spare Lens
+Ski Straps | Ski Strap
+Skins | Climbing Skins
+Touring Bindings
+Ski Crampons | Harscheisen
+Boot Liners | Liners
+Footbeds | Insoles
+Boot Heater | Boot Dryer
+Glove Liners
+Back Protector
+Wrist Guards
+Knee Pads | Knee Brace
+Impact Shorts | Padded Shorts
+Powder Skirt
+Ski Leash | Leash
+Ski Brakes
+Edge Tuner | Edge Sharpener
+Scraper | Wax Scraper
+Ski Rack
+Roof Box
+Snow Chains | Chains
+Telemark Skis
+Cross-country Skis | Nordic Skis
+Twin Tips
+Powder Skis
+Race Suit | Speed Suit
+Shin Guards | Shin Pads
+Pole Guards
+Baskets | Pole Baskets
+Headband | Ear Warmers | Earmuffs
+Walkie-talkie | Radio
+GoPro | Action Camera
+Helmet Camera
+Ski Tuning Kit
+Hydration Pack | Camelbak
+Bum Bag | Fanny Pack
+Ski Carrier
+Boot Gaiters | Gaiters
+Ski Lock
+Snowboard Bindings
+Splitboard

@@ -1,0 +1,121 @@
+# id: ballsport
+# prompt: Name a sport played with a ball
+# group: Sport
+# emoji: ⚽
+# kind: thing
+Football | Soccer
+Basketball
+Tennis
+Rugby | Rugby Union
+Cricket
+Baseball
+Golf
+Volleyball
+American Football | Gridiron | NFL
+Netball
+Hockey | Field Hockey
+Table Tennis | Ping Pong
+Softball
+Badminton
+Dodgeball
+Squash
+Bowling | Ten-pin Bowling
+Pool | Billiards | Eight-ball | 8-ball
+Snooker
+Rugby League | League
+Water Polo
+Handball
+Lacrosse
+Touch Rugby | Touch | Touch Football
+Beach Volleyball
+AFL | Aussie Rules | Australian Rules Football | Australian Football | Footy
+Polo
+Futsal
+Kickball
+Tag Rugby
+Rugby Sevens | Sevens
+Croquet
+Lawn Bowls | Bowls
+Mini Golf | Putt-putt | Crazy Golf
+Pickleball
+Padel
+Racquetball
+Spikeball | Roundnet
+Gaelic Football
+Hurling
+Rounders
+Sepak Takraw
+Bocce | Boules
+Pétanque
+Foosball | Table Football
+Paddle Tennis
+Footvolley
+Teqball
+Korfball
+Floorball
+Wallyball
+Four Square
+Tetherball
+Wall Ball
+Fives | Eton Fives | Rugby Fives
+Jai Alai | Pelota
+Real Tennis
+Rackets | Racquets
+Platform Tennis
+Stoolball
+Camogie
+Shinty
+Bandy
+Goalball
+Boccia
+Sitting Volleyball
+Wheelchair Basketball
+Wheelchair Rugby | Murderball
+Beach Soccer
+Beach Handball
+Indoor Cricket
+Indoor Netball
+Cricket Sevens
+Fistball
+Kin-Ball
+Tchoukball
+Underwater Rugby
+Canoe Polo
+Bike Polo | Cycle Polo
+Elephant Polo
+Polocrosse
+Pushball
+Skee-Ball
+Stickball
+Vigoro
+Pesäpallo | Finnish Baseball
+Kemari
+Cuju
+Calcio Storico
+Ulama
+Chinlone
+Basque Pelota
+Lapta
+Oină
+Gateball
+Ground Golf
+Bossaball
+Slamball
+Quidditch | Quadball
+Teeball | T-ball
+Beer Pong
+Marbles
+Hacky Sack | Footbag
+Jorkyball
+Speedball
+Arena Football
+Flag Football
+Candlepin Bowling | Candlepin
+Duckpin Bowling | Duckpin
+Skittles | Nine-pin Bowling | Ninepins
+Carpet Bowls
+Crown Green Bowls
+Pitch and Putt
+Foot Golf
+Carom Billiards | Carom
+Bumper Pool

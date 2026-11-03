@@ -1,0 +1,246 @@
+# id: nodegree
+# prompt: Name a job you can get without a degree
+# group: Work
+# emoji: 🧰
+# kind: thing
+Electrician | Sparky
+Plumber
+Builder
+Carpenter | Chippy | Joiner
+Mechanic
+Hairdresser | Hairstylist | Barber
+Chef | Cook
+Waiter | Waitress | Server
+Retail Assistant | Shop Assistant | Sales Assistant | Cashier
+Barista
+Truck Driver | Trucker | Lorry Driver
+Police Officer | Cop | Police
+Firefighter | Fireman
+Painter | Painter and Decorator | Decorator
+Builder's Labourer | Labourer | Laborer
+Bartender | Barman | Barmaid
+Personal Trainer | PT
+Real Estate Agent | Realtor | Estate Agent
+Pilot
+Soldier | Army
+Bus Driver
+Taxi Driver | Uber Driver | Cab Driver
+Delivery Driver | Courier
+Receptionist
+Security Guard | Bouncer
+Cleaner | Janitor
+Farmer
+Gardener | Landscaper
+Plasterer
+Bricklayer | Brickie
+Roofer
+Tiler
+Welder
+Butcher
+Baker
+Fisherman | Fisher
+Model
+Actor | Actress
+Musician
+Influencer | YouTuber | Content Creator
+Flight Attendant | Air Hostess | Cabin Crew | Steward
+Makeup Artist
+Nail Technician | Nail Tech
+Beautician | Beauty Therapist
+Tattoo Artist
+Lifeguard
+Customer Service Representative | Customer Service
+Call Centre Operator | Call Center Agent
+Admin Assistant | Administrator | Office Assistant
+Data Entry Clerk | Data Entry
+Bank Teller
+Postman | Postie | Mail Carrier | Postal Worker
+Warehouse Worker | Picker Packer
+Forklift Driver | Forklift Operator
+Factory Worker
+Fruit Picker
+Dairy Farmer
+Shearer | Sheep Shearer
+Scaffolder
+Glazier
+Locksmith
+Auto Electrician
+Panel Beater | Auto Body Repairer
+Diesel Mechanic
+Boilermaker
+Fitter and Turner | Machinist
+HVAC Technician | Air Conditioning Technician | Refrigeration Mechanic
+Gasfitter
+Drainlayer
+Concreter
+Floor Layer | Flooring Installer
+Cabinet Maker
+Upholsterer
+Stonemason
+Arborist | Tree Surgeon
+Groundskeeper | Greenkeeper
+Florist
+Zookeeper
+Dog Walker
+Dog Groomer | Pet Groomer
+Vet Nurse | Veterinary Nurse
+Caregiver | Carer | Support Worker
+Nanny | Babysitter
+Childcare Worker | Early Childhood Educator
+Teacher Aide | Teaching Assistant
+Dental Assistant
+Pharmacy Assistant
+Phlebotomist
+Prison Officer | Corrections Officer
+Train Driver | Locomotive Driver
+Crane Operator
+Excavator Operator | Digger Driver | Machine Operator
+Miner
+Oil Rig Worker | Roughneck
+Lineman | Line Mechanic | Lineworker
+Sales Representative | Sales Rep | Salesperson
+Car Salesman | Car Salesperson
+Recruiter
+Insurance Agent | Insurance Broker
+Mortgage Broker
+Property Manager
+Event Planner | Event Coordinator
+Wedding Planner
+Travel Agent
+Tour Guide
+Hotel Receptionist | Front Desk
+Housekeeper
+Kitchen Hand | Dishwasher
+Fast Food Worker | Crew Member
+Supermarket Worker | Shelf Stacker
+Photographer
+Videographer
+Graphic Designer
+Web Developer | Developer
+Programmer | Coder
+Software Developer
+IT Support | IT Technician | Help Desk
+Game Tester
+Esports Player | Pro Gamer | Streamer
+Professional Athlete | Athlete | Sportsperson
+Rugby Player
+Footballer
+Jockey
+Racehorse Trainer
+Stablehand | Groom
+Ski Instructor
+Surf Instructor
+Swim Teacher | Swimming Instructor
+Driving Instructor
+Fitness Instructor | Group Fitness Instructor
+Yoga Instructor
+DJ
+Radio Host | Radio DJ
+Singer
+Dancer
+Comedian
+Writer | Author
+Artist
+Sous Chef
+Pastry Chef
+Sommelier
+Brewer
+Winemaker
+Cheesemaker
+Beekeeper
+Forestry Worker | Logger
+Deckhand
+Train Conductor | Conductor
+Aircraft Maintenance Engineer | Aircraft Mechanic
+Customs Officer
+Border Force Officer
+Navy Sailor | Sailor
+Marine
+Bailiff
+Debt Collector
+Private Investigator | PI
+Bodyguard
+Bounty Hunter
+Exterminator | Pest Controller
+Window Cleaner
+Chimney Sweep
+Rubbish Collector | Garbage Collector | Bin Man | Garbage Man
+Recycling Worker
+Plumber's Apprentice | Apprentice
+Handyman
+Sign Writer
+Printer
+Jeweller | Jeweler
+Watchmaker
+Tailor | Seamstress | Dressmaker
+Cobbler | Shoemaker
+Blacksmith | Farrier
+Saddler
+Sheet Metal Worker
+Glass Blower
+Potter
+Medical Receptionist
+Dental Receptionist
+Personal Assistant | PA
+Executive Assistant
+Secretary
+Office Manager
+Bookkeeper
+Payroll Officer | Payroll Clerk
+Claims Adjuster
+Loan Officer
+Store Manager | Retail Manager
+Restaurant Manager
+Bar Manager
+Hotel Manager
+Entrepreneur | Business Owner
+Day Trader | Trader
+Removalist | Mover | Movers
+Furniture Assembler
+Solar Panel Installer | Solar Installer
+Wind Turbine Technician
+Elevator Mechanic | Lift Technician
+Pool Cleaner
+Carpet Cleaner
+Car Detailer | Car Valeter
+Car Wash Attendant
+Petrol Station Attendant | Gas Station Attendant
+Parking Warden | Traffic Warden | Parking Enforcement Officer
+Traffic Controller | Stop/Go | Lollipop Man | Crossing Guard
+Road Worker
+Quarry Worker
+Meat Worker | Meatpacker | Abattoir Worker
+Fishmonger
+Deli Assistant
+Greengrocer
+Market Trader | Market Stall Holder
+Street Vendor
+Ice Cream Seller
+Busker
+Croupier | Dealer | Casino Dealer
+Usher
+Cinema Attendant
+Ticket Seller
+Theme Park Worker | Ride Operator
+Stagehand
+Roadie
+Lighting Technician
+Sound Technician | Sound Engineer
+Camera Operator
+Film Extra | Extra
+Stunt Performer | Stuntman
+Clown
+Magician
+Telemarketer
+Door-to-door Salesman
+Fundraiser | Chugger
+Library Assistant
+Museum Attendant
+Caretaker
+Concierge
+Butler
+Personal Shopper
+Stylist
+Fashion Designer
+Interior Decorator
+Cake Decorator

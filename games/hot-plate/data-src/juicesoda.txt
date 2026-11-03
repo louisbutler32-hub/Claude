@@ -1,0 +1,150 @@
+# id: juicesoda
+# prompt: Name a juice or soda brand
+# group: Food
+# emoji: 🧃
+# kind: thing
+# Brands and well-known product lines only, not flavours (no "lemonade",
+# "orange juice"). Energy drinks, sports drinks, iced teas and plain bottled
+# water are left out; sparkling-water brands sold as soda (LaCroix, Bubly)
+# and cordial/squash brands are in.
+Coca-Cola | Coke | Coca Cola
+Pepsi
+Sprite
+Fanta
+Dr Pepper | Dr. Pepper
+Mountain Dew | Mtn Dew
+7 Up | 7UP | Seven Up
+Tropicana
+Minute Maid
+Capri-Sun | Capri Sun | Caprisun
+Schweppes
+Diet Coke
+Coke Zero | Coca-Cola Zero | Coke No Sugar
+Pepsi Max
+Ribena
+Lucozade
+Sunkist
+L&P | Lemon & Paeroa | Lemon and Paeroa
+Irn-Bru | Irn Bru
+A&W | A&W Root Beer
+Canada Dry
+Ocean Spray
+Fresca
+Kool-Aid | Kool Aid
+Sunny D | SunnyD | Sunny Delight
+Snapple
+Innocent
+Oasis
+Tango
+Robinsons
+Solo
+Just Juice
+Charlie's | Charlies
+Golden Circle
+Berri
+Nudie
+Daily Juice | Daily Juice Co
+Kirks
+Bundaberg | Bundy
+Barq's | Barqs
+Mug | Mug Root Beer
+Crush | Orange Crush
+Simply | Simply Orange | Simply Lemonade
+Welch's | Welchs
+Hawaiian Punch
+Del Monte
+V8
+Naked | Naked Juice
+Mirinda
+Lilt
+J2O
+Vimto
+Rubicon
+San Pellegrino | Sanpellegrino
+Orangina
+Appletiser
+Fentimans
+Fever-Tree | Fever Tree
+Jarritos
+Ramune
+Calpis | Calpico
+Thums Up
+Limca
+Maaza
+Frooti
+Inca Kola
+Guaraná Antarctica | Guarana Antarctica | Guarana
+Juicy Juice
+Mott's | Motts
+Martinelli's | Martinellis
+Odwalla
+Vita Coco
+LaCroix | La Croix
+Bubly
+Olipop
+Poppi
+Sierra Mist
+Starry
+Mello Yello
+Surge
+Big Red
+Faygo
+Cheerwine
+Sun Drop
+Squirt
+Vernors
+RC Cola | Royal Crown | Royal Crown Cola
+Pibb | Mr Pibb | Pibb Xtra
+Slice
+Shasta
+Jones Soda | Jones
+Stewart's | Stewarts
+IBC | IBC Root Beer
+Dad's Root Beer | Dad's
+Moxie
+Kickapoo Joy Juice | Kickapoo
+Boylan | Boylan Bottling
+Zevia
+Sparkling Ice
+Izze
+Spindrift
+Polar
+Hubert's | Huberts | Hubert's Lemonade
+Tropical Fantasy
+Kas
+Five Alive
+Granini
+Pfanner
+Rauch
+Ceres
+Copella
+Shloer
+Belvoir
+Um Bongo
+Panda Pops
+Barr | Barr's
+Britvic
+Old Jamaica | Old Jamaica Ginger Beer
+D&G | D&G Ginger Beer
+Ting
+Bigga
+KA | KA Soda
+Supermalt | Malta
+Lift
+Passiona
+Pub Squash | Kirks Pub Squash
+Tarax
+Saxbys | Saxby's
+Spring Valley
+Pop Tops
+Prima
+Cottee's | Cottees
+Bickford's | Bickfords
+Keri | Keri Juice
+Fresh Up | Freshup
+Raro
+Phoenix | Phoenix Organic
+Karma Cola | Karma Drinks
+Foxton Fizz
+Deep Spring
+Appy Fizz

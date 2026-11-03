@@ -1,0 +1,129 @@
+# id: upperbody
+# prompt: Name an upper body exercise
+# group: Gym
+# emoji: 💪
+# kind: thing
+Bench press | bench | flat bench
+Push-up | push-ups | press-up | press-ups
+Pull-up | pull-ups
+Bicep curl | bicep curls | biceps curl | curls | dumbbell curl
+Shoulder press | overhead press | OHP | military press
+Dip | dips | chest dips | tricep dips
+Chin-up | chin-ups
+Lat pulldown | pulldown | lat pulldowns
+Bent-over row | barbell row | rows
+Tricep extension | triceps extension | overhead tricep extension
+Tricep pushdown | triceps pushdown | cable pushdown | rope pushdown
+Lateral raise | lateral raises | side raise | side raises | side laterals
+Hammer curl | hammer curls
+Incline bench press | incline bench | incline press
+Chest fly | chest flys | flyes | pec fly | dumbbell fly
+Dumbbell press | dumbbell bench press
+Seated cable row | cable row | seated row
+Shrug | shrugs | shoulder shrugs
+Skull crusher | skull crushers | lying tricep extension
+Front raise | front raises
+Arnold press
+Pec deck | pec dec | butterfly machine
+Face pull | face pulls
+Preacher curl | preacher curls
+Upright row | upright rows
+Decline bench press | decline bench | decline press
+Cable crossover | cable fly | cable flyes
+Dumbbell row | single-arm row | one-arm row
+T-bar row
+Chest press | chest press machine
+Close-grip bench press | close grip bench
+Reverse fly | rear delt fly | reverse flyes
+Concentration curl
+Muscle-up | muscle-ups
+Diamond push-up
+Pike push-up
+Handstand push-up | HSPU
+Incline dumbbell press
+Dumbbell pullover | pullover
+Straight-arm pulldown
+Cable curl
+EZ bar curl
+Spider curl
+Incline dumbbell curl | incline curl
+Reverse curl
+Zottman curl
+Drag curl
+21s | twenty-ones
+Wrist curl | wrist curls
+Reverse wrist curl
+Farmer's walk | farmer's carry
+Kickback | tricep kickback | tricep kickbacks
+JM press
+Tate press
+Bench dip
+Landmine press
+Push press
+Z press
+Behind-the-neck press
+Bradford press
+Cuban press
+Y-raise
+Bus driver
+Plate raise
+Cable lateral raise
+Machine shoulder press
+Smith machine bench press | Smith bench
+Floor press
+Pin press
+Board press
+Spoto press
+Larsen press
+Guillotine press
+Svend press
+Hex press | squeeze press
+Machine row
+Chest-supported row
+Seal row
+Pendlay row
+Meadows row
+Kroc row
+Inverted row | Australian pull-up | body row
+Rack pull
+Renegade row
+Rope climb
+Battle ropes
+Kettlebell press
+Turkish get-up
+Bottoms-up press
+Snatch grip high pull | high pull
+Clean and press | clean and jerk
+French press
+Dead hang
+Scapular pull-up | scap pulls
+Band pull-apart | pull-aparts
+External rotation
+Internal rotation
+Boxing | punching bag | heavy bag
+Rowing | rowing machine
+Medicine ball slam | ball slams
+Wall ball
+Chest pass
+Archer push-up
+Clap push-up
+One-arm push-up
+Ring dip
+Ring row
+Lever row
+Typewriter pull-up
+Weighted pull-up
+Neutral-grip pulldown | close-grip pulldown
+Wide-grip pulldown
+Single-arm pulldown
+Kneeling cable row
+Rear delt row
+W-raise
+Prone Y-T-W | YTWs
+Wrist roller
+Plate pinch
+Gorilla row
+Helms row
+Dumbbell shrug
+Trap bar shrug
+Overhead carry

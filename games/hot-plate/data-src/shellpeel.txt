@@ -1,0 +1,130 @@
+# id: shellpeel
+# prompt: Name a food you have to shell, crack or peel before eating
+# group: Food
+# emoji: 🥜
+# kind: thing
+# Rule: as it is usually bought, the food has a skin, rind, shell, husk or
+# pod that is normally removed before eating. Removing a melon or pineapple
+# rind counts. Foods whose skin is commonly eaten (apple, potato, kiwifruit,
+# sweet potato, ginger, cucumber) are left out; mango is in because it is
+# usually peeled or cut off the skin. Nuts count when sold in the shell.
+Banana | Bananas
+Orange | Oranges | Navel orange
+Egg | Eggs | Boiled egg | Hard-boiled egg
+Pistachio | Pistachios
+Prawn | Prawns | Shrimp
+Peanut | Peanuts | Monkey nuts
+Crab | Crabs | Crab legs
+Lobster
+Coconut
+Mandarin | Tangerine | Mandarins | Tangerines
+Walnut | Walnuts
+Onion | Onions
+Avocado | Avo | Avocados
+Lychee | Lychees | Litchi | Lichee
+Pineapple
+Mango | Mangoes | Mangos
+Garlic
+Almond | Almonds
+Oyster | Oysters
+Sunflower seeds | Sunflower seed
+Hazelnut | Hazelnuts | Filbert
+Pomegranate
+Grapefruit
+Watermelon
+Brazil nut | Brazil nuts
+Pecan | Pecans
+Macadamia | Macadamias | Macadamia nut
+Clementine | Clementines
+Satsuma | Satsumas
+Crayfish | Crawfish | Crawdad | Crayfish tails
+Mussel | Mussels
+Clam | Clams
+Chestnut | Chestnuts
+Cashew | Cashews
+Passionfruit | Passion fruit
+Papaya | Pawpaw
+Corn on the cob | Corn | Sweetcorn
+Peas | Pea | Garden peas
+Edamame
+Dragon fruit | Pitaya | Pitahaya
+Rambutan
+Durian
+Jackfruit
+Mangosteen
+Plantain | Plantains
+Pomelo | Pummelo
+Cantaloupe | Rockmelon
+Honeydew | Honeydew melon
+Melon
+Blood orange
+Scallop | Scallops
+Pipi | Pipis
+Cockle | Cockles
+Langoustine | Langoustines | Scampi | Dublin Bay prawn
+Snow crab
+King crab
+Yabby | Yabbies
+Marron
+Moreton Bay bug | Balmain bug | Bay bug | Bugs
+Escargot | Snails | Snail
+Whelk | Whelks
+Periwinkle | Winkles | Periwinkles
+Abalone | Paua | Pāua
+Sea urchin | Kina | Uni
+Conch
+Razor clam | Razor clams
+Tuatua
+Quail egg | Quail eggs
+Century egg | Thousand-year egg | Preserved egg
+Balut
+Tea egg
+Broad beans | Fava beans | Broad bean | Fava bean
+Pumpkin seeds | Pepitas
+Watermelon seeds
+Pine nuts | Pine nut | Pinon
+Tamarind
+Longan
+Salak | Snake fruit
+Langsat | Lanzones
+Custard apple | Cherimoya
+Soursop | Guanabana
+Sugar apple | Sweetsop
+Sapodilla
+Mamey | Mamey sapote
+Star apple | Caimito
+Breadfruit
+Prickly pear | Cactus pear
+Horned melon | Kiwano
+Cacao pod | Cacao
+Taro | Dasheen
+Cassava | Yuca | Manioc | Tapioca root
+Yam | Yams
+Jicama
+Kohlrabi
+Celeriac
+Swede | Rutabaga
+Water chestnut | Water chestnuts
+Lotus root
+Bamboo shoots | Bamboo shoot
+Sugarcane | Sugar cane
+Shallot | Shallots
+Horseradish
+Lupini beans | Lupini | Lupin beans
+Pili nut
+Hickory nut | Hickory nuts
+Beech nuts | Beechnut
+Acorn | Acorns
+Ginkgo nut | Ginkgo nuts
+Lotus seeds
+Barnacles | Goose barnacles | Percebes
+Mantis shrimp
+Slipper lobster
+Spiny lobster | Rock lobster
+Mud crab
+Blue crab
+Dungeness crab
+Coconut crab
+Hairy crab
+Spanner crab
+Geoduck

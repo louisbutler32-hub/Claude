@@ -1,0 +1,22 @@
+# id: nearisrael
+# prompt: Name a country within 1,000 km of Israel
+# group: Places
+# emoji: 📍
+# kind: thing
+# Shortest great-circle distance between any part of each country and any part of Israel (Natural Earth 1:50m borders, Golan included).
+# Approx km: border-sharing 0, Saudi Arabia 15, Cyprus 235, Turkey 270, Iraq 275, Greece 725 (Rhodes/Kastellorizo), Sudan 830, Libya 865, Iran 885.
+# Unsure / just outside, excluded: Armenia ~1,020, Georgia ~1,030, Azerbaijan ~1,055 (Nakhchivan), Kuwait ~1,090, Bulgaria and Russia ~1,170, Eritrea ~1,330.
+Israel
+Palestine | State of Palestine | Palestinian Territories
+Egypt
+Lebanon
+Syria
+Jordan
+Saudi Arabia
+Turkey | Türkiye | Turkiye
+Iraq
+Iran | Persia
+Cyprus
+Greece | Hellas
+Libya
+Sudan

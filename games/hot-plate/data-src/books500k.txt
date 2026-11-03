@@ -1,0 +1,349 @@
+# id: books500k
+# prompt: Name a book that has sold at least 500,000 copies worldwide
+# group: Other
+# emoji: 📚
+# kind: thing
+# Sources: Wikipedia "List of best-selling books" (every single-book table, 10M+ copies each,
+# fetched 2026-11-03; series rows turned into their famous individual books), plus individual
+# volumes of best-selling series and long-running bestsellers that are well past 500,000 copies.
+Harry Potter and the Philosopher's Stone | Harry Potter and the Sorcerer's Stone | Philosopher's Stone | Sorcerer's Stone | The Philosopher's Stone | The Sorcerer's Stone
+The Hunger Games
+Twilight
+Diary of a Wimpy Kid
+The Bible | Bible | Holy Bible
+The Hobbit
+To Kill a Mockingbird
+Nineteen Eighty-Four | 1984 | Nineteen Eighty Four
+Harry Potter and the Chamber of Secrets | Chamber of Secrets | The Chamber of Secrets
+Harry Potter and the Prisoner of Azkaban | Prisoner of Azkaban | The Prisoner of Azkaban
+Harry Potter and the Goblet of Fire | Goblet of Fire | The Goblet of Fire
+Harry Potter and the Order of the Phoenix | Order of the Phoenix | The Order of the Phoenix
+Harry Potter and the Half-Blood Prince | Half-Blood Prince | The Half-Blood Prince | Harry Potter and the Half Blood Prince
+Harry Potter and the Deathly Hallows | Deathly Hallows | The Deathly Hallows
+Animal Farm
+The Great Gatsby
+The Lord of the Rings | Lord of the Rings
+Charlie and the Chocolate Factory
+Matilda
+The Very Hungry Caterpillar
+The Cat in the Hat
+The Fault in Our Stars
+Pride and Prejudice
+The Da Vinci Code
+Catching Fire
+Mockingjay
+New Moon
+Eclipse
+Breaking Dawn
+Green Eggs and Ham
+The Gruffalo
+Alice's Adventures in Wonderland | Alice in Wonderland
+The Little Prince | Le Petit Prince
+Where the Wild Things Are
+The Diary of Anne Frank | The Diary of a Young Girl | Anne Frank's Diary | Diary of Anne Frank
+Percy Jackson and the Lightning Thief | The Lightning Thief
+Wonder
+The Book Thief
+The Boy in the Striped Pyjamas | The Boy in the Striped Pajamas
+Lord of the Flies
+Of Mice and Men
+The Catcher in the Rye
+Fifty Shades of Grey
+It Ends with Us
+Frankenstein
+Dracula
+Charlotte's Web
+The BFG
+James and the Giant Peach
+The Lion, the Witch and the Wardrobe | The Lion the Witch and the Wardrobe
+A Game of Thrones
+The Fellowship of the Ring
+The Two Towers
+The Return of the King
+Divergent
+The Maze Runner
+Gone Girl
+Atomic Habits
+Dune
+The Alchemist
+Little Women
+Jane Eyre
+Wuthering Heights
+A Christmas Carol
+Diary of a Wimpy Kid: Rodrick Rules | Rodrick Rules
+Diary of a Wimpy Kid: The Last Straw | The Last Straw
+Diary of a Wimpy Kid: Dog Days | Dog Days
+Diary of a Wimpy Kid: The Ugly Truth | The Ugly Truth
+Diary of a Wimpy Kid: The Long Haul | The Long Haul
+Harry Potter and the Cursed Child | The Cursed Child | Cursed Child
+The Ballad of Songbirds and Snakes
+Sunrise on the Reaping
+Midnight Sun
+Fourth Wing
+Iron Flame
+Onyx Storm
+A Court of Thorns and Roses | ACOTAR
+A Court of Mist and Fury
+A Court of Wings and Ruin
+Verity
+It Starts with Us
+Ugly Love
+Reminders of Him
+The Seven Husbands of Evelyn Hugo
+Where the Crawdads Sing
+The Silent Patient
+The Midnight Library
+Normal People
+The Kite Runner
+A Thousand Splendid Suns
+Looking for Alaska
+Paper Towns
+Thirteen Reasons Why | 13 Reasons Why
+Insurgent
+Allegiant
+The Sea of Monsters
+The Titan's Curse
+The Battle of the Labyrinth
+The Last Olympian
+The Hitchhiker's Guide to the Galaxy | Hitchhiker's Guide to the Galaxy
+The Girl with the Dragon Tattoo
+The Godfather
+Jaws
+The Shining
+It
+Carrie
+The Stand
+Misery
+Pet Sematary
+Jurassic Park
+The Silence of the Lambs
+The Notebook
+A Walk to Remember
+Brave New World
+Fahrenheit 451
+The Handmaid's Tale
+Catch-22 | Catch 22
+Slaughterhouse-Five | Slaughterhouse Five
+The Outsiders
+The Giver
+Holes
+Hatchet
+Bridge to Terabithia
+A Wrinkle in Time
+The Secret Garden
+Peter Pan
+The Wonderful Wizard of Oz | The Wizard of Oz
+The Jungle Book
+Treasure Island
+The Adventures of Tom Sawyer | Tom Sawyer
+Adventures of Huckleberry Finn | Huckleberry Finn | The Adventures of Huckleberry Finn
+The Picture of Dorian Gray
+Moby-Dick | Moby Dick
+Great Expectations
+Oliver Twist
+A Tale of Two Cities
+Les Misérables | Les Miserables
+Don Quixote
+Crime and Punishment
+War and Peace
+Anna Karenina
+Gone with the Wind
+Rebecca
+Beloved
+The Color Purple
+East of Eden
+The Grapes of Wrath
+The Old Man and the Sea
+One Hundred Years of Solitude
+Life of Pi
+The Lovely Bones
+The Help
+Me Before You
+The Girl on the Train
+Fifty Shades Darker
+Fifty Shades Freed
+Angels & Demons | Angels and Demons
+The Lost Symbol
+Inferno
+Origin
+Eragon
+The Golden Compass | Northern Lights
+Artemis Fowl
+City of Bones
+The Three-Body Problem | Three Body Problem
+Foundation
+Outlander
+The Last Wish
+The Bad Beginning
+The Gunslinger
+The Silmarillion
+A Clash of Kings
+A Storm of Swords
+A Feast for Crows
+A Dance with Dragons
+The Adventures of Captain Underpants | Captain Underpants
+Dog Man
+Where's Wally? | Where's Wally | Where's Waldo? | Where's Waldo
+Winnie-the-Pooh | Winnie the Pooh
+A Bear Called Paddington | Paddington
+Curious George
+Clifford the Big Red Dog | Clifford
+The Rainbow Fish | Rainbow Fish
+Pippi Longstocking
+Little House on the Prairie
+Black Beauty
+Heidi
+Anne of Green Gables
+The Wind in the Willows
+The Tale of Peter Rabbit | Peter Rabbit
+The Witches
+Fantastic Mr Fox | Fantastic Mr. Fox
+The Twits
+Danny, the Champion of the World | Danny the Champion of the World
+George's Marvellous Medicine | George's Marvelous Medicine
+How the Grinch Stole Christmas! | How the Grinch Stole Christmas
+Oh, the Places You'll Go! | Oh the Places You'll Go
+One Fish, Two Fish, Red Fish, Blue Fish | One Fish Two Fish Red Fish Blue Fish
+Room on the Broom
+The Giving Tree
+The Polar Express
+Brown Bear, Brown Bear, What Do You See? | Brown Bear Brown Bear
+Chicka Chicka Boom Boom
+Goodnight Moon
+Guess How Much I Love You
+Love You Forever
+The Tiger Who Came to Tea
+Possum Magic
+Hairy Maclary from Donaldson's Dairy | Hairy Maclary
+The Poky Little Puppy
+The Neverending Story
+Momo
+Watership Down
+Number the Stars
+The Adventures of Pinocchio | Pinocchio
+Sophie's World
+The Secret Diary of Adrian Mole, Aged 13¾ | The Secret Diary of Adrian Mole | Adrian Mole
+Bridget Jones's Diary | Bridget Jones
+Norwegian Wood
+The Name of the Rose
+The Shadow of the Wind
+Perfume | Perfume: The Story of a Murderer
+All the Light We Cannot See
+The Pillars of the Earth
+Shōgun | Shogun
+The Thorn Birds
+Kane and Abel
+Flowers in the Attic
+Lolita
+The Stranger | The Outsider
+The Plague
+Night
+Things Fall Apart
+The Prophet
+The Divine Comedy
+And Then There Were None
+Murder on the Orient Express
+Dream of the Red Chamber | The Story of the Stone
+Tuesdays with Morrie
+The Five People You Meet in Heaven
+Man's Search for Meaning
+Sapiens | Sapiens: A Brief History of Humankind
+A Brief History of Time
+Becoming
+Spare
+A Promised Land
+Long Walk to Freedom
+I Know Why the Caged Bird Sings
+Educated
+Born a Crime
+Steve Jobs
+Rich Dad Poor Dad | Rich Dad, Poor Dad
+The Subtle Art of Not Giving a F*ck | The Subtle Art of Not Giving a Fuck | The Subtle Art
+How to Win Friends and Influence People
+The 7 Habits of Highly Effective People | The Seven Habits of Highly Effective People
+Think and Grow Rich
+The 48 Laws of Power
+The Power of Now
+The Four Agreements
+The Secret
+Who Moved My Cheese?
+Men Are from Mars, Women Are from Venus
+The Purpose Driven Life
+The Art of War
+The Communist Manifesto
+Quran | Qur'an | Koran
+The Book of Mormon | Book of Mormon
+Quotations from Chairman Mao Tse-tung | The Little Red Book | Little Red Book
+Guinness World Records | Guinness Book of Records
+Cosmos
+The Celestine Prophecy
+The Shack
+Jonathan Livingston Seagull
+Love Story
+Valley of the Dolls
+Fear of Flying
+Peyton Place
+The Exorcist
+Eye of the Needle
+The Eagle Has Landed
+The Bridges of Madison County
+The Horse Whisperer
+Angela's Ashes
+Wild Swans
+Diana: Her True Story
+Interpreter of Maladies
+My Brilliant Friend
+The Goal
+What Color Is Your Parachute?
+What to Expect When You're Expecting
+The Common Sense Book of Baby and Child Care | Baby and Child Care
+The Joy of Sex
+The Dukan Diet
+The South Beach Diet
+Your Erroneous Zones
+The Power of Positive Thinking
+Alcoholics Anonymous | The Big Book
+The Naked Ape
+The Bermuda Triangle
+Kon-Tiki
+The Good Soldier Švejk | The Good Soldier Svejk
+Ben-Hur: A Tale of the Christ | Ben-Hur
+She: A History of Adventure | She
+The Ginger Man
+The Hite Report
+The Women's Room
+The Happy Hooker
+The Revolt of Mamie Stover
+Lust for Life
+Paul et Virginie | Paul and Virginia
+A Message to Garcia
+How the Steel Was Tempered
+The Young Guard
+Virgin Soil Upturned
+Andromeda Nebula
+Uncle Styopa
+Totto-Chan: The Little Girl at the Window | Totto-Chan
+Kitchen
+Kokoro
+No Longer Human
+Wolf Totem
+Follow Your Heart
+Santa Evita
+Life After Life
+The Total Woman
+The Front Runner
+The Gospel According to Peanuts
+God's Little Acre
+Tobacco Road
+Ronia, the Robber's Daughter | Ronia the Robber's Daughter
+Confucius from the Heart
+Knowledge-value Revolution
+Problems in China's Socialist Economy
+Scouting for Boys
+Roget's Thesaurus
+Merriam-Webster's Collegiate Dictionary
+Oxford Advanced Learner's Dictionary
+Xinhua Dictionary | Xinhua Zidian
+Betty Crocker Cookbook
+Better Homes and Gardens New Cook Book
+The Story of My Experiments with Truth

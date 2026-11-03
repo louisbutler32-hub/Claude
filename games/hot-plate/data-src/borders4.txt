@@ -1,0 +1,41 @@
+# id: borders4
+# prompt: Name a country that borders Russia, France, Poland or Germany
+# group: Places
+# emoji: 🗺️
+# kind: thing
+# Land borders only. Russia: Norway, Finland, Estonia, Latvia, Lithuania + Poland (Kaliningrad), Belarus, Ukraine, Georgia, Azerbaijan, Kazakhstan, China, Mongolia, North Korea.
+# France: Belgium, Luxembourg, Germany, Switzerland, Italy, Monaco, Spain, Andorra; plus Brazil and Suriname via French Guiana
+# (and the Netherlands via Saint Martin, already in via Germany). Poland: Germany, Czechia, Slovakia, Ukraine, Belarus, Lithuania, Russia.
+# Germany: Denmark, Poland, Czechia, Austria, Switzerland, France, Luxembourg, Belgium, Netherlands.
+# Russia, France, Poland and Germany themselves count because each borders another of the four.
+France
+Germany | Deutschland
+Poland
+Russia | Russian Federation
+China | People's Republic of China | PRC
+Spain | España
+Italy | Italia
+Switzerland
+Belgium
+Netherlands | Holland | The Netherlands
+Ukraine
+Austria
+Norway
+Finland
+Denmark
+Czechia | Czech Republic
+Luxembourg
+Belarus | Byelorussia | Belorussia
+Mongolia
+North Korea | DPRK | Democratic People's Republic of Korea
+Kazakhstan
+Monaco
+Brazil | Brasil
+Andorra
+Estonia
+Latvia
+Lithuania
+Slovakia | Slovak Republic
+Georgia
+Azerbaijan
+Suriname | Surinam

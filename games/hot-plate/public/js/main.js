@@ -2,7 +2,8 @@
 import { $, buzz, replay, TIERS } from "./util.js";
 import { S, setRoom, profile, phase, seating, byId } from "./state.js";
 import { connect, on, send, getSession, setSession } from "./net.js";
-import { sfx } from "./sound.js";
+import { sfx, setSizzle } from "./sound.js";
+import { burst, floatScore, kissBanner, shake } from "./fx.js";
 import { Scene, layout } from "./scene.js";
 import * as table from "./table.js";
 import { renderHUD, flash } from "./hud.js";
@@ -23,7 +24,7 @@ function relayout(force) {
   // the big title (home, lobby, game over) needs more headroom than the one-line category
   const ph = phase(), titled = ph === "home" || ph === "lobby" || ph === "over";
   const area = wide
-    ? { left: 40, right: S.room ? 340 : 40, top: titled ? 215 : 150, bottom: 150 }
+    ? { left: 40, right: S.room && !document.body.classList.contains("chat-closed") ? 340 : 40, top: titled ? 185 : 140, bottom: 150 }
     : { left: 14, right: 14, top: titled ? 190 : 140, bottom: 130 };
   const key = [W, H, count, area.right, area.top].join("x");
   if (!force && key === geoKey) return;
@@ -36,6 +37,7 @@ function relayout(force) {
   table.placeCloche();
 }
 new ResizeObserver(() => relayout()).observe(stage);
+window.addEventListener("hp-layout", () => relayout());
 
 function render() {
   const ph = phase();
@@ -78,7 +80,11 @@ on("nope", (m) => table.setNope(m.id, m.text));
 
 on("served", (m) => {
   const p = byId(m.by), t = TIERS[m.tier];
-  sfx.pass(m.tier);
+  if (m.kiss) { sfx.kiss(); kissBanner(m.by === S.room.you ? "You" : p ? p.name : "Someone", m.name); shake(6); }
+  else { sfx.pass(m.tier); if (m.tier === 3) shake(3); }
+  if (m.by === S.room.you) $("answer-input").value = ""; // served: clear the box for your next turn
+  const at = table.seatPoint(m.by);
+  if (at) { burst(at.x, at.y, m.tier); floatScore(at.x, at.y - 30, m.pts, m.tier, m.mult); }
   if (m.heart) setTimeout(sfx.heart, 200);
   table.clearTyping(m.by);
   const spicy = m.mult > 1 ? ` · 🌶️ ×${m.mult}` : "";
@@ -129,6 +135,8 @@ $("answer-form").addEventListener("submit", (e) => {
   e.preventDefault();
   const v = $("answer-input").value.trim();
   clearTimeout(typeTimer);
+  const r = S.room;
+  if (!r || !r.game || r.game.holder !== r.you) return flash("not your plate yet · keep it ready", "warn");
   if (v) send({ t: "answer", text: v });
 });
 
@@ -142,6 +150,7 @@ function frame() {
     if (left < 3500 && left > 0 && whole !== lastTick) { lastTick = whole; sfx.tick(S.room.game.holder === S.room.you); }
   });
   scene.setHeat(heat);
+  setSizzle(S.room && S.room.phase === "playing" ? heat : 0);
 }
 requestAnimationFrame(frame);
 

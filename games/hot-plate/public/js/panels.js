@@ -2,7 +2,7 @@
 import { $, esc, toast } from "./util.js";
 import { S, isHost } from "./state.js";
 import { send } from "./net.js";
-import { isMuted, toggleMute } from "./sound.js";
+import { isMuted, toggleMute, sfx } from "./sound.js";
 
 /* ---------- room code + chat ---------- */
 
@@ -20,7 +20,11 @@ export function renderPanel() {
     ? `<li class="sys">${esc(c.text)}</li>`
     : `<li><b>${esc(c.emoji)} ${esc(c.name)}</b> ${esc(c.text)}</li>`).join("");
   if (atBottom || r.chat.length !== seenChat) log.scrollTop = log.scrollHeight;
-  if (!chatOpen && r.chat.length > seenChat && seenChat) $("chat-toggle").classList.add("unread");
+  const last = r.chat[r.chat.length - 1];
+  if (r.chat.length > seenChat && seenChat && last && last.kind === "chat" && last.id !== r.you) {
+    sfx.chat();
+    if (!chatOpen) $("chat-toggle").classList.add("unread");
+  }
   seenChat = r.chat.length;
 }
 $("chat-form").addEventListener("submit", (e) => {
@@ -30,13 +34,18 @@ $("chat-form").addEventListener("submit", (e) => {
   send({ t: "chat", text: v });
   $("chat-input").value = "";
 });
-// on phones the panel is a drawer
-$("chat-toggle").onclick = () => {
-  chatOpen = !document.body.classList.toggle("chat-closed");
+// the panel opens and closes from the 💬 button (a column on wide screens, a drawer on phones)
+function setChat(open) {
+  chatOpen = open;
+  document.body.classList.toggle("chat-closed", !open);
   $("chat-toggle").classList.remove("unread");
-  if (chatOpen) $("chat-log").scrollTop = $("chat-log").scrollHeight;
-};
-document.body.classList.add("chat-closed");
+  if (open) $("chat-log").scrollTop = $("chat-log").scrollHeight;
+  window.dispatchEvent(new Event("hp-layout")); // the table can use the space
+}
+$("chat-toggle").onclick = () => setChat(!chatOpen);
+$("side-close").onclick = () => setChat(false);
+chatOpen = matchMedia("(min-width: 1100px)").matches;
+document.body.classList.toggle("chat-closed", !chatOpen);
 
 /* ---------- invite ---------- */
 

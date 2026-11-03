@@ -1,0 +1,145 @@
+# id: flagsymbol
+# prompt: Name a country with a symbol or emblem on its flag
+# group: Places
+# emoji: 🏳️
+# kind: thing
+# Counted: stars, crescents, suns/moons (incl. the plain discs of Japan, Bangladesh and Niger = sun, Laos and Palau = moon), any picture, emblem, arms, map or text.
+# Not counted: plain stripes, triangles, crosses, saltires, Union Jack alone (UK, Tonga, Jamaica, Georgia, Greece, Switzerland, Nordic crosses...).
+# Judgement calls: Iraq counted (Takbir script). Belarus counted (ornament band). Saint Vincent's green diamonds treated as plain shapes (excluded).
+# Peru, Bolivia, Costa Rica counted: their state flag (used as the national flag on government buildings) carries the coat of arms; same for Haiti, Serbia, Spain.
+# Plain-national-flag Europeans with an eagle state-flag variant (Germany, Austria, Poland) not counted.
+Canada
+United States | USA | US | America | United States of America | U.S.A. | U.S.
+Mexico
+Japan | Nippon
+China | People's Republic of China | PRC
+Australia | Oz
+Brazil | Brasil
+Turkey | Türkiye | Turkiye
+Israel
+India
+New Zealand | NZ | Aotearoa
+South Korea | Korea | Republic of Korea
+Spain | España
+Portugal
+Saudi Arabia
+Pakistan
+Argentina
+Vietnam | Viet Nam
+North Korea | DPRK | Democratic People's Republic of Korea
+Egypt
+Cuba
+Philippines | The Philippines
+Kenya
+Lebanon
+Cyprus
+Sri Lanka | Ceylon
+Croatia
+Chile
+Malaysia
+Singapore
+Morocco
+Afghanistan
+Iran | Persia
+Iraq
+Albania
+Fiji
+Samoa
+Taiwan | Republic of China | Chinese Taipei | ROC
+Mozambique
+Uruguay
+Bangladesh
+Peru
+Venezuela
+Haiti
+Serbia
+Syria
+Jordan
+Nepal
+Ethiopia
+Ghana
+Uganda
+Zimbabwe
+Somalia
+Libya
+Tunisia
+Algeria
+Ecuador
+Bolivia
+Paraguay
+Panama
+Costa Rica
+Guatemala
+Honduras
+El Salvador
+Nicaragua
+Dominican Republic
+Barbados
+Mongolia
+Kazakhstan
+Vatican City | Vatican | Holy See
+Liechtenstein
+San Marino
+Andorra
+Malta
+Slovakia | Slovak Republic
+Slovenia
+Belarus | Byelorussia | Belorussia
+Azerbaijan
+Bosnia and Herzegovina | Bosnia | Bosnia & Herzegovina | Bosnia-Herzegovina | BiH
+Montenegro
+North Macedonia | Macedonia
+Kosovo
+Moldova
+Uzbekistan
+Papua New Guinea | PNG
+Rwanda
+DR Congo | Democratic Republic of the Congo | Congo-Kinshasa | DRC | Zaire
+Cameroon
+Senegal
+Niger
+Angola
+Zambia
+Namibia
+Myanmar | Burma
+Cambodia | Kampuchea
+Laos | Lao
+Brunei | Brunei Darussalam
+East Timor | Timor-Leste | Timor Leste
+Maldives | The Maldives
+Bhutan
+Oman
+Turkmenistan
+Kyrgyzstan | Kyrgyz Republic | Kirghizia
+Tajikistan
+Suriname | Surinam
+Belize
+Grenada
+Antigua and Barbuda | Antigua | Antigua & Barbuda
+Dominica
+Saint Kitts and Nevis | Saint Kitts | St Kitts | St. Kitts | St Kitts and Nevis | St Kitts & Nevis
+Cape Verde | Cabo Verde
+Eritrea
+Djibouti
+South Sudan
+Burkina Faso | Burkina | Upper Volta
+Togo
+Liberia
+Guinea-Bissau | Guinea Bissau
+Equatorial Guinea
+Central African Republic | CAR
+Mauritania
+Burundi
+Malawi
+Lesotho
+Eswatini | Swaziland
+Comoros
+São Tomé and Príncipe | Sao Tome and Principe | Sao Tome | São Tomé
+Vanuatu
+Solomon Islands | Solomons
+Kiribati
+Tuvalu
+Nauru
+Marshall Islands
+Micronesia | Federated States of Micronesia | FSM
+Palau

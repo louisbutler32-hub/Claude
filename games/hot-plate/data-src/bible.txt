@@ -1,0 +1,279 @@
+# id: bible
+# prompt: Name a person in the Bible
+# group: Other
+# emoji: 📖
+# kind: person
+Jesus | Jesus Christ | Christ
+Moses
+Adam
+Eve
+Noah
+Mary | Virgin Mary | Mary mother of Jesus
+Joseph
+Abraham
+David | King David
+Goliath
+Peter | Simon Peter | Saint Peter | Simon
+Paul | Saint Paul | Saul of Tarsus
+Judas | Judas Iscariot
+John the Baptist
+John | John the Apostle | Saint John
+Matthew
+Mark
+Luke
+Solomon | King Solomon
+Samson
+Delilah
+Cain
+Abel
+Jonah
+Daniel
+Lazarus
+Mary Magdalene
+Pontius Pilate | Pilate
+Isaac
+Jacob | Israel
+Esau
+Sarah
+Ruth
+Esther
+Job
+Elijah
+Joshua
+Gabriel | Angel Gabriel
+Lucifer | Satan | the Devil
+Herod | King Herod
+Thomas | Doubting Thomas
+Andrew
+James
+Bartholomew | Nathanael
+Philip
+Simon the Zealot
+Thaddeus | Jude
+Matthias
+Barabbas
+Joseph of Arimathea
+Nicodemus
+Zacchaeus
+Martha
+Elizabeth
+Zechariah | Zacharias
+Isaiah
+Jeremiah
+Ezekiel
+Elisha
+Samuel
+Saul | King Saul
+Jonathan
+Bathsheba
+Uriah
+Absalom
+Rebecca | Rebekah
+Rachel
+Leah
+Benjamin
+Reuben
+Judah
+Levi
+Simeon
+Dan
+Naphtali
+Gad
+Asher
+Issachar
+Zebulun
+Dinah
+Aaron
+Miriam
+Gideon
+Pharaoh
+Lot's wife
+Deborah
+Jezebel
+Ahab
+Naomi
+Boaz
+Hannah
+Eli
+Nebuchadnezzar
+Shadrach
+Meshach
+Abednego
+Belshazzar
+Darius
+Cyrus | Cyrus the Great
+Nehemiah
+Ezra
+Mordecai
+Haman
+Methuselah
+Enoch
+Seth
+Lot
+Hagar
+Ishmael
+Melchizedek
+Laban
+Potiphar
+Hosea
+Joel
+Amos
+Obadiah
+Micah
+Nahum
+Habakkuk
+Zephaniah
+Haggai
+Malachi
+Timothy
+Titus
+Barnabas
+Silas
+Stephen | Saint Stephen
+Mary of Bethany
+Salome
+Herodias
+Caiaphas
+Annas
+Ananias
+Sapphira
+Cornelius
+Lydia
+Priscilla
+Aquila
+Apollos
+Philemon
+Onesimus
+Tabitha | Dorcas
+Agrippa | Herod Agrippa
+Felix
+Festus
+Gamaliel
+Simon of Cyrene
+Anna
+Michael | Archangel Michael
+Rahab
+Caleb
+Korah
+Balaam
+Balak
+Jethro
+Zipporah
+Jochebed
+Joab
+Abner
+Nathan
+Adonijah
+Rehoboam
+Jeroboam
+Josiah
+Hezekiah
+Manasseh
+Ephraim
+Uzziah
+Jehu
+Jehoshaphat
+Ahaz
+Zedekiah
+Naaman
+Gehazi
+Elkanah
+Abigail
+Michal
+Tamar
+Amnon
+Shem
+Ham
+Japheth
+Nimrod
+Terah
+Nahor
+Lamech
+Tubal-cain
+Jubal
+Enosh
+Jared
+Mahalalel
+Kenan
+Achan
+Ehud
+Jephthah
+Manoah
+Abimelech
+Orpah
+Jesse
+Queen of Sheba
+Hiram
+Vashti
+Ahasuerus | Xerxes
+Eliphaz
+Bildad
+Zophar
+Elihu
+Baruch
+Jairus
+Bartimaeus
+Malchus
+Judas the Galilean
+Theophilus
+Eutychus
+Rhoda
+Phoebe
+Epaphras
+Demas
+Joanna
+Susanna
+Cleopas
+Alphaeus
+Zebedee
+James the Less
+Huldah
+Athaliah
+Jotham
+Asa
+Omri
+Elah
+Zimri
+Pekah
+Hoshea
+Shallum
+Menahem
+Ishbosheth
+Mephibosheth
+Ziba
+Shimei
+Ahithophel
+Hushai
+Benaiah
+Zadok
+Abiathar
+Asaph
+Heman
+Uzzah
+Obed
+Obed-edom
+Ichabod
+Hophni
+Phinehas
+Eleazar
+Ithamar
+Nadab
+Abihu
+Bezalel
+Hur
+Othniel
+Shamgar
+Barak
+Jael
+Sisera
+Adoni-bezek
+Og
+Sihon
+Ahimelech
+Doeg
+Nabal
+Bilhah
+Zilpah
+Keturah
+Shiphrah
+Puah

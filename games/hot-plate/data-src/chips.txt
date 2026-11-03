@@ -1,0 +1,121 @@
+# id: chips
+# prompt: Name a chips or crisps brand
+# group: Food
+# emoji: 🥔
+# kind: thing
+# Brands and well-known product lines of potato chips / crisps and similar
+# bagged savoury snacks (corn chips, puffs, extruded snacks).
+Doritos
+Pringles
+Lay's | Lays | Walkers
+Cheetos
+Smith's | Smiths
+Kettle | Kettle Chips | Kettle Brand
+Takis
+Ruffles
+Twisties
+Thins
+Red Rock Deli
+Bluebird
+Flamin' Hot Cheetos | Flamin Hot Cheetos | Hot Cheetos
+Burger Rings
+Tostitos
+Monster Munch
+Wotsits
+Quavers
+Hula Hoops
+Eta
+Fritos
+Tyrrells | Tyrrell's
+McCoy's | McCoys
+Sun Chips | SunChips
+Grain Waves
+Cheezels
+CC's | CCs
+Skips
+Nik Naks
+Funyuns
+Frazzles
+Discos
+Space Raiders
+Squares | Walkers Squares
+Wheat Crunchies
+Pom-Bear | Pom Bears
+French Fries | Walkers French Fries
+Sensations | Walkers Sensations
+Cape Cod
+Utz
+Herr's | Herrs
+Zapp's | Zapps
+Popchips
+Pirate's Booty | Pirates Booty
+Bugles
+Lay's Stax | Stax
+Lay's Poppables | Poppables
+Wavy Lays | Wavy
+Doritos Dinamita | Dinamita
+Mission | Mission tortilla chips
+Calbee
+Jack 'n Jill | Jack n Jill
+Piattos
+Chippy
+Samboy
+Smith's Crinkle Cut | Crinkle Cut
+Thinly Cut | Smith's Thinly Cut
+Infuzions
+Sunbites
+Rashuns
+Copper Kettle
+Delisio
+Heartland | Heartland Chips
+Proper Crisps | Proper Chips
+Ripples
+Torres
+Mister Free'd
+Popworks
+Walkers Max
+Walkers Baked | Baked Lays | Lay's Baked | Baked Walkers
+Seabrook | Seabrook Crisps
+Golden Wonder
+Tayto
+Pipers | Pipers Crisps
+Burts | Burts Chips
+Brannigans
+Real Crisps | Real Hand Cooked
+Scampi Fries
+Bacon Fries
+Chipsticks
+Hot Fries | Andy Capp's
+Old Dutch
+Miss Vickie's | Miss Vickies
+Covered Bridge
+Route 11
+Deep River
+Boulder Canyon
+Late July
+Siete
+Hippeas
+Off The Eaten Path
+Terra | Terra Chips
+Stacy's | Stacy's Pita Chips
+Sabritas
+Barcel
+Sabritones
+Churrumais
+Golden Flake
+Wise | Wise Snacks
+Middleswarth
+Martin's | Martins
+Jays | Jays Potato Chips
+Better Made
+Grippo's | Grippos
+Mike-sell's
+Charles Chips
+Ballreich's
+Snyder's of Hanover | Snyder's
+Dirty | Dirty Potato Chips
+Old El Paso
+Natural Chip Company | The Natural Chip Co
+Vege Chips | Ajitas | Ajitas Vege Chips
+Koikeya
+Oishi

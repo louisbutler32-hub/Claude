@@ -1,0 +1,83 @@
+# id: grasssport
+# prompt: Name a sport played on grass
+# group: Sport
+# emoji: 🌱
+# kind: thing
+Football | Soccer
+Rugby | Rugby Union
+Cricket
+Golf
+Tennis | Lawn Tennis
+American Football | Gridiron | NFL
+Baseball
+Hockey | Field Hockey
+Rugby League | League
+AFL | Aussie Rules | Australian Rules Football | Australian Football | Footy
+Softball
+Lacrosse
+Touch Rugby | Touch | Touch Football
+Ultimate Frisbee | Ultimate
+Croquet
+Lawn Bowls | Bowls
+Polo
+Rounders
+Gaelic Football
+Hurling
+Frisbee
+Disc Golf | Frisbee Golf
+Grass Volleyball
+Horse Racing
+Rugby Sevens | Sevens
+Tag Rugby
+Flag Football
+Kickball
+Cross Country | Cross-country Running
+Archery
+Shot Put
+Discus
+Javelin
+Hammer Throw
+Cornhole
+Bocce
+Spikeball | Roundnet
+Kubb
+Tug of War
+Camogie
+Shinty
+Show Jumping
+Eventing
+Cross-country Riding
+Steeplechase
+Harness Racing
+Polocrosse
+Quidditch | Quadball
+Orienteering
+Golf Croquet
+Pitch and Putt
+Foot Golf
+Teeball | T-ball
+Stoolball
+Vigoro
+Ki-o-rahi
+Stickball
+Pesäpallo | Finnish Baseball
+Lapta
+Gateball
+Ground Golf
+Sack Race
+Egg and Spoon Race
+Three-legged Race
+Capture the Flag
+Lawn Darts
+Quoits
+Mölkky
+Elephant Polo
+Kilikiti
+Highland Games
+Caber Toss
+Sheaf Toss
+Fell Running
+Sheepdog Trials
+Equestrian
+Point-to-point
+Lawn Mower Racing
