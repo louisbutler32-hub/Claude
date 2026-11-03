@@ -4,118 +4,128 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>Hot Plate · Dining Room</title>
-<meta name="description" content="Name it and pass the plate before it burns. A party game for phones: open a table, share the code, play.">
-<meta name="theme-color" content="#1a0b10">
+<meta name="description" content="A dinner-party category game. Sit at the table, name something in the category and pass the hot plate before it burns you.">
+<meta name="theme-color" content="#0b0406">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&family=Silkscreen&family=VT323&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jacquard+24&family=Pixelify+Sans:wght@400;600;700&family=Silkscreen&family=VT323&display=swap">
 <link rel="stylesheet" href="/style.css">
 </head>
-<body>
-<div class="app" id="app" data-phase="home">
+<body data-phase="home" class="chat-closed">
 
-  <!-- the dining room: canvas art underneath, seats and plate laid over it -->
-  <main class="scene" id="scene">
-    <canvas id="room-canvas" aria-hidden="true"></canvas>
+<div class="stage" id="stage">
+  <!-- the room: painted on two canvases (still art + flickering candles and dust) -->
+  <canvas id="room-bg" class="px-layer" aria-hidden="true"></canvas>
+  <canvas id="room-fx" class="px-layer" aria-hidden="true"></canvas>
 
-    <div class="topbar">
-      <div class="top-left">
-        <button class="px-btn icon" id="menu-btn" aria-label="Menu" aria-expanded="false">☰</button>
-        <div class="menu" id="menu" hidden>
-          <button id="mute-btn">Sound: on</button>
-          <button id="leave-btn">Leave table</button>
+  <!-- on the table -->
+  <div id="seats" class="layer"></div>
+  <div id="bubbles" class="layer"></div>
+  <div id="cloche" class="cloche" data-mode="idle" aria-hidden="true">
+    <div class="hop">
+      <div class="steam"><i></i><i></i><i></i></div>
+      <img id="dish" class="px" alt="">
+    </div>
+    <div class="fuse" id="fuse"><i></i></div>
+    <div class="secs" id="secs"></div>
+  </div>
+
+  <!-- top bar -->
+  <header class="hud-top">
+    <div class="hud-left">
+      <button class="icon-btn" id="menu-btn" aria-label="Menu">☰</button>
+      <button class="icon-btn in-room" id="leave-btn" aria-label="Leave table" title="Leave table">⇥</button>
+      <div class="menu" id="menu" hidden>
+        <button data-open="how-modal">How to play</button>
+        <button class="in-room" data-open="settings-modal">Room settings</button>
+      </div>
+    </div>
+    <div class="hud-centre">
+      <div class="badge" id="code-badge" hidden><small id="code-kind">private</small><b id="code-value"></b></div>
+      <span class="phase-label" id="phase-label"></span>
+      <div class="badge count" id="count-badge" hidden><small id="count-label">ready</small><b id="count-value"></b></div>
+    </div>
+    <div class="hud-right">
+      <button class="icon-btn" id="sound-btn" aria-label="Sound on">🔊</button>
+      <button class="icon-btn" id="chat-toggle" aria-label="Chat" hidden>💬</button>
+    </div>
+  </header>
+
+  <!-- title, or the category on the plate -->
+  <div class="marquee">
+    <div id="title">
+      <h1>Hot Plate</h1>
+      <p class="sub">dinner party</p>
+      <p class="tagline">pass the plate · don't get burned</p>
+    </div>
+    <div id="prompt" hidden>
+      <p class="prompt-text" id="prompt-text"></p>
+      <p class="prompt-meta" id="prompt-meta"></p>
+    </div>
+  </div>
+
+  <!-- front door -->
+  <section class="home panel" id="home">
+    <label class="label" for="name-input">your name</label>
+    <input id="name-input" class="field" maxlength="16" autocomplete="nickname" placeholder="type your name">
+    <span class="label">your face</span>
+    <div class="faces" id="faces" role="radiogroup" aria-label="Avatar"></div>
+    <button class="big-btn" id="create-btn">▼ open a table ▼</button>
+    <form class="join-row" id="join-form">
+      <input id="code-input" class="field code" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="code" aria-label="Table code">
+      <button class="btn" type="submit">join</button>
+    </form>
+    <p class="error" id="home-error" role="alert"></p>
+    <div class="label rule">open tables</div>
+    <ul class="tables" id="tables"><li class="muted">Looking for open tables…</li></ul>
+  </section>
+
+  <!-- end of game banner -->
+  <section class="over" id="over" hidden>
+    <h2 id="over-title"></h2>
+    <p class="over-sub" id="over-sub"></p>
+    <p class="over-find" id="over-find"></p>
+  </section>
+
+  <!-- bottom dock -->
+  <footer class="dock">
+    <div id="dock-lobby" hidden>
+      <button class="big-btn" id="big-btn"></button>
+      <div class="dock-row">
+        <span class="dock-info" id="ready-info"></span>
+        <div class="links">
+          <button class="tab" id="how-btn">how to play</button>
+          <button class="tab" id="settings-btn">room settings</button>
+          <button class="tab" id="invite-btn">invite</button>
         </div>
-        <div class="badge" id="code-badge" hidden><small id="badge-kind">PRIVATE</small><b id="badge-code"></b></div>
       </div>
-      <div class="badge right" id="status-badge" hidden><small id="status-label">READY</small><b id="status-value"></b></div>
     </div>
-
-    <!-- title in the lobby, the prompt during play -->
-    <header class="marquee" id="marquee">
-      <p class="eyebrow" id="marquee-eyebrow">Dining Room presents</p>
-      <h1 class="title" id="marquee-title">HOT PLATE</h1>
-      <p class="subtitle" id="marquee-sub">pass the plate · don't get burned</p>
-    </header>
-
-    <div class="seats" id="seats"></div>
-
-    <div class="centrepiece" id="centrepiece" hidden>
-      <canvas id="timer-canvas" width="64" height="64" aria-hidden="true"></canvas>
-      <div class="plate" id="plate"><span id="plate-dish">🍽️</span></div>
-      <div class="secs" id="secs"></div>
-      <div class="pointer" id="pointer"><i></i></div>
-    </div>
-
-    <!-- home: name, face, open or join -->
-    <section class="home-card px-panel" id="home-card">
-      <div class="field">
-        <label class="px-label" for="name-input">Your name</label>
-        <input id="name-input" class="px-input" maxlength="16" autocomplete="nickname" placeholder="type your name">
-      </div>
-      <div class="field">
-        <span class="px-label">Your face</span>
-        <div class="faces" id="faces" role="radiogroup" aria-label="Avatar"></div>
-      </div>
-      <button class="px-big" id="create-btn">▼ Open a table ▼</button>
-      <form class="join-row" id="join-form">
-        <input id="code-input" class="px-input code" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="CODE" aria-label="Table code">
-        <button class="px-btn" type="submit">Join</button>
+    <div id="dock-play" hidden>
+      <form class="answer-row" id="answer-form" hidden>
+        <input id="answer-input" class="field hot" maxlength="60" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="send" placeholder="your plate! type an answer…" aria-label="Your answer">
+        <button class="btn hot" type="submit">serve</button>
       </form>
-      <p class="px-error" id="home-error" role="alert"></p>
-      <div class="public-list">
-        <div class="px-label rule">Open tables</div>
-        <ul id="tables"><li class="muted">Looking for open tables…</li></ul>
-      </div>
-    </section>
-
-    <!-- bottom dock: start / ready / answer box / burned card -->
-    <div class="dock" id="dock" hidden>
-      <div id="dock-lobby">
-        <button class="px-big" id="big-btn">▼ Ring the dinner bell ▼</button>
-        <div class="dock-row">
-          <span class="dock-info" id="ready-info"></span>
-          <div class="dock-links">
-            <button class="px-tab" id="how-btn">How to play</button>
-            <button class="px-tab" id="settings-btn">Room settings</button>
-            <button class="px-tab" id="invite-btn">Invite</button>
-          </div>
-        </div>
-      </div>
-      <div id="dock-play" hidden>
-        <form class="answer-row" id="answer-form" hidden>
-          <input id="answer-input" class="px-input big" maxlength="60" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="send" placeholder="type an answer…" aria-label="Your answer">
-          <button class="px-btn hot" type="submit">Serve</button>
-        </form>
-        <p class="turn-line" id="turn-line"></p>
-        <p class="flash" id="flash" aria-live="polite"></p>
-      </div>
-      <div class="burn px-panel" id="dock-burn" hidden></div>
+      <p class="turn-line" id="turn-line"></p>
+      <p class="flash" id="flash" aria-live="polite"></p>
     </div>
+    <div class="burn" id="dock-burn" hidden></div>
+    <div class="over-actions" id="over-actions"></div>
+  </footer>
 
-    <!-- end of game -->
-    <section class="over px-panel" id="over" hidden>
-      <p class="px-label" id="over-kicker"></p>
-      <h2 id="over-title"></h2>
-      <p class="over-sub" id="over-sub"></p>
-      <div class="bill" id="bill"></div>
-      <div class="over-actions" id="over-actions"></div>
-    </section>
-  </main>
-
-  <!-- side panel: room code + chat -->
+  <!-- room code + chat: a column on wide screens, a drawer on phones -->
   <aside class="side" id="side" hidden>
-    <section class="px-panel code-panel">
-      <div class="px-label rule">Room code</div>
-      <div class="big-code" id="big-code"></div>
-      <button class="link-btn" id="link-btn" title="Copy invite link"></button>
+    <section class="panel">
+      <div class="label rule">room code</div>
+      <div class="side-code" id="side-code"></div>
+      <button class="side-link" id="side-link" title="Copy invite link"></button>
     </section>
-    <section class="px-panel chat-panel">
-      <div class="px-label rule">Chat</div>
+    <section class="panel chat">
+      <div class="label rule">chat</div>
       <ol class="chat-log" id="chat-log" aria-live="polite"></ol>
       <form class="chat-row" id="chat-form">
-        <input id="chat-input" class="px-input small" maxlength="160" autocomplete="off" placeholder="say something…" aria-label="Chat message">
-        <button class="px-btn" type="submit">Send</button>
+        <input id="chat-input" class="field small" maxlength="160" autocomplete="off" placeholder="say something…" aria-label="Chat message">
+        <button class="btn" type="submit">send</button>
       </form>
     </section>
   </aside>
@@ -123,52 +133,51 @@
 
 <!-- room settings -->
 <div class="modal" id="settings-modal" hidden>
-  <div class="px-panel modal-card">
-    <div class="px-label rule">Room settings</div>
+  <div class="panel modal-card">
+    <div class="label rule">room settings</div>
     <div class="steppers" id="steppers"></div>
-    <button class="stepper wide" id="cats-open"><span class="k">Categories</span><span class="v" id="cats-summary"></span><span class="go">▶</span></button>
-    <p class="muted small" id="settings-note"></p>
-    <button class="px-btn" data-close>Done</button>
+    <button class="stepper wide" id="cats-open"><span class="k">categories</span><span class="v" id="cats-summary"></span><span class="go">▶</span></button>
+    <p class="note" id="settings-note"></p>
+    <button class="btn" data-close>done</button>
   </div>
 </div>
 
 <!-- categories -->
 <div class="modal" id="cats-modal" hidden>
-  <div class="px-panel modal-card tall">
-    <div class="px-label rule" id="cats-title">Categories</div>
-    <div class="cat-tools">
-      <button class="px-tab" id="cats-all">Everything</button>
-      <button class="px-tab" id="cats-rand">Random 6</button>
+  <div class="panel modal-card tall">
+    <div class="label rule" id="cats-title">menu</div>
+    <div class="links">
+      <button class="tab" id="cats-all">everything</button>
+      <button class="tab" id="cats-rand">random 6</button>
     </div>
     <div class="cat-groups" id="cat-groups"></div>
-    <button class="px-btn" data-close>Done</button>
+    <button class="btn" data-close>done</button>
   </div>
 </div>
 
 <!-- how to play -->
 <div class="modal" id="how-modal" hidden>
-  <div class="px-panel modal-card">
-    <div class="px-label rule">How to play</div>
+  <div class="panel modal-card">
+    <div class="label rule">how to play</div>
     <ol class="how">
-      <li>Everyone sits at the table. A category comes up, like <b>Name any NBA player</b>.</li>
-      <li>When the plate lands in front of you, type something in the category and hit <b>Serve</b> to pass it on.</li>
+      <li>Everyone takes a seat. A category comes up, like <b>Name any NBA player</b>.</li>
+      <li>When the hot plate slides in front of you, type something in the category and <b>serve</b> it to pass it on.</li>
       <li>No repeats. Anything already served is off the menu, and wrong guesses show up for the whole table.</li>
-      <li>Watch the clock round the plate. Run out and you get burned: one heart gone. The clock gets shorter every pass.</li>
-      <li>Rarer answers score more. Enough points buy a heart back.</li>
-      <li>Last one with hearts wins.</li>
+      <li>Watch the bar under the plate. Run out and you get burned: one life gone. Every pass makes the next turn shorter.</li>
+      <li>Rarer answers score more, and enough points win a life back.</li>
+      <li>Last one at the table wins.</li>
     </ol>
-    <div class="tiers">
-      <span class="tier t0">Bread Basket · 10</span>
-      <span class="tier t1">Side Dish · 25</span>
-      <span class="tier t2">Main Course · 50</span>
-      <span class="tier t3">Chef's Secret · 100</span>
+    <div class="chips">
+      <span class="chip t0">bread basket · 10</span>
+      <span class="chip t1">side dish · 25</span>
+      <span class="chip t2">main course · 50</span>
+      <span class="chip t3">chef's secret · 100</span>
     </div>
-    <button class="px-btn" data-close>Got it</button>
+    <button class="btn" data-close>got it</button>
   </div>
 </div>
 
 <div class="toast" id="toast" hidden></div>
-<script src="/scene.js"></script>
-<script src="/app.js"></script>
+<script type="module" src="/js/main.js"></script>
 </body>
 </html>

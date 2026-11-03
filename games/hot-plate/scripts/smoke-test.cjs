@@ -19,12 +19,11 @@ for (const f of fs.readdirSync(path.join(root, "data")).filter((f) => f.endsWith
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 function check(cond, msg) { if (!cond) throw new Error("FAILED: " + msg); console.log("  ok  " + msg); }
-const phase = (p) => p.getAttribute("#app", "data-phase");
-const waitPhase = (p, ph, timeout = 8000) => p.waitForSelector(`#app[data-phase="${ph}"]`, { timeout });
+const waitPhase = (p, ph, timeout = 8000) => p.waitForSelector(`body[data-phase="${ph}"]`, { timeout, state: "attached" });
 
 (async () => {
   fs.mkdirSync(OUT, { recursive: true });
-  const server = spawn(process.execPath, ["server.js"], { cwd: root, env: { ...process.env, PORT: String(PORT) }, stdio: ["ignore", "pipe", "pipe"] });
+  const server = spawn(process.execPath, ["server/index.js"], { cwd: root, env: { ...process.env, PORT: String(PORT) }, stdio: ["ignore", "pipe", "pipe"] });
   server.stdout.on("data", (d) => process.stdout.write("  [server] " + d));
   server.stderr.on("data", (d) => process.stdout.write("  [server!] " + d));
   await sleep(1200);
@@ -50,7 +49,7 @@ const waitPhase = (p, ph, timeout = 8000) => p.waitForSelector(`#app[data-phase=
     await a.fill("#name-input", "Ana");
     await a.click("#create-btn");
     await waitPhase(a, "lobby");
-    const code = (await a.textContent("#big-code")).trim();
+    const code = (await a.textContent("#code-value")).trim();
     check(/^[A-Z]{4}$/.test(code), `table opened with code ${code}`);
 
     for (const [p, n] of [[b, "Ben"], [c, "Cat"]]) {
@@ -62,11 +61,12 @@ const waitPhase = (p, ph, timeout = 8000) => p.waitForSelector(`#app[data-phase=
     }
     await a.waitForFunction(() => document.querySelectorAll(".seat:not(.empty)").length === 3);
     check(true, "host sees three players seated round the table");
-    check(/I'm ready/.test(await b.textContent("#big-btn")), "guests get a ready button");
+    check(/i'm ready/i.test(await b.textContent("#big-btn")), "guests get a ready button");
     await b.click("#big-btn");
     await a.waitForFunction(() => /2 ready/.test(document.querySelector("#ready-info").textContent));
     check(true, "Ben's ready shows up for the host");
 
+    await c.click("#chat-toggle");
     await c.fill("#chat-input", "hello table");
     await c.press("#chat-input", "Enter");
     await a.waitForFunction(() => /hello table/.test(document.querySelector("#chat-log").textContent));
@@ -89,7 +89,7 @@ const waitPhase = (p, ph, timeout = 8000) => p.waitForSelector(`#app[data-phase=
       for (const p of [a, b, c]) if (await p.isVisible("#answer-form")) return p;
       return null;
     };
-    const promptOf = async (p) => (await p.textContent("#marquee-title")).replace(/^\S+\s/, "").trim();
+    const promptOf = async (p) => (await p.textContent("#prompt-text")).replace(/^\S+\s/, "").trim();
 
     let used = [];
     for (let turn = 0; turn < 4; turn++) {
@@ -133,13 +133,13 @@ const waitPhase = (p, ph, timeout = 8000) => p.waitForSelector(`#app[data-phase=
     if (h2) await h2.screenshot({ path: path.join(OUT, "5-game-your-turn.png") });
 
     // nobody answers: the clock runs out and someone gets burned
-    await a.waitForSelector('#app[data-phase="break"], #app[data-phase="over"]', { timeout: 20000 });
+    await a.waitForSelector('body[data-phase="break"], body[data-phase="over"]', { timeout: 20000, state: "attached" });
     check(true, "the clock ran out and someone got burned");
     await a.screenshot({ path: path.join(OUT, "6-burned.png") });
 
     await waitPhase(a, "over", 45000);
     const title = await a.textContent("#over-title");
-    check(/wins/.test(title), `game over: "${title}"`);
+    check(/wins|YOU WIN/.test(title), `game over: "${title}"`);
     await a.screenshot({ path: path.join(OUT, "7-over.png") });
     await b.screenshot({ path: path.join(OUT, "7-over-phone.png") });
 
