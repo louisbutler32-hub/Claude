@@ -55,7 +55,7 @@ SOURCES = {
     "cnnick": [("List of programs broadcast by Cartoon Network", TITLE, None), ("List of Cartoon Network original programming", TITLE, None),
                ("List of programs broadcast by Nickelodeon", TITLE, None), ("List of Nickelodeon original programming", TITLE, None)],
     "superhero": [("List of American superhero films", r"^(film|title)\b", None)],
-    "mountain": [("List of highest mountains on Earth", r"^(mountain|name)\b", None)],
+    "language": [("List of languages by total number of speakers", r"^language\b", None)],
     "river": [("List of river systems by length", r"^river\b", None)],
     "capital": [("List of national capitals", r"^(city|capital)\b", None)],
     "bigcity": [("List of largest cities", r"^city\b", None)],
@@ -89,8 +89,8 @@ def fetch(page):
     return None
 
 
-def clean(cell, quoted_only=False):
-    s = str(cell)
+def clean(cell, quoted_only=False, keep_parens=False):
+    s = str(cell).split("¦")[0]             # a cell's other names sit on new lines; keep the first
     if s in ("nan", "None", "—", "–", "-", ""):
         return None
     s = re.sub(r"\[[^\]]*\]", "", s)          # footnotes [1] [a]
@@ -100,6 +100,9 @@ def clean(cell, quoted_only=False):
     elif quoted_only:
         return None
     s = re.sub(r"\s*[†‡*§¶#^]+\s*$", "", s)  # table marks
+    if not keep_parens:
+        s = re.sub(r"\s*\([^)]*\)", "", s)    # notes like "(de jure)"
+        s = re.split(r"\s*[–—]\s*", s)[0]      # "Nile–White Nile–Kagera" is the Nile
     s = re.sub(r"\s*\((?:song|film|TV series|[^)]*version)\)$", "", s, flags=re.I)
     s = re.sub(r"\s+", " ", s).strip(" \"'“”")
     if not s or len(s) > 70 or re.fullmatch(r"[\d\W]+", s) or re.search(r"\b(TBA|TBD|untitled)\b", s, re.I):
@@ -109,6 +112,8 @@ def clean(cell, quoted_only=False):
 
 def answers_from(page_html, col_pat, cap_pat, quoted_only):
     tree = lhtml.fromstring(page_html)
+    for br in tree.iter("br"):
+        br.tail = "¦" + (br.tail or "")
     found = []
     for t in tree.xpath('//table[contains(concat(" ", normalize-space(@class), " "), " wikitable ")]'):
         cap = " ".join(t.xpath(".//caption//text()")).lower()
@@ -123,7 +128,7 @@ def answers_from(page_html, col_pat, cap_pat, quoted_only):
         if pick is None or any(re.search(r"\brole\b", c, re.I) for c in cols) and col_pat == SONG:
             continue
         for v in df.iloc[:, pick].tolist():
-            name = clean(v, quoted_only)
+            name = clean(v, quoted_only, keep_parens=quoted_only)
             if name:
                 found.append(name)
     return found

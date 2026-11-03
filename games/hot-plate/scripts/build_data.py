@@ -73,7 +73,7 @@ CATEGORIES = [
     dict(id="cricket", group="Sport", emoji="🏏", prompt="Name a cricket player", kind="person", limit=1500, minsl=6,
          where="?x wdt:P106 wd:Q12299841 .",
          # Beckett and prime ministers played first-class cricket, but nobody says them first
-         drop="?x wdt:P106 ?no . VALUES ?no { wd:Q82955 wd:Q36180 wd:Q1028181 wd:Q49757 wd:Q4964182 wd:Q214917 wd:Q1930187 } ."),
+         drop="?x wdt:P106 ?no . VALUES ?no { wd:Q82955 wd:Q36180 wd:Q1028181 wd:Q49757 wd:Q4964182 wd:Q214917 wd:Q1930187 wd:Q937857 wd:Q10833314 wd:Q11513337 } ."),
     dict(id="rugby", group="Sport", emoji="🏉", prompt="Name an international rugby player from this century", kind="person", limit=1500, minsl=3,
          where="?x wdt:P54 ?t . ?t wdt:P31 wd:Q58840819 . ?x wdt:P569 ?b . FILTER(YEAR(?b) >= 1975)"),
     dict(id="teams", group="Sport", emoji="🏟️", prompt="Name a sports team", kind="thing", limit=2000, minsl=20,
@@ -99,11 +99,32 @@ CATEGORIES = [
     dict(id="tech", group="Other", emoji="💻", prompt="Name a tech company", kind="thing", limit=1200, minsl=20,
          where="{ ?x wdt:P31 ?t . VALUES ?t { wd:Q18388277 wd:Q1058914 } } UNION { ?x wdt:P452 ?ind . VALUES ?ind { wd:Q11661 wd:Q880371 wd:Q11016 } }"),
     dict(id="criminal", group="Other", emoji="🔪", prompt="Name a serial killer or famous criminal", kind="person", limit=1200, minsl=15,
-         where="?x wdt:P106 ?o . VALUES ?o { wd:Q484188 wd:Q2159907 } ."),
+         where="?x wdt:P106 ?o . VALUES ?o { wd:Q484188 wd:Q2159907 } .",
+         # real people, and not heads of state
+         keep="?x wdt:P31 wd:Q5 .", drop="?x wdt:P106 wd:Q82955 ."),
     dict(id="carbrand", group="Other", emoji="🚗", prompt="Name a car brand", kind="thing", limit=800, minsl=8,
          where="?x wdt:P31 wd:Q786820 ."),
     dict(id="airline", group="Other", emoji="✈️", prompt="Name an airline", kind="thing", limit=1000, minsl=10,
          where="?x wdt:P31 wd:Q46970 ."),
+    # ---- the second batch ----
+    dict(id="language", group="Words", emoji="🗣️", prompt="Name a language", kind="thing", limit=1200, minsl=30,
+         where="?x wdt:P31 ?c . VALUES ?c { wd:Q34770 wd:Q1288568 wd:Q33742 } ."),
+    dict(id="musicgenre", group="Music", emoji="🎼", prompt="Name a music genre", kind="thing", limit=1200, minsl=10,
+         where="?x wdt:P31 wd:Q188451 .", strip=r"\s+music$"),
+    dict(id="instrument", group="Music", emoji="🎺", prompt="Name a musical instrument", kind="thing", limit=800, minsl=10,
+         where="?x wdt:P31 ?c . VALUES ?c { wd:Q34379 wd:Q1254773 } ."),
+    dict(id="dogcat", group="Animals", emoji="🐶", prompt="Name a dog or cat breed", kind="thing", limit=1500, minsl=1,
+         where="?x wdt:P31 ?c . VALUES ?c { wd:Q39367 wd:Q43577 } ."),
+    dict(id="recentmovie", group="Movies & TV", emoji="🍿", prompt="Name a movie from the last 3 years", kind="thing", limit=1500, minsl=5,
+         where="?x wdt:P31 wd:Q11424 ; wdt:P577 ?d . FILTER(?d >= \"2023-11-01T00:00:00Z\"^^xsd:dateTime && ?d <= NOW())"),
+    dict(id="politician", group="People", emoji="🏛️", prompt="Name someone currently serving in a national government or parliament", kind="person", limit=1500, minsl=15,
+         where="?x p:P39 ?s . ?s ps:P39 ?pos . FILTER NOT EXISTS { ?s pq:P582 ?e } ?s pq:P580 ?st . FILTER(YEAR(?st) >= 2008) ?pos wdt:P279 ?cls . VALUES ?cls { wd:Q486839 wd:Q83307 wd:Q48352 wd:Q2285706 } . FILTER NOT EXISTS { ?x wdt:P570 ?died }"),
+    dict(id="teammates", group="Sport", emoji="🤝", prompt="Name someone who has been a teammate of Lionel Messi, Cristiano Ronaldo or LeBron James", kind="person", limit=2500, minsl=2,
+         where="VALUES ?s { wd:Q615 wd:Q11571 wd:Q36159 } ?s p:P54 ?m1 . ?m1 ps:P54 ?team ; pq:P580 ?a1 . OPTIONAL { ?m1 pq:P582 ?b1 } ?x p:P54 ?m2 . ?m2 ps:P54 ?team ; pq:P580 ?a2 . OPTIONAL { ?m2 pq:P582 ?b2 } FILTER(?x != ?s && (!BOUND(?b1) || ?a2 <= ?b1) && (!BOUND(?b2) || ?a1 <= ?b2))"),
+    dict(id="university", group="School", emoji="🎓", prompt="Name a university in the US, UK, NZ or Australia", kind="thing", limit=2000, minsl=3,
+         where="?x wdt:P31 ?c . VALUES ?c { wd:Q3918 wd:Q875538 wd:Q15936437 wd:Q902104 } . ?x wdt:P17 ?k . VALUES ?k { wd:Q30 wd:Q145 wd:Q664 wd:Q408 } ."),
+    dict(id="eurocity", group="Places", emoji="🏰", prompt="Name a city in Europe with over 100,000 people", kind="thing", limit=2000, minsl=0,
+         where="?x wdt:P1082 ?pop . FILTER(?pop >= 100000) ?x wdt:P31 ?t . VALUES ?t { wd:Q515 wd:Q1549591 wd:Q1637706 wd:Q200250 wd:Q5119 wd:Q1093829 wd:Q3957 } . ?x wdt:P17 ?k . ?k wdt:P30 wd:Q46 ."),
 ]
 for _c in CATEGORIES:
     _c["where"] = _c["where"] % {"song": "?x wdt:P31 ?st . VALUES ?st { wd:Q7366 wd:Q134556 } ."}
@@ -169,7 +190,9 @@ def build(cat):
     for b in rows:
         qid = b["x"]["value"].rsplit("/", 1)[-1]
         label = clean(b["l"]["value"])
-        if label and label[0].islower() and cat["kind"] == "thing" and cat["id"] in ("boardgame", "mountain", "river"):
+        if label and cat.get("strip"):
+            label = re.sub(cat["strip"], "", label) or label   # "hip hop music" reads as "hip hop"
+        if label and label[0].islower() and cat["kind"] == "thing" and cat["id"] in ("boardgame", "mountain", "river", "dogcat", "musicgenre", "instrument", "language"):
             label = label[0].upper() + label[1:]
         if not label:
             continue
