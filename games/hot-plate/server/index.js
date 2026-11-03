@@ -8,11 +8,27 @@ const crypto = require("crypto");
 const { WebSocketServer } = require("ws");
 const { TIERS, loadCategories } = require("./answers");
 const { Room, send } = require("./room");
+const { Accounts } = require("./accounts");
 
 const PORT = process.env.PORT || 3000;
 const ROOT = path.join(__dirname, "..");
 const PUBLIC = path.join(ROOT, "public");
 const CATS = loadCategories(path.join(ROOT, "data"));
+const accounts = new Accounts();
+const EMOJIS = ["😎", "🤠", "👽", "🦊", "🐸", "🤖", "👻", "🐼", "🦄", "💀", "🧃", "🍉", "🐙", "🦖", "🍄", "🐝"];
+
+// after a game, save signed-in players' stats and show them their new streaks
+function onFinish(room, results) {
+  for (const r of results) {
+    const p = r.player;
+    if (!p.acct) continue;
+    accounts.record(p.acct, r);
+    p.dayStreak = accounts.liveDayStreak(p.acct);
+    p.winStreak = p.acct.stats.winStreak;
+    send(p.ws, { t: "account", profile: accounts.view(p.acct) });
+  }
+}
+const streaksOf = (acct) => (acct ? { day: accounts.liveDayStreak(acct), win: acct.stats.winStreak } : null);
 
 /* ---------- tables ---------- */
 
@@ -22,7 +38,7 @@ function openRoom() {
   let code;
   do code = Array.from({ length: 4 }, () => CODE_CHARS[crypto.randomInt(CODE_CHARS.length)]).join("");
   while (rooms.has(code));
-  const room = new Room(code, CATS);
+  const room = new Room(code, CATS, { onFinish });
   rooms.set(code, room);
   return room;
 }
@@ -85,7 +101,7 @@ const server = http.createServer((req, res) => {
 const wss = new WebSocketServer({ server, path: "/ws", maxPayload: 4096 });
 
 wss.on("connection", (ws) => {
-  let room = null, me = null;
+  let room = null, me = null, acct = null, authTries = [];
   ws.isAlive = true;
   ws.on("pong", () => { ws.isAlive = true; });
 
@@ -96,10 +112,10 @@ wss.on("connection", (ws) => {
       r = rooms.get(String(m.code || "").toUpperCase().trim());
       if (!r) return send(ws, { t: "error", msg: "No table with that code. Check the four letters and try again." });
     }
-    let p = m.t === "rejoin" ? r.rejoin(ws, m.id, m.token) : null;
+    let p = m.t === "rejoin" ? r.rejoin(ws, m.id, m.token, acct, streaksOf(acct)) : null;
     if (!p) {
       if (r.isFull) return send(ws, { t: "error", msg: `That table is full (${r.settings.seats} seats).` });
-      p = r.join(ws, m.name, m.emoji);
+      p = r.join(ws, m.name, m.emoji, acct, streaksOf(acct));
     }
     room = r; me = p;
     send(ws, { t: "welcome", id: p.id, token: p.token, code: r.code });
@@ -112,6 +128,29 @@ wss.on("connection", (ws) => {
     if (!m || typeof m.t !== "string") return;
 
     if (m.t === "create" || m.t === "join" || m.t === "rejoin") return room ? undefined : sitDown(m);
+
+    // profiles
+    if (m.t === "signup" || m.t === "login") {
+      const now = Date.now();
+      authTries = authTries.filter((t) => now - t < 60000);
+      if (authTries.length >= 10) return send(ws, { t: "auth-error", msg: "Slow down a little and try again in a minute." });
+      authTries.push(now);
+      const emoji = EMOJIS.includes(m.emoji) ? m.emoji : EMOJIS[0];
+      const res = m.t === "signup" ? accounts.signup(m.name, m.pin, emoji, m.tz) : accounts.login(m.name, m.pin, m.tz);
+      if (res.error) return send(ws, { t: "auth-error", msg: res.error });
+      acct = res.acct;
+      return send(ws, { t: "account", token: res.token, profile: accounts.view(acct) });
+    }
+    if (m.t === "auth") {
+      acct = accounts.fromToken(m.token);
+      return send(ws, acct ? { t: "account", profile: accounts.view(acct) } : { t: "auth-failed" });
+    }
+    if (m.t === "logout") {
+      if (acct) accounts.logout(acct, m.token);
+      acct = null;
+      return send(ws, { t: "account", profile: null });
+    }
+    if (m.t === "face" && acct && EMOJIS.includes(m.emoji)) return accounts.setEmoji(acct, m.emoji);
     if (!room || !me) return;
 
     switch (m.t) {
@@ -142,4 +181,4 @@ setInterval(() => {
   }
 }, 25000);
 
-server.listen(PORT, () => console.log(`Hot Plate on http://localhost:${PORT}`));
+accounts.init().then(() => server.listen(PORT, () => console.log(`Hot Plate on http://localhost:${PORT}`)));

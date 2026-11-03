@@ -1,0 +1,263 @@
+# id: lolly
+# prompt: Name a lolly or chocolate brand
+# group: Food
+# emoji: 🍫
+# kind: thing
+Cadbury | Cadburys
+Mars | Mars Bar
+Snickers | Marathon
+KitKat | Kit Kat
+Haribo
+Skittles
+M&M's | M&Ms | M and Ms | Eminems
+Twix
+Reese's | Reeses | Reese's Peanut Butter Cups | Reese's Cups
+Hershey's | Hersheys | Hershey
+Kinder
+Lindt
+Ferrero Rocher | Ferrero
+Maltesers
+Toblerone
+Nestlé | Nestle
+Starburst | Opal Fruits
+Milky Way
+Dairy Milk | Cadbury Dairy Milk
+Kinder Bueno | Bueno
+Freddo | Freddo Frog | Freddo Frogs
+Galaxy
+Bounty
+Nerds
+Sour Patch Kids | Sour Patch
+Smarties
+Chupa Chups
+Crunchie
+Aero
+Jolly Rancher | Jolly Ranchers
+Kinder Surprise | Kinder Egg | Kinder Eggs
+Creme Egg | Cadbury Creme Egg | Creme Eggs
+Trolli
+Twizzlers
+Milka
+Wonka | Willy Wonka | Wonka Bar
+Butterfinger
+Allen's | Allens
+Cherry Ripe
+Mini Eggs | Cadbury Mini Eggs
+Flake
+Twirl
+Tic Tac | Tic Tacs
+Mentos
+Hubba Bubba
+Wrigley's | Wrigleys
+Rolo | Rolos
+Milkybar | Milky Bar
+Hershey's Kisses | Kisses
+Swedish Fish
+Warheads
+Airheads
+Lindor | Lindt Lindor
+Caramilk
+Wispa
+Boost
+Picnic
+Double Decker
+Time Out
+Caramello Koala | Caramello Koalas
+Caramello
+Jelly Belly
+Life Savers | Lifesavers
+Quality Street
+Celebrations
+Heroes | Cadbury Heroes
+Terry's Chocolate Orange | Chocolate Orange | Terry's
+Kinder Joy
+Ritter Sport
+Ghirardelli
+Godiva
+Tootsie Roll | Tootsie Rolls
+Tootsie Pop | Tootsie Pops
+Laffy Taffy
+Pop Rocks
+Fun Dip
+Ring Pop
+Push Pop
+Baby Bottle Pop
+Blow Pop
+Dum Dums
+Pez
+Swizzels
+Love Hearts
+Parma Violets
+Refreshers
+Drumstick | Drumstick Lollies
+Jelly Babies
+Wine Gums
+Fruit Pastilles
+Fruit Gums
+Percy Pig | Percy Pigs
+Bassett's | Bassetts
+Maynards | Maynards Bassetts
+Rowntree's | Rowntrees
+Liquorice Allsorts | Allsorts
+Polo | Polos | Polo Mints
+Werther's Original | Werthers | Werther's
+Chewits
+Fruitella
+Yorkie
+Lion | Lion Bar
+Toffee Crisp
+Munchies
+After Eight | After Eights
+Revels
+Minstrels
+Topic
+Buttons | Cadbury Buttons | Giant Buttons
+Fudge | Cadbury Fudge
+Curly Wurly
+Chomp
+Starbar
+Crunch | Nestlé Crunch
+3 Musketeers | Three Musketeers
+Almond Joy
+Mounds
+PayDay
+Baby Ruth
+100 Grand
+Heath | Heath Bar
+Milk Duds
+Whoppers
+Junior Mints
+York Peppermint Pattie | York
+Take 5
+Whatchamacallit
+Krackel
+Mr. Goodbar
+Hershey's Cookies 'n' Creme | Cookies n Creme
+Reese's Pieces
+Skor
+Mike and Ike | Mike & Ike
+Hot Tamales
+Sour Punch
+Red Vines
+Peeps
+Dots
+SweeTarts | Sweet Tarts
+Runts
+Lemonheads
+Bottle Caps
+Spree
+Pixy Stix
+Good & Plenty
+Charleston Chew
+Bit-O-Honey
+Necco Wafers | Necco
+Brach's | Brachs
+Russell Stover
+See's Candies | See's
+Whitman's | Whitmans
+Raisinets
+Goobers
+Sno-Caps
+Hi-Chew
+Albanese
+Ice Breakers
+Altoids
+Extra | Extra Gum
+Juicy Fruit
+Doublemint
+Orbit
+Trident
+Bubblicious
+Big Red
+Gobstopper | Gobstoppers | Everlasting Gobstopper
+Fruit Tingles
+Minties
+Fantales
+Jaffas
+Snakes | Allen's Snakes
+Red Frogs
+Killer Pythons
+Chicos
+Party Mix | Allen's Party Mix
+Natural Confectionery Co | Natural Confectionery Company | The Natural Confectionery Co
+Darrell Lea
+Pascall
+Violet Crumble
+Top Deck
+Old Gold
+Dream | Cadbury Dream
+Turkish Delight | Fry's Turkish Delight
+Golden Rough
+Peppermint Crisp
+Chokito
+Polly Waffle
+Bertie Beetle
+Freckles
+Pods
+Wizz Fizz
+Kool Mints
+Steam Rollers
+Bananas | Allen's Bananas
+Strawberries and Cream
+Milk Bottles
+Columbines
+Clinkers
+Marvellous Creations | Cadbury Marvellous Creations
+Favourites | Cadbury Favourites
+Roses | Cadbury Roses
+Moro
+Haigh's | Haighs
+Whittaker's | Whittakers
+Pineapple Lumps
+Matchmakers
+Walnut Whip
+Fry's Chocolate Cream | Fry's
+Thorntons
+Hotel Chocolat
+Green & Black's | Green and Blacks
+Tony's Chocolonely | Tony's
+Guylian
+Côte d'Or | Cote d'Or
+Daim | Dime
+Raffaello
+Kinder Chocolate
+Milky Way Magic Stars | Magic Stars
+Galaxy Ripple | Ripple
+Galaxy Counters
+Fruit & Nut | Cadbury Fruit and Nut
+Caramel | Cadbury Caramel
+Sherbet Fountain
+Dip Dab
+Black Jack | Black Jacks
+Fruit Salad | Fruit Salads
+Barratt
+Flying Saucers
+Squashies
+Millions
+Candy Kittens
+Murray Mints
+Fox's Glacier Mints | Fox's Glacier
+Tangfastics
+Starmix
+Goldbears | Gold Bears | Haribo Goldbears
+Toxic Waste
+Jelly Tots
+Mars Planets
+Kinder Happy Hippo | Happy Hippo
+Mon Chéri | Mon Cheri
+Hershey's Special Dark
+Symphony | Hershey's Symphony
+Cadbury Snack | Snack
+Kit Kat Chunky | Chunky
+Baci | Baci Perugina
+Perugina
+Toffifee | Toffifay
+Kinder Maxi
+Ferrara
+Brookside
+Lily's
+Hu Chocolate | Hu
+Black Forest Gummies | Black Forest
+Welch's Fruit Snacks | Welch's
+Gushers | Fruit Gushers
+Nerds Gummy Clusters | Nerds Clusters

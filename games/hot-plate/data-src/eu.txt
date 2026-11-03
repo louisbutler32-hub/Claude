@@ -1,0 +1,32 @@
+# id: eu
+# prompt: Name a country in the EU
+# group: Places
+# emoji: 🇪🇺
+# kind: thing
+France
+Germany | Deutschland
+Italy | Italia
+Spain | España
+Netherlands | Holland | The Netherlands
+Ireland | Republic of Ireland | Eire
+Portugal
+Greece | Hellas
+Belgium
+Sweden
+Poland
+Austria
+Denmark
+Finland
+Croatia
+Czechia | Czech Republic
+Hungary
+Luxembourg
+Romania
+Malta
+Cyprus
+Bulgaria
+Slovakia | Slovak Republic
+Slovenia
+Lithuania
+Latvia
+Estonia

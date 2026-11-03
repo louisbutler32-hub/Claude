@@ -23,7 +23,7 @@ const waitPhase = (p, ph, timeout = 8000) => p.waitForSelector(`body[data-phase=
 
 (async () => {
   fs.mkdirSync(OUT, { recursive: true });
-  const server = spawn(process.execPath, ["server/index.js"], { cwd: root, env: { ...process.env, PORT: String(PORT) }, stdio: ["ignore", "pipe", "pipe"] });
+  const server = spawn(process.execPath, ["server/index.js"], { cwd: root, env: { ...process.env, PORT: String(PORT), STORAGE_DIR: fs.mkdtempSync(path.join(require("os").tmpdir(), "hp-test-")) }, stdio: ["ignore", "pipe", "pipe"] });
   server.stdout.on("data", (d) => process.stdout.write("  [server] " + d));
   server.stderr.on("data", (d) => process.stdout.write("  [server!] " + d));
   await sleep(1200);
@@ -46,7 +46,15 @@ const waitPhase = (p, ph, timeout = 8000) => p.waitForSelector(`body[data-phase=
     await a.goto(BASE);
     await sleep(400);
     await a.screenshot({ path: path.join(OUT, "1-home.png") });
-    await a.fill("#name-input", "Ana");
+    // Ana makes a profile so her game is saved
+    await a.click("#open-auth");
+    await a.click("#auth-tab-new");
+    await a.fill("#auth-name", "Ana");
+    await a.fill("#auth-pin", "1234");
+    await a.click("#auth-submit");
+    await a.waitForSelector("body.is-signed-in", { state: "attached", timeout: 5000 });
+    check(/Ana/.test(await a.textContent("#account-box")), "Ana created a profile and is signed in");
+    await a.screenshot({ path: path.join(OUT, "1b-home-signed-in.png") });
     await a.click("#create-btn");
     await waitPhase(a, "lobby");
     const code = (await a.textContent("#code-value")).trim();
@@ -143,6 +151,12 @@ const waitPhase = (p, ph, timeout = 8000) => p.waitForSelector(`body[data-phase=
     await a.screenshot({ path: path.join(OUT, "7-over.png") });
     await b.screenshot({ path: path.join(OUT, "7-over-phone.png") });
 
+    await a.click("#menu-btn");
+    await a.click('#menu [data-open="profile-modal"]');
+    await a.waitForFunction(() => /1 game/.test(document.querySelector("#profile-head").textContent), null, { timeout: 5000 });
+    check(true, "Ana's profile saved the game: " + (await a.textContent("#profile-streaks")).replace(/\s+/g, " ").trim());
+    await a.screenshot({ path: path.join(OUT, "8-profile.png") });
+    await a.click("#profile-modal [data-close]");
     await a.click("#again-btn");
     await waitPhase(a, "play");
     check(true, "host can start another round");

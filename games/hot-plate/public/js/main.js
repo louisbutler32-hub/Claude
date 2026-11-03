@@ -7,7 +7,8 @@ import { Scene, layout } from "./scene.js";
 import * as table from "./table.js";
 import { renderHUD, flash } from "./hud.js";
 import { renderPanel, refreshModals } from "./panels.js";
-import { showError, startTableList, readLinkCode } from "./home.js";
+import { showError, startTableList, readLinkCode, refreshFaces } from "./home.js";
+import { renderAccount } from "./account.js";
 
 /* ---------- stage geometry ---------- */
 
@@ -72,6 +73,7 @@ on("state", (m) => {
 });
 
 on("typing", (m) => table.setTyping(m.id, m.text));
+on("account", () => { refreshFaces(); render(); });
 on("nope", (m) => table.setNope(m.id, m.text));
 
 on("served", (m) => {
@@ -79,7 +81,8 @@ on("served", (m) => {
   sfx.pass(m.tier);
   if (m.heart) setTimeout(sfx.heart, 200);
   table.clearTyping(m.by);
-  flash(`${m.by === S.room.you ? "you" : p ? p.name : "someone"}: ${m.name} · ${t.name.toLowerCase()} +${m.pts}${m.heart ? " · +1 ♥" : ""}`, "good");
+  const spicy = m.mult > 1 ? ` · 🌶️ ×${m.mult}` : "";
+  flash(`${m.by === S.room.you ? "you" : p ? p.name : "someone"}: ${m.name} · ${t.name.toLowerCase()} +${m.pts}${spicy}${m.heart ? " · +1 ♥" : ""}`, "good");
   setTimeout(() => table.renderBubbles(m.by), 30);
 });
 
@@ -149,5 +152,6 @@ let autoRejoin = !!getSession();
 if (link && getSession() && getSession().code !== link) { setSession(null); autoRejoin = false; }
 on("welcome", () => { autoRejoin = false; });
 startTableList();
+renderAccount();
 render();
 connect(() => profile);

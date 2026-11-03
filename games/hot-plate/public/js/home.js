@@ -3,6 +3,7 @@ import { $, esc, EMOJIS } from "./util.js";
 import { S, profile, saveProfile } from "./state.js";
 import { send, getSession, setSession } from "./net.js";
 import { unlock, sfx } from "./sound.js";
+import { pickFace } from "./account.js";
 
 $("name-input").value = profile.name;
 function renderFaces() {
@@ -13,11 +14,13 @@ $("faces").addEventListener("click", (e) => {
   const b = e.target.closest("button");
   if (!b) return;
   profile.emoji = b.textContent; saveProfile(); renderFaces(); sfx.click();
+  pickFace(profile.emoji);
 });
 $("name-input").addEventListener("input", () => { profile.name = $("name-input").value.trim(); saveProfile(); });
 
+export const refreshFaces = renderFaces;
 function needName() {
-  if (profile.name) return false;
+  if (S.account || profile.name) return false;
   $("home-error").textContent = "Pop your name in first.";
   $("name-input").focus();
   return true;

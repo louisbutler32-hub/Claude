@@ -9,7 +9,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jacquard+24&family=Pixelify+Sans:wght@400;600;700&family=Silkscreen&family=VT323&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Figtree:wght@500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/style.css">
 </head>
 <body data-phase="home" class="chat-closed">
@@ -38,6 +38,8 @@
       <button class="icon-btn in-room" id="leave-btn" aria-label="Leave table" title="Leave table">⇥</button>
       <div class="menu" id="menu" hidden>
         <button data-open="how-modal">How to play</button>
+        <button class="signed-in" data-open="profile-modal">Your profile</button>
+        <button class="signed-out" data-open="auth-modal">Sign in</button>
         <button class="in-room" data-open="settings-modal">Room settings</button>
       </div>
     </div>
@@ -67,8 +69,11 @@
 
   <!-- front door -->
   <section class="home panel" id="home">
-    <label class="label" for="name-input">your name</label>
-    <input id="name-input" class="field" maxlength="16" autocomplete="nickname" placeholder="type your name">
+    <div class="account-box" id="account-box"></div>
+    <div class="guest-only" id="guest-name">
+      <label class="label" for="name-input">your name</label>
+      <input id="name-input" class="field" maxlength="16" autocomplete="nickname" placeholder="type your name">
+    </div>
     <span class="label">your face</span>
     <div class="faces" id="faces" role="radiogroup" aria-label="Avatar"></div>
     <button class="big-btn" id="create-btn">▼ open a table ▼</button>
@@ -155,6 +160,39 @@
   </div>
 </div>
 
+<!-- sign in / create a profile -->
+<div class="modal" id="auth-modal" hidden>
+  <div class="panel modal-card">
+    <div class="tabs" role="tablist">
+      <button class="tab-btn" id="auth-tab-in" role="tab" aria-selected="true">sign in</button>
+      <button class="tab-btn" id="auth-tab-new" role="tab" aria-selected="false">create a profile</button>
+    </div>
+    <form class="auth-form" id="auth-form" autocomplete="on">
+      <label class="label" for="auth-name">name</label>
+      <input id="auth-name" class="field" maxlength="16" autocomplete="username" placeholder="your name">
+      <label class="label" for="auth-pin">pin</label>
+      <input id="auth-pin" class="field pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="current-password" placeholder="4 to 6 digits">
+      <p class="error" id="auth-error" role="alert"></p>
+      <button class="big-btn" id="auth-submit" type="submit">sign in</button>
+    </form>
+    <p class="note" id="auth-note">No email needed. Your PIN is the only way back into your profile, so pick one you'll remember.</p>
+    <button class="btn" data-close>not now</button>
+  </div>
+</div>
+
+<!-- your profile -->
+<div class="modal" id="profile-modal" hidden>
+  <div class="panel modal-card">
+    <div class="profile-head" id="profile-head"></div>
+    <div class="streaks" id="profile-streaks"></div>
+    <dl class="stats" id="profile-stats"></dl>
+    <div class="profile-actions">
+      <button class="btn" id="signout-btn">sign out</button>
+      <button class="btn" data-close>done</button>
+    </div>
+  </div>
+</div>
+
 <!-- how to play -->
 <div class="modal" id="how-modal" hidden>
   <div class="panel modal-card">
@@ -165,6 +203,8 @@
       <li>No repeats. Anything already served is off the menu, and wrong guesses show up for the whole table.</li>
       <li>Watch the bar under the plate. Run out and you get burned: one life gone. Every pass makes the next turn shorter.</li>
       <li>Rarer answers score more, and enough points win a life back.</li>
+      <li>Serve three in a row without a wrong guess for a <b>🌶️ spicy streak</b>: ×1.5 points, then ×2 from five.</li>
+      <li>Sign in to keep your points, your daily streak 🔥 and your win streak 👑.</li>
       <li>Last one at the table wins.</li>
     </ol>
     <div class="chips">

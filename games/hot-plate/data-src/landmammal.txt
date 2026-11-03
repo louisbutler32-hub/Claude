@@ -1,0 +1,327 @@
+# id: landmammal
+# prompt: Name a land mammal
+# group: Animals
+# emoji: 🦒
+# kind: thing
+Dog | dogs | puppy
+Cat | cats | kitten
+Lion | lions
+Elephant | elephants
+Horse | horses
+Tiger | tigers
+Giraffe | giraffes
+Bear | bears
+Monkey | monkeys
+Cow | cows | cattle
+Pig | pigs | hog
+Zebra | zebras
+Kangaroo | kangaroos | roo | roos
+Sheep | lamb
+Goat | goats
+Rabbit | rabbits | bunny | bunnies
+Panda | pandas | giant panda
+Gorilla | gorillas
+Wolf | wolves
+Fox | foxes
+Mouse | mice
+Rat | rats
+Koala | koalas | koala bear
+Cheetah | cheetahs
+Deer | deers | stag | doe
+Hippo | hippopotamus | hippos
+Rhino | rhinoceros | rhinos
+Leopard | leopards
+Chimpanzee | chimp | chimps | chimpanzees
+Polar bear | polar bears
+Camel | camels
+Squirrel | squirrels
+Donkey | donkeys
+Hamster | hamsters
+Guinea pig | guinea pigs
+Bat | bats
+Grizzly bear | grizzly
+Sloth | sloths
+Jaguar | jaguars
+Moose
+Racoon | raccoon | raccoons | racoons | trash panda
+Hedgehog | hedgehogs
+Llama | llamas
+Alpaca | alpacas
+Bison
+Buffalo
+Orangutan | orangutans | orang-utan
+Meerkat | meerkats
+Hyena | hyenas | hyaena
+Panther | black panther
+Cougar | puma | mountain lion
+Lynx
+Bobcat
+Otter | otters | river otter
+Beaver | beavers
+Reindeer | caribou
+Elk | wapiti
+Antelope
+Gazelle
+Wildebeest | gnu
+Red panda | red pandas
+Sloth bear
+Black bear
+Brown bear
+Wombat | wombats
+Platypus | platypuses | duck-billed platypus
+Echidna | echidnas | spiny anteater
+Possum | possums
+Opossum | opossums
+Tasmanian devil | Tassie devil
+Dingo | dingoes
+Quokka | quokkas
+Wallaby | wallabies
+Baboon | baboons
+Lemur | lemurs
+Skunk | skunks
+Badger | badgers
+Ferret | ferrets
+Weasel | weasels
+Mole | moles
+Porcupine | porcupines
+Armadillo | armadillos
+Anteater | anteaters | giant anteater
+Aardvark
+Chipmunk | chipmunks
+Gerbil | gerbils
+Chinchilla | chinchillas
+Capybara | capybaras
+Ox | oxen
+Bull | bulls
+Yak | yaks
+Mule | mules
+Pony | ponies
+Warthog | warthogs
+Wild boar | boar
+Coyote | coyotes
+Jackal | jackals
+Mongoose | mongooses
+Hare | hares
+Snow leopard
+Bonobo | bonobos
+Gibbon | gibbons
+Mandrill
+Macaque
+Capuchin monkey | capuchin
+Howler monkey
+Spider monkey
+Squirrel monkey
+Marmoset
+Tamarin | golden lion tamarin
+Proboscis monkey
+Snow monkey | Japanese macaque
+Tarsier
+Slow loris | loris
+Aye-aye
+Bushbaby | galago
+Human | humans | person | people
+Okapi
+Tapir
+Arctic fox
+Fennec fox
+Red fox
+Grey wolf | gray wolf
+Arctic wolf
+Red wolf
+African wild dog | painted dog | painted wolf
+Honey badger
+Wolverine
+Mink
+Stoat | ermine
+Pine marten | marten
+Polecat
+Groundhog | woodchuck
+Marmot
+Prairie dog
+Gopher
+Vole
+Shrew
+Lemming | lemmings
+Dormouse
+Jerboa
+Naked mole-rat | naked mole rat | mole rat
+Pika
+Jackrabbit
+Flying squirrel
+Red squirrel
+Grey squirrel | gray squirrel
+Fruit bat
+Flying fox
+Vampire bat
+Sugar glider
+Bilby
+Bandicoot
+Numbat
+Quoll
+Tree kangaroo
+Red kangaroo
+Grey kangaroo | eastern grey kangaroo | gray kangaroo
+Wallaroo
+Pademelon
+Potoroo
+Bettong
+Cuscus
+Phascogale
+Dunnart
+Antechinus
+Marsupial mole
+Ocelot
+Serval
+Caracal
+Clouded leopard
+Margay
+Pallas's cat | manul
+Sand cat
+Fishing cat
+Jaguarundi
+Iberian lynx
+Bengal tiger
+Siberian tiger | Amur tiger
+Sumatran tiger
+Sun bear
+Spectacled bear
+Kodiak bear
+Asian elephant
+African elephant
+White rhino | white rhinoceros
+Black rhino | black rhinoceros
+Indian rhino | Indian rhinoceros | greater one-horned rhino
+Javan rhino
+Sumatran rhino
+Pygmy hippo | pygmy hippopotamus
+Dromedary | dromedary camel
+Bactrian camel
+Vicuña | vicuna
+Guanaco
+Red deer
+White-tailed deer
+Mule deer
+Fallow deer
+Roe deer
+Sika deer
+Muntjac
+Chital | axis deer | spotted deer
+Sambar | sambar deer
+Water deer
+Musk deer
+Mouse deer | chevrotain
+Pronghorn
+Impala
+Springbok
+Kudu
+Eland
+Oryx | gemsbok
+Sable antelope
+Roan antelope
+Nyala
+Bongo
+Duiker
+Dik-dik | dik dik
+Klipspringer
+Steenbok
+Hartebeest
+Topi
+Waterbuck
+Gerenuk
+Saiga | saiga antelope
+Blackbuck
+Nilgai
+Addax
+Bushbuck
+Sitatunga
+Thomson's gazelle
+American bison
+European bison | wisent
+Water buffalo
+Cape buffalo | African buffalo
+Gaur
+Banteng
+Zebu
+Musk ox | muskox
+Mountain goat
+Ibex
+Markhor
+Chamois
+Tahr
+Bighorn sheep | bighorn
+Mouflon
+Argali
+Barbary sheep | aoudad
+Takin
+Babirusa
+Peccary | javelina
+Rock hyrax | hyrax
+Pangolin | pangolins
+Tamandua
+Nine-banded armadillo
+Two-toed sloth
+Three-toed sloth
+Coati | coatimundi
+Kinkajou
+Ringtail | ringtail cat
+Civet
+Genet
+Binturong | bearcat
+Fossa
+Aardwolf
+Spotted hyena
+Striped hyena
+Dhole
+Raccoon dog | tanuki
+Bush dog
+Maned wolf
+Ethiopian wolf
+Grey fox | gray fox
+Kit fox
+Swift fox
+Corsac fox
+Bat-eared fox
+Cottontail | cottontail rabbit
+Kangaroo rat
+Ground squirrel
+Agouti
+Paca
+Patagonian mara | mara
+Coypu | nutria
+Muskrat
+Degu
+Springhare | spring hare
+Star-nosed mole
+Tenrec
+Solenodon
+Elephant shrew | sengi
+Treeshrew | tree shrew
+Colugo | flying lemur
+Horseshoe bat
+Pipistrelle
+Ghost bat
+Bumblebee bat
+Gelada
+Vervet monkey
+Colobus monkey | colobus
+Langur
+Siamang
+Golden snub-nosed monkey | snub-nosed monkey
+Uakari
+Woolly monkey
+Night monkey | owl monkey
+Mountain gorilla
+Bornean orangutan
+Quagga
+Woolly mammoth | mammoth
+Sabre-toothed tiger | saber-toothed tiger | sabertooth | smilodon
+Mastodon
+Woolly rhinoceros | woolly rhino
+Thylacine | Tasmanian tiger
+Giant ground sloth | megatherium
+Irish elk
+Dire wolf
+Aurochs
+Cave bear
+Diprotodon
+Glyptodon

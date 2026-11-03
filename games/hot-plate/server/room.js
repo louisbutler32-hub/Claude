@@ -7,6 +7,8 @@ const { TIERS, WHICH, matchAnswer } = require("./answers");
 const BREAK_MS = 4500;   // pause after a burn before the next plate
 const MIN_TURN = 4;      // the clock never drops below this many seconds
 const SPEEDUP = 0.5;     // each pass takes this much off the next turn
+// hot streak: answers served in a row without a wrong guess or a burn
+const streakMultiplier = (n) => (n >= 5 ? 2 : n >= 3 ? 1.5 : 1);
 const DROP_GRACE = 20000; // a player who drops mid-game has this long to come back
 const LIMITS = { hearts: [1, 5], turn: [5, 20], seats: [2, 12], heartCap: [1, 9], perHeart: [0, 2000] };
 const EMOJIS = ["😎", "🤠", "👽", "🦊", "🐸", "🤖", "👻", "🐼", "🦄", "💀", "🧃", "🍉", "🐙", "🦖", "🍄", "🐝"];
@@ -18,9 +20,10 @@ const cleanText = (s, n) => String(s || "").replace(/[\u0000-\u001f]/g, " ").tri
 const send = (ws, msg) => { if (ws && ws.readyState === 1) ws.send(JSON.stringify(msg)); };
 
 class Room {
-  constructor(code, cats) {
+  constructor(code, cats, hooks = {}) {
     this.code = code;
     this.cats = cats;
+    this.hooks = hooks;           // onFinish(room, results) saves signed-in players' stats
     this.hostId = null;
     this.players = [];             // seat order
     this.phase = "lobby";          // lobby | playing | break | over
@@ -39,12 +42,16 @@ class Room {
   get isFull() { return this.seated.length >= this.settings.seats; }
   get isEmpty() { return !this.players.some((p) => p.connected); }
 
-  join(ws, name, emoji) {
+  join(ws, name, emoji, acct, streaks) {
     const taken = new Set(this.players.map((p) => p.emoji));
     const p = {
       id: crypto.randomBytes(6).toString("hex"),
       token: crypto.randomBytes(16).toString("hex"),
-      name: cleanName(name) || "Guest",
+      acct: acct || null,
+      dayStreak: (streaks && streaks.day) || 0,
+      winStreak: (streaks && streaks.win) || 0,
+      streak: 0, bestStreak: 0,
+      name: (acct && acct.name) || cleanName(name) || "Guest",
       emoji: EMOJIS.includes(emoji) ? emoji : pick(EMOJIS.filter((e) => !taken.has(e))) || pick(EMOJIS),
       ws, connected: true, ready: false,
       hearts: 0, alive: false, score: 0, served: 0, best: null, last: null, nextHeartAt: 0,
@@ -57,9 +64,11 @@ class Room {
     return p;
   }
 
-  rejoin(ws, id, token) {
+  rejoin(ws, id, token, acct, streaks) {
     const p = this.players.find((x) => x.id === id && x.token === token);
     if (!p) return null;
+    if (acct && !p.acct) { p.acct = acct; p.name = acct.name; }
+    if (streaks) { p.dayStreak = streaks.day; p.winStreak = streaks.win; }
     if (p.ws && p.ws !== ws) try { p.ws.close(); } catch {}
     clearTimeout(p.dropTimer);
     p.ws = ws; p.connected = true;
@@ -171,9 +180,9 @@ class Room {
     if (!playing.length) return;
     const s = this.settings;
     for (const x of this.players) {
-      Object.assign(x, { hearts: x.connected ? s.hearts : 0, alive: x.connected, score: 0, served: 0, best: null, last: null, ready: false, nextHeartAt: s.perHeart || 0 });
+      Object.assign(x, { hearts: x.connected ? s.hearts : 0, alive: x.connected, score: 0, served: 0, best: null, last: null, ready: false, nextHeartAt: s.perHeart || 0, streak: 0, bestStreak: 0 });
     }
-    this.game = { round: 0, cat: null, holder: pick(playing).id, served: [], used: new Set(), recentCats: [], solo: playing.length === 1, passes: 0 };
+    this.game = { round: 0, cat: null, holder: pick(playing).id, served: [], used: new Set(), recentCats: [], solo: playing.length === 1, passes: 0, seated: playing.map((x) => x.id) };
     this.log(`🔔 Dinner is served. ${playing.length === 1 ? "Solo practice." : playing.length + " at the table."}`);
     this.nextPlate(this.game.holder);
   }
@@ -220,6 +229,7 @@ class Room {
 
     // misses are shown to the whole table, autocorrect disasters included
     const nope = (kind, extra) => {
+      if (kind !== "which") p.streak = 0; // asking "which Curry?" isn't a miss
       send(p.ws, { t: "result", kind, text: raw, ...extra });
       this.broadcast({ t: "nope", id: p.id, kind, text: raw }, p);
     };
@@ -233,7 +243,10 @@ class Room {
     }
 
     g.used.add(i);
-    const pts = TIERS[a.tier].pts;
+    p.streak++;
+    p.bestStreak = Math.max(p.bestStreak, p.streak);
+    const mult = streakMultiplier(p.streak);
+    const pts = Math.round(TIERS[a.tier].pts * mult);
     p.score += pts; p.served++;
     p.last = { name: a.name, tier: a.tier };
     if (!p.best || a.tier > p.best.tier || (a.tier === p.best.tier && i > p.best.rank)) p.best = { name: a.name, tier: a.tier, rank: i, cat: g.cat.prompt };
@@ -248,7 +261,7 @@ class Room {
       if (p.hearts < s.heartCap) { p.hearts++; heart = true; }
     }
     if (heart) this.log(`❤️ ${p.name} earned a heart`);
-    this.broadcast({ t: "served", by: p.id, name: a.name, tier: a.tier, pts, heart });
+    this.broadcast({ t: "served", by: p.id, name: a.name, tier: a.tier, pts, heart, streak: p.streak, mult });
     g.passes++;
     this.giveTurn(this.nextAlive(p.id));
   }
@@ -259,6 +272,7 @@ class Room {
     const p = this.players.find((x) => x.id === g.holder);
     let out = false;
     if (p) {
+      p.streak = 0;
       p.hearts = Math.max(0, p.hearts - 1);
       if (p.hearts === 0) { p.alive = false; out = true; }
       this.log(out ? `💀 ${p.name} got burned and is out` : `🔥 ${p.name} got burned`);
@@ -298,6 +312,15 @@ class Room {
     g.bestFind = finds.length ? { id: finds[0].id, ...finds[0].best } : null;
     const w = this.players.find((x) => x.id === g.winner);
     this.log(w ? `🏆 ${w.name} is the last one at the table` : `🍽️ Practice over: ${this.players[0].score} points`);
+    // win streaks live on the players too, so guests get one for this table
+    if (!g.solo) for (const x of this.players) if (g.seated.includes(x.id)) x.winStreak = x.id === g.winner ? x.winStreak + 1 : 0;
+    if (w && w.winStreak >= 2) this.log(`👑 ${w.name} has won ${w.winStreak} in a row`);
+    if (this.hooks.onFinish) {
+      const results = this.players.filter((x) => g.seated.includes(x.id)).map((x) => ({
+        player: x, score: x.score, served: x.served, won: x.id === g.winner, multiplayer: !g.solo, best: x.best, hotStreak: x.bestStreak,
+      }));
+      try { this.hooks.onFinish(this, results); } catch (e) { console.error("saving stats failed:", e); }
+    }
     for (const x of this.players) x.ready = false;
     this.sync();
     return true;
@@ -318,8 +341,9 @@ class Room {
       t: "state",
       code: this.code, you, hostId: this.hostId, phase: this.phase, settings: this.settings, now: Date.now(),
       players: this.players.map((p) => ({
-        id: p.id, name: p.name, emoji: p.emoji, connected: p.connected, ready: p.ready,
+        id: p.id, name: p.name, emoji: p.emoji, connected: p.connected, ready: p.ready, signedIn: !!p.acct,
         hearts: p.hearts, alive: p.alive, score: p.score, served: p.served, last: p.last,
+        streak: p.streak, dayStreak: p.dayStreak, winStreak: p.winStreak,
       })),
       chat: this.chat.slice(-50),
       game: g && {

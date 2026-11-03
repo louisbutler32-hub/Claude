@@ -1,0 +1,242 @@
+# id: pricey
+# prompt: Name something that costs over $10,000
+# group: Other
+# emoji: 💰
+# kind: thing
+House | houses | home
+Car | cars | new car
+Lamborghini | Lambo
+Ferrari
+Rolex
+Yacht | yachts
+Private jet | jet
+Mansion
+Bugatti
+Rolls-Royce | Rolls Royce | Rolls
+Diamond ring | diamond rings
+Wedding | weddings
+Boat | boats
+Plane | aeroplane | airplane
+Helicopter
+Island | private island
+Tesla
+College tuition | tuition | university tuition | uni fees | college
+Birkin bag | Birkin | Hermès Birkin | Hermes Birkin
+Apartment | flat | condo
+Porsche
+McLaren
+Bentley
+Aston Martin
+Penthouse
+Range Rover
+G-Wagon | G Wagon | Mercedes G-Class | G-Class
+Patek Philippe | Patek
+Audemars Piguet | AP | Royal Oak
+Richard Mille
+Superyacht
+Land
+Farm
+Ranch
+Castle
+Villa
+Beach house
+Holiday home | vacation home | second home
+Truck
+Tractor
+Motorhome | RV | campervan | camper van
+Bus
+Spaceship | rocket
+Space trip | trip to space | space tourism | ticket to space
+Submarine
+Fighter jet
+Tank
+Swimming pool | pool
+Gold bar | kilo of gold
+Bitcoin
+Racehorse
+Picasso painting | Picasso
+Van Gogh painting | Van Gogh
+Mona Lisa
+Banksy
+Stradivarius | Stradivarius violin
+Steinway | Steinway piano | grand piano
+Private school
+Medical school
+Harvard | Harvard tuition
+MBA
+Law school
+Heart transplant
+Organ transplant
+Kidney transplant
+Liver transplant
+Brain surgery
+Open-heart surgery | heart surgery
+Hip replacement
+Knee replacement
+IVF
+Cancer treatment | chemotherapy | chemo
+Tesla Model S | Model S
+Tesla Model X | Model X
+Tesla Model 3 | Model 3
+Tesla Model Y | Model Y
+Cybertruck | Tesla Cybertruck
+Lamborghini Aventador | Aventador
+Lamborghini Urus | Urus
+Lamborghini Huracán | Huracan
+Bugatti Chiron | Chiron
+Bugatti Veyron | Veyron
+Ferrari LaFerrari | LaFerrari
+McLaren P1 | P1
+Porsche 911 | 911
+Rolls-Royce Phantom | Phantom
+Rolls-Royce Cullinan | Cullinan
+Rolls-Royce Ghost
+Bentley Continental
+Mercedes-Benz | Mercedes | Merc | Benz
+Mercedes-Maybach | Maybach
+BMW
+Audi
+Audi R8 | R8
+Lexus
+Cadillac
+Cadillac Escalade | Escalade
+Lincoln Navigator
+Maserati
+Koenigsegg
+Pagani
+Rimac
+Lotus
+Lucid Air | Lucid
+Rivian
+Polestar
+Hummer | Hummer EV
+Chevrolet Corvette | Corvette
+Ford Mustang | Mustang
+Ford F-150 | F-150 | F150
+Toyota Land Cruiser | Land Cruiser
+Jeep Wrangler | Jeep
+Land Rover Defender | Defender
+Nissan GT-R | GT-R | GTR
+Toyota Supra | Supra
+Dodge Challenger | Challenger
+Dodge Charger
+Harley-Davidson | Harley | Harley Davidson
+Formula 1 car | F1 car | race car
+Gulfstream
+Learjet
+Bombardier
+Cessna
+Boeing 747 | 747 | jumbo jet
+Airbus A380 | A380
+Boeing 737 | 737
+Cruise ship
+Aircraft carrier
+Warship
+Nuclear submarine
+F-35
+Black Hawk helicopter | Black Hawk
+Missile
+Satellite
+Space shuttle
+Hermès Kelly | Kelly bag
+Chanel Classic Flap | Chanel flap bag
+Vacheron Constantin
+A. Lange & Söhne | A Lange and Sohne | Lange
+Jacob & Co | Jacob and Co
+Breguet
+Graff
+Harry Winston
+Diamond necklace
+Fabergé egg | Faberge egg
+Hope Diamond
+Koh-i-Noor | Kohinoor
+Crown Jewels
+Salvator Mundi
+The Starry Night | Starry Night
+The Scream
+Andy Warhol | Warhol
+Dinosaur skeleton | T. rex skeleton | T rex skeleton
+Pikachu Illustrator card | Pikachu Illustrator
+1st Edition Charizard | first edition Charizard | Charizard card
+Honus Wagner card | T206 Honus Wagner
+Action Comics #1 | Action Comics 1
+Macallan 1926
+Super Bowl ad | Super Bowl commercial
+Hollywood movie | blockbuster movie
+Skyscraper
+Hotel
+Stadium
+Shopping mall
+Factory
+Hospital
+Bridge
+Airport
+Oil rig
+Wind turbine
+Power plant | power station
+Nuclear power plant
+Office building | building
+Restaurant
+Petrol station | gas station
+McDonald's franchise | franchise
+Company | business
+Sports team
+Football club | soccer club
+NBA team
+NFL team
+Premier League club
+F1 team | Formula 1 team
+Vineyard
+Golf course
+Tennis court
+Kitchen renovation | renovation
+Home extension
+Climbing Mount Everest | Everest expedition | Everest
+Virgin Galactic flight | Virgin Galactic
+Blue Origin flight | Blue Origin
+Private jet charter
+World cruise
+Combine harvester
+Semi-truck | semi | lorry | 18-wheeler
+Fire truck | fire engine
+Ambulance
+Train | locomotive
+Excavator | digger
+Crane
+Bulldozer
+Speedboat
+Sailboat | sailing boat
+Catamaran
+Sunseeker
+Riva
+Azimut
+Benetti
+Feadship
+Lürssen | Lurssen
+Ferretti
+Princess Yachts
+Bösendorfer | Bosendorfer
+Fazioli
+MRI machine | MRI scanner
+Nvidia H100 | H100
+Supercomputer
+Data centre | data center
+Industrial robot
+Boston Dynamics Spot | Spot robot
+Haute couture gown | couture dress
+Thoroughbred
+Prize bull
+Taxi medallion
+Pilot's licence | pilot license | pilot's license
+DeLorean
+Ford GT
+Mercedes-AMG GT | AMG GT
+Ferrari F40 | F40
+Ferrari SF90 | SF90
+Pagani Zonda | Zonda
+Pagani Huayra | Huayra
+Koenigsegg Jesko | Jesko
+Bugatti Divo
+Rolex Daytona | Daytona
+Rolex Submariner | Submariner
+Patek Philippe Nautilus | Nautilus

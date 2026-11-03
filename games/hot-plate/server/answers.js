@@ -10,7 +10,7 @@ const TIERS = [
   { name: "Main Course", pts: 50 },
   { name: "Chef's Secret", pts: 100 },
 ];
-const MIN_ANSWERS = 500;
+const MIN_ANSWERS = 8; // small fixed sets (EU countries, World Cup winners) are fine
 
 // case, accents, punctuation, spaces and a leading "the" never matter
 function norm(s) {

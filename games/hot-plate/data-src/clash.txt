@@ -1,0 +1,132 @@
+# id: clash
+# prompt: Name a Clash Royale card
+# group: Gaming
+# emoji: 👑
+# kind: thing
+Hog Rider | Hog
+Mega Knight | MK
+P.E.K.K.A
+Goblin Barrel | Gob Barrel
+Giant
+Knight
+Musketeer | Musk
+Archers
+Wizard | Wiz
+Baby Dragon | Baby D
+Valkyrie | Valk
+Skeleton Army | Skarmy | Skelly Army
+Prince
+Fireball
+The Log
+Zap
+Arrows
+Golem
+Balloon | Loon
+X-Bow
+Miner
+Princess
+Electro Wizard | E-Wiz
+Witch
+Minions
+Minion Horde
+Barbarians | Barbs
+Goblins
+Royal Giant | RG
+Inferno Tower
+Lava Hound | Lava
+Mini P.E.K.K.A
+Sparky
+Graveyard
+Rocket
+Lightning
+Bandit
+Night Witch
+Dark Prince
+Ice Spirit
+Skeletons
+Bats
+Lumberjack
+Executioner | Exe
+Three Musketeers | 3 Musketeers
+Tesla
+Cannon
+Mortar
+Elixir Collector | Elixir Pump | Pump
+Ice Golem
+Inferno Dragon
+Mega Minion
+Ice Wizard
+Bowler
+Electro Giant | E-Giant
+Goblin Gang | Gob Gang
+Royal Hogs
+Wall Breakers
+Ram Rider
+Firecracker
+Magic Archer
+Royal Ghost
+Dart Goblin
+Hunter
+Fisherman
+Golden Knight
+Archer Queen | AQ
+Skeleton King
+Mighty Miner
+Monk
+Phoenix
+Little Prince
+Mother Witch
+Electro Dragon | E-Dragon
+Poison
+Tornado
+Freeze
+Rage
+Earthquake
+Mirror
+Clone
+Barbarian Barrel | Barb Barrel
+Giant Snowball | Snowball
+Royal Delivery
+Heal Spirit
+Fire Spirit
+Electro Spirit
+Bomber
+Spear Goblins
+Giant Skeleton
+Guards
+Battle Ram
+Elite Barbarians | E-Barbs
+Royal Recruits | Recruits
+Zappies
+Rascals
+Cannon Cart
+Skeleton Barrel
+Flying Machine
+Goblin Giant
+Elixir Golem
+Battle Healer
+Skeleton Dragons
+Goblin Hut
+Bomb Tower
+Barbarian Hut | Barb Hut
+Tombstone
+Furnace
+Goblin Cage
+Goblin Drill
+Goblin Machine
+Goblinstein
+Goblin Demolisher
+Suspicious Bush
+Goblin Curse
+Void
+Boss Bandit
+Rune Giant
+Berserker
+Spirit Empress
+Vines
+Tower Princess
+Cannoneer
+Dagger Duchess
+Royal Chef
+Minion Giant
+Ronin

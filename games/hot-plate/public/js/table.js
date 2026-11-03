@@ -26,7 +26,8 @@ function bubbleSpot(seat) {
 }
 // the hot plate hovers just above the holder's head, or under the name for the far seats
 function clocheSpot(seat) {
-  return Math.sin(seat.a) < -0.45 ? { x: seat.x, y: seat.y + 30 * L.P } : { x: seat.x, y: seat.y - 44 * L.P };
+  // the figure stands ~29 art px above the seat point; the dish, bar and seconds need ~80px more
+  return Math.sin(seat.a) < -0.45 ? { x: seat.x, y: seat.y + 30 * L.P + 30 } : { x: seat.x, y: seat.y - (29 * L.P + 80) };
 }
 
 /* ---------- seats ---------- */
@@ -48,11 +49,17 @@ export function renderSeats() {
     const winner = ph === "over" && g && g.winner === p.id;
     const cls = ["seat", p.id === r.you ? "me" : "", holder ? "holder" : "", inGame && !p.alive ? "out" : "", p.connected ? "" : "away", winner ? "winner" : ""].join(" ");
     let under;
-    if (!inGame) under = `<div class="tag">${p.id === r.hostId ? "host" : p.ready ? "ready" : "&nbsp;"}</div>`;
-    else {
+    const badges = [];
+    if (!inGame) {
+      if (p.dayStreak) badges.push(`<span class="chip-s day" title="${p.dayStreak}-day streak">🔥${p.dayStreak}</span>`);
+      if (p.winStreak) badges.push(`<span class="chip-s win" title="${p.winStreak} wins in a row">👑${p.winStreak}</span>`);
+      under = `<div class="tag">${p.id === r.hostId ? "host" : p.ready ? "ready" : "&nbsp;"}</div>`;
+    } else {
       const lost = Math.max(0, maxHearts - p.hearts);
+      if (p.streak >= 2) badges.push(`<span class="chip-s spicy${p.streak >= 3 ? " on" : ""}" title="spicy streak">🌶️${p.streak}${p.streak >= 5 ? " ×2" : p.streak >= 3 ? " ×1.5" : ""}</span>`);
       under = `<div class="hp"><b>${"♥".repeat(p.hearts)}</b><i>${"♥".repeat(lost)}</i></div><div class="sc">${p.score}</div>`;
     }
+    if (badges.length) under += `<div class="badges">${badges.join("")}</div>`;
     html += `<div class="${cls}" data-id="${p.id}" style="${pos}">
       <div class="figure">${img("av" + p.emoji, () => avatar(p.emoji), L.P, "face")}${setting}</div>
       <div class="nm">${esc(p.name)}</div>${under}</div>`;

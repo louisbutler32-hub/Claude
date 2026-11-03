@@ -111,7 +111,7 @@ function renderOver() {
   const w = byId(g.winner);
   const youWon = w && w.id === r.you;
   $("over-title").textContent = youWon ? "YOU WIN" : w ? `${w.name} wins` : `${(me() || {}).score || 0} points`;
-  $("over-sub").textContent = w ? "last one at the table" : "solo practice";
+  $("over-sub").textContent = w ? (w.winStreak >= 2 ? `last one at the table · ${w.winStreak} wins in a row 👑` : "last one at the table") : "solo practice";
   const bf = g.bestFind, bfp = bf && byId(bf.id);
   $("over-find").textContent = bf ? `best find: ${bf.name} (${TIERS[bf.tier].name.toLowerCase()}) by ${bfp ? bfp.name : "someone"}` : "";
   $("over-actions").innerHTML = isHost()

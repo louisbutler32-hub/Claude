@@ -1,0 +1,209 @@
+# id: shoes
+# prompt: Name a shoe brand or shoe store
+# group: Brands
+# emoji: 👟
+# kind: thing
+Nike
+Adidas
+Vans
+Converse | Chucks | Chuck Taylor
+Crocs
+New Balance | NB
+Puma
+Jordan | Air Jordan | Jordans
+Reebok
+Skechers | Sketchers
+Dr. Martens | Doc Martens | Docs | DMs | Dr Martens
+Timberland | Timbs
+UGG | Uggs | UGG Australia
+Birkenstock | Birkenstocks | Birks
+Foot Locker | Footlocker
+JD Sports | JD
+Asics
+Yeezy | Yeezys
+Under Armour | Under Armor
+Fila
+Hoka | Hoka One One
+On | On Running | On Cloud | Cloud
+Balenciaga
+Gucci
+Louis Vuitton | LV
+Christian Louboutin | Louboutin | Louboutins
+Jimmy Choo
+Platypus | Platypus Shoes
+The Athlete's Foot | Athlete's Foot | Athletes Foot
+Rebel | Rebel Sport
+Famous Footwear
+Clarks
+Steve Madden
+Salomon
+Brooks
+Saucony
+Golden Goose
+Prada
+Off-White | Off White
+Hey Dude | Hey Dudes
+Toms
+Havaianas
+Blundstone | Blundstones | Blunnies
+R.M. Williams | RM Williams
+Schuh
+Office
+Kurt Geiger
+Sports Direct
+Hype DC | Hype
+Payless | Payless ShoeSource
+DSW
+Journeys
+Champs Sports | Champs
+Finish Line
+Zappos
+StockX
+GOAT
+Manolo Blahnik | Manolos
+Versace
+Dior
+Chanel
+Valentino
+Alexander McQueen | McQueen
+Saint Laurent | YSL | Yves Saint Laurent
+Burberry
+Hermès | Hermes
+Fendi
+Givenchy
+Balmain
+Bottega Veneta | Bottega
+Common Projects
+Veja
+Allbirds
+Onitsuka Tiger
+Mizuno
+Kappa
+Diadora
+Umbro
+Lotto
+Le Coq Sportif
+Hummel
+Ellesse
+Champion
+Lacoste
+Fred Perry
+Gola
+K-Swiss
+Keds
+Superga
+PF Flyers
+DC Shoes | DC
+Etnies
+Supra
+Emerica
+Lakai
+Heelys
+Sperry | Sperry Top-Sider
+Sanuk
+Reef
+Teva
+Chaco | Chacos
+Rainbow | Rainbow Sandals
+Oofos
+Merrell
+Keen
+Columbia
+The North Face | North Face
+Sorel
+Hunter | Hunter Boots
+Caterpillar | Cat | Cat Boots
+Red Wing | Red Wing Shoes
+Wolverine
+Danner
+Ariat
+Justin Boots
+Lucchese
+Frye
+Steel Blue
+EMU Australia | Emu
+Bearpaw
+Koolaburra
+Aldo
+Nine West
+Sam Edelman
+Stuart Weitzman
+Michael Kors
+Coach
+Kate Spade
+Tory Burch
+Ted Baker
+Calvin Klein
+Tommy Hilfiger
+Kenneth Cole
+Cole Haan
+Florsheim
+Johnston & Murphy | Johnston and Murphy
+Allen Edmonds
+Rockport
+Ecco
+Geox
+Camper
+Hush Puppies
+Vionic
+Naturalizer
+Aerosoles
+Dansko
+FitFlop
+Tod's | Tods
+Ferragamo | Salvatore Ferragamo
+Church's
+Crockett & Jones
+Loake
+Grenson
+Russell & Bromley | Russell and Bromley
+Dune | Dune London
+Shoe Zone
+Footasylum
+Size? | Size
+Snipes
+Kith
+Flight Club
+Stadium Goods
+Shoe Carnival
+Rack Room Shoes | Rack Room
+Hibbett | Hibbett Sports
+Novo | Novo Shoes
+Williams | Williams Shoes
+Betts
+Spendless | Spendless Shoes
+Rubi | Rubi Shoes
+Wittner
+Tony Bianco
+Billini
+Windsor Smith
+Diana Ferrari
+Julius Marlow
+Styletread
+Shoes & Sox | Shoes and Sox
+Number One Shoes
+Mathers
+Charles & Keith | Charles and Keith
+Call It Spring
+Rothy's | Rothys
+Vessi
+Altra
+La Sportiva
+Scarpa
+Lowa
+Li-Ning | Li Ning
+Anta
+361°  | 361 Degrees
+AND1 | And 1
+Joma
+Bloch
+Capezio
+FootJoy
+Stride Rite
+Rick Owens
+Maison Margiela | Margiela
+Axel Arigato
+Autry
+Aquazzura
+Gianvito Rossi
+Amina Muaddi

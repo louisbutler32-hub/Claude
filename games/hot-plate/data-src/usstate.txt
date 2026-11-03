@@ -1,0 +1,55 @@
+# id: usstate
+# prompt: Name a US state
+# group: Places
+# emoji: 🇺🇸
+# kind: thing
+California | CA | Cali
+Texas | TX
+Florida | FL
+New York | NY | New York State
+Hawaii | HI
+Alaska | AK
+Washington | WA | Washington State
+Nevada | NV
+Arizona | AZ
+Colorado | CO
+Illinois | IL
+Georgia | GA
+Ohio | OH
+Michigan | MI
+New Jersey | NJ
+Massachusetts | MA | Mass
+Pennsylvania | PA
+Oregon | OR
+Louisiana | LA
+Tennessee | TN
+North Carolina | NC
+Virginia | VA
+Utah | UT
+Kentucky | KY
+Alabama | AL
+South Carolina | SC
+Oklahoma | OK
+Kansas | KS
+Minnesota | MN
+Montana | MT
+Wisconsin | WI
+Indiana | IN
+Missouri | MO
+Mississippi | MS
+Maryland | MD
+Connecticut | CT
+Maine | ME
+Arkansas | AR
+Iowa | IA
+Vermont | VT
+Idaho | ID
+Wyoming | WY
+New Mexico | NM
+West Virginia | WV
+Nebraska | NE
+South Dakota | SD
+North Dakota | ND
+Rhode Island | RI
+New Hampshire | NH
+Delaware | DE

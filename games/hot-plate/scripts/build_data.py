@@ -34,84 +34,78 @@ ENDPOINT = "https://query.wikidata.org/sparql"
 IS_CHARACTER = "?x wdt:P31/wdt:P279* wd:Q95074 ."
 
 CATEGORIES = [
-    # ---- sports ----
-    dict(id="nba", group="Sports", emoji="🏀", prompt="Name any NBA player", kind="person", limit=4000, minsl=1,
-         where="?x wdt:P54 ?t . ?t wdt:P118 wd:Q155223 ."),
-    dict(id="mlb", group="Sports", emoji="⚾", prompt="Name any MLB player", kind="person", limit=4000, minsl=4,
-         where="VALUES ?occ { wd:Q10871364 wd:Q11336312 } ?x wdt:P106 ?occ ; wdt:P54 ?t . VALUES ?lg { wd:Q465469 wd:Q858082 wd:Q1163715 } ?t wdt:P118 ?lg ."),
-    dict(id="nfl", group="Sports", emoji="🏈", prompt="Name any NFL player", kind="person", limit=4000, minsl=2,
-         where="?x wdt:P54 ?t . ?t wdt:P118 wd:Q1215884 ."),
-    dict(id="footballer", group="Sports", emoji="⚽", prompt="Name any footballer", kind="person", limit=4500, minsl=10,
-         where="?x wdt:P54 ?club . ?club wdt:P118 ?lg . VALUES ?lg { wd:Q9448 wd:Q324867 wd:Q15804 wd:Q82595 wd:Q13394 wd:Q18543 wd:Q182994 } ."),
-    dict(id="club", group="Sports", emoji="🥅", prompt="Name any football (soccer) club", kind="thing", limit=3000, minsl=12,
-         where="?x wdt:P31 ?c . VALUES ?c { wd:Q476028 wd:Q103229495 } ."),
-    dict(id="f1", group="Sports", emoji="🏎️", prompt="Name any Formula 1 driver", kind="person", limit=2000, minsl=1,
-         where="?x wdt:P106 wd:Q10841764 ."),
-    dict(id="wrestler", group="Sports", emoji="🤼", prompt="Name any pro wrestler", kind="person", limit=2500, minsl=4,
-         where="?x wdt:P106 wd:Q13474373 ."),
-    dict(id="mma", group="Sports", emoji="🥊", prompt="Name any UFC / MMA fighter", kind="person", limit=2500, minsl=4,
-         where="?x wdt:P106 wd:Q11607585 ."),
     # ---- music ----
-    dict(id="rapper", group="Music", emoji="🎤", prompt="Name any rapper", kind="person", limit=3500, minsl=4,
+    dict(id="big3", group="Music", emoji="🎤", prompt="Name a song by Drake, J. Cole or Kendrick Lamar", kind="thing", limit=1500, minsl=0,
+         where="?x wdt:P175 ?a . VALUES ?a { wd:Q33240 wd:Q204018 wd:Q130798 } . %(song)s"),
+    dict(id="legends", group="Music", emoji="🎸", prompt="Name a song by Queen, The Beatles, Fleetwood Mac or Michael Jackson", kind="thing", limit=1500, minsl=0,
+         where="?x wdt:P175 ?a . VALUES ?a { wd:Q15862 wd:Q1299 wd:Q106648 wd:Q2831 } . %(song)s"),
+    dict(id="fiftyyejay", group="Music", emoji="💎", prompt="Name a song by 50 Cent, Kanye West or Jay-Z", kind="thing", limit=1500, minsl=0,
+         where="?x wdt:P175 ?a . VALUES ?a { wd:Q6060 wd:Q15935 wd:Q62766 } . %(song)s"),
+    dict(id="lilsong", group="Music", emoji="🧢", prompt="Name a song by a \"Lil\" rapper", kind="thing", limit=1500, minsl=0,
+         where="?a wdt:P106 wd:Q2252262 ; rdfs:label ?al . FILTER(STRSTARTS(STR(?al), \"Lil \")) ?x wdt:P175 ?a . %(song)s"),
+    dict(id="rapper1m", group="Music", emoji="🎙️", prompt="Name a rapper with over a million monthly listeners", kind="person", limit=900, minsl=15,
          where="?x wdt:P106 wd:Q2252262 ."),
-    dict(id="singer", group="Music", emoji="🎙️", prompt="Name any singer", kind="person", limit=5000, minsl=25,
-         where="?x wdt:P106 wd:Q177220 ."),
-    dict(id="band", group="Music", emoji="🎸", prompt="Name any band or music group", kind="thing", limit=4000, minsl=12,
-         where="?x wdt:P31 ?c . VALUES ?c { wd:Q215380 wd:Q5741069 wd:Q216337 wd:Q641066 } ."),
-    dict(id="song", group="Music", emoji="🎶", prompt="Name any song", kind="thing", limit=5000, minsl=8,
-         where="?x wdt:P31 ?c . VALUES ?c { wd:Q7366 wd:Q134556 } ."),
-    dict(id="album", group="Music", emoji="💿", prompt="Name any album", kind="thing", limit=4000, minsl=8,
-         where="?x wdt:P31 ?c . VALUES ?c { wd:Q482994 wd:Q208569 } ."),
-    dict(id="kpop", group="Music", emoji="💜", prompt="Name any K-pop group or idol", kind="person", limit=2500, minsl=2,
-         where="?x wdt:P136 wd:Q213665 ."),
+    dict(id="maleband", group="Music", emoji="🥁", prompt="Name a male band with over a million monthly listeners", kind="thing", limit=900, minsl=22,
+         where="?x wdt:P31 ?c . VALUES ?c { wd:Q215380 wd:Q5741069 wd:Q216337 } .",
+         # all-male line-ups only: no girl groups, no band with a woman in it
+         drop="{ ?x wdt:P31 wd:Q641066 } UNION { ?x wdt:P527 ?m . ?m wdt:P21 wd:Q6581072 }"),
+    dict(id="femaleartist", group="Music", emoji="💃", prompt="Name a female artist with over a million monthly listeners", kind="person", limit=3000, minsl=30,
+         where="?x wdt:P106 ?o . VALUES ?o { wd:Q177220 wd:Q2252262 wd:Q488205 } .",
+         # women, born 1940 or later: artists people still stream, not film stars who sang
+         keep="?x wdt:P21 wd:Q6581072 ; wdt:P569 ?b . FILTER(YEAR(?b) >= 1940)"),
+    dict(id="stream100m", group="Music", emoji="🎧", prompt="Name a song with over 100 million streams", kind="thing", limit=1500, minsl=20,
+         where="%(song)s", drop="?x wdt:P31 wd:Q23691 ."),  # no national anthems
+    # ---- games ----
+    dict(id="boardgame", group="Gaming", emoji="🎲", prompt="Name a board game", kind="thing", limit=1500, minsl=3,
+         where="?x wdt:P31 wd:Q131436 ."),
+    dict(id="videogame", group="Gaming", emoji="🎮", prompt="Name a video game or mobile game", kind="thing", limit=5000, minsl=15,
+         where="?x wdt:P31 ?c . VALUES ?c { wd:Q7889 wd:Q1121542 } ."),
+    # ---- places ----
+    dict(id="mountain", group="Places", emoji="🏔️", prompt="Name a mountain", kind="thing", limit=1500, minsl=15,
+         where="?x wdt:P31 wd:Q8502 ."),
+    dict(id="capital", group="Places", emoji="🏛️", prompt="Name a country's capital city", kind="thing", limit=400, minsl=0,
+         where="?c wdt:P31 wd:Q3624078 ; wdt:P36 ?x ."),
+    dict(id="river", group="Places", emoji="🌊", prompt="Name a river", kind="thing", limit=1500, minsl=20,
+         where="?x wdt:P31 wd:Q4022 ."),
+    dict(id="bigcity", group="Places", emoji="🏙️", prompt="Name a city with over a million people", kind="thing", limit=1500, minsl=0,
+         where="?x wdt:P1082 ?pop . FILTER(?pop >= 1000000) ?x wdt:P31 ?t . VALUES ?t { wd:Q515 wd:Q1549591 wd:Q1637706 wd:Q200250 wd:Q5119 wd:Q1093829 } ."),
+    # ---- sport ----
+    dict(id="cricket", group="Sport", emoji="🏏", prompt="Name a cricket player", kind="person", limit=1500, minsl=15,
+         where="?x wdt:P106 wd:Q12299841 ."),
+    dict(id="rugby", group="Sport", emoji="🏉", prompt="Name an international rugby player from this century", kind="person", limit=1500, minsl=3,
+         where="?x wdt:P54 ?t . ?t wdt:P31 wd:Q58840819 . ?x wdt:P569 ?b . FILTER(YEAR(?b) >= 1975)"),
+    dict(id="teams", group="Sport", emoji="🏟️", prompt="Name a sports team", kind="thing", limit=2000, minsl=20,
+         where="?x wdt:P31 ?c . VALUES ?c { wd:Q476028 wd:Q103229495 wd:Q13393265 wd:Q17156793 wd:Q13027888 wd:Q4498974 wd:Q17376093 wd:Q14645593 } ."),
+    dict(id="nbapl", group="Sport", emoji="⭐", prompt="Name a current NBA or Premier League player", kind="person", limit=1500, minsl=3,
+         where="?x p:P54 ?m . ?m ps:P54 ?team . FILTER NOT EXISTS { ?m pq:P582 ?end } ?team wdt:P118 ?lg . VALUES ?lg { wd:Q155223 wd:Q9448 } . ?x wdt:P569 ?b . FILTER(YEAR(?b) >= 1984)"),
     # ---- screen ----
-    dict(id="movie", group="Movies & TV", emoji="🍿", prompt="Name any movie", kind="thing", limit=5000, minsl=35,
-         where="?x wdt:P31 wd:Q11424 ."),
-    dict(id="tv", group="Movies & TV", emoji="📺", prompt="Name any TV show", kind="thing", limit=5000, minsl=12,
-         where="?x wdt:P31 wd:Q5398426 ."),
-    dict(id="cartoon", group="Movies & TV", emoji="🧽", prompt="Name any cartoon (animated show)", kind="thing", limit=2500, minsl=6,
-         where="?x wdt:P31 ?c . VALUES ?c { wd:Q581714 wd:Q117467246 } ."),
-    dict(id="anime", group="Movies & TV", emoji="🍥", prompt="Name any anime or manga", kind="thing", limit=3000, minsl=6,
-         where="?x wdt:P31 ?c . VALUES ?c { wd:Q63952888 wd:Q1107 wd:Q21198342 } ."),
-    dict(id="actor", group="Movies & TV", emoji="🎬", prompt="Name any actor or actress", kind="person", limit=6000, minsl=45,
-         where="?x wdt:P106 ?o . VALUES ?o { wd:Q33999 wd:Q10800557 wd:Q10798782 } .",
-         drop="?x wdt:P106 ?no . VALUES ?no { wd:Q82955 wd:Q36180 wd:Q1028181 wd:Q49757 wd:Q4964182 } ."),
-    dict(id="tiktoker", group="Internet", emoji="📱", prompt="Name any YouTuber or TikToker", kind="person", limit=3000, minsl=2,
-         where="?x wdt:P106 ?o . VALUES ?o { wd:Q17125263 wd:Q94791573 } ."),
-    # ---- characters ----
-    dict(id="marvel", group="Characters", emoji="🦸", prompt="Name any Marvel character", kind="character", limit=4000, minsl=1,
-         where="?x wdt:P1080 ?u . VALUES ?u { wd:Q2246088 wd:Q642878 } . FILTER EXISTS { ?x wdt:P31/wdt:P279* wd:Q95074 } ."),
-    dict(id="dc", group="Characters", emoji="🦇", prompt="Name any DC character", kind="character", limit=4000, minsl=1,
-         where="?x wdt:P1080 wd:Q1152150 . FILTER EXISTS { ?x wdt:P31/wdt:P279* wd:Q95074 } ."),
-    dict(id="animechar", group="Characters", emoji="🍙", prompt="Name any anime character", kind="character", limit=4000, minsl=2,
-         where="?x wdt:P1441 ?w . ?w wdt:P31 ?t . VALUES ?t { wd:Q63952888 wd:Q21198342 wd:Q1107 } .", keep=IS_CHARACTER),
-    dict(id="gamechar", group="Characters", emoji="🕹️", prompt="Name any video game character", kind="character", limit=4000, minsl=2,
-         where="?x wdt:P31 wd:Q1569167 ."),
-    dict(id="disney", group="Characters", emoji="🏰", prompt="Name any Disney or Pixar character", kind="character", limit=3000, minsl=1,
-         where="?x wdt:P1441 ?w . ?w wdt:P272 ?st . VALUES ?st { wd:Q1047410 wd:Q127552 wd:Q191224 } .", keep=IS_CHARACTER),
-    dict(id="starwars", group="Characters", emoji="🌌", prompt="Name any Star Wars character", kind="character", limit=3000, minsl=1,
-         where="?x wdt:P8345 wd:Q462 . FILTER EXISTS { ?x wdt:P31/wdt:P279* wd:Q95074 } ."),
-    dict(id="pokemon", group="Characters", emoji="⚡", prompt="Name any Pokémon", kind="thing", limit=2000, minsl=1,
-         where="?x wdt:P31/wdt:P279* wd:Q3966183 ."),
-    # ---- stuff ----
-    dict(id="videogame", group="Gaming", emoji="🎮", prompt="Name any video game", kind="thing", limit=6000, minsl=15,
-         where="?x wdt:P31 wd:Q7889 ."),
-    dict(id="app", group="Internet", emoji="🌐", prompt="Name any app or website", kind="thing", limit=2500, minsl=12,
-         where="?x wdt:P31 ?c . VALUES ?c { wd:Q35127 wd:Q620615 wd:Q3220391 wd:Q202833 } ."),
-    dict(id="dish", group="Food", emoji="🍝", prompt="Name any food", kind="thing", limit=3000, minsl=8,
-         where="?x wdt:P31|wdt:P279 ?c . VALUES ?c { wd:Q746549 wd:Q2095 wd:Q182940 wd:Q3314483 wd:Q11004 } ."),
-    dict(id="dog", group="Animals", emoji="🐶", prompt="Name any dog breed", kind="thing", limit=1500, minsl=1,
-         where="?x wdt:P31 wd:Q39367 ."),
-    dict(id="car", group="Cars", emoji="🚗", prompt="Name any car brand or model", kind="thing", limit=4000, minsl=10,
-         where="?x wdt:P31 ?c . VALUES ?c { wd:Q3231690 wd:Q786820 } ."),
-    dict(id="brand", group="Brands", emoji="👟", prompt="Name any brand", kind="thing", limit=3000, minsl=8,
-         where="?x wdt:P31 ?c . VALUES ?c { wd:Q431289 wd:Q1618899 } ."),
-    dict(id="city", group="Places", emoji="🏙️", prompt="Name any city", kind="thing", limit=4000, minsl=60,
-         where="?x wdt:P31 ?c . VALUES ?c { wd:Q515 wd:Q1549591 wd:Q1637706 wd:Q200250 } ."),
+    dict(id="cartoonchar", group="Characters", emoji="🐭", prompt="Name a cartoon character", kind="character", limit=2000, minsl=3,
+         where="?x wdt:P31 wd:Q15711870 ."),
+    dict(id="toon3", group="Characters", emoji="🍩", prompt="Name a character from South Park, The Simpsons or Family Guy", kind="character", limit=1500, minsl=0,
+         where="?x wdt:P1441 ?w . VALUES ?w { wd:Q886 wd:Q16538 wd:Q5930 } ."),
+    dict(id="animated", group="Movies & TV", emoji="🏰", prompt="Name an original Disney, Pixar or DreamWorks movie", kind="thing", limit=1200, minsl=1,
+         where="?x wdt:P272 ?st . VALUES ?st { wd:Q1047410 wd:Q127552 wd:Q500088 wd:Q191224 } . ?x wdt:P31 ?ft . VALUES ?ft { wd:Q11424 wd:Q29168811 wd:Q202866 } ."),
+    dict(id="cnnick", group="Movies & TV", emoji="📺", prompt="Name a show from Cartoon Network or Nickelodeon", kind="thing", limit=1200, minsl=1,
+         where="?x wdt:P449 ?n . VALUES ?n { wd:Q708290 wd:Q154958 } ."),
+    dict(id="ryans", group="Movies & TV", emoji="🎬", prompt="Name a Ryan Reynolds or Ryan Gosling movie", kind="thing", limit=400, minsl=0,
+         where="?x wdt:P161 ?a . VALUES ?a { wd:Q192682 wd:Q193815 } . ?x wdt:P31 wd:Q11424 ."),
+    dict(id="sitcom", group="Movies & TV", emoji="🛋️", prompt="Name a sitcom", kind="thing", limit=1500, minsl=10,
+         where="?x wdt:P136 wd:Q170238 ."),
+    dict(id="superhero", group="Movies & TV", emoji="🦸", prompt="Name a superhero movie", kind="thing", limit=800, minsl=3,
+         where="?x wdt:P136 wd:Q1535153 ; wdt:P31 wd:Q11424 ."),
+    # ---- other ----
+    dict(id="tech", group="Other", emoji="💻", prompt="Name a tech company", kind="thing", limit=1200, minsl=20,
+         where="{ ?x wdt:P31 ?t . VALUES ?t { wd:Q18388277 wd:Q1058914 } } UNION { ?x wdt:P452 ?ind . VALUES ?ind { wd:Q11661 wd:Q880371 wd:Q11016 } }"),
+    dict(id="criminal", group="Other", emoji="🔪", prompt="Name a serial killer or famous criminal", kind="person", limit=1200, minsl=15,
+         where="?x wdt:P106 ?o . VALUES ?o { wd:Q484188 wd:Q2159907 } ."),
+    dict(id="carbrand", group="Other", emoji="🚗", prompt="Name a car brand", kind="thing", limit=800, minsl=8,
+         where="?x wdt:P31 wd:Q786820 ."),
+    dict(id="airline", group="Other", emoji="✈️", prompt="Name an airline", kind="thing", limit=1000, minsl=10,
+         where="?x wdt:P31 wd:Q46970 ."),
 ]
+for _c in CATEGORIES:
+    _c["where"] = _c["where"] % {"song": "?x wdt:P31 ?st . VALUES ?st { wd:Q7366 wd:Q134556 } ."}
 
-# rank cut-offs for the four tiers (10 / 25 / 50 / 100 points)
-TIER_CUTS = (40, 200, 800)
 
 
 def sparql(query, tries=5):
@@ -173,7 +167,7 @@ def build(cat):
     for b in rows:
         qid = b["x"]["value"].rsplit("/", 1)[-1]
         label = clean(b["l"]["value"])
-        if label and label[0].islower() and cat["id"] in ("dish", "dog"):
+        if label and label[0].islower() and cat["kind"] == "thing" and cat["id"] in ("boardgame", "mountain", "river"):
             label = label[0].upper() + label[1:]
         if not label:
             continue
@@ -219,8 +213,10 @@ def build(cat):
     ranked = sorted(merged.values(), key=lambda it: -it["sl"])
 
     answers = []
+    n = len(ranked)
+    cuts = (min(40, max(1, round(n * 0.15))), min(200, max(2, round(n * 0.4))), min(800, max(3, round(n * 0.7))))
     for rank, it in enumerate(ranked):
-        tier = sum(rank >= c for c in TIER_CUTS)
+        tier = sum(rank >= c for c in cuts)
         alts = sorted(a for a in it["alt"] if a.lower() != it["name"].lower())[:12]
         answers.append([it["name"], tier, alts] if alts else [it["name"], tier])
 

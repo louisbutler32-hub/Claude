@@ -1,0 +1,318 @@
+# id: pacific
+# prompt: Name an animal found in the Pacific Ocean
+# group: Animals
+# emoji: 🐙
+# kind: thing
+Shark | sharks
+Great white shark | great white | great whites | white shark
+Whale | whales
+Dolphin | dolphins
+Octopus | octopuses | octopi
+Jellyfish | jellyfishes
+Sea turtle | sea turtles | turtle | turtles
+Clownfish | clown fish | Nemo | anemonefish
+Humpback whale | humpback | humpbacks
+Orca | orcas | killer whale | killer whales
+Blue whale | blue whales
+Seal | seals
+Sea lion | sea lions
+Sea otter | sea otters | otter | otters
+Crab | crabs
+Squid | squids
+Starfish | sea star | sea stars | starfishes
+Stingray | stingrays | ray | rays
+Coral | corals
+Hammerhead shark | hammerhead | hammerheads
+Tiger shark | tiger sharks
+Whale shark | whale sharks
+Manta ray | manta | manta rays
+Blue tang | Dory | blue tangs
+Seahorse | seahorses | sea horse
+Lobster | lobsters
+Shrimp | shrimps
+Prawn | prawns
+Tuna | tunas
+Salmon
+Pufferfish | puffer fish | blowfish | puffer
+Swordfish
+Sea urchin | sea urchins | urchin | urchins
+Giant Pacific octopus
+Green sea turtle | green turtle | green turtles
+Bottlenose dolphin | bottlenose dolphins
+Sperm whale | sperm whales
+Grey whale | gray whale | grey whales | gray whales
+Walrus | walruses
+Penguin | penguins
+Pelican | pelicans | brown pelican
+Seagull | seagulls | gull | gulls
+Albatross | albatrosses
+Puffin | puffins | tufted puffin
+Krill
+Plankton | zooplankton
+Barracuda | barracudas
+Moray eel | moray | eel | eels | moray eels
+Lionfish
+Parrotfish | parrot fish
+Anglerfish | angler fish
+Marlin | marlins | blue marlin
+Sailfish
+Mahi-mahi | mahi mahi | dolphinfish
+Box jellyfish
+Portuguese man o' war | man o war | bluebottle | bluebottles | Portuguese man of war
+Blue-ringed octopus | blue ringed octopus
+Beluga whale | beluga | belugas
+Leatherback turtle | leatherback | leatherback sea turtle
+Loggerhead turtle | loggerhead | loggerhead sea turtle
+Hawksbill turtle | hawksbill | hawksbill sea turtle
+Olive ridley turtle | olive ridley
+Flatback turtle | flatback
+Mako shark | mako | shortfin mako
+Bull shark | bull sharks
+Blue shark | blue sharks
+Thresher shark | thresher
+Nurse shark | nurse sharks
+Reef shark | reef sharks
+Blacktip reef shark | blacktip | blacktip shark
+Whitetip reef shark | whitetip
+Grey reef shark | gray reef shark
+Oceanic whitetip shark | oceanic whitetip
+Basking shark
+Megamouth shark | megamouth
+Goblin shark
+Frilled shark
+Leopard shark
+Zebra shark
+Horn shark
+Port Jackson shark
+Wobbegong | wobbegong shark | carpet shark
+Epaulette shark
+Galápagos shark | Galapagos shark
+Silky shark
+Lemon shark
+Salmon shark
+Pacific sleeper shark | sleeper shark
+Cookiecutter shark | cookie cutter shark
+Swell shark
+Sixgill shark | bluntnose sixgill shark
+Spiny dogfish | dogfish
+Pacific angel shark | angel shark | angelshark
+Bamboo shark
+Eagle ray | spotted eagle ray
+Bat ray
+Mobula ray | mobula | devil ray
+Electric ray | torpedo ray | Pacific electric ray
+Shovelnose guitarfish | guitarfish
+Sawfish
+Skate | skates
+Fin whale | finback whale
+Minke whale | minke
+Sei whale
+Bryde's whale
+North Pacific right whale | right whale
+Bowhead whale | bowhead
+Pilot whale | short-finned pilot whale
+False killer whale
+Cuvier's beaked whale | beaked whale
+Baird's beaked whale
+Pygmy sperm whale
+Dwarf sperm whale
+Melon-headed whale
+Spinner dolphin
+Common dolphin
+Pacific white-sided dolphin | white-sided dolphin
+Risso's dolphin
+Dusky dolphin
+Hector's dolphin
+Māui dolphin | Maui dolphin
+Spotted dolphin | pantropical spotted dolphin
+Rough-toothed dolphin
+Fraser's dolphin
+Northern right whale dolphin
+Indo-Pacific humpback dolphin | Chinese white dolphin
+Porpoise | porpoises | harbour porpoise | harbor porpoise
+Dall's porpoise
+Vaquita
+California sea lion
+Steller sea lion
+Galápagos sea lion | Galapagos sea lion
+New Zealand sea lion | Hooker's sea lion
+Harbour seal | harbor seal
+Elephant seal | northern elephant seal
+Fur seal | northern fur seal
+New Zealand fur seal
+Galápagos fur seal | Galapagos fur seal
+Guadalupe fur seal
+Hawaiian monk seal | monk seal
+Spotted seal
+Ribbon seal
+Bearded seal
+Ringed seal
+Dugong | dugongs
+Saltwater crocodile | saltie | salties | saltwater croc
+Marine iguana | marine iguanas
+Sea snake | sea snakes | yellow-bellied sea snake
+Sea krait | banded sea krait
+Bluefin tuna | Pacific bluefin tuna
+Yellowfin tuna
+Skipjack tuna | skipjack
+Albacore | albacore tuna
+Black marlin
+Striped marlin
+Chinook salmon | king salmon
+Sockeye salmon | sockeye
+Coho salmon | coho
+Chum salmon
+Pink salmon
+Steelhead | steelhead trout
+Halibut | Pacific halibut
+Pacific cod | cod
+Alaska pollock | pollock
+Rockfish
+Lingcod
+Sardine | sardines
+Anchovy | anchovies
+Mackerel
+Herring | Pacific herring
+Flying fish | flyingfish
+Ocean sunfish | sunfish | mola mola | mola
+Oarfish
+Lanternfish
+Viperfish
+Gulper eel | pelican eel
+Garden eel
+Wolf eel
+Frogfish
+Stonefish
+Scorpionfish
+Weedy seadragon | seadragon | sea dragon
+Pipefish
+Garibaldi
+Opah | moonfish
+Wahoo
+Giant trevally | GT | trevally
+Grouper | giant grouper
+Humphead wrasse | Napoleon wrasse | Maori wrasse
+Cleaner wrasse | wrasse
+Moorish idol
+Yellow tang
+Butterflyfish | butterfly fish
+Angelfish | emperor angelfish
+Triggerfish | reef triggerfish | humuhumunukunukuapuaa
+Damselfish
+Surgeonfish
+Unicornfish
+Rabbitfish
+Boxfish
+Porcupinefish | porcupine fish
+Mandarinfish | mandarin fish | mandarin dragonet
+Goby | gobies
+Blenny | blennies
+Banggai cardinalfish | cardinalfish
+Hawkfish
+Coral trout
+Barramundi
+Giant sea bass | sea bass
+California sheephead | sheephead
+Sarcastic fringehead
+Grunion | California grunion
+Flounder
+John Dory
+Orange roughy
+Hoki
+Snapper
+Blobfish
+Coelacanth
+Hagfish
+Lamprey | Pacific lamprey
+Remora
+Pilot fish
+Needlefish
+Sea cucumber | sea cucumbers
+Sand dollar | sand dollars
+Brittle star | brittle stars
+Crown-of-thorns starfish | crown of thorns
+Sunflower sea star
+Ochre sea star
+Sea anemone | anemone | anemones
+Sea sponge | sponge | sponges
+Sea pen
+Sea fan | gorgonian
+Brain coral
+Staghorn coral
+Sea squirt | tunicate
+Giant tube worm | tube worm | tubeworm
+Christmas tree worm
+Bobbit worm
+Feather duster worm
+Nudibranch | nudibranchs | sea slug
+Spanish dancer
+Sea hare
+Moon jellyfish | moon jelly
+Lion's mane jellyfish | lion's mane
+Pacific sea nettle | sea nettle
+Irukandji jellyfish | Irukandji
+Nomura's jellyfish
+Comb jelly | comb jellies
+By-the-wind sailor | velella
+Pyrosome
+Salp
+Siphonophore
+Humboldt squid | jumbo squid
+Giant squid
+Firefly squid
+Vampire squid
+Bobtail squid | Hawaiian bobtail squid
+Cuttlefish | flamboyant cuttlefish
+Nautilus | chambered nautilus
+Mimic octopus
+Dumbo octopus
+Dungeness crab
+King crab | red king crab | Alaskan king crab
+Snow crab
+Japanese spider crab | spider crab
+Hermit crab | hermit crabs
+Coconut crab
+Ghost crab
+Sand crab | mole crab
+Blue swimmer crab
+Mud crab
+Fiddler crab
+Decorator crab
+Porcelain crab
+Horseshoe crab
+Spiny lobster | California spiny lobster | crayfish | rock lobster
+Slipper lobster | Moreton Bay bug
+Mantis shrimp | peacock mantis shrimp
+Pistol shrimp | snapping shrimp
+Cleaner shrimp
+Barnacle | barnacles
+Copepod | copepods
+Sea spider
+Abalone
+Giant clam | clam | clams
+Oyster | oysters | Pacific oyster
+Mussel | mussels
+Scallop | scallops
+Cone snail
+Cowrie | cowries
+Limpet | limpets
+Chiton
+Sea snail | sea snails
+Laysan albatross
+Black-footed albatross
+Wandering albatross
+Galápagos penguin | Galapagos penguin
+Little penguin | fairy penguin | little blue penguin
+Humboldt penguin
+Yellow-eyed penguin
+Horned puffin
+Cormorant | shag
+Blue-footed booby | booby
+Frigatebird | frigate bird
+Shearwater | muttonbird
+Petrel
+Tern
+Auklet
+Murre | common murre
+Gannet | Australasian gannet
+Tropicbird

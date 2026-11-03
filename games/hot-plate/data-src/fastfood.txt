@@ -1,0 +1,191 @@
+# id: fastfood
+# prompt: Name a fast food restaurant
+# group: Food
+# emoji: 🍟
+# kind: thing
+McDonald's | McDonalds | Maccas | Macca's | Mickey D's | Mcdees | Maccies | Mackies
+KFC | Kentucky Fried Chicken
+Burger King | BK
+Subway
+Domino's | Dominos
+Pizza Hut
+Taco Bell
+Wendy's | Wendys
+Starbucks
+Hungry Jack's | Hungry Jacks | HJ's
+Nando's | Nandos
+Chick-fil-A | Chick fil A | Chickfila
+Five Guys
+Greggs
+Popeyes | Popeye's
+In-N-Out | In-N-Out Burger | In N Out
+Shake Shack
+Chipotle
+Dunkin' | Dunkin' Donuts | Dunkin
+Papa John's | Papa Johns
+Krispy Kreme
+Red Rooster
+Guzman y Gomez | GYG | Guzman
+Oporto
+Wingstop
+Arby's | Arbys
+Sonic | Sonic Drive-In
+Jack in the Box
+Carl's Jr. | Carl's Jr | Carls Jr
+Little Caesars | Little Caesar's
+Panda Express
+Dairy Queen | DQ
+Tim Hortons | Tim Horton's | Timmies
+Whataburger
+Raising Cane's | Canes | Raising Canes
+Costa | Costa Coffee
+Pret | Pret A Manger
+Zambrero
+Grill'd | Grilld
+Hardee's | Hardees
+White Castle
+Jollibee
+Wimpy
+Panera Bread | Panera
+Jersey Mike's | Jersey Mikes
+Jimmy John's | Jimmy Johns
+Culver's | Culvers
+Steak 'n Shake | Steak n Shake
+Del Taco
+El Pollo Loco
+Bojangles | Bojangles'
+Zaxby's | Zaxbys
+Church's Chicken | Church's | Texas Chicken
+Long John Silver's | Long John Silvers
+A&W | A and W
+Baskin-Robbins | Baskin Robbins
+Cinnabon
+Auntie Anne's | Auntie Annes
+Sbarro
+Leon
+Itsu
+Wasabi
+Tortilla
+German Doner Kebab | GDK
+Chicken Cottage
+Morley's | Morleys
+Dixy Chicken | Dixy
+Sam's Chicken
+Slim Chickens
+Chopstix
+Wagamama | Wagamamas
+Yo! Sushi | Yo Sushi
+Caffè Nero | Cafe Nero | Nero
+Upper Crust
+Harry Ramsden's | Harry Ramsdens
+Honest Burgers
+Gourmet Burger Kitchen | GBK
+Barburrito
+Schnitz
+Chicken Treat
+El Jannah
+Betty's Burgers | Bettys Burgers
+Lord of the Fries
+Mad Mex
+Roll'd | Rolld
+Sushi Hub
+Pie Face
+Noodle Box
+Crust Pizza | Crust
+Boost Juice | Boost
+Gloria Jean's | Gloria Jeans
+Muzz Buzz
+Chargrill Charlie's
+Donut King
+Soul Origin
+Sumo Salad
+Burger Urge
+Ribs & Burgers | Ribs and Burgers
+Pizza Capers
+Eagle Boys
+BurgerFuel | Burger Fuel
+Hell Pizza
+Firehouse Subs
+Potbelly
+Qdoba
+Moe's Southwest Grill | Moe's
+Taco John's | Taco Johns
+Taco Cabana
+Krystal
+Checkers
+Rally's | Rallys
+Fatburger
+Smashburger
+Freddy's | Freddy's Frozen Custard & Steakburgers
+Cook Out | Cookout
+Portillo's | Portillos
+Nathan's Famous | Nathan's
+Wienerschnitzel
+Captain D's
+Waffle House
+The Habit | Habit Burger Grill | Habit Burger
+Wahlburgers
+Dave's Hot Chicken | Daves Hot Chicken
+Bonchon
+Pollo Tropical
+Pollo Campero
+Sweetgreen
+Cava
+Noodles & Company | Noodles and Company
+Pei Wei
+Buffalo Wild Wings | BWW | B-Dubs
+Dutch Bros
+Caribou Coffee
+Einstein Bros. Bagels | Einstein Bros
+Jamba | Jamba Juice
+Tropical Smoothie Cafe | Tropical Smoothie
+Smoothie King
+Cold Stone Creamery | Cold Stone
+Wetzel's Pretzels
+Orange Julius
+Quiznos
+Blimpie
+Schlotzsky's
+Jason's Deli
+McAlister's Deli | McAlister's
+Which Wich
+Charleys Philly Steaks | Charleys
+Marco's Pizza
+Papa Murphy's
+Hungry Howie's
+Jet's Pizza
+Round Table Pizza
+Cicis | Cici's Pizza
+MOD Pizza
+Blaze Pizza
+Baja Fresh
+Rubio's
+Torchy's Tacos | Torchy's
+Taco Bueno
+Mary Brown's
+Harvey's
+New York Fries
+Pizza Pizza
+Supermac's | Supermacs
+Apache Pizza
+Abrakebabra
+Mos Burger
+Lotteria
+Yoshinoya
+Sukiya
+Matsuya
+Mister Donut
+Max Burgers | Max
+Quick
+Hesburger
+Telepizza
+Nordsee
+Steers
+Chicken Licken
+Debonairs Pizza | Debonairs
+Al Baik | Albaik
+Mang Inasal
+Chowking
+Hot Star Large Fried Chicken | Hot Star
+Paris Baguette
+Marugame Udon

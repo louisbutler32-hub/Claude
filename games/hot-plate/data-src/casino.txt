@@ -1,0 +1,181 @@
+# id: casino
+# prompt: Name a casino, casino game or slot
+# group: Other
+# emoji: 🎰
+# kind: thing
+Blackjack | 21 | twenty-one | pontoon
+Poker
+Roulette
+Slots | slot machine | slot machines | pokies | pokie | fruit machine | one-armed bandit
+Bellagio | The Bellagio
+Caesars Palace | Caesar's Palace | Caesars
+Texas hold 'em | Texas holdem | hold em | holdem
+Craps
+Baccarat
+The Venetian | Venetian
+Crown Melbourne | Crown | Crown Casino
+MGM Grand
+Marina Bay Sands
+Wynn Las Vegas | Wynn
+Monte Carlo Casino | Casino de Monte-Carlo | Monte Carlo
+The Star | Star Casino | The Star Sydney
+Crown Sydney
+Luxor
+The Mirage | Mirage
+Paris Las Vegas
+New York-New York | New York New York
+Mandalay Bay
+Cosmopolitan | The Cosmopolitan
+Aria
+Excalibur
+Treasure Island
+Flamingo
+Circus Circus
+Stratosphere | The Strat
+Planet Hollywood
+Hard Rock Hotel | Hard Rock Casino | Hard Rock
+Resorts World Las Vegas | Resorts World
+Fontainebleau Las Vegas | Fontainebleau
+Golden Nugget
+The Palazzo | Palazzo
+Encore
+Harrah's | Harrahs
+Rio
+Tropicana
+Sahara
+Bally's | Ballys
+The LINQ | LINQ
+Caesars Atlantic City
+Borgata
+Mohegan Sun
+Foxwoods
+Seminole Hard Rock
+Atlantis | Atlantis Paradise Island
+The Venetian Macao | Venetian Macao
+City of Dreams
+Galaxy Macau
+Casino Lisboa | Grand Lisboa
+Sun City
+Casino Baden-Baden | Baden-Baden
+Hippodrome Casino | The Hippodrome
+Resorts World Sentosa
+Wynn Macau
+Sands Macao
+Okada Manila
+Solaire
+Casino de Montréal | Casino de Montreal
+Fallsview Casino | Fallsview
+Genting Highlands | Resorts World Genting | Genting
+SkyCity | Sky City
+Treasury Casino | The Treasury
+Star Gold Coast | Jupiters
+Crown Perth | Burswood
+Adelaide Casino | SkyCity Adelaide
+Wrest Point
+The Star Brisbane | Star Brisbane | Queen's Wharf
+Omaha | Omaha poker | Omaha hold em
+Seven-card stud | 7 card stud | stud poker
+Three-card poker | 3 card poker
+Caribbean stud | Caribbean stud poker
+Pai gow | pai gow poker
+Let It Ride
+Video poker
+Keno
+Bingo
+Sic bo
+Big Six | Big Six wheel | money wheel
+Punto banco
+Chemin de fer
+Two-up
+Crown and anchor
+War | Casino War
+Red dog
+Spanish 21
+Blackjack switch
+Fan-tan | fan tan
+Crazy Time
+Lightning Roulette
+Dream Catcher
+Monopoly Live
+Plinko
+Crash
+Mines
+Aviator
+Starburst
+Book of Ra
+Gonzo's Quest | Gonzos Quest
+Buffalo
+Lightning Link
+Dragon Link
+Book of Dead
+Sweet Bonanza
+Gates of Olympus
+Big Bass Bonanza | Big Bass
+Wolf Gold
+Dead or Alive
+Mega Moolah
+Wheel of Fortune | Wheel of Fortune slot
+Cleopatra
+Double Diamond
+Triple Diamond
+Da Vinci Diamonds
+Wolf Run
+Quick Hit
+Dancing Drums
+88 Fortunes
+Queen of the Nile
+Where's the Gold | Wheres the Gold
+Big Red
+More Chilli | More Chili
+Indian Dreaming
+Choy Sun Doa
+5 Dragons | Five Dragons
+50 Lions
+Dolphin Treasure
+Pompeii
+Timber Wolf
+Sun & Moon | Sun and Moon
+Miss Kitty
+Dragon Cash
+Cash Express
+Bonanza
+Reactoonz
+Fire Joker
+Rise of Olympus
+Mega Fortune
+Hall of Gods
+Divine Fortune
+Jammin' Jars | Jammin Jars
+Wanted Dead or a Wild
+Money Train
+Rainbow Riches
+Fishin' Frenzy | Fishin Frenzy
+Eye of Horus
+Big Bass Splash
+Sugar Rush
+The Dog House | Dog House
+Fruit Party
+Razor Shark
+Immortal Romance
+Thunderstruck | Thunderstruck II
+Book of Shadows
+Twin Spin
+Jackpot 6000
+Mega Joker
+Blood Suckers
+Extra Chilli
+White Rabbit
+Pirate Gold
+Mustang Money
+Pharaoh's Fortune
+Monopoly slot
+Wizard of Oz slot
+Lobstermania | Lucky Larry's Lobstermania
+Willy Wonka slot
+Cash Eruption
+Huff N' Puff | Huff n Puff
+Invaders from the Planet Moolah | Planet Moolah
+Kronos
+Golden Goddess
+Double Bubble
+Age of the Gods

@@ -1,0 +1,27 @@
+# id: worldcup
+# prompt: Name a country that has won a World Cup
+# group: Sport
+# emoji: 🏆
+# kind: thing
+# FIFA men's: Uruguay, Italy, Germany/West Germany, Brazil, England, Argentina, France, Spain
+# FIFA women's: USA, Norway, Germany, Japan, Spain
+# Rugby Union men's: New Zealand, Australia, South Africa, England
+# Cricket men's ODI: West Indies, India, Australia, Pakistan, Sri Lanka, England
+Brazil
+Germany | West Germany | Deutschland
+Argentina
+France
+England
+Italy | Italia
+Spain | España
+Australia | Aussie | Aussies
+New Zealand | NZ | Aotearoa
+India
+USA | United States | US | America | United States of America
+South Africa | RSA
+Uruguay
+Japan
+Pakistan
+West Indies | Windies
+Sri Lanka
+Norway

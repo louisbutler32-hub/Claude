@@ -1,7 +1,7 @@
 // The latest room state from the server, plus small questions about it.
 import { store, EMOJIS } from "./util.js";
 
-export const S = { room: null, prev: null, clockOffset: 0, cats: [] };
+export const S = { room: null, prev: null, clockOffset: 0, cats: [], account: null };
 
 export const profile = store.get("hp-profile") || { name: "", emoji: EMOJIS[Math.floor(Math.random() * EMOJIS.length)] };
 export const saveProfile = () => store.set("hp-profile", profile);

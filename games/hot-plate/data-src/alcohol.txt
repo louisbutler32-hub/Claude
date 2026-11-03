@@ -1,0 +1,435 @@
+# id: alcohol
+# prompt: Name a type of alcohol or an alcohol brand
+# group: Food
+# emoji: 🍺
+# kind: thing
+Vodka
+Beer | beers
+Wine | wines
+Tequila
+Gin
+Rum
+Whisky | Whiskey
+Champagne
+Cider
+Smirnoff
+Jägermeister | Jagermeister | Jager | Jäger | Jagger
+Corona
+Heineken
+Jack Daniel's | Jack Daniels | JD
+Bacardi
+Budweiser | Bud
+Guinness
+Prosecco
+Red wine
+White wine
+Rosé | Rose | Rosé wine
+Captain Morgan
+Absolut
+Fireball
+Baileys | Bailey's
+Malibu
+Grey Goose
+Hennessy | Henny
+Moët | Moet | Moët & Chandon | Moet and Chandon
+Bud Light
+Coors | Coors Light
+Stella Artois | Stella
+Jim Beam
+Johnnie Walker | Johnny Walker
+Jameson
+Patrón | Patron
+Lager
+Bourbon
+Scotch
+Sake
+Brandy
+Cognac
+Margarita | Margaritas
+Mojito | Mojitos
+Martini | Martinis
+White Claw
+Peroni
+Carlsberg
+Modelo
+Don Julio
+Jose Cuervo | Cuervo
+Bundaberg Rum | Bundy | Bundaberg
+VB | Victoria Bitter
+XXXX | Fourex | 4X
+Carlton Draught | Carlton
+Tooheys | Tooheys New
+Great Northern
+Asahi
+Strongbow
+Kopparberg
+Rekorderlig
+Somersby
+Magners
+Bulmers
+Gordon's | Gordons
+Bombay Sapphire | Bombay
+Tanqueray
+Hendrick's | Hendricks
+Aperol
+Aperol Spritz | Spritz
+Campari
+Pimm's | Pimms
+Kahlúa | Kahlua
+Midori
+Southern Comfort | SoCo
+Sambuca
+Ouzo
+Limoncello
+Soju
+Absinthe
+Mezcal | Mescal
+Port
+Sherry
+Vermouth
+Schnapps
+Moonshine
+IPA | India Pale Ale
+Stout
+Ale
+Pilsner | Pils
+Pale ale
+Porter
+Cava
+Mead
+Hard seltzer | Seltzer
+Alcopop | Alcopops
+Goon | Cask wine | Boxed wine | Box wine
+Sangria
+Espresso martini
+Piña colada | Pina colada
+Daiquiri
+Cosmopolitan | Cosmo
+Long Island iced tea | Long Island
+Sex on the beach
+Bloody Mary
+Negroni
+Old fashioned
+Mimosa
+Pornstar martini
+Gin and tonic | G&T | Gin & tonic
+Rum and Coke | Cuba libre | Rum & Coke
+Vodka Red Bull | Vodka Redbull
+Jägerbomb | Jagerbomb | Jager bomb
+Moscow mule
+Tequila sunrise
+White Russian
+Screwdriver
+Manhattan
+Whiskey sour
+Mai tai
+Caipirinha
+Merlot
+Shiraz | Syrah
+Cabernet Sauvignon | Cabernet | Cab Sav | Cab Sauv
+Sauvignon Blanc | Sav Blanc | Sauv Blanc
+Chardonnay
+Pinot Noir
+Pinot Grigio | Pinot Gris
+Riesling
+Malbec
+Moscato
+Smirnoff Ice
+WKD
+Bacardi Breezer | Breezer
+Vodka Cruiser | Cruiser | Cruisers
+UDL
+Woodstock
+Canadian Club | CC
+Passion Pop
+Hard Solo
+Lambrini
+Buckfast | Bucky | Buckie
+Glen's Vodka | Glens
+Frosty Jack's
+Hooch
+Echo Falls
+Blossom Hill
+Yellow Tail | Yellowtail | [yellow tail]
+Jacob's Creek | Jacobs Creek
+Penfolds | Penfolds Grange | Grange
+Oyster Bay
+Barefoot
+Casillero del Diablo
+Hardys | Hardy's
+Wolf Blass
+Lindeman's | Lindemans
+Yellowglen
+McGuigan
+Brown Brothers
+19 Crimes
+Cloudy Bay
+Kim Crawford
+Whispering Angel
+Apothic
+Gallo | E & J Gallo
+Robert Mondavi | Mondavi
+Banrock Station
+Dom Pérignon | Dom Perignon | Dom P
+Veuve Clicquot | Veuve
+Bollinger | Bolly
+Laurent-Perrier | Laurent Perrier
+Taittinger
+Krug
+Cristal | Louis Roederer
+Ace of Spades | Armand de Brignac
+Perrier-Jouët | Perrier Jouet
+Mumm | G.H. Mumm
+Lanson
+Piper-Heidsieck | Piper Heidsieck
+Pol Roger
+Ruinart
+Belvedere
+Cîroc | Ciroc
+Ketel One
+Tito's | Titos
+Skyy
+Stolichnaya | Stoli
+Russian Standard
+Finlandia
+Żubrówka | Zubrowka | Bison Grass
+Au Vodka
+42 Below
+Beefeater
+Whitley Neill
+Sipsmith
+Malfy
+Four Pillars
+Roku
+Monkey 47
+Aviation Gin | Aviation
+Edinburgh Gin
+Brockmans
+Plymouth Gin | Plymouth
+Seagram's | Seagrams
+Gin Mare
+Casamigos
+1800 | 1800 Tequila
+Espolòn | Espolon
+Olmeca
+Sauza
+Herradura
+El Jimador
+Clase Azul
+Teremana
+Cazadores
+Hornitos
+Glenfiddich
+Glenlivet | The Glenlivet
+Macallan | The Macallan
+Chivas Regal | Chivas
+Famous Grouse | The Famous Grouse
+Bell's | Bells
+Grant's | Grants
+Ballantine's | Ballantines
+Dewar's | Dewars
+J&B
+Teacher's
+Laphroaig
+Lagavulin
+Talisker
+Ardbeg
+Highland Park
+Glenmorangie
+Monkey Shoulder
+Maker's Mark | Makers Mark
+Wild Turkey
+Buffalo Trace
+Woodford Reserve | Woodford
+Bulleit
+Evan Williams
+Crown Royal
+Knob Creek
+Four Roses
+Elijah Craig
+Pappy Van Winkle | Pappy
+Suntory
+Hibiki
+Yamazaki
+Nikka
+Bushmills
+Tullamore D.E.W. | Tullamore Dew | Tullamore
+Redbreast
+Whyte & Mackay | Whyte and Mackay
+Starward
+Sullivans Cove
+Skrewball | Screwball
+Rémy Martin | Remy Martin | Remy
+Courvoisier
+Martell
+Metaxa
+Kraken
+Sailor Jerry
+Havana Club
+Mount Gay
+Appleton Estate | Appleton
+Diplomático | Diplomatico
+Bumbu
+Disaronno | Amaretto Disaronno
+Amaretto
+Triple sec
+Cointreau
+Grand Marnier
+Frangelico
+Chambord
+Galliano
+Drambuie
+Goldschläger | Goldschlager
+Archers | Archers Peach Schnapps
+Sourz
+Tia Maria
+Advocaat
+Warninks
+RumChata
+Licor 43
+St-Germain | St Germain
+Chartreuse
+Bénédictine | Benedictine
+Pernod
+Ricard
+Pastis
+Fernet-Branca | Fernet
+Amaro
+Grappa
+Pisco
+Cachaça | Cachaca
+Arak | Arrack
+Raki
+Pálinka | Palinka
+Slivovitz | Slivovice | Rakia
+Aquavit | Akvavit
+Baijiu
+Moutai | Maotai | Kweichow Moutai
+Jinro | Chamisul
+Makgeolli
+Pulque
+Palm wine
+Everclear
+Liqueur
+Sparkling wine
+Fortified wine
+Dessert wine
+Orange wine
+Mulled wine | Glühwein | Gluhwein
+Madeira
+Marsala
+Perry
+Shandy
+Snakebite
+Hot toddy
+Irish coffee
+Lambic
+Wheat beer | Hefeweizen | Weissbier
+Sour beer
+Bitter
+Craft beer
+Light beer
+Tempranillo
+Zinfandel
+Grenache
+Sangiovese
+Chianti
+Rioja
+Bordeaux
+Burgundy
+Beaujolais
+Chenin Blanc
+Gewürztraminer | Gewurztraminer
+Sémillon | Semillon
+Viognier
+Albariño | Albarino
+Barolo
+Lambrusco
+Miller | Miller Lite | Miller High Life
+Michelob Ultra | Michelob
+Busch | Busch Light
+Natural Light | Natty Light | Natty
+Keystone Light | Keystone
+Pabst Blue Ribbon | PBR | Pabst
+Blue Moon
+Samuel Adams | Sam Adams
+Sierra Nevada
+Yuengling
+Lagunitas
+Goose Island
+Rolling Rock
+Shock Top
+Kona | Kona Brewing
+Twisted Tea
+Mike's Hard Lemonade | Mike's
+Four Loko
+Truly
+High Noon
+Angry Orchard
+Dos Equis | XX
+Pacifico
+Tecate
+Sol
+Estrella Damm | Estrella
+San Miguel
+Birra Moretti | Moretti
+Amstel
+Grolsch
+Beck's | Becks
+Paulaner
+Erdinger
+Hoegaarden
+Leffe
+Duvel
+Chimay
+Kronenbourg | Kronenbourg 1664 | 1664
+Foster's | Fosters
+Carling
+Tennent's | Tennents
+Thatchers | Thatcher's
+Old Mout
+Desperados
+Tiger
+Singha
+Chang
+Bintang
+Tsingtao
+Kirin
+Sapporo
+Kingfisher
+Cobra
+Efes
+Pilsner Urquell
+Staropramen
+Tyskie
+Żywiec | Zywiec
+Red Stripe
+Steinlager
+Speight's | Speights
+Brahma
+Quilmes
+Coopers | Cooper's
+Hahn | Hahn Super Dry
+James Boag's | Boag's | Boags
+Cascade
+Little Creatures
+Stone & Wood | Stone and Wood
+Balter
+Furphy
+Pure Blonde
+Crown Lager
+Carlton Dry
+BrewDog | Brewdog | Punk IPA
+Camden Town | Camden Hells
+Beavertown
+Newcastle Brown Ale | Newcastle Brown | Newky Brown
+John Smith's | John Smiths
+Boddingtons
+London Pride | Fuller's
+Doom Bar
+Old Speckled Hen
+Tetley's | Tetleys
+Murphy's
+Kilkenny
+Smithwick's
+Harp
