@@ -3,7 +3,7 @@ import { $, buzz, replay, TIERS } from "./util.js";
 import { S, setRoom, profile, phase, seating, byId } from "./state.js";
 import { connect, on, send, getSession, setSession } from "./net.js";
 import { sfx, setSizzle } from "./sound.js";
-import { burst, floatScore, kissBanner, shake } from "./fx.js";
+import { burst, floatScore, kissBanner, shake, pop } from "./fx.js";
 import { Scene, layout } from "./scene.js";
 import * as table from "./table.js";
 import { renderHUD, flash } from "./hud.js";
@@ -106,6 +106,10 @@ on("result", (m) => {
 
 on("burn", (m) => {
   sfx.burn();
+  const at = table.clochePoint();
+  if (at) pop(at.x, at.y);
+  shake(5);
+  replay($("cloche"), "popped");
   if (m.id === S.room.you) buzz([120, 60, 200]);
   setTimeout(() => replay(document.querySelector(`.seat[data-id="${m.id}"]`), "hit"), 60);
 });

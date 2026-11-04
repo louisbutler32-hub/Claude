@@ -107,8 +107,6 @@ function renderBurn() {
   const secs = Math.max(0, Math.ceil((g.breakUntil - now()) / 1000));
   $("dock-burn").innerHTML = `
     <p class="burn-head">${pop.out ? "💀" : "🔥"} <b>${p ? esc(p.name) : "someone"}</b> got burned${pop.out ? " and is out" : ""}</p>
-    ${pop.kiss ? `<p class="burn-sub">the chef's kiss was</p><div class="chips"><span class="chip t4">💋 ${esc(pop.kiss)}</span></div>` : ""}
-    ${pop.missed.length ? `<p class="burn-sub">nobody said</p><div class="chips">${pop.missed.map((x) => `<span class="chip t${x.tier}">${esc(x.name)}</span>`).join("")}</div>` : ""}
     <p class="burn-sub">next plate in ${secs}s</p>`;
 }
 

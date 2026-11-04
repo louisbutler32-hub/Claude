@@ -53,6 +53,30 @@ export function kissBanner(who, answer) {
   bannerTimer = setTimeout(() => (b.hidden = true), 2600);
 }
 
+// the plate bursting: a flash, a puff of smoke and a few flames
+export function pop(x, y) {
+  if (reduced) return;
+  const host = layer();
+  const flash = document.createElement("span");
+  flash.className = "pop-flash";
+  flash.style.left = x + "px"; flash.style.top = y + "px";
+  host.appendChild(flash);
+  setTimeout(() => flash.remove(), 700);
+  const glyphs = ["💨", "💨", "🔥", "💨", "✦", "🔥"];
+  for (let i = 0; i < 16; i++) {
+    const s = document.createElement("span");
+    s.className = "spark smoke";
+    s.textContent = glyphs[i % glyphs.length];
+    const a = Math.random() * Math.PI * 2, d = 50 + Math.random() * 90;
+    s.style.left = x + "px"; s.style.top = y + "px";
+    s.style.setProperty("--dx", Math.cos(a) * d + "px");
+    s.style.setProperty("--dy", Math.sin(a) * d - 50 + "px");
+    s.style.setProperty("--r", Math.round(Math.random() * 120 - 60) + "deg");
+    host.appendChild(s);
+    setTimeout(() => s.remove(), 1400);
+  }
+}
+
 export function shake(strength) {
   if (reduced) return;
   const st = $("stage");

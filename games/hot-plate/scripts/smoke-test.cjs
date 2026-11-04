@@ -134,8 +134,9 @@ const waitPhase = (p, ph, timeout = 8000) => p.waitForSelector(`body[data-phase=
       check(true, `${h.name} served "${ans}" and it shows on their plate`);
       used.push(ans);
     }
-    const secs = await a.textContent("#secs");
-    check(/\d+\.\ds/.test(secs), `the clock is counting down (${secs})`);
+    await sleep(1500);
+    const heat = await a.evaluate(() => parseFloat(getComputedStyle(document.getElementById("cloche")).getPropertyValue("--heat")));
+    check(heat > 0, `the plate is heating up (heat ${heat.toFixed(2)})`);
     await a.screenshot({ path: path.join(OUT, "5-game-laptop.png") });
     const h2 = await holderPage();
     if (h2) await h2.screenshot({ path: path.join(OUT, "5-game-your-turn.png") });

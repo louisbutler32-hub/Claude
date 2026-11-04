@@ -294,9 +294,8 @@ class Room {
       if (p.hearts === 0) { p.alive = false; out = true; }
       this.log(out ? `💀 ${p.name} got burned and is out` : `🔥 ${p.name} got burned`);
     }
-    // reveal the chef's kiss if nobody found it
-    const kiss = !g.kissBy && g.kiss >= 0 ? g.cat.answers[g.kiss].name : null;
-    g.lastPop = { id: g.holder, out, missed: this.missedAnswers(), kiss };
+    // unsaid answers (the chef's kiss included) stay secret, so they keep their value next time
+    g.lastPop = { id: g.holder, out };
     this.broadcast({ t: "burn", id: g.holder, out });
     if (this.finishIfOver()) return;
     this.phase = "break";
@@ -304,19 +303,6 @@ class Room {
     const next = this.nextAlive(g.holder);
     this.sync();
     this.timer = setTimeout(() => this.nextPlate(next), BREAK_MS);
-  }
-
-  // a few answers nobody said, leaning rare, to show after a burn
-  missedAnswers() {
-    const g = this.game;
-    const unused = g.cat.answers.map((_, i) => i).filter((i) => !g.used.has(i) && i !== g.kiss);
-    const sample = (tier, n) => {
-      const c = unused.filter((i) => g.cat.answers[i].tier === tier);
-      const res = [];
-      while (c.length && res.length < n) res.push(c.splice(Math.floor(Math.random() * c.length), 1)[0]);
-      return res;
-    };
-    return [...sample(1, 2), ...sample(2, 3), ...sample(3, 2)].map((i) => ({ name: g.cat.answers[i].name, tier: g.cat.answers[i].tier }));
   }
 
   finishIfOver() {

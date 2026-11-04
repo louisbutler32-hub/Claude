@@ -131,6 +131,9 @@ function seatOf(id) {
   return i >= 0 && L ? L.seats[i] : null;
 }
 
+// where the hot plate is right now (for the burst when it pops)
+export const clochePoint = () => clocheAt;
+
 export function placeCloche() {
   if (!L) return;
   const el = $("cloche"), r = S.room, ph = phase();
@@ -182,7 +185,9 @@ export function tickClock(onTick) {
   const frac = Math.min(1, left / (g.turnLen * 1000));
   const heat = 1 - frac;
   setDish(heat);
-  el.style.setProperty("--heat", heat.toFixed(2));
+  el.style.setProperty("--heat", heat.toFixed(3));
+  // no numbers: the plate swells and rattles harder as the time runs out
+  el.style.setProperty("--jig", (heat * heat * 9).toFixed(2));
   $("fuse").style.setProperty("--f", frac.toFixed(3));
   $("fuse").dataset.level = frac > 0.5 ? "ok" : frac > 0.25 ? "warn" : "hot";
   $("secs").textContent = (left / 1000).toFixed(1) + "s";
