@@ -126,7 +126,8 @@ CATEGORIES = [
          where="?x wdt:P31 ?c . VALUES ?c { wd:Q3918 wd:Q875538 wd:Q15936437 wd:Q902104 } . ?x wdt:P17 ?k . VALUES ?k { wd:Q30 wd:Q145 wd:Q664 wd:Q408 } ."),
     dict(id="eurocity", group="Places", emoji="🏰", prompt="Name a city in Europe with over 100,000 people", kind="thing", limit=2000, minsl=0,
          # start from Europe's countries so the query stays light
-         where="?k wdt:P31 wd:Q3624078 ; wdt:P30 wd:Q46 . ?x wdt:P17 ?k ; wdt:P31 ?t . VALUES ?t { wd:Q515 wd:Q1549591 wd:Q1637706 wd:Q200250 wd:Q5119 wd:Q3957 } . ?x wdt:P1082 ?pop . FILTER(?pop >= 100000)"),
+         split="SELECT ?k WHERE { ?k wdt:P31 wd:Q3624078 ; wdt:P30 wd:Q46 . }",
+         where="VALUES ?k { __KEYS__ } ?x wdt:P17 ?k ; wdt:P31 ?t . VALUES ?t { wd:Q515 wd:Q1549591 wd:Q1637706 wd:Q200250 wd:Q5119 wd:Q3957 } . ?x wdt:P1082 ?pop . FILTER(?pop >= 100000)"),
 ]
 for _c in CATEGORIES:
     _c["where"] = _c["where"] % {"song": "?x wdt:P31 ?st . VALUES ?st { wd:Q7366 wd:Q134556 } ."}
@@ -187,7 +188,15 @@ def build(cat):
       OPTIONAL {{ ?x rdfs:label ?lm . FILTER(lang(?lm) = "mul") }}
       BIND(COALESCE(?le, ?lm) AS ?l) FILTER(BOUND(?l))
     }} ORDER BY DESC(?sl) LIMIT {cat['limit']}"""
-    rows = sparql(q)
+    if cat.get("split"):
+        # heavy queries run a few countries at a time and the rows are merged
+        keys = [b["k"]["value"].rsplit("/", 1)[-1] for b in sparql(cat["split"])]
+        rows = []
+        for i in range(0, len(keys), 5):
+            vals = " ".join("wd:" + k for k in keys[i:i + 5])
+            rows += sparql(q.replace("__KEYS__", vals))
+    else:
+        rows = sparql(q)
     items = {}
     for b in rows:
         qid = b["x"]["value"].rsplit("/", 1)[-1]
