@@ -19,6 +19,13 @@ const img = (key, make, scale, cls) => {
 
 export function setLayout(layout) { L = layout; }
 
+// an uploaded picture if the player has one, otherwise their emoji drawn as pixel art
+function face(p) {
+  const pic = p.av && S.avatars[p.id];
+  if (pic) return `<img class="px face pic" src="${pic}" alt="" width="${18 * L.P}" height="${18 * L.P}">`;
+  return img("av" + p.emoji, () => avatar(p.emoji), L.P, "face");
+}
+
 // a player's answer sits beside their place setting, on the side facing into the table
 function bubbleSpot(seat) {
   const side = Math.cos(seat.a) > 0.15 ? "left" : "right";
@@ -61,7 +68,7 @@ export function renderSeats() {
     }
     if (badges.length) under += `<div class="badges">${badges.join("")}</div>`;
     html += `<div class="${cls}" data-id="${p.id}" style="${pos}">
-      <div class="figure">${img("av" + p.emoji, () => avatar(p.emoji), L.P, "face")}${setting}</div>
+      <div class="figure">${face(p)}${setting}</div>
       <div class="nm">${esc(p.name)}</div>${under}</div>`;
   });
   $("seats").innerHTML = html;

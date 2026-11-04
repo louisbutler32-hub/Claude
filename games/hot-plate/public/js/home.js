@@ -6,15 +6,46 @@ import { unlock, sfx } from "./sound.js";
 import { pickFace } from "./account.js";
 
 $("name-input").value = profile.name;
+// the five most-picked faces, plus your own picture
+const TOP = ["😎", "🦊", "👽", "🐸", "👻"];
 function renderFaces() {
-  $("faces").innerHTML = EMOJIS.map((e) => `<button type="button" role="radio" aria-checked="${e === profile.emoji}" aria-label="${e}">${e}</button>`).join("");
+  const emojis = TOP.includes(profile.emoji) ? TOP : [profile.emoji, ...TOP.slice(0, 4)];
+  $("faces").innerHTML = emojis.map((e) => `<button type="button" role="radio" aria-checked="${!profile.img && e === profile.emoji}" aria-label="${e}">${e}</button>`).join("")
+    + (profile.img ? `<button type="button" role="radio" class="mine" data-img="1" aria-checked="true" aria-label="Your picture"><img src="${profile.img}" alt=""></button>` : "")
+    + `<button type="button" class="upload" data-upload="1" title="Upload a picture">＋<small>photo</small></button>`;
 }
 renderFaces();
 $("faces").addEventListener("click", (e) => {
   const b = e.target.closest("button");
   if (!b) return;
-  profile.emoji = b.textContent; saveProfile(); renderFaces(); sfx.click();
+  if (b.dataset.upload) return $("face-file").click();
+  if (b.dataset.img) return;
+  profile.emoji = b.textContent; profile.img = null; saveProfile(); renderFaces(); sfx.click();
   pickFace(profile.emoji);
+  send({ t: "avatar", img: null });
+});
+
+// shrink an uploaded photo to a 24px square: small enough to send, and it turns into pixel art on the table
+$("face-file").addEventListener("change", async () => {
+  const file = $("face-file").files[0];
+  $("face-file").value = "";
+  if (!file) return;
+  if (!file.type.startsWith("image/")) return showError("That file isn't a picture.");
+  try {
+    const bmp = await createImageBitmap(file);
+    const side = Math.min(bmp.width, bmp.height);
+    const c = document.createElement("canvas");
+    c.width = c.height = 24;
+    const g = c.getContext("2d");
+    g.imageSmoothingQuality = "high";
+    g.drawImage(bmp, (bmp.width - side) / 2, (bmp.height - side) / 2, side, side, 0, 0, 24, 24);
+    let url = c.toDataURL("image/png");
+    if (url.length > 11000) url = c.toDataURL("image/jpeg", 0.85);
+    profile.img = url; saveProfile(); renderFaces(); sfx.click();
+    send({ t: "avatar", img: url });
+  } catch {
+    showError("Couldn't read that picture. Try a JPG or PNG.");
+  }
 });
 $("name-input").addEventListener("input", () => { profile.name = $("name-input").value.trim(); saveProfile(); });
 

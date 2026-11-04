@@ -98,7 +98,7 @@ const server = http.createServer((req, res) => {
 
 /* ---------- websocket ---------- */
 
-const wss = new WebSocketServer({ server, path: "/ws", maxPayload: 4096 });
+const wss = new WebSocketServer({ server, path: "/ws", maxPayload: 16384 }); // room for a tiny face picture
 
 wss.on("connection", (ws) => {
   let room = null, me = null, acct = null, authTries = [];
@@ -115,7 +115,7 @@ wss.on("connection", (ws) => {
     let p = m.t === "rejoin" ? r.rejoin(ws, m.id, m.token, acct, streaksOf(acct)) : null;
     if (!p) {
       if (r.isFull) return send(ws, { t: "error", msg: `That table is full (${r.settings.seats} seats).` });
-      p = r.join(ws, m.name, m.emoji, acct, streaksOf(acct));
+      p = r.join(ws, m.name, m.emoji, acct, streaksOf(acct), m.img);
     }
     room = r; me = p;
     send(ws, { t: "welcome", id: p.id, token: p.token, code: r.code });
@@ -151,6 +151,7 @@ wss.on("connection", (ws) => {
       return send(ws, { t: "account", profile: null });
     }
     if (m.t === "face" && acct && EMOJIS.includes(m.emoji)) return accounts.setEmoji(acct, m.emoji);
+    if (m.t === "avatar" && !room && acct) return accounts.setImg(acct, m.img);
     if (!room || !me) return;
 
     switch (m.t) {
@@ -159,6 +160,9 @@ wss.on("connection", (ws) => {
       case "ready": return room.setReady(me, m.ready);
       case "lobby": return room.backToLobby(me);
       case "profile": return room.setProfile(me, m.name, m.emoji);
+      case "avatar":
+        if (acct) accounts.setImg(acct, m.img);
+        return room.setAvatar(me, m.img);
       case "type": return room.typing(me, m.text);
       case "answer": return room.answer(me, m.text);
       case "chat": return room.say(me, m.text);

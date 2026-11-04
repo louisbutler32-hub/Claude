@@ -31,6 +31,9 @@ const clamp = (v, [lo, hi]) => Math.min(hi, Math.max(lo, v));
 const cleanName = (s) => String(s || "").replace(/[\u0000-\u001f<>]/g, "").trim().slice(0, 16);
 const cleanText = (s, n) => String(s || "").replace(/[\u0000-\u001f]/g, " ").trim().slice(0, n);
 const send = (ws, msg) => { if (ws && ws.readyState === 1) ws.send(JSON.stringify(msg)); };
+// uploaded faces arrive as tiny data-URL images (the phone shrinks them to 24px first)
+const cleanImg = (s) => (typeof s === "string" && s.length <= 12000 && /^data:image\/(png|jpeg|webp);base64,[A-Za-z0-9+/=]+$/.test(s) ? s : null);
+const shortHash = (s) => require("crypto").createHash("sha1").update(s).digest("hex").slice(0, 10);
 
 class Room {
   constructor(code, cats, hooks = {}) {
@@ -55,12 +58,13 @@ class Room {
   get isFull() { return this.seated.length >= this.settings.seats; }
   get isEmpty() { return !this.players.some((p) => p.connected); }
 
-  join(ws, name, emoji, acct, streaks) {
+  join(ws, name, emoji, acct, streaks, img) {
     const taken = new Set(this.players.map((p) => p.emoji));
     const p = {
       id: crypto.randomBytes(6).toString("hex"),
       token: crypto.randomBytes(16).toString("hex"),
       acct: acct || null,
+      img: cleanImg(img) || (acct && acct.img) || null,
       dayStreak: (streaks && streaks.day) || 0,
       winStreak: (streaks && streaks.win) || 0,
       streak: 0, bestStreak: 0,
@@ -70,7 +74,11 @@ class Room {
       hearts: 0, alive: false, score: 0, served: 0, best: null, last: null, nextHeartAt: 0,
       lastAnswer: 0, lastType: 0, lastChat: 0, dropTimer: null,
     };
+    p.av = p.img ? shortHash(p.img) : null;
     this.players.push(p); // late arrivals watch until the next game
+    // the newcomer gets everyone's uploaded faces; everyone else gets theirs
+    for (const o of this.players) if (o !== p && o.img) send(ws, { t: "avatar", id: o.id, img: o.img });
+    if (p.img) this.broadcast({ t: "avatar", id: p.id, img: p.img }, p);
     if (!this.hostId) this.hostId = p.id;
     this.log(`${p.emoji} ${p.name} ${this.players.length === 1 ? "opened the table" : this.phase === "lobby" ? "sat down" : "is watching"}`);
     this.sync();
@@ -86,6 +94,7 @@ class Room {
     clearTimeout(p.dropTimer);
     p.ws = ws; p.connected = true;
     if (!this.players.some((x) => x.id === this.hostId && x.connected)) this.hostId = p.id;
+    for (const o of this.players) if (o.img) send(ws, { t: "avatar", id: o.id, img: o.img });
     this.sync();
     return p;
   }
@@ -133,6 +142,15 @@ class Room {
   /* ---------- lobby actions ---------- */
 
   setReady(p, ready) { if (!this.midGame) { p.ready = !!ready; this.sync(); } }
+
+  setAvatar(p, img) {
+    const clean = img === null ? null : cleanImg(img);
+    if (img !== null && !clean) return;
+    p.img = clean;
+    p.av = clean ? shortHash(clean) : null;
+    if (clean) this.broadcast({ t: "avatar", id: p.id, img: clean });
+    this.sync();
+  }
 
   setProfile(p, name, emoji) {
     if (this.midGame) return;
@@ -346,7 +364,7 @@ class Room {
       t: "state",
       code: this.code, you, hostId: this.hostId, phase: this.phase, settings: this.settings, now: Date.now(),
       players: this.players.map((p) => ({
-        id: p.id, name: p.name, emoji: p.emoji, connected: p.connected, ready: p.ready, signedIn: !!p.acct,
+        id: p.id, name: p.name, emoji: p.emoji, av: p.av || null, connected: p.connected, ready: p.ready, signedIn: !!p.acct,
         hearts: p.hearts, alive: p.alive, score: p.score, served: p.served, last: p.last,
         streak: p.streak, dayStreak: p.dayStreak, winStreak: p.winStreak, kisses: p.kisses,
       })),

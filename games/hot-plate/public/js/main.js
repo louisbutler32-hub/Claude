@@ -56,8 +56,11 @@ function render() {
 
 const prevOf = () => S.prev && S.prev.game;
 
+on("avatar", (m) => { S.avatars[m.id] = m.img; table.renderSeats(); });
+
 on("welcome", (m) => {
   setSession({ code: m.code, id: m.id, token: m.token });
+  if (profile.img) S.avatars[m.id] = profile.img;
   history.replaceState(null, "", "/?t=" + m.code);
   showError("");
 });

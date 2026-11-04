@@ -64,10 +64,19 @@ const waitPhase = (p, ph, timeout = 8000) => p.waitForSelector(`body[data-phase=
       await p.goto(`${BASE}/?t=${code}`);
       check((await p.inputValue("#code-input")) === code, `${n}'s invite link pre-fills the code`);
       await p.fill("#name-input", n);
+      if (n === "Ben") {
+        // a small red-and-gold test picture
+        const png = await p.evaluate(() => { const c = document.createElement("canvas"); c.width = c.height = 64; const g = c.getContext("2d"); g.fillStyle = "#c33"; g.fillRect(0, 0, 64, 64); g.fillStyle = "#fc4"; g.fillRect(16, 16, 32, 32); return c.toDataURL("image/png").split(",")[1]; });
+        await p.setInputFiles("#face-file", { name: "me.png", mimeType: "image/png", buffer: Buffer.from(png, "base64") });
+        await p.waitForSelector("#faces button.mine img", { timeout: 3000 });
+        check(true, "Ben uploaded a picture as his face");
+      }
       await p.click("#join-form button");
       await waitPhase(p, "lobby");
     }
     await a.waitForFunction(() => document.querySelectorAll(".seat:not(.empty)").length === 3);
+    await a.waitForSelector(".seat .face.pic", { timeout: 5000 });
+    check(true, "Ben's uploaded picture shows at his seat for the host");
     check(true, "host sees three players seated round the table");
     check(/i'm ready/i.test(await b.textContent("#big-btn")), "guests get a ready button");
     await b.click("#big-btn");

@@ -36,6 +36,7 @@ on("account", (m) => {
   if (m.profile) {
     profile.name = m.profile.name;
     if (m.profile.emoji) profile.emoji = m.profile.emoji;
+    if (m.profile.img !== undefined) profile.img = m.profile.img;
     saveProfile();
     $("auth-modal").hidden = true;
     $("auth-pin").value = "";
@@ -59,7 +60,7 @@ export function renderAccount() {
   if (a) {
     const s = a.stats;
     $("account-box").innerHTML = `
-      <div class="who"><span class="face">${a.emoji || "🍽️"}</span><div><b>${esc(a.name)}</b><span>${s.games} games · ${s.wins} wins · ${s.points.toLocaleString()} pts</span></div></div>
+      <div class="who"><span class="face">${a.img ? `<img class="mini-face" src="${a.img}" alt="">` : a.emoji || "🍽️"}</span><div><b>${esc(a.name)}</b><span>${s.games} games · ${s.wins} wins · ${s.points.toLocaleString()} pts</span></div></div>
       <div class="streak-row">${streakChip("🔥", s.dayStreak, "day streak")}${streakChip("👑", s.winStreak, "wins in a row")}</div>
       <button class="link" id="open-profile">your profile</button>`;
     $("open-profile").onclick = () => { renderProfile(); open("profile-modal"); };

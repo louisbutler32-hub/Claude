@@ -435,3 +435,11 @@ body:not(.is-signed-in) .signed-in, body.is-signed-in .signed-out { display: non
 .pop-flash { position: absolute; width: 20px; height: 20px; border-radius: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, #fff6d8, #ffb14a 40%, rgba(255, 90, 40, 0) 70%); animation: pop-flash .6s ease-out forwards; pointer-events: none; }
 @keyframes pop-flash { from { transform: translate(-50%, -50%) scale(1); opacity: 1; } to { transform: translate(-50%, -50%) scale(14); opacity: 0; } }
 .spark.smoke { font-size: 22px; filter: grayscale(.2); }
+
+/* ---------- faces: five emoji and your own picture ---------- */
+.faces button.upload { width: auto; padding: 0 10px; font: 800 18px var(--ui); color: var(--gold); border-style: dashed; display: inline-flex; align-items: center; gap: 4px; }
+.faces button.upload small { font: 800 9px var(--caps); letter-spacing: .14em; text-transform: uppercase; }
+.faces button.mine { padding: 2px; }
+.faces button.mine img, .mini-face { width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; display: block; }
+.mini-face { width: 30px; height: 30px; border: 2px solid var(--gold); }
+.seat .face.pic { border: 2px solid var(--ink); box-shadow: 0 0 0 2px var(--gold); border-radius: 4px; }

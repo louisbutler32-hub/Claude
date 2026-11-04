@@ -120,9 +120,13 @@ class Accounts {
   }
 
   setEmoji(acct, emoji) { acct.emoji = emoji; this.persist(acct); }
+  setImg(acct, img) {
+    const ok = img === null || (typeof img === "string" && img.length <= 12000 && /^data:image\/(png|jpeg|webp);base64,/.test(img));
+    if (ok) { acct.img = img; this.persist(acct); }
+  }
 
   // what the player's own screen shows
-  view(acct) { return { name: acct.name, emoji: acct.emoji, stats: { ...acct.stats, dayStreak: this.liveDayStreak(acct) } }; }
+  view(acct) { return { name: acct.name, emoji: acct.emoji, img: acct.img || null, stats: { ...acct.stats, dayStreak: this.liveDayStreak(acct) } }; }
 
   // called once per finished game for every signed-in player who sat down for it
   record(acct, { score, served, won, multiplayer, best, hotStreak, kisses }) {
