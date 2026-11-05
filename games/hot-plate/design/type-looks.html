@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Hot Plate Type</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500..700&family=Nunito:wght@600..900&family=Anton&family=Barlow+Semi+Condensed:wght@600;700;800&family=Barlow:wght@500;600&family=Lobster&family=Archivo:wdth,wght@62..125,500..900&family=Courier+Prime:wght@400;700&family=Playfair+Display:ital,wght@0,700..900;1,700..900&family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..800&family=Jost:wght@400..700&family=Titan+One&family=Rubik:wght@500..800&family=Lilita+One&family=Outfit:wght@600..800&family=Plus+Jakarta+Sans:wght@500..800&family=Space+Grotesk:wght@600;700&display=swap">
+<style>
+/* Six complete type systems for Hot Plate. Every phone mock uses identical markup; each .opt-x class only sets the type tokens (family, weight, size, tracking, case) per role, plus a few look-specific touches. */
+
+:root {
+  --page-bg: #0b0406;
+  --page-ink: #f5e7cf;
+  --page-dim: #c4a99a;
+  --page-muted: #8e7069;
+  --page-line: #3d1c25;
+  --page-card: #150709;
+  --night: #0b0406;
+  --panel: rgba(16, 6, 9, .9);
+  --line: #3d1c25;
+  --line-hi: #6a3340;
+  --text: #f5e7cf;
+  --dim: #c4a99a;
+  --muted: #8e7069;
+  --gold: #f0c060;
+  --rose: #ff6f91;
+  --hot: #ff7a2f;
+  --mint: #6ee0a8;
+  --ink: #120709;
+  --t0: #f3e7d0; --t1: #ffd77a; --t2: #ffa36b; --t3: #2a0d1a;
+  --page-font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root { color-scheme: dark; --page-bg: #0b0406; --page-ink: #f5e7cf; --page-card: #150709; }
+}
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--page-bg); color: var(--page-ink); font: 16px/1.45 var(--page-font); overflow-x: hidden; }
+.wrap { max-width: 1360px; margin: 0 auto; padding: 32px max(16px, env(safe-area-inset-right, 0px)) 64px max(16px, env(safe-area-inset-left, 0px)); }
+header.page { max-width: 72ch; margin-bottom: 28px; display: flex; flex-direction: column; gap: 8px; }
+header.page h1 { margin: 0; font-size: clamp(26px, 4vw, 36px); line-height: 1.1; font-weight: 800; text-wrap: balance; }
+header.page p { margin: 0; color: var(--page-dim); }
+header.page .zero { font-size: 14px; color: var(--page-muted); }
+nav.jump { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+nav.jump a { color: var(--page-ink); text-decoration: none; font-size: 13px; font-weight: 700; padding: 5px 10px; border: 1px solid var(--page-line); border-radius: 999px; }
+nav.jump a:hover, nav.jump a:focus-visible { border-color: var(--gold); color: var(--gold); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 640px), 1fr)); gap: 16px; }
+.card { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; padding: 16px; background: var(--page-card); border: 1px solid var(--page-line); border-radius: 18px; min-width: 0; }
+.desc { flex: 1 1 200px; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.desc .head { display: flex; align-items: baseline; gap: 10px; }
+.letter { font-size: 34px; font-weight: 800; line-height: 1; color: var(--gold); }
+.desc h2 { margin: 0; font-size: 21px; line-height: 1.2; font-weight: 800; }
+.fontsline { margin: 0; font-size: 14px; font-weight: 700; color: var(--gold); }
+.feel { margin: 0; color: var(--page-dim); font-size: 15px; }
+.desc dl { margin: 6px 0 0; display: grid; gap: 2px 0; font-size: 13px; }
+.desc dt { color: var(--page-muted); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: 11px; margin-top: 6px; }
+.desc dd { margin: 0; color: var(--page-ink); }
+footer.page { margin-top: 28px; color: var(--page-muted); font-size: 13px; max-width: 72ch; }
+
+/* ---- the phone mock: same markup in every option, only the type tokens change ---- */
+.phone { flex: 0 1 390px; width: 100%; max-width: 390px; min-width: 0; margin-inline: auto;
+  display: flex; flex-direction: column; gap: 14px; padding: 16px 14px 20px; color: var(--text);
+  border: 2px solid var(--line); border-radius: 30px; overflow: hidden;
+  background: radial-gradient(ellipse 120% 50% at 50% 32%, #6c1f2d 0%, #3a1018 45%, #1a080d 80%), var(--night);
+  box-shadow: 0 0 0 6px #070203, 0 18px 40px rgba(0,0,0,.6); }
+.phone p { margin: 0; }
+.hud { display: flex; justify-content: space-between; gap: 8px; }
+.badge { display: flex; flex-direction: column; min-width: 96px; padding: 5px 12px 7px; background: rgba(14,5,8,.88); border: 2px solid var(--line); border-radius: var(--radius); }
+.badge small { color: var(--muted); }
+.badge b { color: var(--gold); margin-top: 3px; font-variant-numeric: lining-nums; }
+.badge.count { align-items: flex-end; text-align: right; }
+.badge.count b { color: var(--rose); }
+
+.title { text-align: center; padding: 8px 0 4px; }
+.title h3 { margin: 0; }
+.title .sub { margin-top: 14px; padding-left: var(--sub-t); }
+.title .tag { margin-top: 8px; color: var(--dim); }
+
+.qbox { display: flex; flex-direction: column; gap: 6px; padding: 10px 16px 12px; text-align: center; background: var(--panel); border: 2px solid var(--gold); border-radius: var(--radius); box-shadow: 0 0 0 2px var(--ink), 0 0 26px rgba(240,192,96,.16); }
+.rule { display: flex; align-items: center; gap: 10px; }
+.rule::before, .rule::after { content: ""; flex: 1; border-top: 1px dashed var(--line-hi); }
+.chat .rule::before { display: none; }
+.qbox .lab { color: var(--dim); }
+.qbox .q { color: #fff7e8; text-wrap: balance; }
+.qbox .meta { color: var(--dim); }
+.qbox .turn { margin-top: 2px; padding-top: 7px; border-top: 1px dashed var(--line-hi); color: var(--hot); }
+.qbox.slim { padding: 8px 14px; border-color: var(--line-hi); box-shadow: 0 0 0 2px var(--ink); }
+.qbox.slim .turn { border: 0; padding: 0; margin: 0; color: var(--text); background: none; }
+
+.seats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: end; padding-top: 4px; }
+.seat { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0; }
+.bubble { position: relative; max-width: 100%; margin-bottom: 12px; padding: 5px 12px 6px; color: var(--ink); background: var(--t2); border: 2px solid var(--ink); border-radius: var(--bub-r); box-shadow: 0 3px 0 rgba(0,0,0,.45), 0 0 12px rgba(255,140,70,.4); overflow-wrap: anywhere; }
+.bubble::after { content: ""; position: absolute; left: 50%; bottom: -7px; width: 10px; height: 10px; background: inherit; border: inherit; border-width: 0 2px 2px 0; transform: translateX(-50%) rotate(45deg); }
+.bubble small { display: block; margin-top: 2px; opacity: .72; }
+.bubble.nope { background: #3a0d14; color: #ffb3b3; border-color: #ff4d5e; box-shadow: 0 3px 0 rgba(0,0,0,.45); }
+.bubble.nope s { text-decoration-thickness: 2px; }
+.face { font-size: 34px; line-height: 1; position: relative; z-index: 1; margin-bottom: -12px; }
+.plate { width: 78px; height: 24px; border-radius: 50%; background: radial-gradient(ellipse, #fff8ea 0 45%, #e8d7b8 46% 100%); border: 2px solid #b98a5a; box-shadow: 0 3px 0 rgba(0,0,0,.35); }
+.seat.holder .plate { box-shadow: 0 0 0 2px var(--hot), 0 0 18px rgba(255,122,47,.9); }
+.seat:not(.holder) { filter: brightness(.82) saturate(.85); }
+.nm { margin-top: 6px; color: var(--text); text-shadow: 0 2px 0 var(--ink); max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.seat.holder .nm { color: var(--hot); }
+.hp { margin-top: 3px; padding: 1px 7px 2px; background: rgba(14,5,8,.85); border: 1px solid var(--line); font: 900 16px/1 system-ui, sans-serif; letter-spacing: 2px; }
+.hp b { color: #ff4d6d; text-shadow: 0 0 6px rgba(255,77,109,.6); }
+.hp i { font-style: normal; color: #7a5a62; }
+.pts { margin-top: 5px; color: var(--gold); white-space: nowrap; }
+.pts small { color: var(--muted); }
+
+.dock { display: flex; flex-direction: column; gap: 8px; align-items: stretch; }
+.banner { text-align: center; color: var(--hot); }
+.lives { display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--dim); }
+.lives .hp { margin: 0; }
+.answer { display: flex; gap: 8px; }
+.field { flex: 1; min-width: 0; padding: 10px 12px; background: rgba(8,3,5,.85); border: 2px solid var(--hot); border-radius: var(--radius); box-shadow: 0 0 16px rgba(255,122,47,.25); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.serve { display: flex; align-items: center; padding: 0 16px; background: #8c2a1a; border: 2px solid var(--hot); border-radius: var(--radius); color: var(--text); }
+
+.kiss { text-align: center; padding: 4px 0; }
+.kiss .big { display: inline-block; }
+.kiss .kiss-sub { margin-top: 10px; color: var(--text); text-shadow: 0 2px 0 var(--ink); }
+.kiss .kiss-sub b { color: var(--gold); }
+
+.chat { display: flex; flex-direction: column; gap: 8px; padding: 10px 12px 12px; background: var(--panel); border: 2px solid var(--line); border-radius: var(--radius); }
+.chat .rule { color: var(--dim); }
+.chat ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 3px; }
+.chat .sys { color: var(--muted); }
+.chat .sys::before { content: "▸ "; }
+.chat b { color: var(--gold); margin-right: 6px; }
+@media (max-width: 400px) { .phone .r-dis { font-size: calc(var(--dis-s) * .82); } .phone { padding-inline: 10px; } .kiss .big { font-size: 32px !important; } }
+@media (max-width: 360px) { .phone .r-dis { font-size: calc(var(--dis-s) * .7); } .badge { min-width: 0; } }
+
+/* ---- type roles ---- */
+.phone .r-dis { font-family: var(--f-dis); font-weight: var(--dis-w, 400); font-size: var(--dis-s); line-height: var(--dis-lh, 1.15); letter-spacing: var(--dis-t, 0); text-transform: var(--dis-c, none); font-style: var(--dis-st, normal); font-stretch: var(--dis-x, 100%); }
+.phone .r-sub { font-family: var(--f-sub); font-weight: var(--sub-w, 400); font-size: var(--sub-s); line-height: var(--sub-lh, 1.15); letter-spacing: var(--sub-t, 0); text-transform: var(--sub-c, none); font-style: var(--sub-st, normal); font-stretch: var(--sub-x, 100%); }
+.phone .r-tag { font-family: var(--f-tag); font-weight: var(--tag-w, 400); font-size: var(--tag-s); line-height: var(--tag-lh, 1.15); letter-spacing: var(--tag-t, 0); text-transform: var(--tag-c, none); font-style: var(--tag-st, normal); font-stretch: var(--tag-x, 100%); }
+.phone .r-q { font-family: var(--f-q); font-weight: var(--q-w, 400); font-size: var(--q-s); line-height: var(--q-lh, 1.15); letter-spacing: var(--q-t, 0); text-transform: var(--q-c, none); font-style: var(--q-st, normal); font-stretch: var(--q-x, 100%); }
+.phone .r-lab { font-family: var(--f-lab); font-weight: var(--lab-w, 400); font-size: var(--lab-s); line-height: var(--lab-lh, 1.15); letter-spacing: var(--lab-t, 0); text-transform: var(--lab-c, none); font-style: var(--lab-st, normal); font-stretch: var(--lab-x, 100%); }
+.phone .r-meta { font-family: var(--f-meta); font-weight: var(--meta-w, 400); font-size: var(--meta-s); line-height: var(--meta-lh, 1.15); letter-spacing: var(--meta-t, 0); text-transform: var(--meta-c, none); font-style: var(--meta-st, normal); font-stretch: var(--meta-x, 100%); }
+.phone .r-turn { font-family: var(--f-turn); font-weight: var(--turn-w, 400); font-size: var(--turn-s); line-height: var(--turn-lh, 1.15); letter-spacing: var(--turn-t, 0); text-transform: var(--turn-c, none); font-style: var(--turn-st, normal); font-stretch: var(--turn-x, 100%); }
+.phone .r-other { font-family: var(--f-other); font-weight: var(--other-w, 400); font-size: var(--other-s); line-height: var(--other-lh, 1.15); letter-spacing: var(--other-t, 0); text-transform: var(--other-c, none); font-style: var(--other-st, normal); font-stretch: var(--other-x, 100%); }
+.phone .r-nm { font-family: var(--f-nm); font-weight: var(--nm-w, 400); font-size: var(--nm-s); line-height: var(--nm-lh, 1.15); letter-spacing: var(--nm-t, 0); text-transform: var(--nm-c, none); font-style: var(--nm-st, normal); font-stretch: var(--nm-x, 100%); }
+.phone .r-ans { font-family: var(--f-ans); font-weight: var(--ans-w, 400); font-size: var(--ans-s); line-height: var(--ans-lh, 1.15); letter-spacing: var(--ans-t, 0); text-transform: var(--ans-c, none); font-style: var(--ans-st, normal); font-stretch: var(--ans-x, 100%); }
+.phone .r-tier { font-family: var(--f-tier); font-weight: var(--tier-w, 400); font-size: var(--tier-s); line-height: var(--tier-lh, 1.15); letter-spacing: var(--tier-t, 0); text-transform: var(--tier-c, none); font-style: var(--tier-st, normal); font-stretch: var(--tier-x, 100%); }
+.phone .r-num { font-family: var(--f-num); font-weight: var(--num-w, 400); font-size: var(--num-s); line-height: var(--num-lh, 1.15); letter-spacing: var(--num-t, 0); text-transform: var(--num-c, none); font-style: var(--num-st, normal); font-stretch: var(--num-x, 100%); }
+.phone .r-pts { font-family: var(--f-pts); font-weight: var(--pts-w, 400); font-size: var(--pts-s); line-height: var(--pts-lh, 1.15); letter-spacing: var(--pts-t, 0); text-transform: var(--pts-c, none); font-style: var(--pts-st, normal); font-stretch: var(--pts-x, 100%); }
+.phone .r-btn { font-family: var(--f-btn); font-weight: var(--btn-w, 400); font-size: var(--btn-s); line-height: var(--btn-lh, 1.15); letter-spacing: var(--btn-t, 0); text-transform: var(--btn-c, none); font-style: var(--btn-st, normal); font-stretch: var(--btn-x, 100%); }
+.phone .r-in { font-family: var(--f-in); font-weight: var(--in-w, 400); font-size: var(--in-s); line-height: var(--in-lh, 1.15); letter-spacing: var(--in-t, 0); text-transform: var(--in-c, none); font-style: var(--in-st, normal); font-stretch: var(--in-x, 100%); }
+.phone .r-chat { font-family: var(--f-chat); font-weight: var(--chat-w, 400); font-size: var(--chat-s); line-height: var(--chat-lh, 1.15); letter-spacing: var(--chat-t, 0); text-transform: var(--chat-c, none); font-style: var(--chat-st, normal); font-stretch: var(--chat-x, 100%); }
+.phone .r-ban { font-family: var(--f-ban); font-weight: var(--ban-w, 400); font-size: var(--ban-s); line-height: var(--ban-lh, 1.15); letter-spacing: var(--ban-t, 0); text-transform: var(--ban-c, none); font-style: var(--ban-st, normal); font-stretch: var(--ban-x, 100%); }
+/* ---- the six systems ---- */
+.opt-a { --radius: 14px; --bub-r: 14px; --f-dis: 'Fredoka'; --dis-w: 700; --dis-s: 56px; --dis-t: -.01em; --dis-c: none; --dis-st: normal; --dis-lh: 1; --f-sub: 'Nunito'; --sub-w: 800; --sub-s: 13px; --sub-t: .34em; --sub-c: uppercase; --f-tag: 'Nunito'; --tag-w: 700; --tag-s: 14px; --tag-t: .01em; --f-q: 'Nunito'; --q-w: 900; --q-s: 23px; --q-t: -.005em; --q-lh: 1.18; --f-lab: 'Nunito'; --lab-w: 800; --lab-s: 11px; --lab-t: .2em; --lab-c: uppercase; --f-meta: 'Nunito'; --meta-w: 700; --meta-s: 13px; --meta-t: .02em; --f-turn: 'Fredoka'; --turn-w: 700; --turn-s: 21px; --turn-t: .06em; --turn-c: uppercase; --f-other: 'Nunito'; --other-w: 800; --other-s: 17px; --f-nm: 'Nunito'; --nm-w: 800; --nm-s: 15px; --nm-t: .02em; --f-ans: 'Nunito'; --ans-w: 900; --ans-s: 17px; --f-tier: 'Nunito'; --tier-w: 800; --tier-s: 10px; --tier-t: .1em; --tier-c: uppercase; --f-num: 'Fredoka'; --num-w: 600; --num-s: 24px; --num-t: .08em; --f-pts: 'Fredoka'; --pts-w: 600; --pts-s: 17px; --pts-t: .02em; --f-btn: 'Fredoka'; --btn-w: 700; --btn-s: 16px; --btn-t: .08em; --btn-c: uppercase; --f-in: 'Nunito'; --in-w: 700; --in-s: 17px; --f-chat: 'Nunito'; --chat-w: 700; --chat-s: 14px; --chat-lh: 1.3; --f-ban: 'Fredoka'; --ban-w: 700; --ban-s: 30px; --ban-t: 0; --ban-c: none; }
+.opt-a .title h3 { color: var(--gold); text-shadow: 0 4px 0 #b22a38, 0 8px 0 var(--ink), 0 0 34px rgba(255,170,90,.35); transform: rotate(-3deg); }
+.opt-a .bubble { border-radius: 16px; }
+.opt-a .banner { color: var(--hot); text-shadow: 0 3px 0 var(--ink); }
+.opt-a .kiss .big { color: #ffd0dc; text-shadow: 0 4px 0 #b22a38, 0 8px 0 var(--ink), 0 0 30px rgba(255,111,145,.7); transform: rotate(-4deg); font-size: 40px; }
+.opt-a .serve { border-radius: 14px; }
+
+.opt-b { --radius: 3px; --bub-r: 3px; --f-dis: 'Anton'; --dis-w: 400; --dis-s: 62px; --dis-t: .01em; --dis-c: uppercase; --dis-st: normal; --dis-lh: .95; --f-sub: 'Barlow Semi Condensed'; --sub-w: 800; --sub-s: 15px; --sub-t: .32em; --sub-c: uppercase; --f-tag: 'Barlow'; --tag-w: 600; --tag-s: 14px; --tag-t: .04em; --f-q: 'Barlow Semi Condensed'; --q-w: 700; --q-s: 25px; --q-t: 0; --q-lh: 1.12; --f-lab: 'Barlow Semi Condensed'; --lab-w: 800; --lab-s: 12px; --lab-t: .16em; --lab-c: uppercase; --f-meta: 'Barlow Semi Condensed'; --meta-w: 700; --meta-s: 14px; --meta-t: .08em; --meta-c: uppercase; --f-turn: 'Anton'; --turn-w: 400; --turn-s: 26px; --turn-t: .05em; --turn-c: uppercase; --f-other: 'Barlow Semi Condensed'; --other-w: 800; --other-s: 19px; --other-t: .04em; --other-c: uppercase; --f-nm: 'Barlow Semi Condensed'; --nm-w: 800; --nm-s: 16px; --nm-t: .05em; --nm-c: uppercase; --f-ans: 'Barlow Semi Condensed'; --ans-w: 800; --ans-s: 19px; --ans-t: .01em; --f-tier: 'Barlow Semi Condensed'; --tier-w: 800; --tier-s: 11px; --tier-t: .1em; --tier-c: uppercase; --f-num: 'Anton'; --num-w: 400; --num-s: 28px; --num-t: .04em; --f-pts: 'Anton'; --pts-w: 400; --pts-s: 20px; --pts-t: .03em; --f-btn: 'Barlow Semi Condensed'; --btn-w: 800; --btn-s: 16px; --btn-t: .14em; --btn-c: uppercase; --f-in: 'Barlow Semi Condensed'; --in-w: 600; --in-s: 19px; --f-chat: 'Barlow'; --chat-w: 500; --chat-s: 14px; --chat-lh: 1.3; --f-ban: 'Anton'; --ban-w: 400; --ban-s: 34px; --ban-t: .03em; --ban-c: uppercase; }
+.opt-b .title h3 { color: var(--gold); transform: skewX(-8deg); text-shadow: 4px 4px 0 #d8501c, 8px 8px 0 var(--ink); }
+.opt-b .title .sub { display: inline-block; background: var(--hot); color: var(--ink); padding: 3px 8px 3px calc(8px + .32em); transform: skewX(-8deg); margin-top: 14px; }
+.opt-b .qbox .lab { justify-content: center; }
+.opt-b .qbox .lab::before, .opt-b .qbox .lab::after { display: none; }
+.opt-b .qbox .lab span { background: var(--hot); color: var(--ink); padding: 2px 10px 2px calc(10px + .16em); transform: skewX(-10deg); }
+.opt-b .qbox .turn, .opt-b .banner, .opt-b .kiss .big { transform: skewX(-8deg); }
+.opt-b .banner { color: var(--hot); text-shadow: 3px 3px 0 var(--ink); }
+.opt-b .kiss .big { color: #ffd0dc; font-size: 44px; text-shadow: 3px 3px 0 #b22a38, 6px 6px 0 var(--ink); }
+.opt-b .serve { transform: skewX(-8deg); }
+.opt-b .bubble { border-radius: 2px; }
+
+.opt-c { --radius: 8px; --bub-r: 20px; --f-dis: 'Lobster'; --dis-w: 400; --dis-s: 62px; --dis-t: 0; --dis-c: none; --dis-st: normal; --dis-lh: 1.05; --f-sub: 'Archivo'; --sub-w: 800; --sub-s: 12px; --sub-t: .4em; --sub-c: uppercase; --sub-x: 125%; --f-tag: 'Courier Prime'; --tag-w: 400; --tag-s: 14px; --tag-t: .02em; --f-q: 'Archivo'; --q-w: 800; --q-s: 23px; --q-t: -.005em; --q-lh: 1.16; --f-lab: 'Archivo'; --lab-w: 800; --lab-s: 11px; --lab-t: .24em; --lab-c: uppercase; --lab-x: 125%; --f-meta: 'Courier Prime'; --meta-w: 700; --meta-s: 14px; --meta-t: .02em; --f-turn: 'Lobster'; --turn-w: 400; --turn-s: 27px; --turn-t: .01em; --turn-c: none; --f-other: 'Archivo'; --other-w: 800; --other-s: 15px; --other-t: .14em; --other-c: uppercase; --other-x: 125%; --f-nm: 'Archivo'; --nm-w: 800; --nm-s: 13px; --nm-t: .1em; --nm-c: uppercase; --nm-x: 125%; --f-ans: 'Archivo'; --ans-w: 800; --ans-s: 17px; --f-tier: 'Archivo'; --tier-w: 800; --tier-s: 9px; --tier-t: .12em; --tier-c: uppercase; --tier-x: 125%; --f-num: 'Archivo'; --num-w: 900; --num-s: 30px; --num-t: .02em; --num-x: 70%; --num-lh: 1; --f-pts: 'Archivo'; --pts-w: 900; --pts-s: 21px; --pts-t: .01em; --pts-x: 70%; --f-btn: 'Archivo'; --btn-w: 900; --btn-s: 13px; --btn-t: .2em; --btn-c: uppercase; --btn-x: 125%; --f-in: 'Archivo'; --in-w: 600; --in-s: 17px; --f-chat: 'Courier Prime'; --chat-w: 400; --chat-s: 14px; --chat-lh: 1.3; --f-ban: 'Lobster'; --ban-w: 400; --ban-s: 34px; --ban-t: 0; --ban-c: none; }
+.opt-c .title h3 { color: #ffe6ee; text-shadow: 0 0 2px #fff, 0 0 10px var(--rose), 0 0 22px var(--rose), 0 0 42px rgba(255,111,145,.6), 0 4px 0 #7a1730; transform: rotate(-4deg); }
+.opt-c .title .sub { color: var(--mint); }
+.opt-c .title .sub::before, .opt-c .title .sub::after { content: "★"; letter-spacing: 0; margin: 0 .6em; color: var(--gold); }
+.opt-c .qbox .turn { color: var(--hot); text-shadow: 0 0 12px rgba(255,122,47,.6); }
+.opt-c .banner { color: #ffe1c4; text-shadow: 0 0 8px var(--hot), 0 0 20px var(--hot); }
+.opt-c .kiss .big { color: #ffe6ee; font-size: 46px; text-shadow: 0 0 2px #fff, 0 0 12px var(--rose), 0 0 28px var(--rose); transform: rotate(-4deg); }
+.opt-c .chat { border-style: dashed; background: #f3e7d0; color: #2a1810; }
+.opt-c .chat .r-lab { color: #7a5a4a; }
+.opt-c .chat .rule::after, .opt-c .chat .rule::before { border-color: #b9a58c; }
+.opt-c .chat .sys { color: #7a5a4a; }
+.opt-c .chat b { color: #a8231f; }
+
+.opt-d { --radius: 2px; --bub-r: 2px; --f-dis: 'Playfair Display'; --dis-w: 900; --dis-s: 58px; --dis-t: -.005em; --dis-c: none; --dis-st: italic; --dis-lh: 1; --f-sub: 'Jost'; --sub-w: 600; --sub-s: 12px; --sub-t: .52em; --sub-c: uppercase; --f-tag: 'Fraunces'; --tag-w: 500; --tag-s: 15px; --tag-t: .01em; --tag-st: italic; --f-q: 'Fraunces'; --q-w: 700; --q-s: 24px; --q-t: -.005em; --q-lh: 1.16; --f-lab: 'Jost'; --lab-w: 600; --lab-s: 11px; --lab-t: .32em; --lab-c: uppercase; --f-meta: 'Fraunces'; --meta-w: 500; --meta-s: 14px; --meta-t: 0; --meta-st: italic; --f-turn: 'Playfair Display'; --turn-w: 900; --turn-s: 23px; --turn-t: .01em; --turn-c: none; --turn-st: italic; --f-other: 'Fraunces'; --other-w: 600; --other-s: 18px; --other-t: 0; --other-st: italic; --f-nm: 'Jost'; --nm-w: 600; --nm-s: 13px; --nm-t: .16em; --nm-c: uppercase; --f-ans: 'Fraunces'; --ans-w: 700; --ans-s: 18px; --f-tier: 'Jost'; --tier-w: 600; --tier-s: 9px; --tier-t: .16em; --tier-c: uppercase; --f-num: 'Playfair Display'; --num-w: 700; --num-s: 26px; --num-t: .04em; --f-pts: 'Playfair Display'; --pts-w: 700; --pts-s: 19px; --pts-t: .02em; --f-btn: 'Jost'; --btn-w: 600; --btn-s: 13px; --btn-t: .24em; --btn-c: uppercase; --f-in: 'Fraunces'; --in-w: 500; --in-s: 17px; --in-st: italic; --f-chat: 'Jost'; --chat-w: 450; --chat-s: 14px; --chat-t: .01em; --chat-lh: 1.35; --f-ban: 'Playfair Display'; --ban-w: 900; --ban-s: 32px; --ban-t: 0; --ban-c: none; --ban-st: italic; }
+.opt-d .title h3 { color: var(--gold); text-shadow: 0 2px 0 var(--ink), 0 0 30px rgba(255,190,110,.35); }
+.opt-d .title .sub { display: flex; align-items: center; justify-content: center; gap: 12px; padding-left: .52em; }
+.opt-d .title .sub::before, .opt-d .title .sub::after { content: ""; width: 34px; border-top: 1px solid var(--gold); opacity: .7; }
+.opt-d .qbox { box-shadow: 0 0 0 2px var(--ink), inset 0 0 0 4px var(--panel), inset 0 0 0 5px rgba(240,192,96,.45); }
+.opt-d .r-num, .opt-d .r-pts { font-variant-numeric: lining-nums; }
+.opt-d .banner { color: var(--hot); text-shadow: 0 2px 0 var(--ink), 0 0 18px rgba(255,122,47,.5); }
+.opt-d .kiss .big { color: #ffd0dc; font-size: 42px; text-shadow: 0 3px 0 #7a1730, 0 0 26px rgba(255,111,145,.6); }
+.opt-d .chat b { font-family: 'Fraunces'; font-style: italic; font-weight: 600; }
+.opt-d .bubble { border-radius: 2px; border-width: 1px; box-shadow: 0 0 0 3px var(--t2), 0 0 0 4px var(--ink), 0 4px 0 4px rgba(0,0,0,.4); }
+
+.opt-e { --radius: 18px; --bub-r: 999px; --f-dis: 'Titan One'; --dis-w: 400; --dis-s: 58px; --dis-t: .01em; --dis-c: none; --dis-st: normal; --dis-lh: 1; --f-sub: 'Lilita One'; --sub-w: 400; --sub-s: 17px; --sub-t: .22em; --sub-c: uppercase; --f-tag: 'Rubik'; --tag-w: 600; --tag-s: 14px; --tag-t: .01em; --f-q: 'Rubik'; --q-w: 800; --q-s: 23px; --q-t: -.01em; --q-lh: 1.18; --f-lab: 'Rubik'; --lab-w: 700; --lab-s: 11px; --lab-t: .18em; --lab-c: uppercase; --f-meta: 'Rubik'; --meta-w: 600; --meta-s: 13px; --meta-t: .02em; --f-turn: 'Titan One'; --turn-w: 400; --turn-s: 22px; --turn-t: .04em; --turn-c: uppercase; --f-other: 'Rubik'; --other-w: 700; --other-s: 17px; --f-nm: 'Rubik'; --nm-w: 700; --nm-s: 15px; --f-ans: 'Rubik'; --ans-w: 800; --ans-s: 17px; --f-tier: 'Rubik'; --tier-w: 700; --tier-s: 10px; --tier-t: .1em; --tier-c: uppercase; --f-num: 'Lilita One'; --num-w: 400; --num-s: 28px; --num-t: .04em; --f-pts: 'Lilita One'; --pts-w: 400; --pts-s: 20px; --pts-t: .02em; --f-btn: 'Lilita One'; --btn-w: 400; --btn-s: 19px; --btn-t: .06em; --btn-c: uppercase; --f-in: 'Rubik'; --in-w: 600; --in-s: 17px; --f-chat: 'Rubik'; --chat-w: 500; --chat-s: 14px; --chat-lh: 1.3; --f-ban: 'Titan One'; --ban-w: 400; --ban-s: 32px; --ban-t: .01em; --ban-c: none; }
+.opt-e .title h3 { color: #fff3d6; text-shadow: 0 3px 0 var(--gold), 0 6px 0 var(--hot), 0 9px 0 #b22a38, 0 13px 0 var(--ink), 0 0 40px rgba(255,170,90,.4); transform: rotate(-4deg); }
+.opt-e .title .sub { color: var(--gold); margin-top: 18px; }
+.opt-e .qbox { border-width: 3px; }
+.opt-e .qbox .lab { justify-content: center; }
+.opt-e .qbox .lab::before, .opt-e .qbox .lab::after { display: none; }
+.opt-e .qbox .lab span { background: var(--gold); color: var(--ink); padding: 3px 10px 3px calc(10px + .18em); border-radius: 999px; }
+.opt-e .qbox .turn { color: var(--hot); text-shadow: 0 2px 0 var(--ink); }
+.opt-e .badge { border-radius: 14px; }
+.opt-e .seat .nm { background: rgba(14,5,8,.85); border-radius: 999px; padding: 2px 10px 3px; }
+.opt-e .seat.holder .nm { background: var(--hot); color: var(--ink); text-shadow: none; }
+.opt-e .serve { border-radius: 999px; box-shadow: 0 4px 0 #5a1810; }
+.opt-e .field { border-radius: 999px; padding-left: 18px; }
+.opt-e .banner { color: var(--gold); text-shadow: 0 3px 0 var(--hot), 0 6px 0 var(--ink); transform: rotate(-2deg); }
+.opt-e .kiss .big { white-space: nowrap; color: #fff3d6; font-size: 38px; text-shadow: 0 3px 0 var(--rose), 0 6px 0 #b22a38, 0 10px 0 var(--ink), 0 0 30px rgba(255,111,145,.7); transform: rotate(-4deg); }
+.opt-e .kiss .big::before, .opt-e .kiss .big::after { content: "✦"; color: var(--gold); font-size: .5em; vertical-align: middle; margin: 0 8px; text-shadow: none; }
+
+.opt-f { --radius: 12px; --bub-r: 14px; --f-dis: 'Outfit'; --dis-w: 800; --dis-s: 56px; --dis-t: -.045em; --dis-c: lowercase; --dis-st: normal; --dis-lh: 1; --f-sub: 'Outfit'; --sub-w: 600; --sub-s: 14px; --sub-t: .02em; --sub-c: lowercase; --f-tag: 'Plus Jakarta Sans'; --tag-w: 500; --tag-s: 14px; --tag-t: 0; --f-q: 'Plus Jakarta Sans'; --q-w: 800; --q-s: 23px; --q-t: -.015em; --q-lh: 1.2; --f-lab: 'Plus Jakarta Sans'; --lab-w: 700; --lab-s: 12px; --lab-t: .01em; --lab-c: none; --f-meta: 'Plus Jakarta Sans'; --meta-w: 600; --meta-s: 13px; --meta-t: 0; --f-turn: 'Plus Jakarta Sans'; --turn-w: 800; --turn-s: 17px; --turn-t: -.005em; --turn-c: none; --f-other: 'Plus Jakarta Sans'; --other-w: 700; --other-s: 16px; --other-t: -.005em; --f-nm: 'Plus Jakarta Sans'; --nm-w: 700; --nm-s: 14px; --nm-t: -.005em; --f-ans: 'Plus Jakarta Sans'; --ans-w: 800; --ans-s: 16px; --ans-t: -.01em; --f-tier: 'Plus Jakarta Sans'; --tier-w: 700; --tier-s: 10px; --tier-t: 0; --tier-c: none; --f-num: 'Space Grotesk'; --num-w: 700; --num-s: 26px; --num-t: .02em; --f-pts: 'Space Grotesk'; --pts-w: 700; --pts-s: 18px; --pts-t: 0; --f-btn: 'Outfit'; --btn-w: 700; --btn-s: 16px; --btn-t: .01em; --btn-c: none; --f-in: 'Plus Jakarta Sans'; --in-w: 500; --in-s: 17px; --f-chat: 'Plus Jakarta Sans'; --chat-w: 500; --chat-s: 14px; --chat-lh: 1.35; --f-ban: 'Outfit'; --ban-w: 800; --ban-s: 30px; --ban-t: -.03em; --ban-c: lowercase; }
+.opt-f .title h3 { color: var(--text); }
+.opt-f .title h3::after { content: "."; color: var(--hot); }
+.opt-f .title .sub { display: inline-block; background: rgba(240,192,96,.14); color: var(--gold); border: 1px solid rgba(240,192,96,.4); border-radius: 999px; padding: 3px 12px 4px; }
+.opt-f .qbox { border-width: 1.5px; }
+.opt-f .qbox .lab { justify-content: flex-start; color: var(--gold); }
+.opt-f .qbox .lab::before { display: none; }
+.opt-f .qbox, .opt-f .qbox .q { text-align: left; }
+.opt-f .qbox .turn { align-self: flex-start; border: 0; margin-top: 4px; padding: 5px 12px 6px; border-radius: 999px; background: var(--hot); color: var(--ink); }
+.opt-f .slim .turn { align-self: flex-start; background: none; color: var(--text); padding: 0; margin: 0; }
+.opt-f .slim { text-align: left; }
+.opt-f .r-num, .opt-f .r-pts { font-variant-numeric: tabular-nums; }
+.opt-f .badge { border-radius: 12px; border-width: 1.5px; }
+.opt-f .banner { color: var(--hot); }
+.opt-f .kiss .big { color: #ffd0dc; font-size: 40px; text-shadow: 0 0 26px rgba(255,111,145,.7); }
+.opt-f .bubble { border-width: 0; box-shadow: 0 4px 14px rgba(0,0,0,.45); }
+.opt-f .bubble.nope { border-width: 1.5px; }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="page">
+  <h1>Hot Plate: six type systems</h1>
+  <p>Each option sets every piece of text in the game: the title, the question, labels and buttons, the numbers, and chat. Every phone shows the same moments on the same candlelit palette, so only the type changes. The question box is the one to judge first: it has to read in a single glance on a phone.</p>
+  <p class="zero">Option zero (what the game uses now, your earlier "Supper Club" pick): Shrikhand title, Figtree 800&ndash;900 UI, DM Mono codes and chat, letter-spaced caps labels.</p>
+  <nav class="jump" aria-label="Jump to option"><a href="#opt-a">A &middot; Comfort Food</a><a href="#opt-b">B &middot; Prime Time</a><a href="#opt-c">C &middot; Blue Plate Diner</a><a href="#opt-d">D &middot; Velvet Room</a><a href="#opt-e">E &middot; Prize Wheel</a><a href="#opt-f">F &middot; Lowkey</a></nav>
+</header>
+<main class="grid">
+<article class="card" id="opt-a">
+  <div class="desc">
+    <div class="head"><span class="letter">A</span><h2>Comfort Food</h2></div>
+    <p class="fontsline">Fredoka + Nunito</p>
+    <p class="feel">Soft, round and warm: the friendliest, easiest read of the six, like a cosy family dinner.</p>
+    <dl><dt>Title</dt><dd>Fredoka 700, 56px, title case, slight tilt, stacked red shadow</dd><dt>Question</dt><dd>Nunito 900, 23px / 1.18, sentence case</dd><dt>Labels &amp; buttons</dt><dd>Nunito 800 caps, 11px, +0.2em &middot; buttons Fredoka 700, 16px caps</dd><dt>Numbers</dt><dd>Fredoka 600, 24px (badges) / 17px (points)</dd><dt>Chat &amp; small</dt><dd>Nunito 700, 14px, names Nunito 900 gold</dd></dl>
+  </div>
+  <div class="phone opt-a" aria-label="Mock of option A">
+  <div class="hud">
+    <div class="badge"><small class="r-lab">private</small><b class="r-num">LVTW</b></div>
+    <div class="badge count"><small class="r-lab">at the table</small><b class="r-num">4/4</b></div>
+  </div>
+  <div class="title">
+    <h3 class="r-dis">Hot Plate</h3>
+    <p class="sub r-sub">dinner party</p>
+    <p class="tag r-tag">pass the plate &middot; don't get burned</p>
+  </div>
+  <div class="qbox">
+    <div class="lab rule r-lab"><span>plate 1</span></div>
+    <p class="q r-q">🌎 Name a country in the Americas</p>
+    <p class="meta r-meta">3 served</p>
+    <p class="turn r-turn">🔥 Your turn</p>
+  </div>
+  <div class="qbox slim"><p class="turn other r-other">Ana&#x27;s turn</p></div>
+  <div class="seats">
+    <div class="seat holder">
+      <div class="bubble t2 r-ans">Brazil<small class="r-tier">+50 main course</small></div>
+      <div class="face">🦊</div><div class="plate"></div>
+      <div class="nm r-nm">Ana</div>
+      <div class="hp"><b>♥♥♥</b></div>
+      <div class="pts"><span class="r-pts">120</span> <small class="r-lab">pts</small></div>
+    </div>
+    <div class="seat">
+      <div class="bubble nope r-ans"><s>Spain</s><small class="r-tier">wrong guess</small></div>
+      <div class="face">🐸</div><div class="plate"></div>
+      <div class="nm r-nm">Milo</div>
+      <div class="hp"><b>♥♥</b><i>♥</i></div>
+      <div class="pts"><span class="r-pts">85</span> <small class="r-lab">pts</small></div>
+    </div>
+  </div>
+  <div class="dock">
+    <p class="banner r-ban">your turn!</p>
+    <div class="lives"><span class="r-lab">your lives</span><span class="hp"><b>♥♥</b><i>♥</i></span></div>
+    <div class="answer"><span class="field r-in">type an answer…</span><span class="serve r-btn">serve</span></div>
+  </div>
+  <div class="kiss">
+    <p class="big r-ban">💋 chef&#x27;s kiss!</p>
+    <p class="kiss-sub r-chat">Ana found the secret answer &middot; <b class="r-pts">+250</b></p>
+  </div>
+  <div class="chat">
+    <div class="rule r-lab"><span>chat</span></div>
+    <ol class="r-chat">
+      <li class="sys">Ana served Brazil</li>
+      <li><b>Milo</b>wait spain isn't in the americas??</li>
+      <li><b>Ana</b>geography class paying off 😌</li>
+      <li class="sys">Milo lost a life</li>
+    </ol>
+  </div>
+</div>
+</article>
+<article class="card" id="opt-b">
+  <div class="desc">
+    <div class="head"><span class="letter">B</span><h2>Prime Time</h2></div>
+    <p class="fontsline">Anton + Barlow Semi Condensed + Barlow</p>
+    <p class="feel">Loud, fast and scoreboard-sharp: the plate goes out like live sport on a broadcast graphic.</p>
+    <dl><dt>Title</dt><dd>Anton 400, 62px, ALL CAPS, slanted 8&deg;, hard orange drop</dd><dt>Question</dt><dd>Barlow Semi Condensed 700, 25px / 1.12, sentence case</dd><dt>Labels &amp; buttons</dt><dd>Barlow Semi Condensed 800 caps, 12px, +0.16em, labels on orange tabs</dd><dt>Numbers</dt><dd>Anton 400, 28px (badges) / 20px (points), +0.04em</dd><dt>Chat &amp; small</dt><dd>Barlow 500, 14px, names Barlow Semi Condensed 800 caps</dd></dl>
+  </div>
+  <div class="phone opt-b" aria-label="Mock of option B">
+  <div class="hud">
+    <div class="badge"><small class="r-lab">private</small><b class="r-num">LVTW</b></div>
+    <div class="badge count"><small class="r-lab">at the table</small><b class="r-num">4/4</b></div>
+  </div>
+  <div class="title">
+    <h3 class="r-dis">Hot Plate</h3>
+    <p class="sub r-sub">dinner party</p>
+    <p class="tag r-tag">pass the plate &middot; don't get burned</p>
+  </div>
+  <div class="qbox">
+    <div class="lab rule r-lab"><span>plate 1</span></div>
+    <p class="q r-q">🌎 Name a country in the Americas</p>
+    <p class="meta r-meta">3 served</p>
+    <p class="turn r-turn">🔥 Your turn</p>
+  </div>
+  <div class="qbox slim"><p class="turn other r-other">Ana&#x27;s turn</p></div>
+  <div class="seats">
+    <div class="seat holder">
+      <div class="bubble t2 r-ans">Brazil<small class="r-tier">+50 main course</small></div>
+      <div class="face">🦊</div><div class="plate"></div>
+      <div class="nm r-nm">Ana</div>
+      <div class="hp"><b>♥♥♥</b></div>
+      <div class="pts"><span class="r-pts">120</span> <small class="r-lab">pts</small></div>
+    </div>
+    <div class="seat">
+      <div class="bubble nope r-ans"><s>Spain</s><small class="r-tier">wrong guess</small></div>
+      <div class="face">🐸</div><div class="plate"></div>
+      <div class="nm r-nm">Milo</div>
+      <div class="hp"><b>♥♥</b><i>♥</i></div>
+      <div class="pts"><span class="r-pts">85</span> <small class="r-lab">pts</small></div>
+    </div>
+  </div>
+  <div class="dock">
+    <p class="banner r-ban">your turn!</p>
+    <div class="lives"><span class="r-lab">your lives</span><span class="hp"><b>♥♥</b><i>♥</i></span></div>
+    <div class="answer"><span class="field r-in">type an answer…</span><span class="serve r-btn">serve</span></div>
+  </div>
+  <div class="kiss">
+    <p class="big r-ban">💋 chef&#x27;s kiss!</p>
+    <p class="kiss-sub r-chat">Ana found the secret answer &middot; <b class="r-pts">+250</b></p>
+  </div>
+  <div class="chat">
+    <div class="rule r-lab"><span>chat</span></div>
+    <ol class="r-chat">
+      <li class="sys">Ana served Brazil</li>
+      <li><b>Milo</b>wait spain isn't in the americas??</li>
+      <li><b>Ana</b>geography class paying off 😌</li>
+      <li class="sys">Milo lost a life</li>
+    </ol>
+  </div>
+</div>
+</article>
+<article class="card" id="opt-c">
+  <div class="desc">
+    <div class="head"><span class="letter">C</span><h2>Blue Plate Diner</h2></div>
+    <p class="fontsline">Lobster + Archivo (wide &amp; condensed) + Courier Prime</p>
+    <p class="feel">Chrome-and-neon roadside diner: a script sign up top, menu-board caps, order-ticket chat.</p>
+    <dl><dt>Title</dt><dd>Lobster 400, 62px, title case, neon rose glow</dd><dt>Question</dt><dd>Archivo 800, 23px / 1.16, sentence case</dd><dt>Labels &amp; buttons</dt><dd>Archivo Expanded (wdth 125) 800 caps, 11px, +0.24em</dd><dt>Numbers</dt><dd>Archivo Condensed (wdth 70) 900, 30px / 21px, menu-price style</dd><dt>Chat &amp; small</dt><dd>Courier Prime 400, 14px, names bold &middot; turn banners in Lobster</dd></dl>
+  </div>
+  <div class="phone opt-c" aria-label="Mock of option C">
+  <div class="hud">
+    <div class="badge"><small class="r-lab">private</small><b class="r-num">LVTW</b></div>
+    <div class="badge count"><small class="r-lab">at the table</small><b class="r-num">4/4</b></div>
+  </div>
+  <div class="title">
+    <h3 class="r-dis">Hot Plate</h3>
+    <p class="sub r-sub">dinner party</p>
+    <p class="tag r-tag">pass the plate &middot; don't get burned</p>
+  </div>
+  <div class="qbox">
+    <div class="lab rule r-lab"><span>plate 1</span></div>
+    <p class="q r-q">🌎 Name a country in the Americas</p>
+    <p class="meta r-meta">3 served</p>
+    <p class="turn r-turn">🔥 Your turn!</p>
+  </div>
+  <div class="qbox slim"><p class="turn other r-other">Ana&#x27;s turn</p></div>
+  <div class="seats">
+    <div class="seat holder">
+      <div class="bubble t2 r-ans">Brazil<small class="r-tier">+50 main course</small></div>
+      <div class="face">🦊</div><div class="plate"></div>
+      <div class="nm r-nm">Ana</div>
+      <div class="hp"><b>♥♥♥</b></div>
+      <div class="pts"><span class="r-pts">120</span> <small class="r-lab">pts</small></div>
+    </div>
+    <div class="seat">
+      <div class="bubble nope r-ans"><s>Spain</s><small class="r-tier">wrong guess</small></div>
+      <div class="face">🐸</div><div class="plate"></div>
+      <div class="nm r-nm">Milo</div>
+      <div class="hp"><b>♥♥</b><i>♥</i></div>
+      <div class="pts"><span class="r-pts">85</span> <small class="r-lab">pts</small></div>
+    </div>
+  </div>
+  <div class="dock">
+    <p class="banner r-ban">Your turn!</p>
+    <div class="lives"><span class="r-lab">your lives</span><span class="hp"><b>♥♥</b><i>♥</i></span></div>
+    <div class="answer"><span class="field r-in">type an answer…</span><span class="serve r-btn">serve</span></div>
+  </div>
+  <div class="kiss">
+    <p class="big r-ban">💋 Chef&#x27;s kiss!</p>
+    <p class="kiss-sub r-chat">Ana found the secret answer &middot; <b class="r-pts">+250</b></p>
+  </div>
+  <div class="chat">
+    <div class="rule r-lab"><span>chat</span></div>
+    <ol class="r-chat">
+      <li class="sys">Ana served Brazil</li>
+      <li><b>Milo</b>wait spain isn't in the americas??</li>
+      <li><b>Ana</b>geography class paying off 😌</li>
+      <li class="sys">Milo lost a life</li>
+    </ol>
+  </div>
+</div>
+</article>
+<article class="card" id="opt-d">
+  <div class="desc">
+    <div class="head"><span class="letter">D</span><h2>Velvet Room</h2></div>
+    <p class="fontsline">Playfair Display + Fraunces + Jost</p>
+    <p class="feel">Candlelit and grown-up: a fancy menu card, but set heavy enough to read at a glance.</p>
+    <dl><dt>Title</dt><dd>Playfair Display 900 italic, 58px, title case, gold, no tilt</dd><dt>Question</dt><dd>Fraunces 700 (optical size auto), 24px / 1.16, sentence case</dd><dt>Labels &amp; buttons</dt><dd>Jost 600 caps, 11px, +0.32em &middot; buttons Jost 600 13px +0.24em</dd><dt>Numbers</dt><dd>Playfair Display 700 lining figures, 26px / 19px</dd><dt>Chat &amp; small</dt><dd>Jost 450, 14px, names Fraunces 600 italic gold</dd></dl>
+  </div>
+  <div class="phone opt-d" aria-label="Mock of option D">
+  <div class="hud">
+    <div class="badge"><small class="r-lab">private</small><b class="r-num">LVTW</b></div>
+    <div class="badge count"><small class="r-lab">at the table</small><b class="r-num">4/4</b></div>
+  </div>
+  <div class="title">
+    <h3 class="r-dis">Hot Plate</h3>
+    <p class="sub r-sub">dinner party</p>
+    <p class="tag r-tag">pass the plate &middot; don't get burned</p>
+  </div>
+  <div class="qbox">
+    <div class="lab rule r-lab"><span>plate 1</span></div>
+    <p class="q r-q">🌎 Name a country in the Americas</p>
+    <p class="meta r-meta">3 served</p>
+    <p class="turn r-turn">🔥 Your turn</p>
+  </div>
+  <div class="qbox slim"><p class="turn other r-other">Ana&#x27;s turn</p></div>
+  <div class="seats">
+    <div class="seat holder">
+      <div class="bubble t2 r-ans">Brazil<small class="r-tier">+50 main course</small></div>
+      <div class="face">🦊</div><div class="plate"></div>
+      <div class="nm r-nm">Ana</div>
+      <div class="hp"><b>♥♥♥</b></div>
+      <div class="pts"><span class="r-pts">120</span> <small class="r-lab">pts</small></div>
+    </div>
+    <div class="seat">
+      <div class="bubble nope r-ans"><s>Spain</s><small class="r-tier">wrong guess</small></div>
+      <div class="face">🐸</div><div class="plate"></div>
+      <div class="nm r-nm">Milo</div>
+      <div class="hp"><b>♥♥</b><i>♥</i></div>
+      <div class="pts"><span class="r-pts">85</span> <small class="r-lab">pts</small></div>
+    </div>
+  </div>
+  <div class="dock">
+    <p class="banner r-ban">Your turn</p>
+    <div class="lives"><span class="r-lab">your lives</span><span class="hp"><b>♥♥</b><i>♥</i></span></div>
+    <div class="answer"><span class="field r-in">type an answer…</span><span class="serve r-btn">serve</span></div>
+  </div>
+  <div class="kiss">
+    <p class="big r-ban">💋 Chef&#x27;s kiss</p>
+    <p class="kiss-sub r-chat">Ana found the secret answer &middot; <b class="r-pts">+250</b></p>
+  </div>
+  <div class="chat">
+    <div class="rule r-lab"><span>chat</span></div>
+    <ol class="r-chat">
+      <li class="sys">Ana served Brazil</li>
+      <li><b>Milo</b>wait spain isn't in the americas??</li>
+      <li><b>Ana</b>geography class paying off 😌</li>
+      <li class="sys">Milo lost a life</li>
+    </ol>
+  </div>
+</div>
+</article>
+<article class="card" id="opt-e">
+  <div class="desc">
+    <div class="head"><span class="letter">E</span><h2>Prize Wheel</h2></div>
+    <p class="fontsline">Titan One + Rubik + Lilita One</p>
+    <p class="feel">Saturday-night TV game show: chunky, bouncy and buzzer-ready, the most playful of the six.</p>
+    <dl><dt>Title</dt><dd>Titan One 400, 58px, title case, tilted, 3-layer candy shadow</dd><dt>Question</dt><dd>Rubik 800, 23px / 1.18, sentence case</dd><dt>Labels &amp; buttons</dt><dd>Rubik 700 caps, 11px, +0.18em in pills &middot; buttons Lilita One 19px caps</dd><dt>Numbers</dt><dd>Lilita One 400, 28px / 20px, +0.04em</dd><dt>Chat &amp; small</dt><dd>Rubik 500, 14px, names Rubik 700 gold</dd></dl>
+  </div>
+  <div class="phone opt-e" aria-label="Mock of option E">
+  <div class="hud">
+    <div class="badge"><small class="r-lab">private</small><b class="r-num">LVTW</b></div>
+    <div class="badge count"><small class="r-lab">at the table</small><b class="r-num">4/4</b></div>
+  </div>
+  <div class="title">
+    <h3 class="r-dis">Hot Plate</h3>
+    <p class="sub r-sub">dinner party</p>
+    <p class="tag r-tag">pass the plate &middot; don't get burned</p>
+  </div>
+  <div class="qbox">
+    <div class="lab rule r-lab"><span>plate 1</span></div>
+    <p class="q r-q">🌎 Name a country in the Americas</p>
+    <p class="meta r-meta">3 served</p>
+    <p class="turn r-turn">🔥 Your turn</p>
+  </div>
+  <div class="qbox slim"><p class="turn other r-other">Ana&#x27;s turn</p></div>
+  <div class="seats">
+    <div class="seat holder">
+      <div class="bubble t2 r-ans">Brazil<small class="r-tier">+50 main course</small></div>
+      <div class="face">🦊</div><div class="plate"></div>
+      <div class="nm r-nm">Ana</div>
+      <div class="hp"><b>♥♥♥</b></div>
+      <div class="pts"><span class="r-pts">120</span> <small class="r-lab">pts</small></div>
+    </div>
+    <div class="seat">
+      <div class="bubble nope r-ans"><s>Spain</s><small class="r-tier">wrong guess</small></div>
+      <div class="face">🐸</div><div class="plate"></div>
+      <div class="nm r-nm">Milo</div>
+      <div class="hp"><b>♥♥</b><i>♥</i></div>
+      <div class="pts"><span class="r-pts">85</span> <small class="r-lab">pts</small></div>
+    </div>
+  </div>
+  <div class="dock">
+    <p class="banner r-ban">your turn!</p>
+    <div class="lives"><span class="r-lab">your lives</span><span class="hp"><b>♥♥</b><i>♥</i></span></div>
+    <div class="answer"><span class="field r-in">type an answer…</span><span class="serve r-btn">serve</span></div>
+  </div>
+  <div class="kiss">
+    <p class="big r-ban">💋 chef&#x27;s kiss!</p>
+    <p class="kiss-sub r-chat">Ana found the secret answer &middot; <b class="r-pts">+250</b></p>
+  </div>
+  <div class="chat">
+    <div class="rule r-lab"><span>chat</span></div>
+    <ol class="r-chat">
+      <li class="sys">Ana served Brazil</li>
+      <li><b>Milo</b>wait spain isn't in the americas??</li>
+      <li><b>Ana</b>geography class paying off 😌</li>
+      <li class="sys">Milo lost a life</li>
+    </ol>
+  </div>
+</div>
+</article>
+<article class="card" id="opt-f">
+  <div class="desc">
+    <div class="head"><span class="letter">F</span><h2>Lowkey</h2></div>
+    <p class="fontsline">Outfit + Plus Jakarta Sans + Space Grotesk</p>
+    <p class="feel">Crisp and current, like an app already on your phone: quiet type that lets the colour and the boiling pot do the shouting.</p>
+    <dl><dt>Title</dt><dd>Outfit 800, 56px, all lowercase, tight &minus;0.045em, orange full stop</dd><dt>Question</dt><dd>Plus Jakarta Sans 800, 23px / 1.2, &minus;0.015em, sentence case</dd><dt>Labels &amp; buttons</dt><dd>Plus Jakarta Sans 700, 12px, sentence case (no spaced caps) &middot; buttons Outfit 700 16px</dd><dt>Numbers</dt><dd>Space Grotesk 700 tabular, 26px / 18px</dd><dt>Chat &amp; small</dt><dd>Plus Jakarta Sans 500, 14px, names 700 gold</dd></dl>
+  </div>
+  <div class="phone opt-f" aria-label="Mock of option F">
+  <div class="hud">
+    <div class="badge"><small class="r-lab">private</small><b class="r-num">LVTW</b></div>
+    <div class="badge count"><small class="r-lab">at the table</small><b class="r-num">4/4</b></div>
+  </div>
+  <div class="title">
+    <h3 class="r-dis">Hot Plate</h3>
+    <p class="sub r-sub">dinner party</p>
+    <p class="tag r-tag">pass the plate &middot; don't get burned</p>
+  </div>
+  <div class="qbox">
+    <div class="lab rule r-lab"><span>plate 1</span></div>
+    <p class="q r-q">🌎 Name a country in the Americas</p>
+    <p class="meta r-meta">3 served</p>
+    <p class="turn r-turn">🔥 Your turn</p>
+  </div>
+  <div class="qbox slim"><p class="turn other r-other">Ana&#x27;s turn</p></div>
+  <div class="seats">
+    <div class="seat holder">
+      <div class="bubble t2 r-ans">Brazil<small class="r-tier">+50 main course</small></div>
+      <div class="face">🦊</div><div class="plate"></div>
+      <div class="nm r-nm">Ana</div>
+      <div class="hp"><b>♥♥♥</b></div>
+      <div class="pts"><span class="r-pts">120</span> <small class="r-lab">pts</small></div>
+    </div>
+    <div class="seat">
+      <div class="bubble nope r-ans"><s>Spain</s><small class="r-tier">wrong guess</small></div>
+      <div class="face">🐸</div><div class="plate"></div>
+      <div class="nm r-nm">Milo</div>
+      <div class="hp"><b>♥♥</b><i>♥</i></div>
+      <div class="pts"><span class="r-pts">85</span> <small class="r-lab">pts</small></div>
+    </div>
+  </div>
+  <div class="dock">
+    <p class="banner r-ban">your turn!</p>
+    <div class="lives"><span class="r-lab">your lives</span><span class="hp"><b>♥♥</b><i>♥</i></span></div>
+    <div class="answer"><span class="field r-in">type an answer…</span><span class="serve r-btn">serve</span></div>
+  </div>
+  <div class="kiss">
+    <p class="big r-ban">💋 chef&#x27;s kiss</p>
+    <p class="kiss-sub r-chat">Ana found the secret answer &middot; <b class="r-pts">+250</b></p>
+  </div>
+  <div class="chat">
+    <div class="rule r-lab"><span>chat</span></div>
+    <ol class="r-chat">
+      <li class="sys">Ana served Brazil</li>
+      <li><b>Milo</b>wait spain isn't in the americas??</li>
+      <li><b>Ana</b>geography class paying off 😌</li>
+      <li class="sys">Milo lost a life</li>
+    </ol>
+  </div>
+</div>
+</article>
+</main>
+<footer class="page">All fonts are free on Google Fonts. Mocks are plain HTML and CSS at real phone sizes (390px wide). Hearts and emoji use the system font in every option.</footer>
+</div>
+</body>
+</html>
