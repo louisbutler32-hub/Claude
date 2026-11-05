@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hot Plate Scene Looks</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Figtree:wght@500;700;800;900&family=DM+Mono:wght@500&display=swap">
+<style>
+/* Layout: one smooth, painted mock of the game screen per scene, two columns; every mock uses the
+   same seating and the new layout so only the setting changes. */
+:root {
+  --night: #0b0607;
+  --text: #f5e7cf;
+  --dim: #c4a99a;
+  --muted: #8e7069;
+  --gold: #f0c060;
+  --hot: #ff7a2f;
+  --line: #3d1c25;
+  --display: "Shrikhand", Georgia, serif;
+  --ui: "Figtree", system-ui, sans-serif;
+  --mono: "DM Mono", ui-monospace, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--night); color: var(--text); font: 16px/1.45 var(--ui); }
+.wrap { max-width: 1280px; margin: 0 auto; padding-block: 34px 60px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header { max-width: 68ch; display: flex; flex-direction: column; gap: 8px; margin-bottom: 26px; }
+h1 { margin: 0; font: 900 clamp(26px, 4vw, 36px)/1.1 var(--ui); text-wrap: balance; }
+header p { margin: 0; color: var(--dim); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 560px), 1fr)); gap: 26px; }
+.card { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.letter { font: 900 28px/1 var(--ui); color: var(--gold); }
+.head h2 { margin: 0; font: 900 19px/1.2 var(--ui); }
+.head p { margin: 0; flex-basis: 100%; color: var(--muted); font-size: 14px; }
+.mock { position: relative; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 6px; border: 1px solid var(--line); background: #000; }
+.mock canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* the game's overlay, drawn as HTML so the type is crisp */
+.ov { position: absolute; inset: 0; pointer-events: none; font-family: var(--ui); }
+.qbox { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(36%, 300px); border-width: 2px !important; padding: 6px 14px 8px; text-align: center; background: rgba(14, 6, 9, .82); border: 1px solid rgba(255, 220, 160, .22); border-radius: 10px; backdrop-filter: blur(6px); box-shadow: 0 10px 30px rgba(0, 0, 0, .45); }
+.qbox small { display: block; font: 800 7px var(--ui); letter-spacing: .24em; text-transform: uppercase; color: var(--muted); }
+.qbox b { display: block; font: 900 clamp(11px, 1.7vw, 17px)/1.15 var(--ui); color: #fff7e8; margin: 2px 0; }
+.qbox i { display: block; font-style: normal; font: 900 clamp(8px, 1vw, 11px) var(--ui); color: var(--hot); border-top: 1px dashed rgba(255, 220, 160, .2); padding-top: 3px; margin-top: 3px; }
+.seat { position: absolute; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 1px; }
+.seat .f { font-size: clamp(16px, 2.6vw, 28px); line-height: 1; filter: drop-shadow(0 2px 2px rgba(0,0,0,.5)); }
+.seat .n { font: 900 clamp(7px, 1vw, 11px) var(--ui); background: rgba(14, 6, 9, .8); color: var(--text); padding: 1px 6px; border-radius: 99px; }
+.seat.hold .n { background: var(--hot); color: #1a0806; }
+.seat .h { font: 900 clamp(6px, .9vw, 10px) var(--ui); color: #ff4d6d; letter-spacing: 1px; }
+.bub { position: absolute; transform: translate(0, -50%); background: #f3e7d0; color: #120709; font: 800 clamp(7px, 1vw, 11px) var(--ui); padding: 2px 7px; border-radius: 6px; white-space: nowrap; box-shadow: 0 2px 6px rgba(0,0,0,.35); }
+.bub.t2 { background: #ffa36b; }
+.bub.t3 { background: #2a0d1a; color: var(--gold); border: 1px solid var(--gold); }
+.bub.typ { background: #fffaf0; border: 1px solid var(--hot); }
+.badge { position: absolute; top: 3%; padding: 3px 9px; background: rgba(14, 6, 9, .8); border: 1px solid rgba(255,220,160,.2); border-radius: 8px; font: 500 clamp(8px, 1.2vw, 13px) var(--mono); color: var(--gold); }
+.dock { position: absolute; left: 50%; bottom: 5%; transform: translateX(-50%); width: 46%; padding: 6px 10px; background: rgba(14, 6, 9, .82); border: 1px solid var(--hot); border-radius: 10px; font: 600 clamp(7px, 1vw, 11px) var(--ui); color: var(--dim); }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Hot Plate scene looks</h1>
+    <p>Six smooth, painted settings to replace the pixel art. Each uses the game's current layout: the question in a box in the middle of the table, a small pot by whoever's turn it is, and the room showing round the edges. Only the setting changes between them. Pick a letter and it goes into the game.</p>
+  </header>
+  <div class="grid" id="grid"></div>
+</div>
+
+<script>
+const SCENES = [
+  ["a", "Candlelit Supper", "A warm dining room at night: panelled walls, a linen table, candles and a soft chandelier glow."],
+  ["b", "Neon Diner", "A late-night 50s diner: checkerboard floor, red booths, chrome, and a buzzing neon sign."],
+  ["c", "Rooftop Dinner", "A table on a roof deck at dusk: city skyline, warm string lights, the first stars."],
+  ["d", "Garden Party", "Evening in a back garden: fairy lights over a lawn, hedges, fireflies and a gingham cloth."],
+  ["e", "Chef's Kitchen", "The pass of a busy restaurant kitchen: subway tiles, steel, hanging pans and heat-lamp glow."],
+  ["f", "Grand Banquet", "A gilded hall: velvet drapes, crystal chandeliers, marble floor and a gold-rimmed table."],
+];
+const PLAYERS = [["🦊", "Lou", "♥♥"], ["🐸", "Priya", "♥♥"], ["👻", "Sam", "♥"], ["😎", "you", "♥♥"], ["🤖", "Kai", "♥"], ["🦄", "Mia", "♥♥"]];
+
+/* ---------- drawing helpers ---------- */
+const rnd = (s) => () => ((s = (s * 16807) % 2147483647) - 1) / 2147483646;
+function ell(g, x, y, rx, ry) { g.beginPath(); g.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2); }
+function glow(g, x, y, r, color, a = 0.5) {
+  const grd = g.createRadialGradient(x, y, 0, x, y, r);
+  grd.addColorStop(0, color.replace("A", a)); grd.addColorStop(1, color.replace("A", 0));
+  g.fillStyle = grd; g.fillRect(x - r, y - r, r * 2, r * 2);
+}
+function vign(g, W, H, a = 0.6) {
+  const grd = g.createRadialGradient(W / 2, H * 0.55, Math.min(W, H) * 0.25, W / 2, H * 0.55, Math.max(W, H) * 0.75);
+  grd.addColorStop(0, "rgba(0,0,0,0)"); grd.addColorStop(1, `rgba(0,0,0,${a})`);
+  g.fillStyle = grd; g.fillRect(0, 0, W, H);
+}
+function lightString(g, x0, y0, x1, y1, sag, n, color, r) {
+  g.strokeStyle = "rgba(20,14,10,.8)"; g.lineWidth = 1;
+  const mx = (x0 + x1) / 2, my = Math.max(y0, y1) + sag;
+  g.beginPath(); g.moveTo(x0, y0); g.quadraticCurveTo(mx, my, x1, y1); g.stroke();
+  for (let i = 1; i < n; i++) {
+    const t = i / n, x = (1 - t) * (1 - t) * x0 + 2 * (1 - t) * t * mx + t * t * x1, y = (1 - t) * (1 - t) * y0 + 2 * (1 - t) * t * my + t * t * y1;
+    glow(g, x, y + 3, r * 4, color, 0.35);
+    g.fillStyle = color.replace("A", 1); ell(g, x, y + 3, r, r * 1.2); g.fill();
+  }
+}
+
+// the table every scene shares; style picks the top
+function table(g, cx, cy, rx, ry, s) {
+  g.fillStyle = "rgba(0,0,0,.45)"; ell(g, cx, cy + ry * 0.22, rx * 1.04, ry * 1.02); g.fill();
+  g.fillStyle = s.edge; ell(g, cx, cy + ry * 0.08, rx * 1.01, ry); g.fill();
+  const grd = g.createRadialGradient(cx, cy - ry * 0.3, 2, cx, cy, rx);
+  grd.addColorStop(0, s.hi); grd.addColorStop(1, s.lo);
+  g.fillStyle = grd; ell(g, cx, cy, rx, ry); g.fill();
+  if (s.rim) { g.strokeStyle = s.rim; g.lineWidth = Math.max(1.5, rx * 0.012); ell(g, cx, cy, rx * 0.985, ry * 0.97); g.stroke(); }
+  if (s.check) {
+    g.save(); ell(g, cx, cy, rx, ry); g.clip();
+    const sz = rx * 0.07;
+    for (let y = cy - ry; y < cy + ry; y += sz) for (let x = cx - rx; x < cx + rx; x += sz) {
+      if (((x - cx + rx) / sz + (y - cy + ry) / sz | 0) % 2) { g.fillStyle = s.check; g.fillRect(x, y, sz, sz); }
+    }
+    g.restore();
+  }
+  if (s.runner) { g.save(); ell(g, cx, cy, rx, ry); g.clip(); g.fillStyle = s.runner; g.fillRect(cx - rx, cy - ry * 0.16, rx * 2, ry * 0.32); g.restore(); }
+}
+function plate(g, x, y, r) {
+  g.fillStyle = "rgba(0,0,0,.25)"; ell(g, x, y + r * 0.18, r, r * 0.5); g.fill();
+  g.fillStyle = "#e9dfcf"; ell(g, x, y, r, r * 0.5); g.fill();
+  g.fillStyle = "#fbf6ec"; ell(g, x, y, r * 0.72, r * 0.35); g.fill();
+  g.fillStyle = "#c9c4bd"; g.fillRect(x - r * 1.35, y - r * 0.3, r * 0.08, r * 0.7); g.fillRect(x + r * 1.27, y - r * 0.3, r * 0.08, r * 0.7);
+}
+function pot(g, x, y, r) {
+  for (let i = 0; i < 5; i++) { glow(g, x - r * 0.6 + i * r * 0.3, y + r * 0.85, r * 0.35, "rgba(255,140,40,A)", 0.7); }
+  g.fillStyle = "rgba(0,0,0,.35)"; ell(g, x, y + r * 0.95, r * 1.05, r * 0.25); g.fill();
+  const grd = g.createLinearGradient(x - r, 0, x + r, 0);
+  grd.addColorStop(0, "#6a2f16"); grd.addColorStop(0.35, "#e0915a"); grd.addColorStop(0.65, "#b0602f"); grd.addColorStop(1, "#5a2612");
+  g.fillStyle = grd; g.beginPath(); g.moveTo(x - r, y - r * 0.2); g.lineTo(x + r, y - r * 0.2); g.lineTo(x + r * 0.92, y + r * 0.75); g.quadraticCurveTo(x, y + r * 1.05, x - r * 0.92, y + r * 0.75); g.closePath(); g.fill();
+  g.fillStyle = "#f6efe4";
+  for (let i = 0; i < 9; i++) { ell(g, x - r * 0.75 + (i % 5) * r * 0.37, y - r * 0.32 - (i > 4 ? r * 0.18 : 0), r * 0.22, r * 0.15); g.fill(); }
+  g.fillStyle = "#b9b9c4"; ell(g, x, y - r * 0.55, r * 0.95, r * 0.2); g.fill();
+  g.fillStyle = "#3a3a44"; ell(g, x, y - r * 0.72, r * 0.15, r * 0.1); g.fill();
+  for (let i = 0; i < 3; i++) glow(g, x - r * 0.4 + i * r * 0.4, y - r * (1.2 + (i % 2) * 0.25), r * 0.45, "rgba(255,250,240,A)", 0.25);
+}
+
+/* ---------- the six rooms ---------- */
+const DRAW = {
+  a(g, W, H, T) { // candlelit supper
+    let grd = g.createLinearGradient(0, 0, 0, H); grd.addColorStop(0, "#3a1d14"); grd.addColorStop(0.55, "#22100b"); grd.addColorStop(1, "#140906");
+    g.fillStyle = grd; g.fillRect(0, 0, W, H);
+    g.strokeStyle = "rgba(255,210,150,.06)"; g.lineWidth = 2;
+    for (let x = W * 0.06; x < W; x += W * 0.14) { g.strokeRect(x, H * 0.12, W * 0.1, H * 0.3); }
+    g.fillStyle = "#2a140c"; g.fillRect(0, H * 0.5, W, H * 0.5);
+    for (let i = 0; i < 9; i++) { g.strokeStyle = "rgba(0,0,0,.35)"; g.beginPath(); g.moveTo(W / 2 + (i - 4) * W * 0.04, H * 0.5); g.lineTo(W / 2 + (i - 4) * W * 0.3, H); g.stroke(); }
+    glow(g, W / 2, H * 0.06, W * 0.35, "rgba(255,190,110,A)", 0.35);
+    [0.2, 0.8].forEach((f) => { g.fillStyle = "#c99442"; g.fillRect(W * f - 2, H * 0.22, 4, H * 0.12); glow(g, W * f, H * 0.2, W * 0.07, "rgba(255,180,90,A)", 0.6); });
+    table(g, T.cx, T.cy, T.rx, T.ry, { edge: "#5a2e18", hi: "#fbf4e6", lo: "#d9cdb6", runner: "rgba(140,30,45,.75)" });
+    [-0.35, 0.35].forEach((f) => { const x = T.cx + T.rx * f, y = T.cy - T.ry * 0.05; g.fillStyle = "#f4e6c8"; g.fillRect(x - 2, y - 16, 4, 16); glow(g, x, y - 19, 26, "rgba(255,190,90,A)", 0.8); g.fillStyle = "#ffcc55"; ell(g, x, y - 19, 2.5, 4); g.fill(); });
+    vign(g, W, H, 0.65);
+  },
+  b(g, W, H, T) { // neon diner
+    let grd = g.createLinearGradient(0, 0, 0, H * 0.5); grd.addColorStop(0, "#0e2a31"); grd.addColorStop(1, "#163c45");
+    g.fillStyle = grd; g.fillRect(0, 0, W, H * 0.5);
+    g.fillStyle = "#8f1d2c"; g.fillRect(0, H * 0.36, W, H * 0.14);
+    g.fillStyle = "#d8dde2"; g.fillRect(0, H * 0.355, W, 3);
+    // checker floor in perspective
+    const rows = 10;
+    for (let r = 0; r < rows; r++) {
+      const y0 = H * 0.5 + (H * 0.5) * (r / rows) ** 1.6, y1 = H * 0.5 + (H * 0.5) * ((r + 1) / rows) ** 1.6;
+      const w0 = W * (0.9 + r * 0.25), cols = 16;
+      for (let c = 0; c < cols; c++) {
+        g.fillStyle = (r + c) % 2 ? "#f1ece4" : "#141414";
+        const xa = W / 2 - w0 / 2 + (w0 / cols) * c, wb = W * (0.9 + (r + 1) * 0.25), xb = W / 2 - wb / 2 + (wb / cols) * c;
+        g.beginPath(); g.moveTo(xa, y0); g.lineTo(xa + w0 / cols, y0); g.lineTo(xb + wb / cols, y1); g.lineTo(xb, y1); g.closePath(); g.fill();
+      }
+    }
+    g.save(); g.font = `900 ${H * 0.12}px Figtree, sans-serif`; g.textAlign = "center";
+    g.shadowColor = "#ff4fa0"; g.shadowBlur = 24; g.strokeStyle = "#ffd0e6"; g.lineWidth = 3; g.strokeText("EAT", W * 0.18, H * 0.24);
+    g.shadowColor = "#3ff0e0"; g.strokeStyle = "#d8fffb"; g.font = `800 ${H * 0.06}px Figtree, sans-serif`; g.strokeText("OPEN LATE", W * 0.82, H * 0.2); g.restore();
+    glow(g, W * 0.18, H * 0.2, W * 0.2, "rgba(255,79,160,A)", 0.25);
+    table(g, T.cx, T.cy, T.rx, T.ry, { edge: "#b9c2c9", hi: "#e9524f", lo: "#9d1f26", rim: "#e9eef2" });
+    vign(g, W, H, 0.55);
+  },
+  c(g, W, H, T) { // rooftop
+    let grd = g.createLinearGradient(0, 0, 0, H * 0.55); grd.addColorStop(0, "#0b1230"); grd.addColorStop(0.6, "#3c2a5c"); grd.addColorStop(1, "#d9774f");
+    g.fillStyle = grd; g.fillRect(0, 0, W, H * 0.55);
+    const r = rnd(5);
+    for (let i = 0; i < 70; i++) { g.fillStyle = `rgba(255,255,255,${0.3 + r() * 0.6})`; g.fillRect(r() * W, r() * H * 0.3, 1.2, 1.2); }
+    for (let x = 0; x < W;) { const bw = W * (0.04 + r() * 0.06), bh = H * (0.08 + r() * 0.22); g.fillStyle = "#14122a"; g.fillRect(x, H * 0.55 - bh, bw, bh);
+      for (let wy = H * 0.55 - bh + 5; wy < H * 0.53; wy += 7) for (let wx = x + 3; wx < x + bw - 3; wx += 6) if (r() > 0.55) { g.fillStyle = "rgba(255,210,120,.8)"; g.fillRect(wx, wy, 2, 3); }
+      x += bw + 2; }
+    grd = g.createLinearGradient(0, H * 0.55, 0, H); grd.addColorStop(0, "#4a2f22"); grd.addColorStop(1, "#24150e");
+    g.fillStyle = grd; g.fillRect(0, H * 0.55, W, H * 0.45);
+    for (let i = 0; i < 14; i++) { g.strokeStyle = "rgba(0,0,0,.3)"; g.beginPath(); g.moveTo(0, H * 0.55 + i * H * 0.035); g.lineTo(W, H * 0.55 + i * H * 0.035); g.stroke(); }
+    lightString(g, -10, H * 0.08, W + 10, H * 0.12, H * 0.14, 16, "rgba(255,214,140,A)", 2.6);
+    lightString(g, -10, H * 0.2, W * 0.5, H * 0.06, H * 0.08, 9, "rgba(255,214,140,A)", 2.2);
+    table(g, T.cx, T.cy, T.rx, T.ry, { edge: "#6e4a32", hi: "#fbf6ee", lo: "#ddd3c3" });
+    vign(g, W, H, 0.5);
+  },
+  d(g, W, H, T) { // garden party
+    let grd = g.createLinearGradient(0, 0, 0, H * 0.5); grd.addColorStop(0, "#2b2552"); grd.addColorStop(0.7, "#a9627e"); grd.addColorStop(1, "#f2a97a");
+    g.fillStyle = grd; g.fillRect(0, 0, W, H * 0.5);
+    const r = rnd(9);
+    for (let i = 0; i < 9; i++) { const x = r() * W, s = H * (0.12 + r() * 0.14); g.fillStyle = "#1c2a24"; ell(g, x, H * 0.44, s, s * 1.1); g.fill(); }
+    g.fillStyle = "#22352c"; g.fillRect(0, H * 0.42, W, H * 0.1);
+    grd = g.createLinearGradient(0, H * 0.5, 0, H); grd.addColorStop(0, "#3c5b3a"); grd.addColorStop(1, "#1d2e1d");
+    g.fillStyle = grd; g.fillRect(0, H * 0.5, W, H * 0.5);
+    lightString(g, -10, H * 0.1, W + 10, H * 0.06, H * 0.16, 18, "rgba(255,236,170,A)", 2.4);
+    for (let i = 0; i < 26; i++) glow(g, r() * W, H * 0.45 + r() * H * 0.5, 6, "rgba(220,255,140,A)", 0.7);
+    table(g, T.cx, T.cy, T.rx, T.ry, { edge: "#7a5232", hi: "#fbf2e4", lo: "#e2d6c2", check: "rgba(200,50,62,.35)" });
+    vign(g, W, H, 0.45);
+  },
+  e(g, W, H, T) { // chef's kitchen
+    g.fillStyle = "#d9d4cc"; g.fillRect(0, 0, W, H * 0.5);
+    g.strokeStyle = "rgba(120,110,100,.35)"; g.lineWidth = 1;
+    for (let y = 0; y < H * 0.5; y += H * 0.035) { g.beginPath(); g.moveTo(0, y); g.lineTo(W, y); g.stroke(); const off = (y / (H * 0.035)) % 2 ? W * 0.035 : 0; for (let x = off; x < W; x += W * 0.07) { g.beginPath(); g.moveTo(x, y); g.lineTo(x, y + H * 0.035); g.stroke(); } }
+    let grd = g.createLinearGradient(0, H * 0.3, 0, H * 0.5); grd.addColorStop(0, "#9aa1a8"); grd.addColorStop(1, "#5c636a");
+    g.fillStyle = grd; g.fillRect(0, H * 0.32, W, H * 0.18);
+    g.fillStyle = "#c9ced3"; g.fillRect(W * 0.1, H * 0.1, W * 0.8, 3);
+    for (let i = 0; i < 7; i++) { const x = W * (0.16 + i * 0.11), s = H * (0.04 + (i % 3) * 0.012); g.strokeStyle = "#2a2a2e"; g.beginPath(); g.moveTo(x, H * 0.1); g.lineTo(x, H * 0.14); g.stroke(); g.fillStyle = "#2f3236"; ell(g, x, H * 0.14 + s, s, s); g.fill(); }
+    [0.3, 0.7].forEach((f) => { g.fillStyle = "#1e1e20"; g.fillRect(W * f - 14, 0, 28, H * 0.05); glow(g, W * f, H * 0.32, W * 0.22, "rgba(255,170,80,A)", 0.35); });
+    grd = g.createLinearGradient(0, H * 0.5, 0, H); grd.addColorStop(0, "#3a3633"); grd.addColorStop(1, "#1b1917");
+    g.fillStyle = grd; g.fillRect(0, H * 0.5, W, H * 0.5);
+    table(g, T.cx, T.cy, T.rx, T.ry, { edge: "#8b9299", hi: "#c98d55", lo: "#8a5a32", rim: "#d6dbe0" });
+    vign(g, W, H, 0.5);
+  },
+  f(g, W, H, T) { // grand banquet
+    let grd = g.createLinearGradient(0, 0, 0, H * 0.55); grd.addColorStop(0, "#2a0a12"); grd.addColorStop(1, "#4a1420");
+    g.fillStyle = grd; g.fillRect(0, 0, W, H * 0.55);
+    for (let i = 0; i < 12; i++) { g.fillStyle = i % 2 ? "rgba(0,0,0,.25)" : "rgba(255,120,140,.05)"; g.fillRect(i * W / 12, 0, W / 24, H * 0.55); }
+    [0.08, 0.92].forEach((f) => { grd = g.createLinearGradient(W * f - 18, 0, W * f + 18, 0); grd.addColorStop(0, "#7a5a20"); grd.addColorStop(0.5, "#f2cf85"); grd.addColorStop(1, "#7a5a20"); g.fillStyle = grd; g.fillRect(W * f - 14, 0, 28, H * 0.55); });
+    [0.3, 0.5, 0.7].forEach((f) => { glow(g, W * f, H * 0.1, W * 0.12, "rgba(255,230,170,A)", 0.55); for (let i = 0; i < 10; i++) { g.fillStyle = "rgba(255,250,230,.9)"; g.fillRect(W * f - 20 + i * 4.4, H * 0.1 + Math.sin(i) * 4, 1.6, 4); } });
+    grd = g.createLinearGradient(0, H * 0.55, 0, H); grd.addColorStop(0, "#d8d2c8"); grd.addColorStop(1, "#8e877d");
+    g.fillStyle = grd; g.fillRect(0, H * 0.55, W, H * 0.45);
+    g.strokeStyle = "rgba(90,80,70,.25)"; const r = rnd(4);
+    for (let i = 0; i < 14; i++) { g.beginPath(); let x = r() * W, y = H * 0.56 + r() * H * 0.4; g.moveTo(x, y); for (let k = 0; k < 4; k++) { x += (r() - 0.3) * 40; y += (r() - 0.5) * 14; g.lineTo(x, y); } g.stroke(); }
+    table(g, T.cx, T.cy, T.rx, T.ry, { edge: "#8a6420", hi: "#fbf6ea", lo: "#e3d8c4", rim: "#d9a648", runner: "rgba(120,20,40,.6)" });
+    vign(g, W, H, 0.55);
+  },
+};
+
+/* ---------- build each card ---------- */
+function render(card, id) {
+  const mock = card.querySelector(".mock"), cv = mock.querySelector("canvas");
+  const W = mock.clientWidth, H = mock.clientHeight, dpr = Math.min(2, devicePixelRatio || 1);
+  cv.width = W * dpr; cv.height = H * dpr;
+  const g = cv.getContext("2d"); g.scale(dpr, dpr);
+  // a smaller table so people sit closer together, with room round the edges
+  const T = { cx: W / 2, cy: H * 0.53, rx: W * 0.31, ry: H * 0.27 };
+  DRAW[id](g, W, H, T);
+  const seats = PLAYERS.map((p, i) => { const a = Math.PI / 2 + (i * 2 * Math.PI) / PLAYERS.length; return { p, x: T.cx + Math.cos(a) * T.rx * 0.82, y: T.cy + Math.sin(a) * T.ry * 0.78 }; });
+  seats.forEach((s) => plate(g, s.x, s.y + H * 0.02, W * 0.022));
+  pot(g, seats[1].x - W * 0.055, seats[1].y - H * 0.02, W * 0.02);
+  const ov = mock.querySelector(".ov");
+  ov.innerHTML = `<div class="badge" style="left:3%">BBRX</div><div class="badge" style="right:3%;color:#ff6f91">4/6</div>
+    <div class="qbox" style="top:${((T.cy - T.ry * 0.08) / H * 100).toFixed(1)}%"><b>🍝 Name a dessert</b><i>Priya's turn</i></div>
+    ${seats.map((s, i) => `<div class="seat${i === 1 ? " hold" : ""}" style="left:${(s.x / W * 100).toFixed(1)}%;top:${((s.y - H * 0.03) / H * 100).toFixed(1)}%"><span class="f">${s.p[0]}</span><span class="n">${s.p[1]}</span><span class="h">${s.p[2]}</span></div>`).join("")}
+    <div class="bub t2" style="left:${((seats[0].x + W * 0.04) / W * 100).toFixed(1)}%;top:${((seats[0].y - H * 0.05) / H * 100).toFixed(1)}%">Tiramisu</div>
+    <div class="bub typ" style="left:${((seats[1].x + W * 0.035) / W * 100).toFixed(1)}%;top:${((seats[1].y - H * 0.05) / H * 100).toFixed(1)}%">Pavl▌</div>
+    <div class="bub t3" style="left:${((seats[4].x + W * 0.04) / W * 100).toFixed(1)}%;top:${((seats[4].y - H * 0.05) / H * 100).toFixed(1)}%">Kouign-amann</div>
+    <div class="dock">type ahead while you wait…</div>`;
+}
+
+const grid = document.getElementById("grid");
+const cards = SCENES.map(([id, name, blurb]) => {
+  const card = document.createElement("section");
+  card.className = "card";
+  card.innerHTML = `<div class="head"><span class="letter">${id.toUpperCase()}</span><h2>${name}</h2><p>${blurb}</p></div><div class="mock"><canvas></canvas><div class="ov"></div></div>`;
+  grid.appendChild(card);
+  return [card, id];
+});
+const draw = () => cards.forEach(([c, id]) => render(c, id));
+document.fonts.ready.then(draw);
+draw();
+new ResizeObserver(() => draw()).observe(grid);
+</script>
