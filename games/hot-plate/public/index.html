@@ -99,7 +99,7 @@
   </section>
 
   <!-- bottom dock -->
-  <footer class="dock">
+  <footer class="dock" id="dock">
     <div id="dock-lobby" hidden>
       <button class="big-btn" id="big-btn"></button>
       <div class="dock-row">
@@ -113,6 +113,7 @@
     </div>
     <div id="dock-play" hidden>
       <div class="my-lives" id="my-lives" hidden></div>
+      <div class="turn-bar" id="turn-bar" hidden><i id="turn-bar-fill"></i></div>
       <form class="answer-row" id="answer-form" hidden>
         <input id="answer-input" class="field hot" maxlength="60" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="send" placeholder="your plate! type an answer…" aria-label="Your answer">
         <button class="btn hot" id="serve-btn" type="submit">serve</button>
@@ -123,6 +124,9 @@
     <div class="burn" id="dock-burn" hidden></div>
     <div class="over-actions" id="over-actions"></div>
   </footer>
+
+  <!-- shown while the chat is closed, so it's obvious how to get it back -->
+  <button class="chat-tab" id="chat-tab" type="button" hidden>💬 <span>chat</span></button>
 
   <!-- room code + chat: a column on wide screens, a drawer on phones -->
   <aside class="side" id="side" hidden>

@@ -31,10 +31,17 @@ function bubbleSpot(seat) {
   const side = Math.cos(seat.a) > 0.15 ? "left" : "right";
   return { x: seat.x + (side === "right" ? 1 : -1) * 21 * L.P, y: seat.y - 12 * L.P, side };
 }
-// the hot plate hovers just above the holder's head, or under the name for the far seats
+// the pot is drawn at this fraction of the art scale, so it doesn't crowd the table
+const POT = 0.65;
+// the pot sits beside the near and far seats (on the side away from their answer bubble) and above
+// the heads of the side seats, so the middle of the table stays free for the question
 function clocheSpot(seat) {
-  // the figure stands ~29 art px above the seat point; the dish, bar and seconds need ~80px more
-  return Math.sin(seat.a) < -0.45 ? { x: seat.x, y: seat.y + 30 * L.P + 30 } : { x: seat.x, y: seat.y - (29 * L.P + 80) };
+  if (Math.abs(Math.cos(seat.a)) < 0.5) {
+    const bubbleRight = bubbleSpot(seat).side === "right";
+    return { x: seat.x + (bubbleRight ? -1 : 1) * 34 * L.P, y: seat.y - 8 * L.P };
+  }
+  // the figure stands ~29 art px above the seat point, with the turn marker above that
+  return { x: seat.x, y: seat.y - (29 * L.P + 20 * POT * L.P + 44) };
 }
 
 /* ---------- seats ---------- */
@@ -193,12 +200,12 @@ function setDish(heatOrMode) {
   const dish = $("dish");
   if (key === "gold") {
     dish.src = spriteURL("cl-gold", () => cloche(0, { gold: true }));
-    dish.width = 30 * L.P; dish.height = 24 * L.P;
+    dish.width = Math.round(30 * 0.8 * L.P); dish.height = Math.round(24 * 0.8 * L.P);
     return;
   }
   const make = key === "burnt" ? () => pot(1, 0, { burnt: true }) : () => pot(step / 12, frame);
   dish.src = spriteURL("pot" + key, make);
-  dish.width = 36 * L.P; dish.height = 40 * L.P;
+  dish.width = Math.round(36 * POT * L.P); dish.height = Math.round(40 * POT * L.P);
 }
 
 // called every frame: the countdown under the dish, its colour, and how hard it steams

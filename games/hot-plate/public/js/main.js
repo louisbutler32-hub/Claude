@@ -16,6 +16,9 @@ import { renderAccount } from "./account.js";
 const stage = $("stage");
 const scene = new Scene($("room-bg"), $("room-fx"));
 let geoKey = "";
+// below this width the table is too narrow to hold the question, so it gets its own band
+// at the top of the screen instead (matches the max-width: 699px rule in style.css)
+const PHONE = 700;
 
 function relayout(force) {
   const W = stage.clientWidth, H = stage.clientHeight;
@@ -24,17 +27,33 @@ function relayout(force) {
   // the big title (home, lobby, game over) needs more headroom than the one-line category
   const ph = phase(), titled = ph === "home" || ph === "lobby" || ph === "over";
   const area = wide
-    ? { left: 40, right: S.room && !document.body.classList.contains("chat-closed") ? 340 : 40, top: titled ? 185 : 210, bottom: 150 }
-    : { left: 14, right: 14, top: titled ? 190 : 200, bottom: 140 };
-  const key = [W, H, count, area.right, area.top].join("x");
+    ? { left: 40, right: S.room && !document.body.classList.contains("chat-closed") ? 340 : 40, top: titled ? 185 : 150, bottom: 150 }
+    : { left: 14, right: 14, top: titled ? 190 : W < PHONE ? 215 : 160, bottom: W < PHONE ? 160 : 140 };
+  // on phones the question has its own band at the top: fit the table between it and the dock
+  if (W < PHONE && !titled && !$("prompt").hidden) {
+    const st = stage.getBoundingClientRect();
+    area.top = Math.round($("prompt").getBoundingClientRect().bottom - st.top + 66);
+    area.bottom = Math.round(Math.max(140, st.bottom - $("dock").getBoundingClientRect().top + 24));
+  }
+  const key = [W, H, count, area.right, area.top, area.bottom].join("x");
   if (!force && key === geoKey) return;
   geoKey = key;
   const L = layout(W, H, count, area);
   scene.draw(L);
   table.setLayout(L);
-  // the question box sits just above the top seat's head
-  const topSeat = Math.min(...L.seats.map((s) => s.y));
-  document.documentElement.style.setProperty("--prompt-bottom", Math.max(150, topSeat - 34 * L.P - 8) + "px");
+  // during play the question box sits in the middle of the table, sized to fit inside it
+  const css = document.documentElement.style;
+  css.setProperty("--prompt-x", L.centre.x.toFixed(0) + "px");
+  // vertically: midway between the far seats' points tally and the near seats' heads
+  const P = L.P, cyPx = L.cy * P, ryPx = L.ry * P;
+  const far = L.seats.filter((s) => Math.sin(s.a) < -0.3).map((s) => s.y + 27 * P);
+  const near = L.seats.filter((s) => Math.sin(s.a) > 0.3).map((s) => s.y - 31 * P - 10);
+  const hi = far.length ? Math.max(...far) : cyPx - ryPx * 0.6;
+  const lo = near.length ? Math.min(...near) : cyPx + ryPx * 0.6;
+  css.setProperty("--prompt-y", ((hi + lo) / 2).toFixed(0) + "px");
+  // wide enough to read, narrow enough to stay between the side seats' place settings
+  const gap = 2 * (L.rx * 0.84 - 22) * L.P - 20;
+  css.setProperty("--prompt-w", Math.round(Math.max(220, Math.min(360, gap))) + "px");
   table.renderSeats();
   table.renderBubbles();
   table.placeCloche();
@@ -47,6 +66,7 @@ function render() {
   $("home").hidden = ph !== "home";
   relayout();
   renderHUD();
+  relayout(); // again, now the question box and dock have their final size
   renderPanel();
   refreshModals();
   table.renderSeats();
@@ -153,6 +173,22 @@ $("answer-form").addEventListener("submit", (e) => {
 
 /* ---------- the clock ---------- */
 
+// your own turn: a bar that drains from green to red, flashing near the end
+const bar = $("turn-bar"), barFill = $("turn-bar-fill");
+function turnBar(heat) {
+  const r = S.room;
+  const playing = !!(r && r.phase === "playing" && r.game);
+  const mine = playing && r.game.holder === r.you;
+  // the bar keeps its space during play so the dock doesn't jump; only you see it fill
+  if (bar.hidden === playing) bar.hidden = !playing;
+  bar.classList.toggle("idle", !mine);
+  if (!mine) return;
+  const frac = Math.max(0, 1 - heat);
+  barFill.style.width = (frac * 100).toFixed(1) + "%";
+  barFill.style.setProperty("--hue", Math.round(120 * frac));
+  bar.classList.toggle("urgent", frac < 0.3);
+}
+
 let lastTick = null;
 function frame() {
   requestAnimationFrame(frame);
@@ -161,6 +197,7 @@ function frame() {
     if (left < 3500 && left > 0 && whole !== lastTick) { lastTick = whole; sfx.tick(S.room.game.holder === S.room.you); }
   });
   scene.setHeat(heat);
+  turnBar(heat);
   setSizzle(S.room && S.room.phase === "playing" ? heat : 0);
 }
 requestAnimationFrame(frame);

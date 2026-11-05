@@ -510,3 +510,61 @@ body[data-phase="play"] .marquee, body[data-phase="break"] .marquee { top: var(-
 @media (min-width: 1100px) {
   body:not(.chat-closed)[data-phase="play"] .marquee, body:not(.chat-closed)[data-phase="break"] .marquee { transform: translate(-50%, -100%); }
 }
+
+/* ---------- question in the middle of the table, smaller pot, turn timer, chat tab ---------- */
+/* !important: this has to beat the chat-open rules that shift the marquee left */
+body[data-phase="play"] .marquee, body[data-phase="break"] .marquee {
+  left: var(--prompt-x, 50%) !important; top: var(--prompt-y, 50%) !important;
+  width: var(--prompt-w, 320px) !important; transform: translate(-50%, -50%) !important;
+}
+body[data-phase="play"] .prompt-box, body[data-phase="break"] .prompt-box {
+  min-width: 0; width: 100%; padding: 8px 14px 9px; gap: 4px;
+  border-width: 4px; border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--ink), 0 12px 30px rgba(0, 0, 0, .55);
+}
+body[data-phase="play"] .prompt-box .prompt-text, body[data-phase="break"] .prompt-box .prompt-text { font-size: clamp(16px, 1.6vw, 21px); }
+body[data-phase="play"] .prompt-turn { font-size: 14px; padding-top: 4px; }
+body[data-phase="play"] .prompt-turn.mine { font-size: 15px; }
+#dish { transform: scale(calc(.85 + var(--heat, 0) * .25)); }
+
+/* your turn: drains green → amber → red, then flashes */
+.turn-bar { height: 14px; padding: 2px; background: rgba(8, 3, 5, .9); border: 2px solid var(--panel-line); box-shadow: 0 0 0 2px var(--ink); }
+.turn-bar[hidden] { display: none; }
+.turn-bar i { display: block; height: 100%; width: 100%; background: hsl(var(--hue, 120) 85% 50%); box-shadow: 0 0 10px hsl(var(--hue, 120) 85% 50% / .7); }
+.turn-bar.urgent { border-color: #ff3b3b; animation: bar-flash .35s steps(2) infinite; }
+.turn-bar.urgent i { animation: bar-flash .35s steps(2) infinite; }
+@keyframes bar-flash { 50% { opacity: .25; } }
+
+/* a narrower, chunkier answer box */
+body[data-phase="play"] .dock { width: min(460px, calc(100% - 24px)); }
+#answer-input { padding: 12px 14px; border-width: 3px; font-size: 21px; }
+#serve-btn { border-width: 3px; padding: 0 16px; }
+
+/* the way back into the chat when it's closed */
+.chat-tab { position: absolute; right: 0; top: 42%; z-index: 3100; writing-mode: vertical-rl; display: flex; align-items: center; gap: 6px;
+  padding: 12px 7px; background: rgba(14, 5, 8, .92); border: 2px solid var(--gold); border-right: 0; color: var(--gold);
+  font: 800 11px var(--caps); letter-spacing: .2em; text-transform: uppercase; box-shadow: 0 0 0 2px var(--ink); cursor: pointer; }
+.chat-tab:hover { background: var(--panel); }
+.chat-tab.unread { border-color: var(--rose); color: var(--rose); animation: think-pulse 1s ease-in-out infinite; }
+body:not(.chat-closed) .chat-tab, body[data-phase="home"] .chat-tab { display: none; }
+.chat-tab[hidden] { display: none; }
+@media (max-width: 699px) {
+  body[data-phase="play"] .marquee, body[data-phase="break"] .marquee {
+    left: 50% !important; top: max(60px, calc(env(safe-area-inset-top) + 52px)) !important;
+    width: calc(100% - 24px) !important; transform: translateX(-50%) !important;
+  }
+  body[data-phase="play"] .prompt-box .prompt-text, body[data-phase="break"] .prompt-box .prompt-text { font-size: 18px; }
+  .chat-tab { top: 46%; padding: 10px 5px; font-size: 10px; }
+}
+/* in the middle of the table only the question and whose turn it is: the plate number is up top */
+@media (min-width: 700px) {
+  body[data-phase="play"] .prompt-box .prompt-label, body[data-phase="break"] .prompt-box .prompt-label { display: none; }
+  body[data-phase="play"] .prompt-box .prompt-meta { font-size: 10px; }
+}
+.turn-bar.idle { visibility: hidden; }
+@media (max-width: 699px) {
+  body[data-phase="play"] .prompt-box .prompt-label, body[data-phase="break"] .prompt-box .prompt-label,
+  body[data-phase="play"] .prompt-box .prompt-meta { display: none; }
+  body[data-phase="play"] .prompt-box { padding: 7px 12px 8px; }
+  body[data-phase="play"] .turn-bar { height: 12px; }
+}

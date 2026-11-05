@@ -11,6 +11,7 @@ export function renderPanel() {
   const r = S.room;
   $("side").hidden = !r;
   $("chat-toggle").hidden = !r;
+  $("chat-tab").hidden = !r;
   if (!r) return;
   $("side-code").textContent = r.code;
   $("side-link").textContent = location.host + "/?t=" + r.code;
@@ -23,7 +24,7 @@ export function renderPanel() {
   const last = r.chat[r.chat.length - 1];
   if (r.chat.length > seenChat && seenChat && last && last.kind === "chat" && last.id !== r.you) {
     sfx.chat();
-    if (!chatOpen) $("chat-toggle").classList.add("unread");
+    if (!chatOpen) { $("chat-toggle").classList.add("unread"); $("chat-tab").classList.add("unread"); }
   }
   seenChat = r.chat.length;
 }
@@ -39,11 +40,13 @@ function setChat(open) {
   chatOpen = open;
   document.body.classList.toggle("chat-closed", !open);
   $("chat-toggle").classList.remove("unread");
+  $("chat-tab").classList.remove("unread");
   if (open) $("chat-log").scrollTop = $("chat-log").scrollHeight;
   window.dispatchEvent(new Event("hp-layout")); // the table can use the space
 }
 $("chat-toggle").onclick = () => setChat(!chatOpen);
 $("side-close").onclick = () => setChat(false);
+$("chat-tab").onclick = () => setChat(true);
 chatOpen = matchMedia("(min-width: 1100px)").matches;
 document.body.classList.toggle("chat-closed", !chatOpen);
 
