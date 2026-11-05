@@ -99,7 +99,7 @@ CATEGORIES = [
     dict(id="tech", group="Other", emoji="💻", prompt="Name a tech company", kind="thing", limit=1200, minsl=20,
          where="{ ?x wdt:P31 ?t . VALUES ?t { wd:Q18388277 wd:Q1058914 } } UNION { ?x wdt:P452 ?ind . VALUES ?ind { wd:Q11661 wd:Q880371 wd:Q11016 } }"),
     dict(id="criminal", group="Other", emoji="🔪", prompt="Name a serial killer or famous criminal", kind="person", limit=1200, minsl=15,
-         where="{ ?x wdt:P106 ?o . VALUES ?o { wd:Q484188 wd:Q2159907 } . } UNION { ?x wdt:P1399 ?crime . }",
+         where="{ ?x wdt:P106 ?o . VALUES ?o { wd:Q484188 wd:Q2159907 } . }",
          # real people, and not heads of state
          keep="?x wdt:P31 wd:Q5 .", drop="?x wdt:P106 wd:Q82955 ."),
     dict(id="carbrand", group="Other", emoji="🚗", prompt="Name a car brand", kind="thing", limit=800, minsl=8,
