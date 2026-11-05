@@ -6,43 +6,43 @@
 # Salt is a mineral, not a herb or spice, so it is left out. Blends (curry
 # powder, garam masala, Chinese five spice...) are accepted as spices.
 Pepper | Black pepper | Peppercorn | Peppercorns
-Basil
-Cinnamon
-Oregano
+Basil | sweet basil | Genovese basil
+Cinnamon | cinnamon stick | Ceylon cinnamon | cinnamon sticks
+Oregano | Greek oregano | wild oregano
 Garlic
-Ginger
-Parsley
+Ginger | ground ginger | dried ginger | root ginger
+Parsley | flat-leaf parsley | curly parsley | Italian parsley
 Rosemary
 Mint
-Paprika
+Paprika | sweet paprika | hot paprika
 Thyme
-Chilli | Chili | Chilli flakes | Chili flakes | Chilli powder | Chili powder | Red pepper flakes
-Cumin
-Turmeric
-Coriander | Cilantro
+Chilli | Chili | Chilli flakes | Chili flakes | Chilli powder | Chili powder | Red pepper flakes | chile | chili pepper | crushed red pepper | dried chilli | chilli pepper
+Cumin | jeera | ground cumin
+Turmeric | haldi
+Coriander | Cilantro | coriander seed | coriander seeds | dhania | Chinese parsley
 Nutmeg
-Dill
+Dill | dill weed | dill seed
 Sage
 Chives
 Cayenne | Cayenne pepper
 Curry powder | Curry
-Vanilla
-Bay leaf | Bay leaves | Bay
-Saffron
-Cloves | Clove
+Vanilla | vanilla bean | vanilla pod | vanilla beans
+Bay leaf | Bay leaves | Bay | bay laurel | laurel
+Saffron | kesar
+Cloves | Clove | laung
 Lemongrass
 Garam masala
-Cardamom | Cardamon
-Allspice | Pimento
-Mustard | Mustard seed | Mustard seeds
+Cardamom | Cardamon | elaichi | green cardamom
+Allspice | Pimento | Jamaica pepper
+Mustard | Mustard seed | Mustard seeds | mustard powder | yellow mustard seed | brown mustard seed | black mustard seed
 Tarragon
 Star anise
 Fennel | Fennel seed | Fennel seeds
-Smoked paprika
+Smoked paprika | pimenton
 Chinese five spice | Five spice | Five-spice
-Onion powder
-Garlic powder
-Sesame | Sesame seeds | Sesame seed
+Onion powder | onion flakes | dried onion
+Garlic powder | garlic granules
+Sesame | Sesame seeds | Sesame seed | black sesame
 Marjoram
 Lavender
 Anise | Aniseed
@@ -54,13 +54,13 @@ Za'atar | Zaatar | Zatar
 Cajun seasoning | Cajun spice | Cajun
 Italian seasoning | Italian herbs | Mixed herbs
 Mixed spice | Pumpkin spice | Pumpkin pie spice
-Fenugreek | Methi
+Fenugreek | Methi | kasuri methi | fenugreek leaves | fenugreek seeds
 Curry leaves | Curry leaf
 Kaffir lime leaves | Kaffir lime leaf | Makrut lime leaves | Lime leaves
 Celery seed | Celery salt
 White pepper
 Pink peppercorns | Pink peppercorn | Pink pepper
-Sichuan pepper | Szechuan pepper | Sichuan peppercorn
+Sichuan pepper | Szechuan pepper | Sichuan peppercorn | Szechuan peppercorn | Sichuan peppercorns
 Juniper | Juniper berries | Juniper berry
 Mace
 Chervil
@@ -72,7 +72,7 @@ Harissa
 Dukkah | Dukka
 Jerk seasoning | Jerk spice
 Old Bay
-Chipotle
+Chipotle | chipotle powder
 Ancho | Ancho chilli | Ancho chili
 Kashmiri chilli | Kashmiri chili
 Thai basil
@@ -104,7 +104,7 @@ Tonka bean | Tonka
 Mahlab | Mahleb
 Black cardamom
 Sansho
-Shichimi | Shichimi togarashi | Togarashi
+Shichimi | Shichimi togarashi | Togarashi | ichimi togarashi | ichimi
 Gochugaru
 Aleppo pepper
 Urfa biber | Urfa pepper
@@ -130,7 +130,7 @@ Kawakawa
 Horopito
 Lemon myrtle
 Wattleseed | Wattle seed
-Pepperberry | Mountain pepper | Tasmanian pepperberry
+Pepperberry | Mountain pepper | Tasmanian pepperberry | native pepper | Dorrigo pepper
 Bush tomato | Akudjura
 Native thyme
 Hyssop
@@ -152,3 +152,81 @@ Garlic chives | Chinese chives
 Wild garlic | Ramsons
 Kokum
 Tamarind
+Cassia | Chinese cinnamon | cassia bark
+Piri piri | peri peri
+Bird's eye chilli | Thai chilli | bird's eye chili
+Guajillo | guajillo chile
+Pasilla | pasilla chile
+Chile de árbol | arbol chile
+Ghost pepper | bhut jolokia
+Green peppercorns | green peppercorn
+Poppy seed | poppy seeds
+Black lime | dried lime | loomi
+Anardana | pomegranate seed powder
+Zedoary | white turmeric
+Mastic | mastiha
+Lemon peel | dried lemon peel
+Mitmita
+Seven spice | Lebanese seven spice | 7 spice
+Creole seasoning | Creole spice
+Adobo seasoning | adobo
+Sazón
+Taco seasoning | taco spice
+Fajita seasoning
+BBQ rub | barbecue rub | dry rub
+Everything bagel seasoning | everything seasoning
+Chicken salt
+Apple pie spice
+Mulling spice | mulled wine spice
+Shawarma spice | shawarma seasoning
+Biryani masala
+Chana masala
+Chai masala | chai spice
+Pav bhaji masala
+Sambar powder | sambar masala
+Rasam powder
+Lemon basil
+Apple mint
+Pennyroyal
+Mitsuba | Japanese parsley
+Myoga | Japanese ginger
+Aniseed myrtle | anise myrtle
+Sweet cicely
+Salad burnet
+Bee balm | bergamot
+Chamomile | camomile
+Catnip
+Nettle | stinging nettle
+Dandelion
+Mugwort
+Yarrow
+Feverfew
+Comfrey
+Valerian
+Echinacea
+Ginseng
+Ashwagandha
+St John's wort | Saint John's wort
+Gomasio | Gomashio
+Colombo powder
+Vadouvan
+Goda masala | Kala masala
+Kitchen King masala
+Xawaash
+Suya spice | Yaji
+Speculaas spice
+Gingerbread spice
+Greek seasoning
+Habanero | Habanero powder
+Scotch bonnet
+Jalapeño
+Cascabel
+Mulato chile
+Morita chile
+Carolina Reaper
+Byadgi chilli | Byadgi chili
+Marash pepper | Maras biber
+Kampot pepper
+Tellicherry pepper
+Grains of Selim
+Ginger flower | Torch ginger

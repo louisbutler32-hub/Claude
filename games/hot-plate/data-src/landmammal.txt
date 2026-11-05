@@ -3,39 +3,39 @@
 # group: Animals
 # emoji: 🦒
 # kind: thing
-Dog | dogs | puppy
-Cat | cats | kitten
+Dog | dogs | puppy | pup | hound | doggo | mutt
+Cat | cats | kitten | kitty | moggy | tomcat
 Lion | lions
 Elephant | elephants
-Horse | horses
+Horse | horses | stallion | mare | foal | colt | filly
 Tiger | tigers
 Giraffe | giraffes
 Bear | bears
 Monkey | monkeys
-Cow | cows | cattle
-Pig | pigs | hog
+Cow | cows | cattle | calf | calves | heifer | steer | bullock
+Pig | pigs | hog | piglet | swine | sow | hogs
 Zebra | zebras
-Kangaroo | kangaroos | roo | roos
-Sheep | lamb
-Goat | goats
+Kangaroo | kangaroos | roo | roos | joey
+Sheep | lamb | ram | ewe | lambs
+Goat | goats | billy goat | nanny goat
 Rabbit | rabbits | bunny | bunnies
 Panda | pandas | giant panda
 Gorilla | gorillas
 Wolf | wolves
 Fox | foxes
-Mouse | mice
+Mouse | mice | field mice
 Rat | rats
 Koala | koalas | koala bear
 Cheetah | cheetahs
-Deer | deers | stag | doe
-Hippo | hippopotamus | hippos
-Rhino | rhinoceros | rhinos
+Deer | deers | stag | doe | fawn
+Hippo | hippopotamus | hippos | hippopotami | hippopotamuses
+Rhino | rhinoceros | rhinos | rhinoceroses
 Leopard | leopards
 Chimpanzee | chimp | chimps | chimpanzees
 Polar bear | polar bears
 Camel | camels
 Squirrel | squirrels
-Donkey | donkeys
+Donkey | donkeys | burro | ass
 Hamster | hamsters
 Guinea pig | guinea pigs
 Bat | bats
@@ -68,7 +68,7 @@ Sloth bear
 Black bear
 Brown bear
 Wombat | wombats
-Platypus | platypuses | duck-billed platypus
+Platypus | platypuses | duck-billed platypus | platypi
 Echidna | echidnas | spiny anteater
 Possum | possums
 Opossum | opossums
@@ -142,7 +142,7 @@ Gopher
 Vole
 Shrew
 Lemming | lemmings
-Dormouse
+Dormouse | dormice
 Jerboa
 Naked mole-rat | naked mole rat | mole rat
 Pika
@@ -325,3 +325,469 @@ Aurochs
 Cave bear
 Diprotodon
 Glyptodon
+Western lowland gorilla | lowland gorilla
+Eastern gorilla | eastern lowland gorilla | Grauer's gorilla
+Cross River gorilla
+Sumatran orangutan
+Tapanuli orangutan
+Hoolock gibbon
+Lar gibbon | white-handed gibbon
+Drill
+Hamadryas baboon | sacred baboon
+Olive baboon
+Chacma baboon
+Yellow baboon
+Guinea baboon
+Rhesus macaque | rhesus monkey
+Barbary macaque | Barbary ape
+Crab-eating macaque | long-tailed macaque
+Pig-tailed macaque
+Lion-tailed macaque
+Bonnet macaque
+Celebes crested macaque | crested black macaque
+Cotton-top tamarin
+Emperor tamarin
+Pygmy marmoset
+Common marmoset
+Titi monkey | titi
+Saki monkey | saki
+Muriqui
+Patas monkey
+De Brazza's monkey
+Blue monkey
+Mona monkey
+Diana monkey
+Red-tailed monkey
+Grivet
+Talapoin
+Mangabey
+Douc langur | douc
+Hanuman langur | grey langur | gray langur
+Dusky leaf monkey | spectacled langur
+Ring-tailed lemur
+Sifaka
+Indri
+Mouse lemur
+Ruffed lemur
+Bamboo lemur
+Potto
+Slender loris
+Philippine tarsier
+Asiatic lion | Asian lion
+Barbary lion | Atlas lion
+White lion
+White tiger
+Malayan tiger
+Indochinese tiger
+South China tiger
+Caspian tiger
+Javan tiger
+Bali tiger
+Amur leopard
+Persian leopard
+Arabian leopard
+Sunda clouded leopard
+Asian golden cat
+African golden cat
+Bay cat
+Marbled cat
+Leopard cat
+Rusty-spotted cat
+Black-footed cat
+Jungle cat
+Wildcat | European wildcat
+African wildcat
+Scottish wildcat
+Kodkod
+Geoffroy's cat
+Andean mountain cat
+Pampas cat
+Oncilla
+Canada lynx
+Eurasian lynx
+Flat-headed cat
+Chinese mountain cat
+Florida panther
+Liger
+Tigon
+Golden jackal
+Black-backed jackal
+Side-striped jackal
+African golden wolf
+Island fox
+Darwin's fox
+Culpeo
+Pampas fox
+Crab-eating fox
+Hoary fox
+Bengal fox
+Blanford's fox
+Rüppell's fox
+Pale fox
+Tibetan fox
+Short-eared dog
+New Guinea singing dog
+Eastern wolf
+Indian wolf
+Mexican wolf
+Iberian wolf
+Himalayan wolf
+Asiatic black bear | moon bear
+American black bear
+Spirit bear | Kermode bear
+Gobi bear
+Marsican bear
+Syrian brown bear
+Pizzly bear | grolar bear
+Atlas bear
+Eurasian otter
+Giant otter
+Asian small-clawed otter | small-clawed otter
+Smooth-coated otter
+Spotted-necked otter
+Fisher
+Sable
+American marten
+Beech marten | stone marten
+Yellow-throated marten
+Least weasel
+Long-tailed weasel
+Black-footed ferret
+Steppe polecat
+Marbled polecat
+Zorilla | striped polecat
+Tayra
+Grison
+Ferret-badger
+Hog badger
+Stink badger
+European badger
+American badger
+Striped skunk
+Spotted skunk
+Hog-nosed skunk
+Olingo
+Olinguito
+Cacomistle
+Crab-eating raccoon
+Banded mongoose
+Dwarf mongoose
+Yellow mongoose
+Egyptian mongoose
+Indian grey mongoose
+Kusimanse
+African civet
+Asian palm civet | palm civet | toddy cat
+Masked palm civet
+Otter civet
+Linsang
+Fanaloka
+Falanouc
+Brown hyena
+Przewalski's horse | Przewalski horse | takhi
+Wild horse
+Mustang
+Brumby
+Tarpan
+Kiang
+Onager
+African wild ass | wild ass
+Asiatic wild ass
+Plains zebra | Burchell's zebra | common zebra
+Grévy's zebra | imperial zebra
+Mountain zebra
+Zorse
+Zonkey
+Hinny
+Beefalo
+Cama
+Malayan tapir
+Brazilian tapir | lowland tapir | South American tapir
+Baird's tapir
+Mountain tapir
+Bearded pig
+Red river hog
+Giant forest hog
+Bushpig
+Pygmy hog
+Visayan warty pig
+White-lipped peccary
+Chacoan peccary
+Barasingha | swamp deer
+Rusa deer
+Hog deer
+Pudu
+Brocket deer
+Marsh deer
+Pampas deer
+Huemul
+Père David's deer | milu
+Tufted deer
+Eld's deer
+Black-tailed deer
+Key deer
+Reticulated giraffe
+Masai giraffe
+Rothschild's giraffe | Nubian giraffe
+Scimitar-horned oryx
+Arabian oryx
+Lechwe
+Puku
+Kob
+Reedbuck
+Oribi
+Grysbok
+Suni
+Royal antelope
+Blesbok
+Bontebok
+Tsessebe
+Black wildebeest
+Blue wildebeest
+Greater kudu
+Lesser kudu
+Giant eland
+Mountain nyala
+Grant's gazelle
+Dorcas gazelle
+Goitered gazelle
+Mongolian gazelle
+Dama gazelle
+Chinkara
+Tibetan antelope | chiru
+Four-horned antelope
+Goral
+Serow
+Alpine ibex
+Nubian ibex
+Siberian ibex
+Walia ibex
+Wild goat | bezoar ibex
+Himalayan tahr
+Nilgiri tahr
+Bharal | blue sheep
+Urial
+Dall sheep
+Snow sheep
+Anoa
+Tamaraw
+Saola
+Kouprey
+Wild yak
+Gayal | mithun
+Bluebuck
+Brown rat | Norway rat
+Black rat | roof rat
+House mouse
+Wood mouse | field mouse
+Deer mouse
+Harvest mouse
+Spiny mouse
+Pocket mouse
+Grasshopper mouse
+Hopping mouse
+Cotton rat
+Pack rat | woodrat
+Bandicoot rat
+Giant pouched rat | Gambian pouched rat
+Cane rat | grasscutter
+Blind mole-rat
+Damaraland mole-rat
+Syrian hamster | golden hamster
+Dwarf hamster
+Roborovski hamster
+Chinese hamster
+European hamster
+Mongolian gerbil
+Fat-tailed gerbil
+Jird
+Gundi
+Dassie rat
+Hutia
+Viscacha
+Mountain viscacha
+Tuco-tuco
+Pocket gopher
+Mountain beaver
+Fox squirrel
+Abert's squirrel
+Douglas squirrel
+Indian giant squirrel | Malabar giant squirrel
+Prevost's squirrel
+Thirteen-lined ground squirrel
+Arctic ground squirrel
+Rock squirrel
+Antelope squirrel
+Japanese dwarf flying squirrel
+Scaly-tailed squirrel
+Eastern chipmunk
+Siberian chipmunk
+North American beaver | American beaver
+Eurasian beaver | European beaver
+Crested porcupine
+North American porcupine
+Brush-tailed porcupine
+Hazel dormouse
+Edible dormouse | fat dormouse
+Jumping mouse
+Birch mouse
+Long-eared jerboa
+Kangaroo mouse
+Water vole
+Field vole
+Bank vole
+Meadow vole
+Norway lemming
+Rock cavy
+Cavy | wild cavy
+Acouchi
+Pacarana
+Spiny rat
+Cloud rat
+European rabbit
+Pygmy rabbit
+Volcano rabbit
+Amami rabbit
+Sumatran striped rabbit
+Riverine rabbit
+Snowshoe hare
+Arctic hare
+Mountain hare
+Brown hare | European hare
+Black-tailed jackrabbit
+European mole
+Desman
+Pyrenean desman
+Shrew mole
+Golden mole
+Water shrew
+Pygmy shrew
+Etruscan shrew
+Short-tailed shrew
+Moonrat | gymnure
+Long-eared hedgehog
+Desert hedgehog
+African pygmy hedgehog | pygmy hedgehog
+European hedgehog
+Little brown bat
+Big brown bat
+Mexican free-tailed bat | free-tailed bat
+Noctule
+Brown long-eared bat | long-eared bat
+Leaf-nosed bat
+Hammer-headed bat
+Egyptian fruit bat
+Straw-coloured fruit bat | straw-colored fruit bat
+Spectacled flying fox
+Grey-headed flying fox
+Black flying fox
+Tube-nosed bat
+Honduran white bat
+Daubenton's bat
+Serotine
+Barbastelle
+Hoary bat
+Pallid bat
+Spotted bat
+Bulldog bat | fishing bat
+False vampire bat
+Mastiff bat
+Short-tailed bat | lesser short-tailed bat | pekapeka
+Long-tailed bat
+Western grey kangaroo
+Antilopine kangaroo
+Rock-wallaby
+Yellow-footed rock-wallaby
+Swamp wallaby
+Agile wallaby
+Red-necked wallaby
+Tammar wallaby
+Nail-tail wallaby
+Hare-wallaby
+Euro
+Lumholtz's tree-kangaroo
+Goodfellow's tree-kangaroo
+Musky rat-kangaroo
+Rat-kangaroo
+Common wombat | bare-nosed wombat
+Northern hairy-nosed wombat
+Southern hairy-nosed wombat
+Brushtail possum | common brushtail possum
+Ringtail possum
+Mountain pygmy possum
+Pygmy possum
+Honey possum
+Leadbeater's possum
+Greater glider
+Feathertail glider
+Squirrel glider
+Mahogany glider
+Spotted-tailed quoll | tiger quoll
+Eastern quoll
+Northern quoll
+Kowari
+Mulgara
+Kultarr
+Ningaui
+Planigale
+Dibbler
+Long-nosed bandicoot
+Eastern barred bandicoot
+Pig-footed bandicoot
+Toolache wallaby
+Monito del monte
+Shrew opossum
+Virginia opossum
+Water opossum | yapok
+Mouse opossum
+Woolly opossum
+Four-eyed opossum
+Short-beaked echidna
+Long-beaked echidna
+Silky anteater
+Pink fairy armadillo
+Giant armadillo
+Three-banded armadillo
+Six-banded armadillo
+Screaming hairy armadillo
+Pichi
+Pygmy three-toed sloth
+Sunda pangolin
+Chinese pangolin
+Indian pangolin
+Giant pangolin
+Ground pangolin | Temminck's pangolin
+Tree pangolin
+Tree hyrax
+Bush hyrax
+African forest elephant | forest elephant
+African bush elephant | savanna elephant
+Sri Lankan elephant
+Sumatran elephant
+Bornean elephant | Borneo pygmy elephant | pygmy elephant
+Columbian mammoth
+Pygmy mammoth
+Steppe bison
+Cave lion
+American lion
+Short-faced bear
+Giant beaver
+Elasmotherium
+Paraceratherium | Indricotherium
+Macrauchenia
+Toxodon
+Chalicotherium
+Andrewsarchus
+Entelodont
+Eohippus | Hyracotherium
+Deinotherium
+Gomphothere
+Platybelodon
+Thylacoleo | marsupial lion
+Procoptodon | giant short-faced kangaroo
+Palorchestes
+Megalonyx
+Doedicurus
+Falkland Islands wolf
+Japanese wolf
+Schomburgk's deer

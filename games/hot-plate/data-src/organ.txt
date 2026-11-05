@@ -11,18 +11,18 @@
 # left out. The diaphragm is in as it is often listed as an organ.
 # Paired organs accept singular and plural.
 Heart
-Brain
+Brain | Encephalon
 Lungs | Lung
 Liver
 Kidneys | Kidney
-Stomach
-Skin
+Stomach | Tummy | Belly
+Skin | Epidermis
 Intestines | Intestine | Gut | Bowel | Bowels
-Small intestine
-Large intestine | Colon
+Small intestine | Small bowel
+Large intestine | Colon | Large bowel
 Pancreas
 Spleen
-Appendix
+Appendix | Vermiform appendix
 Bladder | Urinary bladder
 Gallbladder | Gall bladder
 Eyes | Eye
@@ -44,7 +44,7 @@ Teeth | Tooth
 Spinal cord
 Penis
 Vagina
-Pituitary gland | Pituitary
+Pituitary gland | Pituitary | Hypophysis
 Adrenal glands | Adrenal gland | Adrenals
 Thymus
 Diaphragm
@@ -91,3 +91,43 @@ Sebaceous glands
 Bartholin's glands
 Bulbourethral glands | Cowper's glands
 Gonads | Gonad
+Frontal lobe
+Parietal lobe
+Temporal lobe
+Occipital lobe
+Corpus callosum
+Cerebral cortex
+Prefrontal cortex
+Motor cortex
+Visual cortex
+Insula | Insular cortex
+Basal ganglia
+Striatum
+Caudate nucleus
+Putamen
+Globus pallidus
+Substantia nigra
+Cingulate gyrus | Cingulate cortex
+Olfactory bulb
+Broca's area
+Wernicke's area
+Midbrain
+Forebrain
+Hindbrain
+Diencephalon
+Arteries | Artery
+Veins | Vein
+Aorta
+Nasal cavity
+Bronchioles | Bronchiole
+Scrotum
+Umbilical cord
+Taste buds | Taste bud
+Vomeronasal organ
+Peyer's patches
+Omentum | Greater omentum
+Interstitium
+Skene's glands | Paraurethral glands
+Ceruminous glands
+Meibomian glands
+Corpus luteum

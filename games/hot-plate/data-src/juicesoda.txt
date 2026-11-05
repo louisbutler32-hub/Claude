@@ -7,25 +7,25 @@
 # "orange juice"). Energy drinks, sports drinks, iced teas and plain bottled
 # water are left out; sparkling-water brands sold as soda (LaCroix, Bubly)
 # and cordial/squash brands are in.
-Coca-Cola | Coke | Coca Cola
+Coca-Cola | Coke | Coca Cola | Coca-Cola Classic | Coke Classic
 Pepsi
 Sprite
 Fanta
-Dr Pepper | Dr. Pepper
-Mountain Dew | Mtn Dew
+Dr Pepper | Dr. Pepper | Doctor Pepper
+Mountain Dew | Mtn Dew | Dew
 7 Up | 7UP | Seven Up
-Tropicana
+Tropicana | Tropicana Pure Premium
 Minute Maid
-Capri-Sun | Capri Sun | Caprisun
+Capri-Sun | Capri Sun | Caprisun | Capri-Sonne
 Schweppes
 Diet Coke
 Coke Zero | Coca-Cola Zero | Coke No Sugar
-Pepsi Max
+Pepsi Max | Pepsi Max Cherry
 Ribena
-Lucozade
+Lucozade | Lucozade Sport
 Sunkist
 L&P | Lemon & Paeroa | Lemon and Paeroa
-Irn-Bru | Irn Bru
+Irn-Bru | Irn Bru | Irn Bru Xtra
 A&W | A&W Root Beer
 Canada Dry
 Ocean Spray
@@ -36,7 +36,7 @@ Snapple
 Innocent
 Oasis
 Tango
-Robinsons
+Robinsons | Robinsons Squash
 Solo
 Just Juice
 Charlie's | Charlies
@@ -45,7 +45,7 @@ Berri
 Nudie
 Daily Juice | Daily Juice Co
 Kirks
-Bundaberg | Bundy
+Bundaberg | Bundy | Bundaberg Ginger Beer
 Barq's | Barqs
 Mug | Mug Root Beer
 Crush | Orange Crush
@@ -148,3 +148,170 @@ Karma Cola | Karma Drinks
 Foxton Fizz
 Deep Spring
 Appy Fizz
+Cherry Coke | Cherry Cola | Coca-Cola Cherry
+Vanilla Coke | Coca-Cola Vanilla
+Diet Pepsi
+Pepsi Zero Sugar | Pepsi Zero
+Sprite Zero
+Diet Dr Pepper
+Dr Pepper Zero
+Diet Mountain Dew | Diet Mtn Dew
+Baja Blast | Mountain Dew Baja Blast
+Code Red | Mountain Dew Code Red
+Mountain Dew Voltage | Voltage
+Crystal Pepsi
+Pepsi Blue
+Pepsi Twist
+New Coke
+Coke Life | Coca-Cola Life
+Tab
+Vault
+Sprite Remix
+Fanta Grape
+Diet Rite
+Dr Thunder
+Cactus Cooler
+Ale-8-One | Ale 8
+Frostie
+Hires | Hires Root Beer
+Nehi
+Double Cola
+Grapette
+Dr Brown's
+Hansen's
+Reed's | Reeds Ginger Beer
+Virgil's
+Sprecher
+Blenheim | Blenheim Ginger Ale
+Seagram's | Seagram's Ginger Ale
+Culture Pop
+Waterloo | Waterloo Sparkling Water
+AHA | AHA Sparkling Water
+Topo Chico
+Florida's Natural
+Dole
+Langers
+R.W. Knudsen | Knudsen
+Lakewood
+Suja
+Evolution Fresh
+Bolthouse Farms
+Tree Top
+Old Orchard
+Northland
+Hi-C
+Tampico
+Apple & Eve
+Honest Kids
+Kern's
+Nantucket Nectars
+Mistic
+Fruitopia
+Hawaiian Sun
+Tang
+Crystal Light
+Squeezit
+Fruit Shoot | Robinsons Fruit Shoot
+Kia-Ora
+Sunquick
+Bottlegreen
+Cawston Press
+Princes
+Tizer
+R. White's | R. Whites Lemonade
+Franklin & Sons
+Ben Shaws
+Rio | Rio Tropical
+Red Kola | Barr's Red Kola
+Simply Squeezed
+Barker's
+Sunraysia
+Grove | Grove Juice
+Mr Juicy
+Nippy's
+Cascade
+Portello
+Sinalco
+Almdudler
+Bionade
+Fritz-Kola
+Club-Mate
+Afri-Cola
+Spezi | Paulaner Spezi
+Schwip Schwap
+Mezzo Mix
+Bluna
+Faxe Kondi
+Pommac
+Cockta
+Kofola
+Buratino
+Baikal
+Trocadero
+Jolly Cola
+Urge
+Cola Turka
+Uludağ Gazoz | Uludag
+Hohes C
+Valensina
+Looza
+Joker
+Pago
+Lemonsoda
+Sumol
+Trina
+Tymbark
+Cappy
+Mitsuya Cider
+C.C. Lemon
+Qoo
+Chilsung Cider
+Milkis
+Bongbong
+Dabur Real | Real Juice
+Paper Boat
+Rasna
+Rooh Afza
+Bovonto
+Campa Cola | Campa
+Gold Spot
+Sarsi
+Royal Tru-Orange
+Pop Cola
+Zesto
+F&N
+Est Cola
+Rani | Rani Float
+Suntop
+Mecca-Cola
+Zam Zam Cola
+Stoney | Stoney Ginger Beer
+Grapetiser
+Sparletta
+Liqui-Fruit
+Mazoe
+Chivita
+La Casera
+Kuat
+Sukita
+Guaraná Jesus
+Del Valle | Jugos Del Valle
+Boing!
+Jumex
+Peñafiel
+Sidral Mundet
+Manzanita Sol
+Big Cola
+Postobón
+Colombiana
+Kola Román
+Pony Malta
+Frescolita
+Materva
+Kola Real
+Coco Rico
+Ironbeer
+Frutsi
+Clearly Canadian
+Brio
+Pop Shoppe

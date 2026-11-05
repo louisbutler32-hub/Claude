@@ -9,10 +9,10 @@ Snickers | Marathon
 KitKat | Kit Kat
 Haribo
 Skittles
-M&M's | M&Ms | M and Ms | Eminems
+M&M's | M&Ms | M and Ms | Eminems | M&M
 Twix
 Reese's | Reeses | Reese's Peanut Butter Cups | Reese's Cups
-Hershey's | Hersheys | Hershey
+Hershey's | Hersheys | Hershey | Hershey's Bar | Hershey bar
 Kinder
 Lindt
 Ferrero Rocher | Ferrero
@@ -21,10 +21,10 @@ Toblerone
 Nestlé | Nestle
 Starburst | Opal Fruits
 Milky Way
-Dairy Milk | Cadbury Dairy Milk
+Dairy Milk | Cadbury Dairy Milk | Cadbury Silk | Dairy Milk Silk
 Kinder Bueno | Bueno
 Freddo | Freddo Frog | Freddo Frogs
-Galaxy
+Galaxy | Dove | Dove Chocolate
 Bounty
 Nerds
 Sour Patch Kids | Sour Patch
@@ -33,14 +33,14 @@ Chupa Chups
 Crunchie
 Aero
 Jolly Rancher | Jolly Ranchers
-Kinder Surprise | Kinder Egg | Kinder Eggs
+Kinder Surprise | Kinder Egg | Kinder Eggs | Kinder Surprise Egg
 Creme Egg | Cadbury Creme Egg | Creme Eggs
 Trolli
 Twizzlers
 Milka
 Wonka | Willy Wonka | Wonka Bar
 Butterfinger
-Allen's | Allens
+Allen's | Allens | Allens Lollies
 Cherry Ripe
 Mini Eggs | Cadbury Mini Eggs
 Flake
@@ -211,7 +211,7 @@ Whittaker's | Whittakers
 Pineapple Lumps
 Matchmakers
 Walnut Whip
-Fry's Chocolate Cream | Fry's
+Fry's Chocolate Cream | Fry's | Fry's Peppermint Cream
 Thorntons
 Hotel Chocolat
 Green & Black's | Green and Blacks
@@ -261,3 +261,174 @@ Black Forest Gummies | Black Forest
 Welch's Fruit Snacks | Welch's
 Gushers | Fruit Gushers
 Nerds Gummy Clusters | Nerds Clusters
+Jet Planes
+Eskimos
+Snifters
+Fruit Bursts
+Chocolate Fish
+Pinky | Cadbury Pinky
+Perky Nana
+Buzz Bar
+K Bar
+Sante | Sante Bar
+Peanut Slab | Whittaker's Peanut Slab
+Rainbow Confectionery
+Mackintosh's | Mackintosh's Toffee
+Black Cats | Allen's Black Cats
+Ripe Raspberries | Allen's Ripe Raspberries | Raspberries
+Spearmint Leaves
+Cobbers
+FruChocs
+Robern Menz | Menz
+Koko Black
+Tunnock's | Tunnock's Caramel Wafer | Tunnock's Teacake
+Caramac
+Fuse
+Spira
+Drifter
+Spangles
+Texan | Texan Bar
+Animal Bar
+Bournville
+Divine Chocolate
+Montezuma's
+Double Lollies
+Fizzers
+Maoam
+Trebor
+Randoms | Rowntree's Randoms
+Tooty Frooties
+Flumps
+Milky Way Crispy Rolls
+Uncle Joe's Mint Balls
+Kendal Mint Cake
+Wham | Wham Bar
+McCowan's | Highland Toffee | McCowan's Highland Toffee
+Now and Later
+Nerds Rope
+Jujubes
+Jujyfruits
+Chuckles
+Mary Jane
+Squirrel Nut Zippers
+Zagnut
+Clark Bar
+Oh Henry!
+Abba-Zaba
+Big Hunk
+Idaho Spud
+Goo Goo Cluster
+Reese's Fast Break | Fast Break
+NutRageous | Reese's NutRageous
+Cow Tales
+Sugar Daddy
+Sugar Babies
+Atomic Fireball | Fireballs | Atomic Fireballs
+Boston Baked Beans
+Fruit by the Foot
+Fruit Roll-Ups | Fruit Roll-Up
+Sweethearts | Conversation Hearts
+Charms | Charms Blow Pop
+Cry Baby | Cry Baby Sours
+Juicy Drop Pop | Juicy Drop
+Big League Chew
+Bazooka | Bazooka Joe
+Dubble Bubble
+Bubble Tape
+5 Gum | Five Gum
+Eclipse | Eclipse Mints
+Stride | Stride Gum
+Certs
+Mr. Big
+Coffee Crisp
+Mirage
+Wunderbar
+Crispy Crunch
+Eat-More
+Laura Secord
+Purdys
+Leonidas
+Neuhaus
+Callebaut
+Läderach
+Cailler
+Venchi
+Niederegger
+Mozartkugel | Mozart balls | Mozartkugeln
+Manner
+Katjes
+Storck
+Merci
+Riesen
+Duplo
+Schogetten
+Fini
+Vidal
+Malaco
+Marabou
+Fazer
+Freia
+Kvikk Lunsj
+Anthon Berg
+Toms
+Ga-Jol
+Tyrkisk Peber
+E. Wedel | Wedel
+Wawel
+Alpen Gold
+Alenka
+Roshen
+Ülker
+Smint
+Mamba
+Nimm2
+Droste
+Venco
+Pocky
+Meiji
+Glico
+White Rabbit
+Lotte
+Pepero
+Botan Rice Candy | Botan
+Kasugai
+Morinaga
+Milkita
+Kopiko
+Alpenliebe
+5 Star | Cadbury 5 Star | Five Star
+Perk | Cadbury Perk
+Gems | Cadbury Gems
+Eclairs | Cadbury Eclairs
+Melody | Parle Melody
+Pulse | Pass Pass Pulse
+Center Fresh
+Munch | Nestlé Munch
+Bar One
+Patchi
+Garoto
+Lacta
+Sonho de Valsa
+Bis
+Arcor
+Bon o Bon
+Duvalín
+Pulparindo
+Lucas | Lucas candy
+Vero | Vero Mango
+De la Rosa | Mazapán de la Rosa | Mazapan
+Pelon Pelo Rico | Pelon
+Carlos V
+Ricolino
+Bubulubu
+Paleta Payaso
+Bubbaloo
+Sublime
+Savoy
+Jet | Chocolatina Jet
+Bon Bon Bum
+Beacon
+Tex | Tex Bar
+Lunch Bar
+PS | Cadbury PS
+Astros

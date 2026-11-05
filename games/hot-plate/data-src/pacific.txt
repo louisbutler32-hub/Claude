@@ -4,7 +4,7 @@
 # emoji: 🐙
 # kind: thing
 Shark | sharks
-Great white shark | great white | great whites | white shark
+Great white shark | great white | great whites | white shark | white pointer
 Whale | whales
 Dolphin | dolphins
 Octopus | octopuses | octopi
@@ -56,8 +56,8 @@ Parrotfish | parrot fish
 Anglerfish | angler fish
 Marlin | marlins | blue marlin
 Sailfish
-Mahi-mahi | mahi mahi | dolphinfish
-Box jellyfish
+Mahi-mahi | mahi mahi | dolphinfish | dorado
+Box jellyfish | sea wasp
 Portuguese man o' war | man o war | bluebottle | bluebottles | Portuguese man of war
 Blue-ringed octopus | blue ringed octopus
 Beluga whale | beluga | belugas
@@ -190,7 +190,7 @@ Garibaldi
 Opah | moonfish
 Wahoo
 Giant trevally | GT | trevally
-Grouper | giant grouper
+Grouper | giant grouper | Queensland grouper
 Humphead wrasse | Napoleon wrasse | Maori wrasse
 Cleaner wrasse | wrasse
 Moorish idol
@@ -288,7 +288,7 @@ Cleaner shrimp
 Barnacle | barnacles
 Copepod | copepods
 Sea spider
-Abalone
+Abalone | paua
 Giant clam | clam | clams
 Oyster | oysters | Pacific oyster
 Mussel | mussels
@@ -316,3 +316,363 @@ Auklet
 Murre | common murre
 Gannet | Australasian gannet
 Tropicbird
+Longfin mako shark | longfin mako
+Pelagic thresher shark
+Bigeye thresher shark
+Scalloped hammerhead
+Great hammerhead
+Smooth hammerhead
+Bonnethead shark | bonnethead
+Sand tiger shark | grey nurse shark | sand tiger
+Sandbar shark
+Dusky shark
+Spinner shark
+Silvertip shark
+Bronze whaler | copper shark
+Tawny nurse shark
+Broadnose sevengill shark | sevengill shark
+Gummy shark
+School shark | tope
+Draughtboard shark
+Brownbanded bamboo shark
+Tasselled wobbegong
+Spotted wobbegong
+Japanese bullhead shark
+Pygmy shark
+Lantern shark
+Kitefin shark
+Prickly shark
+Crocodile shark
+Elephant shark | elephantfish | ghost shark
+Spotted ratfish | ratfish
+Chimaera
+Cownose ray
+Round stingray
+Bluespotted ribbontail ray | blue-spotted stingray
+Smooth stingray
+Short-tail stingray
+Reef manta ray
+Big skate
+Longnose skate
+Numbfish
+Bowmouth guitarfish
+Fiddler ray | banjo shark
+Butterfly ray
+Pygmy killer whale
+Blainville's beaked whale
+Stejneger's beaked whale
+Hubbs' beaked whale
+Longman's beaked whale
+Ginkgo-toothed beaked whale
+Shepherd's beaked whale
+Arnoux's beaked whale
+Spade-toothed whale
+Southern right whale
+Pygmy right whale
+Antarctic minke whale
+Omura's whale
+Pygmy blue whale
+Southern right whale dolphin
+Chilean dolphin
+Peale's dolphin
+Burrunan dolphin
+Australian snubfin dolphin
+Irrawaddy dolphin
+Indo-Pacific bottlenose dolphin
+Striped dolphin
+Burmeister's porpoise
+Finless porpoise
+Southern elephant seal
+Leopard seal
+South American sea lion
+South American fur seal
+Juan Fernández fur seal
+Marine otter
+Polar bear
+Steller's sea cow
+Olive sea snake
+Beaked sea snake
+Turtle-headed sea snake
+Peruvian pelican
+Fiordland penguin
+Snares penguin
+Erect-crested penguin
+Magellanic penguin
+Rockhopper penguin
+Rhinoceros auklet
+Cassin's auklet
+Crested auklet
+Least auklet
+Pigeon guillemot
+Marbled murrelet
+Ancient murrelet
+Short-tailed albatross
+Royal albatross
+Buller's albatross
+Waved albatross
+Black-browed albatross
+Shy albatross
+Sooty shearwater | tītī
+Short-tailed shearwater
+Wedge-tailed shearwater
+Hutton's shearwater
+Giant petrel
+Storm petrel
+Diving petrel
+Cook's petrel
+Westland petrel
+Black petrel
+Prion | fairy prion
+Brown booby
+Masked booby
+Red-footed booby
+Nazca booby
+Magnificent frigatebird
+Red-tailed tropicbird
+Sooty tern
+White tern | fairy tern
+Noddy | brown noddy
+Arctic tern
+Western gull
+Glaucous-winged gull
+Heermann's gull
+Swallow-tailed gull
+Red-billed gull
+Kelp gull | southern black-backed gull
+Silver gull
+Kittiwake | black-legged kittiwake
+Brandt's cormorant
+Pelagic cormorant
+Flightless cormorant
+King shag | New Zealand king shag
+Spotted shag
+Pied shag
+Skua | brown skua
+Phalarope
+White-bellied sea eagle
+Steller's sea eagle
+Bigeye tuna
+Southern bluefin tuna
+Dogtooth tuna
+Bonito | Pacific bonito
+Mackerel tuna | kawakawa
+Shortbill spearfish
+Yellowtail kingfish | kingfish | yellowtail
+Japanese amberjack | hamachi | buri
+Amberjack
+Bluefin trevally
+Bigeye trevally
+Golden trevally
+Rainbow runner
+Cobia
+Queenfish
+Mangrove jack
+Red emperor
+Spanish mackerel
+Jack mackerel
+Chub mackerel
+Pacific saury | sanma
+Capelin
+Eulachon | candlefish
+Surf smelt | smelt
+Pacific sand lance | sand lance
+Pacific ocean perch
+Sablefish | black cod
+Pacific hake | Pacific whiting
+Arrowtooth flounder
+Petrale sole
+Starry flounder
+California halibut
+Kelp greenling | greenling
+Cabezon
+Sculpin
+Yelloweye rockfish
+Bocaccio
+Vermilion rockfish
+Kelp bass | calico bass
+White seabass
+Opaleye
+Señorita | Senorita fish
+Blacksmith
+Red sea bream | madai
+Tarakihi
+Blue cod
+Red gurnard | gurnard
+Blue maomao
+Kahawai
+Hāpuku | groper
+Bluenose
+Ling
+Gemfish
+Southern blue whiting
+Leatherjacket
+Moki
+Butterfish | greenbone
+Parore
+Oreo dory | oreo
+Alfonsino
+Patagonian toothfish | Chilean sea bass
+Peruvian anchoveta | anchoveta
+Clown triggerfish
+Picasso triggerfish | humuhumu
+Titan triggerfish
+Bird wrasse
+Yellow boxfish
+Longhorn cowfish
+Potato cod | potato grouper
+Peacock grouper
+Anthias | lyretail anthias
+Regal angelfish
+Flame angelfish
+Copperband butterflyfish
+Raccoon butterflyfish
+Achilles tang
+Sailfin tang
+Convict tang | manini
+Foxface rabbitfish | foxface
+Sergeant major
+Blue-green chromis | chromis
+Domino damselfish
+Clark's anemonefish
+Maroon clownfish
+Tomato clownfish
+Longnose hawkfish
+Leaf scorpionfish
+Ornate ghost pipefish | ghost pipefish
+Pygmy seahorse
+Trumpetfish
+Cornetfish
+Shrimpfish | razorfish
+Jawfish
+Sweetlips
+Giant moray
+Zebra moray
+Snowflake moray
+Ribbon eel
+Dragon moray
+Conger eel | conger
+Snake eel
+Fangtooth
+Black dragonfish | dragonfish
+Barreleye
+Hatchetfish
+Stoplight loosejaw
+Black swallower
+Bristlemouth
+Snailfish | Mariana snailfish
+Grenadier | rattail
+Tripod fish
+Footballfish
+Sea toad
+Giant isopod
+Yeti crab
+Pompeii worm
+Zombie worm | Osedax
+Sea pig
+Venus' flower basket | glass sponge
+Bloody-belly comb jelly
+Telescope octopus
+Glass octopus
+Flapjack octopus
+Seven-arm octopus
+Coconut octopus | veined octopus
+Wunderpus
+Argonaut | paper nautilus
+Bigfin reef squid
+Japanese flying squid
+Market squid
+Glass squid
+Pharaoh cuttlefish
+Blue dragon | blue sea slug | Glaucus
+Blue button
+Violet sea snail | purple sea snail | Janthina
+Black sea nettle
+Fried egg jellyfish
+Crystal jelly
+Upside-down jellyfish
+Spotted lagoon jellyfish
+Golden jellyfish
+Immortal jellyfish | Turritopsis
+Atolla jellyfish
+Sea angel | clione
+Sea butterfly | pteropod
+Sea bunny
+Sea lemon
+Sea apple
+Basket star
+Feather star | crinoid
+Bat star
+Leather star
+Blue sea star | blue linckia
+Cushion star | pincushion sea star
+Chocolate chip sea star
+Purple sea urchin
+Red sea urchin
+Kina
+Slate pencil urchin
+Flower urchin
+Heart urchin | sea potato
+Mushroom coral
+Table coral | Acropora
+Fire coral
+Bubble coral
+Soft coral
+Black coral
+Sea whip
+Giant green anemone
+Magnificent sea anemone
+Bubble-tip anemone
+Carpet anemone
+Strawberry anemone
+Plumose anemone
+Barrel sponge
+Red rock lobster | kōura
+Balmain bug
+Spanner crab
+Tanner crab
+Red rock crab
+Purple shore crab | shore crab
+Kelp crab
+Sally Lightfoot crab
+Pelagic red crab | tuna crab
+Pea crab
+Boxer crab | pom-pom crab
+Soldier crab
+Harlequin shrimp
+Spot prawn
+Banded coral shrimp
+Tiger prawn
+Ghost shrimp
+Amphipod
+Isopod
+Goose barnacle | gooseneck barnacle
+Sea louse
+Geoduck
+Razor clam
+Manila clam
+Pipi
+Tuatua
+Toheroa
+Green-lipped mussel
+Bluff oyster
+Pearl oyster | black-lip pearl oyster
+Cockle
+Moon snail
+Giant triton | triton
+Spider conch
+Turban shell | turban snail
+Murex
+Tiger cowrie
+Periwinkle
+Whelk
+Gumboot chiton
+Shipworm
+Fireworm
+Ribbon worm
+Marine flatworm | flatworm
+Peanut worm
+Lugworm
+Spaghetti worm
+Palolo worm
+Sea mouse
+Lancelet

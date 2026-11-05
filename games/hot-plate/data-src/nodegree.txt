@@ -9,16 +9,16 @@ Builder
 Carpenter | Chippy | Joiner
 Mechanic
 Hairdresser | Hairstylist | Barber
-Chef | Cook
+Chef | Cook | Line Cook | Short-Order Cook
 Waiter | Waitress | Server
-Retail Assistant | Shop Assistant | Sales Assistant | Cashier
+Retail Assistant | Shop Assistant | Sales Assistant | Cashier | Checkout Operator | Shop Worker
 Barista
-Truck Driver | Trucker | Lorry Driver
+Truck Driver | Trucker | Lorry Driver | HGV Driver | Truckie
 Police Officer | Cop | Police
 Firefighter | Fireman
 Painter | Painter and Decorator | Decorator
 Builder's Labourer | Labourer | Laborer
-Bartender | Barman | Barmaid
+Bartender | Barman | Barmaid | Mixologist
 Personal Trainer | PT
 Real Estate Agent | Realtor | Estate Agent
 Pilot
@@ -28,7 +28,7 @@ Taxi Driver | Uber Driver | Cab Driver
 Delivery Driver | Courier
 Receptionist
 Security Guard | Bouncer
-Cleaner | Janitor
+Cleaner | Janitor | Custodian
 Farmer
 Gardener | Landscaper
 Plasterer
@@ -42,7 +42,7 @@ Fisherman | Fisher
 Model
 Actor | Actress
 Musician
-Influencer | YouTuber | Content Creator
+Influencer | YouTuber | Content Creator | TikToker
 Flight Attendant | Air Hostess | Cabin Crew | Steward
 Makeup Artist
 Nail Technician | Nail Tech
@@ -63,7 +63,7 @@ Dairy Farmer
 Shearer | Sheep Shearer
 Scaffolder
 Glazier
-Locksmith
+Locksmith | Key Cutter
 Auto Electrician
 Panel Beater | Auto Body Repairer
 Diesel Mechanic
@@ -74,11 +74,11 @@ Gasfitter
 Drainlayer
 Concreter
 Floor Layer | Flooring Installer
-Cabinet Maker
+Cabinet Maker | Furniture Maker
 Upholsterer
 Stonemason
 Arborist | Tree Surgeon
-Groundskeeper | Greenkeeper
+Groundskeeper | Greenkeeper | Groundsman
 Florist
 Zookeeper
 Dog Walker
@@ -86,13 +86,13 @@ Dog Groomer | Pet Groomer
 Vet Nurse | Veterinary Nurse
 Caregiver | Carer | Support Worker
 Nanny | Babysitter
-Childcare Worker | Early Childhood Educator
+Childcare Worker | Early Childhood Educator | Childminder
 Teacher Aide | Teaching Assistant
 Dental Assistant
 Pharmacy Assistant
 Phlebotomist
 Prison Officer | Corrections Officer
-Train Driver | Locomotive Driver
+Train Driver | Locomotive Driver | Locomotive Engineer
 Crane Operator
 Excavator Operator | Digger Driver | Machine Operator
 Miner
@@ -110,9 +110,9 @@ Travel Agent
 Tour Guide
 Hotel Receptionist | Front Desk
 Housekeeper
-Kitchen Hand | Dishwasher
+Kitchen Hand | Dishwasher | Dishie
 Fast Food Worker | Crew Member
-Supermarket Worker | Shelf Stacker
+Supermarket Worker | Shelf Stacker | Stocker | Grocery Clerk
 Photographer
 Videographer
 Graphic Designer
@@ -148,7 +148,7 @@ Brewer
 Winemaker
 Cheesemaker
 Beekeeper
-Forestry Worker | Logger
+Forestry Worker | Logger | Lumberjack
 Deckhand
 Train Conductor | Conductor
 Aircraft Maintenance Engineer | Aircraft Mechanic
@@ -169,11 +169,11 @@ Recycling Worker
 Plumber's Apprentice | Apprentice
 Handyman
 Sign Writer
-Printer
+Printer | Screen Printer
 Jeweller | Jeweler
-Watchmaker
+Watchmaker | Clockmaker
 Tailor | Seamstress | Dressmaker
-Cobbler | Shoemaker
+Cobbler | Shoemaker | Shoe Repairer
 Blacksmith | Farrier
 Saddler
 Sheet Metal Worker
@@ -206,7 +206,7 @@ Car Detailer | Car Valeter
 Car Wash Attendant
 Petrol Station Attendant | Gas Station Attendant
 Parking Warden | Traffic Warden | Parking Enforcement Officer
-Traffic Controller | Stop/Go | Lollipop Man | Crossing Guard
+Traffic Controller | Stop/Go | Lollipop Man | Crossing Guard | Lollipop Lady
 Road Worker
 Quarry Worker
 Meat Worker | Meatpacker | Abattoir Worker
@@ -236,7 +236,7 @@ Door-to-door Salesman
 Fundraiser | Chugger
 Library Assistant
 Museum Attendant
-Caretaker
+Caretaker | Maintenance Worker
 Concierge
 Butler
 Personal Shopper
@@ -244,3 +244,183 @@ Stylist
 Fashion Designer
 Interior Decorator
 Cake Decorator
+Shop Fitter
+Kitchen Fitter
+Steel Fixer | Rebar Worker
+Rigger
+Dogman
+Demolition Worker
+Insulation Installer
+Fencer | Fencing Contractor
+Paver
+Hod Carrier
+Bulldozer Operator | Dozer Operator
+Grader Operator
+Plant Operator
+Spray Painter
+CNC Machinist | Machine Setter
+Toolmaker
+Fabricator | Metal Fabricator
+Pipefitter
+Millwright
+Motorcycle Mechanic
+Marine Mechanic
+Small Engine Mechanic
+Bike Mechanic | Bicycle Mechanic
+Tyre Fitter | Tire Technician
+Windscreen Fitter | Auto Glass Technician
+Appliance Repair Technician
+Telecommunications Technician | Cable Technician
+Fibre Installer | Fiber Installer
+Security System Installer | Alarm Installer
+Boat Builder | Shipwright
+Sailmaker
+Piano Tuner
+Paperhanger | Wallpaper Hanger
+Commercial Diver | Diver
+Rope Access Technician
+Driller | Well Driller
+Shotfirer | Blaster
+Tow Truck Driver
+Street Sweeper
+Snowplow Driver | Snowplough Driver
+Railway Worker | Track Worker | Fettler
+Tram Driver
+Chauffeur | Limo Driver
+Bike Courier | Cycle Courier
+Food Delivery Rider | Uber Eats Driver
+Dock Worker | Wharfie | Stevedore | Longshoreman
+Merchant Sailor | Merchant Seaman
+Skipper | Fishing Boat Skipper
+Ship's Cook
+Cruise Ship Worker | Cruise Ship Crew
+Baggage Handler
+Airport Check-in Agent | Check-in Agent
+Airport Security Officer | TSA Agent
+Air Traffic Controller
+Emergency Dispatcher | 911 Dispatcher | 999 Call Handler | 111 Call Taker
+EMT | Emergency Medical Technician
+Ambulance Driver
+Coastguard
+Airman | Air Force
+Deputy Sheriff | Sheriff's Deputy
+CCTV Operator
+Loss Prevention Officer | Store Detective
+Ticket Inspector
+Politician
+Funeral Director | Undertaker
+Gravedigger
+Healthcare Assistant | Nursing Assistant | CNA
+Orderly | Hospital Porter
+Disability Support Worker
+Aged Care Worker | Care Worker
+Massage Therapist | Masseuse
+Doula
+Dental Technician
+Optical Assistant | Optical Dispenser
+Youth Worker
+Tutor
+Au Pair
+Dinner Lady | Lunch Lady | School Cook
+Referee | Umpire
+Sports Coach | Coach
+Pilates Instructor
+Dance Teacher
+Martial Arts Instructor
+Horse Riding Instructor
+Dive Instructor | Scuba Instructor
+Rafting Guide | River Guide
+Holiday Rep | Resort Rep
+Camp Counselor | Camp Counsellor
+Caddie | Caddy
+Kennel Hand | Animal Attendant
+Dog Trainer
+Shepherd
+Stockman | Jackaroo | Jillaroo | Ranch Hand | Cowboy
+Farmhand | Farm Worker
+Poultry Farmer
+Orchardist
+Vineyard Worker
+Aquaculture Worker | Oyster Farmer
+Gamekeeper
+Tree Planter
+Barback
+Host | Hostess
+Busser | Busboy
+Bellhop | Porter
+Valet
+Doorman
+Laundry Worker | Laundry Attendant
+Dry Cleaner
+Pizza Maker | Pizzaiolo
+Sushi Chef
+Caterer
+Food Truck Owner
+Chocolatier
+Distiller
+Lash Technician | Lash Tech
+Brow Artist
+Body Piercer | Piercer
+Pawnbroker
+Antique Dealer
+Bookseller
+Auctioneer
+Car Rental Agent
+Letting Agent
+Property Developer
+Visual Merchandiser | Merchandiser
+Brand Ambassador
+Sales Development Representative | SDR
+Copywriter
+Social Media Manager
+Podcaster
+Blogger
+Voice Actor
+Proofreader
+Video Editor
+Animator
+3D Artist | 3D Modeller
+Illustrator
+Cartoonist | Comic Artist
+Game Developer | Game Designer
+Drone Pilot | Drone Operator
+Computer Repair Technician
+Phone Repair Technician
+Paralegal
+Legal Secretary
+Court Reporter | Stenographer
+Transcriptionist
+Typist
+Clerk | Office Clerk
+Rapper
+Songwriter
+Music Producer
+Circus Performer | Acrobat
+Puppeteer
+Mascot
+Professional Poker Player | Poker Player
+Pro Wrestler | Wrestler
+Boxer
+MMA Fighter
+Racing Driver | F1 Driver
+Pro Surfer | Surfer
+Skateboarder
+Golfer
+Cricketer
+Basketball Player
+Tennis Player
+Cyclist
+Darts Player
+Snooker Player
+Club Promoter | Promoter
+Talent Agent
+Tour Manager
+Set Builder
+Prop Maker
+Bookbinder
+Picture Framer | Framer
+Engraver
+Taxidermist
+Luthier | Guitar Maker
+Woodturner | Woodworker
+Leatherworker

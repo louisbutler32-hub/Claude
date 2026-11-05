@@ -8,8 +8,8 @@ English
 Science
 History
 Geography
-PE | Physical Education | Phys Ed | Gym
-Art | Visual Arts
+PE | Physical Education | Phys Ed | Gym | Sport | Games | HPE
+Art | Visual Arts | Fine Art | Art and Design
 Music
 Biology | Bio
 Chemistry | Chem
@@ -35,8 +35,8 @@ Social Studies
 Algebra
 Geometry
 Design and Technology | DT | D&T | Design Technology
-Food Technology | Food Tech | Home Economics | Home Ec | Cooking
-Woodwork | Woodworking | Shop
+Food Technology | Food Tech | Home Economics | Home Ec | Cooking | Family and Consumer Sciences | FCS
+Woodwork | Woodworking | Shop | Wood Shop | Carpentry
 Technology | Tech
 Digital Technology | Digitech | Digital Technologies
 ICT | IT | Information Technology
@@ -46,19 +46,19 @@ Sociology
 Philosophy
 Politics | Government | Government and Politics | Civics
 Legal Studies | Law
-Classics | Classical Studies
+Classics | Classical Studies | Classical Civilisation | Classical Civilization
 Dance
 Photography
 Graphics | Graphic Design
 Engineering
-Agriculture | Ag
+Agriculture | Ag | Agricultural Science | Agriscience
 Horticulture
 Sport Science | Sports Science | PE Studies
 Outdoor Education | Outdoor Ed
 Further Maths | Further Mathematics
 Earth Science | Earth and Space Science
 Environmental Science | Environmental Studies
-Textiles | Textiles Technology
+Textiles | Textiles Technology | Sewing
 Italian
 Korean
 Indonesian
@@ -73,7 +73,7 @@ English Language
 Creative Writing
 Journalism
 Debating | Debate
-Public Speaking
+Public Speaking | Speech
 World History
 US History | American History | APUSH
 European History
@@ -143,3 +143,91 @@ Sign Language | ASL | NZSL
 Religion
 Ethics
 Driver's Ed | Driver's Education | Drivers Ed
+ESL | ESOL | EAL | English as a Second Language
+Modern Languages | Languages | MFL | Modern Foreign Languages
+Literacy
+Numeracy
+Phonics
+Reading
+Writing
+Spelling
+Handwriting
+Arithmetic
+Library
+Crafts | Arts and Crafts
+Swimming
+Swahili
+Turkish
+Polish
+Punjabi
+Urdu
+Bengali
+Tamil
+Thai
+Filipino | Tagalog
+Persian | Farsi
+Cook Islands Māori
+Fijian
+Niuean
+Swedish
+Norwegian
+Danish
+Finnish
+Sanskrit
+Integrated Science
+Forensic Science | Forensics
+Food Science
+Nutrition
+Zoology
+Botany
+Ecology
+Oceanography
+Kinesiology
+Animal Science | Vet Science
+Discrete Maths | Discrete Mathematics
+Core Maths
+Humanities
+Medieval History
+Global Studies
+Theology
+Asian Studies
+Māori Studies
+African American Studies | Black History
+Ethnic Studies
+Criminology
+Marketing
+Commerce
+Typing | Keyboarding
+Drawing
+Digital Art
+Animation
+Musical Theatre | Musical Theater
+Performing Arts
+Music Theory
+Instrumental Music
+Architecture
+Interior Design
+Cosmetology | Hair and Beauty
+Culinary Arts
+Automotive | Auto Shop | Motor Mechanics
+Welding
+Web Design
+Game Design
+Cybersecurity
+Data Science
+Sex Education | Sex Ed
+Wellbeing
+Careers | Career Education
+Work Experience
+Yearbook
+Logic
+Rhetoric
+Bible Studies
+Islamic Studies
+Jewish Studies | Judaic Studies
+Mythology
+JROTC | ROTC
+Aviation
+Sustainability
+Global Perspectives
+Extended Project | EPQ

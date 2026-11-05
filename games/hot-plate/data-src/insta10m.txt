@@ -9,19 +9,19 @@
 Cristiano Ronaldo | Ronaldo | CR7
 Lionel Messi | Messi | Leo Messi
 Taylor Swift
-Kim Kardashian
-Kylie Jenner
+Kim Kardashian | Kim K
+Kylie Jenner | Kylie
 Selena Gomez
 Ariana Grande
 Dwayne Johnson | The Rock
 Justin Bieber
 Beyoncé | Beyonce
-Billie Eilish
+Billie Eilish | Billie
 Kendall Jenner
 Rihanna
-Drake
+Drake | Drizzy | Aubrey Graham
 Zendaya
-Neymar | Neymar Jr
+Neymar | Neymar Jr | Neymar Júnior
 MrBeast | Mr Beast | Jimmy Donaldson
 LeBron James
 Kylian Mbappé | Mbappe | Kylian Mbappe
@@ -29,12 +29,12 @@ Khloé Kardashian | Khloe Kardashian
 Miley Cyrus
 Katy Perry
 Kevin Hart
-Cardi B
+Cardi B | Cardi
 Jennifer Lopez | JLo | J.Lo
 Dua Lipa
 Harry Styles
 Ed Sheeran
-Lady Gaga
+Lady Gaga | Gaga
 Bruno Mars
 Tom Holland
 Shakira
@@ -43,19 +43,19 @@ Kourtney Kardashian
 Travis Scott
 Chris Brown
 Demi Lovato
-Snoop Dogg
+Snoop Dogg | Snoop
 Vin Diesel
 Gal Gadot
-Ellen DeGeneres
-Virat Kohli
+Ellen DeGeneres | Ellen
+Virat Kohli | Kohli | King Kohli
 Olivia Rodrigo
 Sabrina Carpenter
-Shawn Mendes
+Shawn Mendes | Shawn
 Camila Cabello
-Eminem
+Eminem | Marshall Mathers | Slim Shady
 Millie Bobby Brown
-Will Smith
-Leonardo DiCaprio
+Will Smith | Fresh Prince
+Leonardo DiCaprio | Leo DiCaprio
 Robert Downey Jr. | RDJ | Robert Downey Jr
 Chris Hemsworth
 Ryan Reynolds
@@ -68,18 +68,18 @@ Jennie | Jennie Kim
 Rosé | Rose | Roseanne Park
 Jisoo | Kim Jisoo
 Zayn Malik | Zayn
-Khaby Lame
+Khaby Lame | Khaby
 Charli D'Amelio | Charli DAmelio
 Addison Rae
 Kris Jenner
-Lewis Hamilton
+Lewis Hamilton | Hamilton
 Mohamed Salah | Mo Salah
 Erling Haaland | Haaland
 Stephen Curry | Steph Curry
 Conor McGregor
 The Weeknd | Abel Tesfaye
-Post Malone
-Bad Bunny
+Post Malone | Posty
+Bad Bunny | Benito
 Nick Jonas
 Justin Timberlake
 Jenna Ortega
@@ -90,14 +90,14 @@ Margot Robbie
 Sydney Sweeney
 Timothée Chalamet | Timothee Chalamet
 Jason Statham
-Logan Paul
+Logan Paul | Logan
 Jake Paul
 IShowSpeed | Speed | Darren Watkins
-Ronaldinho
+Ronaldinho | Ronaldinho Gaúcho
 Zlatan Ibrahimović | Zlatan | Zlatan Ibrahimovic
 Gareth Bale
-Jude Bellingham
-Lamine Yamal
+Jude Bellingham | Bellingham
+Lamine Yamal | Yamal
 Vinícius Júnior | Vinicius Junior | Vini Jr
 Karim Benzema
 Paul Pogba
@@ -105,7 +105,7 @@ Sergio Ramos
 Barack Obama
 Michelle Obama
 Donald Trump
-Narendra Modi
+Narendra Modi | Modi
 Kobe Bryant
 Shaquille O'Neal | Shaq
 Tom Brady
@@ -118,15 +118,15 @@ Serena Williams
 Rafael Nadal | Rafa Nadal
 Roger Federer
 Novak Djokovic
-Megan Thee Stallion
-Doja Cat
+Megan Thee Stallion | Megan Pete
+Doja Cat | Doja
 SZA
 Lana Del Rey
 Adele
 Britney Spears
 Madonna
 Halsey
-Lizzo
+Lizzo | Melissa Jefferson
 Niall Horan
 Louis Tomlinson
 Liam Payne
@@ -140,20 +140,20 @@ Lil Uzi Vert
 Lil Wayne
 Future
 XXXTentacion
-Marshmello
-DJ Khaled
+Marshmello | Mello
+DJ Khaled | Khaled
 50 Cent
 Wiz Khalifa
 Tekashi 6ix9ine | 6ix9ine | Tekashi69
 Iggy Azalea
-Tyga
+Tyga | Michael Stevenson
 Diddy | Sean Combs | P. Diddy
 Usher
 Karol G
 J Balvin
 Maluma
 Anitta
-Daddy Yankee
+Daddy Yankee | DY
 Ozuna
 Anuel AA
 Becky G
@@ -168,9 +168,9 @@ RM | Kim Namjoon
 J-Hope | Jung Hoseok
 Suga | Min Yoongi
 Jin | Kim Seokjin
-Cha Eun-woo
-Jackson Wang
-G-Dragon
+Cha Eun-woo | Eunwoo
+Jackson Wang | Jackson
+G-Dragon | GD | Kwon Ji-yong
 IU | Lee Ji-eun
 Felix | Lee Felix
 Lee Min-ho
@@ -184,7 +184,7 @@ Henry Cavill
 Jason Momoa
 Johnny Depp
 Chris Evans
-Michael B. Jordan
+Michael B. Jordan | MBJ
 Arnold Schwarzenegger
 Jack Black
 Kristen Bell
@@ -236,7 +236,7 @@ Miranda Kerr
 Candice Swanepoel
 Barbara Palvin
 Cara Delevingne
-Chrissy Teigen
+Chrissy Teigen | Chrissy
 John Legend
 Paris Hilton
 Scott Disick
@@ -289,11 +289,11 @@ Kyrie Irving
 James Harden
 Dwyane Wade
 Charles Leclerc
-Max Verstappen
+Max Verstappen | Verstappen
 Harry Kane
 Marcus Rashford
-Son Heung-min | Heung-min Son
-Kevin De Bruyne
+Son Heung-min | Heung-min Son | Sonny
+Kevin De Bruyne | KDB
 Robert Lewandowski
 Luka Modrić | Luka Modric
 Toni Kroos
@@ -321,9 +321,9 @@ David Alaba
 Antonio Rüdiger | Antonio Rudiger
 Alisha Lehmann
 MS Dhoni | Mahendra Singh Dhoni | Dhoni
-Rohit Sharma
+Rohit Sharma | Hitman
 Hardik Pandya
-Sachin Tendulkar
+Sachin Tendulkar | Sachin
 Shubman Gill
 Priyanka Chopra
 Deepika Padukone
@@ -409,3 +409,222 @@ Moon Ga-young
 Ahn Hyo-seop
 Seol In-ah
 Park Seo-joon
+Nicki Minaj | Nicki | Onika Maraj
+Oprah Winfrey | Oprah
+Megan Fox
+Channing Tatum
+Jamie Foxx
+Drew Barrymore
+Courteney Cox | Courtney Cox
+Pedro Pascal
+Tom Felton
+Eiza González
+Joe Rogan
+Jay Shetty
+Mariah Carey | Mariah
+Normani | Normani Kordei
+Lauren Jauregui
+Perrie Edwards | Perrie
+Machine Gun Kelly | MGK
+Tyler, the Creator
+Saweetie
+Bhad Bhabie | Danielle Bregoli
+Kehlani
+Blac Chyna
+Amber Rose
+A$AP Rocky | A$AP
+Offset
+Quavo
+Lil Pump
+Meek Mill
+Calvin Harris
+David Guetta
+Martin Garrix
+Steve Aoki
+Ricky Martin
+Prince Royce
+Farruko
+Myke Towers
+Peso Pluma
+Manuel Turizo
+Greeicy
+Christian Nodal
+Belinda
+Lali Espósito | Lali
+Emilia Mernes | Emilia
+María Becerra
+Eugenio Derbez
+Luisito Comunica
+Juanpa Zurita
+Juan de Dios Pantoja
+Maite Perroni
+Wanda Nara
+Chiara Ferragni
+Fedez
+Gianluca Vacchi
+Heidi Klum
+Naomi Campbell
+Alessandra Ambrosio
+Rosie Huntington-Whiteley
+Winnie Harlow
+Demi Rose
+Jen Selter
+Yanet Garcia
+Michelle Lewin
+Alexis Ren
+Mia Khalifa
+Baby Ariel | Ariel Martin
+Brent Rivera
+CZN Burak | Burak Özdemir
+Joko Widodo | Jokowi
+Prabowo Subianto | Prabowo
+Jair Bolsonaro | Bolsonaro
+Lula | Luiz Inácio Lula da Silva | Lula da Silva
+Recep Tayyip Erdoğan | Erdogan
+Volodymyr Zelenskyy | Zelensky | Zelenskyy | Volodymyr Zelensky
+Sheikh Hamdan | Fazza | Hamdan bin Mohammed
+Haifa Wehbe
+Elissa
+Mohamed Ramadan
+Tamer Hosny
+Amr Diab
+Myriam Fares
+Ahlam
+Saad Lamjarred
+Burna Boy
+Wizkid
+Davido
+Tiwa Savage
+Diamond Platnumz
+Funke Akindele
+Yemi Alade
+Olga Buzova
+Nastya Ivleeva
+Timati
+Egor Kreed
+Can Yaman
+Demet Özdemir
+Kim Soo-hyun
+Lee Jong-suk
+Song Hye-kyo
+Bae Suzy | Suzy
+Jung Ho-yeon
+Son Ye-jin
+Nam Joo-hyuk
+Lee Sung-kyung
+Park Bo-gum
+Song Kang
+Baekhyun | Byun Baekhyun
+Chanyeol | Park Chanyeol
+Kai | Kim Jong-in
+Lay Zhang | Zhang Yixing | Lay
+Taeyang
+Mark Tuan
+BamBam
+Hyunjin | Hwang Hyunjin
+Karina | Yu Ji-min
+Winter | Kim Min-jeong
+Jang Won-young | Wonyoung
+Taeyeon | Kim Taeyeon
+Yoona | Im Yoon-ah
+Bright Vachirawit | Bright
+Urassaya Sperbund | Yaya
+Kathryn Bernardo
+Liza Soberano
+Anne Curtis
+Heart Evangelista
+Ayu Ting Ting
+Syahrini
+Luna Maya
+Prilly Latuconsina
+Nikita Willy
+Natasha Wilona
+Atta Halilintar
+Aurel Hermansyah
+Ria Ricis
+Agnez Mo
+Raisa Andriana | Raisa
+Baim Wong
+Deddy Corbuzier
+Ludmilla
+Luísa Sonza
+Wesley Safadão
+Carlinhos Maia
+Felipe Neto
+Sabrina Sato
+Paolla Oliveira
+Grazi Massafera
+Deborah Secco
+Juliette Freire | Juliette
+Pabllo Vittar
+Ronaldo Nazário | R9 | Ronaldo Fenômeno
+Pelé
+Thiago Silva
+Gabriel Jesus
+Roberto Firmino | Firmino
+Richarlison
+Raphinha
+Alisson Becker | Alisson
+Éder Militão | Militão
+Willian
+David Luiz
+Isco
+Marco Asensio | Asensio
+David de Gea | De Gea
+Sergio Busquets | Busquets
+Iker Casillas | Casillas
+Álvaro Morata | Morata
+Jordi Alba
+Cesc Fàbregas | Fabregas
+Sadio Mané
+Riyad Mahrez | Mahrez
+Wayne Rooney | Rooney
+Virgil van Dijk | Van Dijk | VVD
+Bruno Fernandes
+João Félix
+Ousmane Dembélé | Dembele
+Raphaël Varane | Varane
+N'Golo Kanté | Kante
+Manuel Neuer | Neuer
+Thomas Müller
+Romelu Lukaku | Lukaku
+Alexis Sánchez
+Edinson Cavani | Cavani
+Radamel Falcao | Falcao
+Javier Hernández | Chicharito
+Mauro Icardi | Icardi
+Rodrigo De Paul | De Paul
+Lautaro Martínez | Lautaro
+Julián Álvarez
+Emiliano Martínez | Dibu Martínez | Dibu
+Enzo Fernández
+Kevin Durant | KD
+Giannis Antetokounmpo | Giannis | Greek Freak
+Luka Dončić | Doncic
+Anthony Joshua | AJ
+Jasprit Bumrah | Bumrah
+KL Rahul
+Yuvraj Singh | Yuvi
+Shikhar Dhawan
+Rishabh Pant
+Parineeti Chopra
+Sonakshi Sinha
+Mouni Roy
+Hina Khan
+Shahid Kapoor
+Vicky Kaushal
+Guru Randhawa
+Yo Yo Honey Singh | Honey Singh
+Badshah
+Rakul Preet Singh
+Kajal Aggarwal
+Shruti Haasan
+Riyaz Aly | Riyaz
+Mr. Faisu | Faisal Shaikh
+Shehnaaz Gill
+Arishfa Khan
+Elvish Yadav
+Ashish Chanchlani
+Hania Aamir
+Aiman Khan
+Iqra Aziz

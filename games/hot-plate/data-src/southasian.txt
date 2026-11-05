@@ -9,9 +9,9 @@
 Butter chicken | Murgh makhani
 Chicken tikka masala | Tikka masala
 Naan | Nan | Naan bread | Garlic naan
-Biryani | Biryani rice
+Biryani | Biryani rice | Dum biryani | Chicken biryani | Mutton biryani
 Samosa | Samosas
-Curry
+Curry | Chicken curry
 Dal | Daal | Dhal | Dahl | Lentil curry
 Korma | Chicken korma
 Tandoori chicken | Tandoori
@@ -29,10 +29,10 @@ Masala chai | Chai | Chai tea
 Rogan josh
 Madras | Madras curry
 Jalfrezi | Chicken jalfrezi
-Dosa | Dosai | Masala dosa
+Dosa | Dosai | Masala dosa | Thosai
 Gulab jamun
 Pani puri | Golgappa | Gol gappa | Puchka | Phuchka
-Paratha | Parantha | Aloo paratha
+Paratha | Parantha | Aloo paratha | Paneer paratha | Gobi paratha | Methi paratha
 Chana masala | Chole | Chickpea curry
 Aloo gobi
 Bhuna
@@ -66,7 +66,7 @@ Upma
 Pongal
 Rasam
 Appam
-Puttu
+Puttu | Pittu
 Avial | Aviyal
 Bisi bele bath
 Lemon rice
@@ -77,7 +77,7 @@ Kolkata biryani
 Lucknowi biryani | Awadhi biryani
 Sindhi biryani
 Kacchi biryani
-Kottu | Kottu roti
+Kottu | Kottu roti | Kothu
 Hoppers | Appa | Egg hoppers | String hoppers | Idiyappam
 Lamprais
 Pol sambol | Coconut sambol | Sambol
@@ -102,7 +102,7 @@ Choila
 Ema datshi
 Mas huni
 Garudhiya
-Nihari
+Nihari | Nehari
 Haleem
 Chapli kebab
 Karahi gosht
@@ -145,13 +145,13 @@ Kheer | Payasam | Payesh
 Kulfi
 Barfi | Burfi
 Ladoo | Laddu | Laddoo | Motichoor ladoo
-Gajar halwa | Gajar ka halwa | Carrot halwa
+Gajar halwa | Gajar ka halwa | Carrot halwa | Gajrela
 Halwa | Sooji halwa
 Sandesh
 Mishti doi
 Peda | Pedha
 Kaju katli | Kaju barfi
-Soan papdi
+Soan papdi | Patisa
 Mysore pak
 Shrikhand
 Modak
@@ -265,6 +265,190 @@ Chaas | Buttermilk | Mattha
 Rooh Afza
 Kashmiri chai | Noon chai | Pink tea
 Kahwa
-Butter tea | Po cha
+Butter tea | Po cha | Suja
 Tongba
 Chhurpi
+Mutton curry | Lamb curry | Goat curry
+Egg curry | Anda curry
+Prawn curry | Jhinga masala
+Fish tikka
+Malai tikka | Murgh malai tikka
+Hariyali tikka | Hariyali chicken
+Tangdi kebab
+Chicken changezi
+Paneer bhurji
+Egg bhurji | Anda bhurji
+Chilli paneer
+Navratan korma
+Jeera aloo | Aloo jeera
+Aloo methi
+Methi malai matar
+Aloo gosht
+Chicken handi
+Murgh cholay
+Ambur biryani
+Dindigul biryani
+Bombay biryani
+Bara
+Kwati
+Juju dhau
+Sekuwa
+Sukuti
+Dhindo
+Samay baji
+Laphing
+Jhol momo
+Kewa datshi
+Phaksha paa
+Jasha maru
+Bhutanese red rice | Red rice
+Hoentay
+Hedhikaa
+Bajiya
+Masroshi
+Gulha
+Rihaakuru
+Bis keemiya
+Kukul mas curry
+Isso vadei | Prawn vadai
+Devilled chicken
+Fish cutlets
+Kiri hodi
+Kalu dodol
+Kavum
+Aluwa
+Pol roti
+Godamba roti
+Seeni sambol
+Jaffna crab curry
+Ala thel dala | Devilled potatoes
+Love cake
+King coconut | Thambili
+Aloo bhorta | Bhorta
+Kala bhuna
+Mezban
+Chotpoti
+Morog polao
+Rui maach | Rohu fish curry
+Begun bhaja
+Beguni
+Jhal muri
+Shingara
+Kalojam
+Borhani
+Bakarkhani
+Seviyan | Sevai | Shemai
+Kunna
+Dum pukht
+Namkeen gosht
+Rosh
+Peshawari naan
+Taftan
+Sheermal
+Khameeri roti
+Chana chaat
+Fruit chaat
+Doodh patti
+Habshi halwa
+Lahori fish
+Kabuli pulao
+Dal tadka | Tadka dal
+Moong dal halwa
+Pinni
+Panjiri
+Litti chokha | Litti
+Sattu paratha
+Thekua
+Bedmi puri
+Daulat ki chaat
+Aloo chaat
+Amritsari fish
+Mirchi bajji | Mirchi vada
+Batata vada
+Sabudana vada
+Dabeli
+Ragda pattice
+Thalipeeth
+Zunka bhakar
+Bharli vangi
+Sol kadhi
+Varan bhaat
+Sannas
+Patoleo
+Ros omelette
+Choris pao | Chorizo pao
+Dal dhokli
+Sev tameta
+Khakhra
+Mohanthal
+Pyaaz kachori
+Mawa kachori
+Ghee roast | Chicken ghee roast
+Kori rotti
+Mangalore buns
+Goli baje
+Maddur vada
+Kothu parotta
+Sakkarai pongal
+Puliyodarai | Tamarind rice | Pulihora
+Paniyaram | Kuzhi paniyaram
+Adai
+Mor kuzhambu
+Kootu
+Poriyal
+Thoran
+Olan
+Erissery
+Sadya | Kerala sadya
+Pazham pori | Banana fritters
+Unniyappam
+Ada pradhaman
+Karimeen pollichathu
+Kappa | Kappa meen
+Mirchi ka salan
+Bagara baingan
+Qubani ka meetha
+Lukhmi
+Pathar ka gosht
+Gongura mutton | Gongura pachadi
+Punugulu
+Gutti vankaya
+Chhena poda
+Dalma
+Pakhala bhata | Pakhala
+Rasabali
+Ghugni
+Mughlai paratha
+Fish kabiraji | Kabiraji
+Rezala | Chicken rezala
+Daab chingri
+Masor tenga | Fish tenga
+Khar
+Eromba
+Jadoh
+Rista
+Tabak maaz
+Haak saag
+Nadru yakhni
+Phulka
+Pav | Pao
+Banana chips
+Chikki
+Gathiya
+Bonda | Aloo bonda
+Chicken lollipop
+Chilli potato
+Bread pakora
+Sundal
+Bhutta
+Chana jor garam
+Pantua
+Lyangcha
+Boondi
+Milk cake
+Balushahi | Badusha
+Adhirasam
+Kesari | Rava kesari
+Dodha barfi
+Gola | Baraf gola | Ice gola
+Bal mithai

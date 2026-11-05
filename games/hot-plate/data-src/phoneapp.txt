@@ -11,11 +11,11 @@
 # do come on the phone in many countries.
 Camera
 Photos | Google Photos | Apple Photos
-Messages | iMessage | Google Messages | Samsung Messages | Text messages
-Phone | Dialer | Phone app
+Messages | iMessage | Google Messages | Samsung Messages | Text messages | Android Messages | SMS
+Phone | Dialer | Phone app | Phone by Google
 Settings
-Clock | Alarm | Alarms
-Calculator
+Clock | Alarm | Alarms | Google Clock
+Calculator | Google Calculator
 Notes | Apple Notes
 Maps | Apple Maps
 Safari
@@ -24,9 +24,9 @@ App Store
 Play Store | Google Play | Google Play Store
 YouTube
 Gmail
-Calendar | Google Calendar | Samsung Calendar
-Weather
-Contacts
+Calendar | Google Calendar | Samsung Calendar | S Planner
+Weather | Samsung Weather
+Contacts | Google Contacts
 FaceTime
 Music | Apple Music
 Google Maps
@@ -83,13 +83,13 @@ Google One
 Google Home
 Google Play Games | Play Games
 Google Play Books | Play Books
-Google News
+Google News | Google Play Newsstand
 Google Fit
 Google Docs | Docs
 Google Sheets | Sheets
 Google Slides | Slides
 Google Translate
-Recorder | Voice Recorder | Sound recorder
+Recorder | Voice Recorder | Sound recorder | Samsung Voice Recorder | Pixel Recorder
 Digital Wellbeing
 Find My Device | Find Hub
 Android Auto
@@ -99,8 +99,8 @@ Pixel Camera
 Pixel Screenshots | Screenshots
 Pixel Studio
 Pixel Weather
-Samsung Notes
-Samsung Health
+Samsung Notes | S Note
+Samsung Health | S Health
 Galaxy Store | Samsung Galaxy Store | Samsung Apps
 Bixby
 Samsung Wallet | Samsung Pay
@@ -141,8 +141,48 @@ Moto | Moto app
 Netflix
 Spotify
 Facebook
-Microsoft Office | Office
+Microsoft Office | Office | Word | Excel | PowerPoint | Microsoft Word | Microsoft Excel
 OneDrive
 Outlook
 LinkedIn
 Microsoft 365 Copilot | Copilot
+Gboard | Google Keyboard
+Samsung Keyboard
+Hangouts | Google Hangouts
+Google Talk | GTalk
+Google Go
+YouTube Go
+Gallery Go
+Maps Go
+YouTube Kids
+Live Transcribe | Live Transcribe & Notification
+Sound Amplifier
+Android Accessibility Suite | TalkBack
+Health Connect | Google Health Connect
+Pixel Launcher | Launcher
+Pixel Watch | Google Pixel Watch
+Pixel Buds
+Wallpaper & style | Wallpapers
+Screen recorder
+Galaxy Themes | Samsung Themes | Themes
+Samsung DeX | DeX
+Smart View | Samsung Smart View
+Interpreter | Samsung Interpreter
+S Voice
+Mi Video
+Mi Music
+Game Space
+Zen Mode
+Petal Maps
+Huawei Video
+Huawei Music
+Phone Clone
+HERE WeGo | HERE Maps | Nokia Maps
+Instagram
+Messenger | Facebook Messenger
+TikTok
+Amazon | Amazon Shopping
+Prime Video | Amazon Prime Video
+Booking.com | Booking
+Candy Crush Saga | Candy Crush
+Google Plus

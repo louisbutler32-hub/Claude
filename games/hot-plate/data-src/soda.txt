@@ -5,28 +5,28 @@
 # kind: thing
 # Carbonated soft drinks: generic types and brands / well-known variants.
 # Brand-name mineral waters, energy drinks and juices are left out.
-Coca-Cola | Coke | Coca Cola
+Coca-Cola | Coke | Coca Cola | Coca-Cola Classic | Coke Classic
 Pepsi
 Sprite
-Fanta
-Lemonade | Lemon soda
-Cola
-Dr Pepper | Dr. Pepper
-Mountain Dew | Mtn Dew
+Fanta | Fanta Orange
+Lemonade | Lemon soda | Sparkling lemonade | Lemon squash
+Cola | Diet cola
+Dr Pepper | Dr. Pepper | Doctor Pepper
+Mountain Dew | Mtn Dew | Dew
 Root beer
-Ginger ale
+Ginger ale | Dry ginger ale
 Ginger beer
 7 Up | 7UP | Seven Up
 Diet Coke
 Coke Zero | Coca-Cola Zero | Coke No Sugar
-Pepsi Max
+Pepsi Max | Pepsi Max Cherry
 Cream soda | Creaming soda
 Cherry Coke | Cherry Cola
 Vanilla Coke
 Orange soda | Orangeade
 Grape soda
 Tonic water | Tonic
-Soda water | Club soda | Seltzer | Sparkling water
+Soda water | Club soda | Seltzer | Sparkling water | Seltzer water | Fizzy water
 Schweppes
 Sunkist
 A&W | A&W Root Beer
@@ -60,7 +60,7 @@ Bitter lemon
 Dandelion and burdock | Dandelion & Burdock
 Kola champagne
 Kirks
-Bundaberg | Bundy
+Bundaberg | Bundy | Bundaberg Ginger Beer
 Pub Squash | Kirks Pub Squash
 Passiona
 Portello
@@ -167,3 +167,94 @@ Dr Pepper Zero
 Vanilla Pepsi
 Mountain Dew Livewire | Livewire
 Coke Life | Coca-Cola Life
+Diet soda | Diet pop
+Strawberry soda
+Raspberry soda | Raspberry lemonade
+Peach soda
+Black cherry soda
+Grapefruit soda
+Apple soda | Sidra
+Spruce beer
+Italian soda
+Elderflower soda | Elderflower pressé
+Blue cream soda | Blue creaming soda
+Diet Mountain Dew | Diet Mtn Dew
+Mountain Dew Pitch Black | Pitch Black
+Mountain Dew Major Melon | Major Melon
+Mountain Dew White Out | White Out
+Dr Pepper Strawberries and Cream
+Pepsi Twist
+Pepsi Lime
+Vault
+Sprite Remix
+Fanta Lemon
+Fanta Strawberry
+Diet Rite
+Dr Thunder
+Cactus Cooler
+Ale-8-One | Ale 8
+Frostie
+Hires | Hires Root Beer
+Nehi
+Double Cola
+Grapette
+Dr Brown's
+Hansen's
+Reed's | Reeds Ginger Beer
+Virgil's
+Sprecher
+Blenheim | Blenheim Ginger Ale
+Seagram's | Seagram's Ginger Ale
+Boylan | Boylan Bottling
+Henry Weinhard's
+Tropical Fantasy
+Polar
+Zevia
+Izze
+Sparkling Ice
+Culture Pop
+Tizer
+R. White's | R. Whites Lemonade
+Cawston Press
+Franklin & Sons
+Ben Shaws
+Rio | Rio Tropical
+Rubicon | Rubicon Sparkling
+J2O
+Cascade
+Kofola
+Buratino
+Baikal
+Trocadero
+Jolly Cola
+Urge
+Cola Turka
+Uludağ Gazoz | Uludag
+Sumol
+Mitsuya Cider
+C.C. Lemon
+Chilsung Cider
+Milkis
+Campa Cola | Campa
+Gold Spot
+Bovonto
+F&N
+Est Cola
+Mecca-Cola
+Zam Zam Cola
+Stoney | Stoney Ginger Beer
+Grapetiser
+Sparletta
+La Casera
+Kuat
+Sukita
+Guaraná Jesus
+Peñafiel
+Colombiana
+Kola Román
+Pony Malta
+Frescolita
+Materva
+Clearly Canadian
+Brio
+Pop Shoppe

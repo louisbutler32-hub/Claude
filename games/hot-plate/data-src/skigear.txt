@@ -11,13 +11,13 @@ Helmet | Ski Helmet
 Gloves | Ski Gloves
 Ski Jacket | Jacket | Snow Jacket
 Ski Pants | Snow Pants | Salopettes | Ski Trousers
-Beanie | Beanie Hat | Woolly Hat | Toque
+Beanie | Beanie Hat | Woolly Hat | Toque | Bobble Hat | Pom-pom Hat | Ski Hat
 Bindings | Ski Bindings | Binding
 Mittens | Mitts
 Snowboard
-Thermals | Base Layer | Thermal Underwear | Long Johns
+Thermals | Base Layer | Thermal Underwear | Long Johns | Merino | Long Underwear
 Neck Warmer | Neck Gaiter | Buff | Neck Tube
-Balaclava
+Balaclava | Ski Mask
 Sunscreen | Sunblock
 Sunglasses
 Ski Socks | Socks
@@ -46,12 +46,12 @@ Touring Bindings
 Ski Crampons | Harscheisen
 Boot Liners | Liners
 Footbeds | Insoles
-Boot Heater | Boot Dryer
+Boot Heater | Boot Dryer | Boot Warmers
 Glove Liners
-Back Protector
+Back Protector | Spine Protector
 Wrist Guards
 Knee Pads | Knee Brace
-Impact Shorts | Padded Shorts
+Impact Shorts | Padded Shorts | Hip Pads
 Powder Skirt
 Ski Leash | Leash
 Ski Brakes
@@ -62,7 +62,7 @@ Roof Box
 Snow Chains | Chains
 Telemark Skis
 Cross-country Skis | Nordic Skis
-Twin Tips
+Twin Tips | Freestyle Skis | Park Skis
 Powder Skis
 Race Suit | Speed Suit
 Shin Guards | Shin Pads
@@ -80,3 +80,41 @@ Boot Gaiters | Gaiters
 Ski Lock
 Snowboard Bindings
 Splitboard
+Softshell Jacket | Softshell
+Hardshell Jacket | Shell Jacket | Hardshell
+Puffer Jacket | Down Jacket | Insulated Jacket
+Ski Vest | Gilet
+Snow Boots | Apres Boots | Après-ski Boots
+Trapper Hat
+Helmet Liner
+Goggle Case | Goggle Bag
+Toe Warmers | Foot Warmers
+Heated Gloves
+Heated Socks
+Elbow Pads
+RECCO Reflector | RECCO
+First Aid Kit
+Emergency Blanket | Space Blanket
+Headlamp | Head Torch
+Touring Boots | Ski Touring Boots
+Ice Axe
+Crampons
+Harness | Climbing Harness
+Snowshoes
+Racing Skis | GS Skis | Slalom Skis
+Skiboards | Snowblades | Short Skis | Skiblades
+Monoski
+Sit-ski
+All-mountain Skis
+Boot Carrier | Boot Strap
+Lift Pass Holder | Lanyard | Ski Pass Holder
+Anti-fog Spray | Anti-fog
+Waxing Iron | Ski Iron
+Ski Vise | Ski Vice
+Wax Brush
+P-tex | Base Repair
+Helmet Audio | Helmet Speakers
+Edgie-Wedgie | Tip Connector | Ski Tip Clip
+Ski Harness | Kids Ski Harness
+Helmet Visor | Visor
+Stomp Pad

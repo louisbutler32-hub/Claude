@@ -15,11 +15,11 @@ Horsefly | horseflies
 Lionfish
 Mountain lion
 Wolf spider
-Leopard seal
-Elephant seal
+Leopard seal | Sea leopard
+Elephant seal | Sea elephant
 Prairie dog
 Butterfly | butterflies
-Ladybird | ladybug
+Ladybird | ladybug | Lady beetle
 Sea cow
 Whale shark
 Bull shark
@@ -27,14 +27,14 @@ Bullfrog
 Groundhog
 Warthog
 Anteater
-Flying fox | Flying foxes
+Flying fox | Flying foxes | Fox bat
 Spider monkey
 Starfish
 Jellyfish
 Leopard gecko
 Kangaroo rat
 Zebra finch | Zebra finches
-Zebrafish
+Zebrafish | Zebra danio
 Dragonfly | dragonflies
 Firefly | fireflies
 Parrotfish
@@ -58,7 +58,7 @@ Ratfish
 Bat-eared fox | Bat-eared foxes
 Pig-nosed turtle
 Cattle egret
-Wolffish
+Wolffish | Sea wolf
 Tasmanian tiger | thylacine
 Zebra shark
 Leopard shark
@@ -84,7 +84,7 @@ Leopard cat
 Leopard slug
 Leopard moth
 Lion's mane jellyfish
-Lion tamarin | golden lion tamarin
+Lion tamarin | golden lion tamarin | Lion marmoset
 Lion-tailed macaque
 Lionhead rabbit
 Bearcat | binturong
@@ -159,7 +159,7 @@ Antbird
 Antshrike
 Antelope squirrel
 Antelope jackrabbit
-Jackrabbit
+Jackrabbit | Jackass rabbit
 Bird-eating spider
 Crab spider
 Crab plover
@@ -207,7 +207,7 @@ Bat falcon
 Dog whelk
 Dog tick
 Dog salmon | chum salmon
-Mudpuppy | mudpuppies
+Mudpuppy | mudpuppies | Water dog
 Catbird
 Cat snake
 Civet cat
@@ -311,3 +311,188 @@ Bear cuscus | Bear cuscuses
 Bear macaque
 Tiger heron
 Moose fly | Moose flies
+Aardvark | Earth pig
+Hippopotamus | River horse
+Porcupine
+Porpoise
+Walrus
+Chameleon
+Meerkat
+Leopard
+Wolverine
+Polecat
+Dormouse
+Titmouse
+Kingfisher
+Goshawk
+Bulldog
+Pit bull
+Bullmastiff
+Dachshund | Badger dog | Sausage dog
+Coonhound
+Cattle dog | Australian cattle dog
+Karelian bear dog | Bear dog
+Wolfdog | Czechoslovakian wolfdog
+Lionhead goldfish
+Ocicat
+Toyger
+Flying lemur
+Otter shrew
+Mole vole
+Mole shrew
+Mouse hare
+Pig-footed bandicoot
+Pig-tailed langur
+Owl-faced monkey
+Native cat
+Ringtail cat | Ring-tailed cat
+Toddy cat
+Tiger mosquito | Asian tiger mosquito
+Tiger trout
+Tiger rattlesnake
+Tiger keelback
+Tiger flathead
+Tiger cowrie
+Tiger pistol shrimp
+Tiger grouper
+Tiger leech
+Tiger longwing
+Leopard lizard
+Leopard lacewing
+Leopard catshark
+Leopard coral grouper
+Leopard danio
+Leopard snake
+Leopard whipray
+Wolf herring
+Fox snake
+Foxface | Foxface rabbitfish
+Dog-faced pufferfish | Dog-faced puffer
+Dog flea
+Cat-faced spider
+Cat gecko
+Horsehair worm
+Horse leech
+Horse-eye jack
+Zebra pleco
+Zebra moray
+Zebra longwing
+Zebra swallowtail
+Giraffe catfish
+Elephant shark
+Crocodile shark
+Crocodile skink
+Rhinoceros viper
+Buffalo treehopper
+Buffalo gnat
+Bull snake
+Bullhead shark
+Bull ray
+Bullfinch
+Bullhead catfish
+Cow-nosed ray
+Goatsucker
+Sheepshead minnow
+Pigeye shark
+Salmon shark
+Mackerel shark
+Herring gull
+Rat-tailed maggot
+Rat flea
+Mouse spider
+Squirrel cuckoo
+Squirrel treefrog
+Monkey grasshopper
+Monkey beetle
+Monkey-tailed skink
+Monkey-eating eagle | Philippine eagle
+Sea monkey | Sea monkeys
+Bat bug
+Bat star
+Eagle ray
+Owlfly
+Owlet moth
+Parrot snake
+Antpitta
+Antwren
+Antthrush
+Spiderhunter
+Hawk-cuckoo
+Cuckoo-dove
+Cuckoo roller
+Shrike-thrush
+Sparrow-weaver
+Wren-babbler
+Magpie moth
+Magpie robin | Oriental magpie-robin
+Moorhen
+Waterhen
+Prairie chicken
+Chicken turtle
+Chicken snake
+Mountain chicken
+Brush turkey | Bush turkey | Australian brushturkey
+Peacock mantis shrimp
+Peacock spider
+Peacock butterfly
+Peacock flounder
+Peacock bass
+Woodpecker finch
+Swan goose
+Gull-billed tern
+Pelican spider
+Vulture bee
+Vulturine guineafowl
+Serpent eagle
+Fish hawk
+Sea raven
+Sea toad
+Sea canary
+Sea bunny
+Sea wasp
+Sea roach | Sea cockroach
+Sea sheep | Leaf sheep
+Sea louse
+Sea scorpion
+Sea urchin
+Water scorpion
+Water flea
+Pseudoscorpion
+Snake lizard
+Snake millipede
+Snake-locks anemone
+Snake star
+Slug snake
+Bird snake
+Mole viper
+Tortoiseshell butterfly | Tortoiseshell
+Turtle frog
+Turtle-headed sea snake
+Frog crab
+Froghopper
+Pickerel frog
+Crab-eating frog
+Crab louse
+Tadpole shrimp
+Bumblebee shrimp
+Snailfish
+Rabbit snail
+Stag beetle
+Wasp beetle
+Velvet ant
+White ant
+Puss moth
+Bee moth
+Moth fly
+Mantisfly | Mantidfly
+Birdwing | Birdwing butterfly
+Spider mite
+Fishing spider
+Lynx spider
+Fish louse
+Deer tick
+Cardinalfish
+Porcupinefish
+Eelpout
+Snipe eel
+Frog-eyed gecko

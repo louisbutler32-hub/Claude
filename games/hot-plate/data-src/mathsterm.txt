@@ -32,7 +32,7 @@ Diameter
 Circumference
 Integer
 Prime number | prime
-Square root | root
+Square root | root | radical
 Exponent | power | index | indices
 Variable
 Function
@@ -72,8 +72,8 @@ Polygon
 Pentagon
 Hexagon
 Octagon
-Rectangle
-Rhombus
+Rectangle | oblong
+Rhombus | diamond
 Trapezium | trapezoid
 Parallelogram
 Cube
@@ -99,7 +99,7 @@ Linear
 Quadratic
 Cubic
 Polynomial
-Logarithm | log
+Logarithm | log | logs | logarithms
 Matrix | matrices
 Vector
 Set
@@ -126,7 +126,7 @@ Expand
 Factorise | factorize | factorisation | factorization
 Solve
 Substitution | substitute
-Estimate | estimation
+Estimate | estimation | approximation | approximate
 Rounding | round
 Significant figures | sig figs
 Place value
@@ -137,7 +137,7 @@ Lowest common multiple | LCM | least common multiple
 BIDMAS | BODMAS | PEMDAS | BEDMAS
 Sequence
 Series
-Arithmetic
+Arithmetic | arithmetics
 Geometric sequence | geometric progression
 Fibonacci sequence | Fibonacci
 Acute angle | acute
@@ -195,8 +195,8 @@ Natural number
 Whole number
 Complex number
 Imaginary number | i
-Square number
-Cube number
+Square number | squared | perfect square
+Cube number | cubed
 Cube root
 Triangular number
 Reciprocal
@@ -204,9 +204,9 @@ Inverse
 Identity
 Absolute value | modulus
 Surd
-Scientific notation | standard form
+Scientific notation | standard form | standard index form
 Exponential
-Simultaneous equations
+Simultaneous equations | system of equations
 Quadratic formula
 Completing the square
 Discriminant
@@ -220,7 +220,7 @@ Tessellation
 Net
 Surface area
 Cross-section
-Polyhedron
+Polyhedron | polyhedra
 Tetrahedron
 Dodecahedron
 Icosahedron
@@ -268,3 +268,245 @@ Rate of change
 Compound interest
 Simple interest
 Discount
+Equals sign | equals | equal sign
+Brackets | parentheses
+Number line
+Number bonds | number bond
+Counting
+Skip counting
+Partitioning | partition
+Repeated addition
+Array
+Half | halves | halving
+Quarter | quarters
+Double | doubling
+Carrying | carry over
+Borrowing | regrouping
+Equivalent fractions
+Mixed number | mixed fraction
+Improper fraction
+Proper fraction
+Unit fraction
+Common denominator
+Lowest terms
+Recurring decimal | repeating decimal
+Terminating decimal
+Decimal places | decimal place | dp
+Truncation | truncate
+Upper bound
+Lower bound
+Percentage increase | percentage change
+Profit and loss | profit
+Depreciation
+Direct proportion
+Inverse proportion
+Unitary method
+Rate
+Speed distance time
+Measurement
+Length
+Width
+Height
+Capacity
+Mass
+Unit | units
+Metric system | metric
+Commutative property | commutative
+Associative property | associative
+Distributive property | distributive law | distributive
+Operation | operator
+Additive inverse | opposite number
+Cardinal number
+Ordinal number
+Composite number
+Perfect number
+Prime factorisation | prime factorization | prime factors | prime factor
+Factor tree
+Divisibility | divisible
+Googol
+Googolplex
+Natural logarithm | ln
+Exponential growth
+Exponential decay
+Unknown
+Like terms
+Monomial
+Trinomial
+Factor theorem
+Remainder theorem
+Elimination
+Change the subject | rearranging | rearrange
+Interval
+Piecewise function
+Codomain
+Injective | one-to-one
+Surjective | onto
+Bijection | bijective
+Even function
+Odd function
+Period | periodic function
+Amplitude
+Phase shift
+Secant | sec
+Cosecant | cosec | csc
+Cotangent | cot
+Inverse sine | arcsin
+Inverse cosine | arccos
+Inverse tangent | arctan
+Pythagorean triple
+Theta
+Summation | sigma notation | sigma
+Delta
+Antiderivative
+Chain rule
+Product rule
+Quotient rule
+Power rule
+Fundamental theorem of calculus
+Definite integral
+Indefinite integral
+Area under the curve
+Normal line
+Second derivative
+Partial derivative
+Convergence | converge | convergent
+Divergence | diverge | divergent
+Taylor series
+Maclaurin series
+L'Hôpital's rule
+Riemann sum
+Implicit differentiation
+Integration by parts
+Optimisation | optimization
+Related rates
+Infinitesimal
+Concave
+Convex
+Point
+Line
+Line segment
+Ray
+Plane
+Midpoint
+Distance formula
+Collinear
+Coplanar
+Intersection | intersect
+Transversal
+Alternate angles
+Corresponding angles
+Co-interior angles | allied angles
+Vertically opposite angles
+Supplementary angles | supplementary
+Complementary angles | complementary
+Adjacent angles
+Interior angle
+Exterior angle
+Protractor
+Compass | pair of compasses
+Crescent
+Hendecagon | undecagon
+Dodecagon
+Regular polygon
+Irregular polygon
+Cuboid | rectangular prism
+Triangular prism
+Square-based pyramid
+Frustum
+Platonic solid
+Torus
+Annulus
+Centre | center
+Concentric
+Apex
+Slant height
+Shear
+Rotational symmetry
+Scale factor
+Quadrant
+Cartesian plane | Cartesian coordinates
+Polar coordinates
+Ordered pair
+Z-axis
+Line graph
+Pictogram | pictograph
+Stem and leaf plot | stem-and-leaf diagram
+Frequency table
+Dot plot
+Cumulative frequency
+Two-way table
+Carroll diagram
+Line of best fit
+Regression
+Data
+Population
+Survey
+Bias
+Random
+Skew | skewness
+Percentile
+Z-score
+Hypothesis test | hypothesis testing
+Null hypothesis
+P-value
+Confidence interval
+Binomial distribution
+Poisson distribution
+Odds
+Event
+Outcome
+Sample space
+Conditional probability
+Bayes' theorem
+Relative frequency
+Subset
+Union
+Complement
+Empty set | null set
+Element
+Cardinality
+Set theory
+Graph theory
+Game theory
+Combinatorics
+Discrete mathematics | discrete maths
+Linear algebra
+Abstract algebra
+Mechanics
+Analysis | real analysis
+Algorithm
+Logic
+Boolean
+Truth table
+Paradox
+Counterexample
+Recursion | recursive
+Fractal
+Pigeonhole principle
+Pascal's triangle
+Binomial theorem
+Fermat's Last Theorem
+Riemann hypothesis
+Euler's identity | Euler's formula
+Möbius strip
+Klein bottle
+Identity matrix
+Transpose
+Scalar
+Eigenvector
+Magnitude
+Unit vector
+Dimension
+Nth term
+Arithmetic sequence | arithmetic progression
+Common difference
+Common ratio
+Harmonic series
+Tau
+Complex conjugate | conjugate
+Argand diagram
+Partial fractions
+QED
+Postulate
+Abacus
+Calculator

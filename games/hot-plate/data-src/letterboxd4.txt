@@ -9,8 +9,8 @@
 # borderline or below (e.g. Forrest Gump, Gladiator, The Avengers). Ordered by IMDb vote
 # count (public IMDb datasets, 2026-11-03) as a fame signal, with a nudge up for titles
 # teens know better than their IMDb votes suggest. Aliases include IMDb original titles.
-The Shawshank Redemption
-The Dark Knight
+The Shawshank Redemption | Shawshank
+The Dark Knight | TDK
 Inception
 Fight Club
 Interstellar
@@ -29,31 +29,31 @@ Saving Private Ryan
 Whiplash
 The Prestige
 Schindler's List
-Star Wars: A New Hope | Star Wars | A New Hope | Star Wars: Episode IV - A New Hope
+Star Wars: A New Hope | Star Wars | A New Hope | Star Wars: Episode IV - A New Hope | Star Wars Episode IV
 The Departed
 Spirited Away | Sen to Chihiro no kamikakushi
 The Empire Strikes Back | Empire Strikes Back | Star Wars: Episode V - The Empire Strikes Back
-The Godfather Part II
-Back to the Future
+The Godfather Part II | The Godfather Part 2 | Godfather 2
+Back to the Future | BTTF
 Memento
 Goodfellas
 The Truman Show
 WALL·E | WALL-E | Wall-E | Walle
 Sinners
 Kill Bill: Vol. 1 | Kill Bill | Kill Bill Volume 1
-Terminator 2: Judgment Day
+Terminator 2: Judgment Day | Terminator 2 | T2
 Up
 The Shining
 Good Will Hunting
 Mad Max: Fury Road
 No Country for Old Men
 Toy Story
-Dune: Part Two
-Eternal Sunshine of the Spotless Mind
+Dune: Part Two | Dune 2 | Dune Part 2
+Eternal Sunshine of the Spotless Mind | Eternal Sunshine
 Gone Girl
 Reservoir Dogs
-One Flew Over the Cuckoo's Nest
-Spider-Man: Into the Spider-Verse | Into the Spider-Verse
+One Flew Over the Cuckoo's Nest | Cuckoo's Nest
+Spider-Man: Into the Spider-Verse | Into the Spider-Verse | Spider-Verse
 Raiders of the Lost Ark
 Oppenheimer
 Get Out
@@ -106,7 +106,7 @@ Citizen Kane
 Princess Mononoke | Mononoke-hime
 The Wild Robot
 Amadeus
-Puss in Boots: The Last Wish | Puss in Boots 2
+Puss in Boots: The Last Wish | Puss in Boots 2 | The Last Wish
 Vertigo
 The Lives of Others | Das Leben der Anderen
 My Neighbor Totoro | Tonari no Totoro
@@ -292,3 +292,80 @@ Mirror | The Mirror | Zerkalo
 Cléo from 5 to 7 | Cleo from 5 to 7
 Children of Paradise | Les Enfants du Paradis
 Ali: Fear Eats the Soul | Fear Eats the Soul
+The Lion King
+Requiem for a Dream
+After Hours
+Synecdoche, New York | Synecdoche
+Do the Right Thing
+A Woman Under the Influence
+Opening Night
+The Father
+Judgment at Nuremberg
+Make Way for Tomorrow
+To Be or Not to Be
+Ace in the Hole
+Steamboat Bill, Jr.
+Brief Encounter
+The Red Shoes
+A Matter of Life and Death | Stairway to Heaven
+The Life and Death of Colonel Blimp | Colonel Blimp
+Letter from an Unknown Woman
+The Earrings of Madame de... | Madame de...
+Les Diaboliques | Diabolique
+Le Cercle Rouge | The Red Circle
+Playtime
+A Man Escaped | Un condamné à mort s'est échappé
+Au Hasard Balthazar | Balthazar
+Night and Fog | Nuit et brouillard
+Umberto D.
+Rocco and His Brothers | Rocco e i suoi fratelli
+Winter Light
+Solaris | Solyaris
+Nostalghia | Nostalgia
+The Sacrifice | Offret
+Ballad of a Soldier
+Man with a Movie Camera
+Dersu Uzala
+The Bad Sleep Well
+The Human Condition | Ningen no jōken
+Samurai Rebellion
+Early Summer | Bakushū
+An Autumn Afternoon | Sanma no aji
+Good Morning | Ohayō
+Floating Weeds | Ukigusa
+Equinox Flower | Higanbana
+Late Autumn | Akibiyori
+Ugetsu | Ugetsu Monogatari
+Sansho the Bailiff | Sanshō Dayū
+The Life of Oharu | Saikaku ichidai onna
+Mishima: A Life in Four Chapters | Mishima
+Tampopo
+Nobody Knows | Dare mo shiranai
+Still Walking | Aruitemo aruitemo
+Redline
+A City of Sadness | Beiqing chengshi
+To Live | Huozhe
+Poetry | Shi
+Aparajito
+The World of Apu | Apur Sansar
+Charulata
+Gangs of Wasseypur
+Children of Heaven | Bacheha-ye aseman
+Where Is the Friend's House? | Where Is the Friend's Home?
+Koyaanisqatsi
+Baraka
+Sans Soleil
+Harlan County, USA
+The Look of Silence
+13th
+Amazing Grace
+Summer of Soul
+No Other Land
+Bo Burnham: Inside | Inside
+Bo Burnham: Make Happy | Make Happy
+Renaissance: A Film by Beyoncé
+Wallace & Gromit: The Wrong Trousers | The Wrong Trousers
+Marcel the Shell with Shoes On
+Robot Dreams
+I'm Still Here | Ainda Estou Aqui
+Hundreds of Beavers

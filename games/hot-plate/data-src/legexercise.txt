@@ -3,15 +3,15 @@
 # group: Gym
 # emoji: 🦵
 # kind: thing
-Squat | squats | back squat | barbell squat
-Lunge | lunges
-Deadlift | deadlifts
-Leg press
+Squat | squats | back squat | barbell squat | high-bar squat | low-bar squat | barbell back squat
+Lunge | lunges | forward lunge | dumbbell lunge | barbell lunge
+Deadlift | deadlifts | conventional deadlift | barbell deadlift
+Leg press | 45-degree leg press | horizontal leg press
 Leg extension | leg extensions | quad extension
 Leg curl | leg curls | hamstring curl | lying leg curl
 Calf raise | calf raises
-Romanian deadlift | RDL | RDLs
-Bulgarian split squat | Bulgarian split squats | BSS
+Romanian deadlift | RDL | RDLs | dumbbell RDL
+Bulgarian split squat | Bulgarian split squats | BSS | rear foot elevated split squat | RFESS
 Hip thrust | hip thrusts | barbell hip thrust
 Goblet squat
 Front squat
@@ -23,13 +23,13 @@ Jump squat | jump squats | squat jumps
 Wall sit
 Split squat
 Walking lunge | walking lunges
-Sumo squat
+Sumo squat | plie squat
 Sumo deadlift
 Seated leg curl
 Seated calf raise
 Standing calf raise
 Smith machine squat
-Pistol squat | pistol squats
+Pistol squat | pistol squats | single-leg squat
 Reverse lunge | reverse lunges
 Side lunge | lateral lunge
 Curtsy lunge
@@ -86,5 +86,47 @@ Deficit reverse lunge
 Heels-elevated squat
 Spanish squat
 Stair climber | StairMaster
-Cycling | exercise bike | spin bike
+Cycling | exercise bike | spin bike | assault bike | air bike
 Treadmill incline walk | incline walk | 12-3-30
+Air squat | bodyweight squat
+Dumbbell squat
+Prisoner squat
+Frog squat
+Tempo squat
+Anderson squat | pin squat
+Hatfield squat
+Skater squat
+Shrimp squat
+Reverse hack squat
+Overhead lunge
+Single-leg hip thrust
+B-stance hip thrust
+Smith machine hip thrust
+Kas glute bridge
+Cable hip abduction | standing hip abduction
+Copenhagen plank | Copenhagen adduction
+Standing leg curl
+Slider leg curl | sliding leg curl
+Stability ball leg curl | Swiss ball hamstring curl
+Reverse Nordic curl | reverse Nordic
+Single-leg calf raise
+Snatch-grip deadlift
+Kettlebell deadlift
+Rack pull
+Hang clean
+Squat clean
+Power snatch
+Clean and jerk
+Sumo deadlift high pull
+Tuck jump | tuck jumps
+Depth jump
+Bounding
+Lateral bound
+Hurdle hops
+Pogo jumps | pogos
+Duck walk
+Side-lying leg raise | side leg raise
+Sprints | sprinting
+Running | treadmill running
+Elliptical | cross trainer
+High knees

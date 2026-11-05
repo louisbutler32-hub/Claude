@@ -12,11 +12,11 @@ Airplane mode | Aeroplane mode | Flight mode
 Do Not Disturb | DND
 Dark mode | Night mode | Dark theme
 Brightness | Screen brightness
-Volume
+Volume | Volume buttons | Change with buttons
 Ringtone | Ringtones
 Wallpaper | Background | Lock screen wallpaper
 Location services | Location | GPS
-Hotspot | Personal Hotspot | Mobile hotspot | Tethering
+Hotspot | Personal Hotspot | Mobile hotspot | Tethering | USB tethering | Bluetooth tethering
 Screen Time | Digital Wellbeing
 Battery saver | Low Power Mode | Power saving mode | Power saving
 Face ID | Face unlock | Face recognition
@@ -28,7 +28,7 @@ Passcode | PIN | Password | Screen lock
 Fingerprint | Touch ID | Fingerprint scanner
 Mobile data | Cellular data | Cellular | Data
 Night Shift | Eye comfort shield | Blue light filter | Night light
-Font size | Text size
+Font size | Text size | Larger text
 Language | Language & region
 Date & time | Date and time | Time | Time zone
 Storage | iPhone Storage
@@ -46,16 +46,16 @@ Apple ID | Apple Account | Google account | Accounts
 Screen timeout | Auto-Lock | Auto lock | Sleep
 Display | Display & Brightness
 General
-Find My | Find My iPhone | Find My Device
+Find My | Find My iPhone | Find My Device | Find My Mobile | Samsung Find
 Lock screen
 Home screen
-Always-on display | Always On Display | AOD
+Always-on display | Always On Display | AOD | Ambient display
 Haptics | Haptic feedback | Keyboard haptics
 Emergency SOS | SOS
 Restrictions | Parental controls | Content & Privacy Restrictions
 App permissions | Permissions
 Camera settings
-Siri | Hey Siri | Google Assistant | Bixby
+Siri | Hey Siri | Google Assistant | Bixby | Hey Google | OK Google | Gemini | Apple Intelligence | Galaxy AI
 Factory reset | Reset | Erase all content and settings
 Data roaming | Roaming
 VPN
@@ -70,12 +70,12 @@ Mono audio
 Closed captions | Captions | Subtitles | Live Caption
 Hearing aids | Hearing devices
 Invert colours | Invert colors | Colour inversion | Smart invert
-Colour filters | Color filters | Grayscale | Greyscale
+Colour filters | Color filters | Grayscale | Greyscale | Colour correction | Color correction
 Display zoom | Screen zoom
 Refresh rate | ProMotion | Motion smoothness | 120Hz
 Screen resolution | Resolution
 True Tone
-Raise to wake | Lift to wake
+Raise to wake | Lift to wake | Lift to check phone
 Tap to wake | Double tap to wake
 Back Tap
 Navigation bar | Gesture navigation | Navigation gestures
@@ -91,7 +91,7 @@ Notification sound | Text tone | Message tone
 Keyboard clicks | Keyboard sounds
 Lock sound
 Emergency alerts | Government alerts | Wireless emergency alerts | Amber alerts
-Emergency contacts | Medical ID
+Emergency contacts | Medical ID | SOS contacts
 Caller ID | Show My Caller ID
 Call forwarding | Call divert
 Call waiting
@@ -113,7 +113,7 @@ Auto-capitalisation | Auto-capitalization
 Background app refresh
 Auto-update | Automatic updates
 Location sharing
-Precise location
+Precise location | Approximate location
 Tracking | Allow apps to request to track | Ask app not to track
 Analytics | Diagnostics
 Significant locations
@@ -143,7 +143,7 @@ Adaptive battery
 Charging limit | 80% limit
 Lock screen widgets | Widgets
 Clock style
-StandBy
+StandBy | Nightstand mode | Bedside clock
 App Library
 Hidden apps | Secure Folder | Private space
 App lock
@@ -182,7 +182,7 @@ Switch Control
 Accessibility shortcut
 Shake to undo
 Vibration intensity
-Touch sensitivity | Touch accommodations
+Touch sensitivity | Touch accommodations | Glove mode
 3D Touch | Haptic Touch
 Edge panels | Edge screen
 Bixby Routines | Modes and Routines | Shortcuts | Automations
@@ -197,3 +197,111 @@ Device care | Device maintenance
 About phone | About
 Phone name | Device name
 Reset network settings | Network reset
+Mobile network | Carrier | Network operator | Network selection
+Wi-Fi Direct
+Screen mirroring | Smart View | AirPlay | Cast
+Screen saver
+Edge lighting
+Status bar
+Vibration pattern
+Touch sounds | System sounds
+Charging sound
+Dial pad tones | Keypad tones
+Live Listen
+Noise cancellation | Noise control
+Clear cache
+Offload unused apps | Offload apps | Storage optimisation
+Picture-in-picture | PiP
+Bubbles | Floating notifications | Chat heads
+Notification history
+Snooze notifications
+Lock screen notifications
+Emergency bypass
+Repeated calls
+NameDrop | Contact sharing
+Contact Poster
+Live Voicemail
+Call recording
+Call screening | Call Screen
+Spam protection | Caller ID & spam | Spam filter
+Dual Messenger | App clones | Dual apps
+Themes
+Icons | App icons | Icon style
+Fonts | Font style
+Accent colour | Accent color | Material You | Dynamic colour
+Colour mode | Screen mode | Color mode
+Extra dim | Reduce white point
+Accidental touch protection | Edge touch
+Palm swipe to capture
+Screenshots | Screenshot settings
+Double tap to sleep
+Smart stay
+Attention aware features
+Motions and gestures
+Flip to shhh | Flip to mute
+Quick launch camera | Double press power for camera
+Magnifier
+Live Speech
+RTT | TTY | RTT/TTY
+Audio description
+Button shapes
+On/Off labels
+Increase contrast | High contrast
+Reduce transparency
+Touch & hold delay
+Vehicle motion cues
+Eye tracking
+Siri suggestions
+Spotlight | Spotlight search
+Emergency SOS via satellite | Satellite SOS
+Crash detection | Car crash detection
+Earthquake alerts
+Safety check
+Battery usage
+Battery optimisation | Battery optimization
+Sleeping apps | Put unused apps to sleep
+Auto restart
+Scheduled power on/off
+RAM | Memory
+Software information | Android version | iOS version
+Build number
+IMEI
+Serial number
+Encryption | Encrypt phone
+SIM lock | Network unlock
+Install unknown apps | Unknown sources
+Google Play Protect | Play Protect
+Share Wi-Fi | Share WiFi password
+Auto-join | Auto-connect
+Ask to join networks
+Saved networks | Known networks
+Forget network
+Proxy
+Private DNS | DNS
+APN | Access point names
+Data usage
+Data limit | Data warning
+VoLTE | HD voice | Enhanced 4G LTE
+Instant hotspot
+Continuity | AirPlay & Continuity
+Universal Clipboard
+iPhone Mirroring
+Phone Link | Link to Windows
+Samsung DeX | DeX
+CarPlay | Android Auto
+Time-sensitive notifications
+Critical alerts
+Wi-Fi scanning | Bluetooth scanning
+Photos access
+Local network access
+App Privacy Report | Privacy dashboard
+iCloud Private Relay | Private Relay | Hide IP address
+Hide My Email
+Advanced Data Protection
+Recovery contact | Account recovery
+Legacy contact
+Passkeys
+AutoFill | Autofill passwords
+Screen distance
+Communication Safety
+Sensitive Content Warning

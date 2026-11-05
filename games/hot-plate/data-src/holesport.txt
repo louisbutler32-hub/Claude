@@ -6,11 +6,11 @@
 Golf
 Basketball
 Netball
-Pool | Billiards | Pocket Billiards | Eight-ball | 8-ball
+Pool | Billiards | Pocket Billiards | Eight-ball | 8-ball | Cue sports | American pool
 Snooker
-Mini Golf | Minigolf | Putt-putt | Crazy Golf
-Beer Pong | Cup Pong
-Cornhole | Bean Bag Toss
+Mini Golf | Minigolf | Putt-putt | Crazy Golf | Adventure golf | Glow golf | Putt Putt Golf
+Beer Pong | Cup Pong | Beirut
+Cornhole | Bean Bag Toss | Baggo | Bags
 Croquet
 Skee-Ball | Skeeball
 Korfball
@@ -41,12 +41,12 @@ Ground Golf
 Gateball
 Indoor Netball
 Fast5 | Fast5 Netball
-Horse | H-O-R-S-E
+Horse | H-O-R-S-E | P-I-G
 Knockout
-Toad in the Hole
+Toad in the Hole | Jeu de la grenouille | Frog game
 Clock Golf
 Pato
-Mesoamerican Ballgame | Ulama | Ollamaliztli
+Mesoamerican Ballgame | Ulama | Ollamaliztli | Pok-ta-pok | Pitz
 Cestoball
 Crokinole
 Klask
@@ -59,3 +59,34 @@ One-pocket
 Underwater Rugby
 Horseball
 Walking Netball
+Bank pool
+Seven-ball | 7-ball
+Three-ball
+Cutthroat | Cut-throat pool
+Killer | Killer pool
+Rotation | Rotation pool
+Six-red snooker | 6-red snooker
+Heyball | Chinese eight-ball | Chinese pool
+Snookball | Football snooker
+Foot pool
+Kaisa
+Novuss
+Sjoelen | Dutch shuffleboard
+Quarters
+Rage cage | Slap cup
+Trash can basketball | Paper toss | Bin ball | Wastebasket basketball
+Around the World
+Twenty-one | 21
+Mini basketball | Minibasket
+Beach basketball
+Park golf
+Codeball
+Woodball
+Roque
+Pall mall | Jeu de mail
+Chuiwan
+Kok-boru | Kokpar | Ulak tartysh
+Kendama | Cup and ball | Bilboquet
+Fling golf
+Speed golf
+Snow golf

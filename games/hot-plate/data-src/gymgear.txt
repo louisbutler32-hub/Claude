@@ -4,51 +4,51 @@
 # emoji: 🏋️‍♂️
 # kind: thing
 Dumbbell | dumbbells | dumbells
-Treadmill
+Treadmill | running machine | treddy | tread
 Barbell
-Bench | weight bench | gym bench
+Bench | weight bench | gym bench | flat bench | bench press
 Kettlebell
 Weight plates | plates | weights | plate
-Exercise bike | stationary bike | bike | spin bike
-Rowing machine | rower | erg
-Squat rack | power rack | squat cage | rack
-Elliptical | cross trainer
+Exercise bike | stationary bike | bike | spin bike | upright bike | Peloton | exercise cycle
+Rowing machine | rower | erg | rowing ergometer | ergometer | Concept2 | rowing machines
+Squat rack | power rack | squat cage | rack | power cage | cage
+Elliptical | cross trainer | elliptical trainer | elliptical machine
 Yoga mat | mat | exercise mat
 Pull-up bar | chin-up bar
-Medicine ball | med ball
-Resistance band | resistance bands | bands | band
-Skipping rope | jump rope | rope
+Medicine ball | med ball | medicine balls
+Resistance band | resistance bands | bands | band | theraband | loop band | pull-up band
+Skipping rope | jump rope | rope | speed rope
 Smith machine
 Leg press | leg press machine
-Cable machine | cable station | cables
-Stair climber | StairMaster | stair machine
+Cable machine | cable station | cables | cable crossover | cable crossover machine
+Stair climber | StairMaster | stair machine | stepmill | step machine | stair stepper
 Foam roller
 Exercise ball | Swiss ball | stability ball | fitness ball | gym ball
 Battle ropes | battle rope
-Punching bag | boxing bag | heavy bag
+Punching bag | boxing bag | heavy bag | punch bag
 Boxing gloves
 Lat pulldown machine | lat pulldown
 Chest press machine | chest press
-Pec deck | pec dec
+Pec deck | pec dec | chest fly machine | fly machine | pec fly machine | rear delt machine
 Leg extension machine | leg extension
-Leg curl machine | leg curl
+Leg curl machine | leg curl | hamstring curl machine | lying leg curl | seated leg curl
 EZ bar | EZ curl bar | curl bar
 Trap bar | hex bar
 Plyo box | plyometric box | jump box | box
 Weightlifting belt | lifting belt | belt
 Lifting straps | straps | wrist straps
 Lifting gloves | gym gloves
-Chalk
+Chalk | liquid chalk | chalk bowl
 Wrist wraps
 Knee sleeves
-Collars | barbell collars | clips
-Assault bike | air bike | fan bike
+Collars | barbell collars | clips | spring collars | lock jaws | bar clips | collar
+Assault bike | air bike | fan bike | Echo bike
 Sled | prowler
 Ab wheel | ab roller
 Dip station | dip bars
 Preacher curl bench | preacher bench
 Hack squat machine | hack squat
-Calf raise machine
+Calf raise machine | calf machine | seated calf raise machine | standing calf raise machine
 Hip thrust machine | glute machine
 Abductor machine | hip abductor
 Adductor machine | hip adductor
@@ -65,7 +65,7 @@ Kettlebell rack
 Dumbbell rack
 Heart rate monitor
 Step | aerobic step | step platform
-Balance board
+Balance board | wobble board
 Agility ladder
 Cones
 Hurdles
@@ -73,17 +73,17 @@ Sled harness
 Weight vest | weighted vest
 Ankle weights
 Wrist weights
-Hand grips | grip strengthener
+Hand grips | grip strengthener | hand gripper | gripper | Captains of Crush
 Captain's chair | roman chair
 Back extension bench | hyperextension bench
-GHD | glute-ham developer
+GHD | glute-ham developer | glute ham raise | GHR
 Reverse hyper
 Belt squat machine
 Pendulum squat machine
 Functional trainer
 Multi-gym | home gym
-SkiErg
-Curved treadmill | Woodway
+SkiErg | ski machine
+Curved treadmill | Woodway | Assault runner | manual treadmill
 Recumbent bike
 Climbing wall
 Climbing rope | gym rope
@@ -105,9 +105,9 @@ Sledgehammer
 Mace
 Clubbells | Indian clubs
 Steel mace
-Vibration plate
-Massage gun | Theragun
-Stretching strap
+Vibration plate | Power Plate | vibration machine
+Massage gun | Theragun | percussion massager
+Stretching strap | yoga strap
 Lacrosse ball
 Pilates reformer | reformer
 Mini bands | booty bands
@@ -121,5 +121,72 @@ Decline bench
 Ab bench | sit-up bench
 Speed bag
 Double-end bag
-Focus pads | pads
+Focus pads | pads | focus mitts | mitts | pad
 Kick shield
+Adjustable bench | FID bench
+Adjustable dumbbells
+Half rack
+Lifting platform | Olympic platform | deadlift platform
+Barbell pad | squat pad | hip thrust pad
+Spotter arms | safety bars | safeties | safety pins
+J-hooks | J-cups
+Weight tree | plate tree | plate rack
+Barbell rack | bar holder
+Lifting chains | chains
+T-bar row | T-bar row machine
+Chest-supported row | seal row bench
+Glute kickback machine | kickback machine
+Bicep curl machine | arm curl machine
+Tricep extension machine | tricep machine
+Assisted pull-up machine | gravitron | assisted dip machine
+Ab crunch machine | crunch machine
+Torso rotation machine | rotary torso machine
+Lateral raise machine
+Pullover machine
+V-squat machine
+Sissy squat bench | sissy squat machine
+Nordic curl bench | nordic bench
+Seated dip machine
+Power tower
+Stall bars | wall bars | Swedish ladder
+Monkey bars
+Inversion table
+Vertical climber | VersaClimber
+Jacob's Ladder
+Arc trainer
+BikeErg
+Mini stepper
+Walking pad | under-desk treadmill
+Tricep rope | rope attachment
+V-bar | V-handle
+Straight bar attachment
+D-handle | stirrup handle | cable handle
+Ankle strap | cable ankle strap
+Farmers handles | farmer's walk handles
+Keg | strongman keg
+Circus dumbbell
+Tibialis bar | tib bar
+Neck harness
+Wrist roller
+Fat Gripz | thick grips
+Lifting hooks
+Knee wraps
+Elbow sleeves
+Lifting shoes | weightlifting shoes | squat shoes
+Hand wraps | boxing wraps
+Headgear | boxing headgear
+Thai pads
+Heavy bag stand
+Grappling dummy | BJJ dummy
+Boxing ring
+Bulgarian bag
+ViPR
+Yoga block | foam block
+Yoga wheel
+Pilates ring | magic circle
+Mini trampoline | rebounder
+Balance pad
+Sliders | slider discs | gliding discs
+AbMat
+Massage ball
+Gym timer | interval timer

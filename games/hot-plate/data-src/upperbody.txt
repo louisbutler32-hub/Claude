@@ -6,9 +6,9 @@
 Bench press | bench | flat bench
 Push-up | push-ups | press-up | press-ups
 Pull-up | pull-ups
-Bicep curl | bicep curls | biceps curl | curls | dumbbell curl
+Bicep curl | bicep curls | biceps curl | curls | dumbbell curl | barbell curl | standing curl
 Shoulder press | overhead press | OHP | military press
-Dip | dips | chest dips | tricep dips
+Dip | dips | chest dips | tricep dips | parallel bar dip | bar dip
 Chin-up | chin-ups
 Lat pulldown | pulldown | lat pulldowns
 Bent-over row | barbell row | rows
@@ -24,7 +24,7 @@ Shrug | shrugs | shoulder shrugs
 Skull crusher | skull crushers | lying tricep extension
 Front raise | front raises
 Arnold press
-Pec deck | pec dec | butterfly machine
+Pec deck | pec dec | butterfly machine | machine fly
 Face pull | face pulls
 Preacher curl | preacher curls
 Upright row | upright rows
@@ -34,7 +34,7 @@ Dumbbell row | single-arm row | one-arm row
 T-bar row
 Chest press | chest press machine
 Close-grip bench press | close grip bench
-Reverse fly | rear delt fly | reverse flyes
+Reverse fly | rear delt fly | reverse flyes | reverse pec deck | bent-over lateral raise
 Concentration curl
 Muscle-up | muscle-ups
 Diamond push-up
@@ -42,7 +42,7 @@ Pike push-up
 Handstand push-up | HSPU
 Incline dumbbell press
 Dumbbell pullover | pullover
-Straight-arm pulldown
+Straight-arm pulldown | lat prayer
 Cable curl
 EZ bar curl
 Spider curl
@@ -127,3 +127,58 @@ Helms row
 Dumbbell shrug
 Trap bar shrug
 Overhead carry
+Incline push-up
+Decline push-up
+Wide push-up | wide-grip push-up
+Knee push-up | knee push-ups
+Close-grip push-up
+Hindu push-up
+Spiderman push-up
+Pseudo planche push-up
+Planche
+Front lever
+Back lever
+Human flag
+Handstand | handstand hold
+L-sit
+Skin the cat
+Korean dip
+Wide-grip pull-up
+Commando pull-up
+L-sit pull-up
+Negative pull-up | negatives
+Assisted pull-up | band-assisted pull-up
+Towel pull-up
+Incline dumbbell fly
+Decline dumbbell press
+Low-to-high cable fly
+High-to-low cable fly
+Wide-grip bench press
+Reverse-grip bench press
+Paused bench press | pause bench
+Cable pullover
+Pullover machine
+Yates row
+Iso-lateral row | Hammer Strength row
+Superman | supermans
+Seated dumbbell press | dumbbell shoulder press
+Lateral raise machine
+Leaning lateral raise
+Lu raise
+Viking press
+Wall slide | wall slides
+Band dislocates | shoulder dislocates
+Bayesian curl
+Machine curl
+Waiter curl
+Cross-body hammer curl | pinwheel curl
+Reverse-grip pushdown
+Kettlebell snatch
+Kettlebell halo
+Sledgehammer swings | sledgehammer
+Arm ergometer | arm bike | UBE
+SkiErg
+Swimming
+Shadow boxing
+Speed bag
+Rock climbing | climbing | bouldering

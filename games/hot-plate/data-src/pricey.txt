@@ -10,10 +10,10 @@ Ferrari
 Rolex
 Yacht | yachts
 Private jet | jet
-Mansion
+Mansion | château
 Bugatti
 Rolls-Royce | Rolls Royce | Rolls
-Diamond ring | diamond rings
+Diamond ring | diamond rings | engagement ring
 Wedding | weddings
 Boat | boats
 Plane | aeroplane | airplane
@@ -40,10 +40,10 @@ Ranch
 Castle
 Villa
 Beach house
-Holiday home | vacation home | second home
+Holiday home | vacation home | second home | lake house
 Truck
 Tractor
-Motorhome | RV | campervan | camper van
+Motorhome | RV | campervan | camper van | caravan | travel trailer
 Bus
 Spaceship | rocket
 Space trip | trip to space | space tourism | ticket to space
@@ -240,3 +240,171 @@ Bugatti Divo
 Rolex Daytona | Daytona
 Rolex Submariner | Submariner
 Patek Philippe Nautilus | Nautilus
+Toyota
+Honda
+Ford
+Chevrolet | Chevy
+Volkswagen | VW
+Nissan
+Hyundai
+Kia
+Mazda
+Subaru
+Volvo
+Jaguar
+Land Rover
+Alfa Romeo
+Genesis
+Infiniti
+Acura
+Mini Cooper | Mini
+BYD
+GMC
+Ram | Ram 1500 | Ram truck
+Dodge
+Mitsubishi
+Peugeot
+Renault
+Skoda
+Ducati
+Indian Motorcycle
+Toyota Corolla | Corolla
+Honda Civic | Civic
+Toyota Camry | Camry
+Toyota RAV4 | RAV4
+Toyota Hilux | Hilux
+Ford Ranger | Ranger
+Toyota Prius | Prius
+Mazda MX-5 | Miata | MX-5
+Volkswagen Golf | VW Golf | Golf GTI
+Ford Bronco | Bronco
+Chevrolet Camaro | Camaro
+Chevrolet Silverado | Silverado
+BMW M3 | M3
+BMW M5 | M5
+Mercedes S-Class | S-Class
+Porsche Cayenne | Cayenne
+Porsche Taycan | Taycan
+Lamborghini Revuelto | Revuelto
+McLaren 720S | 720S
+Aston Martin DB5 | DB5
+Shelby Cobra | AC Cobra
+Ferrari 250 GTO | 250 GTO
+Mercedes 300 SL | Gullwing
+Lamborghini Countach | Countach
+Lamborghini Miura | Miura
+Bugatti La Voiture Noire | La Voiture Noire
+Rolls-Royce Boat Tail | Boat Tail
+Limousine | limo
+Food truck
+Side-by-side | UTV
+Can-Am Spyder
+Hot air balloon
+Seaplane
+Hovercraft
+Houseboat
+Narrowboat | canal boat
+Pontoon boat
+Fishing boat
+Tiny house
+Log cabin | cabin
+Townhouse
+Chalet | ski chalet
+Mobile home | manufactured home
+Palace
+Lighthouse
+Timeshare
+Hublot
+Blancpain
+Rolex Day-Date | Rolex President
+Rolex GMT-Master II | Pepsi Rolex | GMT-Master
+F.P. Journe
+Greubel Forsey
+Apple Watch Edition | gold Apple Watch
+Pink diamond
+Diamond tiara | tiara
+Sable coat | sable fur coat
+Vicuña coat
+Micro LED TV | Samsung The Wall
+Tesla Powerwall | Powerwall | home battery
+Solar panel system | solar panels
+Home elevator | home lift
+Home bowling alley | bowling alley
+Panic room | safe room
+Bunker | nuclear bunker
+Electron microscope
+Da Vinci surgical robot | surgical robot
+CT scanner | CAT scanner
+X-ray machine
+Dialysis machine
+Bionic arm | prosthetic leg | prosthetic limb
+Porcelain veneers | veneers
+Full-mouth dental implants | dental implants
+Facelift
+Gastric bypass | bariatric surgery
+Spinal fusion | back surgery
+Bone marrow transplant
+Lung transplant
+Face transplant
+Gene therapy | Zolgensma
+Rehab | drug rehab
+Surrogacy
+Adoption
+Boarding school
+Ivy League | Ivy League degree
+Dental school
+Vet school
+Trip to Antarctica | Antarctica cruise
+First-class ticket | first class flight
+Concorde ticket
+Polo pony
+Showjumping horse | show jumper
+Dressage horse
+Savannah cat
+1933 Double Eagle | Double Eagle coin
+British Guiana 1c magenta | British Guiana stamp
+Inverted Jenny
+Gutenberg Bible
+Shakespeare First Folio | First Folio
+Romanée-Conti | DRC
+Pétrus | Chateau Petrus
+Nike Air Mag | Air Mag
+1952 Topps Mickey Mantle | Mickey Mantle card
+Black Lotus
+Moon rock
+Guarneri violin | Guarneri
+1959 Les Paul | Gibson Les Paul Standard 1959
+Bored Ape | Bored Ape NFT
+CryptoPunk
+Pipe organ
+Concert harp
+Claude Monet | Monet | Monet painting
+Rembrandt
+Leonardo da Vinci painting | da Vinci painting
+Jackson Pollock | Pollock
+Jean-Michel Basquiat | Basquiat
+Damien Hirst
+Jeff Koons | Balloon Dog
+Gustav Klimt | Klimt
+Paul Cézanne | Cezanne
+Paul Gauguin | Gauguin
+Mark Rothko | Rothko
+Frida Kahlo
+Yayoi Kusama | Kusama
+Vermeer | Girl with a Pearl Earring
+Henri Matisse | Matisse
+Amedeo Modigliani | Modigliani
+Salvador Dalí | Dali
+René Magritte | Magritte
+Pierre-Auguste Renoir | Renoir
+David Hockney | Hockney
+Roy Lichtenstein | Lichtenstein
+Francis Bacon
+Oil well
+Gold mine
+Military drone | Reaper drone | Predator drone
+Stealth bomber | B-2 bomber | B-2
+Tomahawk missile
+Javelin missile
+Apache helicopter | Apache
+Humvee

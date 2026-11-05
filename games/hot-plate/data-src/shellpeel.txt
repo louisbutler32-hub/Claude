@@ -8,15 +8,15 @@
 # rind counts. Foods whose skin is commonly eaten (apple, potato, kiwifruit,
 # sweet potato, ginger, cucumber) are left out; mango is in because it is
 # usually peeled or cut off the skin. Nuts count when sold in the shell.
-Banana | Bananas
-Orange | Oranges | Navel orange
+Banana | Bananas | Lady finger banana
+Orange | Oranges | Navel orange | Valencia orange | Cara cara orange
 Egg | Eggs | Boiled egg | Hard-boiled egg
 Pistachio | Pistachios
 Prawn | Prawns | Shrimp
 Peanut | Peanuts | Monkey nuts
 Crab | Crabs | Crab legs
 Lobster
-Coconut
+Coconut | Young coconut | Drinking coconut
 Mandarin | Tangerine | Mandarins | Tangerines
 Walnut | Walnuts
 Onion | Onions
@@ -26,7 +26,7 @@ Pineapple
 Mango | Mangoes | Mangos
 Garlic
 Almond | Almonds
-Oyster | Oysters
+Oyster | Oysters | Rock oyster | Bluff oyster
 Sunflower seeds | Sunflower seed
 Hazelnut | Hazelnuts | Filbert
 Pomegranate
@@ -38,7 +38,7 @@ Macadamia | Macadamias | Macadamia nut
 Clementine | Clementines
 Satsuma | Satsumas
 Crayfish | Crawfish | Crawdad | Crayfish tails
-Mussel | Mussels
+Mussel | Mussels | Green-lipped mussel
 Clam | Clams
 Chestnut | Chestnuts
 Cashew | Cashews
@@ -54,7 +54,7 @@ Jackfruit
 Mangosteen
 Plantain | Plantains
 Pomelo | Pummelo
-Cantaloupe | Rockmelon
+Cantaloupe | Rockmelon | Muskmelon
 Honeydew | Honeydew melon
 Melon
 Blood orange
@@ -125,6 +125,57 @@ Mud crab
 Blue crab
 Dungeness crab
 Coconut crab
-Hairy crab
+Hairy crab | Mitten crab
 Spanner crab
 Geoduck
+Tangelo | Minneola
+Ugli fruit
+Sumo citrus | Dekopon | Sumo mandarin
+Feijoa | Feijoas | Pineapple guava
+Tamarillo | Tree tomato
+Pepino melon | Pepino
+Galia melon
+Canary melon
+Casaba melon
+Pulasan
+Cempedak
+Marang
+Santol
+Atemoya
+Black sapote
+Canistel | Egg fruit
+Lucuma
+Cupuaçu
+Baobab fruit
+Wood apple | Bael
+Ackee
+Gac fruit
+Ice cream bean
+Physalis | Cape gooseberry | Golden berry | Ground cherry
+Tomatillo
+Butternut squash
+Beetroot | Beet
+Artichoke | Globe artichoke
+Borlotti beans | Cranberry beans
+Lima beans | Butter beans
+Black walnut
+Bunya nut
+Areca nut | Betel nut
+Melon seeds | Egusi
+Water caltrop | Singhara
+Stone crab | Stone crab claws
+Brown crab | Edible crab
+Spider crab
+Langostino
+Quahog | Littleneck clam | Cherrystone clam
+Limpet | Limpets
+Toheroa
+Duck egg | Duck eggs
+Goose egg
+Ostrich egg
+Emu egg
+Salted egg | Salted duck egg
+Gull eggs | Gull's egg | Plover's egg
+Babybel | Wax-coated cheese
+Tamale | Tamales
+Zongzi | Sticky rice dumpling

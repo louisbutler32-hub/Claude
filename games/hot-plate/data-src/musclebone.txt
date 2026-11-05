@@ -10,23 +10,23 @@
 # and tongue are in because they are muscles.
 Biceps | Bicep | Biceps brachii
 Femur | Thigh bone | Thighbone
-Skull | Cranium
-Ribs | Rib | Ribcage | Rib cage
-Spine | Backbone | Spinal column | Vertebral column
+Skull | Cranium | Cranial bones
+Ribs | Rib | Ribcage | Rib cage | Thoracic cage
+Spine | Backbone | Spinal column | Vertebral column | Spinal bones
 Abs | Abdominals | Six-pack | Six pack | Rectus abdominis
-Glutes | Glute | Gluteus maximus | Butt muscle
+Glutes | Glute | Gluteus maximus | Butt muscle | Gluteals | Gluteal muscles | Bum muscles
 Triceps | Tricep | Triceps brachii
 Quads | Quadriceps | Quad
 Hamstrings | Hamstring
-Calves | Calf | Calf muscle
+Calves | Calf | Calf muscle | Calf muscles
 Pecs | Pec | Pectorals | Pectoralis major | Chest muscle
-Kneecap | Patella | Knee cap
+Kneecap | Patella | Knee cap | Knee bone
 Collarbone | Clavicle | Collar bone
 Jaw | Jawbone | Mandible | Jaw bone
 Tibia | Shinbone | Shin bone | Shin
 Fibula
-Humerus
-Pelvis | Hip bone | Hipbone | Pelvic bone
+Humerus | Funny bone | Upper arm bone
+Pelvis | Hip bone | Hipbone | Pelvic bone | Innominate bone | Os coxae | Coxal bone | Pelvic girdle
 Heart | Cardiac muscle | Myocardium
 Tongue
 Deltoids | Deltoid | Delts | Delt | Shoulder muscle
@@ -41,8 +41,8 @@ Vertebrae | Vertebra
 Diaphragm
 Obliques | Oblique
 Phalanges | Phalanx | Finger bones | Toe bones
-Stapes | Stirrup
-Cheekbone | Zygomatic bone | Zygoma | Cheek bone
+Stapes | Stirrup | Stirrup bone
+Cheekbone | Zygomatic bone | Zygoma | Cheek bone | Malar bone
 Hip flexors | Hip flexor
 Rotator cuff
 Sacrum
@@ -51,8 +51,8 @@ Metacarpals | Metacarpal
 Tarsals | Tarsal bones | Ankle bones
 Metatarsals | Metatarsal
 Heel bone | Calcaneus | Calcaneum
-Incus | Anvil
-Malleus | Hammer
+Incus | Anvil | Anvil bone
+Malleus | Hammer | Hammer bone
 Maxilla | Upper jaw
 Gastrocnemius | Gastroc
 Soleus
@@ -61,7 +61,7 @@ Hyoid | Hyoid bone
 Sartorius
 Rhomboids | Rhomboid
 Psoas | Iliopsoas | Psoas major
-Adductors | Adductor | Groin muscle
+Adductors | Adductor | Groin muscle | Inner thigh muscles
 Abductors | Abductor
 Pelvic floor | Kegel muscles | Pelvic floor muscles
 Sphincter | Anal sphincter
@@ -82,7 +82,7 @@ Vastus intermedius
 Biceps femoris
 Semitendinosus
 Semimembranosus
-Tibialis anterior
+Tibialis anterior | Shin muscle
 Tibialis posterior
 Frontal bone | Forehead bone
 Parietal bone | Parietal bones
@@ -260,3 +260,79 @@ External urethral sphincter
 Superficial transverse perineal
 Sternal ribs | True ribs
 False ribs
+Ossicles | Ear bones | Auditory ossicles
+Shoulder girdle | Pectoral girdle
+Proximal phalanges | Proximal phalanx
+Middle phalanges | Middle phalanx
+Distal phalanges | Distal phalanx
+Medial cuneiform
+Intermediate cuneiform
+Lateral cuneiform
+Fabella
+Wormian bones | Sutural bones
+Anterior deltoid | Front delts | Front delt
+Lateral deltoid | Side delts | Side delt
+Posterior deltoid | Rear delts | Rear delt
+Forearm flexors | Wrist flexors
+Forearm extensors | Wrist extensors
+Rhomboid major
+Rhomboid minor
+Serratus posterior superior
+Serratus posterior inferior
+External intercostals
+Internal intercostals
+Innermost intercostals
+Triceps surae
+Adductor minimus
+Extensor hallucis brevis
+Flexor hallucis brevis
+Adductor hallucis
+Pronator quadratus
+Extensor digiti minimi
+Extensor pollicis brevis
+Flexor pollicis brevis
+Palmaris brevis
+Splenius cervicis
+Semispinalis capitis
+Suboccipital muscles | Suboccipitals
+Obliquus capitis superior
+Obliquus capitis inferior
+Rectus capitis posterior major
+Rectus capitis posterior minor
+Rectus capitis anterior
+Rectus capitis lateralis
+Depressor labii inferioris
+Levator anguli oris
+Zygomaticus minor
+Levator labii superioris alaeque nasi
+Auricularis | Auricular muscles
+Occipitofrontalis | Epicranius
+Temporoparietalis
+Depressor septi nasi
+Stylopharyngeus
+Superior pharyngeal constrictor
+Middle pharyngeal constrictor
+Inferior pharyngeal constrictor
+Salpingopharyngeus
+Palatopharyngeus
+Levator veli palatini
+Tensor veli palatini
+Thyroarytenoid
+Vocalis
+Posterior cricoarytenoid
+Lateral cricoarytenoid
+Transverse arytenoid
+Oblique arytenoid
+Puborectalis
+Pubococcygeus
+Iliococcygeus
+Deep transverse perineal
+Dartos | Dartos muscle
+Internal anal sphincter
+External anal sphincter
+Internal urethral sphincter
+Pyloric sphincter
+Lower oesophageal sphincter | Lower esophageal sphincter
+Dilator pupillae | Iris dilator
+Sphincter pupillae
+Papillary muscles

@@ -3,18 +3,18 @@
 # group: Brands
 # emoji: 👟
 # kind: thing
-Nike
-Adidas
+Nike | Nikes | Nike Air
+Adidas | Addidas | Adidas Originals
 Vans
-Converse | Chucks | Chuck Taylor
+Converse | Chucks | Chuck Taylor | Converse All Star | All Stars
 Crocs
-New Balance | NB
+New Balance | NB | New Balances
 Puma
 Jordan | Air Jordan | Jordans
 Reebok
-Skechers | Sketchers
+Skechers | Sketchers | Skecher
 Dr. Martens | Doc Martens | Docs | DMs | Dr Martens
-Timberland | Timbs
+Timberland | Timbs | Timberlands
 UGG | Uggs | UGG Australia
 Birkenstock | Birkenstocks | Birks
 Foot Locker | Footlocker
@@ -35,7 +35,7 @@ The Athlete's Foot | Athlete's Foot | Athletes Foot
 Rebel | Rebel Sport
 Famous Footwear
 Clarks
-Steve Madden
+Steve Madden | Madden Girl
 Salomon
 Brooks
 Saucony
@@ -193,7 +193,7 @@ Scarpa
 Lowa
 Li-Ning | Li Ning
 Anta
-361°  | 361 Degrees
+361° | 361 Degrees
 AND1 | And 1
 Joma
 Bloch
@@ -207,3 +207,184 @@ Autry
 Aquazzura
 Gianvito Rossi
 Amina Muaddi
+LA Gear
+British Knights | BK
+Pony
+Avia
+Ryka
+Etonic
+Karhu
+Topo Athletic
+Inov-8
+Fear of God | Fear of God Athletics
+APL | Athletic Propulsion Labs
+Nobull
+Mitre
+Kelme
+Penalty
+Topper
+Olympikus
+Munich
+Victoria
+Feiyue
+Warrior | Warrior Shoes
+Xtep
+Peak | Peak Sport
+Bata
+Relaxo
+Woodland
+Red Tape
+Campus | Campus Shoes
+Sparx
+Metro Shoes | Metro
+Khadim's
+Paragon
+Lee Cooper
+Miu Miu
+Celine
+Loewe
+Moncler
+Amiri
+Maison Mihara Yasuhiro | Mihara Yasuhiro
+Comme des Garçons | CDG
+Raf Simons
+Stella McCartney
+Mach & Mach
+René Caovilla
+Sergio Rossi
+Casadei
+Giuseppe Zanotti | Zanotti
+Roger Vivier
+Charlotte Olympia
+Sophia Webster
+Dolce & Gabbana | D&G
+Armani | Emporio Armani
+Hugo Boss | Boss
+Moschino
+Philipp Plein
+Filling Pieces
+Diesel
+Guess
+DKNY
+Marc Jacobs
+Vince Camuto
+Franco Sarto
+Mephisto
+Paraboot
+J.M. Weston
+John Lobb
+Berluti
+Santoni
+Edward Green
+Alden
+Tricker's
+Cheaney
+Thursday Boots | Thursday
+Chippewa
+Thorogood
+Irish Setter
+Georgia Boot
+Muck Boot | Muck
+Xtratuf
+Dubarry
+Le Chameau
+Aigle
+Tretorn
+Bogs
+Kamik
+Baffin
+Moon Boot
+Native | Native Shoes
+Melissa
+Ipanema
+Ancient Greek Sandals
+OluKai
+Globe
+DVS
+Osiris
+Rieker
+Gabor
+Easy Spirit
+SAS | San Antonio Shoemakers
+Hotter
+Pavers
+Kizik
+Xero Shoes
+Vivobarefoot
+Bobux
+Start-rite
+Saltwater Sandals
+Schutz
+Arezzo
+Rocket Dog
+Dolce Vita
+Jeffrey Campbell
+Demonia
+Koi Footwear
+New Rock
+Buffalo London | Buffalo
+Solovair
+Lugz
+BAPE | Bapesta | A Bathing Ape
+Betsey Johnson
+Chinese Laundry
+LifeStride
+Pedro
+Ziera
+Mi Piaci
+Merchant 1948
+Overland Footwear | Overland
+Hannahs
+Bared Footwear | Bared
+Midas
+Siren
+Verali
+Mollini
+Zomp
+Sambag
+Subtype
+Up There
+Highs and Lows
+Sneakerboy
+Stirling Sports
+Amart Sports | Amart
+Off Broadway | Off Broadway Shoes
+Shoe Show
+Footaction
+Eastbay
+Shoe Palace
+Jimmy Jazz
+Villa
+DTLR
+Shiekh | Shiekh Shoes
+The Walking Company
+Sneakersnstuff | SNS
+END. | End Clothing
+Offspring
+Foot Patrol
+Atmos
+Undefeated
+Concepts
+Bodega
+Deichmann
+Humanic
+Görtz
+Spartoo
+Sarenza
+Dosenbach
+Scapino
+vanHaren
+Zalando
+Intersport
+Decathlon
+Dick's Sporting Goods | Dick's
+Academy Sports
+Pro:Direct | Pro Direct Soccer
+Runners Need
+Fleet Feet
+Running Room
+Sport Chek
+Little Burgundy
+Browns Shoes | Browns
+SoftMoc
+Ralph Lauren | Polo Ralph Lauren

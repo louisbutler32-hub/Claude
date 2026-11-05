@@ -34,7 +34,7 @@ Kayak
 Yacht
 Sailboat | sailing boat
 Jet ski
-Horse
+Horse | horseback | horse riding
 Camel
 Elephant
 Hot air balloon
@@ -50,7 +50,7 @@ Gondola
 Ski lift | chairlift
 Hovercraft
 Segway
-Rickshaw
+Rickshaw | hand-pulled rickshaw
 Tuk-tuk | auto rickshaw
 Unicycle
 Tricycle | trike
@@ -59,7 +59,7 @@ Rollerblades | inline skates
 Roller skates
 Moped
 Quad bike | ATV | four-wheeler | atvs
-Dirt bike
+Dirt bike | trail bike
 Go-kart | kart | karts
 Snowmobile | skidoo
 Sled | sledge | toboggan | sleds
@@ -86,7 +86,7 @@ Blimp | airship | zeppelin
 Drone
 Space shuttle
 Bullet train | Shinkansen
-High-speed rail | high-speed train
+High-speed rail | high-speed train | TGV
 Steam train | steam locomotive
 Locomotive
 Light rail
@@ -111,7 +111,7 @@ Cart | horse and cart | carts
 Chariot
 Donkey
 Mule | mules
-Ox cart
+Ox cart | bullock cart
 Llama
 Pedicab | cycle rickshaw
 Gondola lift
@@ -132,7 +132,7 @@ Garbage truck | rubbish truck | bin lorry | bin lorries
 Tow truck
 Semi-trailer | semi | articulated lorry | artic | eighteen-wheeler | semis | articulated lorries
 Road train
-Tanker
+Tanker | oil tanker
 Delivery van
 Food truck
 Ice cream van | ice cream truck
@@ -191,3 +191,138 @@ Velomobile
 Electric car | EV | evs
 Hybrid
 Uber | rideshare | ubers
+Coupe
+Minivan | people mover | MPV
+Crossover
+Roadster
+Muscle car
+Supercar
+Hypercar
+Lowrider
+Hot rod
+Smart car | microcar
+Bubble car
+Classic car | vintage car
+Black cab | Hackney carriage
+Police van | paddy wagon
+Panel van
+Kombi | VW camper | VW bus
+4WD | four-wheel drive | 4x4
+Rally car
+Stock car | NASCAR
+Dragster
+Soapbox car | soapbox
+Bumper car | dodgem | dodgems
+Pedal car
+Self-driving car | autonomous car | robotaxi | Waymo
+Ride-on mower | lawn tractor
+Combine harvester
+UTV | side-by-side
+Snowcat | piste basher
+Zamboni | ice resurfacer
+Street sweeper
+Cherry picker
+Road roller | steamroller
+Grader
+Backhoe | JCB
+Skid steer | Bobcat
+Front loader | wheel loader
+Logging truck
+Car transporter | car carrier
+Flatbed truck | flatbed
+Box truck
+Horse float | horse trailer
+Trailer
+APC | armoured personnel carrier
+Half-track
+Vespa
+Sportbike | superbike
+Pit bike | minibike | pocket bike
+Electric unicycle
+Balance bike
+Folding bike
+Fat bike
+Gravel bike
+Cruiser bike | beach cruiser
+Handcycle | handbike
+Boda boda
+Skis | skiing
+Snowboard
+Snowshoes
+Ice skates | ice skating
+Running | jogging
+Swimming
+Hitchhiking
+Piggyback
+Freight train | goods train
+Commuter train
+Sleeper train | night train
+Handcar | pump trolley
+Cog railway | rack railway
+Elevated railway | the El
+Pirate ship
+Clipper
+Schooner
+Sloop
+Caravel
+Patrol boat
+Icebreaker
+Supertanker
+Hydrofoil
+Jet boat
+RIB | inflatable boat | rubber dinghy | rigid inflatable boat
+Water taxi
+Water bus | vaporetto
+Sampan
+Coracle
+Pirogue
+Dugout canoe
+Umiak
+Proa
+Trimaran
+Windsurfer | sailboard
+Kiteboard | kitesurfing
+Bodyboard | boogie board
+Submersible
+Bathyscaphe
+Superyacht
+Motorboat | powerboat
+Cabin cruiser
+U-boat
+Airliner | passenger jet
+Jumbo jet | Boeing 747
+Concorde
+Cargo plane
+Fighter jet
+Bomber
+Air taxi | eVTOL
+Flying car
+Paramotor | powered paraglider
+Wingsuit
+Tiltrotor | Osprey
+Light aircraft | prop plane | propeller plane | Cessna
+Space capsule
+Lunar module
+Pony
+Yak
+Reindeer
+Water buffalo
+T-bar | drag lift | button lift
+Escalator
+Elevator | lift
+Travelator | moving walkway
+Paternoster
+Luge
+Shuttle bus
+Bendy bus | articulated bus
+Open-top bus
+Jeepney
+Matatu
+Songthaew
+Marshrutka
+Dolmuş
+Chicken bus
+Colectivo
+Sedan chair | palanquin
+Hansom cab
+Pony and trap
