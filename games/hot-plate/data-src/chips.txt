@@ -9,14 +9,14 @@ Doritos
 Pringles
 Lay's | Lays | Walkers
 Cheetos
-Smith's | Smiths
+Smith's | Smiths | Smith's Chips | Smiths Crisps
 Kettle | Kettle Chips | Kettle Brand
 Takis
 Ruffles
 Twisties
 Thins
-Red Rock Deli
-Bluebird
+Red Rock Deli | RRD
+Bluebird | Bluebird Chippies | Chippies
 Flamin' Hot Cheetos | Flamin Hot Cheetos | Hot Cheetos
 Burger Rings
 Tostitos
@@ -40,7 +40,7 @@ Discos
 Space Raiders
 Squares | Walkers Squares
 Wheat Crunchies
-Pom-Bear | Pom Bears
+Pom-Bear | Pom Bears | Pom-Bär
 French Fries | Walkers French Fries
 Sensations | Walkers Sensations
 Cape Cod
@@ -119,3 +119,94 @@ Natural Chip Company | The Natural Chip Co
 Vege Chips | Ajitas | Ajitas Vege Chips
 Koikeya
 Oishi
+Jumpys
+Twiglets
+Walkers Crinkles
+Snaps | Walkers Snaps
+Transform-A-Snack
+Roysters
+Ringos
+PopCorners
+Corkers
+Hunky Dorys
+King Crisps
+Keogh's
+Perri
+Meanies
+Mackie's
+Salty Dog
+Eat Real
+Munchies
+Chester's
+Cheez Doodles
+Garden of Eatin'
+On the Border
+Santitas
+Food Should Taste Good
+Xochitl
+Juanita's
+Paqui
+Quest Chips | Quest
+Cheez Balls | Planters Cheez Balls
+Hostess
+Humpty Dumpty
+Hickory Sticks
+Cheezies
+Gibble's
+Dieffenbach's
+Uncle Ray's
+Poore Brothers
+Tim's Cascade | Tims
+Hawaiian Kettle Style | Hawaiian Chips
+Maui Style
+Veggie Straws | Garden Veggie Straws
+Harvest Snaps
+Lesser Evil
+Pipcorn
+Runners
+Rancheritos
+Crujitos
+Jagabee
+Jagariko
+Kappa Ebisen
+Nova
+Mr. Chips
+V-Cut
+Clover Chips
+Tao Kae Noi
+Honey Butter Chip
+Saeukkang
+Turtle Chips | Kkobuk Chip
+Pocachip
+Kurkure
+Bingo!
+Uncle Chipps
+Haldiram's
+Balaji Wafers | Balaji
+Too Yumm!
+Cornitos
+Mister Potato
+Super Ring
+Chipsy
+Chio
+funny-frisch
+Lorenz | Crunchips
+Estrella
+OLW
+Taffel
+Maarud
+Kims
+Sørlandschips | Sorlandschips
+Vico
+Bret's
+Croky
+San Carlo
+Amica Chips
+Pai
+Matutano
+Bonilla a la Vista
+Risi
+Simba
+Big Korn Bites
+Willards
+Ghost Pops

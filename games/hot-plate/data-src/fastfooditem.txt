@@ -12,7 +12,7 @@ McFlurry
 Happy Meal
 Chicken McNuggets | McNuggets | McNugget
 McChicken
-Quarter Pounder | QP | Quarter Pounder with Cheese | QPC | Royale with Cheese
+Quarter Pounder | QP | Quarter Pounder with Cheese | QPC | Royale with Cheese | Royal Cheese | Quarter Pounder Deluxe
 Filet-O-Fish | Fillet-O-Fish | Filet o Fish | Fillet o Fish
 Zinger | Zinger Burger
 Frosty
@@ -262,3 +262,92 @@ Double Decker Taco
 Volcano Taco
 SuperSONIC | SuperSonic Double Cheeseburger
 Hunger-Buster | Hunger Buster
+Chicken McBites | McBites
+Big Mac Sauce | Special Sauce
+Angus Third Pounder
+McCrispy Strips
+Double Quarter Pounder
+McKroket
+Shaker Fries | McShaker Fries
+Shaka Shaka Chicken
+McWings
+McNífica
+Grand Mac
+Mac Jr.
+Burger McDo
+McOz
+Cheese Melt Dippers
+Festive Feast
+Big Fish | BK Big Fish
+Texas Double Whopper
+Chicken Jr.
+Royal Crispy Chicken
+Cini Minis
+French Toast Sticks
+Crunchy Taco Supreme | Taco Supreme
+Power Bowl | Cantina Power Bowl
+Fiesta Taco Salad
+Diablo Sauce
+Fire Sauce
+Beefy Fritos Burrito
+Grilled Stuft Burrito | XXL Grilled Stuft Burrito
+Pepperoni Passion
+Veggie Lover's
+Pepperoni Lover's
+Priazzo
+Deep!Deep! Dish
+Pretzel Crust Pizza | Pretzel Crust
+Papa John's Garlic Sauce | Garlic Sauce
+Shaq-a-Roni
+Caramel Macchiato
+Paradise Drink
+Vanilla Sweet Cream Cold Brew
+Peppermint Mocha
+Chestnut Praline Latte
+Snackin' Bacon
+Big N' Toasted
+The Charli
+Dutchie
+Bonafide Chicken
+Ghost Pepper Wings
+3x3 | Triple Triple
+Monkey Style
+Cherry Limeade
+Flamethrower
+Smokehouse Brisket
+Tiny Tacos
+Breakfast Jack
+Frisco Thickburger | Frisco Burger
+Monster Thickburger
+Whataburger Spicy Ketchup | Spicy Ketchup
+Chick'n Shack
+Concrete | Concretes | Concrete Mixer
+Shack Sauce
+Champ | Champ Burger
+Jolly Hotdog
+Festive Bake
+Chicken Bake
+Butterfly Chicken
+Perinaise
+Bacon Deluxe
+Brekky Wrap
+Rippa Roll | Rippa
+Rappa
+Slyder | Slyders
+Chicken Rings
+Mother Cruncher
+Frisco Melt
+Crumblies
+MiniBon
+Center of the Roll
+BonBites
+Pralines 'n Cream
+Jamoca Almond Fudge
+MOS Rice Burger | Rice Burger
+Bender in a Bun
+Olympic Breakfast
+Snack Box | Supermac's Snack Box
+A&W Root Beer
+Uncle Burger
+Mama Burger
+Grandpa Burger

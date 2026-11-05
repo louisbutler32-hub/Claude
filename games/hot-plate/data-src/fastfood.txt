@@ -3,39 +3,39 @@
 # group: Food
 # emoji: 🍟
 # kind: thing
-McDonald's | McDonalds | Maccas | Macca's | Mickey D's | Mcdees | Maccies | Mackies
-KFC | Kentucky Fried Chicken
+McDonald's | McDonalds | Maccas | Macca's | Mickey D's | Mcdees | Maccies | Mackies | Macdonalds | McD's | Mackers | Macky D's | Golden Arches
+KFC | Kentucky Fried Chicken | Kentucky | Kentucky Fried
 Burger King | BK
 Subway
-Domino's | Dominos
+Domino's | Dominos | Domino's Pizza
 Pizza Hut
 Taco Bell
 Wendy's | Wendys
-Starbucks
-Hungry Jack's | Hungry Jacks | HJ's
+Starbucks | Starbies | Sbux | Starbs
+Hungry Jack's | Hungry Jacks | HJ's | Hungies
 Nando's | Nandos
-Chick-fil-A | Chick fil A | Chickfila
-Five Guys
+Chick-fil-A | Chick fil A | Chickfila | CFA
+Five Guys | 5 Guys
 Greggs
 Popeyes | Popeye's
-In-N-Out | In-N-Out Burger | In N Out
+In-N-Out | In-N-Out Burger | In N Out | In and Out
 Shake Shack
 Chipotle
 Dunkin' | Dunkin' Donuts | Dunkin
 Papa John's | Papa Johns
-Krispy Kreme
-Red Rooster
+Krispy Kreme | Krispy Creme
+Red Rooster | Roosters
 Guzman y Gomez | GYG | Guzman
 Oporto
 Wingstop
 Arby's | Arbys
 Sonic | Sonic Drive-In
-Jack in the Box
+Jack in the Box | Jack in Box
 Carl's Jr. | Carl's Jr | Carls Jr
 Little Caesars | Little Caesar's
-Panda Express
+Panda Express | Panda
 Dairy Queen | DQ
-Tim Hortons | Tim Horton's | Timmies
+Tim Hortons | Tim Horton's | Timmies | Timmy's | Tim's
 Whataburger
 Raising Cane's | Canes | Raising Canes
 Costa | Costa Coffee
@@ -189,3 +189,168 @@ Chowking
 Hot Star Large Fried Chicken | Hot Star
 Paris Baguette
 Marugame Udon
+Chuck E. Cheese
+Peter Piper Pizza
+Papa Gino's
+Godfather's Pizza
+Pizza Inn
+Pizza Ranch
+Donatos
+Fazoli's
+Roy Rogers
+Boston Market
+Golden Chick
+Lee's Famous Recipe Chicken | Lee's
+Bush's Chicken
+PDQ
+Huey Magoo's
+Taco Time
+Tijuana Flats
+Costa Vida
+Cafe Rio
+Pancheros
+Salsarita's
+Chronic Tacos
+Pick Up Stix
+Manchu Wok
+Teriyaki Madness
+Sarku Japan
+Au Bon Pain
+Corner Bakery
+Shipley Do-Nuts | Shipley
+Winchell's
+Duck Donuts
+Peet's Coffee | Peet's
+The Coffee Bean & Tea Leaf | Coffee Bean
+Scooter's Coffee
+7 Brew
+Biggby Coffee | Biggby
+Andy's Frozen Custard
+Rita's Italian Ice | Rita's
+Menchie's
+Yogurtland
+Pinkberry
+TCBY
+Insomnia Cookies
+Crumbl | Crumbl Cookies
+Nothing Bundt Cakes
+Great American Cookies
+Mrs. Fields
+Pretzelmaker
+Hot Dog on a Stick
+BurgerFi
+Burgerville
+Back Yard Burgers
+Farmer Boys
+Penn Station
+Capriotti's
+Togo's
+Chopt
+Salad and Go
+The Halal Guys
+Arthur Treacher's
+Bruegger's
+Zippy's
+L&L Hawaiian Barbecue | L&L
+Huddle House
+Steak Escape
+Pieology
+&pizza
+Mr. Sub
+Mucho Burrito
+Osmow's
+Thai Express
+Booster Juice
+Second Cup
+Edo Japan
+Pizza Nova
+Pizza 73
+Triple O's
+Chez Ashton
+Freshii
+Quesada
+Burrito Boyz
+Favorite Chicken
+Millie's Cookies
+Ben's Cookies
+Creams Cafe | Creams
+Kaspa's
+Shakeaway
+Little Chef
+Four Star Pizza
+Eddie Rockets
+Burger Wisconsin
+Sal's Pizza | Sal's
+St Pierre's Sushi | St Pierre's
+Columbus Coffee
+Mexicali Fresh
+Georgie Pie
+Pita Pit
+Muffin Break
+Nene Chicken
+Michel's Patisserie
+Brumby's
+Banjo's
+Ogalo
+Huxtaburger
+Oliver's Real Food
+Kenny Rogers Roasters
+Pizza Haven
+Sushi Sushi
+Fishbowl
+Salsa's Fresh Mex
+Top Juice
+Freshness Burger
+First Kitchen
+CoCo Ichibanya | CoCo Ichi
+Tenya
+Mom's Touch
+BBQ Chicken
+Kyochon
+Greenwich Pizza
+Shakey's
+Red Ribbon
+Potato Corner
+Dicos
+Café de Coral
+Fairwood
+Mixue
+Luckin Coffee | Luckin
+Marrybrown
+4Fingers
+Old Chang Kee
+Ya Kun Kaya Toast | Ya Kun
+Pepper Lunch
+Fishaways
+Roman's Pizza
+Galito's
+Hungry Lion
+Kauai
+Chicken Republic
+Mr Biggs
+Herfy
+Kudu
+Shawarmer
+Zaatar w Zeit
+Malak al Tawook
+Burgerim
+Simit Sarayı | Simit Sarayi
+Tavuk Dünyası | Tavuk Dunyasi
+Pans & Company
+Rodilla
+100 Montaditos
+Vapiano
+Autogrill
+Paul
+Brioche Dorée
+O'Tacos
+Pomme de Pain
+Sibylla
+Espresso House
+Joe & the Juice
+Sunset Boulevard
+Kotipizza
+Teremok
+Kroshka Kartoshka
+Vkusno i tochka
+Rostic's

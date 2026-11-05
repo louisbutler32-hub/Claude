@@ -14,8 +14,8 @@
 Watermelon | Watermelons
 Pineapple | Pineapples
 Coconut | Coconuts
-Melon | Melons | Muskmelon
-Cantaloupe | Rockmelon | Rock melon
+Melon | Melons | Muskmelon | Sweet melon
+Cantaloupe | Rockmelon | Rock melon | Cantelope | Canteloupe
 Mango | Mangoes | Mangos
 Papaya | Pawpaw | Papaw
 Grapefruit
@@ -39,7 +39,7 @@ Canary melon
 Charentais melon | Charentais
 Casaba melon | Casaba
 Crenshaw melon | Crenshaw
-Hami melon
+Hami melon | Hami
 Yubari King melon | Yubari melon
 Bailan melon
 Ogen melon
@@ -53,9 +53,19 @@ Gac | Gac fruit
 Bael | Bael fruit | Stone apple
 Monstera deliciosa | Monstera fruit | Fruit salad plant
 Cacao pod | Cacao fruit | Cocoa pod
-Baobab fruit | Baobab
+Baobab fruit | Baobab | Monkey bread
 Cupuaçu | Cupuacu
 Biribá | Biriba | Rollinia
 Soncoya
 Pandanus fruit | Screwpine fruit | Pandan fruit
 Coco de mer
+Breadnut | Kamansi
+Mammee apple | Mamey apple | Mammea
+Melogold
+Natsumikan | Natsudaidai
+Palmyra palm fruit | Ice apple | Nungu
+Osage orange | Hedge apple
+Tuscan melon
+Densuke watermelon | Black watermelon
+Banpeiyu
+Gaya melon

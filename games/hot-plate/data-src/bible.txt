@@ -3,49 +3,49 @@
 # group: Other
 # emoji: 📖
 # kind: person
-Jesus | Jesus Christ | Christ
+Jesus | Jesus Christ | Christ | Jesus of Nazareth | Yeshua | Emmanuel | Immanuel
 Moses
 Adam
 Eve
 Noah
-Mary | Virgin Mary | Mary mother of Jesus
-Joseph
-Abraham
+Mary | Virgin Mary | Mary mother of Jesus | Mother Mary | Saint Mary | Mary mother of God
+Joseph | Saint Joseph | Joseph son of Jacob
+Abraham | Abram
 David | King David
 Goliath
-Peter | Simon Peter | Saint Peter | Simon
-Paul | Saint Paul | Saul of Tarsus
+Peter | Simon Peter | Saint Peter | Simon | Cephas | Peter the Apostle
+Paul | Saint Paul | Saul of Tarsus | Apostle Paul | Paul the Apostle
 Judas | Judas Iscariot
-John the Baptist
+John the Baptist | John the Baptizer | John the Baptiser
 John | John the Apostle | Saint John
-Matthew
-Mark
-Luke
+Matthew | Saint Matthew | Matthew the Apostle
+Mark | John Mark | Saint Mark
+Luke | Saint Luke
 Solomon | King Solomon
 Samson
 Delilah
 Cain
 Abel
 Jonah
-Daniel
+Daniel | Belteshazzar
 Lazarus
 Mary Magdalene
 Pontius Pilate | Pilate
 Isaac
 Jacob | Israel
-Esau
-Sarah
+Esau | Edom
+Sarah | Sarai
 Ruth
-Esther
+Esther | Hadassah
 Job
 Elijah
 Joshua
 Gabriel | Angel Gabriel
-Lucifer | Satan | the Devil
-Herod | King Herod
-Thomas | Doubting Thomas
-Andrew
-James
+Lucifer | Satan | the Devil | Beelzebub
+Herod | King Herod | Herod the Great
+Thomas | Doubting Thomas | Didymus | Thomas the Apostle
+Andrew | Saint Andrew
+James | James son of Zebedee | James the Great | James the Greater | Saint James
 Bartholomew | Nathanael
 Philip
 Simon the Zealot
@@ -85,7 +85,7 @@ Zebulun
 Dinah
 Aaron
 Miriam
-Gideon
+Gideon | Jerubbaal
 Pharaoh
 Lot's wife
 Deborah
@@ -96,8 +96,8 @@ Boaz
 Hannah
 Eli
 Nebuchadnezzar
-Shadrach
-Meshach
+Shadrach | Hananiah
+Meshach | Mishael
 Abednego
 Belshazzar
 Darius
@@ -139,7 +139,7 @@ Ananias
 Sapphira
 Cornelius
 Lydia
-Priscilla
+Priscilla | Prisca
 Aquila
 Apollos
 Philemon
@@ -151,13 +151,13 @@ Festus
 Gamaliel
 Simon of Cyrene
 Anna
-Michael | Archangel Michael
+Michael | Archangel Michael | Saint Michael
 Rahab
 Caleb
 Korah
 Balaam
 Balak
-Jethro
+Jethro | Reuel | Hobab
 Zipporah
 Jochebed
 Joab
@@ -170,7 +170,7 @@ Josiah
 Hezekiah
 Manasseh
 Ephraim
-Uzziah
+Uzziah | Azariah
 Jehu
 Jehoshaphat
 Ahaz
@@ -277,3 +277,250 @@ Zilpah
 Keturah
 Shiphrah
 Puah
+God | Yahweh | Jehovah | God the Father
+Wise Men | Magi | Three Wise Men | Three Kings
+Herod Antipas | Antipas
+Archelaus | Herod Archelaus
+Philip the Tetrarch
+Caesar Augustus | Augustus
+Tiberius | Tiberius Caesar
+Quirinius
+Claudius
+Lysanias
+Legion
+Raphael | Archangel Raphael
+Abaddon | Apollyon
+James the Just | James brother of Jesus
+Joses
+Clopas
+Mary of Clopas
+Chuza
+Simon the Leper
+Simon the Tanner
+Simon Magus | Simon the Sorcerer
+Alexander
+Rufus
+Woman at the well | Samaritan woman
+Joseph Barsabbas | Justus
+Philip the Evangelist
+Ethiopian eunuch
+Bernice
+Drusilla
+Agabus
+Blastus
+Sergius Paulus
+Elymas | Bar-Jesus
+Eunice
+Lois
+Jason
+Dionysius the Areopagite | Dionysius
+Damaris
+Crispus
+Sosthenes
+Gallio
+Demetrius
+Gaius
+Aristarchus
+Tychicus
+Trophimus
+Erastus
+Publius
+Julius the Centurion
+Onesiphorus
+Epaphroditus
+Euodia
+Syntyche
+Clement
+Archippus
+Apphia
+Tertius
+Tertullus
+Junia
+Andronicus
+Diotrephes
+Hymenaeus
+Philetus
+Nicolas | Nicolaus
+Prochorus
+Nicanor
+Timon
+Parmenas
+Judas Barsabbas
+Mnason
+Theudas
+Sceva
+Eliezer
+Cush
+Mizraim
+Canaan
+Eber
+Peleg
+Reu
+Serug
+Arphaxad | Arpachshad
+Shelah
+Haran
+Milcah
+Iscah
+Bethuel
+Ephron
+Phicol
+Midian
+Nebaioth
+Kedar
+Adah
+Zillah
+Naamah
+Irad
+Mehujael
+Methushael
+Jabal
+Judith
+Basemath
+Mahalath
+Amalek
+Timna
+Shechem
+Hamor
+Asenath
+Er
+Onan
+Perez
+Zerah
+Hirah
+Potiphar's wife
+Moab
+Ben-Ammi | Ammon
+Amram
+Gershom
+Pharaoh's daughter | Bithiah
+Dathan
+Abiram
+Zelophehad
+Mahlah
+Noa
+Hoglah
+Tirzah
+Eldad
+Medad
+Cozbi
+Oholiab
+Achsah
+Adoni-zedek
+Eglon
+Heber the Kenite | Heber
+Jabin
+Cushan-Rishathaim
+Tola
+Jair
+Ibzan
+Elon
+Abdon
+Elimelech
+Mahlon
+Chilion
+Peninnah
+Kish
+Merab
+Rizpah
+Ahinoam
+Agag
+Witch of Endor | Medium of Endor
+Eliab
+Abinadab
+Shammah
+Abishai
+Asahel
+Amasa
+Zeruiah
+Ittai
+Barzillai
+Achish
+Ishbi-benob
+Sheba son of Bichri
+Hadad
+Rezon
+Ahijah
+Shishak
+Necho | Neco
+Hophra
+Tirhakah
+Abijah | Abijam
+Baasha
+Tibni
+Ahaziah
+Jehoram | Joram
+Joash | Jehoash
+Amaziah
+Amon
+Jehoahaz
+Jehoiakim
+Jehoiachin | Jeconiah | Coniah
+Gedaliah
+Jeroboam II
+Pekahiah
+Naboth
+Micaiah
+Widow of Zarephath
+Shunammite woman
+Ben-Hadad
+Hazael
+Mesha
+Jehonadab | Jonadab
+Hilkiah
+Shaphan
+Jehoiada
+Jehosheba
+Eliakim
+Shebna
+Hiel
+Hanani
+Oded
+Jahaziel
+Iddo
+Shemaiah
+Johanan
+Ahikam
+Ebed-Melech
+Pashhur
+Sennacherib
+Tiglath-Pileser
+Shalmaneser
+Sargon
+Esarhaddon
+Rabshakeh
+Merodach-Baladan
+Evil-Merodach
+Nebuzaradan
+Artaxerxes
+Zeresh
+Bigthan
+Sanballat
+Tobiah
+Geshem
+Zerubbabel
+Jeshua | Joshua the High Priest
+Sheshbazzar
+Ashpenaz
+Arioch
+Jemimah
+Keziah
+Keren-happuch
+Ethan the Ezrahite
+Agur
+Lemuel
+Shulammite
+Amittai
+Gomer
+Jezreel
+Lo-Ruhamah
+Lo-Ammi
+Maher-shalal-hash-baz
+Shear-jashub
+Amoz
+Tobit
+Tobias
+Holofernes
+Judas Maccabeus | Judah Maccabee
+Mattathias
+Antiochus Epiphanes | Antiochus

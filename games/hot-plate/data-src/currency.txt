@@ -12,10 +12,10 @@ US dollar | Dollar | American dollar | USD | United States dollar | Dollars | Bu
 Euro | EUR | Euros
 Pound sterling | Pound | British pound | Sterling | GBP | Pounds | Quid | Great British pound
 Japanese yen | Yen | JPY
-Chinese yuan | Yuan | Renminbi | RMB | CNY
+Chinese yuan | Yuan | Renminbi | RMB | CNY | Kuai
 Australian dollar | AUD | Aussie dollar
-Canadian dollar | CAD | Loonie
-New Zealand dollar | NZD | NZ dollar | Kiwi dollar
+Canadian dollar | CAD | Loonie | Toonie
+New Zealand dollar | NZD | NZ dollar | Kiwi dollar | Kiwi
 Indian rupee | Rupee | INR | Rupees
 Mexican peso | Peso | MXN | Pesos
 Swiss franc | Franc | CHF | Francs
@@ -209,3 +209,91 @@ Monero
 Binance Coin | BNB
 USD Coin | USDC
 Shiba Inu coin | Shiba Inu
+CFP franc | Pacific franc | French Pacific franc
+Caribbean guilder | Netherlands Antillean guilder | Antillean guilder
+Falkland Islands pound
+Gibraltar pound
+Saint Helena pound
+Jersey pound
+Guernsey pound
+Manx pound | Isle of Man pound
+Faroese króna
+Cook Islands dollar
+Kiribati dollar
+Tuvaluan dollar
+Transnistrian ruble
+Somaliland shilling
+Special drawing rights | SDR
+Cuban convertible peso | CUC
+Salvadoran colón
+Pound Scots | Scottish pound
+Austro-Hungarian krone
+Ottoman lira
+Vatican lira
+Monégasque franc | Monaco franc
+Luxembourg franc
+Czechoslovak koruna
+Spanish real
+Brazilian cruzado | Cruzado
+Chilean escudo
+Biafran pound
+South Vietnamese đồng | South Vietnamese dong
+Tael
+Chinese cash | Wen
+Ryō
+Cowrie shells | Cowrie | Cowries
+Wampum
+Rai stones | Rai stone
+Talent
+Obol
+Aureus
+Solidus | Bezant
+Groat
+Kreuzer
+Rentenmark
+Papiermark | Weimar mark
+Continental currency | Continental dollar
+Hawaiian dollar
+Newfoundland dollar
+Straits dollar
+Malayan dollar
+British West African pound
+East African shilling
+Mohur
+Palestine pound
+Israeli lira
+Hungarian pengő | Pengo
+Polkadot | DOT
+Avalanche | AVAX
+Chainlink | LINK
+Polygon | MATIC | POL
+TRON | TRX
+Toncoin | TON
+Stellar | XLM | Lumens
+Bitcoin Cash | BCH
+Ethereum Classic | ETC
+Dai
+Pepe | Pepe coin
+Uniswap | UNI
+Cosmos | ATOM
+Sui
+Aptos
+NEAR Protocol | NEAR
+Internet Computer | ICP
+Filecoin
+Algorand
+Tezos
+Zcash
+Dash
+EOS
+NEO
+VeChain
+Hedera | HBAR
+Arbitrum
+Bonk
+dogwifhat | WIF
+TRUMP coin | Official Trump | Trump memecoin
+Worldcoin
+Kaspa
+Terra Luna | Luna
+Decentraland | MANA

@@ -4,19 +4,19 @@
 # emoji: 💼
 # kind: thing
 Doctor | Physician | Medical Doctor
-Surgeon
+Surgeon | General Surgeon
 Lawyer | Attorney | Solicitor | Barrister
-Dentist
+Dentist | Dental Surgeon
 Pilot | Airline Pilot | Commercial Pilot | Airline Captain
-Software Engineer | Software Developer | Programmer
+Software Engineer | Software Developer | Programmer | SWE | Coder | Developer | Software Dev
 CEO | Chief Executive | Chief Executive Officer
 Anaesthetist | Anesthetist | Anesthesiologist | Anaesthesiologist
 Orthodontist
-Investment Banker | Banker
+Investment Banker | Banker | IB | Investment Banking Analyst
 Pharmacist
 Psychiatrist
-Judge
-Veterinarian | Vet
+Judge | Federal Judge
+Veterinarian | Vet | Veterinary Surgeon
 Data Scientist
 Air Traffic Controller
 Neurosurgeon | Brain Surgeon
@@ -29,17 +29,17 @@ Actuary
 Petroleum Engineer
 Hedge Fund Manager
 Radiologist
-Oral Surgeon
+Oral Surgeon | Oral and Maxillofacial Surgeon | Maxillofacial Surgeon
 Orthopaedic Surgeon | Orthopedic Surgeon
 Obstetrician | OB-GYN | Gynaecologist | Gynecologist
-GP | General Practitioner | Family Doctor
-Emergency Physician | ER Doctor | Emergency Doctor
+GP | General Practitioner | Family Doctor | Family Physician
+Emergency Physician | ER Doctor | Emergency Doctor | A&E Doctor
 Ophthalmologist | Eye Surgeon
 Oncologist
 Neurologist
 Nurse Practitioner
 Nurse Anaesthetist | Nurse Anesthetist | CRNA
-Physician Assistant | PA
+Physician Assistant | PA | Physician Associate
 Podiatrist
 CFO | Chief Financial Officer
 CTO | Chief Technology Officer
@@ -80,10 +80,10 @@ Public Relations Manager | PR Manager
 Purchasing Manager
 Hospital Administrator | Health Services Manager
 Financial Advisor | Financial Adviser
-Portfolio Manager | Fund Manager
+Portfolio Manager | Fund Manager | Asset Manager
 Private Equity Associate | Private Equity
 Venture Capitalist | VC
-Quant | Quantitative Analyst | Quant Trader
+Quant | Quantitative Analyst | Quant Trader | Quant Developer
 Physicist
 Astronomer
 Economist
@@ -110,3 +110,104 @@ Chief Marketing Officer | CMO
 Chief Information Officer | CIO
 Managing Director
 Head Coach | NFL Coach
+Vascular Surgeon
+Cardiothoracic Surgeon | Thoracic Surgeon
+Trauma Surgeon
+Paediatric Surgeon | Pediatric Surgeon
+Colorectal Surgeon
+Endocrinologist
+Nephrologist
+Pulmonologist
+Rheumatologist
+Allergist | Immunologist
+Haematologist | Hematologist
+Infectious Disease Specialist
+Intensivist | ICU Doctor | Critical Care Doctor
+Hospitalist
+Geriatrician
+Internist | Internal Medicine Physician
+ENT Surgeon | ENT | Otolaryngologist | Ear Nose and Throat Doctor
+Radiation Oncologist
+Interventional Radiologist
+Sports Medicine Physician | Sports Doctor
+Physiatrist | Rehabilitation Physician
+Neonatologist
+Forensic Pathologist
+Medical Director
+Chief Medical Officer
+Paediatric Dentist | Pediatric Dentist
+Perfusionist
+Medical Physicist
+Anaesthesiologist Assistant | Anesthesiologist Assistant
+Clinical Psychologist
+Neuropsychologist
+Organisational Psychologist | Organizational Psychologist | I-O Psychologist
+General Counsel | Chief Legal Officer
+Supreme Court Justice
+Law Professor
+Tax Attorney | Tax Lawyer
+Trial Lawyer | Litigator
+Intellectual Property Lawyer | IP Lawyer
+Personal Injury Lawyer
+Trader | Stock Trader | Equity Trader | Commodities Trader
+Wealth Manager
+Risk Manager
+Financial Controller | Controller
+Corporate Treasurer
+Chief Risk Officer
+Tax Manager
+Accounting Partner | Audit Partner
+Management Consultant | Strategy Consultant | Consultant
+Full Stack Developer
+Back-End Developer
+Mobile App Developer | iOS Developer | Android Developer | App Developer
+Blockchain Developer
+Database Architect
+Penetration Tester | Ethical Hacker
+Security Architect
+Chief Information Security Officer | CISO
+Research Scientist | AI Research Scientist
+Prompt Engineer
+Technical Program Manager
+Robotics Engineer
+Computer Vision Engineer
+VP of Engineering | Engineering Director
+Chief Data Officer
+Chief Product Officer
+Chief Revenue Officer
+Chief Strategy Officer
+Mining Engineer
+Materials Engineer
+Electronics Engineer
+Geophysicist
+Petroleum Geologist
+Biochemist
+Medical Scientist
+Astronaut
+Harbour Pilot | Harbor Pilot | Marine Pilot
+Elevator Mechanic | Elevator Installer | Lift Engineer
+Construction Manager
+Compensation and Benefits Manager
+Training and Development Manager
+General Manager | Operations Manager
+Advertising Manager | Promotions Manager
+Industrial Production Manager
+School Principal | Principal
+University Dean | Dean
+Ambassador
+Cabinet Minister | Cabinet Secretary
+Member of Parliament | MP
+Lobbyist
+PGA Tour Golfer | Pro Golfer
+NASCAR Driver
+MLS Player
+AFL Player
+NRL Player
+All Black
+International Cricketer | Test Cricketer
+Premier League Manager | Football Manager
+Army General | General
+Admiral
+Master Sommelier
+Art Director
+Creative Director

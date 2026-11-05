@@ -6,7 +6,7 @@
 # Sources: Wikipedia "List of best-selling books" (every single-book table, 10M+ copies each,
 # fetched 2026-11-03; series rows turned into their famous individual books), plus individual
 # volumes of best-selling series and long-running bestsellers that are well past 500,000 copies.
-Harry Potter and the Philosopher's Stone | Harry Potter and the Sorcerer's Stone | Philosopher's Stone | Sorcerer's Stone | The Philosopher's Stone | The Sorcerer's Stone
+Harry Potter and the Philosopher's Stone | Harry Potter and the Sorcerer's Stone | Philosopher's Stone | Sorcerer's Stone | The Philosopher's Stone | The Sorcerer's Stone | Harry Potter 1
 The Hunger Games
 Twilight
 Diary of a Wimpy Kid
@@ -22,7 +22,7 @@ Harry Potter and the Half-Blood Prince | Half-Blood Prince | The Half-Blood Prin
 Harry Potter and the Deathly Hallows | Deathly Hallows | The Deathly Hallows
 Animal Farm
 The Great Gatsby
-The Lord of the Rings | Lord of the Rings
+The Lord of the Rings | Lord of the Rings | LOTR
 Charlie and the Chocolate Factory
 Matilda
 The Very Hungry Caterpillar
@@ -56,7 +56,7 @@ Charlotte's Web
 The BFG
 James and the Giant Peach
 The Lion, the Witch and the Wardrobe | The Lion the Witch and the Wardrobe
-A Game of Thrones
+A Game of Thrones | Game of Thrones
 The Fellowship of the Ring
 The Two Towers
 The Return of the King
@@ -347,3 +347,602 @@ Xinhua Dictionary | Xinhua Zidian
 Betty Crocker Cookbook
 Better Homes and Gardens New Cook Book
 The Story of My Experiments with Truth
+The Scorch Trials
+The Death Cure
+The Lost Hero
+The Son of Neptune
+The Mark of Athena
+The House of Hades
+The Blood of Olympus
+The Red Pyramid
+Diary of a Wimpy Kid: Cabin Fever | Cabin Fever
+Diary of a Wimpy Kid: The Third Wheel | The Third Wheel
+Diary of a Wimpy Kid: Hard Luck | Hard Luck
+Diary of a Wimpy Kid: Old School | Old School
+Diary of a Wimpy Kid: Double Down | Double Down
+Diary of a Wimpy Kid: The Getaway | The Getaway
+Diary of a Wimpy Kid: The Meltdown | The Meltdown
+Diary of a Wimpy Kid: Wrecking Ball | Wrecking Ball
+Diary of a Wimpy Kid: The Deep End | The Deep End
+Diary of a Wimpy Kid: Big Shot | Big Shot
+Diary of a Wimpy Kid: Diper Överlöde | Diper Overlode
+Diary of a Wimpy Kid: No Brainer | No Brainer
+Diary of a Wimpy Kid: Hot Mess | Hot Mess
+Dog Man Unleashed
+Dog Man: A Tale of Two Kitties | A Tale of Two Kitties
+Dog Man and Cat Kid
+Dog Man: Lord of the Fleas | Lord of the Fleas
+Dog Man: Brawl of the Wild | Brawl of the Wild
+Dog Man: For Whom the Ball Rolls | For Whom the Ball Rolls
+Dog Man: Fetch-22 | Fetch-22
+Dog Man: Grime and Punishment | Grime and Punishment
+Dog Man: Mothering Heights | Mothering Heights
+Dog Man: Twenty Thousand Fleas Under the Sea | Twenty Thousand Fleas Under the Sea
+Dog Man: The Scarlet Shedder | The Scarlet Shedder
+Dog Man: Big Jim Begins | Big Jim Begins
+Fire & Blood
+Prince Caspian
+The Voyage of the Dawn Treader
+The Silver Chair
+The Horse and His Boy
+The Magician's Nephew
+The Last Battle
+The Subtle Knife
+The Amber Spyglass
+Eldest
+Brisingr
+Inheritance
+City of Ashes
+City of Glass
+Clockwork Angel
+The Reptile Room
+The Wide Window
+The Miserable Mill
+The Drawing of the Three
+'Salem's Lot
+The Dead Zone
+Firestarter
+Cujo
+Christine
+The Talisman
+The Green Mile
+11/22/63
+Under the Dome
+Doctor Sleep
+Dolores Claiborne
+Gerald's Game
+Needful Things
+The Tommyknockers
+Bag of Bones
+Fairy Tale
+Holly
+Billy Summers
+The Institute
+Mr. Mercedes
+Cell
+Duma Key
+Deception Point
+Digital Fortress
+The Firm
+The Pelican Brief
+A Time to Kill
+The Client
+The Runaway Jury
+The Rainmaker
+The Chamber
+The Partner
+The Testament
+The Street Lawyer
+The Brethren
+The King of Torts
+Camino Island
+The Lost World
+Sphere
+Congo
+Timeline
+Prey
+The Andromeda Strain
+Disclosure
+Rising Sun
+State of Fear
+The Hunt for Red October
+Patriot Games
+Clear and Present Danger
+The Sum of All Fears
+Red Storm Rising
+Rainbow Six
+Debt of Honor
+Executive Orders
+The Cardinal of the Kremlin
+Along Came a Spider
+Kiss the Girls
+Maximum Ride: The Angel Experiment | Maximum Ride
+Killing Floor
+The Murder of Roger Ackroyd
+Death on the Nile
+The A.B.C. Murders
+The Mysterious Affair at Styles
+The Murder at the Vicarage
+Evil Under the Sun
+The Hound of the Baskervilles
+A Study in Scarlet
+The Adventures of Sherlock Holmes
+The Sign of the Four | The Sign of Four
+Casino Royale
+Dr. No
+Goldfinger
+From Russia, with Love
+Thunderball
+Live and Let Die
+Fall of Giants
+World Without End
+A Column of Fire
+The Evening and the Morning
+The Prodigal Daughter
+First Among Equals
+If Tomorrow Comes
+Master of the Game
+Rage of Angels
+The Other Side of Midnight
+Bloodline
+The Sands of Time
+Hollywood Wives
+Lucky
+Scruples
+Princess Daisy
+The Carpetbaggers
+The Adventurers
+Airport
+Hotel
+Wheels
+The Sicilian
+The Day of the Jackal
+The Odessa File
+The Dogs of War
+The Bourne Identity
+The Bourne Supremacy
+The Bourne Ultimatum
+Where Eagles Dare
+The Guns of Navarone
+Ice Station Zebra
+HMS Ulysses
+When the Lion Feeds
+River God
+Hawaii
+Centennial
+Chesapeake
+The Source
+Texas
+Tai-Pan
+Noble House
+King Rat
+The Caine Mutiny
+The Winds of War
+War and Remembrance
+Exodus
+Trinity
+Mila 18
+Red Dragon
+Hannibal
+Rosemary's Baby
+The Stepford Wives
+Interview with the Vampire
+The Vampire Lestat
+The Queen of the Damned
+Watchers
+Intensity
+Odd Thomas
+Message in a Bottle
+Dear John
+The Last Song
+Safe Haven
+The Lucky One
+Nights in Rodanthe
+The Longest Ride
+The Best of Me
+My Sister's Keeper
+Nineteen Minutes
+Small Great Things
+Big Little Lies
+The Husband's Secret
+Nine Perfect Strangers
+Into the Water
+Sharp Objects
+Dark Places
+The Girl Who Played with Fire
+The Girl Who Kicked the Hornets' Nest
+And the Mountains Echoed
+The Nightingale
+The Four Winds
+The Women
+Firefly Lane
+The Great Alone
+Daisy Jones & the Six
+Malibu Rising
+November 9
+Confess
+Hopeless
+Regretting You
+Maybe Someday
+All Your Perfects
+Too Late
+Heart Bones
+Layla
+Slammed
+The Love Hypothesis
+Book Lovers
+Beach Read
+People We Meet on Vacation
+Happy Place
+Funny Story
+Red, White & Royal Blue
+The Spanish Love Deception
+Icebreaker
+Haunting Adeline
+Twisted Love
+The Cruel Prince
+Shatter Me
+A Good Girl's Guide to Murder
+The Inheritance Games
+We Were Liars
+They Both Die at the End
+Heartstopper
+Six of Crows
+Shadow and Bone
+Throne of Glass
+House of Earth and Blood | Crescent City
+A Court of Frost and Starlight
+A Court of Silver Flames
+Powerless
+The Song of Achilles
+Circe
+Lessons in Chemistry
+Tomorrow, and Tomorrow, and Tomorrow
+Project Hail Mary
+The Martian
+Ready Player One
+Ender's Game
+The Housemaid
+The Housemaid's Secret
+Remarkably Bright Creatures
+Demon Copperhead
+The Psychology of Money
+Can't Hurt Me
+The Body Keeps the Score
+Thinking, Fast and Slow
+Outliers
+The Tipping Point
+Blink
+Freakonomics
+Quiet
+I'm Glad My Mom Died
+The Mountain Is You
+The Let Them Theory
+Greenlights
+The Year of Magical Thinking
+Into the Wild
+Into Thin Air
+Unbroken
+Seabiscuit
+The Immortal Life of Henrietta Lacks
+Hillbilly Elegy
+Killers of the Flower Moon
+In Cold Blood
+Silent Spring
+Zero to One
+Start with Why
+The Lean Startup
+Good to Great
+The 4-Hour Workweek | The Four Hour Workweek
+The Intelligent Investor
+The Millionaire Next Door
+Ikigai
+The Courage to Be Disliked
+Meditations
+The Prince
+On the Origin of Species | The Origin of Species
+The Selfish Gene
+Guns, Germs, and Steel
+Homo Deus
+21 Lessons for the 21st Century
+A Short History of Nearly Everything
+The God Delusion
+Eat, Pray, Love
+Wild
+Marley & Me
+The Glass Castle
+Bossypants
+I Am Malala
+When Breath Becomes Air
+The Last Lecture
+Dreams from My Father
+The Audacity of Hope
+The Autobiography of Malcolm X
+Band of Brothers
+American Sniper
+Friends, Lovers, and the Big Terrible Thing
+The Woman in Me
+Elon Musk
+Shoe Dog
+Born to Run
+Kitchen Confidential
+Fast Food Nation
+Daring Greatly
+The 5 Love Languages | The Five Love Languages
+Jesus Calling
+Heaven Is for Real
+The Prayer of Jabez
+Left Behind
+Your Best Life Now
+Don't Sweat the Small Stuff
+Chicken Soup for the Soul
+The Road Less Traveled
+Awaken the Giant Within
+The Magic of Thinking Big
+The Richest Man in Babylon
+The Monk Who Sold His Ferrari
+The Seven Spiritual Laws of Success
+The One Minute Manager
+Getting Things Done
+Deep Work
+Mindset
+The Power of Habit
+Never Split the Difference
+Influence
+Veronika Decides to Die
+Brida
+Eleven Minutes
+Robinson Crusoe
+Gulliver's Travels
+The Count of Monte Cristo
+The Three Musketeers
+Around the World in Eighty Days | Around the World in 80 Days
+Twenty Thousand Leagues Under the Seas | 20,000 Leagues Under the Sea | Twenty Thousand Leagues Under the Sea
+Journey to the Center of the Earth | Journey to the Centre of the Earth
+The Time Machine
+The War of the Worlds
+The Invisible Man
+Heart of Darkness
+Madame Bovary
+Emma
+Sense and Sensibility
+Persuasion
+David Copperfield
+Bleak House
+Middlemarch
+Tess of the d'Urbervilles
+Far from the Madding Crowd
+The Scarlet Letter
+Uncle Tom's Cabin
+The Call of the Wild
+White Fang
+The Brothers Karamazov
+The Idiot
+Doctor Zhivago
+One Day in the Life of Ivan Denisovich
+The Master and Margarita
+Ulysses
+Mrs Dalloway
+The Sun Also Rises
+A Farewell to Arms
+For Whom the Bell Tolls
+The Metamorphosis
+The Trial
+Siddhartha
+Steppenwolf
+All Quiet on the Western Front
+The Tin Drum
+Cannery Row
+The Pearl
+Their Eyes Were Watching God
+Native Son
+Song of Solomon
+The Bell Jar
+On the Road
+One Flew Over the Cuckoo's Nest
+A Clockwork Orange
+The Remains of the Day
+Never Let Me Go
+Atonement
+Wolf Hall
+The God of Small Things
+Midnight's Children
+The Satanic Verses
+The White Tiger
+The Curious Incident of the Dog in the Night-Time
+The Road
+No Country for Old Men
+The Time Traveler's Wife
+Water for Elephants
+The Secret Life of Bees
+Memoirs of a Geisha
+Girl with a Pearl Earring
+The Poisonwood Bible
+The Goldfinch
+The Secret History
+A Little Life
+Cloud Atlas
+The Night Circus
+American Gods
+Coraline
+Good Omens
+Stardust
+The Graveyard Book
+The Princess Bride
+The Name of the Wind
+Mistborn | Mistborn: The Final Empire
+The Way of Kings
+The Eye of the World
+Stranger in a Strange Land
+Starship Troopers
+Do Androids Dream of Electric Sheep?
+Neuromancer
+I, Robot
+A Wizard of Earthsea
+The Martian Chronicles
+2001: A Space Odyssey
+World War Z
+The Testaments
+The Dark Forest
+Death's End
+Kafka on the Shore
+1Q84
+Before the Coffee Gets Cold
+Convenience Store Woman
+Journey to the West
+Romance of the Three Kingdoms
+Water Margin
+To Live
+Love in the Time of Cholera
+Chronicle of a Death Foretold
+The House of the Spirits
+Like Water for Chocolate
+The Reader
+The Hundred-Year-Old Man Who Climbed Out of the Window and Disappeared
+A Man Called Ove
+Inkheart
+The Brothers Lionheart
+Emil and the Detectives
+The Hunchback of Notre-Dame
+The Dry
+Boy Swallows Universe
+Tomorrow, When the War Began
+The No. 1 Ladies' Detective Agency
+One Day
+The Thursday Murder Club
+Eleanor Oliphant Is Completely Fine
+Noughts & Crosses
+Stormbreaker
+Skulduggery Pleasant
+The Story of Tracy Beaker | Tracy Beaker
+Gangsta Granny
+Billionaire Boy
+Mr Stink
+The Restaurant at the End of the Universe
+Life, the Universe and Everything
+The Perks of Being a Wallflower
+Speak
+Eleanor & Park
+The Hate U Give
+Children of Blood and Bone
+Red Queen
+Miss Peregrine's Home for Peculiar Children
+The Selection
+Uglies
+Cinder
+Vampire Academy
+Beautiful Creatures
+If I Stay
+All the Bright Places
+Simon vs. the Homo Sapiens Agenda
+To All the Boys I've Loved Before
+The Summer I Turned Pretty
+Everything, Everything
+One of Us Is Lying
+After
+A Monster Calls
+Out of My Mind
+The One and Only Ivan
+Refugee
+The Snowy Day
+Corduroy
+Madeline
+The Little Engine That Could
+Pat the Bunny
+The Runaway Bunny
+Harold and the Purple Crayon
+If You Give a Mouse a Cookie
+Llama Llama Red Pajama
+Dear Zoo
+We're Going on a Bear Hunt
+Where's Spot?
+The Gruffalo's Child
+Stick Man
+Zog
+The Snail and the Whale
+Each Peach Pear Plum
+Elmer
+The Day the Crayons Quit
+Pete the Cat: I Love My White Shoes | Pete the Cat
+Don't Let the Pigeon Drive the Bus!
+The Pout-Pout Fish
+Giraffes Can't Dance
+The Wonky Donkey
+Owl Babies
+The Kissing Hand
+Make Way for Ducklings
+Frog and Toad Are Friends
+Amelia Bedelia
+Fox in Socks
+Hop on Pop
+Horton Hears a Who!
+The Lorax
+Dr. Seuss's ABC
+The Foot Book
+Are You My Mother?
+Go, Dog. Go!
+The Monster at the End of This Book
+The Velveteen Rabbit
+Stellaluna
+The Paper Bag Princess
+Where Is the Green Sheep?
+Pig the Pug
+The 13-Storey Treehouse | The 13-Story Treehouse
+Five on a Treasure Island
+The Magic Faraway Tree
+Charlie and the Great Glass Elevator
+The Hundred and One Dalmatians | 101 Dalmatians
+Mary Poppins
+The Borrowers
+The Railway Children
+Goodnight Mister Tom
+Private Peaceful
+War Horse
+Kensuke's Kingdom
+Stuart Little
+The Trumpet of the Swan
+Ramona the Pest
+Tales of a Fourth Grade Nothing
+Superfudge
+Are You There God? It's Me, Margaret.
+The Phantom Tollbooth
+Island of the Blue Dolphins
+Where the Red Fern Grows
+Old Yeller
+Shiloh
+Because of Winn-Dixie
+Tuck Everlasting
+The Westing Game
+From the Mixed-Up Files of Mrs. Basil E. Frankweiler
+Walk Two Moons
+Little House in the Big Woods
+Sarah, Plain and Tall
+Frindle
+The Indian in the Cupboard
+Dinosaurs Before Dark
+The Boxcar Children
+Welcome to Dead House
+Night of the Living Dummy
+Say Cheese and Die!
+Kristy's Great Idea
+The Secret of the Old Clock
+The Tower Treasure
+The Dragonet Prophecy
+Smile
+New Kid
+Dork Diaries
+Watchmen
+Maus
+Asterix the Gaul
+Tintin in Tibet
+Joy of Cooking
+Mastering the Art of French Cooking
+Jamie's 30-Minute Meals
+The Elements of Style
+Bhagavad Gita
+Tao Te Ching
+The Analects
+Milk and Honey
+The Sun and Her Flowers
+Where the Sidewalk Ends
+A Light in the Attic

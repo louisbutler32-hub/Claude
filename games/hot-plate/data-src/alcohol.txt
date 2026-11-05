@@ -4,19 +4,19 @@
 # emoji: 🍺
 # kind: thing
 Vodka
-Beer | beers
-Wine | wines
+Beer | beers | Brewski | Bevvy
+Wine | wines | Vino
 Tequila
 Gin
 Rum
 Whisky | Whiskey
-Champagne
-Cider
-Smirnoff
+Champagne | Champers | Bubbly
+Cider | Hard cider
+Smirnoff | Smirnov | Smirnof
 Jägermeister | Jagermeister | Jager | Jäger | Jagger
-Corona
+Corona | Corona Extra
 Heineken
-Jack Daniel's | Jack Daniels | JD
+Jack Daniel's | Jack Daniels | JD | Jack | Jack Daniel
 Bacardi
 Budweiser | Bud
 Guinness
@@ -24,9 +24,9 @@ Prosecco
 Red wine
 White wine
 Rosé | Rose | Rosé wine
-Captain Morgan
-Absolut
-Fireball
+Captain Morgan | Captain Morgan's
+Absolut | Absolute | Absolut Vodka
+Fireball | Fireball whisky
 Baileys | Bailey's
 Malibu
 Grey Goose
@@ -37,11 +37,11 @@ Coors | Coors Light
 Stella Artois | Stella
 Jim Beam
 Johnnie Walker | Johnny Walker
-Jameson
+Jameson | Jamo | Jamesons
 Patrón | Patron
 Lager
 Bourbon
-Scotch
+Scotch | Scotch whisky
 Sake
 Brandy
 Cognac
@@ -49,18 +49,18 @@ Margarita | Margaritas
 Mojito | Mojitos
 Martini | Martinis
 White Claw
-Peroni
+Peroni | Peroni Nastro Azzurro | Nastro Azzurro
 Carlsberg
-Modelo
+Modelo | Modelo Especial
 Don Julio
 Jose Cuervo | Cuervo
 Bundaberg Rum | Bundy | Bundaberg
-VB | Victoria Bitter
+VB | Victoria Bitter | Vic Bitter
 XXXX | Fourex | 4X
 Carlton Draught | Carlton
 Tooheys | Tooheys New
 Great Northern
-Asahi
+Asahi | Asahi Super Dry
 Strongbow
 Kopparberg
 Rekorderlig
@@ -75,7 +75,7 @@ Aperol
 Aperol Spritz | Spritz
 Campari
 Pimm's | Pimms
-Kahlúa | Kahlua
+Kahlúa | Kahlua | Kahluah
 Midori
 Southern Comfort | SoCo
 Sambuca
@@ -83,7 +83,7 @@ Ouzo
 Limoncello
 Soju
 Absinthe
-Mezcal | Mescal
+Mezcal | Mescal | Mezcals
 Port
 Sherry
 Vermouth
@@ -97,23 +97,23 @@ Pale ale
 Porter
 Cava
 Mead
-Hard seltzer | Seltzer
+Hard seltzer | Seltzer | Seltzers | Spiked seltzer
 Alcopop | Alcopops
-Goon | Cask wine | Boxed wine | Box wine
+Goon | Cask wine | Boxed wine | Box wine | Goon bag | Goon sack
 Sangria
 Espresso martini
 Piña colada | Pina colada
 Daiquiri
 Cosmopolitan | Cosmo
-Long Island iced tea | Long Island
+Long Island iced tea | Long Island | LIIT
 Sex on the beach
 Bloody Mary
 Negroni
-Old fashioned
+Old fashioned | Old fashion
 Mimosa
-Pornstar martini
-Gin and tonic | G&T | Gin & tonic
-Rum and Coke | Cuba libre | Rum & Coke
+Pornstar martini | Passionfruit martini
+Gin and tonic | G&T | Gin & tonic | GnT | Gin tonic
+Rum and Coke | Cuba libre | Rum & Coke | Rum n Coke
 Vodka Red Bull | Vodka Redbull
 Jägerbomb | Jagerbomb | Jager bomb
 Moscow mule
@@ -121,23 +121,23 @@ Tequila sunrise
 White Russian
 Screwdriver
 Manhattan
-Whiskey sour
+Whiskey sour | Whisky sour
 Mai tai
 Caipirinha
 Merlot
 Shiraz | Syrah
 Cabernet Sauvignon | Cabernet | Cab Sav | Cab Sauv
-Sauvignon Blanc | Sav Blanc | Sauv Blanc
+Sauvignon Blanc | Sav Blanc | Sauv Blanc | Savvy B | Savvy
 Chardonnay
 Pinot Noir
 Pinot Grigio | Pinot Gris
 Riesling
 Malbec
-Moscato
+Moscato | Muscat
 Smirnoff Ice
 WKD
 Bacardi Breezer | Breezer
-Vodka Cruiser | Cruiser | Cruisers
+Vodka Cruiser | Cruiser | Cruisers | Vodka Cruisers
 UDL
 Woodstock
 Canadian Club | CC
@@ -264,7 +264,7 @@ Courvoisier
 Martell
 Metaxa
 Kraken
-Sailor Jerry
+Sailor Jerry | Sailor Jerry's
 Havana Club
 Mount Gay
 Appleton Estate | Appleton
@@ -433,3 +433,684 @@ Murphy's
 Kilkenny
 Smithwick's
 Harp
+White rum | Light rum | Silver rum
+Dark rum | Black rum
+Spiced rum
+Gold rum
+Overproof rum
+Rhum agricole
+Navy rum
+Rye whiskey | Rye | Rye whisky
+Single malt | Single malt whisky | Single malt scotch
+Irish whiskey
+Japanese whisky
+Tennessee whiskey
+Blended whisky | Blended scotch
+Corn whiskey
+Calvados
+Armagnac
+Kirsch | Kirschwasser
+Eau de vie
+Poitín | Poteen
+Genever | Jenever
+Sloe gin
+Pink gin
+London dry gin
+Old Tom gin
+Applejack
+Crème de menthe
+Crème de cassis | Cassis
+Crème de cacao
+Blue Curaçao | Curaçao
+Maraschino | Luxardo
+Fino
+Amontillado
+Oloroso
+Tawny port
+Ruby port
+Vinho Verde
+Retsina
+Tokaji | Tokay
+Ice wine
+Sauternes
+Asti | Asti Spumante
+Crémant
+Franciacorta
+Sekt
+Rice wine
+Plum wine | Umeshu
+Shochu
+Awamori
+Huangjiu | Shaoxing wine
+Feni
+Tej | Honey wine
+Chicha
+Kumis | Kumiss
+Fruit wine
+Scrumpy
+Malt liquor
+Spirits | Spirit | Liquor | Hard liquor
+Aguardiente
+Sotol
+Raicilla
+Korn | Kornbrand
+Tsipouro
+Reposado
+Añejo
+Blanco tequila | Silver tequila
+Dunkel
+Bock
+Doppelbock
+Märzen | Oktoberfest beer
+Kölsch
+Altbier
+Helles
+Saison
+Tripel
+Dubbel
+Quadrupel | Quad
+Gose
+Berliner Weisse
+Witbier | White beer
+Hazy IPA | NEIPA | New England IPA
+Double IPA | DIPA
+Session IPA
+Amber ale
+Red ale
+Brown ale
+Golden ale
+Blonde ale | Blond ale
+Barley wine
+Cream ale
+Mild
+Imperial stout
+Milk stout
+Oatmeal stout
+Rauchbier | Smoked beer
+Steam beer
+Radler
+Ice beer
+Dark lager
+Kriek
+Fruit beer
+Cabernet Franc
+Carménère
+Petit Verdot
+Nebbiolo
+Barbera
+Primitivo
+Montepulciano
+Nero d'Avola
+Pinotage
+Gamay
+Mourvèdre | Mataro | Monastrell
+Petite Sirah
+Muscadet
+Grüner Veltliner
+Torrontés
+Verdejo
+Vermentino
+Soave
+Valpolicella
+Amarone
+Brunello di Montalcino | Brunello
+Châteauneuf-du-Pape
+Côtes du Rhône
+Chablis
+Sancerre
+Pouilly-Fumé
+Claret
+Hock
+Sidecar
+French 75
+Tom Collins
+Gimlet
+Sazerac
+Mint julep
+Paloma
+Bellini
+Kir royale | Kir
+Zombie
+Hurricane
+Dark 'n' Stormy | Dark and stormy
+Black Russian
+Grasshopper
+Brandy Alexander
+Amaretto sour
+Pisco sour
+Singapore sling
+Sea breeze
+Bay breeze
+Cape Codder
+Woo woo
+Blue lagoon
+Rusty nail
+Godfather
+Boulevardier
+Americano
+Vesper
+Gibson
+Lemon drop
+Appletini | Apple martini
+Mudslide
+B-52
+Baby Guinness
+Slippery nipple
+Kamikaze
+Lynchburg lemonade
+Painkiller
+Clover Club
+Corpse reviver
+Penicillin
+Last Word
+Michelada
+Caesar | Bloody Caesar
+Tequila slammer
+Tinto de verano
+Hugo spritz | Hugo
+Gin fizz
+Ramos gin fizz
+Rum punch
+Planter's punch
+Jungle bird
+Vieux carré
+Hot buttered rum
+Boilermaker
+Sake bomb
+Jelly shot | Jello shot | Jelly shots | Jello shots
+Flaming sambuca
+Vodka soda | Vodka lime soda | VLS
+Vodka cranberry | Vodka cran
+Vodka tonic
+Gin and juice
+Jack and Coke | Whiskey and Coke | Whisky and Coke | Bourbon and Coke
+Scotch and soda
+Highball
+Black velvet
+Black and tan
+Cheeky Vimto
+Skittle bomb
+Frosé
+Ranch water
+Fuzzy navel
+Harvey Wallbanger
+Pink Lady
+Blue Hawaiian
+Bahama Mama
+Kalimotxo | Calimocho
+Snowball
+Eggnog
+Buck's Fizz
+Mulled cider
+Punch
+Jungle juice
+Strong Zero
+Chu-hi | Chuhai
+Chopin
+Wyborowa
+Sobieski
+Pinnacle
+New Amsterdam
+UV Vodka
+Svedka
+Deep Eddy
+Three Olives
+Burnett's
+Crystal Head
+Haku
+Reyka
+Beluga
+Eristoff
+Vladivar
+Nemiroff
+Khortytsa
+Moskovskaya
+Green Mark
+Magic Moments
+Black Cow
+Broken Shed
+Archie Rose
+Bloom
+Bulldog
+Caorunn
+Citadelle
+Nolet's
+Gilbey's
+Greenall's
+Larios
+Empress 1908 | Empress Gin
+Silent Pool
+Warner's
+Hayman's
+The Botanist
+Opihr
+Puerto de Indias
+Tarquin's
+Isle of Harris Gin | Harris Gin
+Brookie's
+Ginebra San Miguel | Ginebra
+Avion
+Milagro
+Corralejo
+Cabo Wabo
+Siete Leguas
+Fortaleza
+El Tesoro
+Lunazul
+Gran Centenario
+Maestro Dobel | Dobel
+818 Tequila | 818
+Casa Dragones
+Volcán
+Código 1530
+Del Maguey
+Ilegal Mezcal | Ilegal
+Dos Hombres
+Glenfarclas
+Glen Moray
+Glengoyne
+Glenkinchie
+Aberlour
+Balvenie
+Bowmore
+Bruichladdich
+Bunnahabhain
+Caol Ila
+Cardhu
+Dalmore
+Dalwhinnie
+Oban
+Springbank
+Auchentoshan
+Jura | Isle of Jura
+Tomatin
+Old Pulteney
+Cragganmore
+Glen Grant
+The Singleton
+Benromach
+Kilchoman
+Cutty Sark
+White Horse
+Haig | Haig Club
+Royal Salute
+Buchanan's
+Old Parr
+Black Bottle
+Passport Scotch | Passport
+Label 5
+William Lawson's
+Clan Campbell
+Powers
+Paddy
+Teeling
+Writers' Tears
+Slane
+Kilbeggan
+Green Spot
+Midleton
+Proper No. Twelve | Proper Twelve | Proper 12
+Roe & Co
+Old Forester
+Gentleman Jack
+Heaven Hill
+Old Grand-Dad
+Basil Hayden's | Basil Hayden
+Blanton's
+Eagle Rare
+Michter's
+Angel's Envy
+Weller | W. L. Weller
+Old Crow
+George Dickel | Dickel
+Rebel Yell
+Larceny
+Rittenhouse
+High West
+WhistlePig
+Jefferson's
+Booker's
+Old Overholt
+Black Velvet whisky
+Canadian Mist
+Pendleton
+Forty Creek
+Hakushu
+Toki
+Yoichi
+Miyagikyo
+Kakubin
+Amrut
+Paul John
+Royal Stag
+McDowell's
+Officer's Choice
+Imperial Blue
+Blenders Pride
+Kavalan
+Lark
+Hellyers Road
+Old Monk
+Don Q
+Ron Zacapa | Zacapa
+Plantation | Planteray
+El Dorado
+Goslings
+Myers's | Myers | Myers Rum
+Wray & Nephew
+Lamb's | Lambs Navy Rum
+Pusser's
+Brugal
+Flor de Caña
+Cruzan
+Stroh
+Pampero
+Angostura | Angostura bitters
+Lemon Hart
+Ron Barceló | Barcelo
+Matusalem
+Dead Man's Fingers
+Don Papa
+Coruba
+Tanduay
+SangSom
+Mekhong
+Clément
+Ypióca
+Camus
+Hine
+Otard
+Torres
+St-Rémy
+Christian Brothers
+Paul Masson
+Emperador
+Klipdrift
+KWV
+Asbach Uralt | Asbach
+Sheridan's
+Carolans
+Amarula
+Cynar
+Averna
+Montenegro
+Ramazzotti
+Strega
+Tuaca
+Becherovka
+Unicum
+Underberg
+Glayva
+Irish Mist
+Lillet
+Dubonnet
+Suze
+Martini & Rossi | Martini Rosso | Martini Bianco
+Cinzano
+Noilly Prat
+Punt e Mes
+Passoã
+Pisang Ambon
+Godiva liqueur | Godiva
+Bols
+De Kuyper
+Hpnotiq | Hypnotiq
+Alizé
+Mr Black
+Jeppson's Malört | Malort
+Rumple Minze
+Dr. McGillicuddy's | McGillicuddy's
+Kinky
+Aftershock
+Apfelkorn
+Berentzen
+Kleiner Feigling
+Tequila Rose
+Cherry Heering | Heering
+Ginjinha | Ginja
+Pacharán
+Krupnik
+Soplica
+Molinari
+Yeni Rakı | Yeni Raki
+Tío Pepe
+Harveys Bristol Cream | Bristol Cream
+Taylor's Port
+Graham's
+Sandeman
+Cockburn's
+Dow's
+Croft
+Choya
+Iichiko
+Gekkeikan
+Ozeki
+Dassai
+Hakutsuru
+Chum Churum
+Wuliangye
+Swan Draught | Swan
+Emu Export | Emu
+West End
+Matilda Bay
+Gage Roads
+Pirate Life
+Mountain Goat
+Feral
+4 Pines | Four Pines
+Young Henrys
+Resch's
+Melbourne Bitter
+Fat Yak
+Iron Jack
+Brookvale Union
+Pals
+Lion Red
+Tui
+DB Export | Export Gold
+DB Draught
+Waikato Draught | Waikato
+Lion Brown
+Double Brown
+Monteith's
+Mac's
+Emerson's
+Garage Project
+Panhead
+Canterbury Draught
+Cody's
+Long White
+Zeffer
+Greene King | Greene King IPA
+Abbot Ale
+Spitfire
+Hobgoblin
+Bishops Finger
+Old Peculier | Theakston | Theakston's
+Pedigree | Marston's
+Black Sheep
+Timothy Taylor | Landlord
+Wainwright
+Adnams
+Shepherd Neame
+Samuel Smith | Sam Smith's
+Worthington
+Caffrey's
+McEwan's
+Belhaven
+Innis & Gunn
+Beamish
+Madrí | Madri Excepcional
+Cruzcampo
+Mahou
+Alhambra
+Hite
+Cass
+Terra
+Mythos
+Tusker
+Castle Lager | Castle
+Windhoek
+Star Lager
+Snow | Snow Beer
+Harbin
+Yanjing
+Leo
+Red Horse
+Orion
+Tuborg
+Faxe
+Baltika
+Jupiler
+Delirium Tremens | Delirium
+Westmalle
+Rochefort
+Orval
+Westvleteren
+La Trappe
+Kwak
+Affligem
+Grimbergen
+Bitburger
+Warsteiner
+Krombacher
+Weihenstephaner
+Spaten
+Löwenbräu
+Hofbräu | HB
+Augustiner
+Franziskaner
+Schöfferhofer
+Radeberger
+Holsten | Holsten Pils
+Veltins
+Kozel
+Budvar | Budweiser Budvar
+Sagres
+Super Bock
+Skol
+Cusqueña
+Aguila
+Polar
+Presidente
+Carib
+Indio
+Bohemia
+Carta Blanca
+Negra Modelo | Modelo Negra
+Milwaukee's Best | Beast
+Old Milwaukee
+Schlitz
+Hamm's
+Olympia
+Genesee
+Stroh's
+Icehouse
+Steel Reserve
+Colt 45
+Olde English | OE | Olde English 800
+Mickey's
+Stone Brewing | Stone IPA
+Dogfish Head
+New Belgium | Fat Tire
+Founders
+Deschutes
+Anchor Steam | Anchor
+Brooklyn Lager | Brooklyn Brewery
+Ballast Point
+Elysian
+Zima
+Bartles & Jaymes
+Boone's Farm
+Arbor Mist
+Mad Dog 20/20 | MD 20/20 | Mad Dog
+Thunderbird
+Night Train
+Carlo Rossi
+Franzia
+Sutter Home
+Kendall-Jackson
+Josh Cellars | Josh
+La Marca
+Cupcake
+Woodbridge
+Beringer
+Ménage à Trois
+Meiomi
+Bota Box
+Black Box
+Stella Rosa
+André
+Cook's
+Korbel
+Freixenet
+Codorníu
+Chandon
+Mionetto
+Bottega
+Valdo
+Zonin
+Ruffino
+Riunite
+Mateus
+Blue Nun
+Black Tower
+Campo Viejo
+Faustino
+Marqués de Cáceres
+Concha y Toro
+Isla Negra
+Villa Maria
+Brancott Estate | Brancott | Montana
+Matua
+Stoneleigh
+Giesen
+Mud House
+Saint Clair
+Babich
+Squealing Pig
+Rosemount
+Wynns
+Henschke
+Rawson's Retreat
+Seppelt
+Grant Burge
+Peter Lehmann
+De Bortoli
+Devil's Corner
+Tyrrell's
+Vasse Felix
+Nederburg
+Château Margaux
+Château Lafite Rothschild | Lafite | Chateau Lafite
+Château Latour
+Château Mouton Rothschild | Mouton Rothschild
+Château d'Yquem | Yquem
+Pétrus
+Opus One
+Screaming Eagle
+Sassicaia
+Tignanello
+Romanée-Conti | DRC
+Nicolas Feuillatte
+Charles Heidsieck
+Deutz
+Billecart-Salmon
+Henriot
+Pommery
+Westons | Henry Westons
+Aspall
+Stowford Press
+Brothers Cider | Brothers
+Crabbie's
+Savanna
+White Lightning
+Scrumpy Jack
+Woodpecker
+Blackthorn
+Inch's
+Orchard Pig
+Sheppy's
+Mercury Cider | Mercury
+5 Seeds | Five Seeds
+Woodchuck

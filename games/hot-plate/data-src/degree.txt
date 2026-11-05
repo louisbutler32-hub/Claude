@@ -3,19 +3,19 @@
 # group: School
 # emoji: 🎓
 # kind: thing
-Law | LLB | Bachelor of Laws | JD | Juris Doctor
+Law | LLB | Bachelor of Laws | JD | Juris Doctor | LLM | Master of Laws
 Medicine | MBBS | MBChB | MD | Doctor of Medicine
 Engineering | BE | BEng | Bachelor of Engineering
 Science | BSc | BS | Bachelor of Science
 Arts | BA | Bachelor of Arts
 Commerce | BCom | Bachelor of Commerce
-Business | BBus | Bachelor of Business | Business Administration | BBA
+Business | BBus | Bachelor of Business | Business Administration | BBA | Business Management
 Psychology
 Nursing | BN | Bachelor of Nursing | BSN
 Computer Science | CS | Comp Sci
 Accounting
 Economics
-Architecture
+Architecture | BArch | Bachelor of Architecture
 Teaching | Education | BEd | Bachelor of Education
 Biology
 Chemistry
@@ -25,18 +25,18 @@ History
 English | English Literature
 Marketing
 Finance
-Pharmacy
-Dentistry | BDS
+Pharmacy | BPharm | PharmD | Doctor of Pharmacy
+Dentistry | BDS | DDS | DMD | Dental Surgery
 Veterinary Science | Vet Science | BVSc | Vet Med | Veterinary Medicine | DVM
 Biomedical Science | Biomed | BBiomedSc
 Health Science | BHSc | Health Sciences
-Physiotherapy | Physio | Physical Therapy
+Physiotherapy | Physio | Physical Therapy | DPT | Doctor of Physical Therapy
 Sport Science | Sports Science | Exercise Science
 Journalism
 Communications | Communication Studies | Comms
 Media Studies
-Film | Film Studies
-Fine Arts | BFA | Bachelor of Fine Arts
+Film | Film Studies | Film Production | Screen Production
+Fine Arts | BFA | Bachelor of Fine Arts | MFA | Master of Fine Arts
 Music | BMus | Bachelor of Music
 Design | Bachelor of Design | BDes
 Graphic Design
@@ -58,7 +58,7 @@ Mechanical Engineering
 Civil Engineering
 Electrical Engineering
 Chemical Engineering
-Aerospace Engineering
+Aerospace Engineering | Aeronautical Engineering | Aeronautics
 Biomedical Engineering
 Mechatronics
 Neuroscience
@@ -75,12 +75,12 @@ Actuarial Science
 Optometry
 Occupational Therapy
 Speech Therapy | Speech Pathology | Speech-Language Pathology
-Social Work
+Social Work | MSW | BSW | Bachelor of Social Work
 Midwifery
 Paramedicine | Paramedic Science
 Radiography | Medical Imaging
 Nutrition | Dietetics | Nutrition and Dietetics
-Public Health
+Public Health | MPH | Master of Public Health
 Medical Science | Medical Laboratory Science
 Physician Associate
 Theology | Divinity
@@ -112,7 +112,7 @@ Landscape Architecture
 Construction Management
 Quantity Surveying
 Surveying
-Aviation
+Aviation | Commercial Aviation
 Logistics | Supply Chain Management
 Human Resources | HR
 Management
@@ -146,17 +146,17 @@ Exercise Physiology
 Early Childhood Education
 Primary Teaching
 Secondary Teaching
-Liberal Arts
+Liberal Arts | Liberal Studies
 PPE | Philosophy Politics and Economics
 Global Studies
-Gender Studies
+Gender Studies | Women's Studies
 Indigenous Studies
 Policy | Public Policy
 Public Administration
 Econometrics
 MBA | Master of Business Administration
-PhD | Doctorate | Doctor of Philosophy
-Master's | MA | MSc
+PhD | Doctorate | Doctor of Philosophy | DPhil
+Master's | MA | MSc | Master's degree
 Music Production
 Sound Engineering | Audio Engineering
 Textiles
@@ -182,3 +182,125 @@ Military Science
 Sonography
 Dental Hygiene | Oral Health
 Medical Radiation Science
+Computer Engineering
+Electronic Engineering | Electronics Engineering
+Industrial Engineering
+Systems Engineering
+Structural Engineering
+Agricultural Engineering
+Marine Engineering
+Automotive Engineering
+Telecommunications Engineering
+Engineering Science
+Applied Mathematics
+Pure Mathematics
+Applied Physics
+Theoretical Physics
+Nanotechnology
+Bioinformatics
+Molecular Biology
+Botany | Plant Science
+Entomology
+Wildlife Conservation
+Animal Science
+Equine Science
+Veterinary Nursing
+Environmental Studies
+Sustainability
+Climate Science
+Meteorology | Atmospheric Science
+Geophysics
+GIS | Geographic Information Science
+Space Science
+Planetary Science
+Counselling | Counseling
+Clinical Psychology
+Health Informatics
+Healthcare Management | Health Administration
+Epidemiology
+Kinesiology
+Human Movement
+Naturopathy
+Chinese Medicine | Traditional Chinese Medicine
+Orthoptics
+Prosthetics and Orthotics
+Nuclear Medicine
+Osteopathic Medicine | DO
+Pharmaceutical Science
+Toxicology
+Pathology
+Cognitive Science
+Behavioural Science | Behavioral Science
+Child Development | Human Development
+Youth Work
+Community Development
+Disability Studies
+Social Policy
+Human Services
+Financial Mathematics
+Taxation
+Operations Management
+Project Management
+Retail Management
+Digital Marketing
+Agribusiness
+Culinary Arts
+Nautical Science
+Comparative Literature | Literature
+American Studies
+Asian Studies
+European Studies
+Middle Eastern Studies
+African Studies
+Latin American Studies
+Ancient History
+Islamic Studies
+Arabic
+Italian
+Korean
+Russian
+Portuguese
+Latin
+Ancient Greek | Greek
+Hebrew
+Hindi
+Indonesian
+Publishing
+Screenwriting
+Television | TV Production
+Digital Media
+Visual Communication
+Visual Arts
+Illustration
+Musical Theatre
+Acting
+Musicology
+Music Education
+Cultural Studies
+Peace and Conflict Studies | Peace Studies
+Development Studies
+Human Rights
+Security Studies
+War Studies
+Social Science | Social Sciences
+Humanities
+Legal Studies
+Applied Science | BAppSc | Bachelor of Applied Science
+Technology | BTech | Bachelor of Technology
+MPhil | Master of Philosophy
+MEd | Master of Education
+EdD | Doctor of Education
+PsyD | Doctor of Psychology
+Associate degree | Associate's degree
+Bachelor's degree | Bachelor's | Undergraduate degree
+Honours | Honors degree | Hons
+Foundation degree
+Double degree | Conjoint degree
+Ethnic Studies
+African American Studies | Black Studies
+Fashion Merchandising
+Agronomy
+Mortuary Science
+Fire Science
+Emergency Management
+Translation | Interpreting

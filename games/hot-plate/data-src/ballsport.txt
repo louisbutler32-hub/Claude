@@ -3,10 +3,10 @@
 # group: Sport
 # emoji: ⚽
 # kind: thing
-Football | Soccer
-Basketball
-Tennis
-Rugby | Rugby Union
+Football | Soccer | Footie | Association football
+Basketball | Bball | Hoops
+Tennis | Lawn Tennis
+Rugby | Rugby Union | Rugger | Union
 Cricket
 Baseball
 Golf
@@ -14,18 +14,18 @@ Volleyball
 American Football | Gridiron | NFL
 Netball
 Hockey | Field Hockey
-Table Tennis | Ping Pong
+Table Tennis | Ping Pong | TT
 Softball
 Badminton
 Dodgeball
 Squash
-Bowling | Ten-pin Bowling
+Bowling | Ten-pin Bowling | Tenpin
 Pool | Billiards | Eight-ball | 8-ball
 Snooker
 Rugby League | League
 Water Polo
-Handball
-Lacrosse
+Handball | Team handball | Olympic handball
+Lacrosse | Lax
 Touch Rugby | Touch | Touch Football
 Beach Volleyball
 AFL | Aussie Rules | Australian Rules Football | Australian Football | Footy
@@ -52,14 +52,14 @@ Paddle Tennis
 Footvolley
 Teqball
 Korfball
-Floorball
+Floorball | Unihockey
 Wallyball
 Four Square
 Tetherball
 Wall Ball
 Fives | Eton Fives | Rugby Fives
 Jai Alai | Pelota
-Real Tennis
+Real Tennis | Jeu de paume | Court tennis
 Rackets | Racquets
 Platform Tennis
 Stoolball
@@ -76,7 +76,7 @@ Beach Handball
 Indoor Cricket
 Indoor Netball
 Cricket Sevens
-Fistball
+Fistball | Faustball
 Kin-Ball
 Tchoukball
 Underwater Rugby
@@ -92,7 +92,7 @@ Pesäpallo | Finnish Baseball
 Kemari
 Cuju
 Calcio Storico
-Ulama
+Ulama | Mesoamerican ballgame | Pok-ta-pok
 Chinlone
 Basque Pelota
 Lapta
@@ -117,5 +117,117 @@ Carpet Bowls
 Crown Green Bowls
 Pitch and Putt
 Foot Golf
-Carom Billiards | Carom
+Carom Billiards | Carom | Three-cushion
 Bumper Pool
+Nine-ball | 9-ball
+Straight pool
+English billiards
+Russian pyramid
+Bar billiards
+Bagatelle
+Subbuteo
+Five-pin Bowling | Five-pin
+Wiffle Ball
+Vitilla
+Stoopball
+Punchball
+Slow-pitch Softball | Slowpitch
+3x3 Basketball | 3x3
+Streetball
+HORSE
+Beach Tennis
+Soft Tennis
+Touchtennis
+Frontenis
+Paddleball
+Jokari
+Matkot | Kadima | Beach paddleball
+Frescobol
+Swingball | Totem Tennis
+Rink Hockey | Roller Hockey
+Street Hockey | Ball Hockey
+Broomball
+Rinkball
+Snow Volleyball
+Newcomb Ball | Newcomb
+Ecuavolley
+Water Volleyball
+Water Basketball
+Inner Tube Water Polo
+Gaga Ball | Gaga
+Keepy Uppy
+Bubble Football | Bubble Soccer
+Futnet | Football Tennis | Foot Tennis
+Padbol
+Headis
+Five-a-side | 5-a-side
+Walking Football
+Walking Netball
+Fast5 | Fastnet
+Street Football
+Freestyle Football
+Blind Football
+Powerchair Football
+Amputee Football
+Indoor Soccer | Arena Soccer
+Wheelchair Tennis
+Beep Baseball
+Showdown
+Torball
+Blind Cricket
+Backyard Cricket
+Beach Cricket
+French Cricket
+Kwik Cricket
+Tape-ball Cricket | Tape Ball
+Last Man Stands
+Twenty20 | T20
+Kilikiti
+Trap Ball
+Bat and Trap
+Rugby Tens | Tens
+Rugby League Nines | Nines
+Beach Rugby
+Oztag
+AFLX
+International Rules Football | International Rules
+Canadian Football
+Sprint Football
+Gaelic Handball
+American Handball | Wall Handball
+Horseball
+Pato
+Cycle Ball | Radball
+Motoball
+Segway Polo
+Arena Polo
+Woodball
+Park Golf
+Golf Croquet
+Roque
+Speed Golf
+Raffa
+Boule Lyonnaise
+Ball Badminton
+Throwball
+Cestoball
+Tamburello
+Kaatsen
+Brännboll
+Schlagball
+Palant
+Town Ball
+Ladder Toss | Ladder Golf | Ladder Ball
+Lagori | Pitthu | Seven Stones
+Royal Shrovetide Football
+Kirkwall Ba' | Ba game
+Cornish Hurling
+Knattleikr
+Mob Football
+Episkyros
+Harpastum
+Longue Paume
+Pallone
+Xare
+Paleta Frontón | Fronton
+Ladies Gaelic Football

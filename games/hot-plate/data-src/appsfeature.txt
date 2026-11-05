@@ -8,36 +8,36 @@
 # comment, share, follow, search) count, since each app has them.
 Stories | Story | Instagram Stories
 Reels | Reel
-Shorts | YouTube Shorts
+Shorts | YouTube Shorts | Short
 For You Page | FYP | For You
-Live | Lives | Going live | Livestream | Live stream
+Live | Lives | Going live | Livestream | Live stream | Instagram Live | TikTok LIVE | YouTube Live
 Duet | Duets
 Stitch | Stitches
-Explore | Explore page
-Close Friends
+Explore | Explore page | YouTube Explore
+Close Friends | Close friends list | Green circle
 Highlights | Story highlights
 Filters | Filter
-Likes | Like | Like button | Heart
+Likes | Like | Like button | Heart | Hearts | Likes button
 Comments | Comment
 DMs | Direct messages | DM | Messages
 Subscribe | Subscribe button | Subscriptions
-Follow | Following | Followers
+Follow | Following | Followers | Follow button
 Share | Sharing | Share button
 Save | Saved | Bookmarks
 Notes | Instagram Notes
 Playlists | Playlist
 Captions | Subtitles | Auto captions | Closed captions
 Effects | AR effects
-Sounds | Trending sounds | Original sound
+Sounds | Trending sounds | Original sound | Trending audio | Original audio | Audio
 Hashtags | Hashtag
 Trending | Trending page
 Search
 Feed | Home feed
-Following feed | Following tab
+Following feed | Following tab | Subscriptions feed
 Profile
 Bio
 Link in bio
-Verified badge | Blue tick | Blue check | Verification
+Verified badge | Blue tick | Blue check | Verification | Blue checkmark | Verified
 Meta Verified
 Watch Later
 Watch history | History
@@ -67,13 +67,13 @@ Carousel | Carousel post | Photo dump
 Polls | Poll | Poll sticker
 Questions sticker | Question box | Q&A
 Stickers | Sticker
-Music sticker | Add music
+Music sticker | Add music | Music
 Countdown sticker
 Quiz sticker
 Emoji slider
 Add Yours | Add Yours sticker
-Location tag | Location sticker
-Mention | Tagging | Tags | Tag
+Location tag | Location sticker | Geotag
+Mention | Tagging | Tags | Tag | Tagged | Tagged photos | Photos of you
 Link sticker
 GIFs | GIF stickers
 Boomerang
@@ -101,7 +101,7 @@ Live subscriptions
 Pinned comments | Pin comment | Pinned
 Pinned posts | Pin post | Pin video
 Favourites | Favorites
-Archive
+Archive | Story archive
 Hide like count | Hide likes
 Restrict
 Block
@@ -112,7 +112,7 @@ Read receipts
 Vanish mode
 Quiet mode
 Take a break
-Daily limit | Screen time limit
+Daily limit | Screen time limit | Screen time
 Sleep reminders
 Restricted mode
 Family Pairing
@@ -198,3 +198,90 @@ Edit post | Edit caption
 Alt text
 Dark mode
 Data saver
+Unfollow
+Unsubscribe
+Not interested
+Don't recommend channel
+Refresh your feed | Refresh FYP | Refresh For You
+Manage topics | Content preferences
+Auto scroll
+Clear display | Clear mode
+Profile views | Profile view history
+Post view history
+QR code | Nametag
+Video replies | Reply with video
+Profile picture | Profile pic | PFP
+Profile video
+Profile music
+Username | Handle | Handles
+Channel banner | Banner | Channel art
+Channel trailer
+Featured channels
+About tab | About page
+Home tab | Home
+Upload | Post | Create
+Camera
+Trim | Cut
+Split
+Add text | Text
+Draw | Pen
+Align
+Dual camera | Dual
+Photobooth
+Create mode
+Lyrics sticker | Lyrics
+Frame sticker | Frames
+Reveal sticker
+Cutouts | Cutout sticker
+Avatars | Avatar | Avatar stickers
+Meta AI
+Backdrop
+Restyle
+Dream Screen
+Hype
+Jump ahead
+Most replayed
+Podcasts | YouTube Podcasts
+Theater mode | Cinema mode
+Full screen
+Miniplayer
+Double-tap to seek | Double tap to skip
+Swipe up
+Audio track | Multi-language audio
+Queue | Add to queue
+Cast | Cast to TV | Chromecast
+Voice search
+Information panels | Fact check
+Age restriction | Age-restricted
+Made for kids
+Content ID | Copyright claim
+Community guidelines strike | Strikes | Strike
+Merch shelf | Merch
+Creator Marketplace
+Multi-guest | Guests | Co-host
+Live badges | Badges
+Your activity
+Recently deleted
+Sensitive content control
+Limits
+Suggested for you | Suggested posts
+Copy link
+Embed
+Share to story | Add to story
+YouTube Shorts Fund | Shorts Fund
+YouTube Originals
+Live Q&A
+Live replay
+Subscriber count | Follower count
+Comment likes
+Emoji reactions
+Search history
+Time spent
+Video editor | Editor
+CapCut templates
+Shorts remix
+Reels remix
+Crop
+Adjust | Adjust clips
+Transitions | Transition
+Slideshow

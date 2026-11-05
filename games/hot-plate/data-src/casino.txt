@@ -73,11 +73,11 @@ Crown Perth | Burswood
 Adelaide Casino | SkyCity Adelaide
 Wrest Point
 The Star Brisbane | Star Brisbane | Queen's Wharf
-Omaha | Omaha poker | Omaha hold em
-Seven-card stud | 7 card stud | stud poker
+Omaha | Omaha poker | Omaha hold em | PLO | Pot-limit Omaha
+Seven-card stud | 7 card stud | stud poker | Stud
 Three-card poker | 3 card poker
 Caribbean stud | Caribbean stud poker
-Pai gow | pai gow poker
+Pai gow | pai gow poker | Pai gow tiles
 Let It Ride
 Video poker
 Keno
@@ -179,3 +179,290 @@ Kronos
 Golden Goddess
 Double Bubble
 Age of the Gods
+Red Rock Casino | Red Rock
+Green Valley Ranch
+The Orleans
+Gold Coast
+Palms
+Palace Station
+South Point
+M Resort
+Main Street Station
+Binion's | Binion's Horseshoe
+Four Queens
+El Cortez
+Circa
+Downtown Grand
+The Plaza
+The D | The D Las Vegas
+Fremont
+Golden Gate
+Westgate
+Virgin Hotels Las Vegas | Virgin
+Sam's Town
+Boulder Station
+Sunset Station
+Durango
+Horseshoe Las Vegas | Horseshoe
+Park MGM
+The Cromwell
+Silverton
+Ellis Island
+Riviera
+Stardust
+The Sands
+Dunes
+Desert Inn
+Frontier
+Imperial Palace
+Aladdin
+Hacienda
+Showboat
+Peppermill
+Silver Legacy
+Eldorado
+Grand Sierra Resort
+Ocean Casino Resort | Ocean
+Resorts Casino
+Trump Taj Mahal | Taj Mahal
+Trump Plaza
+Revel
+WinStar
+Choctaw Casino | Choctaw
+Pechanga
+Morongo
+Yaamava' | San Manuel
+Agua Caliente
+Thunder Valley
+Turning Stone
+Seneca Niagara
+Parx
+Rivers Casino
+MGM National Harbor
+Encore Boston Harbor
+Hollywood Casino
+Ameristar
+Beau Rivage
+L'Auberge | L'Auberge du Lac
+Isle of Capri
+Potawatomi
+Mystic Lake
+Soaring Eagle
+Greektown
+MotorCity
+River Spirit
+Resorts World Catskills
+Maryland Live! | Live! Casino
+Wind Creek
+Wynn Palace
+MGM Cotai
+MGM Macau
+Studio City
+The Londoner Macao | Londoner | Sands Cotai Central
+The Parisian Macao | Parisian
+StarWorld
+Altira
+Resorts World Manila
+Paradise City
+Kangwon Land
+Walkerhill | Paradise Walkerhill
+NagaWorld
+Casino di Venezia
+Casino Sanremo | Sanremo
+Casino Campione | Campione d'Italia
+Casino Barrière | Barriere
+Casino d'Enghien | Enghien-les-Bains
+Casino de Deauville | Deauville
+Casino Estoril | Estoril
+Holland Casino
+Casinos Austria | Casino Wien
+Crockfords
+Aspinall's
+The Ritz Club
+Les Ambassadeurs
+Empire Casino | The Empire Leicester Square
+Grosvenor Casino | Grosvenor
+Aspers
+Resorts World Birmingham
+Casino Barcelona
+Gran Casino Madrid
+The Reef Hotel Casino | Reef Casino
+Mindil Beach Casino | Lasseters
+Country Club Casino
+Canberra Casino
+Christchurch Casino
+Dunedin Casino
+Casino Rama
+River Rock
+Casino Niagara
+Caesars Windsor
+Great Canadian Toronto | Casino Woodbine
+GrandWest
+Gold Reef City
+Montecasino
+Emperors Palace
+Sibaya
+Baha Mar
+Conrad Punta del Este
+Stake | Stake.com
+PokerStars
+888casino | 888 | 888poker
+Betway
+bet365
+BetMGM
+DraftKings Casino | DraftKings
+FanDuel Casino | FanDuel
+Sky Vegas
+partypoker
+GGPoker
+LeoVegas
+Jackpot City
+Roobet
+Mr Green
+Unibet
+William Hill Vegas | William Hill
+Paddy Power Games | Paddy Power
+Ladbrokes
+Coral
+Betfair
+PlayOJO | OJO
+Casumo
+Chumba Casino | Chumba
+Pulsz
+McLuck
+Zynga Poker
+Slotomania
+DoubleDown Casino | DoubleDown
+Big Fish Casino
+House of Fun
+Huuuge Casino
+Heart of Vegas
+Cashman Casino
+Jackpot Party
+myVEGAS
+Casino Hold'em
+Ultimate Texas Hold'em
+Mississippi Stud
+Four Card Poker
+High Card Flush
+Razz
+Five-card draw | 5 card draw | Draw poker
+Short deck | Six-plus hold'em
+Badugi
+Lowball | Deuce-to-seven | 2-7 triple draw
+Chinese poker | Open-face Chinese poker | OFC
+Free Bet Blackjack
+Double Exposure Blackjack
+Super Fun 21
+Mini baccarat
+Dragon Tiger
+Pachinko
+Pachislot | Pachislo
+Faro
+Chuck-a-luck
+Hazard
+Trente et quarante
+Boule
+European roulette
+American roulette
+French roulette
+Mini roulette
+Immersive Roulette
+Lightning Blackjack
+Lightning Baccarat
+Funky Time
+Deal or No Deal Live
+Mega Ball
+Football Studio
+Cash or Crash
+Mega Wheel
+Andar Bahar
+Teen Patti
+Limbo
+HiLo
+Dice
+Chicken Road
+Spaceman
+JetX
+Slingo
+Legacy of Dead
+Rise of Merlin
+Moon Princess
+Starlight Princess
+Great Rhino
+Mustang Gold
+Chilli Heat
+Madame Destiny
+Gems Bonanza
+Wild West Gold
+Buffalo King
+5 Lions Megaways
+Floating Dragon
+Zeus vs Hades
+Le Bandit
+Mental
+San Quentin
+Tombstone
+Deadwood
+Chaos Crew
+Fire in the Hole
+Danger High Voltage
+Dead or Alive 2
+Jack and the Beanstalk
+Narcos
+Guns N' Roses slot | Guns N Roses
+Jimi Hendrix slot
+Piggy Riches
+Aloha! Cluster Pays | Aloha
+Finn and the Swirly Spin
+Jumanji slot
+Street Fighter II slot
+Game of Thrones slot
+Jurassic Park slot
+Mermaids Millions
+Avalon
+Break da Bank
+Tomb Raider slot
+Basketball Star
+9 Masks of Fire
+Major Millions
+Wheel of Wishes
+Ted slot
+Diamond Mine
+Cops 'n' Robbers | Cops and Robbers
+Fluffy Favourites
+Cash Bandits
+Achilles
+Aztec's Millions
+Caesar's Empire
+Wild Life
+Kitty Glitter
+Siberian Storm
+Coyote Moon
+Texas Tea
+Cats
+Pixies of the Forest
+Ghostbusters slot
+Sex and the City slot
+The Walking Dead slot
+Top Dollar
+Blazing 7s | Blazing Sevens
+Red White & Blue
+Lock It Link
+Ultimate Fire Link
+Mighty Cash
+Dragon Spin
+Rakin' Bacon
+Fu Dai Lian Lian
+Wonder 4
+Lucky Lady's Charm
+Sizzling Hot
+Lord of the Ocean
+Dolphin's Pearl
+Just Jewels
+Queen of Hearts
+Lucky 88
+Wild Panda
+Tiki Torch
+Wicked Winnings
+Rich Little Piggies

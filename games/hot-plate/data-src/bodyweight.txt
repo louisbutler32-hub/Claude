@@ -27,12 +27,12 @@ Bicycle crunch | bicycle crunches
 Muscle-up | muscle-ups
 Handstand
 Handstand push-up | HSPU
-Pistol squat | pistol squats
+Pistol squat | pistol squats | Single-leg squat | One-leg squat
 Diamond push-up | diamond push-ups
 Box jump | box jumps
 Calf raise | calf raises
 Hanging leg raise | hanging leg raises
-Inverted row | Australian pull-up | body row
+Inverted row | Australian pull-up | body row | Bodyweight row
 Bear crawl
 Flutter kicks
 Scissor kicks
@@ -46,7 +46,7 @@ Wide push-up
 Decline push-up
 Incline push-up
 Pike push-up
-Clap push-up | plyo push-up | plyometric push-up
+Clap push-up | plyo push-up | plyometric push-up | Explosive push-up
 Archer push-up
 One-arm push-up
 Knee push-up
@@ -74,7 +74,7 @@ Reverse lunge
 Side lunge | lateral lunge
 Curtsy lunge
 Walking lunge
-Jumping lunge
+Jumping lunge | Jump lunge | Plyo lunge
 Cossack squat
 Shrimp squat
 Sissy squat
@@ -95,7 +95,7 @@ Windshield wiper
 Reverse crunch
 Ab rollout
 Hip thrust
-Inchworm
+Inchworm | Walkout
 Crab walk
 Duck walk
 Frog jump
@@ -111,7 +111,7 @@ Wall walk
 Headstand
 Crow pose
 Bridge pose | wheel
-Skipping | jump rope
+Skipping | jump rope | Skipping rope
 Rope climb
 Squat thrust | squat thrusts
 Sprawl
@@ -125,3 +125,104 @@ Seal jack
 Cross jack
 Half jack
 Arm circles
+Sumo squat
+Prisoner squat
+Squat pulse
+Deep squat | Asian squat | Squat hold
+Frog squat
+Skater squat
+Hindu squat
+Typewriter push-up
+T push-up
+Staggered push-up
+Close-grip push-up | Triceps push-up | Tricep push-up
+Knuckle push-up
+Fingertip push-up
+Superman push-up
+Aztec push-up
+Hand-release push-up
+Shoulder tap push-up
+Sphinx push-up
+Ring push-up
+Tiger bend push-up | Tiger bend
+Wide-grip pull-up
+Archer pull-up
+One-arm pull-up
+L-sit pull-up
+Kipping pull-up
+Butterfly pull-up
+Chest-to-bar pull-up | C2B
+Scapular pull-up | Scap pulls
+Jumping pull-up
+Ice cream maker
+Hollow rock
+Butterfly sit-up
+Jackknife
+Oblique crunch | Side crunch
+RKC plank
+Reverse plank
+Side plank dip | Hip dips
+Copenhagen plank
+Bear plank | Bear hold
+Plank walkout
+Cross-body mountain climber | Mountain climber twist
+Windmill
+Swimmers | Swimmer
+Back extension | Prone back extension
+Hanging knee raise
+Tuck-up | Tuck crunch
+Boat pose | Boat hold
+In and outs | Seated in-and-outs
+Toe taps
+Plank twist
+Spiderman plank
+Stomach vacuum | Vacuum
+Seated knee tuck | Knee tuck
+Forward lunge
+Clock lunge
+Marching bridge | Glute bridge march
+Single-leg deadlift | Single-leg RDL
+Tibialis raise | Tib raise
+Side leg raise | Side-lying leg raise | Hip abduction
+Reverse Nordic
+Burpee pull-up
+Burpee broad jump
+Half burpee
+Navy SEAL burpee
+Gorilla walk
+Army crawl | Commando crawl
+Lateral jumps | Lateral hops
+Depth jump
+Vertical jump
+180 jump
+Power skips | A-skips
+Grapevine | Carioca | Karaoke
+Bounding
+Lateral shuffle | Side shuffle
+Fast feet
+Bunny hops
+Shadowboxing
+Tuck planche
+Straddle planche
+Elbow lever
+Handstand walk
+Wall handstand
+Press to handstand
+Frog stand
+Iron cross
+Maltese
+Manna
+V-sit
+Straight bar dip
+Korean dip
+Russian dip
+German hang
+Downward dog | Downward-facing dog
+Sun salutation
+Warrior pose
+Chair pose
+Wall angels | Wall slides
+Reverse snow angels
+YTWs | Y-T-W raises
+Prisoner get-up
+Jogging | Running

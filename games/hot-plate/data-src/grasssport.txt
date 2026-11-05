@@ -3,18 +3,18 @@
 # group: Sport
 # emoji: 🌱
 # kind: thing
-Football | Soccer
-Rugby | Rugby Union
+Football | Soccer | Footie | Association football
+Rugby | Rugby Union | Rugger | Union
 Cricket
 Golf
-Tennis | Lawn Tennis
+Tennis | Lawn Tennis | Grass court tennis
 American Football | Gridiron | NFL
 Baseball
-Hockey | Field Hockey
+Hockey | Field Hockey | Grass hockey
 Rugby League | League
 AFL | Aussie Rules | Australian Rules Football | Australian Football | Footy
 Softball
-Lacrosse
+Lacrosse | Field lacrosse | Lax
 Touch Rugby | Touch | Touch Football
 Ultimate Frisbee | Ultimate
 Croquet
@@ -81,3 +81,53 @@ Sheepdog Trials
 Equestrian
 Point-to-point
 Lawn Mower Racing
+Canadian Football
+Sprint Football
+Oztag
+AFLX
+International Rules Football | International Rules
+Rugby League Nines | Nines
+Rugby Tens | Tens
+Mini Rugby
+Walking Football
+Five-a-side | 5-a-side
+Ladies Gaelic Football
+Women's Lacrosse
+Wiffle Ball
+Brännboll
+Schlagball
+Oină
+French Cricket
+Backyard Cricket
+Bat and Trap
+Trap Ball
+Park Golf
+Woodball
+Speed Golf
+Crown Green Bowls | Crown Green
+Pato
+Tent Pegging
+Dressage
+Flat Racing
+Jump Racing | National Hunt Racing | Hurdle Racing
+Grass Track Racing | Grasstrack
+Grass Skiing
+Field Archery
+Clout Archery
+Rogaining
+Wheelbarrow Race
+Stone Put
+Weight Throw
+Guts
+Goaltimate
+Double Disc Court
+KanJam
+Ladder Toss | Ladder Golf | Ladder Ball
+Horseshoes | Horseshoe Pitching
+Dog Agility | Agility
+Flyball
+Disc Dog
+Lure Coursing
+British Bulldog | Bulldog
+Cornish Hurling
+Royal Shrovetide Football

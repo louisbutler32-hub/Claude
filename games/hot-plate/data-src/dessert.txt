@@ -3,29 +3,29 @@
 # group: Food
 # emoji: 🍰
 # kind: thing
-Ice cream | Icecream
+Ice cream | Icecream | Icecreams
 Cake
 Chocolate cake
-Cheesecake
+Cheesecake | Käsekuchen
 Brownie | Brownies
 Cookie | Cookies | Biscuit | Biscuits
 Apple pie
 Pie
 Tiramisu
-Pancakes | Pancake
+Pancakes | Pancake | Hotcakes
 Cupcake | Cupcakes
 Donut | Doughnut | Donuts | Doughnuts
 Pavlova | Pav
 Waffles | Waffle
 Crème brûlée | Creme brulee | Crème brulee
-Sundae | Ice cream sundae
+Sundae | Ice cream sundae | Hot fudge sundae
 Banana split
 Muffin | Muffins
 Pudding
-Sticky toffee pudding
-Trifle
+Sticky toffee pudding | STP
+Trifle | Sherry trifle
 Gelato
-Mousse | Chocolate mousse
+Mousse | Chocolate mousse | Mousse au chocolat
 Macarons | Macaron | Macaroons | Macaroon
 Churros | Churro
 Crumble | Apple crumble | Fruit crumble | Rhubarb crumble
@@ -38,9 +38,9 @@ Lemon meringue pie | Lemon meringue
 Key lime pie
 Pumpkin pie
 Crêpes | Crepes | Crepe | Crêpe
-Milkshake | Shake
+Milkshake | Shake | Thickshake
 Sorbet
-Frozen yogurt | Froyo | Fro-yo
+Frozen yogurt | Froyo | Fro-yo | Frozen yoghurt
 Chocolate chip cookie | Chocolate chip cookies | Choc chip cookies
 Black Forest cake | Black Forest gateau
 Baklava
@@ -76,12 +76,12 @@ Flapjack | Flapjacks
 Rocky road
 Lemon tart
 Treacle tart
-Bakewell tart
+Bakewell tart | Cherry Bakewell
 Mince pie | Mince pies
-Christmas pudding | Plum pudding
+Christmas pudding | Plum pudding | Figgy pudding
 Yule log | Bûche de Noël | Buche de Noel
-Gingerbread | Gingerbread man
-Apple strudel | Strudel
+Gingerbread | Gingerbread man | Pepparkakor
+Apple strudel | Strudel | Apfelstrudel
 Chocolate fondue | Fondue
 S'mores | Smores
 Brookie
@@ -117,7 +117,7 @@ Sachertorte | Sacher torte
 Pineapple upside-down cake | Upside-down cake
 Tarte Tatin
 Clafoutis
-Mille-feuille | Millefeuille | Napoleon | Vanilla slice | Custard slice
+Mille-feuille | Millefeuille | Napoleon | Vanilla slice | Custard slice | Snot block | Custard square | Tompouce
 Madeleines | Madeleine
 Financier | Financiers
 Soufflé | Souffle | Chocolate soufflé
@@ -132,7 +132,7 @@ Cassata
 Zeppole
 Sfogliatella | Sfogliatelle
 Panettone
-Biscotti
+Biscotti | Cantucci
 Pandoro
 Granita
 Spumoni
@@ -151,13 +151,13 @@ Mango sticky rice
 Halo-halo
 Ube cake | Ube
 Bingsu | Patbingsu
-Shaved ice | Shave ice | Snow cone
+Shaved ice | Shave ice | Snow cone | Kakigori
 Dango
 Taiyaki
 Dorayaki
 Daifuku
 Matcha ice cream
-Egg tart | Egg tarts | Pastel de nata | Portuguese tart
+Egg tart | Egg tarts | Pastel de nata | Portuguese tart | Pastéis de nata | Pastel de Belém
 Mooncake | Mooncakes
 Sesame balls | Jian dui
 Mango pudding
@@ -168,12 +168,12 @@ Chè | Che
 Cendol
 Kuih | Kueh
 Turkish delight | Lokum
-Knafeh | Kunafa | Kanafeh
-Basbousa
+Knafeh | Kunafa | Kanafeh | Künefe
+Basbousa | Namoura
 Umm Ali
-Malabi | Muhallebi
+Malabi | Muhallebi | Mahalabia
 Maamoul
-Loukoumades
+Loukoumades | Lokma
 Galaktoboureko
 Brigadeiro | Brigadeiros
 Dulce de leche
@@ -212,7 +212,7 @@ Elephant ear | Elephant ears
 Fried ice cream
 Deep-fried Mars bar | Deep fried Mars bar
 Doughnut holes | Donut holes | Timbits
-Jam doughnut | Jelly doughnut | Jelly donut
+Jam doughnut | Jelly doughnut | Jelly donut | Berliner | Krapfen
 Kransekake
 Princess cake | Prinsesstårta
 Semla | Semlor
@@ -325,3 +325,286 @@ Lussekatter
 Pebernødder
 Æbleskiver | Aebleskiver
 Vínarterta
+Vanilla ice cream
+Chocolate ice cream
+Strawberry ice cream
+Mint choc chip | Mint chocolate chip
+Cookies and cream
+Rum and raisin
+Raspberry ripple
+Tutti frutti
+Pistachio ice cream
+Butter pecan
+Rainbow sherbet
+Viennetta
+Cornetto
+Magnum
+Golden Gaytime | Gaytime
+Paddle Pop
+Drumstick
+Choc ice
+McFlurry
+Blizzard | Dairy Queen Blizzard
+Frosty
+Chocolate crackles
+Hedgehog slice
+Lolly cake
+Pikelets | Pikelet
+Jelly slice
+Peppermint slice
+Coconut ice
+Melting moments
+Yo-yos | Yoyo biscuits
+Jaffa Cakes | Jaffa cake
+Golden syrup dumplings
+Apple sponge
+Banana fritter
+Pineapple fritter
+Passionfruit sponge
+Sponge kisses
+Cream horn | Cream horns
+Cream bun | Cream buns
+Frog cake
+Russian fudge
+Toffee
+Lemon delicious pudding | Lemon delicious
+Honey joys
+Rum balls
+White Christmas
+Queen of puddings
+Knickerbocker glory
+Angel Delight
+Gypsy tart
+Rock cakes | Rock buns
+Fondant fancies
+Viennese whirls
+Tiffin
+Coffee and walnut cake
+Parkin
+Simnel cake
+Dundee cake
+Madeira cake
+Fairy cakes | Butterfly cakes
+Eve's pudding
+Apple brown Betty | Brown Betty
+Sussex pond pudding
+Yorkshire curd tart
+Lardy cake
+Empire biscuit
+Tunnock's teacake | Teacake
+Twinkie | Twinkies
+Moon pie
+Banana pudding
+Peach pie
+Derby pie
+Ice cream float | Root beer float | Coke float | Spider
+Smith Island cake
+Doberge cake
+Gooey butter cake
+Cookie cake
+Pizookie | Skillet cookie
+Monkey bread
+Scotcheroos
+Buckeyes
+Peanut brittle | Brittle
+King cake
+Kringle
+Pumpkin roll
+Snowball cookies | Russian tea cakes | Mexican wedding cookies
+Thumbprint cookies
+Crinkle cookies | Chocolate crinkles
+White chocolate macadamia cookie | Macadamia cookies
+Fortune cookie | Fortune cookies
+Fruit pizza | Dessert pizza
+Watergate salad
+Apple tart | Tarte aux pommes
+Tarte tropézienne
+Far breton
+Kouign-amann
+Canelé | Cannelé
+Gâteau Basque
+Fraisier
+Saint-Honoré | Gâteau St-Honoré | St Honore cake
+Religieuse
+Pithivier
+Galette des rois
+Dacquoise
+Parfait
+Sablé | Sablés
+Palmier | Palmiers
+Tuile | Tuiles
+Langue de chat
+Rum baba | Baba au rhum | Babà
+Savarin
+Mont Blanc | Montebianco
+Amaretti
+Panforte
+Struffoli
+Maritozzi | Maritozzo
+Torta della nonna
+Crostata
+Zuccotto
+Tartufo
+Sbrisolona
+Baci di dama
+Pizzelle
+Crostoli | Chiacchiere
+Delizia al limone
+Torrijas
+Leche frita
+Natillas
+Ensaïmada | Ensaymada
+Rosca de Reyes
+Capirotada
+Chocoflan | Impossible cake
+Pan dulce
+Mangonada
+Picarones
+Suspiro limeño | Suspiro a la limeña
+Mazamorra morada
+Beijinho
+Pudim
+Açaí bowl
+Cocada
+Bolo de rolo
+Tembleque
+Pastelitos | Guava pastries | Pastelito de guayaba
+Chajá
+Torta Rogel | Rogel
+Pastafrola
+Revani
+Sütlaç
+Kazandibi
+Aşure | Ashure | Noah's pudding
+Tulumba
+Şekerpare
+Qatayef | Atayef
+Halawet el jibn
+Falooda | Faloodeh
+Bastani | Persian ice cream
+Sholeh zard
+Luqaimat
+Bougatsa
+Kataifi
+Melomakarona
+Kourabiedes
+Portokalopita
+Gajar ka halwa | Carrot halwa
+Mysore pak
+Sandesh
+Payasam
+Shrikhand
+Peda
+Kaju katli
+Soan papdi
+Modak
+Rabri | Rabdi
+Phirni
+Malpua
+Ghevar
+Imarti
+Cham cham
+Mishti doi
+Kalakand
+Gujiya
+Shahi tukda
+Basundi
+Sheer khurma
+Double ka meetha
+Chikki
+Mochi ice cream
+Castella
+Anmitsu
+Warabimochi
+Yōkan
+Monaka
+Imagawayaki
+Purin | Custard pudding
+Hotteok
+Bungeoppang
+Yakgwa
+Tteok
+Douhua | Tofu pudding | Tau foo fah
+Grass jelly
+Egg waffle | Bubble waffle | Gai daan jai
+Wife cake
+Nian gao
+Eight treasure rice
+Mango sago
+Ais kacang | ABC
+Pulut hitam | Black sticky rice pudding
+Kek lapis | Sarawak layer cake
+Onde-onde | Klepon
+Bubur cha cha
+Turon
+Bibingka
+Puto
+Maja blanca
+Buko pie
+Sapin-sapin
+Banana roti
+Tub tim krob | Red rubies
+Germknödel
+Marillenknödel | Apricot dumplings
+Rote Grütze
+Baked apple | Bratapfel
+Donauwelle
+Frankfurter Kranz
+Spaghettieis | Spaghetti ice cream
+Punschkrapfen
+Somlói galuska
+Makowiec | Poppy seed roll
+Sernik
+Szarlotka
+Vatrushka
+Paskha
+Kremówka
+Papanași
+Krempita
+Kremšnita | Bled cream cake
+Prekmurska gibanica | Gibanica
+Riskrem | Risalamande
+Krumkake
+Danish butter cookies
+Brunsviger
+Flødeboller | Flodeboller
+Rødgrød med fløde | Rodgrod med flode
+Runeberg torte
+Mämmi
+Kleinur
+Gingersnap | Ginger snaps
+Stroopwafel | Stroopwafels
+Poffertjes
+Oliebollen
+Vlaai
+Speculaas | Speculoos | Biscoff
+Belgian waffle | Liège waffle
+Dame blanche
+Merveilleux
+Pão de Ló
+Arroz doce
+Serradura
+Malva pudding
+Koeksister | Koeksisters
+Milk tart | Melktert
+Peppermint crisp tart
+Hertzoggie | Hertzoggies
+Puff-puff
+Chin chin
+Mandazi
+Sfenj
+Chebakia
+Makrout
+Cronut
+Crookie
+Cruffin
+Tanghulu
+Mug cake
+Chocolate salami
+Chocolate bark
+Honeycomb | Cinder toffee
+Rolled ice cream | Ice cream rolls
+Orange and almond cake
+Banana cake
+Chocolate tart
+Lemon cake

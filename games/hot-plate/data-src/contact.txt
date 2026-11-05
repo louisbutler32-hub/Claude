@@ -4,15 +4,15 @@
 # emoji: 📞
 # kind: thing
 # Methods, not brands or apps (no WhatsApp, Snapchat, Zoom, FaceTime).
-Phone call | Call | Calling | Ring | Phone | Telephone | Phoning
-Text message | Text | SMS | Texting
-Email | E-mail | Emailing
-Letter | Mail | Post | Writing a letter | Snail mail
-Video call | Video chat | Video calling | Video conference
+Phone call | Call | Calling | Ring | Phone | Telephone | Phoning | Mobile | Cellphone | Voice call | Phone calling
+Text message | Text | SMS | Texting | Txt | Text messaging
+Email | E-mail | Emailing | Electronic mail | Emails
+Letter | Mail | Post | Writing a letter | Snail mail | Love letter | Letter writing
+Video call | Video chat | Video calling | Video conference | Webcam | Online meeting | Virtual meeting
 Voicemail | Voice mail | Leaving a voicemail
 Social media message | Social media | Messaging
 DM | Direct message | DMs | Private message | PM
-Voice note | Voice message | Voice memo
+Voice note | Voice message | Voice memo | Audio message
 Picture message | MMS | Photo message
 Postcard
 Fax
@@ -22,47 +22,47 @@ Morse code
 Telegram | Telegraph
 Shouting | Yelling | Calling out | Hollering
 Knocking on the door | Knocking | Knock on the door
-Visiting | Visiting in person | In person | Face to face | Going round | Talking in person
+Visiting | Visiting in person | In person | Face to face | Going round | Talking in person | Dropping by | Popping round | Popping in | Home visit
 Sign language
 Walkie-talkie | Walkie talkie | Two-way radio
 Pager | Beeper
 CB radio
 Message in a bottle
 Word of mouth | Passing a message
-Note | Handwritten note | Passing notes | Leaving a note | Post-it note
+Note | Handwritten note | Passing notes | Leaving a note | Post-it note | Sticky note
 Doorbell | Ringing the doorbell
 Group chat | Group message
-Comment | Commenting
+Comment | Commenting | Blog comment
 Tagging | Tag | Mention | @ mention
 Whistling | Whistle
 Waving | Wave
 Video message
 Live chat | Online chat | Chat
 Instant message | IM | Instant messaging
-Conference call
+Conference call | Three-way call | Group call
 Landline
 Payphone | Phone box | Phone booth | Public phone | Pay phone
 Reverse charges | Collect call
 Missed call | Missed call signal
-Card | Greeting card | Birthday card | Christmas card
+Card | Greeting card | Birthday card | Christmas card | Thank-you card | Thank you note
 Courier | Messenger | Delivery
-Intercom
+Intercom | Paging system
 Radio
-Ham radio | Amateur radio
-Satellite phone | Sat phone
+Ham radio | Amateur radio | Shortwave radio
+Satellite phone | Sat phone | Satellite messenger
 Two cans and a string | Tin can telephone | String telephone
 Flares | Flare
 Signal fire | Beacon
 Semaphore | Flag signals | Signal flags
-Signal lamp | Aldis lamp | Flashing a light
+Signal lamp | Aldis lamp | Flashing a light | Torch signal | Flashlight signal
 Mirror signal | Heliograph
 Drum | Drums | Talking drum
-Horn | Car horn | Honking
-Bell | Ringing a bell
+Horn | Car horn | Honking | Air horn
+Bell | Ringing a bell | Church bells
 Megaphone | Loudhailer | Bullhorn
 Announcement | PA system | Tannoy | Loudspeaker
 Notice board | Noticeboard | Bulletin board
-Poster | Flyer
+Poster | Flyer | Leaflet | Letterbox drop
 Newspaper ad | Classified ad | Personal ad
 Skywriting
 Braille
@@ -72,7 +72,7 @@ Runner | Messenger runner
 Town crier
 Pony Express
 Airmail | Air mail
-Registered mail | Recorded delivery | Certified mail
+Registered mail | Recorded delivery | Certified mail | Special delivery
 Telex
 Bulletin board system | BBS
 Forum post | Forum
@@ -89,3 +89,50 @@ Mayday
 Story reply
 Singing telegram
 Throwing pebbles at the window | Throwing stones at the window
+Talking | Speaking | Conversation | Chatting
+Whispering | Whisper
+Meeting | Meet up
+Calling back | Callback
+Hotline | Helpline
+Cold call | Telemarketing
+Robocall | Automated call
+Bluetooth
+Business card
+Contact form | Web form | Online form
+Chatbot
+Broadcast message | Broadcast
+Emergency alert | Alert
+Memo | Memorandum
+Invitation | Invite | RSVP
+Pen pal | Pen friend
+Nudge | Poke
+Eye contact
+Clapping | Clap
+Lip reading
+Body language
+Makaton
+Fingerspelling
+Siren
+Foghorn
+Bugle | Trumpet call
+Gong
+Yodelling | Yodeling
+Cooee
+Tap code | Knock code
+Distress beacon | EPIRB | PLB | Personal locator beacon
+Pan-pan
+Marine radio | VHF radio
+Express post | Express mail
+Aerogramme | Aerogram
+E-card
+Billboard
+VoIP | Internet call | Wi-Fi calling
+In-game chat | Game chat
+RCS
+Pneumatic tube
+Herald
+Dead drop
+Invisible ink
+Secret code | Cipher
+Panic button | Medical alarm | Medical alert
+Speakerphone

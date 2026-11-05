@@ -6,16 +6,16 @@
 Bee | honeybee | bees
 Ant | ants
 Butterfly | butterflies
-Eagle
+Eagle | Eaglet
 Fly | housefly | flies | houseflies
-Mosquito | mozzie
+Mosquito | mozzie | Mozzy | Mossie | Skeeter | Mosquitoes | Mosquitos
 Penguin
-Owl | owls
+Owl | owls | Owlet
 Parrot
-Chicken | hen | rooster | hens
-Duck | ducks
-Pigeon
-Ladybug | ladybird
+Chicken | hen | rooster | hens | Chook | Chooks | Cockerel | Chick | Chickens
+Duck | ducks | Duckling | Drake
+Pigeon | Squab
+Ladybug | ladybird | Lady beetle
 Seagull | gull | gulls
 Flamingo
 Crow | crows
@@ -26,19 +26,19 @@ Grasshopper
 Cockroach | roach | cockroaches | roaches
 Dragonfly | dragonflies
 Moth | moths
-Swan | swans
+Swan | swans | Cygnet
 Peacock | peafowl | peahen
 Ostrich | ostriches
 Robin
 Hummingbird
 Turkey
-Goose | geese
+Goose | geese | Gosling | Gander
 Sparrow
 Hawk | hawks
 Falcon
 Parakeet | budgie | budgerigar
 Cricket
-Termite
+Termite | White ant
 Flea | fleas
 Caterpillar
 Woodpecker
@@ -46,15 +46,15 @@ Toucan
 Pelican
 Emu | emus
 Bumblebee
-Firefly | fireflies
+Firefly | fireflies | Lightning bug
 Vulture
-Kookaburra
+Kookaburra | Kooka | Laughing kookaburra
 Hornet
-Cockatoo
-Magpie
+Cockatoo | Cocky
+Magpie | Maggie
 Blackbird
 Bluebird
-Raven
+Raven | Common raven
 Stork
 Dove | doves
 Swallow
@@ -67,7 +67,7 @@ Kākāpō
 Starling
 Finch | finches
 Canary | canaries
-Cardinal
+Cardinal | Northern cardinal
 Blue jay | jay | jays
 Heron
 Kingfisher
@@ -85,7 +85,7 @@ Stick insect | walking stick | stick bug
 Cicada
 Weta | wetas
 Gnat | gnats
-Aphid
+Aphid | Greenfly | Plant louse
 Silverfish
 Earwig
 Stink bug
@@ -105,7 +105,7 @@ Lorikeet | rainbow lorikeet
 Galah
 Thrush | thrushes
 Wren | wrens
-Lyrebird
+Lyrebird | Superb lyrebird
 Tawny frogmouth | frogmouth
 Kestrel
 Osprey
@@ -138,7 +138,7 @@ Secretary bird
 Hornbill
 Bird of paradise
 Quetzal
-Cormorant | shag | shags
+Cormorant | shag | shags | Kawau
 Gannet
 Tern | terns
 Petrel
@@ -148,14 +148,14 @@ Frigatebird
 Sandpiper
 Plover
 Dotterel
-Oystercatcher
-Godwit | bar-tailed godwit
+Oystercatcher | Tōrea
+Godwit | bar-tailed godwit | Kuaka
 Avocet
 Stilt
 Snipe
 Curlew
 Lapwing
-Spoonbill
+Spoonbill | Royal spoonbill | Kōtuku ngutupapa
 Egret
 Bittern
 Coot | coots
@@ -287,7 +287,7 @@ Stonefly | stoneflies
 Caddisfly | caddisflies
 Damselfly | damselflies
 Lacewing
-Antlion
+Antlion | Doodlebug
 Dobsonfly | dobsonflies
 Glowworm
 Weevil
@@ -307,7 +307,7 @@ Huhu beetle | huhu | huhus
 Japanese beetle
 Colorado potato beetle
 June bug | June beetle
-Cockchafer
+Cockchafer | Maybug
 Mealworm
 Woodworm
 Firebrat
@@ -323,7 +323,7 @@ Hawk moth | sphinx moth
 Luna moth
 Atlas moth
 Silk moth | silkworm
-Gypsy moth
+Gypsy moth | Spongy moth
 Clothes moth
 Tiger moth
 Puriri moth
@@ -467,3 +467,761 @@ Baltimore oriole
 Red-winged blackbird
 Bee hummingbird
 Sword-billed hummingbird
+Haast's eagle | Pouakai
+Kārearea | New Zealand falcon | NZ falcon
+Pūteketeke | Australasian crested grebe | Crested grebe
+Kōtuku | White heron
+Tākapu | Australasian gannet
+Karoro | Black-backed gull
+Tarāpunga | Red-billed gull
+Toutouwai | New Zealand robin | North Island robin
+Black robin | Chatham Island robin
+Riroriro | Grey warbler | Gerygone
+Matuku | Australasian bittern
+Tūturiwhatu | New Zealand dotterel
+Pārera | Grey duck | Pacific black duck
+Pāpango | New Zealand scaup | Scaup
+Pāteke | Brown teal
+Weweia | Dabchick | New Zealand dabchick
+Ngutu pare | Wrybill
+Pīhoihoi | New Zealand pipit
+Rock wren | Pīwauwau
+Brown kiwi | North Island brown kiwi
+Great spotted kiwi | Roroa
+Little spotted kiwi
+Rowi
+Tokoeka
+Laughing owl | Whēkau
+Adzebill
+Bush wren
+Lyall's wren | Stephens Island wren
+Boobook | Southern boobook
+Red kite
+Black kite
+Lammergeier | Bearded vulture
+Griffon vulture
+Turkey vulture
+Black vulture
+King vulture
+Lappet-faced vulture
+Andean condor
+California condor
+Caracara | Crested caracara
+Red-tailed hawk
+Cooper's hawk
+Harris's hawk | Harris hawk
+Hen harrier
+Marsh harrier
+Honey buzzard
+Common buzzard
+Steppe eagle
+Martial eagle
+Crowned eagle
+Philippine eagle
+Steller's sea eagle
+White-tailed eagle
+African fish eagle | Fish eagle
+Bateleur
+Snake eagle
+Imperial eagle
+Gyrfalcon
+Saker falcon
+Lanner falcon
+Hobby
+Little owl
+Tawny owl
+Long-eared owl
+Short-eared owl
+Screech owl
+Barred owl
+Great grey owl | Great gray owl
+Elf owl
+Pygmy owl
+Scops owl
+Spectacled owl
+Powerful owl
+Red-footed booby
+Herring gull
+Black-headed gull
+Laughing gull
+Arctic tern
+Caspian tern
+Fairy tern
+White tern
+Noddy
+Sooty tern
+Tropicbird
+Anhinga | Darter
+Macaroni penguin
+African penguin | Jackass penguin
+Humboldt penguin
+Magellanic penguin
+Galápagos penguin
+Snares penguin
+Erect-crested penguin
+Wandering albatross
+Black-browed albatross
+Laysan albatross
+Giant petrel
+Cape petrel
+Grey-faced petrel | Ōi
+Westland petrel
+Diving petrel
+Atlantic puffin
+Tufted puffin
+Horned puffin
+Murre
+Murrelet
+Auklet
+Little auk | Dovekie
+Grey heron
+White-faced heron
+Night heron
+Purple heron
+Goliath heron
+Cattle egret
+Little egret
+Great egret
+White stork
+Marabou stork
+Saddle-billed stork
+Wood stork
+Openbill
+Hamerkop
+Sacred ibis
+Scarlet ibis
+Glossy ibis
+Hadada ibis
+Northern bald ibis
+Crested ibis
+Red-crowned crane | Japanese crane
+Grey crowned crane | Crowned crane
+Demoiselle crane
+Sarus crane
+Common crane
+Limpkin
+Trumpeter
+Seriema
+Kagu
+Bustard
+Great bustard
+Kori bustard
+Great Indian bustard
+Australian bustard
+Swamphen | Purple swamphen
+Gallinule | Purple gallinule
+Crake | Spotless crake
+Corncrake
+Banded rail
+Water rail
+Muscovy duck
+Mandarin duck
+Eider
+King eider
+Scoter
+Goldeneye
+Bufflehead
+Merganser
+Smew
+Goosander
+Canvasback
+Redhead
+Pochard
+Tufted duck
+Gadwall
+Garganey
+Shelduck
+Whistling duck
+Ruddy duck
+Harlequin duck
+Long-tailed duck
+Pekin duck
+Runner duck | Indian runner duck
+Canada goose | Canadian goose
+Greylag goose
+Snow goose
+Barnacle goose
+Brent goose | Brant
+Bar-headed goose
+Egyptian goose
+Nēnē | Hawaiian goose
+Cape Barren goose
+Pink-footed goose
+Trumpeter swan
+Whooper swan
+Tundra swan
+Bewick's swan
+Black-necked swan
+Great crested grebe
+Little grebe
+Horned grebe
+Pied-billed grebe
+Common loon | Great northern diver
+Red-throated diver | Red-throated loon
+Dunlin
+Knot | Red knot | Huahou
+Sanderling
+Turnstone
+Ruff
+Redshank
+Greenshank
+Phalarope
+Whimbrel
+Dowitcher
+Killdeer
+Willet
+Yellowlegs
+Pratincole
+Courser
+Stone-curlew | Thick-knee | Bush stone-curlew
+Sheathbill
+Junglefowl | Red junglefowl
+Bobwhite | Northern bobwhite
+California quail
+Black grouse
+Red grouse
+Sage grouse
+Ruffed grouse
+Spruce grouse
+Francolin
+Chukar
+Snowcock
+Tragopan
+Golden pheasant
+Lady Amherst's pheasant
+Great argus | Argus
+Himalayan monal | Monal
+Megapode
+Curassow
+Guan
+Chachalaca
+Orange-footed scrubfowl
+Stock dove
+Spotted dove
+Diamond dove
+Zebra dove
+Victoria crowned pigeon | Crowned pigeon
+Tooth-billed pigeon
+Spinifex pigeon
+Wonga pigeon
+Imperial pigeon
+Green pigeon
+Band-tailed pigeon
+Homing pigeon | Racing pigeon | Carrier pigeon
+Sandgrouse
+Eclectus | Eclectus parrot
+Amazon parrot | Amazon
+Sulphur-crested cockatoo
+Gang-gang cockatoo | Gang-gang
+Major Mitchell's cockatoo | Pink cockatoo
+Palm cockatoo
+Red-tailed black cockatoo
+Hyacinth macaw
+Scarlet macaw
+Blue-and-yellow macaw | Blue and gold macaw
+Spix's macaw
+Lory
+Caique
+Parrotlet
+Ring-necked parakeet | Rose-ringed parakeet
+Monk parakeet | Quaker parrot
+Night parrot
+Ground parrot
+Swift parrot
+Superb parrot
+King parrot | Australian king parrot
+Red-rumped parrot
+Princess parrot
+Senegal parrot
+Carolina parakeet
+Fig parrot
+Crimson rosella
+Eastern rosella
+Koel | Pacific koel | Eastern koel | Asian koel
+Channel-billed cuckoo
+Coucal | Pheasant coucal
+Ani
+Swiftlet
+Ruby-throated hummingbird
+Anna's hummingbird
+Rufous hummingbird
+Potoo
+Oilbird
+Owlet-nightjar
+Whip-poor-will
+Nighthawk
+Belted kingfisher
+Pied kingfisher
+Azure kingfisher
+Malachite kingfisher
+Paradise kingfisher
+Motmot
+Tody
+Puffbird
+Jacamar
+Great hornbill
+Rhinoceros hornbill
+Rainbow bee-eater
+Carmine bee-eater
+Lilac-breasted roller
+Wood hoopoe
+Green woodpecker
+Great spotted woodpecker
+Lesser spotted woodpecker
+Black woodpecker
+Pileated woodpecker
+Ivory-billed woodpecker
+Acorn woodpecker
+Downy woodpecker
+Hairy woodpecker
+Red-headed woodpecker
+Gila woodpecker
+Piculet
+Keel-billed toucan
+Toco toucan
+Scrubbird
+Riflebird
+Emu-wren
+Grasswren
+Bristlebird
+Thornbill
+Scrubwren
+Noisy miner | Miner
+Bell miner
+Friarbird
+Spinebill
+Babbler
+Logrunner
+Whipbird
+Sittella
+Cuckooshrike
+Whistler
+Shrike-thrush
+Pitohui
+Figbird
+Monarch flycatcher
+Paradise flycatcher
+Apostlebird
+Regent honeyeater
+Regent bowerbird
+Mistletoebird
+Plains-wanderer
+Australian magpie
+European robin
+American robin
+Scarlet robin
+Flame robin
+Rose robin
+Pink robin
+Hooded robin
+Horned lark
+Woodlark
+Crested lark
+Barn swallow
+Welcome swallow
+Tree swallow
+Cliff swallow
+Sand martin | Bank swallow
+House martin
+Purple martin
+Meadow pipit
+Pied wagtail
+Yellow wagtail
+Grey wagtail
+Red-whiskered bulbul
+Leafbird
+Fairy-bluebird
+Palmchat
+House wren
+Carolina wren
+Cactus wren
+Winter wren
+Marsh wren
+Common starling | European starling
+Superb starling
+Hill myna
+Bali myna
+Oxpecker
+Bluethroat
+Robin-chat
+Shama | White-rumped shama
+Magpie-robin | Oriental magpie-robin
+Rock thrush
+Spotted flycatcher
+Pied flycatcher
+House sparrow
+Tree sparrow
+Song sparrow
+White-crowned sparrow
+Java sparrow
+Savannah sparrow
+Sociable weaver
+Widowbird
+Red bishop | Bishop
+Quelea | Red-billed quelea
+Whydah
+Indigobird
+Waxbill
+Munia | Mannikin
+Zebra finch
+Gouldian finch
+Firetail
+House finch
+Purple finch
+Rosefinch
+Serin
+Evening grosbeak
+Pine grosbeak
+Darwin's finch | Darwin's finches
+Hawaiian honeycreeper | Honeycreeper
+ʻIʻiwi
+Hawaiian crow | ʻAlalā
+Snow bunting
+Reed bunting
+Corn bunting
+Cirl bunting
+Ortolan | Ortolan bunting
+Lazuli bunting
+Pyrrhuloxia
+Dickcissel
+Blue grosbeak
+Rose-breasted grosbeak
+Summer tanager
+Dacnis
+Euphonia
+Seedeater
+Oropendola
+Cacique
+Yellow-headed blackbird
+Yellow warbler
+Yellow-rumped warbler
+Prothonotary warbler
+Kirtland's warbler
+American redstart
+Willow warbler
+Garden warbler
+Dartford warbler
+Cetti's warbler
+Blackpoll warbler
+Gnatcatcher
+Black-capped chickadee
+Coal tit
+Marsh tit
+Willow tit
+Crested tit
+Long-tailed tit
+Bearded tit | Bearded reedling
+Penduline tit
+American crow
+Carrion crow
+Hooded crow
+House crow
+New Caledonian crow
+Pied crow
+Eurasian jay
+Steller's jay
+Scrub jay
+Canada jay | Grey jay | Whisky jack
+Green jay
+Eurasian magpie
+Black-billed magpie
+Azure-winged magpie
+Red-billed blue magpie
+Treepie
+Red-backed shrike
+Loggerhead shrike
+Fiscal
+Bushshrike
+Vanga
+Pitta
+Broadbill
+Minivet
+Go-away-bird
+Picathartes | Rockfowl
+Boubou
+Screamer | Southern screamer
+Phainopepla
+Roseate spoonbill
+Brown pelican
+Australian pelican
+Magnificent frigatebird
+Flightless cormorant
+Golden oriole
+Black redstart
+Northern gannet
+Sweat bee
+Leafcutter bee
+Mining bee
+Orchid bee
+Stingless bee
+Killer bee | Africanized bee
+Queen bee
+Cuckoo bee
+Blue-banded bee
+Teddy bear bee
+Squash bee
+Digger bee
+Wool carder bee
+Resin bee
+Murder hornet | Asian giant hornet | Northern giant hornet
+European hornet
+Asian hornet
+Bald-faced hornet
+Cicada killer
+Potter wasp
+Digger wasp
+Braconid wasp
+Jewel wasp | Emerald cockroach wasp
+Parasitoid wasp
+Horntail | Wood wasp
+German wasp
+Common wasp
+Executioner wasp
+Warrior wasp
+Fairyfly
+Ensign wasp
+Chalcid wasp
+Mason wasp
+Red ant
+Black ant
+Sugar ant
+Meat ant
+Honeypot ant
+Weaver ant | Green ant
+Jack jumper ant | Jack jumper
+Argentine ant
+Pharaoh ant
+Crazy ant | Yellow crazy ant
+Trap-jaw ant
+Driver ant | Siafu
+Harvester ant
+Wood ant
+Ghost ant
+Pavement ant
+Acrobat ant
+Dracula ant
+Queen ant
+Flying ant
+Greenbottle
+Flesh fly
+Cluster fly
+Drain fly | Moth fly
+Fungus gnat
+Phorid fly
+Soldier fly | Black soldier fly
+Hessian fly
+Screwworm | Screwworm fly
+Warble fly
+Bat fly
+Louse fly
+Kelp fly
+Stalk-eyed fly
+Shore fly
+Long-legged fly
+Dance fly
+Snipe fly
+March fly
+Mydas fly
+Biting midge | No-see-um | No-see-ums
+Anopheles mosquito | Anopheles
+Asian tiger mosquito | Tiger mosquito | Aedes
+Culex
+Maggot
+Grub
+Witchetty grub
+Superworm
+Waxworm
+Bloodworm
+Wireworm
+Leatherjacket
+Processionary caterpillar | Processionary moth
+Tent caterpillar
+Puss caterpillar
+Harlequin ladybird | Asian lady beetle
+Soldier beetle
+Blister beetle
+Oil beetle
+Carpet beetle
+Larder beetle
+Flour beetle
+Rice weevil | Grain weevil
+Bark beetle
+Mountain pine beetle
+Emerald ash borer
+Asian longhorn beetle
+Jewel beetle
+Leaf beetle
+Flea beetle
+Tortoise beetle
+Rove beetle
+Devil's coach horse
+Burying beetle | Sexton beetle
+Carrion beetle
+Darkling beetle
+Deathwatch beetle
+Furniture beetle
+Powderpost beetle
+Whirligig beetle
+Water scavenger beetle
+Atlas beetle
+Titan beetle
+Elephant beetle
+Giraffe weevil
+Acorn weevil
+Rose chafer
+Fig beetle
+Cucumber beetle
+Asparagus beetle
+Lily beetle
+Pine weevil
+Vine weevil
+Hide beetle
+Cigarette beetle
+Drugstore beetle
+Spider beetle
+Violin beetle
+Minotaur beetle
+Rainbow stag beetle
+Ox beetle
+Bess beetle
+Net-winged beetle
+Viceroy
+Zebra longwing
+Heliconius | Longwing
+Glasswing butterfly | Glasswing
+Owl butterfly
+Tiger swallowtail
+Black swallowtail
+Zebra swallowtail
+Ulysses butterfly
+Queen Alexandra's birdwing
+Brimstone
+Orange tip
+Clouded yellow
+Sulphur butterfly
+Large white
+Comma
+Small tortoiseshell | Tortoiseshell
+Fritillary
+Purple emperor
+White admiral
+Speckled wood
+Meadow brown
+Ringlet
+Gatekeeper
+Marbled white
+Grayling
+Common blue
+Holly blue
+Small copper
+Hairstreak
+Skipper
+Mourning cloak | Camberwell beauty
+Question mark
+Buckeye
+Checkerspot
+Eggfly | Common eggfly
+Yellow admiral | Kahukōwhai
+Blue tiger
+Plain tiger
+Dead leaf butterfly | Oakleaf butterfly
+Apollo butterfly
+Emperor moth
+Polyphemus moth
+Cecropia moth
+Io moth
+Rosy maple moth
+Hummingbird hawk-moth | Hummingbird moth
+Death's-head hawkmoth | Deaths head moth
+Elephant hawk-moth
+Peppered moth
+Cinnabar moth
+Burnet moth
+Codling moth
+Pantry moth | Indian meal moth
+Wax moth
+Tussock moth
+Brown-tail moth
+Puss moth
+Underwing
+Magpie moth
+Leopard moth
+Comet moth
+Sunset moth | Madagascan sunset moth
+Hercules moth
+White witch moth
+Plume moth
+Ghost moth
+Clearwing moth | Hornet moth
+Vampire moth
+Diamondback moth
+Cabbage moth
+Bollworm | Corn earworm
+Lappet moth
+Silver Y
+Snout moth
+Periodical cicada | 17-year cicada
+Green grocer
+Water scorpion
+Giant water bug | Toe-biter
+Water measurer
+Squash bug
+Leaf-footed bug
+Milkweed bug
+Chinch bug
+Kissing bug | Triatomine
+Ambush bug
+Wheel bug
+Boxelder bug
+Harlequin bug
+Lace bug
+Plant bug
+Firebug
+Lanternfly | Spotted lanternfly | Lantern bug
+Psyllid
+Cochineal
+Lac insect
+Bat bug
+Field cricket
+House cricket
+Camel cricket
+Jerusalem cricket | Potato bug
+Tree cricket
+Mormon cricket
+Desert locust
+Lubber grasshopper
+Groundhopper
+American cockroach | Palmetto bug
+Oriental cockroach
+Madagascar hissing cockroach | Hissing cockroach
+Ghost mantis
+Devil's flower mantis
+Chinese mantis
+European mantis
+Dead leaf mantis
+Lord Howe Island stick insect | Tree lobster
+Giant prickly stick insect
+Mantisfly | Mantidfly
+Owlfly
+Alderfly
+Fishfly
+Hellgrammite
+Webspinner
+Bristletail | Jumping bristletail
+Chigoe flea | Jigger
+Cat flea
+Body louse
+Pubic louse | Crab louse
+Chewing louse
+Hangingfly
+Darner | Hawker
+Emperor dragonfly
+Skimmer
+Chaser
+Clubtail
+Meadowhawk
+Demoiselle
+Griffinfly | Meganeura
+Green lacewing
+Brown lacewing
+Common wood pigeon
