@@ -32,7 +32,7 @@ const clamp = (v, [lo, hi]) => Math.min(hi, Math.max(lo, v));
 const cleanName = (s) => String(s || "").replace(/[\u0000-\u001f<>]/g, "").trim().slice(0, 16);
 const cleanText = (s, n) => String(s || "").replace(/[\u0000-\u001f]/g, " ").trim().slice(0, n);
 const send = (ws, msg) => { if (ws && ws.readyState === 1) ws.send(JSON.stringify(msg)); };
-// uploaded faces arrive as tiny data-URL images (the phone shrinks them to 24px first)
+// uploaded faces arrive as small data-URL images (the phone shrinks them to 96px first)
 const cleanImg = (s) => (typeof s === "string" && s.length <= 12000 && /^data:image\/(png|jpeg|webp);base64,[A-Za-z0-9+/=]+$/.test(s) ? s : null);
 const shortHash = (s) => require("crypto").createHash("sha1").update(s).digest("hex").slice(0, 10);
 

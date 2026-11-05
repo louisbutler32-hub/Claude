@@ -16,8 +16,8 @@
 
 <div class="stage" id="stage">
   <!-- the room: painted on two canvases (still art + flickering candles and dust) -->
-  <canvas id="room-bg" class="px-layer" aria-hidden="true"></canvas>
-  <canvas id="room-fx" class="px-layer" aria-hidden="true"></canvas>
+  <canvas id="room-bg" class="room-layer" aria-hidden="true"></canvas>
+  <canvas id="room-fx" class="room-layer" aria-hidden="true"></canvas>
 
   <!-- on the table -->
   <div id="seats" class="layer"></div>
@@ -27,7 +27,7 @@
   <div id="cloche" class="cloche" data-mode="idle" aria-hidden="true">
     <div class="hop">
       <div class="steam"><i></i><i></i><i></i></div>
-      <img id="dish" class="px" alt="">
+      <img id="dish" alt="">
     </div>
     <div class="fuse" id="fuse"><i></i></div>
     <div class="secs" id="secs"></div>

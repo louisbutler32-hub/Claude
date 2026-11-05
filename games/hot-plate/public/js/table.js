@@ -2,7 +2,7 @@
 // answer bubbles, and the hot plate (a silver cloche) that slides to whoever holds it.
 import { $, esc, TIERS, replay } from "./util.js";
 import { S, now, seating, phase } from "./state.js";
-import { placeSetting, avatar, cloche, pot } from "./sprites.js";
+import { placeSetting, cloche, pot } from "./sprites.js";
 
 let L = null;
 const urls = new Map();
@@ -10,20 +10,23 @@ function spriteURL(key, make) {
   if (!urls.has(key)) urls.set(key, make().toDataURL());
   return urls.get(key);
 }
-// sprites are drawn at art-pixel size; [w, h] here are those sizes, scaled up crisply
+// sprites are laid out in art units (drawn several times larger, so they stay sharp); [w, h] here
+// are those sizes, which the art scale turns into CSS px
 const SIZE = { setting: [40, 22], face: [18, 18] };
 const img = (key, make, scale, cls) => {
   const [w, h] = SIZE[cls];
-  return `<img class="px ${cls}" src="${spriteURL(key, make)}" alt="" width="${w * scale}" height="${h * scale}">`;
+  return `<img class="${cls}" src="${spriteURL(key, make)}" alt="" width="${w * scale}" height="${h * scale}">`;
 };
 
 export function setLayout(layout) { L = layout; }
 
-// an uploaded picture if the player has one, otherwise their emoji drawn as pixel art
+// an uploaded picture if the player has one (a round photo in a gold ring), otherwise their emoji
+// as live text, so it is as crisp as the system draws it
 function face(p) {
   const pic = p.av && S.avatars[p.id];
-  if (pic) return `<img class="px face pic" src="${pic}" alt="" width="${18 * L.P}" height="${18 * L.P}">`;
-  return img("av" + p.emoji, () => avatar(p.emoji), L.P, "face");
+  const s = 18 * L.P;
+  if (pic) return `<img class="face pic" src="${pic}" alt="" width="${s}" height="${s}">`;
+  return `<span class="face emoji" style="width:${s}px;height:${s}px;font-size:${Math.round(15 * L.P)}px">${esc(p.emoji)}</span>`;
 }
 
 // a player's answer sits beside their place setting, on the side facing into the table

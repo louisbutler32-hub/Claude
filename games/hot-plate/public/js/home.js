@@ -25,7 +25,21 @@ $("faces").addEventListener("click", (e) => {
   send({ t: "avatar", img: null });
 });
 
-// shrink an uploaded photo to a 24px square: small enough to send, and it turns into pixel art on the table
+// shrink an uploaded photo to a 96px square, small enough to send (the server takes data URLs up to
+// 12000 characters): lossless if it's that small, otherwise WebP or JPEG at the best quality that fits
+const FACE_PX = 96, FACE_MAX = 11500;
+function encodeFace(c) {
+  const png = c.toDataURL("image/png");
+  if (png.length <= FACE_MAX) return png;
+  for (const q of [0.9, 0.82, 0.72, 0.6, 0.48, 0.36]) {
+    for (const type of ["image/webp", "image/jpeg"]) {
+      const url = c.toDataURL(type, q);
+      // browsers that can't write WebP hand back a PNG instead
+      if (url.startsWith(`data:${type};`) && url.length <= FACE_MAX) return url;
+    }
+  }
+  return null;
+}
 $("face-file").addEventListener("change", async () => {
   const file = $("face-file").files[0];
   $("face-file").value = "";
@@ -33,14 +47,27 @@ $("face-file").addEventListener("change", async () => {
   if (!file.type.startsWith("image/")) return showError("That file isn't a picture.");
   try {
     const bmp = await createImageBitmap(file);
-    const side = Math.min(bmp.width, bmp.height);
-    const c = document.createElement("canvas");
-    c.width = c.height = 24;
-    const g = c.getContext("2d");
-    g.imageSmoothingQuality = "high";
-    g.drawImage(bmp, (bmp.width - side) / 2, (bmp.height - side) / 2, side, side, 0, 0, 24, 24);
-    let url = c.toDataURL("image/png");
-    if (url.length > 11000) url = c.toDataURL("image/jpeg", 0.85);
+    let src = bmp, side = Math.min(bmp.width, bmp.height), sx = (bmp.width - side) / 2, sy = (bmp.height - side) / 2;
+    // a big photo steps down through 384px first, so the small one isn't grainy
+    if (side > 384) {
+      const mid = document.createElement("canvas");
+      mid.width = mid.height = 384;
+      const mg = mid.getContext("2d");
+      mg.imageSmoothingQuality = "high";
+      mg.drawImage(bmp, sx, sy, side, side, 0, 0, 384, 384);
+      src = mid; side = 384; sx = sy = 0;
+    }
+    let url = null;
+    for (const px of [FACE_PX, 72, 56]) {
+      const c = document.createElement("canvas");
+      c.width = c.height = px;
+      const g = c.getContext("2d");
+      g.imageSmoothingQuality = "high";
+      g.fillStyle = "#1a0a0f"; g.fillRect(0, 0, px, px); // JPEG has no transparency
+      g.drawImage(src, sx, sy, side, side, 0, 0, px, px);
+      if ((url = encodeFace(c))) break;
+    }
+    if (!url) throw new Error("too big");
     profile.img = url; saveProfile(); renderFaces(); sfx.click();
     send({ t: "avatar", img: url });
   } catch {
