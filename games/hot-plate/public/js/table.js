@@ -64,7 +64,7 @@ export function renderSeats() {
     } else {
       const lost = Math.max(0, maxHearts - p.hearts);
       if (p.streak >= 2) badges.push(`<span class="chip-s spicy${p.streak >= 3 ? " on" : ""}" title="spicy streak">🌶️${p.streak}${p.streak >= 5 ? " ×2" : p.streak >= 3 ? " ×1.5" : ""}</span>`);
-      under = `<div class="hp"><b>${"♥".repeat(p.hearts)}</b><i>${"♥".repeat(lost)}</i></div><div class="sc">${p.score}</div>`;
+      under = `<div class="hp" title="${p.hearts} ${p.hearts === 1 ? "life" : "lives"} left">${p.alive ? `<b>${"♥".repeat(p.hearts)}</b><i>${"♡".repeat(lost)}</i>` : "out"}</div><div class="sc">${p.score} pts</div>`;
     }
     if (inGame && ph === "play" && !holder && drafting[p.id] && p.alive) badges.push(`<span class="chip-s drafting">✎ typing…</span>`);
     if (badges.length) under += `<div class="badges">${badges.join("")}</div>`;

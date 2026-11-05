@@ -136,9 +136,9 @@ body:not([data-phase="home"]):not([data-phase="lobby"]) .marquee { top: max(56px
 .seat .setting { filter: drop-shadow(0 3px 0 rgba(0, 0, 0, .3)); }
 .seat .nm { margin-top: 3px; font: 800 15px/1.1 var(--ui); color: var(--text); text-shadow: 0 2px 0 var(--ink), 0 0 6px var(--ink); max-width: 130px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: .04em; }
 .seat .tag { font: 800 9px var(--caps); letter-spacing: .24em; text-transform: uppercase; color: var(--mint); text-shadow: 0 1px 0 var(--ink); min-height: 10px; }
-.seat .hp { font: 13px/1 var(--mono); letter-spacing: 1px; text-shadow: 0 1px 0 var(--ink); }
-.seat .hp b { font-weight: 400; color: var(--rose); }
-.seat .hp i { font-style: normal; color: #3d2731; }
+.seat .hp { margin-top: 2px; padding: 1px 7px 2px; background: rgba(14, 5, 8, .85); border: 1px solid var(--panel-line); font: 900 17px/1 var(--ui); letter-spacing: 2px; }
+.seat .hp b { font-weight: 900; color: #ff4d6d; text-shadow: 0 0 6px rgba(255, 77, 109, .6); }
+.seat .hp i { font-style: normal; color: #7a5a62; }
 .seat .sc { font: 11px/1 var(--mono); color: var(--gold); text-shadow: 0 1px 0 var(--ink); }
 .seat.me .nm { color: var(--gold); }
 .seat.empty .nm { color: var(--muted); font-size: 16px; }
@@ -471,3 +471,36 @@ body:not(.is-signed-in) .signed-in, body.is-signed-in .signed-out { display: non
 .bubble .tries s { opacity: .85; }
 .chip-s.drafting { border-color: var(--mint); color: var(--mint); animation: think-pulse 1s ease-in-out infinite; }
 @keyframes think-pulse { 50% { opacity: .45; } }
+
+/* ---------- readable questions, obvious turns ---------- */
+.prompt-box { min-width: min(520px, 90vw); padding: 10px 24px 12px; gap: 5px; }
+.prompt-box .prompt-text { font: 900 clamp(20px, 2.4vw, 30px)/1.15 var(--ui); color: #fff7e8; letter-spacing: -.005em; }
+.prompt-box .prompt-meta { font: 700 11px var(--ui); letter-spacing: .08em; text-transform: none; color: var(--text-dim); }
+.prompt-turn { margin: 2px 0 0; padding-top: 6px; border-top: 1px dashed var(--panel-hi); font: 900 17px/1.2 var(--ui); color: var(--text); }
+.prompt-turn.mine { color: var(--hot); font-size: 20px; text-transform: uppercase; letter-spacing: .08em; animation: think-pulse 1s ease-in-out infinite; }
+@media (max-width: 640px) {
+  .prompt-box { min-width: 0; width: 100%; padding: 8px 14px 10px; }
+  .prompt-box .prompt-text { font-size: 19px; }
+  .prompt-turn { font-size: 15px; } .prompt-turn.mine { font-size: 17px; }
+}
+/* the holder: spotlight, bouncing marker and a bright name tag; everyone else steps back a little */
+body[data-phase="play"] .seat:not(.holder):not(.empty) { filter: brightness(.78) saturate(.85); }
+.seat.holder::before { content: ""; position: absolute; left: 50%; top: 55%; width: 170%; height: 120%; transform: translate(-50%, -50%); background: radial-gradient(ellipse, rgba(255, 180, 90, .38), rgba(255, 140, 60, 0) 65%); z-index: -1; pointer-events: none; }
+.seat.holder::after { content: "▼"; position: absolute; left: 50%; top: -26px; transform: translateX(-50%); color: var(--hot); font: 900 20px var(--ui); text-shadow: 0 2px 0 var(--ink), 0 0 10px rgba(255, 122, 47, .9); animation: marker .7s ease-in-out infinite; }
+@keyframes marker { 50% { transform: translate(-50%, -6px); } }
+.seat.holder .nm { background: var(--hot); color: var(--ink); padding: 2px 8px; text-shadow: none; border-radius: 3px; }
+/* your turn: the screen edge glows until you pass */
+body.my-turn .stage::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2900; box-shadow: inset 0 0 0 4px rgba(255, 122, 47, .85), inset 0 0 60px rgba(255, 122, 47, .45); animation: edge-glow 1.2s ease-in-out infinite; }
+@keyframes edge-glow { 50% { box-shadow: inset 0 0 0 3px rgba(255, 122, 47, .5), inset 0 0 30px rgba(255, 122, 47, .2); } }
+.kiss-banner.turn { animation: kiss-in 1.1s ease-out forwards; }
+.turn-title { margin: 0; font: 400 clamp(44px, 7vw, 76px)/1 var(--display); color: var(--hot); text-shadow: 0 5px 0 #7a2410, 0 10px 0 var(--ink), 0 0 36px rgba(255, 122, 47, .8); transform: rotate(-3deg); }
+
+/* ---------- lives you can actually see ---------- */
+.my-lives { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.my-lives .lbl { font: 800 10px var(--caps); letter-spacing: .22em; text-transform: uppercase; color: var(--text-dim); text-shadow: 0 1px 0 var(--ink); }
+.my-lives .hearts { padding: 3px 12px; background: rgba(14, 5, 8, .88); border: 2px solid var(--panel-line); font: 900 24px/1 var(--ui); letter-spacing: 4px; }
+.my-lives b { font-weight: 900; color: #ff4d6d; text-shadow: 0 0 8px rgba(255, 77, 109, .7); }
+.my-lives i { font-style: normal; color: #7a5a62; }
+.my-lives.lost .hearts { animation: lives-lost .9s ease-out; }
+@keyframes lives-lost { 0%, 30% { border-color: #ff4d6d; box-shadow: 0 0 22px rgba(255, 77, 109, .8); transform: scale(1.15); } 100% { transform: scale(1); } }
+@media (max-width: 640px) { .seat .hp { font-size: 14px; } .my-lives .hearts { font-size: 20px; } }

@@ -77,6 +77,17 @@ export function pop(x, y) {
   }
 }
 
+// a quick "your turn" flash across the middle of the table
+let turnTimer = null;
+export function turnBanner() {
+  const b = $("kiss-banner");
+  b.innerHTML = `<p class="turn-title">your turn!</p>`;
+  b.hidden = false;
+  b.classList.remove("go", "turn"); void b.offsetWidth; b.classList.add("turn");
+  clearTimeout(turnTimer);
+  turnTimer = setTimeout(() => { b.hidden = true; b.classList.remove("turn"); }, 1100);
+}
+
 export function shake(strength) {
   if (reduced) return;
   const st = $("stage");

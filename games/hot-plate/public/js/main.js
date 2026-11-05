@@ -3,7 +3,7 @@ import { $, buzz, replay, TIERS } from "./util.js";
 import { S, setRoom, profile, phase, seating, byId } from "./state.js";
 import { connect, on, send, getSession, setSession } from "./net.js";
 import { sfx, setSizzle } from "./sound.js";
-import { burst, floatScore, kissBanner, shake, pop } from "./fx.js";
+import { burst, floatScore, kissBanner, shake, pop, turnBanner } from "./fx.js";
 import { Scene, layout } from "./scene.js";
 import * as table from "./table.js";
 import { renderHUD, flash } from "./hud.js";
@@ -71,7 +71,7 @@ on("state", (m) => {
   if (p && g && p.holder !== g.holder) table.clearTyping(p.holder);
   // your turn
   if (m.phase === "playing" && g.holder === m.you && !(S.prev && S.prev.phase === "playing" && p && p.holder === m.you && p.turnEnd === g.turnEnd)) {
-    sfx.yourTurn(); buzz(50); lastTick = null;
+    sfx.yourTurn(); buzz(50); lastTick = null; turnBanner();
   }
   if (m.phase === "over" && (!S.prev || S.prev.phase !== "over")) sfx.win();
   render();

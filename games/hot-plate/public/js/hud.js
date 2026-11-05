@@ -39,6 +39,7 @@ export function renderHUD() {
     $("prompt").hidden = true;
   }
 
+  if (ph !== "play") document.body.classList.remove("my-turn");
   $("dock-lobby").hidden = ph !== "lobby";
   $("dock-play").hidden = ph !== "play";
   $("dock-burn").hidden = ph !== "break";
@@ -80,6 +81,11 @@ function renderPlayDock() {
   const r = S.room, g = r.game, p = S.prev;
   const mine = g.holder === r.you;
   const holder = byId(g.holder), m = me();
+  renderMyLives(m);
+  // whose go it is, said right under the question and felt round the edge of your screen
+  document.body.classList.toggle("my-turn", mine);
+  $("prompt-turn").className = "prompt-turn" + (mine ? " mine" : "");
+  $("prompt-turn").innerHTML = mine ? "🔥 your turn" : `${holder ? `${holder.emoji} ${esc(holder.name)}'s turn` : ""}`;
   const playing = !!(m && m.alive);
   // anyone still at the table can type ahead while they wait; it only serves when the plate is theirs
   $("answer-form").hidden = !playing;
@@ -97,6 +103,18 @@ function renderPlayDock() {
   if (p && p.game && p.game.round !== g.round) $("answer-input").value = "";
   if (p && p.game && p.game.round !== g.round) flash("", "");
   return fresh;
+}
+
+// your own lives, big and next to your answer box
+let lastLives = null;
+function renderMyLives(m) {
+  const el = $("my-lives");
+  const max = Math.max(S.room.settings.hearts, m ? m.hearts : 0);
+  el.hidden = !m || !m.alive;
+  if (!m || !m.alive) { lastLives = null; return; }
+  el.innerHTML = `<span class="lbl">your lives</span><span class="hearts"><b>${"♥".repeat(m.hearts)}</b><i>${"♡".repeat(Math.max(0, max - m.hearts))}</i></span>`;
+  if (lastLives !== null && m.hearts < lastLives) { el.classList.remove("lost"); void el.offsetWidth; el.classList.add("lost"); }
+  lastLives = m.hearts;
 }
 
 export function flash(text, cls) { const f = $("flash"); f.textContent = text; f.className = "flash " + cls; }
