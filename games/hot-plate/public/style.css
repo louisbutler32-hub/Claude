@@ -443,3 +443,31 @@ body:not(.is-signed-in) .signed-in, body.is-signed-in .signed-out { display: non
 .faces button.mine img, .mini-face { width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; display: block; }
 .mini-face { width: 30px; height: 30px; border: 2px solid var(--gold); }
 .seat .face.pic { border: 2px solid var(--ink); box-shadow: 0 0 0 2px var(--gold); border-radius: 4px; }
+
+/* ---------- the pot boiling over, and the question box ---------- */
+#dish { transform: scale(calc(.9 + var(--heat, 0) * .35)); }
+.cloche[data-mode="idle"] #dish { transform: scale(.9); }
+.cloche[data-mode="burnt"] #dish { transform: scale(1); }
+.cloche.popped #dish { animation: boil-over .7s ease-out; }
+@keyframes boil-over { 0% { transform: scale(1.25) translateY(-4px); filter: brightness(1.8); } 40% { transform: scale(1.4, 1.1); } 100% { transform: scale(1); filter: none; } }
+.spark.smoke { color: #f6efe4; font-size: 20px; text-shadow: 0 0 6px rgba(255, 255, 255, .5); filter: none; }
+.pop-flash { background: radial-gradient(circle, #ffffff, #f6efe4 40%, rgba(246, 239, 228, 0) 70%); }
+.prompt-box {
+  display: inline-flex; flex-direction: column; gap: 4px; min-width: min(420px, 88vw); max-width: 100%;
+  padding: 8px 20px 10px; background: var(--panel); border: 2px solid var(--panel-line);
+  box-shadow: 0 0 0 2px var(--ink), inset 0 0 0 1px rgba(255, 220, 160, .05), 0 10px 30px rgba(0, 0, 0, .45);
+  clip-path: polygon(6px 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 0 calc(100% - 6px), 0 6px);
+  pointer-events: none;
+}
+.prompt-box[hidden] { display: none !important; }
+.prompt-box .prompt-label { font-size: 9px; }
+.prompt-box .prompt-text { text-shadow: none; }
+.prompt-box .prompt-meta { text-shadow: none; color: var(--muted); }
+
+/* ---------- typing: the holder's live words and tries, and who's typing ahead ---------- */
+.bubble.typing.thinking::after { content: "•••"; letter-spacing: 2px; animation: think 1.2s steps(3) infinite; color: var(--hot); }
+@keyframes think { 0% { clip-path: inset(0 66% 0 0); } 33% { clip-path: inset(0 33% 0 0); } 66% { clip-path: inset(0 0 0 0); } }
+.bubble .tries { display: flex; flex-wrap: wrap; gap: 3px 6px; justify-content: center; margin-top: 3px; font: 600 11px var(--ui); color: #b0443f; text-decoration: none; }
+.bubble .tries s { opacity: .85; }
+.chip-s.drafting { border-color: var(--mint); color: var(--mint); animation: think-pulse 1s ease-in-out infinite; }
+@keyframes think-pulse { 50% { opacity: .45; } }

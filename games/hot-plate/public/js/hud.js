@@ -32,7 +32,8 @@ export function renderHUD() {
     $("title").hidden = true;
     $("prompt").hidden = false;
     $("prompt-text").textContent = `${g.cat.emoji} ${g.cat.prompt}`;
-    $("prompt-meta").textContent = `${g.cat.size.toLocaleString()} on the menu · ${g.served.length} served`;
+    $("prompt-label").textContent = `plate ${g.round}`;
+    $("prompt-meta").textContent = g.served.length ? `${g.served.length} served` : "first answer passes the pot";
   } else {
     $("title").hidden = ph === "over";
     $("prompt").hidden = true;

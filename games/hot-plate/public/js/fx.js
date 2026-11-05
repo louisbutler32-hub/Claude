@@ -62,7 +62,7 @@ export function pop(x, y) {
   flash.style.left = x + "px"; flash.style.top = y + "px";
   host.appendChild(flash);
   setTimeout(() => flash.remove(), 700);
-  const glyphs = ["💨", "💨", "🔥", "💨", "✦", "🔥"];
+  const glyphs = ["○", "◌", "💨", "○", "∘", "💨", "◯", "○"];
   for (let i = 0; i < 16; i++) {
     const s = document.createElement("span");
     s.className = "spark smoke";

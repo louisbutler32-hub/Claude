@@ -2,7 +2,7 @@
 // answer bubbles, and the hot plate (a silver cloche) that slides to whoever holds it.
 import { $, esc, TIERS, replay } from "./util.js";
 import { S, now, seating, phase } from "./state.js";
-import { placeSetting, avatar, cloche } from "./sprites.js";
+import { placeSetting, avatar, cloche, pot } from "./sprites.js";
 
 let L = null;
 const urls = new Map();
@@ -66,6 +66,7 @@ export function renderSeats() {
       if (p.streak >= 2) badges.push(`<span class="chip-s spicy${p.streak >= 3 ? " on" : ""}" title="spicy streak">🌶️${p.streak}${p.streak >= 5 ? " ×2" : p.streak >= 3 ? " ×1.5" : ""}</span>`);
       under = `<div class="hp"><b>${"♥".repeat(p.hearts)}</b><i>${"♥".repeat(lost)}</i></div><div class="sc">${p.score}</div>`;
     }
+    if (inGame && ph === "play" && !holder && drafting[p.id] && p.alive) badges.push(`<span class="chip-s drafting">✎ typing…</span>`);
     if (badges.length) under += `<div class="badges">${badges.join("")}</div>`;
     html += `<div class="${cls}" data-id="${p.id}" style="${pos}">
       <div class="figure">${face(p)}${setting}</div>
@@ -85,13 +86,22 @@ export function setTyping(id, text) {
   delete nope[id];
   renderBubbles();
 }
+// what the holder has tried this turn and got wrong (or found taken), newest last
+const tries = {};
+// who is typing ahead while they wait (no words, just that they are)
+const drafting = {};
+export function setDrafting(id, on) { drafting[id] = on; renderSeats(); }
+export const isDrafting = (id) => !!drafting[id];
+
 export function setNope(id, text, ms = 1300) {
+  (tries[id] = tries[id] || []).push(text);
+  if (tries[id].length > 3) tries[id].shift();
   nope[id] = { text, until: Date.now() + ms };
   typing[id] = "";
   renderBubbles();
   setTimeout(renderBubbles, ms + 50);
 }
-export const clearTyping = (id) => { typing[id] = ""; };
+export const clearTyping = (id) => { typing[id] = ""; tries[id] = []; drafting[id] = false; };
 
 const bubbleEls = new Map();
 export function renderBubbles(popId) {
@@ -106,7 +116,12 @@ export function renderBubbles(popId) {
       const n = nope[p.id] && nope[p.id].until > Date.now() ? nope[p.id] : null;
       if (r.phase === "playing" && r.game.holder === p.id) {
         if (n) { cls = "nope"; html = esc(n.text); }
-        else { cls = "typing"; html = esc(p.id === r.you ? $("answer-input").value : typing[p.id] || ""); }
+        else {
+          const now = p.id === r.you ? $("answer-input").value : typing[p.id] || "";
+          cls = "typing" + (now ? "" : " thinking");
+          html = esc(now);
+        }
+        if (tries[p.id] && tries[p.id].length) html += `<span class="tries">${tries[p.id].map((t) => `<s>${esc(t)}</s>`).join("")}</span>`;
       } else if (p.last) {
         cls = "t" + p.last.tier;
         html = `${esc(p.last.name)}<small>+${TIERS[p.last.tier].pts}</small>`;
@@ -163,19 +178,27 @@ export function placeCloche() {
   if (holder && holder !== lastHolder && clocheAt) replay(el.querySelector(".hop"), "go");
   lastHolder = holder;
   clocheAt = at;
-  if (mode !== "hot") setDish(mode === "gold" ? "gold" : mode === "burnt" ? "burnt" : 0);
+  if (mode !== "hot") setDish(mode === "gold" ? "gold" : mode === "burnt" ? "burnt" : 0.15);
 }
 
+// the pot on the go (it boils over as time runs out); a golden cloche crowns the winner
 let dishKey = null;
 function setDish(heatOrMode) {
   if (!L) return;
-  const key = typeof heatOrMode === "number" ? "h" + Math.round(heatOrMode * 10) : heatOrMode;
+  const frame = Math.floor(Date.now() / 220) % 2; // bubbles jiggle between two frames
+  const step = typeof heatOrMode === "number" ? Math.round(heatOrMode * 12) : null;
+  const key = step !== null ? `h${step}f${frame}` : heatOrMode;
   if (key === dishKey) return;
   dishKey = key;
-  const make = key === "gold" ? () => cloche(0, { gold: true }) : key === "burnt" ? () => cloche(0, { burnt: true }) : () => cloche(Math.round(heatOrMode * 10) / 10);
   const dish = $("dish");
-  dish.src = spriteURL("cl" + key, make);
-  dish.width = 30 * L.P; dish.height = 24 * L.P;
+  if (key === "gold") {
+    dish.src = spriteURL("cl-gold", () => cloche(0, { gold: true }));
+    dish.width = 30 * L.P; dish.height = 24 * L.P;
+    return;
+  }
+  const make = key === "burnt" ? () => pot(1, 0, { burnt: true }) : () => pot(step / 12, frame);
+  dish.src = spriteURL("pot" + key, make);
+  dish.width = 36 * L.P; dish.height = 40 * L.P;
 }
 
 // called every frame: the countdown under the dish, its colour, and how hard it steams
@@ -185,6 +208,7 @@ export function tickClock(onTick) {
     el.style.setProperty("--heat", r && r.phase === "break" ? 1 : 0);
     $("fuse").style.setProperty("--f", 0);
     $("secs").textContent = r && r.phase === "break" ? "burned!" : "";
+    if (r && r.phase === "lobby") setDish(0.15); // simmering while everyone sits down
     return 0;
   }
   const g = r.game;

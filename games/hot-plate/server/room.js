@@ -243,11 +243,13 @@ class Room {
   }
 
   typing(p, text) {
-    if (this.phase !== "playing" || this.game.holder !== p.id) return;
+    if (this.phase !== "playing" || !p.alive) return;
     const now = Date.now();
     if (now - p.lastType < 50) return;
     p.lastType = now;
-    this.broadcast({ t: "typing", id: p.id, text: cleanText(text, 40) }, p);
+    // the holder's words are shown live; everyone else only shows that they're typing ahead
+    if (this.game.holder === p.id) this.broadcast({ t: "typing", id: p.id, text: cleanText(text, 40) }, p);
+    else this.broadcast({ t: "drafting", id: p.id, on: !!cleanText(text, 40) }, p);
   }
 
   answer(p, text) {

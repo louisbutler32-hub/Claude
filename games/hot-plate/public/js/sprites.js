@@ -79,3 +79,65 @@ export function cloche(heat = 0, { gold = false, burnt = false } = {}) {
   ellipse(g, 15, 4, 1.6, 1.1, burnt ? "#3a2a24" : hi);
   return c;
 }
+
+// the pot that boils over. heat 0..1: burner flames grow, foam rises and lifts the lid, then spills
+// down the sides. frame 0/1 jiggles the bubbles so it looks alive. burnt: blackened and spilled.
+export function pot(heat = 0, frame = 0, { burnt = false } = {}) {
+  const [c, g] = canvas(36, 40);
+  const rnd = ((s) => () => ((s = (s * 16807) % 2147483647) - 1) / 2147483646)(7 + frame * 31);
+  const rim = 22, foamTop = rim - 2 - heat * 11;
+  // burner flames under the pot
+  if (!burnt) {
+    const n = 3 + Math.round(heat * 3), h = 2 + heat * 5;
+    for (let i = 0; i < n; i++) {
+      const x = 9 + (i * 18) / Math.max(1, n - 1) + (frame ? 1 : 0);
+      g.fillStyle = "#ff7a2f"; g.fillRect(Math.round(x), 37 - Math.round(h), 2, Math.round(h));
+      g.fillStyle = "#ffd35a"; g.fillRect(Math.round(x), 37 - Math.round(h * 0.5), 1, Math.round(h * 0.5));
+    }
+  }
+  ellipse(g, 18, 37.5, 14, 2.2, "rgba(0,0,0,.4)");
+  // handles
+  g.fillStyle = burnt ? "#1a110e" : "#5a2a14";
+  g.fillRect(2, rim + 2, 4, 3); g.fillRect(30, rim + 2, 4, 3);
+  // body: copper, darker towards the bottom, glowing with heat
+  g.save();
+  g.beginPath(); g.moveTo(5, rim); g.lineTo(31, rim); g.lineTo(30, 33); g.quadraticCurveTo(18, 37, 6, 33); g.closePath(); g.clip();
+  const grd = g.createLinearGradient(5, 0, 31, 0);
+  if (burnt) { grd.addColorStop(0, "#1c1411"); grd.addColorStop(0.4, "#3a2a24"); grd.addColorStop(1, "#140d0b"); }
+  else { grd.addColorStop(0, "#6a2f16"); grd.addColorStop(0.35, "#d7884f"); grd.addColorStop(0.6, "#b0602f"); grd.addColorStop(1, "#5a2612"); }
+  g.fillStyle = grd; g.fillRect(0, 0, 36, 40);
+  if (heat > 0 && !burnt) { g.fillStyle = `rgba(255,${Math.round(90 - heat * 60)},30,${heat * 0.45})`; g.fillRect(0, 26, 36, 14); }
+  g.restore();
+  // rim and the dark inside
+  ellipse(g, 18, rim, 13.5, 3.4, burnt ? "#2b201c" : "#e3a06a");
+  ellipse(g, 18, rim, 12, 2.6, "#2a1208");
+  // foam rising out of the pot
+  const foam = burnt ? "#6b5446" : "#f6efe4", shade = burnt ? "#4a3a30" : "#d6cbbb";
+  const blobs = 7 + Math.round(heat * 8);
+  for (let i = 0; i < blobs; i++) {
+    const x = 7 + rnd() * 22, y = rim - 1 - rnd() * (rim - 1 - foamTop), r = 2 + rnd() * (2 + heat * 2.5);
+    ellipse(g, x, y + 0.6, r, r * 0.8, shade);
+    ellipse(g, x, y, r, r * 0.8, foam);
+  }
+  // spilling down the sides once it's past halfway
+  if (heat > 0.45 || burnt) {
+    const drips = burnt ? 6 : Math.round((heat - 0.45) * 12);
+    for (let i = 0; i < drips; i++) {
+      const left = i % 2 === 0, x = left ? 5 + rnd() * 5 : 26 + rnd() * 5;
+      const len = 3 + rnd() * (burnt ? 9 : heat * 10);
+      g.fillStyle = foam; g.fillRect(Math.round(x), rim, 2, Math.round(len));
+      ellipse(g, x + 1, rim + len, 1.4, 1.2, foam);
+    }
+  }
+  // the lid, pushed up by the foam
+  if (!burnt) {
+    const ly = Math.min(rim - 1, foamTop + 1), tilt = heat > 0.6 ? (frame ? 1.2 : -1.2) * heat : 0;
+    g.save(); g.translate(18, ly); g.rotate(tilt * 0.08);
+    ellipse(g, 0, 0.8, 12.5, 2.6, "#5c5c66");
+    ellipse(g, 0, 0, 12.5, 2.4, "#a9a9b4");
+    ellipse(g, -2, -0.5, 7, 1.2, "#d8d8e0");
+    ellipse(g, 0, -2.6, 2.2, 1.4, "#3a3a44");
+    g.restore();
+  }
+  return c;
+}

@@ -78,6 +78,7 @@ on("state", (m) => {
 });
 
 on("typing", (m) => table.setTyping(m.id, m.text));
+on("drafting", (m) => table.setDrafting(m.id, m.on));
 on("account", () => { refreshFaces(); render(); });
 on("nope", (m) => table.setNope(m.id, m.text));
 
