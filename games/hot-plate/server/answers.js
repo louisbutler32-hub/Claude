@@ -44,6 +44,19 @@ function shortenClub(a) {
   return short && short.length >= 3 && short !== a.name ? { ...a, name: short, alts: [a.name, ...a.alts] } : a;
 }
 
+// extra spellings people actually type: without company endings, "Jr", roman numerals or brackets
+const TRIM = [
+  /\s*\([^)]*\)\s*/g,
+  /[,\s]+(inc|ltd|llc|plc|corp|corporation|company|co|group|holdings|ag|sa|se|gmbh|limited)\.?$/i,
+  /[,\s]+(jr|sr|junior|senior|ii|iii|iv)\.?$/i,
+];
+function looseForms(name) {
+  const out = new Set();
+  let s = name;
+  for (const re of TRIM) { s = s.replace(re, " ").trim(); out.add(s); }
+  return [...out].filter((x) => x && x !== name);
+}
+
 function buildCategory(raw) {
   let answers = raw.answers.map(([name, tier, alts]) => ({ name, tier, alts: alts || [] }));
   if (raw.id === "club") answers = answers.map(shortenClub);
@@ -52,6 +65,8 @@ function buildCategory(raw) {
   const exact = new Map();
   const add = (k, i) => { if (k && !exact.has(k)) exact.set(k, i); };
   answers.forEach((a, i) => { add(norm(a.name), i); a.alts.forEach((x) => add(norm(x), i)); });
+  // looser forms only after every real spelling, so they never steal a better match
+  answers.forEach((a, i) => { for (const n of [a.name, ...a.alts]) looseForms(n).forEach((x) => add(norm(x), i)); });
 
   // a lone first or last name counts when exactly one answer has it ("LeBron", "Haaland");
   // when several do ("Curry", "Jordan") the player is asked which
@@ -92,6 +107,10 @@ function matchAnswer(cat, input) {
   if (!k) return -1;
   if (cat.exact.has(k)) return cat.exact.get(k);
   if (cat.shared.has(k)) return WHICH;
+  // plural or singular of a listed answer ("Lambos", "Pringle", "Tacos")
+  for (const v of [k.replace(/es$/, ""), k.replace(/s$/, ""), k + "s", k + "es", k.replace(/ies$/, "y"), k.replace(/y$/, "ies")]) {
+    if (v !== k && v.length >= 3 && cat.exact.has(v)) return cat.exact.get(v);
+  }
   // typo help only on longer answers, never on numbers (Toy Story 2 is not 3)
   if (k.length < 6 || /\d/.test(k)) return -1;
   const max = k.length >= 9 ? 2 : 1;

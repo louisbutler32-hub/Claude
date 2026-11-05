@@ -26,8 +26,9 @@ export function layout(W, H, n, area) {
   const aw = ax1 - ax0, ah = ay1 - ay0;
   const cx = (ax0 + ax1) / 2, cy = ay0 + ah * 0.5;
   const portrait = aw < ah;
-  const rx = aw * (portrait ? 0.46 : 0.45);
-  const ry = Math.min(ah * 0.47, portrait ? rx * 1.45 : rx * 0.5);
+  // a smaller table, so the players sit closer together and more of the room shows round the edges
+  const rx = aw * (portrait ? 0.4 : 0.33);
+  const ry = Math.min(ah * 0.4, portrait ? rx * 1.4 : rx * 0.52);
   // seats sit just inside the cloth's edge, starting at the bottom (where "you" sit)
   const srx = rx * 0.84, sry = ry * 0.78;
   const seats = Array.from({ length: n }, (_, i) => {

@@ -24,14 +24,17 @@ function relayout(force) {
   // the big title (home, lobby, game over) needs more headroom than the one-line category
   const ph = phase(), titled = ph === "home" || ph === "lobby" || ph === "over";
   const area = wide
-    ? { left: 40, right: S.room && !document.body.classList.contains("chat-closed") ? 340 : 40, top: titled ? 185 : 140, bottom: 150 }
-    : { left: 14, right: 14, top: titled ? 190 : 140, bottom: 130 };
+    ? { left: 40, right: S.room && !document.body.classList.contains("chat-closed") ? 340 : 40, top: titled ? 185 : 210, bottom: 150 }
+    : { left: 14, right: 14, top: titled ? 190 : 200, bottom: 140 };
   const key = [W, H, count, area.right, area.top].join("x");
   if (!force && key === geoKey) return;
   geoKey = key;
   const L = layout(W, H, count, area);
   scene.draw(L);
   table.setLayout(L);
+  // the question box sits just above the top seat's head
+  const topSeat = Math.min(...L.seats.map((s) => s.y));
+  document.documentElement.style.setProperty("--prompt-bottom", Math.max(150, topSeat - 34 * L.P - 8) + "px");
   table.renderSeats();
   table.renderBubbles();
   table.placeCloche();

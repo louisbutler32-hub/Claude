@@ -99,7 +99,7 @@ CATEGORIES = [
     dict(id="tech", group="Other", emoji="💻", prompt="Name a tech company", kind="thing", limit=1200, minsl=20,
          where="{ ?x wdt:P31 ?t . VALUES ?t { wd:Q18388277 wd:Q1058914 } } UNION { ?x wdt:P452 ?ind . VALUES ?ind { wd:Q11661 wd:Q880371 wd:Q11016 } }"),
     dict(id="criminal", group="Other", emoji="🔪", prompt="Name a serial killer or famous criminal", kind="person", limit=1200, minsl=15,
-         where="?x wdt:P106 ?o . VALUES ?o { wd:Q484188 wd:Q2159907 } .",
+         where="{ ?x wdt:P106 ?o . VALUES ?o { wd:Q484188 wd:Q2159907 } . } UNION { ?x wdt:P1399 ?crime . }",
          # real people, and not heads of state
          keep="?x wdt:P31 wd:Q5 .", drop="?x wdt:P106 wd:Q82955 ."),
     dict(id="carbrand", group="Other", emoji="🚗", prompt="Name a car brand", kind="thing", limit=800, minsl=8,
@@ -129,6 +129,11 @@ CATEGORIES = [
          split="SELECT ?k WHERE { ?k wdt:P31 wd:Q3624078 ; wdt:P30 wd:Q46 . }",
          where="VALUES ?k { __KEYS__ } ?x wdt:P17 ?k ; wdt:P31 ?t . VALUES ?t { wd:Q515 wd:Q1549591 wd:Q1637706 wd:Q200250 wd:Q5119 wd:Q3957 } . ?x wdt:P1082 ?pop . FILTER(?pop >= 100000)"),
 ]
+# wider net: twice the answers and half the fame cut-off of the first build (lists are long tails;
+# a player naming something real but obscure should get the Chef's Secret, not a rejection)
+for _c in CATEGORIES:
+    _c["limit"] = min(_c["limit"] * 2, 9000)
+    _c["minsl"] = _c["minsl"] // 2
 for _c in CATEGORIES:
     _c["where"] = _c["where"] % {"song": "?x wdt:P31 ?st . VALUES ?st { wd:Q7366 wd:Q134556 } ."}
 

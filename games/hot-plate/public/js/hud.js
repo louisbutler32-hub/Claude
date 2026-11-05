@@ -126,7 +126,7 @@ function renderBurn() {
   const secs = Math.max(0, Math.ceil((g.breakUntil - now()) / 1000));
   $("dock-burn").innerHTML = `
     <p class="burn-head">${pop.out ? "💀" : "🔥"} <b>${p ? esc(p.name) : "someone"}</b> got burned${pop.out ? " and is out" : ""}</p>
-    <p class="burn-sub">next plate in ${secs}s</p>`;
+    <p class="burn-sub">${pop.samePlate ? `same question, next player · back on in ${secs}s` : `new question in ${secs}s`}</p>`;
 }
 
 /* ---------- game over ---------- */

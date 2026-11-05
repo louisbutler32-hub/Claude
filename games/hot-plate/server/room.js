@@ -9,6 +9,7 @@ const MIN_TURN = 4;      // the clock never drops below this many seconds
 const SPEEDUP = 0.5;     // each pass takes this much off the next turn
 // rarer answers cool the plate: how many "passes" of speed-up each tier adds (the kiss resets it)
 const COOL = [1, 0.5, 0, -1];
+const BURNS_PER_PLATE = 2; // the category only changes after this many burns
 // hot streak: answers served in a row without a wrong guess or a burn
 const streakMultiplier = (n) => (n >= 5 ? 2 : n >= 3 ? 1.5 : 1);
 // the chef's kiss: one hidden answer per plate, rare but gettable, worth a jackpot
@@ -224,7 +225,7 @@ class Room {
     const fresh = pool.filter((id) => !g.recentCats.includes(id));
     const catId = pick(fresh.length ? fresh : pool);
     g.recentCats = [catId, ...g.recentCats].slice(0, Math.min(8, Math.max(0, pool.length - 1)));
-    Object.assign(g, { round: g.round + 1, cat: this.cats.get(catId), served: [], used: new Set(), passes: 0, lastPop: null, breakUntil: null, kissBy: null });
+    Object.assign(g, { round: g.round + 1, cat: this.cats.get(catId), served: [], used: new Set(), passes: 0, lastPop: null, breakUntil: null, kissBy: null, burns: 0 });
     g.kiss = pickKiss(g.cat);
     for (const x of this.players) x.last = null;
     this.phase = "playing";
@@ -314,15 +315,27 @@ class Room {
       if (p.hearts === 0) { p.alive = false; out = true; }
       this.log(out ? `💀 ${p.name} got burned and is out` : `🔥 ${p.name} got burned`);
     }
+    // the category carries on after the first burn and changes after the second
+    g.burns = (g.burns || 0) + 1;
+    const samePlate = g.burns < BURNS_PER_PLATE;
     // unsaid answers (the chef's kiss included) stay secret, so they keep their value next time
-    g.lastPop = { id: g.holder, out };
+    g.lastPop = { id: g.holder, out, samePlate };
     this.broadcast({ t: "burn", id: g.holder, out });
     if (this.finishIfOver()) return;
     this.phase = "break";
     g.breakUntil = Date.now() + BREAK_MS;
     const next = this.nextAlive(g.holder);
     this.sync();
-    this.timer = setTimeout(() => this.nextPlate(next), BREAK_MS);
+    this.timer = setTimeout(() => (samePlate ? this.resumePlate(next) : this.nextPlate(next)), BREAK_MS);
+  }
+
+  // same category, same answers already served, fresh clock for the next player
+  resumePlate(holderId) {
+    const g = this.game;
+    Object.assign(g, { passes: 0, lastPop: null, breakUntil: null });
+    this.phase = "playing";
+    this.log(`${g.cat.emoji} Still on the stove: ${g.cat.prompt}`);
+    this.giveTurn(holderId);
   }
 
   finishIfOver() {

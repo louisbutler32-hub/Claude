@@ -504,3 +504,9 @@ body.my-turn .stage::after { content: ""; position: absolute; inset: 0; pointer-
 .my-lives.lost .hearts { animation: lives-lost .9s ease-out; }
 @keyframes lives-lost { 0%, 30% { border-color: #ff4d6d; box-shadow: 0 0 22px rgba(255, 77, 109, .8); transform: scale(1.15); } 100% { transform: scale(1); } }
 @media (max-width: 640px) { .seat .hp { font-size: 14px; } .my-lives .hearts { font-size: 20px; } }
+
+/* the question box sits low, right above the table, instead of up under the top bar */
+body[data-phase="play"] .marquee, body[data-phase="break"] .marquee { top: var(--prompt-bottom, 200px); transform: translate(-50%, -100%); }
+@media (min-width: 1100px) {
+  body:not(.chat-closed)[data-phase="play"] .marquee, body:not(.chat-closed)[data-phase="break"] .marquee { transform: translate(-50%, -100%); }
+}
