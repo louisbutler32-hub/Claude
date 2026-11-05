@@ -86,14 +86,16 @@ function renderPlayDock() {
   document.body.classList.toggle("my-turn", mine);
   $("prompt-turn").className = "prompt-turn" + (mine ? " mine" : "");
   $("prompt-turn").innerHTML = mine ? "🔥 your turn" : `${holder ? `${holder.emoji} ${esc(holder.name)}'s turn` : ""}`;
-  const playing = !!(m && m.alive);
+  // burned on this question: no second go until a new one comes out
+  const benched = !!(m && (g.sitOut || []).includes(m.id)) && !mine;
+  const playing = !!(m && m.alive) && !benched;
   // anyone still at the table can type ahead while they wait; it only serves when the plate is theirs
   $("answer-form").hidden = !playing;
   $("answer-form").classList.toggle("waiting", !mine);
   $("serve-btn").textContent = mine ? "serve" : "wait";
   $("answer-input").placeholder = mine ? "your plate! type an answer…" : "type ahead while you wait…";
   $("turn-line").hidden = mine;
-  if (!mine) $("turn-line").innerHTML = `${holder ? `${holder.emoji} <b>${esc(holder.name)}</b>` : "someone"} has the plate${!playing ? " · you're watching" : ""}`;
+  if (!mine) $("turn-line").innerHTML = `${holder ? `${holder.emoji} <b>${esc(holder.name)}</b>` : "someone"} has the plate${benched ? " · you got burned, so you sit out this question" : !playing ? " · you're watching" : ""}`;
   const fresh = mine && !(p && p.phase === "playing" && p.game && p.game.holder === r.you && p.game.turnEnd === g.turnEnd);
   if (fresh) {
     $("answer-input").focus({ preventScroll: true });
@@ -126,7 +128,7 @@ function renderBurn() {
   const secs = Math.max(0, Math.ceil((g.breakUntil - now()) / 1000));
   $("dock-burn").innerHTML = `
     <p class="burn-head">${pop.out ? "💀" : "🔥"} <b>${p ? esc(p.name) : "someone"}</b> got burned${pop.out ? " and is out" : ""}</p>
-    <p class="burn-sub">${pop.samePlate ? `same question, next player · back on in ${secs}s` : `new question in ${secs}s`}</p>`;
+    <p class="burn-sub">${pop.samePlate ? `same question, without ${pop.out ? "them" : pop.id === S.room.you ? "you" : esc(p ? p.name : "them")} · back on in ${secs}s` : `new question in ${secs}s`}</p>`;
 }
 
 /* ---------- game over ---------- */

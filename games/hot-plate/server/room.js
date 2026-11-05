@@ -130,11 +130,13 @@ class Room {
   nextAlive(fromId) {
     const n = this.players.length;
     const start = this.players.findIndex((p) => p.id === fromId);
-    // skip anyone who is reconnecting, unless they're all that's left
-    for (const needConnected of [true, false]) {
+    // anyone burned on this question sits out until the next one, and anyone reconnecting is
+    // skipped, unless that leaves nobody
+    const sitOut = (this.game && this.game.sitOut) || [];
+    for (const [skipBurned, needConnected] of [[true, true], [true, false], [false, true], [false, false]]) {
       for (let s = 1; s <= n; s++) {
         const p = this.players[(start + s + n) % n];
-        if (p.alive && (!needConnected || p.connected)) return p.id;
+        if (p.alive && (!needConnected || p.connected) && !(skipBurned && sitOut.includes(p.id))) return p.id;
       }
     }
     return fromId;
@@ -225,7 +227,7 @@ class Room {
     const fresh = pool.filter((id) => !g.recentCats.includes(id));
     const catId = pick(fresh.length ? fresh : pool);
     g.recentCats = [catId, ...g.recentCats].slice(0, Math.min(8, Math.max(0, pool.length - 1)));
-    Object.assign(g, { round: g.round + 1, cat: this.cats.get(catId), served: [], used: new Set(), passes: 0, lastPop: null, breakUntil: null, kissBy: null, burns: 0 });
+    Object.assign(g, { round: g.round + 1, cat: this.cats.get(catId), served: [], used: new Set(), passes: 0, lastPop: null, breakUntil: null, kissBy: null, burns: 0, sitOut: [] });
     g.kiss = pickKiss(g.cat);
     for (const x of this.players) x.last = null;
     this.phase = "playing";
@@ -320,6 +322,8 @@ class Room {
     const samePlate = g.burns < BURNS_PER_PLATE;
     // unsaid answers (the chef's kiss included) stay secret, so they keep their value next time
     g.lastPop = { id: g.holder, out, samePlate };
+    // burned on this question: no second go at it
+    if (samePlate && p && !out) g.sitOut = [...(g.sitOut || []), p.id];
     this.broadcast({ t: "burn", id: g.holder, out });
     if (this.finishIfOver()) return;
     this.phase = "break";
@@ -390,7 +394,7 @@ class Room {
         holder: g.holder, turnEnd: g.turnEnd, turnLen: g.turnLen, passes: g.passes,
         served: g.served.slice(0, 60).map(({ name, tier, by }) => ({ name, tier, by })),
         winner: g.winner || null, bestFind: g.bestFind || null, lastPop: g.lastPop || null, breakUntil: g.breakUntil || null,
-        kissBy: g.kissBy || null,
+        kissBy: g.kissBy || null, sitOut: g.sitOut || [],
       },
     };
   }

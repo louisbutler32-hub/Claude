@@ -22,10 +22,14 @@
   --t3: #2a0d1a;
 
   /* type */
-  --display: "Shrikhand", Georgia, serif;
-  --ui: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --caps: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "DM Mono", ui-monospace, Menlo, monospace;
+  /* Velvet Room: Playfair Display for titles and numbers, Fraunces for the question and answers,
+     Jost for labels, buttons, chat and small text */
+  --display: "Playfair Display", Georgia, serif;
+  --serif: "Fraunces", Georgia, serif;
+  --ui: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --caps: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --num: "Playfair Display", Georgia, serif;
 
   --heat: 0;
   color-scheme: dark;
@@ -568,3 +572,38 @@ body:not(.chat-closed) .chat-tab, body[data-phase="home"] .chat-tab { display: n
   body[data-phase="play"] .prompt-box { padding: 7px 12px 8px; }
   body[data-phase="play"] .turn-bar { height: 12px; }
 }
+.chip-s.benched { border-color: var(--muted); color: var(--text-dim); }
+
+/* ---------- Velvet Room type ---------- */
+body { font-family: var(--ui); }
+/* titles: Playfair 900 italic, gold, upright (no tilt), a soft shadow instead of the stacked one */
+#title h1, .over h2, .profile-head h2, .kiss-title, .turn-title, .big-btn, .float-pts {
+  font-family: var(--display); font-weight: 900; font-style: italic; letter-spacing: -.005em;
+}
+#title h1 { transform: none; text-shadow: 0 2px 0 var(--ink), 0 0 30px rgba(255, 190, 110, .35); }
+.over h2, .kiss-title, .turn-title { transform: none; }
+.turn-title { text-shadow: 0 3px 0 var(--ink), 0 0 30px rgba(255, 122, 47, .7); }
+.kiss-title { text-shadow: 0 3px 0 #7a1730, 0 0 26px rgba(255, 111, 145, .6); }
+.big-btn { font-size: 21px; letter-spacing: 0; }
+/* the question and the answers: Fraunces */
+.prompt-box .prompt-text, .prompt-text { font-family: var(--serif); font-weight: 700; letter-spacing: -.005em; }
+.prompt-turn { font-family: var(--display); font-style: italic; font-weight: 900; letter-spacing: .01em; text-transform: none !important; }
+.prompt-box .prompt-meta { font-family: var(--serif); font-style: italic; font-weight: 500; letter-spacing: 0; }
+.bubble { font-family: var(--serif); font-weight: 700; }
+#answer-input, .field.hot { font-family: var(--serif); font-weight: 500; }
+#answer-input::placeholder { font-style: italic; }
+/* labels and buttons: Jost caps, widely spaced */
+.label, .dock-info, .tab, .btn, .badge small, .my-lives .lbl, .burn-sub, .chat-tab, .seat .nm {
+  font-family: var(--caps); font-weight: 600; text-transform: uppercase;
+}
+.label, .badge small, .my-lives .lbl { letter-spacing: .32em; }
+.btn { letter-spacing: .24em; }
+.seat .nm { letter-spacing: .16em; font-size: 12px; }
+/* numbers: Playfair 700 lining figures */
+.badge b, .side-code, .seat .sc, .stepper .v, .streak b, .streak-card b, .field.code, .field.pin, .seat .pts, .float-pts {
+  font-family: var(--num); font-weight: 700; font-variant-numeric: lining-nums;
+}
+/* chat and small text: Jost; names in Fraunces italic gold */
+.chat-log { font-family: var(--ui); font-weight: 450; }
+.chat-log b { font-family: var(--serif); font-style: italic; font-weight: 600; color: var(--gold); }
+.turn-line b, .burn-head b { font-family: var(--serif); font-style: italic; font-weight: 600; }
