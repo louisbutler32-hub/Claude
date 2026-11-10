@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voice Studio</title>
+<style>
+:root {
+  --bg: #f3f4f6; --panel: #fff; --ink: #15171c; --muted: #5d6370; --line: #dcdfe5; --accent: #d93a2b; --accent-ink: #fff; --bad: #c62828;
+  --font: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #111318; --panel: #1a1d24; --ink: #eef0f4; --muted: #9aa1ae; --line: #2c313b; --accent: #ff5a47; --accent-ink: #15171c; --bad: #ff6b6b; color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 var(--font); }
+.wrap { max-width: 860px; margin: 0 auto; padding: 18px 16px 48px; display: grid; gap: 14px; }
+h1 { margin: 0; font-size: 22px; display: flex; align-items: center; gap: 10px; }
+h1 i { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+.sub { color: var(--muted); font-size: 13.5px; margin: 0; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: grid; gap: 12px; }
+.row { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }
+label { display: grid; gap: 4px; font-size: 12.5px; color: var(--muted); font-weight: 500; }
+select, input, textarea, button { font: inherit; color: inherit; }
+select, input[type="number"], textarea { border: 1px solid var(--line); background: var(--bg); border-radius: 8px; padding: 7px 9px; }
+textarea { width: 100%; min-height: 240px; font-size: 15px; line-height: 1.5; resize: vertical; }
+input[type="range"] { width: 160px; accent-color: var(--accent); }
+button { border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 8px 14px; cursor: pointer; font-weight: 500; }
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+button:disabled { opacity: .55; cursor: progress; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.spacer { flex: 1; }
+.note { font-size: 12.5px; color: var(--muted); }
+.msg { font-size: 14px; min-height: 1.2em; }
+.msg.err { color: var(--bad); }
+audio { width: 100%; }
+.lines { font-size: 13px; color: var(--muted); display: grid; gap: 2px; font-variant-numeric: tabular-nums; max-height: 200px; overflow-y: auto; }
+.hist { display: grid; gap: 8px; }
+.hist div { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 13px; }
+.hist audio { flex: 1; min-width: 220px; height: 34px; }
+a { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1><i aria-hidden="true"></i>Voice Studio</h1>
+  <p class="sub">Paste a script, pick a voice, and render a voice-over MP3. Each line or paragraph becomes one take, with a pause between takes.</p>
+
+  <section class="card">
+    <div class="row">
+      <label for="voice">Voice<select id="voice"></select></label>
+      <label for="speed">Speed <span id="speed-v">0.95×</span><input id="speed" type="range" min="0.6" max="1.4" step="0.01" value="0.95"></label>
+      <label for="gap">Pause between lines (s)<input id="gap" type="number" min="0" max="3" step="0.05" value="0.35"></label>
+      <span class="spacer"></span>
+      <button id="try">Hear this voice</button>
+    </div>
+    <audio id="preview" hidden controls></audio>
+    <label for="script">Script<textarea id="script" placeholder="Type or paste your narration here. New line = new take.">In August nineteen eighty-six, a lake in Cameroon exhaled.
+By morning, one thousand seven hundred and forty-six people were dead.
+Almost none of them woke up.</textarea></label>
+    <div class="row">
+      <span class="note" id="count"></span>
+      <span class="spacer"></span>
+      <button class="primary" id="render">Render voice-over</button>
+    </div>
+    <div class="msg" id="msg" role="status"></div>
+  </section>
+
+  <section class="card" id="result" hidden>
+    <strong id="r-title"></strong>
+    <audio id="r-audio" controls></audio>
+    <div class="row"><a id="r-dl" href="#">Download MP3</a><span class="note">Line timings are saved next to it as .json.</span></div>
+    <div class="lines" id="r-lines"></div>
+  </section>
+
+  <section class="card">
+    <strong>Recent renders</strong>
+    <div class="hist" id="hist"><span class="note">Nothing yet.</span></div>
+  </section>
+</div>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+function save() { try { localStorage.setItem("vs", JSON.stringify({ voice: $("voice").value, speed: $("speed").value, gap: $("gap").value, script: $("script").value })); } catch (e) {} }
+function counts() {
+  const t = $("script").value.trim();
+  const words = t ? t.split(/\s+/).length : 0, lines = t ? t.split(/\n+/).filter(x => x.trim()).length : 0;
+  const est = words / (150 * Number($("speed").value)) * 60;
+  $("count").textContent = `${words} words · ${lines} takes · about ${fmt(est)} long`;
+}
+async function loadVoices() {
+  const vs = await (await fetch("api/voices")).json();
+  const groups = {};
+  vs.forEach(v => (groups[v.lang] = groups[v.lang] || []).push(v));
+  $("voice").innerHTML = Object.entries(groups).map(([g, list]) => `<optgroup label="${esc(g)}">${list.map(v => `<option value="${v.id}">${esc(v.name)} (${v.gender})</option>`).join("")}</optgroup>`).join("");
+  let s = {}; try { s = JSON.parse(localStorage.getItem("vs")) || {}; } catch (e) {}
+  $("voice").value = s.voice || "am_liam";
+  if (s.speed) $("speed").value = s.speed;
+  if (s.gap) $("gap").value = s.gap;
+  if (s.script) $("script").value = s.script;
+  $("speed-v").textContent = Number($("speed").value).toFixed(2) + "×";
+  counts();
+}
+async function loadHistory() {
+  const h = await (await fetch("api/history")).json();
+  $("hist").innerHTML = h.length ? h.map(f => `<div><span>${esc(f.file)}</span><audio controls preload="none" src="files/${encodeURIComponent(f.file)}"></audio><a href="files/${encodeURIComponent(f.file)}?download=1">Download</a></div>`).join("") : `<span class="note">Nothing yet.</span>`;
+}
+$("speed").addEventListener("input", () => { $("speed-v").textContent = Number($("speed").value).toFixed(2) + "×"; counts(); save(); });
+["voice", "gap"].forEach(id => $(id).addEventListener("change", save));
+$("script").addEventListener("input", () => { counts(); save(); });
+$("try").addEventListener("click", async () => {
+  const b = $("try"); b.disabled = true; b.textContent = "Loading…";
+  const first = $("script").value.split(/\n/).find(x => x.trim()) || "";
+  const url = `api/preview?voice=${encodeURIComponent($("voice").value)}&speed=${$("speed").value}&text=${encodeURIComponent(first.slice(0, 200))}&t=${Date.now()}`;
+  const a = $("preview"); a.hidden = false; a.src = url;
+  try { await a.play(); } catch (e) {}
+  a.onloadeddata = a.onerror = () => { b.disabled = false; b.textContent = "Hear this voice"; };
+});
+$("render").addEventListener("click", async () => {
+  const b = $("render"), msg = $("msg");
+  b.disabled = true; msg.className = "msg"; msg.textContent = "Rendering… roughly 10–20 seconds per minute of audio.";
+  const t0 = Date.now();
+  try {
+    const r = await fetch("api/render", { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ script: $("script").value, voice: $("voice").value, speed: Number($("speed").value), gap: Number($("gap").value) }) });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || "Render failed.");
+    msg.textContent = `Done in ${((Date.now() - t0) / 1000).toFixed(0)}s.`;
+    $("result").hidden = false;
+    $("r-title").textContent = `${d.file} · ${fmt(d.seconds)}`;
+    $("r-audio").src = "files/" + encodeURIComponent(d.file);
+    $("r-dl").href = "files/" + encodeURIComponent(d.file) + "?download=1";
+    $("r-lines").innerHTML = d.lines.map(l => `<div>${l.start.toFixed(2)}s  ${esc(l.text)}</div>`).join("");
+    loadHistory();
+  } catch (e) { msg.className = "msg err"; msg.textContent = e.message; }
+  b.disabled = false;
+});
+loadVoices().catch(() => { $("msg").className = "msg err"; $("msg").textContent = "Can't reach the studio server. Is it running?"; });
+loadHistory().catch(() => {});
+</script>
+</body>
+</html>
