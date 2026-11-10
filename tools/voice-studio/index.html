@@ -6,64 +6,79 @@
 <title>Voice Studio</title>
 <style>
 :root {
-  --bg: #f3f4f6; --panel: #fff; --ink: #15171c; --muted: #5d6370; --line: #dcdfe5; --accent: #d93a2b; --accent-ink: #fff; --bad: #c62828;
+  --bg: #f3f4f6; --panel: #fff; --ink: #15171c; --muted: #5d6370; --line: #dcdfe5; --accent: #d93a2b; --accent-ink: #fff; --bad: #c62828; --ok: #1f8a4c;
   --font: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
-  :root { --bg: #111318; --panel: #1a1d24; --ink: #eef0f4; --muted: #9aa1ae; --line: #2c313b; --accent: #ff5a47; --accent-ink: #15171c; --bad: #ff6b6b; color-scheme: dark; }
+  :root { --bg: #111318; --panel: #1a1d24; --ink: #eef0f4; --muted: #9aa1ae; --line: #2c313b; --accent: #ff5a47; --accent-ink: #15171c; --bad: #ff6b6b; --ok: #4cc27f; color-scheme: dark; }
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 var(--font); }
 .wrap { max-width: 860px; margin: 0 auto; padding: 18px 16px 48px; display: grid; gap: 14px; }
 h1 { margin: 0; font-size: 22px; display: flex; align-items: center; gap: 10px; }
 h1 i { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+h2 { margin: 0; font-size: 16px; }
 .sub { color: var(--muted); font-size: 13.5px; margin: 0; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: grid; gap: 12px; }
 .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }
 label { display: grid; gap: 4px; font-size: 12.5px; color: var(--muted); font-weight: 500; }
+label.check { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; color: var(--ink); font-weight: 400; }
+label.check input { margin-top: 3px; width: 17px; height: 17px; accent-color: var(--accent); flex: none; }
 select, input, textarea, button { font: inherit; color: inherit; }
-select, input[type="number"], textarea { border: 1px solid var(--line); background: var(--bg); border-radius: 8px; padding: 7px 9px; }
-textarea { width: 100%; min-height: 240px; font-size: 15px; line-height: 1.5; resize: vertical; }
-input[type="range"] { width: 160px; accent-color: var(--accent); }
+select, input[type="number"], input[type="text"], textarea { border: 1px solid var(--line); background: var(--bg); border-radius: 8px; padding: 7px 9px; }
+input[type="file"] { font-size: 13.5px; }
+textarea { width: 100%; min-height: 220px; font-size: 15px; line-height: 1.5; resize: vertical; }
+input[type="range"] { width: 150px; accent-color: var(--accent); }
 button { border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 8px 14px; cursor: pointer; font-weight: 500; }
 button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+button.ghost { background: none; border-color: transparent; color: var(--muted); padding: 4px 8px; }
 button:disabled { opacity: .55; cursor: progress; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .spacer { flex: 1; }
 .note { font-size: 12.5px; color: var(--muted); }
 .msg { font-size: 14px; min-height: 1.2em; }
 .msg.err { color: var(--bad); }
+.msg.ok { color: var(--ok); }
+.prog { height: 8px; border-radius: 4px; background: var(--bg); border: 1px solid var(--line); overflow: hidden; }
+.prog i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .4s; }
 audio { width: 100%; }
 .lines { font-size: 13px; color: var(--muted); display: grid; gap: 2px; font-variant-numeric: tabular-nums; max-height: 200px; overflow-y: auto; }
 .hist { display: grid; gap: 8px; }
-.hist div { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 13px; }
+.hist div, .clones div { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 13px; }
 .hist audio { flex: 1; min-width: 220px; height: 34px; }
+.clones { display: grid; gap: 6px; }
+.tag { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; padding: 2px 7px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); }
 a { color: var(--ink); }
+[hidden] { display: none !important; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1><i aria-hidden="true"></i>Voice Studio</h1>
-  <p class="sub">Paste a script, pick a voice, and render a voice-over MP3. Each line or paragraph becomes one take, with a pause between takes.</p>
+  <p class="sub">Paste a script, pick a voice, and render a voice-over MP3. Each line becomes one take, with a pause between takes.</p>
 
   <section class="card">
     <div class="row">
       <label for="voice">Voice<select id="voice"></select></label>
-      <label for="speed">Speed <span id="speed-v">0.95×</span><input id="speed" type="range" min="0.6" max="1.4" step="0.01" value="0.95"></label>
+      <label for="speed" id="speed-wrap">Speed <span id="speed-v">0.95×</span><input id="speed" type="range" min="0.6" max="1.4" step="0.01" value="0.95"></label>
+      <label for="exag" id="exag-wrap" hidden>Expressiveness <span id="exag-v">0.50</span><input id="exag" type="range" min="0.25" max="1.2" step="0.05" value="0.5"></label>
+      <label for="cfg" id="cfg-wrap" hidden>Pacing <span id="cfg-v">0.50</span><input id="cfg" type="range" min="0.1" max="1" step="0.05" value="0.5"></label>
       <label for="gap">Pause between lines (s)<input id="gap" type="number" min="0" max="3" step="0.05" value="0.35"></label>
       <span class="spacer"></span>
       <button id="try">Hear this voice</button>
     </div>
+    <p class="note" id="clone-note" hidden><span class="tag">Cloned</span> Cloning is slow on this machine: about 6 seconds of work per second of audio, so a 1-minute script takes around 6 minutes. More expressiveness gives a more dramatic read. Lower pacing slows the delivery down.</p>
     <audio id="preview" hidden controls></audio>
-    <label for="script">Script<textarea id="script" placeholder="Type or paste your narration here. New line = new take.">In August nineteen eighty-six, a lake in Cameroon exhaled.
-By morning, one thousand seven hundred and forty-six people were dead.
-Almost none of them woke up.</textarea></label>
+    <label for="script">Script<textarea id="script" placeholder="Type or paste your narration here. New line = new take.">Luffy's bounty didn't just go up.
+It jumped by one point five billion berries overnight.
+And the World Government had a very good reason to panic.</textarea></label>
     <div class="row">
       <span class="note" id="count"></span>
       <span class="spacer"></span>
       <button class="primary" id="render">Render voice-over</button>
     </div>
+    <div class="prog" id="prog" hidden><i></i></div>
     <div class="msg" id="msg" role="status"></div>
   </section>
 
@@ -74,8 +89,20 @@ Almost none of them woke up.</textarea></label>
     <div class="lines" id="r-lines"></div>
   </section>
 
+  <section class="card" id="clone-card" hidden>
+    <h2>Clone a voice</h2>
+    <p class="sub">Upload 10–20 seconds of one person talking clearly, with no music, other voices or echo. Only the first 20 seconds are used.</p>
+    <div class="row">
+      <label for="c-name">Name it<input id="c-name" type="text" placeholder="My narrator voice" maxlength="40"></label>
+      <label for="c-file">Voice sample (MP3, WAV or M4A)<input id="c-file" type="file" accept="audio/*,.mp3,.wav,.m4a"></label>
+    </div>
+    <label class="check" for="c-consent"><input id="c-consent" type="checkbox">This is my own voice, or the speaker has given me permission to clone it.</label>
+    <div class="row"><button class="primary" id="c-go">Clone this voice</button><span class="msg" id="c-msg" role="status"></span></div>
+    <div class="clones" id="clones"></div>
+  </section>
+
   <section class="card">
-    <strong>Recent renders</strong>
+    <h2>Recent renders</h2>
     <div class="hist" id="hist"><span class="note">Nothing yet.</span></div>
   </section>
 </div>
@@ -84,62 +111,122 @@ Almost none of them woke up.</textarea></label>
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
-function save() { try { localStorage.setItem("vs", JSON.stringify({ voice: $("voice").value, speed: $("speed").value, gap: $("gap").value, script: $("script").value })); } catch (e) {} }
+let VOICES = [], CLONE = false;
+const isClone = () => $("voice").value.startsWith("clone:");
+function save() { try { localStorage.setItem("vs", JSON.stringify({ voice: $("voice").value, speed: $("speed").value, gap: $("gap").value, exag: $("exag").value, cfg: $("cfg").value, script: $("script").value })); } catch (e) {} }
 function counts() {
   const t = $("script").value.trim();
   const words = t ? t.split(/\s+/).length : 0, lines = t ? t.split(/\n+/).filter(x => x.trim()).length : 0;
-  const est = words / (150 * Number($("speed").value)) * 60;
-  $("count").textContent = `${words} words · ${lines} takes · about ${fmt(est)} long`;
+  const est = words / (150 * (isClone() ? 1 : Number($("speed").value))) * 60;
+  $("count").textContent = `${words} words · ${lines} takes · about ${fmt(est)} long` + (isClone() ? ` · roughly ${Math.max(1, Math.round(est * 6 / 60))} min to render` : "");
 }
-async function loadVoices() {
-  const vs = await (await fetch("api/voices")).json();
-  const groups = {};
-  vs.forEach(v => (groups[v.lang] = groups[v.lang] || []).push(v));
-  $("voice").innerHTML = Object.entries(groups).map(([g, list]) => `<optgroup label="${esc(g)}">${list.map(v => `<option value="${v.id}">${esc(v.name)} (${v.gender})</option>`).join("")}</optgroup>`).join("");
-  let s = {}; try { s = JSON.parse(localStorage.getItem("vs")) || {}; } catch (e) {}
-  $("voice").value = s.voice || "am_liam";
-  if (s.speed) $("speed").value = s.speed;
-  if (s.gap) $("gap").value = s.gap;
-  if (s.script) $("script").value = s.script;
-  $("speed-v").textContent = Number($("speed").value).toFixed(2) + "×";
+function modeUi() {
+  const c = isClone();
+  $("speed-wrap").hidden = c; $("exag-wrap").hidden = !c; $("cfg-wrap").hidden = !c; $("clone-note").hidden = !c;
+  $("try").textContent = c ? "Play the sample" : "Hear this voice";
   counts();
+}
+async function loadVoices(select) {
+  const d = await (await fetch("api/voices")).json();
+  VOICES = d.voices; CLONE = d.clone;
+  $("clone-card").hidden = !CLONE;
+  const groups = {};
+  VOICES.forEach(v => (groups[v.lang] = groups[v.lang] || []).push(v));
+  const prev = select || $("voice").value;
+  $("voice").innerHTML = Object.entries(groups).map(([g, list]) => `<optgroup label="${esc(g)}">${list.map(v => `<option value="${esc(v.id)}">${esc(v.name)}${v.gender === "cloned" ? "" : ` (${v.gender})`}</option>`).join("")}</optgroup>`).join("");
+  if (prev && VOICES.some(v => v.id === prev)) $("voice").value = prev;
+  const clones = VOICES.filter(v => v.gender === "cloned");
+  $("clones").innerHTML = clones.length ? `<span class="note">Your cloned voices:</span>` + clones.map(v => `<div><span class="tag">Cloned</span><b>${esc(v.name)}</b><span class="note">${v.seconds}s sample</span><button class="ghost" data-del="${esc(v.id)}">Delete</button></div>`).join("") : "";
+  modeUi();
 }
 async function loadHistory() {
   const h = await (await fetch("api/history")).json();
   $("hist").innerHTML = h.length ? h.map(f => `<div><span>${esc(f.file)}</span><audio controls preload="none" src="files/${encodeURIComponent(f.file)}"></audio><a href="files/${encodeURIComponent(f.file)}?download=1">Download</a></div>`).join("") : `<span class="note">Nothing yet.</span>`;
 }
-$("speed").addEventListener("input", () => { $("speed-v").textContent = Number($("speed").value).toFixed(2) + "×"; counts(); save(); });
-["voice", "gap"].forEach(id => $(id).addEventListener("change", save));
+function bindRange(id, out, digits, suffix) { $(id).addEventListener("input", () => { $(out).textContent = Number($(id).value).toFixed(digits) + (suffix || ""); counts(); save(); }); }
+bindRange("speed", "speed-v", 2, "×"); bindRange("exag", "exag-v", 2); bindRange("cfg", "cfg-v", 2);
+$("voice").addEventListener("change", () => { modeUi(); save(); });
+$("gap").addEventListener("change", save);
 $("script").addEventListener("input", () => { counts(); save(); });
-$("try").addEventListener("click", async () => {
-  const b = $("try"); b.disabled = true; b.textContent = "Loading…";
+
+$("try").addEventListener("click", () => {
+  const b = $("try"); b.disabled = true;
   const first = $("script").value.split(/\n/).find(x => x.trim()) || "";
-  const url = `api/preview?voice=${encodeURIComponent($("voice").value)}&speed=${$("speed").value}&text=${encodeURIComponent(first.slice(0, 200))}&t=${Date.now()}`;
-  const a = $("preview"); a.hidden = false; a.src = url;
-  try { await a.play(); } catch (e) {}
-  a.onloadeddata = a.onerror = () => { b.disabled = false; b.textContent = "Hear this voice"; };
+  const a = $("preview"); a.hidden = false;
+  a.src = `api/preview?voice=${encodeURIComponent($("voice").value)}&speed=${$("speed").value}&text=${encodeURIComponent(first.slice(0, 200))}&t=${Date.now()}`;
+  a.play().catch(() => {});
+  a.onloadeddata = a.onerror = () => { b.disabled = false; };
 });
+
 $("render").addEventListener("click", async () => {
-  const b = $("render"), msg = $("msg");
-  b.disabled = true; msg.className = "msg"; msg.textContent = "Rendering… roughly 10–20 seconds per minute of audio.";
+  const b = $("render"), msg = $("msg"), prog = $("prog");
+  b.disabled = true; msg.className = "msg"; msg.textContent = "Starting…"; prog.hidden = false; prog.firstElementChild.style.width = "2%";
   const t0 = Date.now();
   try {
     const r = await fetch("api/render", { method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ script: $("script").value, voice: $("voice").value, speed: Number($("speed").value), gap: Number($("gap").value) }) });
+      body: JSON.stringify({ script: $("script").value, voice: $("voice").value, speed: Number($("speed").value), gap: Number($("gap").value), exaggeration: Number($("exag").value), cfg: Number($("cfg").value) }) });
     const d = await r.json();
     if (!r.ok) throw new Error(d.error || "Render failed.");
-    msg.textContent = `Done in ${((Date.now() - t0) / 1000).toFixed(0)}s.`;
+    let job;
+    for (;;) {
+      await new Promise(res => setTimeout(res, 1500));
+      job = await (await fetch("api/job?id=" + d.job)).json();
+      const pct = job.total ? job.done / job.total : 0;
+      prog.firstElementChild.style.width = Math.max(2, pct * 100) + "%";
+      const el = (Date.now() - t0) / 1000;
+      if (job.state !== "running") break;
+      const left = pct > 0 ? ` · about ${fmt(el / pct - el)} left` : "";
+      msg.textContent = job.total ? `Rendering line ${Math.min(job.done + 1, job.total)} of ${job.total} · ${fmt(el)} so far${left}` : "Rendering…";
+    }
+    if (job.state === "error") throw new Error(job.error);
+    const res = job.result;
+    msg.className = "msg ok"; msg.textContent = `Done in ${fmt((Date.now() - t0) / 1000)}.`;
     $("result").hidden = false;
-    $("r-title").textContent = `${d.file} · ${fmt(d.seconds)}`;
-    $("r-audio").src = "files/" + encodeURIComponent(d.file);
-    $("r-dl").href = "files/" + encodeURIComponent(d.file) + "?download=1";
-    $("r-lines").innerHTML = d.lines.map(l => `<div>${l.start.toFixed(2)}s  ${esc(l.text)}</div>`).join("");
+    $("r-title").textContent = `${res.file} · ${fmt(res.seconds)}`;
+    $("r-audio").src = "files/" + encodeURIComponent(res.file);
+    $("r-dl").href = "files/" + encodeURIComponent(res.file) + "?download=1";
+    $("r-lines").innerHTML = res.lines.map(l => `<div>${l.start.toFixed(2)}s  ${esc(l.text)}</div>`).join("");
+    $("result").scrollIntoView({ behavior: "smooth", block: "nearest" });
     loadHistory();
   } catch (e) { msg.className = "msg err"; msg.textContent = e.message; }
-  b.disabled = false;
+  prog.hidden = true; b.disabled = false;
 });
-loadVoices().catch(() => { $("msg").className = "msg err"; $("msg").textContent = "Can't reach the studio server. Is it running?"; });
-loadHistory().catch(() => {});
+
+$("c-go").addEventListener("click", async () => {
+  const m = $("c-msg"), f = $("c-file").files[0];
+  m.className = "msg err";
+  if (!f) { m.textContent = "Choose an audio file first."; return; }
+  if (!$("c-consent").checked) { m.textContent = "Tick the permission box first."; return; }
+  const name = $("c-name").value.trim() || f.name.replace(/\.[^.]+$/, "");
+  $("c-go").disabled = true; m.className = "msg"; m.textContent = "Uploading…";
+  try {
+    const r = await fetch(`api/voice-upload?consent=1&name=${encodeURIComponent(name)}`, { method: "POST", body: f });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error);
+    m.className = "msg ok"; m.textContent = `“${d.name}” is ready. It's selected above.`;
+    $("c-file").value = ""; $("c-name").value = "";
+    await loadVoices(d.id); save();
+  } catch (e) { m.className = "msg err"; m.textContent = e.message || "Upload failed."; }
+  $("c-go").disabled = false;
+});
+$("clones").addEventListener("click", async e => {
+  const b = e.target.closest("[data-del]"); if (!b) return;
+  if (b.dataset.confirm !== "1") { b.dataset.confirm = "1"; b.textContent = "Tap again to delete"; return; }
+  await fetch("api/voice-delete?id=" + encodeURIComponent(b.dataset.del), { method: "POST" });
+  loadVoices();
+});
+
+(async () => {
+  let s = {}; try { s = JSON.parse(localStorage.getItem("vs")) || {}; } catch (e) {}
+  ["speed", "gap", "exag", "cfg"].forEach(k => { if (s[k]) $(k).value = s[k]; });
+  if (s.script) $("script").value = s.script;
+  $("speed-v").textContent = Number($("speed").value).toFixed(2) + "×";
+  $("exag-v").textContent = Number($("exag").value).toFixed(2);
+  $("cfg-v").textContent = Number($("cfg").value).toFixed(2);
+  try { await loadVoices(s.voice || "clone:one-piece-vo"); }
+  catch (e) { $("msg").className = "msg err"; $("msg").textContent = "Can't reach the studio server. Is it running?"; }
+  loadHistory().catch(() => {});
+})();
 </script>
 </body>
 </html>
