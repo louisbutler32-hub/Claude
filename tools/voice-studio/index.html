@@ -64,11 +64,13 @@ a { color: var(--ink); }
       <label for="speed" id="speed-wrap">Speed <span id="speed-v">0.95×</span><input id="speed" type="range" min="0.6" max="1.4" step="0.01" value="0.95"></label>
       <label for="exag" id="exag-wrap" hidden>Expressiveness <span id="exag-v">0.50</span><input id="exag" type="range" min="0.25" max="1.2" step="0.05" value="0.5"></label>
       <label for="cfg" id="cfg-wrap" hidden>Pacing <span id="cfg-v">0.50</span><input id="cfg" type="range" min="0.1" max="1" step="0.05" value="0.5"></label>
+      <label for="takes" id="takes-wrap" hidden>Takes per line<select id="takes"><option value="1">1 (fastest)</option><option value="2" selected>2, keep the best</option><option value="3">3, keep the best</option></select></label>
       <label for="gap">Pause between lines (s)<input id="gap" type="number" min="0" max="3" step="0.05" value="0.35"></label>
       <span class="spacer"></span>
       <button id="try">Hear this voice</button>
     </div>
-    <p class="note" id="clone-note" hidden><span class="tag">Cloned</span> Cloning is slow on this machine: about 6 seconds of work per second of audio, so a 1-minute script takes around 6 minutes. More expressiveness gives a more dramatic read. Lower pacing slows the delivery down.</p>
+    <p class="note" id="clone-note" hidden><span class="tag">Cloned</span> Cloning is slow on this machine: about 6 seconds of work per second of audio, so a 1-minute script takes around 6 minutes. More expressiveness gives a more dramatic read. Lower pacing slows the delivery down. With 2 or 3 takes, each line is generated that many times and the studio keeps the take that sounds most like the sample and reads the words correctly. That's better quality but takes 2–3× as long.</p>
+    <label class="check" for="master"><input id="master" type="checkbox" checked>Master the audio: match the tone to the original sample (cloned voices), compress, and level to −16 LUFS at 48 kHz, ready for YouTube.</label>
     <audio id="preview" hidden controls></audio>
     <label for="script">Script<textarea id="script" placeholder="Type or paste your narration here. New line = new take.">Luffy's bounty didn't just go up.
 It jumped by one point five billion berries overnight.
@@ -113,16 +115,16 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;",
 const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
 let VOICES = [], CLONE = false;
 const isClone = () => $("voice").value.startsWith("clone:");
-function save() { try { localStorage.setItem("vs", JSON.stringify({ voice: $("voice").value, speed: $("speed").value, gap: $("gap").value, exag: $("exag").value, cfg: $("cfg").value, script: $("script").value })); } catch (e) {} }
+function save() { try { localStorage.setItem("vs", JSON.stringify({ takes: $("takes").value, master: $("master").checked, voice: $("voice").value, speed: $("speed").value, gap: $("gap").value, exag: $("exag").value, cfg: $("cfg").value, script: $("script").value })); } catch (e) {} }
 function counts() {
   const t = $("script").value.trim();
   const words = t ? t.split(/\s+/).length : 0, lines = t ? t.split(/\n+/).filter(x => x.trim()).length : 0;
   const est = words / (150 * (isClone() ? 1 : Number($("speed").value))) * 60;
-  $("count").textContent = `${words} words · ${lines} takes · about ${fmt(est)} long` + (isClone() ? ` · roughly ${Math.max(1, Math.round(est * 6 / 60))} min to render` : "");
+  $("count").textContent = `${words} words · ${lines} takes · about ${fmt(est)} long` + (isClone() ? ` · roughly ${Math.max(1, Math.round(est * 6.5 * Number($("takes").value) / 60))} min to render` : "");
 }
 function modeUi() {
   const c = isClone();
-  $("speed-wrap").hidden = c; $("exag-wrap").hidden = !c; $("cfg-wrap").hidden = !c; $("clone-note").hidden = !c;
+  $("speed-wrap").hidden = c; $("exag-wrap").hidden = !c; $("takes-wrap").hidden = !c; $("cfg-wrap").hidden = !c; $("clone-note").hidden = !c;
   $("try").textContent = c ? "Play the sample" : "Hear this voice";
   counts();
 }
@@ -147,6 +149,8 @@ function bindRange(id, out, digits, suffix) { $(id).addEventListener("input", ()
 bindRange("speed", "speed-v", 2, "×"); bindRange("exag", "exag-v", 2); bindRange("cfg", "cfg-v", 2);
 $("voice").addEventListener("change", () => { modeUi(); save(); });
 $("gap").addEventListener("change", save);
+$("takes").addEventListener("change", () => { counts(); save(); });
+$("master").addEventListener("change", save);
 $("script").addEventListener("input", () => { counts(); save(); });
 
 $("try").addEventListener("click", () => {
@@ -164,7 +168,7 @@ $("render").addEventListener("click", async () => {
   const t0 = Date.now();
   try {
     const r = await fetch("api/render", { method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ script: $("script").value, voice: $("voice").value, speed: Number($("speed").value), gap: Number($("gap").value), exaggeration: Number($("exag").value), cfg: Number($("cfg").value) }) });
+      body: JSON.stringify({ script: $("script").value, voice: $("voice").value, speed: Number($("speed").value), gap: Number($("gap").value), exaggeration: Number($("exag").value), cfg: Number($("cfg").value), takes: isClone() ? Number($("takes").value) : 1, master: $("master").checked }) });
     const d = await r.json();
     if (!r.ok) throw new Error(d.error || "Render failed.");
     let job;
@@ -176,7 +180,7 @@ $("render").addEventListener("click", async () => {
       const el = (Date.now() - t0) / 1000;
       if (job.state !== "running") break;
       const left = pct > 0 ? ` · about ${fmt(el / pct - el)} left` : "";
-      msg.textContent = job.total ? `Rendering line ${Math.min(job.done + 1, job.total)} of ${job.total} · ${fmt(el)} so far${left}` : "Rendering…";
+      msg.textContent = job.stage === "mastering" ? "Mastering…" : job.total ? `Rendering line ${Math.min(job.done + 1, job.total)} of ${job.total} · ${fmt(el)} so far${left}` : "Rendering…";
     }
     if (job.state === "error") throw new Error(job.error);
     const res = job.result;
@@ -218,12 +222,13 @@ $("clones").addEventListener("click", async e => {
 
 (async () => {
   let s = {}; try { s = JSON.parse(localStorage.getItem("vs")) || {}; } catch (e) {}
-  ["speed", "gap", "exag", "cfg"].forEach(k => { if (s[k]) $(k).value = s[k]; });
+  ["speed", "gap", "exag", "cfg", "takes"].forEach(k => { if (s[k]) $(k).value = s[k]; });
+  if (s.master === false) $("master").checked = false;
   if (s.script) $("script").value = s.script;
   $("speed-v").textContent = Number($("speed").value).toFixed(2) + "×";
   $("exag-v").textContent = Number($("exag").value).toFixed(2);
   $("cfg-v").textContent = Number($("cfg").value).toFixed(2);
-  try { await loadVoices(s.voice || "clone:one-piece-vo"); }
+  try { await loadVoices(s.voice || "clone:slam-dunk"); }
   catch (e) { $("msg").className = "msg err"; $("msg").textContent = "Can't reach the studio server. Is it running?"; }
   loadHistory().catch(() => {});
 })();

@@ -68,6 +68,81 @@ def chatterbox():
     return _cb
 
 
+_asr = None
+BANDS = [100, 125, 160, 200, 250, 315, 400, 500, 630, 800, 1000, 1250, 1600, 2000, 2500,
+         3150, 4000, 5000, 6300, 8000, 10000]
+
+
+def whisper():
+    global _asr
+    if _asr is None:
+        from faster_whisper import WhisperModel
+        _asr = WhisperModel("base.en", device="cpu", compute_type="int8")
+    return _asr
+
+
+def ltas(y, sr=SR):
+    """Long-term average spectrum of the voiced frames, in dB per 1/3-octave band."""
+    import librosa
+    st = np.abs(librosa.stft(y, n_fft=2048, hop_length=512)) ** 2
+    e = st.sum(0)
+    st = st[:, e > np.percentile(e, 40)]
+    f = librosa.fft_frequencies(sr=sr, n_fft=2048)
+    return [float(10 * np.log10(st[(f >= b / 2 ** (1 / 6)) & (f < b * 2 ** (1 / 6))].mean() + 1e-12)) for b in BANDS]
+
+
+def speaker_embedding(y, sr=SR):
+    import librosa
+    y16 = librosa.resample(y, orig_sr=sr, target_sr=16000) if sr != 16000 else y
+    e = chatterbox().ve.embeds_from_wavs([y16.astype(np.float32)], sample_rate=16000, as_spk=True)
+    return e / np.linalg.norm(e)
+
+
+def voice_profile(vid):
+    """Tone curve + speaker embedding of the whole uploaded sample, cached next to it."""
+    meta_p = os.path.join(VOICES, vid + ".json")
+    meta = json.load(open(meta_p))
+    emb_p = os.path.join(VOICES, vid + ".npy")
+    full_p = os.path.join(VOICES, vid + ".full.wav")
+    src = full_p if os.path.exists(full_p) else os.path.join(VOICES, vid + ".wav")
+    if "ltas" not in meta or not os.path.exists(emb_p):
+        y, _ = sf.read(src, dtype="float32")
+        meta["ltas"] = ltas(y)
+        json.dump(meta, open(meta_p, "w"))
+        with engine_lock:
+            np.save(emb_p, speaker_embedding(y))
+    return meta["ltas"], np.load(emb_p)
+
+
+def words(t):
+    return re.sub(r"[^a-z0-9 ]", " ", t.lower().replace("'", "")).split()
+
+
+def word_error(ref, hyp):
+    r, h = words(ref), words(hyp)
+    d = list(range(len(h) + 1))
+    for i, rw in enumerate(r, 1):
+        prev, d[0] = d[:], i
+        for j, hw in enumerate(h, 1):
+            d[j] = min(prev[j] + 1, d[j - 1] + 1, prev[j - 1] + (rw != hw))
+    return d[len(h)] / max(1, len(r))
+
+
+def master(audio, match=None):
+    """EQ-match to the reference (clones), clean up, compress, level to -16 LUFS, 48 kHz."""
+    chain = ["highpass=f=80"]
+    if match is not None:
+        ref, got = np.array(match[0]), np.array(ltas(audio))
+        i1k = BANDS.index(1000)
+        diff = (ref - ref[i1k]) - (got - got[i1k])
+        diff = np.convolve(diff, [0.25, 0.5, 0.25], mode="same")   # smooth neighbouring bands
+        diff = np.clip(diff * 0.8, -6, 6)                           # stay gentle
+        chain.append("firequalizer=gain_entry='%s'" % ";".join("entry(%d,%.1f)" % (b, g) for b, g in zip(BANDS, diff)))
+    chain += ["deesser=i=0.3", "acompressor=threshold=-20dB:ratio=2.5:attack=8:release=120:makeup=1.5",
+              "loudnorm=I=-16:TP=-1.5:LRA=9", "aresample=48000"]
+    return ",".join(chain)
+
+
 # ---------- voices ----------
 def slugify(s, n=32):
     return re.sub(r"[^a-z0-9]+", "-", s.lower())[:n].strip("-")
@@ -112,6 +187,11 @@ def add_cloned_voice(name, data):
         raise ValueError("Couldn't read that audio file. Try an MP3, WAV or M4A.")
     finally:
         os.unlink(src)
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", "pipe:0", "-t", "90", "-ac", "1", "-ar", str(SR),
+                    os.path.join(VOICES, vid + ".full.wav")], input=data, check=True)
+    for stale in (vid + ".npy",):
+        if os.path.exists(os.path.join(VOICES, stale)):
+            os.unlink(os.path.join(VOICES, stale))
     secs = sf.info(os.path.join(VOICES, vid + ".wav")).duration
     if secs < 5:
         os.unlink(os.path.join(VOICES, vid + ".wav"))
@@ -123,7 +203,7 @@ def add_cloned_voice(name, data):
 
 def delete_cloned_voice(voice_id):
     vid = os.path.basename(voice_id.split(":", 1)[-1])
-    for ext in (".wav", ".json"):
+    for ext in (".wav", ".json", ".full.wav", ".npy"):
         p = os.path.join(VOICES, vid + ext)
         if os.path.exists(p):
             os.unlink(p)
@@ -153,17 +233,35 @@ def chunks(text, limit=260):
     return out
 
 
-def synth(text, voice, speed=1.0, exaggeration=0.5, cfg=0.5):
+def best_take(c, ref, emb, takes, exaggeration, cfg):
+    """Generate `takes` versions of one chunk; keep the one that reads the words right
+    and sounds most like the reference speaker."""
+    import librosa
+    scored = []
+    for k in range(takes):
+        with engine_lock:
+            wav = chatterbox().generate(c, audio_prompt_path=ref, exaggeration=exaggeration,
+                                        cfg_weight=cfg, temperature=0.75)
+            a = trim(wav.squeeze(0).numpy().astype(np.float32))
+            if takes == 1:
+                return a
+            sim = float(np.dot(speaker_embedding(a), emb))
+            hyp = " ".join(s.text for s in whisper().transcribe(
+                librosa.resample(a, orig_sr=SR, target_sr=16000), beam_size=1, language="en")[0])
+        scored.append((word_error(c, hyp) > 0.12, -sim, k, a))
+    return min(scored, key=lambda x: x[:3])[3]
+
+
+def synth(text, voice, speed=1.0, exaggeration=0.5, cfg=0.5, takes=1):
     if voice.startswith("clone:"):
-        ref = os.path.join(VOICES, os.path.basename(voice[6:]) + ".wav")
+        vid = os.path.basename(voice[6:])
+        ref = os.path.join(VOICES, vid + ".wav")
         if not os.path.exists(ref):
             raise ValueError("That cloned voice no longer exists.")
+        emb = voice_profile(vid)[1] if takes > 1 else None
         parts = []
         for c in chunks(text):
-            with engine_lock:
-                m = chatterbox()
-                wav = m.generate(c, audio_prompt_path=ref, exaggeration=exaggeration, cfg_weight=cfg)
-            parts.append(trim(wav.squeeze(0).numpy().astype(np.float32)))
+            parts.append(best_take(c, ref, emb, takes, exaggeration, cfg))
             parts.append(np.zeros(int(0.12 * SR), dtype=np.float32))
         return np.concatenate(parts[:-1])
     lang = LANGS.get(voice[0], ("en-us",))[0]
@@ -172,11 +270,11 @@ def synth(text, voice, speed=1.0, exaggeration=0.5, cfg=0.5):
     return trim(np.asarray(samples, dtype=np.float32))
 
 
-def to_mp3(audio, path):
+def to_mp3(audio, path, af=None):
     buf = io.BytesIO()
     sf.write(buf, audio, SR, format="WAV")
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "wav", "-i", "pipe:0",
-                    "-codec:a", "libmp3lame", "-b:a", "192k", path], input=buf.getvalue(), check=True)
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "wav", "-i", "pipe:0"] + (["-af", af] if af else []) +
+                   ["-codec:a", "libmp3lame", "-b:a", "192k", path], input=buf.getvalue(), check=True)
 
 
 # ---------- render jobs ----------
@@ -192,7 +290,8 @@ def run_job(job, opts):
         silence = np.zeros(int(gap * SR), dtype=np.float32)
         for i, p in enumerate(paras):
             job["done"] = i
-            a = synth(p, voice, float(opts.get("speed", 1.0)), float(opts.get("exaggeration", 0.5)), float(opts.get("cfg", 0.5)))
+            a = synth(p, voice, float(opts.get("speed", 1.0)), float(opts.get("exaggeration", 0.5)),
+                      float(opts.get("cfg", 0.5)), max(1, min(3, int(opts.get("takes", 1)))))
             if i:
                 pieces.append(silence)
                 cursor += gap
@@ -204,7 +303,12 @@ def run_job(job, opts):
         os.makedirs(OUT, exist_ok=True)
         tag = voice.replace("clone:", "clone-")
         base = os.path.join(OUT, "%s-%s-%s" % (time.strftime("%Y%m%d-%H%M%S"), tag, slugify(paras[0]) or "vo"))
-        to_mp3(audio, base + ".mp3")
+        af = None
+        if opts.get("master", True):
+            job["stage"] = "mastering"
+            match = voice_profile(os.path.basename(voice[6:])) if voice.startswith("clone:") else None
+            af = master(audio, match)
+        to_mp3(audio, base + ".mp3", af)
         json.dump({"voice": voice, "gap": gap, "lines": timing}, open(base + ".json", "w"), indent=1)
         job.update(state="done", done=len(paras),
                    result={"file": os.path.basename(base) + ".mp3", "seconds": round(len(audio) / SR, 2), "lines": timing})
