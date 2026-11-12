@@ -84,24 +84,51 @@ function buildCategory(raw) {
     for (const [w, i] of names) i >= 0 ? exact.set(w, i) : shared.add(w);
   }
   // typo candidates, bucketed by length so a check only looks at spellings within two letters
+  // (the answer index is looked up in `exact`, so each bucket is just the spellings)
   const fuzzy = new Map();
-  for (const [k, i] of exact) {
+  for (const k of exact.keys()) {
     if (k.length < 5 || /\d/.test(k)) continue;
     if (!fuzzy.has(k.length)) fuzzy.set(k.length, []);
-    fuzzy.get(k.length).push([k, i]);
+    fuzzy.get(k.length).push(k);
   }
-  return { id: raw.id, group: raw.group, emoji: raw.emoji, prompt: raw.prompt, kind: raw.kind, answers, exact, fuzzy, shared };
+  return { answers, exact, fuzzy, shared };
+}
+
+// Lists run to tens of thousands of answers, so a category's index is built the first time a
+// game serves it and only the most recently used ones stay in memory. Everything else about a
+// category (prompt, size, ...) is always there.
+const KEEP = Number(process.env.CATEGORY_CACHE) || 24;
+const built = new Map(); // id -> built index, oldest first
+
+class Category {
+  constructor(raw, file) {
+    Object.assign(this, { id: raw.id, group: raw.group, emoji: raw.emoji, prompt: raw.prompt, kind: raw.kind, size: raw.answers.length, file });
+  }
+  get index() {
+    let b = built.get(this.id);
+    if (b) { built.delete(this.id); built.set(this.id, b); return b; }
+    b = buildCategory(JSON.parse(fs.readFileSync(this.file, "utf8")));
+    built.set(this.id, b);
+    while (built.size > KEEP) built.delete(built.keys().next().value);
+    return b;
+  }
+  get answers() { return this.index.answers; }
+  get exact() { return this.index.exact; }
+  get fuzzy() { return this.index.fuzzy; }
+  get shared() { return this.index.shared; }
 }
 
 function loadCategories(dir) {
   const cats = new Map();
+  let total = 0;
   for (const f of fs.readdirSync(dir).filter((f) => f.endsWith(".json")).sort()) {
-    const raw = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
+    const file = path.join(dir, f);
+    const raw = JSON.parse(fs.readFileSync(file, "utf8"));
     const n = raw.answers ? raw.answers.length : 0;
     if (n < MIN_ANSWERS) { console.warn(`skipping ${raw.id}: only ${n} answers`); continue; }
-    cats.set(raw.id, buildCategory(raw));
+    cats.set(raw.id, new Category(raw, file));
+    total += n;
   }
-  const total = [...cats.values()].reduce((n, c) => n + c.answers.length, 0);
   console.log(`loaded ${cats.size} categories, ${total.toLocaleString()} answers`);
   return cats;
 }
@@ -111,19 +138,22 @@ const WHICH = -2;
 function matchAnswer(cat, input) {
   const k = norm(input);
   if (!k) return -1;
-  if (cat.exact.has(k)) return cat.exact.get(k);
-  if (cat.shared.has(k)) return WHICH;
+  const { exact, shared, fuzzy } = cat.index || cat;
+  if (exact.has(k)) return exact.get(k);
+  if (shared.has(k)) return WHICH;
   // plural or singular of a listed answer ("Lambos", "Pringle", "Tacos")
   for (const v of [k.replace(/es$/, ""), k.replace(/s$/, ""), k + "s", k + "es", k.replace(/ies$/, "y"), k.replace(/y$/, "ies")]) {
-    if (v !== k && v.length >= 3 && cat.exact.has(v)) return cat.exact.get(v);
+    if (v !== k && v.length >= 3 && exact.has(v)) return exact.get(v);
   }
   // typo help only on longer answers, never on numbers (Toy Story 2 is not 3)
   if (k.length < 6 || /\d/.test(k)) return -1;
   const max = k.length >= 9 ? 2 : 1;
   let best = -1, bestD = max + 1;
   for (let len = k.length - max; len <= k.length + max; len++) {
-    for (const [key, i] of cat.fuzzy.get(len) || []) {
+    for (const key of fuzzy.get(len) || []) {
       const d = dist(k, key, max);
+      if (d > max) continue;
+      const i = exact.get(key);
       if (d < bestD || (d === bestD && i < best)) { bestD = d; best = i; }
     }
   }

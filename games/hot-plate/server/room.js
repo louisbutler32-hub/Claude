@@ -390,7 +390,7 @@ class Room {
       chat: this.chat.slice(-50),
       game: g && {
         round: g.round,
-        cat: g.cat && { id: g.cat.id, emoji: g.cat.emoji, prompt: g.cat.prompt, size: g.cat.answers.length },
+        cat: g.cat && { id: g.cat.id, emoji: g.cat.emoji, prompt: g.cat.prompt, size: g.cat.size },
         holder: g.holder, turnEnd: g.turnEnd, turnLen: g.turnLen, passes: g.passes,
         served: g.served.slice(0, 60).map(({ name, tier, by }) => ({ name, tier, by })),
         winner: g.winner || null, bestFind: g.bestFind || null, lastPop: g.lastPop || null, breakUntil: g.breakUntil || null,

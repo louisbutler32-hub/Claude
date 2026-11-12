@@ -77,7 +77,7 @@ const server = http.createServer((req, res) => {
   const url = new URL(req.url, "http://x");
   switch (url.pathname) {
     case "/api/categories":
-      return json(res, { tiers: TIERS, categories: [...CATS.values()].map((c) => ({ id: c.id, group: c.group, emoji: c.emoji, prompt: c.prompt, size: c.answers.length })) });
+      return json(res, { tiers: TIERS, categories: [...CATS.values()].map((c) => ({ id: c.id, group: c.group, emoji: c.emoji, prompt: c.prompt, size: c.size })) });
     case "/api/tables":
       return json(res, {
         tables: [...rooms.values()]

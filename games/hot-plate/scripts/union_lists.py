@@ -9,12 +9,13 @@ compared the way the game compares them (server/answers.js norm), so "Beyoncé" 
 one answer.
 """
 import json
+import os
 import re
 import sys
 import unicodedata
 from pathlib import Path
 
-DATA = Path(__file__).resolve().parent.parent / "data"
+DATA = Path(os.environ.get("DATA_DIR") or Path(__file__).resolve().parent.parent / "data")
 
 
 def norm(s):
