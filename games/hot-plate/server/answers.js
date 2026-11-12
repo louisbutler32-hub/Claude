@@ -83,7 +83,13 @@ function buildCategory(raw) {
     });
     for (const [w, i] of names) i >= 0 ? exact.set(w, i) : shared.add(w);
   }
-  const fuzzy = [...exact.entries()].filter(([k]) => k.length >= 5 && !/\d/.test(k));
+  // typo candidates, bucketed by length so a check only looks at spellings within two letters
+  const fuzzy = new Map();
+  for (const [k, i] of exact) {
+    if (k.length < 5 || /\d/.test(k)) continue;
+    if (!fuzzy.has(k.length)) fuzzy.set(k.length, []);
+    fuzzy.get(k.length).push([k, i]);
+  }
   return { id: raw.id, group: raw.group, emoji: raw.emoji, prompt: raw.prompt, kind: raw.kind, answers, exact, fuzzy, shared };
 }
 
@@ -115,9 +121,11 @@ function matchAnswer(cat, input) {
   if (k.length < 6 || /\d/.test(k)) return -1;
   const max = k.length >= 9 ? 2 : 1;
   let best = -1, bestD = max + 1;
-  for (const [key, i] of cat.fuzzy) {
-    const d = dist(k, key, max);
-    if (d < bestD || (d === bestD && i < best)) { bestD = d; best = i; }
+  for (let len = k.length - max; len <= k.length + max; len++) {
+    for (const [key, i] of cat.fuzzy.get(len) || []) {
+      const d = dist(k, key, max);
+      if (d < bestD || (d === bestD && i < best)) { bestD = d; best = i; }
+    }
   }
   return best;
 }

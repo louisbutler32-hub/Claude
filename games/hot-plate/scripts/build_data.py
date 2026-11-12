@@ -13,6 +13,7 @@ Rarity comes from that rank: the most famous answers are worth the least.
 Wikidata content is CC0, so the lists can ship with the game.
 """
 import json
+import os
 import subprocess
 import tempfile
 import re
@@ -23,7 +24,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-OUT = Path(__file__).resolve().parent.parent / "data"
+OUT = Path(os.environ.get("OUT_DIR") or Path(__file__).resolve().parent.parent / "data")
 UA = "DiningRoomHotPlate/0.2 (https://github.com/louisbutler32-hub/Claude)"
 ENDPOINT = "https://query.wikidata.org/sparql"
 
@@ -134,6 +135,12 @@ CATEGORIES = [
 for _c in CATEGORIES:
     _c["limit"] = min(_c["limit"] * 2, 9000)
     _c["minsl"] = _c["minsl"] // 2
+# FULL=1: everything that has at least one Wikipedia article (or every item, where the category
+# already took everything), up to 50,000 rows a category: as close to "every answer" as the data goes
+if os.environ.get("FULL"):
+    for _c in CATEGORIES:
+        _c["limit"] = 50000
+        _c["minsl"] = min(_c["minsl"], 1)
 for _c in CATEGORIES:
     _c["where"] = _c["where"] % {"song": "?x wdt:P31 ?st . VALUES ?st { wd:Q7366 wd:Q134556 } ."}
 
@@ -230,8 +237,8 @@ def build(cat):
 
     # aliases in batches
     qids = list(items)
-    for i in range(0, len(qids), 250):
-        chunk = qids[i:i + 250]
+    for i in range(0, len(qids), 400):
+        chunk = qids[i:i + 400]
         vals = " ".join("wd:" + x for x in chunk)
         aq = f'SELECT ?x ?a WHERE {{ VALUES ?x {{ {vals} }} ?x skos:altLabel|rdfs:label ?a . FILTER(lang(?a) = "en" || lang(?a) = "mul") }}'
         for b in sparql(aq):
