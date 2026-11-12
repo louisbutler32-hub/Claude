@@ -48,8 +48,10 @@ CATEGORIES = [
          where="?x wdt:P106 wd:Q2252262 ."),
     dict(id="maleband", group="Music", emoji="🥁", prompt="Name a male band with over a million monthly listeners", kind="thing", limit=900, minsl=22,
          where="?x wdt:P31 ?c . VALUES ?c { wd:Q215380 wd:Q5741069 wd:Q216337 } .",
-         # all-male line-ups only: no girl groups, no band with a woman in it
-         drop="{ ?x wdt:P31 wd:Q641066 } UNION { ?x wdt:P527 ?m . ?m wdt:P21 wd:Q6581072 }"),
+         # no girl groups, and no band whose listed members are all women (a band that added a
+         # woman, like Linkin Park, still counts)
+         drop="""{ ?x wdt:P31 wd:Q641066 } UNION { ?x wdt:P527 ?m . ?m wdt:P21 wd:Q6581072 .
+                 FILTER NOT EXISTS { ?x wdt:P527 ?mm . ?mm wdt:P21 wd:Q6581097 } }"""),
     dict(id="femaleartist", group="Music", emoji="💃", prompt="Name a female artist with over a million monthly listeners", kind="person", limit=3000, minsl=30,
          where="?x wdt:P106 ?o . VALUES ?o { wd:Q177220 wd:Q2252262 wd:Q488205 } . ?x wdt:P21 wd:Q6581072 .",
          # born 1940 or later: artists people still stream, not film stars who sang
@@ -91,7 +93,8 @@ CATEGORIES = [
          where="?x wdt:P272 ?st . VALUES ?st { wd:Q1047410 wd:Q127552 wd:Q500088 wd:Q191224 } . ?x wdt:P31 ?ft . VALUES ?ft { wd:Q11424 wd:Q29168811 wd:Q202866 } ."),
     dict(id="cnnick", group="Movies & TV", emoji="📺", prompt="Name a show from Cartoon Network or Nickelodeon", kind="thing", limit=1200, minsl=1,
          where="?x wdt:P449 ?n . VALUES ?n { wd:Q708290 wd:Q154958 } .",
-         drop="?x wdt:P31 ?ep . VALUES ?ep { wd:Q21191270 wd:Q1983062 wd:Q21664088 } ."),  # shows, not episodes
+         # shows, not episodes (which Wikidata types a dozen ways: segments, specials, three-parters)
+         keep="?x wdt:P31/wdt:P279* wd:Q5398426 .", drop="?x wdt:P31/wdt:P279* wd:Q1983062 ."),
     dict(id="ryans", group="Movies & TV", emoji="🎬", prompt="Name a Ryan Reynolds or Ryan Gosling movie", kind="thing", limit=400, minsl=0,
          where="?x wdt:P161 ?a . VALUES ?a { wd:Q192682 wd:Q193815 } . ?x wdt:P31 wd:Q11424 ."),
     dict(id="sitcom", group="Movies & TV", emoji="🛋️", prompt="Name a sitcom", kind="thing", limit=1500, minsl=10,
@@ -102,9 +105,15 @@ CATEGORIES = [
     dict(id="tech", group="Other", emoji="💻", prompt="Name a tech company", kind="thing", limit=1200, minsl=20,
          where="{ ?x wdt:P31 ?t . VALUES ?t { wd:Q18388277 wd:Q1058914 } } UNION { ?x wdt:P452 ?ind . VALUES ?ind { wd:Q11661 wd:Q880371 wd:Q11016 } }"),
     dict(id="criminal", group="Other", emoji="🔪", prompt="Name a serial killer or famous criminal", kind="person", limit=1200, minsl=15,
-         where="{ ?x wdt:P106 ?o . VALUES ?o { wd:Q484188 wd:Q2159907 } . }",
-         # real people, and not heads of state
-         keep="?x wdt:P31 wd:Q5 .", drop="?x wdt:P106 wd:Q82955 ."),
+         # killers, gangsters, drug lords, pirates, outlaws; or convicted of a violent or organised
+         # crime (not tax fraud: that pulls in footballers)
+         where="""{ ?x wdt:P106 ?o . VALUES ?o { wd:Q484188 wd:Q2159907 wd:Q46961 wd:Q2543769 wd:Q10384029
+                     wd:Q10729326 wd:Q2627286 wd:Q20650518 wd:Q111438723 wd:Q1154323 wd:Q15883433 } }
+                UNION { ?x wdt:P1399 ?cr . VALUES ?cr { wd:Q132821 wd:Q844924 wd:Q1283181 wd:Q46952
+                     wd:Q318296 wd:Q5711091 wd:Q806824 } }""",
+         # real people, and not heads of state or government (Escobar sat in congress; he stays)
+         keep="?x wdt:P31 wd:Q5 .",
+         drop="?x p:P39/ps:P39/wdt:P279? ?hd . VALUES ?hd { wd:Q48352 wd:Q2285706 } ."),
     dict(id="carbrand", group="Other", emoji="🚗", prompt="Name a car brand", kind="thing", limit=800, minsl=8,
          where="?x wdt:P31 wd:Q786820 ."),
     dict(id="airline", group="Other", emoji="✈️", prompt="Name an airline", kind="thing", limit=1000, minsl=10,
@@ -123,7 +132,7 @@ CATEGORIES = [
          # first release in the last three years (re-releases of old films don't count)
          where="?x wdt:P31 wd:Q11424 ; wdt:P577 ?d . FILTER(?d >= \"2023-11-01T00:00:00Z\"^^xsd:dateTime && ?d <= NOW()) FILTER NOT EXISTS { ?x wdt:P577 ?d0 . FILTER(?d0 < \"2023-11-01T00:00:00Z\"^^xsd:dateTime) }"),
     dict(id="politician", group="People", emoji="🏛️", prompt="Name someone currently serving in a national government or parliament", kind="person", limit=1500, minsl=15,
-         where="?x p:P39 ?s . ?s ps:P39 ?pos . FILTER NOT EXISTS { ?s pq:P582 ?e } ?s pq:P580 ?st . FILTER(YEAR(?st) >= 2008) ?pos wdt:P279 ?cls . VALUES ?cls { wd:Q486839 wd:Q83307 wd:Q48352 wd:Q2285706 } . FILTER NOT EXISTS { ?x wdt:P570 ?died }"),
+         where="?x p:P39 ?s . ?s ps:P39 ?pos . FILTER NOT EXISTS { ?s pq:P582 ?e } ?s pq:P580 ?st . FILTER(YEAR(?st) >= 2008) ?pos wdt:P279/wdt:P279? ?cls . VALUES ?cls { wd:Q486839 wd:Q83307 wd:Q48352 wd:Q2285706 } . FILTER NOT EXISTS { ?x wdt:P570 ?died }"),
     dict(id="teammates", group="Sport", emoji="🤝", prompt="Name someone who has been a teammate of Lionel Messi, Cristiano Ronaldo or LeBron James", kind="person", limit=2500, minsl=2,
          where="VALUES ?s { wd:Q615 wd:Q11571 wd:Q36159 } ?s p:P54 ?m1 . ?m1 ps:P54 ?team ; pq:P580 ?a1 . OPTIONAL { ?m1 pq:P582 ?b1 } ?x p:P54 ?m2 . ?m2 ps:P54 ?team ; pq:P580 ?a2 . OPTIONAL { ?m2 pq:P582 ?b2 } FILTER(?x != ?s && (!BOUND(?b1) || ?a2 <= ?b1) && (!BOUND(?b2) || ?a1 <= ?b2))"),
     dict(id="university", group="School", emoji="🎓", prompt="Name a university in the US, UK, NZ or Australia", kind="thing", limit=2000, minsl=3,
@@ -145,7 +154,7 @@ if os.environ.get("FULL"):
         _c["limit"] = 50000
         _c["minsl"] = min(_c["minsl"], _c.get("fullmin", 1))
 for _c in CATEGORIES:
-    _c["where"] = _c["where"] % {"song": "?x wdt:P31 ?st . VALUES ?st { wd:Q7366 wd:Q134556 } ."}
+    _c["where"] = _c["where"] % {"song": "{ ?x wdt:P31 ?st . VALUES ?st { wd:Q7366 wd:Q134556 } } UNION { ?x wdt:P31 wd:Q105543609 ; wdt:P7937 wd:Q7366 }"}
 
 
 
