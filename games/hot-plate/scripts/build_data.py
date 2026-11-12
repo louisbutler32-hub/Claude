@@ -48,17 +48,19 @@ CATEGORIES = [
          where="?x wdt:P106 wd:Q2252262 ."),
     dict(id="maleband", group="Music", emoji="🥁", prompt="Name a male band with over a million monthly listeners", kind="thing", limit=900, minsl=22,
          where="?x wdt:P31 ?c . VALUES ?c { wd:Q215380 wd:Q5741069 wd:Q216337 } .",
-         # no girl groups, and no band whose listed members are all women (a band that added a
-         # woman, like Linkin Park, still counts)
-         drop="""{ ?x wdt:P31 wd:Q641066 } UNION { ?x wdt:P527 ?m . ?m wdt:P21 wd:Q6581072 .
-                 FILTER NOT EXISTS { ?x wdt:P527 ?mm . ?mm wdt:P21 wd:Q6581097 } }"""),
+         # no girl groups, and no band with as many women as men in it (ABBA, the Carpenters);
+         # a band of men that added a woman, like Linkin Park, still counts
+         drop="""{ ?x wdt:P31 wd:Q641066 } UNION { SELECT ?x WHERE { __VALUES__ ?x wdt:P527 ?m . ?m wdt:P21 ?g . }
+                 GROUP BY ?x HAVING(SUM(IF(?g = wd:Q6581072, 1, 0)) > 0 &&
+                   SUM(IF(?g = wd:Q6581072, 1, 0)) >= SUM(IF(?g = wd:Q6581097, 1, 0))) }"""),
     dict(id="femaleartist", group="Music", emoji="💃", prompt="Name a female artist with over a million monthly listeners", kind="person", limit=3000, minsl=30,
          where="?x wdt:P106 ?o . VALUES ?o { wd:Q177220 wd:Q2252262 wd:Q488205 } . ?x wdt:P21 wd:Q6581072 .",
          # born 1940 or later: artists people still stream, not film stars who sang
          keep="?x wdt:P569 ?b . FILTER(YEAR(?b) >= 1940)",
          fullmin=4),  # every female singer in the world times the query service out
     dict(id="stream100m", group="Music", emoji="🎧", prompt="Name a song with over 100 million streams", kind="thing", limit=1500, minsl=20,
-         where="%(song)s", drop="?x wdt:P31 wd:Q23691 ."),  # no national anthems
+         where="%(song)s", drop="?x wdt:P31 wd:Q23691 .",  # no national anthems
+         fullmin=2),  # every song with one article times the query service out
     # ---- games ----
     dict(id="boardgame", group="Gaming", emoji="🎲", prompt="Name a board game", kind="thing", limit=1500, minsl=3,
          where="?x wdt:P31 wd:Q131436 ."),
@@ -113,7 +115,8 @@ CATEGORIES = [
                      wd:Q318296 wd:Q5711091 wd:Q806824 } }""",
          # real people, and not heads of state or government (Escobar sat in congress; he stays)
          keep="?x wdt:P31 wd:Q5 .",
-         drop="?x p:P39/ps:P39/wdt:P279? ?hd . VALUES ?hd { wd:Q48352 wd:Q2285706 } ."),
+         drop="?x p:P39/ps:P39/wdt:P279? ?hd . VALUES ?hd { wd:Q48352 wd:Q2285706 } .",
+         skip={"George Floyd"}),  # famous as a victim, not for a crime
     dict(id="carbrand", group="Other", emoji="🚗", prompt="Name a car brand", kind="thing", limit=800, minsl=8,
          where="?x wdt:P31 wd:Q786820 ."),
     dict(id="airline", group="Other", emoji="✈️", prompt="Name an airline", kind="thing", limit=1000, minsl=10,
@@ -132,7 +135,8 @@ CATEGORIES = [
          # first release in the last three years (re-releases of old films don't count)
          where="?x wdt:P31 wd:Q11424 ; wdt:P577 ?d . FILTER(?d >= \"2023-11-01T00:00:00Z\"^^xsd:dateTime && ?d <= NOW()) FILTER NOT EXISTS { ?x wdt:P577 ?d0 . FILTER(?d0 < \"2023-11-01T00:00:00Z\"^^xsd:dateTime) }"),
     dict(id="politician", group="People", emoji="🏛️", prompt="Name someone currently serving in a national government or parliament", kind="person", limit=1500, minsl=15,
-         where="?x p:P39 ?s . ?s ps:P39 ?pos . FILTER NOT EXISTS { ?s pq:P582 ?e } ?s pq:P580 ?st . FILTER(YEAR(?st) >= 2008) ?pos wdt:P279/wdt:P279? ?cls . VALUES ?cls { wd:Q486839 wd:Q83307 wd:Q48352 wd:Q2285706 } . FILTER NOT EXISTS { ?x wdt:P570 ?died }"),
+         where="?x p:P39 ?s . ?s ps:P39 ?pos . FILTER NOT EXISTS { ?s pq:P582 ?e } ?s pq:P580 ?st . FILTER(YEAR(?st) >= 2008) ?pos wdt:P279/wdt:P279? ?cls . VALUES ?cls { wd:Q486839 wd:Q83307 wd:Q48352 wd:Q2285706 } . FILTER NOT EXISTS { ?x wdt:P570 ?died }",
+         fullmin=2),
     dict(id="teammates", group="Sport", emoji="🤝", prompt="Name someone who has been a teammate of Lionel Messi, Cristiano Ronaldo or LeBron James", kind="person", limit=2500, minsl=2,
          where="VALUES ?s { wd:Q615 wd:Q11571 wd:Q36159 } ?s p:P54 ?m1 . ?m1 ps:P54 ?team ; pq:P580 ?a1 . OPTIONAL { ?m1 pq:P582 ?b1 } ?x p:P54 ?m2 . ?m2 ps:P54 ?team ; pq:P580 ?a2 . OPTIONAL { ?m2 pq:P582 ?b2 } FILTER(?x != ?s && (!BOUND(?b1) || ?a2 <= ?b1) && (!BOUND(?b2) || ?a1 <= ?b2))"),
     dict(id="university", group="School", emoji="🎓", prompt="Name a university in the US, UK, NZ or Australia", kind="thing", limit=2000, minsl=3,
@@ -229,7 +233,7 @@ def build(cat):
             label = re.sub(cat["strip"], "", label) or label   # "hip hop music" reads as "hip hop"
         if label and label[0].islower() and cat["kind"] == "thing" and cat["id"] in ("boardgame", "mountain", "river", "dogcat", "musicgenre", "instrument", "language"):
             label = label[0].upper() + label[1:]
-        if not label:
+        if not label or label in cat.get("skip", ()):
             continue
         sl = int(b["sl"]["value"])
         if qid not in items or items[qid]["sl"] < sl:
@@ -243,7 +247,9 @@ def build(cat):
         qids = list(items)
         for i in range(0, len(qids), 300):
             vals = " ".join("wd:" + x for x in qids[i:i + 300])
-            for b in sparql(f"SELECT DISTINCT ?x WHERE {{ VALUES ?x {{ {vals} }} {cat[mode]} }}"):
+            # a filter that needs the batch inside a sub-query says where with __VALUES__
+            body = cat[mode].replace("__VALUES__", f"VALUES ?x {{ {vals} }}")
+            for b in sparql(f"SELECT DISTINCT ?x WHERE {{ VALUES ?x {{ {vals} }} {body} }}"):
                 hits.add(b["x"]["value"].rsplit("/", 1)[-1])
         items = {q: v for q, v in items.items() if (q in hits) == (mode == "keep")}
 
