@@ -51,9 +51,10 @@ CATEGORIES = [
          # all-male line-ups only: no girl groups, no band with a woman in it
          drop="{ ?x wdt:P31 wd:Q641066 } UNION { ?x wdt:P527 ?m . ?m wdt:P21 wd:Q6581072 }"),
     dict(id="femaleartist", group="Music", emoji="💃", prompt="Name a female artist with over a million monthly listeners", kind="person", limit=3000, minsl=30,
-         where="?x wdt:P106 ?o . VALUES ?o { wd:Q177220 wd:Q2252262 wd:Q488205 } .",
-         # women, born 1940 or later: artists people still stream, not film stars who sang
-         keep="?x wdt:P21 wd:Q6581072 ; wdt:P569 ?b . FILTER(YEAR(?b) >= 1940)"),
+         where="?x wdt:P106 ?o . VALUES ?o { wd:Q177220 wd:Q2252262 wd:Q488205 } . ?x wdt:P21 wd:Q6581072 .",
+         # born 1940 or later: artists people still stream, not film stars who sang
+         keep="?x wdt:P569 ?b . FILTER(YEAR(?b) >= 1940)",
+         fullmin=4),  # every female singer in the world times the query service out
     dict(id="stream100m", group="Music", emoji="🎧", prompt="Name a song with over 100 million streams", kind="thing", limit=1500, minsl=20,
          where="%(song)s", drop="?x wdt:P31 wd:Q23691 ."),  # no national anthems
     # ---- games ----
