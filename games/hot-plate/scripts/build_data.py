@@ -89,7 +89,8 @@ CATEGORIES = [
     dict(id="animated", group="Movies & TV", emoji="🏰", prompt="Name an original Disney, Pixar or DreamWorks movie", kind="thing", limit=1200, minsl=1,
          where="?x wdt:P272 ?st . VALUES ?st { wd:Q1047410 wd:Q127552 wd:Q500088 wd:Q191224 } . ?x wdt:P31 ?ft . VALUES ?ft { wd:Q11424 wd:Q29168811 wd:Q202866 } ."),
     dict(id="cnnick", group="Movies & TV", emoji="📺", prompt="Name a show from Cartoon Network or Nickelodeon", kind="thing", limit=1200, minsl=1,
-         where="?x wdt:P449 ?n . VALUES ?n { wd:Q708290 wd:Q154958 } ."),
+         where="?x wdt:P449 ?n . VALUES ?n { wd:Q708290 wd:Q154958 } .",
+         drop="?x wdt:P31 ?ep . VALUES ?ep { wd:Q21191270 wd:Q1983062 wd:Q21664088 } ."),  # shows, not episodes
     dict(id="ryans", group="Movies & TV", emoji="🎬", prompt="Name a Ryan Reynolds or Ryan Gosling movie", kind="thing", limit=400, minsl=0,
          where="?x wdt:P161 ?a . VALUES ?a { wd:Q192682 wd:Q193815 } . ?x wdt:P31 wd:Q11424 ."),
     dict(id="sitcom", group="Movies & TV", emoji="🛋️", prompt="Name a sitcom", kind="thing", limit=1500, minsl=10,
@@ -113,7 +114,8 @@ CATEGORIES = [
     dict(id="musicgenre", group="Music", emoji="🎼", prompt="Name a music genre", kind="thing", limit=1200, minsl=10,
          where="?x wdt:P31 wd:Q188451 .", strip=r"\s+music$"),
     dict(id="instrument", group="Music", emoji="🎺", prompt="Name a musical instrument", kind="thing", limit=800, minsl=8,
-         where="?x wdt:P279+ wd:Q34379 .", drop="?x wdt:P31 wd:Q4167836 ."),  # instrument types, not categories
+         where="?x wdt:P279+ wd:Q34379 .", drop="?x wdt:P31 wd:Q4167836 .",
+         fullmin=3),  # below a few articles it is mostly parts and techniques ("Magnetic cartridge")  # instrument types, not categories
     dict(id="dogcat", group="Animals", emoji="🐶", prompt="Name a dog or cat breed", kind="thing", limit=1500, minsl=1,
          where="?x wdt:P31 ?c . VALUES ?c { wd:Q39367 wd:Q43577 } ."),
     dict(id="recentmovie", group="Movies & TV", emoji="🍿", prompt="Name a movie from the last 3 years", kind="thing", limit=1500, minsl=5,
@@ -140,7 +142,7 @@ for _c in CATEGORIES:
 if os.environ.get("FULL"):
     for _c in CATEGORIES:
         _c["limit"] = 50000
-        _c["minsl"] = min(_c["minsl"], 1)
+        _c["minsl"] = min(_c["minsl"], _c.get("fullmin", 1))
 for _c in CATEGORIES:
     _c["where"] = _c["where"] % {"song": "?x wdt:P31 ?st . VALUES ?st { wd:Q7366 wd:Q134556 } ."}
 

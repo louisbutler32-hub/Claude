@@ -1,10 +1,11 @@
 """Merge freshly built answer lists into the live ones without losing anything.
 
-    python3 scripts/union_lists.py <staging dir> [ids...]
+    python3 scripts/union_lists.py <staging dir> [ids...] [--replace id,id]
 
 For each <id>.json in the staging dir: the fresh list sets the order and tiers, and any answer the
 live data/<id>.json has that the fresh one lacks (a song merged in from a Wikipedia list page, an
-alias someone added by hand) is kept, with its old tier, after the fresh answers. Spellings are
+alias someone added by hand) is kept, with its old tier, after the fresh answers. --replace names
+lists whose old answers were wrong (episode titles in a list of shows) and are dropped instead. Spellings are
 compared the way the game compares them (server/answers.js norm), so "Beyoncé" and "Beyonce" are
 one answer.
 """
@@ -41,8 +42,14 @@ def union(fresh, live):
 
 
 def main():
+    args = sys.argv[2:]
+    replace = set()
+    if "--replace" in args:
+        i = args.index("--replace")
+        replace = set(args[i + 1].split(","))
+        del args[i:i + 2]
     stage = Path(sys.argv[1])
-    wanted = set(sys.argv[2:])
+    wanted = set(args)
     for f in sorted(stage.glob("*.json")):
         if wanted and f.stem not in wanted:
             continue
@@ -50,6 +57,10 @@ def main():
         live_path = DATA / f.name
         before = 0
         kept = 0
+        if f.stem in replace:
+            print(f"{f.stem:<12} replaced: {len(fresh['answers'])} answers")
+            live_path.write_text(json.dumps(fresh, ensure_ascii=False, separators=(",", ":")))
+            continue
         if live_path.exists():
             live = json.loads(live_path.read_text())
             before = len(live["answers"])
