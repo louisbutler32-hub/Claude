@@ -1,11 +1,13 @@
 """Merge freshly built answer lists into the live ones without losing anything.
 
-    python3 scripts/union_lists.py <staging dir> [ids...] [--replace id,id]
+    python3 scripts/union_lists.py <staging dir> [ids...] [--replace id,id] [--old-first id,id]
 
 For each <id>.json in the staging dir: the fresh list sets the order and tiers, and any answer the
 live data/<id>.json has that the fresh one lacks (a song merged in from a Wikipedia list page, an
 alias someone added by hand) is kept, with its old tier, after the fresh answers. --replace names
-lists whose old answers were wrong (episode titles in a list of shows) and are dropped instead. Spellings are
+lists whose old answers were wrong (episode titles in a list of shows) and are dropped instead.
+--old-first keeps the live list's order and tiers and adds the fresh answers after it, for lists
+whose old order was better than Wikipedia fame (songs ranked by streams, not by folk songs). Spellings are
 compared the way the game compares them (server/answers.js norm), so "Beyoncé" and "Beyonce" are
 one answer.
 """
@@ -43,11 +45,13 @@ def union(fresh, live):
 
 def main():
     args = sys.argv[2:]
-    replace = set()
-    if "--replace" in args:
-        i = args.index("--replace")
-        replace = set(args[i + 1].split(","))
-        del args[i:i + 2]
+    opts = {}
+    for flag in ("--replace", "--old-first"):
+        if flag in args:
+            i = args.index(flag)
+            opts[flag] = set(args[i + 1].split(","))
+            del args[i:i + 2]
+    replace, old_first = opts.get("--replace", set()), opts.get("--old-first", set())
     stage = Path(sys.argv[1])
     wanted = set(args)
     for f in sorted(stage.glob("*.json")):
@@ -64,7 +68,13 @@ def main():
         if live_path.exists():
             live = json.loads(live_path.read_text())
             before = len(live["answers"])
-            kept = union(fresh, live)
+            if f.stem in old_first:
+                union(live, {"answers": fresh["answers"]})
+                fresh["answers"], kept = live["answers"], before
+                for a in fresh["answers"][before:]:
+                    a[1] = 3  # new answers are the rare ones
+            else:
+                kept = union(fresh, live)
         after = len(fresh["answers"])
         if after < before:  # never shrink a list
             print(f"{f.stem:<12} skipped: {after} < {before}")

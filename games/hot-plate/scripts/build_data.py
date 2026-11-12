@@ -50,7 +50,7 @@ CATEGORIES = [
          where="?x wdt:P31 ?c . VALUES ?c { wd:Q215380 wd:Q5741069 wd:Q216337 } .",
          # no girl groups, and no band with as many women as men in it (ABBA, the Carpenters);
          # a band of men that added a woman, like Linkin Park, still counts
-         drop="""{ ?x wdt:P31 wd:Q641066 } UNION { SELECT ?x WHERE { __VALUES__ ?x wdt:P527 ?m . ?m wdt:P21 ?g . }
+         drop="""{ __VALUES__ ?x wdt:P31 wd:Q641066 } UNION { SELECT ?x WHERE { __VALUES__ ?x wdt:P527 ?m . ?m wdt:P21 ?g . }
                  GROUP BY ?x HAVING(SUM(IF(?g = wd:Q6581072, 1, 0)) > 0 &&
                    SUM(IF(?g = wd:Q6581072, 1, 0)) >= SUM(IF(?g = wd:Q6581097, 1, 0))) }"""),
     dict(id="femaleartist", group="Music", emoji="💃", prompt="Name a female artist with over a million monthly listeners", kind="person", limit=3000, minsl=30,
@@ -135,8 +135,11 @@ CATEGORIES = [
          # first release in the last three years (re-releases of old films don't count)
          where="?x wdt:P31 wd:Q11424 ; wdt:P577 ?d . FILTER(?d >= \"2023-11-01T00:00:00Z\"^^xsd:dateTime && ?d <= NOW()) FILTER NOT EXISTS { ?x wdt:P577 ?d0 . FILTER(?d0 < \"2023-11-01T00:00:00Z\"^^xsd:dateTime) }"),
     dict(id="politician", group="People", emoji="🏛️", prompt="Name someone currently serving in a national government or parliament", kind="person", limit=1500, minsl=15,
-         where="?x p:P39 ?s . ?s ps:P39 ?pos . FILTER NOT EXISTS { ?s pq:P582 ?e } ?s pq:P580 ?st . FILTER(YEAR(?st) >= 2008) ?pos wdt:P279/wdt:P279? ?cls . VALUES ?cls { wd:Q486839 wd:Q83307 wd:Q48352 wd:Q2285706 } . FILTER NOT EXISTS { ?x wdt:P570 ?died }",
-         fullmin=2),
+         # positions one or two levels under MP / minister / head of state or government
+         # ("Member of the 59th Parliament of the United Kingdom"), a couple of hundred at a time
+         split="SELECT DISTINCT ?k WHERE { VALUES ?cls { wd:Q486839 wd:Q83307 wd:Q48352 wd:Q2285706 } { ?k wdt:P279 ?cls } UNION { ?k1 wdt:P279 ?cls . ?k wdt:P279 ?k1 } }",
+         splitn=200,
+         where="VALUES ?pos { __KEYS__ } ?s ps:P39 ?pos . ?x p:P39 ?s . FILTER NOT EXISTS { ?s pq:P582 ?e } ?s pq:P580 ?st . FILTER(YEAR(?st) >= 2008) FILTER NOT EXISTS { ?x wdt:P570 ?died }"),
     dict(id="teammates", group="Sport", emoji="🤝", prompt="Name someone who has been a teammate of Lionel Messi, Cristiano Ronaldo or LeBron James", kind="person", limit=2500, minsl=2,
          where="VALUES ?s { wd:Q615 wd:Q11571 wd:Q36159 } ?s p:P54 ?m1 . ?m1 ps:P54 ?team ; pq:P580 ?a1 . OPTIONAL { ?m1 pq:P582 ?b1 } ?x p:P54 ?m2 . ?m2 ps:P54 ?team ; pq:P580 ?a2 . OPTIONAL { ?m2 pq:P582 ?b2 } FILTER(?x != ?s && (!BOUND(?b1) || ?a2 <= ?b1) && (!BOUND(?b2) || ?a1 <= ?b2))"),
     dict(id="university", group="School", emoji="🎓", prompt="Name a university in the US, UK, NZ or Australia", kind="thing", limit=2000, minsl=3,
@@ -220,8 +223,9 @@ def build(cat):
         # heavy queries run a few countries at a time and the rows are merged
         keys = [b["k"]["value"].rsplit("/", 1)[-1] for b in sparql(cat["split"])]
         rows = []
-        for i in range(0, len(keys), 5):
-            vals = " ".join("wd:" + k for k in keys[i:i + 5])
+        n = cat.get("splitn", 5)
+        for i in range(0, len(keys), n):
+            vals = " ".join("wd:" + k for k in keys[i:i + n])
             rows += sparql(q.replace("__KEYS__", vals))
     else:
         rows = sparql(q)
@@ -245,11 +249,15 @@ def build(cat):
             continue
         hits = set()
         qids = list(items)
-        for i in range(0, len(qids), 300):
-            vals = " ".join("wd:" + x for x in qids[i:i + 300])
-            # a filter that needs the batch inside a sub-query says where with __VALUES__
+        # a filter that needs the batch inside a sub-query places it with __VALUES__ (and takes
+        # smaller batches, since the batch then appears more than once in the request)
+        inner = "__VALUES__" in cat[mode]
+        step = 150 if inner else 300
+        for i in range(0, len(qids), step):
+            vals = " ".join("wd:" + x for x in qids[i:i + step])
             body = cat[mode].replace("__VALUES__", f"VALUES ?x {{ {vals} }}")
-            for b in sparql(f"SELECT DISTINCT ?x WHERE {{ VALUES ?x {{ {vals} }} {body} }}"):
+            outer = "" if inner else f"VALUES ?x {{ {vals} }}"
+            for b in sparql(f"SELECT DISTINCT ?x WHERE {{ {outer} {body} }}"):
                 hits.add(b["x"]["value"].rsplit("/", 1)[-1])
         items = {q: v for q, v in items.items() if (q in hits) == (mode == "keep")}
 
